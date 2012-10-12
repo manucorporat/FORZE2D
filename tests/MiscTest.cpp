@@ -61,10 +61,6 @@ int main(int argc, char *argv[])
     
 #endif
     
-    // Set a resize mode. @see fzResizeMode
-    Director::Instance().setOrientation(kFZOrientation_Portrait);
-    Director::Instance().setResizeMode(kFZResizeMode_Fit);
-    
     // INIT FORZE
     // kFZSize_iPad = fzSize(768, 1024)
     FORZE_INIT(new AppDelegate(), kFZSize_iPhone, argc, argv);
