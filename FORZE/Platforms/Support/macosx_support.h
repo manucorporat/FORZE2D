@@ -44,8 +44,6 @@
 #import <OpenGL/OpenGL.h>
 #import <Cocoa/Cocoa.h>
 
-#define FZ_OS_DESKTOP 1
-
 
 #pragma mark - OpenGL extensions
 

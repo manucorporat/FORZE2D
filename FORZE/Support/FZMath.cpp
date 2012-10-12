@@ -77,6 +77,7 @@ namespace FORZE {
 #endif
     }
     
+    
     void fzMath_mat4Multiply(const float* m1, const fzAffineTransform &affine, float* mat)
     {
         FZ_ASSERT(m1 != NULL, "Input matrix 1 cannot be NULL");
