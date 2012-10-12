@@ -56,7 +56,7 @@
  * This feature is still experimental, but several tests show that it works properly.
  * @warning take care using your own opengl code if this setting is enabled.
  */
-#define FZ_RENDER_ON_DEMAND 0
+#define FZ_RENDER_ON_DEMAND 1
 
 
 /** @def FZ_STL_CPLUSPLUS11
@@ -71,7 +71,7 @@
  * If enabled, the autorelease() method will be available in all objects subclass of FORZE::LifeCyle.
  * @warning You should not disable it.
  */
-#define FZ_AUTORELEASE 1
+#define FZ_AUTORELEASE 0
 
 
 /** @def FZ_FIX_ARTIFACTS_BY_STRECHING_TEXEL
