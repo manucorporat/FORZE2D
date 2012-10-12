@@ -40,8 +40,7 @@ namespace FORZE {
 #define FZRULE_MAXSIZE 8
 #define FZRULE_NU 6
 
-    class FZBuffer;
-    class ResourcesManager final
+    class ResourcesManager
     {
     private:
         static ResourcesManager* p_instance;
