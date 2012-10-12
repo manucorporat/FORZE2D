@@ -84,7 +84,7 @@ namespace FORZE {
 #if FZ_GL_SHADERS
         lazyInitialize();
         _fzShader->use();
-        APPLY_MATRIX(_fzShader);
+        FZ_SAFE_APPLY_MATRIX(_fzShader);
         glVertexAttribPointer(kFZAttribPosition, 2, GL_FLOAT, GL_FALSE, 0, &vertices);
 #else
         glVertexPointer(2, GL_FLOAT, 0, &vertices);
@@ -102,7 +102,7 @@ namespace FORZE {
 #if FZ_GL_SHADERS
         lazyInitialize();
         _fzShader->use();
-        APPLY_MATRIX(_fzShader);
+        FZ_SAFE_APPLY_MATRIX(_fzShader);
         glVertexAttribPointer(kFZAttribPosition, 2, GL_FLOAT, GL_FALSE, 0, vertices);
 #else
         glVertexPointer(2, GL_FLOAT, 0, vertices);
@@ -119,7 +119,7 @@ namespace FORZE {
 #if FZ_GL_SHADERS
         lazyInitialize();
         fzGLUseProgram(_fzShader->getName());
-        APPLY_MATRIX(_fzShader);
+        FZ_SAFE_APPLY_MATRIX(_fzShader);
         glVertexAttribPointer(kFZAttribPosition, 2, GL_FLOAT, GL_FALSE, 0, vertices);
 #else
         glVertexPointer(2, GL_FLOAT, 0, vertices);
@@ -136,7 +136,7 @@ namespace FORZE {
 #if FZ_GL_SHADERS
         lazyInitialize();
         _fzShader->use();
-        APPLY_MATRIX(_fzShader);
+        FZ_SAFE_APPLY_MATRIX(_fzShader);
         glVertexAttribPointer(kFZAttribPosition, 2, GL_FLOAT, GL_FALSE, 0, vertices);
 #else
         glVertexPointer(2, GL_FLOAT, 0, vertices);
@@ -154,7 +154,7 @@ namespace FORZE {
 #if FZ_GL_SHADERS
         lazyInitialize();
         _fzShader->use();
-        APPLY_MATRIX(_fzShader);
+        FZ_SAFE_APPLY_MATRIX(_fzShader);
         glVertexAttribPointer(kFZAttribPosition, 2, GL_FLOAT, GL_FALSE, 0, vertices);
 #else
         glVertexPointer(2, GL_FLOAT, 0, vertices);
@@ -175,7 +175,7 @@ namespace FORZE {
 #if FZ_GL_SHADERS
         lazyInitialize();
         fzGLUseProgram(_fzShader->getName());
-        APPLY_MATRIX(_fzShader);
+        FZ_SAFE_APPLY_MATRIX(_fzShader);
         glVertexAttribPointer(kFZAttribPosition, 2, GL_FLOAT, GL_FALSE, 0, vertices);
 #else
         glVertexPointer(2, GL_FLOAT, 0, vertices);
@@ -209,7 +209,7 @@ namespace FORZE {
 #if FZ_GL_SHADERS
         lazyInitialize();
         _fzShader->use();
-        APPLY_MATRIX(_fzShader);
+        FZ_SAFE_APPLY_MATRIX(_fzShader);
         glVertexAttribPointer(kFZAttribPosition, 2, GL_FLOAT, GL_FALSE, 0, vertices);
 #else
         glVertexPointer(2, GL_FLOAT, 0, vertices);
@@ -238,7 +238,7 @@ namespace FORZE {
 #if FZ_GL_SHADERS
         lazyInitialize();
         _fzShader->use();
-        APPLY_MATRIX(_fzShader);
+        FZ_SAFE_APPLY_MATRIX(_fzShader);
         glVertexAttribPointer(kFZAttribPosition, 2, GL_FLOAT, GL_FALSE, 0, vertices);
 #else
         glVertexPointer(2, GL_FLOAT, 0, vertices);
@@ -267,7 +267,7 @@ namespace FORZE {
 #if FZ_GL_SHADERS
         lazyInitialize();
         _fzShader->use();
-        APPLY_MATRIX(_fzShader);
+        FZ_SAFE_APPLY_MATRIX(_fzShader);
         glVertexAttribPointer(kFZAttribPosition, 2, GL_FLOAT, GL_FALSE, 0, vertices);
 #else
         glVertexPointer(2, GL_FLOAT, 0, vertices);

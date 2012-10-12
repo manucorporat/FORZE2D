@@ -274,7 +274,7 @@ namespace FORZE {
 #if FZ_GL_SHADERS
         
         p_glprogram->use();
-        APPLY_MATRIX(p_glprogram);
+        FZ_SAFE_APPLY_MATRIX(p_glprogram);
         
         // atributes
         glVertexAttribPointer(kFZAttribPosition, 2, GL_FLOAT, GL_FALSE, sizeof(_fzC4_T2_V2), &p_quads->bl.vertex);

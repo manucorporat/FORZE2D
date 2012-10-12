@@ -136,7 +136,7 @@ namespace FORZE {
         glDisable(GL_BLEND);
         
         p_glprogram->use();
-        APPLY_MATRIX(p_glprogram);
+        FZ_SAFE_APPLY_MATRIX(p_glprogram);
         
         glVertexAttribPointer(kFZAttribPosition, 3, GL_FLOAT, GL_FALSE, sizeof(_fzT2_V2), &m_quad.bl.vertex);
         glVertexAttribPointer(kFZAttribTexCoords, 2, GL_FLOAT, GL_FALSE, sizeof(_fzT2_V2), &m_quad.bl.texCoord);
