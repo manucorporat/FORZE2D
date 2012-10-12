@@ -37,7 +37,6 @@
 
 namespace FORZE {
     
-    
     TextureAtlas::TextureAtlas(Texture2D *texture, fzUInt capacity)
     : m_capacity(capacity)
     , m_count(0)

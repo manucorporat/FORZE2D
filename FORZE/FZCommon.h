@@ -73,5 +73,4 @@ namespace FORZE
     const char* FZTLocalized(const char *key);
 }
 
-
 #endif

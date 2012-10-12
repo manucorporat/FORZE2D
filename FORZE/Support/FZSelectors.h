@@ -52,6 +52,8 @@ namespace FORZE
     typedef void (SELProtocol::*SELECTOR_PTR)(void*);
     typedef void (SELProtocol::*SELECTOR_2PTR)(void*, void*);
 
+    
+    //! Used intenally to compare pointers to functions.
     template <typename T> bool compareSEL(const T sel1, const T sel2)
     {
         union {
@@ -65,7 +67,7 @@ namespace FORZE
         un.sel = sel2;
         intptr_t id2 = un.i[0];
         
-        return id1 == id2;
+        return (id1 == id2);
     }
     
     

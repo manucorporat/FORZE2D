@@ -201,6 +201,7 @@ inline void _NEON_mat4Vec4(const float* m1, const float* m2, float* mat)
      );
 }
 
+
 inline void _NEON_mat4Copy(const float* m1, float* mat)
 {
     __asm__ volatile
