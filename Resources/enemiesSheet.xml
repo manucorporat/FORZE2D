@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<frames>
+
+<frame name="EnBlue">
+<p x="0" y="151" />
+<s x="54" y="62" />
+<o x="0" y="-0" />
+<u x="64" y="64" />
+<r x="0" />
+</frame>
+
+<frame name="EnBlue2">
+<p x="128" y="128" />
+<s x="62" y="62" />
+<o x="0" y="-0" />
+<u x="64" y="64" />
+<r x="0" />
+</frame>
+
+<frame name="EnBlueCircle">
+<p x="192" y="64" />
+<s x="54" y="54" />
+<o x="0" y="-0" />
+<u x="64" y="64" />
+<r x="0" />
+</frame>
+
+<frame name="EnBug">
+<p x="178" y="191" />
+<s x="58" y="58" />
+<o x="0" y="-0" />
+<u x="64" y="64" />
+<r x="0" />
+</frame>
+
+<frame name="EnFlecha">
+<p x="118" y="191" />
+<s x="58" y="60" />
+<o x="0" y="-0" />
+<u x="64" y="64" />
+<r x="0" />
+</frame>
+
+<frame name="EnGreen">
+<p x="55" y="151" />
+<s x="62" y="62" />
+<o x="1" y="-1" />
+<u x="64" y="64" />
+<r x="0" />
+</frame>
+
+<frame name="EnOrange">
+<p x="0" y="87" />
+<s x="62" y="62" />
+<o x="0" y="-0" />
+<u x="64" y="64" />
+<r x="0" />
+</frame>
+
+<frame name="EnPink">
+<p x="88" y="0" />
+<s x="62" y="62" />
+<o x="0" y="-0" />
+<u x="64" y="64" />
+<r x="0" />
+</frame>
+
+<frame name="EnPurple">
+<p x="152" y="0" />
+<s x="60" y="62" />
+<o x="0" y="-0" />
+<u x="64" y="64" />
+<r x="0" />
+</frame>
+
+<frame name="EnRed">
+<p x="128" y="64" />
+<s x="62" y="62" />
+<o x="0" y="-0" />
+<u x="64" y="64" />
+<r x="0" />
+</frame>
+
+<frame name="EnTriangle">
+<p x="192" y="120" />
+<s x="54" y="52" />
+<o x="0" y="4" />
+<u x="64" y="64" />
+<r x="0" />
+</frame>
+
+<frame name="EnVortex">
+<p x="0" y="0" />
+<s x="86" y="86" />
+<o x="0" y="-0" />
+<u x="90" y="90" />
+<r x="0" />
+</frame>
+
+<frame name="RePoint">
+<p x="64" y="87" />
+<s x="62" y="62" />
+<o x="0" y="-0" />
+<u x="64" y="64" />
+<r x="0" />
+</frame>
+
+</frames>
+<metadata>
+<productor>1.5.5</productor>
+<format>1</format>
+<textureFileName>enemiesSheet.pvr</textureFileName>
+<premultipliedAlpha>0</premultipliedAlpha>
+</metadata>

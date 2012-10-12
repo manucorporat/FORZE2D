@@ -1,0 +1,10 @@
+
+#import "FZPlatformsHeader.h"
+
+#define FZ_OS kFZPLATFORM_MAC
+
+//#define FZ_OS kFZPLATFORM_IOS_GL_1
+//#define FZ_OS kFZPLATFORM_IOS_GL_2
+//#define FZ_OS kFZPLATFORM_PSVITA
+//#define FZ_OS kFZPLATFORM_WINDOWS
+//#define FZ_OS kFZPLATFORM_ANDROID
