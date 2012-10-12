@@ -119,7 +119,7 @@ namespace FORZE {
     {
         char *start = strchr(filename, FZ_IO_SUBFIX_CHAR);
         if(start) {
-            const char *extension = fzIO_getExtension(filename);
+            const char *extension = fzIO_getExtension(filename)-1;
             if(extension)
                 memmove(start, extension, strlen(start)+1);
             else
