@@ -896,7 +896,6 @@
 		A9048C3A1622D6550096B280 /* font_menu.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F32157D66DA001E055D /* font_menu.fnt */; };
 		A9048C3B1622D6550096B280 /* font_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F33157D66DA001E055D /* font_menu.png */; };
 		A9048C501622D9B80096B280 /* picture.png in Resources */ = {isa = PBXBuildFile; fileRef = 970C3BEA157E593800F8E3FF /* picture.png */; };
-		A909D716160BAB560001F1C0 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A909D715160BAB560001F1C0 /* Default-568h@2x.png */; };
 		A918A056161E09AF004725E5 /* GLProgramTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A918A053161E09AF004725E5 /* GLProgramTest.cpp */; };
 		A918A059161E103A004725E5 /* simulation.frag in Resources */ = {isa = PBXBuildFile; fileRef = A918A058161E103A004725E5 /* simulation.frag */; };
 		A918A05A161E103A004725E5 /* simulation.frag in Resources */ = {isa = PBXBuildFile; fileRef = A918A058161E103A004725E5 /* simulation.frag */; };
@@ -1630,7 +1629,6 @@
 		97ED8F9C157E21E3007C451A /* font_menu@x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "font_menu@x2.png"; sourceTree = "<group>"; };
 		97EEB21014046DCB0073CC55 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		97FB2E6D1520B44F00D44E7C /* _fz_aC4_TEX.shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _fz_aC4_TEX.shader.h; sourceTree = "<group>"; };
-		A909D715160BAB560001F1C0 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		A918A053161E09AF004725E5 /* GLProgramTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLProgramTest.cpp; sourceTree = "<group>"; };
 		A918A058161E103A004725E5 /* simulation.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = simulation.frag; sourceTree = "<group>"; };
 		A92E28441607C34400C63C79 /* FZDefaultOpenGLAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FZDefaultOpenGLAPI.h; sourceTree = "<group>"; };
@@ -1640,8 +1638,8 @@
 		A95C198C16149BD5007D2287 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		A95C198E16149BDA007D2287 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		A95C199116149BF3007D2287 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
-		A974240F160A2B0900A8CA4A /* windows_support.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = windows_support.cpp; sourceTree = "<group>"; };
-		A9742410160A2B0900A8CA4A /* windows_support.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = windows_support.h; sourceTree = "<group>"; };
+		A96D7CBB16285B6400B25A60 /* LICENSE_artwork.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE_artwork.txt; sourceTree = "<group>"; };
+		A96D7CBC16285B6400B25A60 /* LICENSE_libb64.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE_libb64.txt; sourceTree = "<group>"; };
 		A97611551624B96C00A23623 /* base64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = base64.c; sourceTree = "<group>"; };
 		A97611561624B96C00A23623 /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
 		A97883EB160F80A900A93735 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
@@ -1956,7 +1954,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				A909D715160BAB560001F1C0 /* Default-568h@2x.png */,
+				A96D7CBB16285B6400B25A60 /* LICENSE_artwork.txt */,
+				A96D7CBC16285B6400B25A60 /* LICENSE_libb64.txt */,
 				E0BC7D711342CC58001B4DCC /* LICENSE_FORZE.txt */,
 				E0BC7D741342CC58001B4DCC /* LICENSE_libpng.txt */,
 				97C9B8A915068BCF00B8AEE5 /* FORZE */,
@@ -2660,8 +2659,6 @@
 		97C9B96415068BCF00B8AEE5 /* Support */ = {
 			isa = PBXGroup;
 			children = (
-				A974240F160A2B0900A8CA4A /* windows_support.cpp */,
-				A9742410160A2B0900A8CA4A /* windows_support.h */,
 				97C9B96515068BCF00B8AEE5 /* iOS_support.h */,
 				97C9B96615068BCF00B8AEE5 /* iOS_support.mm */,
 				97C9B96715068BCF00B8AEE5 /* iOSGL1_support.h */,
@@ -3634,7 +3631,6 @@
 				970C3B63157E505D00F8E3FF /* HUD@x2.pvr in Resources */,
 				970C3B64157E505D00F8E3FF /* font_menu@x2.fnt in Resources */,
 				970C3B65157E505D00F8E3FF /* font_menu@x2.png in Resources */,
-				A909D716160BAB560001F1C0 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
