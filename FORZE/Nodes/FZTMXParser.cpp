@@ -78,10 +78,9 @@ namespace FORZE {
         
         // MAP ROOT
         rootNode = doc.first_node("map");
+        if(rootNode == NULL)
+            FZ_RAISE_STOP("TMXParser: <map> tag wasn't found.");
         
-        if(rootNode == NULL) {
-            FZ_RAISE("TMXParser: <map> tag wasn't found.");
-        }
         
         // VERSION
         attribute = rootNode->first_attribute("version");
@@ -92,7 +91,7 @@ namespace FORZE {
         // ORIENTATION
         attribute = rootNode->first_attribute("orientation");
         if(attribute == NULL)
-            FZ_RAISE("TMXParser: <map orientation> attribute wasn't found.");
+            FZ_RAISE_STOP("TMXParser: <map orientation> attribute wasn't found.");
         
         
         const char* orientation = attribute->value();
@@ -104,34 +103,34 @@ namespace FORZE {
             m_orientation = kFZTMXOrientationHex;
         else {
             m_orientation = kFZTMXOrientationOrtho; // default value
-            FZ_RAISE("TMXParser: Invalid orientation.");
+            FZ_RAISE_STOP("TMXParser: Invalid orientation.");
         }        
         
         // MAP WIDTH
         attribute = rootNode->first_attribute("width");
         if(attribute == NULL)
-            FZ_RAISE("TMXParser: <map width attribute wasn't found.");
+            FZ_RAISE_STOP("TMXParser: <map width attribute wasn't found.");
             
         m_mapSize.width = atoi(attribute->value());
         
         // MAP HEIGHT
         attribute = rootNode->first_attribute("height");
         if(attribute == NULL)
-            FZ_RAISE("TMXParser: <map height> attribute wasn't found.");
+            FZ_RAISE_STOP("TMXParser: <map height> attribute wasn't found.");
             
         m_mapSize.height = atoi(attribute->value());
         
         // TILE WIDTH
         attribute = rootNode->first_attribute("tilewidth");
         if(attribute == NULL)
-            FZ_RAISE("TMXParser: <map tilewidth> attribute wasn't found.");
+            FZ_RAISE_STOP("TMXParser: <map tilewidth> attribute wasn't found.");
             
         m_tileSize.width = atof(attribute->value()) / m_factor;
         
         // TILE HEIGHT
         attribute = rootNode->first_attribute("tileheight");
         if(attribute == NULL)
-            FZ_RAISE("TMXParser: <map tileheight> attribute wasn't found.");
+            FZ_RAISE_STOP("TMXParser: <map tileheight> attribute wasn't found.");
         
         m_tileSize.height = atof(attribute->value()) / m_factor;
         

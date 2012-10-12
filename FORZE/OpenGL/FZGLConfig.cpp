@@ -58,6 +58,6 @@ namespace FORZE {
     void GLConfig::validate() const
     {
         if(quality <= 0 || quality > 1.0f)
-            FZ_RAISE("GLConfig: Quality out of bounds (0, 1].");
+            FZ_RAISE_STOP("GLConfig: Quality out of bounds (0, 1].");
     }
 }

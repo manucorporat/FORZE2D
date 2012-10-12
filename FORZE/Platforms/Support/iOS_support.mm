@@ -119,7 +119,7 @@ namespace FORZE {
         deviceCode[size] = '\0';
         
         if(size >= maxLength)
-            FZ_RAISE("OS Wrapper: Memory overload.");
+            FZ_RAISE_STOP("OS Wrapper: Memory overload.");
     }
     
     
@@ -262,7 +262,7 @@ namespace FORZE {
 
 - (EAGLRenderingAPI) openGLAPI
 {
-    FZ_RAISE("_FZOSWRAPPER_BASE can not be used directly as OS wrapper because no opengl API is specified.");
+    FZ_RAISE_STOP("_FZOSWRAPPER_BASE can not be used directly as OS wrapper because no opengl API is specified.");
     return 0;
 }
 
@@ -370,7 +370,7 @@ namespace FORZE {
             case kFZGLConfigColorRGB565:   pixel = kEAGLColorFormatRGB565; break;
             case kFZGLConfigColorRGB888:
             case kFZGLConfigColorRGBA8888: pixel = kEAGLColorFormatRGBA8; break;
-            default: FZ_RAISE("OS Wrapper: Invalid pixel format.");
+            default: FZ_RAISE_STOP("OS Wrapper: Invalid pixel format.");
         }
         NSDictionary *properties = [NSDictionary dictionaryWithObjectsAndKeys:
                  [NSNumber numberWithBool:glconfig.preserveBackBuffer], kEAGLDrawablePropertyRetainedBacking,
@@ -383,7 +383,7 @@ namespace FORZE {
     // Create OpenGL ES context
     context_ = [[EAGLContext alloc] initWithAPI:[self openGLAPI]];
     if(!context_)
-        FZ_RAISE("OS Wrapper: Impossible to create context.");
+        FZ_RAISE_STOP("OS Wrapper: Impossible to create context.");
         
     // set new context as default
     [EAGLContext setCurrentContext:context_];
@@ -412,7 +412,7 @@ namespace FORZE {
     fzGLGenRenderbuffers(1, &colorRenderbuffer_);
     
     if( defaultFramebuffer_ == 0  || colorRenderbuffer_ == 0 )
-        FZ_RAISE("OS Wrapper: Impossible to create default framebuffers.");
+        FZ_RAISE_STOP("OS Wrapper: Impossible to create default framebuffers.");
 
     
     // bind framebuffers
@@ -430,7 +430,7 @@ namespace FORZE {
         
         fzGLGenFramebuffers(1, &msaaFramebuffer_);
         if(msaaFramebuffer_ == 0)
-            FZ_RAISE("OS Wrapper: Can't create default MSAA frame buffer.");
+            FZ_RAISE_STOP("OS Wrapper: Can't create default MSAA frame buffer.");
 
         fzGLBindFramebuffer(msaaFramebuffer_);
     }

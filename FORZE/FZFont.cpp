@@ -75,7 +75,7 @@ namespace FORZE {
         
         const char *extension = fzIO_getExtension(filename);
         if(extension == NULL)
-            throw std::runtime_error("Font: Extension is missing");
+            FZ_RAISE_STOP("Font: Extension is missing.");
         
         if(strcasecmp( extension, "fnt") == 0 )
             loadFNTFile(filename);
@@ -84,7 +84,7 @@ namespace FORZE {
             loadTTFFile(filename, fontHeight);
         
         else
-            throw std::runtime_error("Font: Invalid texture extension");
+            FZ_RAISE_STOP("Font: Invalid font extension.");
     }
     
     
@@ -98,8 +98,6 @@ namespace FORZE {
     void Font::loadFNTFile(const char* filename)
     {
         fzBuffer buffer = ResourcesManager::Instance().loadResource(filename, &m_factor);
-        if(buffer.empty())
-            throw std::runtime_error("Font: File was not found.");
         
         // Unpack FNT Data
         try {
@@ -115,8 +113,6 @@ namespace FORZE {
     void Font::loadTTFFile(const char* filename, fzFloat fontHeight)
     {
         fzBuffer buffer = ResourcesManager::Instance().loadResource(filename, &m_factor);
-        if(buffer.empty())
-            throw std::runtime_error("Font: File was not found.");
         
         // Unpack TTF Data
         try {
@@ -131,27 +127,30 @@ namespace FORZE {
     
     void Font::loadFNTData(char* data)
     {
+        if(data == NULL)
+            FZ_RAISE("Font:FNT: Imposible to load FNT data. Pointer is NULL.");
+        
 #define FNT_NU_LINES 512
         char *lines[FNT_NU_LINES];
         fzUInt nuLines = getSubtrings(data, lines, FNT_NU_LINES);
-        int nu_arg;
 #undef FNT_NU_LINES
         
         if(nuLines <= 4)
-            throw std::runtime_error("Font: Invalid FNT. Missing info.");
+            FZ_RAISE_STOP("Font: Invalid FNT. Missing general info.");
+
         
         // COMMON DATA PARSING
         int nuPages = 0;
-        nu_arg = sscanf(lines[1], "common lineHeight=%f base=%*d scaleW=%*d scaleH=%*d pages=%d", &m_lineHeight, &nuPages);
+        int nu_arg = sscanf(lines[1], "common lineHeight=%f base=%*d scaleW=%*d scaleH=%*d pages=%d", &m_lineHeight, &nuPages);
         
         if(nu_arg != 2)
-            throw std::runtime_error("Font: Error parsing FNT common data, syntax is not correct.");
+            FZ_RAISE_STOP("Font: Line 2. Error parsing FNT common data, syntax is not correct.");
 
         if(nuPages != 1)
-            throw std::runtime_error("Font: Number of pages must be 1");
+            FZ_RAISE_STOP("Font: Line 2. Number of pages must be 1.");
 
         if(m_lineHeight == 0)
-            throw std::runtime_error("Font: Line height parsing error");
+            FZ_RAISE_STOP("Font: Line 2. Line height parsing error.");
 
         m_lineHeight /= m_factor;
         
@@ -161,10 +160,10 @@ namespace FORZE {
         nu_arg = sscanf(lines[2], "page id=%*d file=\"%s\"", filename);
         
         if(nu_arg != 1)
-            throw std::runtime_error("Font: Error parsing FNT page data, syntax is not correct.");
+            FZ_RAISE_STOP("Font: Line 3. Error parsing FNT page data, syntax is not correct.");
         
         if(filename[0] == '\0')
-            throw std::runtime_error("Font: Atlas path parsing error");
+            FZ_RAISE_STOP("Font: Line 3. Atlas path parsing error");
         
         filename[strlen(filename)-1] = '\0'; // remove last "
         p_texture = TextureCache::Instance().addImage(filename);
@@ -176,63 +175,63 @@ namespace FORZE {
         {
             char *l = lines[i];
             
-            try {
+            if(l[0]=='c' && l[1]=='h' && l[2]=='a' &&
+               l[3]=='r' && l[4]==' ') {
                 
-                if(l[0]=='c' && l[1]=='h' && l[2]=='a' &&
-                   l[3]=='r' && l[4]==' ') {
-                    
-                    // CHAR DATA PARSING
-                    int charID = 0;
-                    fzCharDef temp_char;
-                    
-                    nu_arg = sscanf(l, "char id=%d x=%f y=%f width=%f height=%f xoffset=%f yoffset=%f xadvance=%f",
-                                    &charID,
-                                    &temp_char.x, &temp_char.y,
-                                    &temp_char.width, &temp_char.height,
-                                    &temp_char.xOffset, &temp_char.yOffset,
-                                    &temp_char.xAdvance);
-                    
-                    temp_char.x         /= m_factor;
-                    temp_char.y         /= m_factor;
-                    temp_char.width     /= m_factor;
-                    temp_char.height    /= m_factor;
-                    temp_char.xOffset   /= m_factor;
-                    temp_char.yOffset   /= m_factor;
-                    temp_char.xAdvance  /= m_factor;
-                    
-                    if(nu_arg != 8)
-                        throw std::runtime_error("Error parsing FNT char data, syntax is not correct.");
-                    
-                    if(charID >= 256)
-                        throw std::runtime_error("CharID is out of bounds [0, 255]");
-
-                    
-                    m_chars[charID] = temp_char;
-                    
-                }else if(l[0]=='k' && l[1]=='e' && l[2]=='r' && l[3]=='n' &&
-                         l[4]=='i' && l[5]=='n' && l[6]=='g' && l[7]==' ') {
-                    
-                    // KERNING DATA PARSING
-                    int first = 0;
-                    int second = 0;
-                    fzFloat amount = 0;
-                    
-                    nu_arg = sscanf(l, "kerning first=%d second=%d amount=%f",
-                                    &first, &second, &amount);
-                    
-                    if(first < 0 || second < 0)
-                        throw std::runtime_error("Invalid indexes");
-                    
-                    if(nu_arg != 3)
-                        throw std::runtime_error("Error parsing FNT kerning data");
-                    
-                    
-                    uint16_t key = generateKey(first, second);
-                    m_kerning.insert(pair<uint16_t, fzFloat>(key, amount));
+                // CHAR DATA PARSING
+                int charID = 0;
+                fzCharDef temp_char;
+                
+                nu_arg = sscanf(l, "char id=%d x=%f y=%f width=%f height=%f xoffset=%f yoffset=%f xadvance=%f",
+                                &charID,
+                                &temp_char.x, &temp_char.y,
+                                &temp_char.width, &temp_char.height,
+                                &temp_char.xOffset, &temp_char.yOffset,
+                                &temp_char.xAdvance);
+                
+                temp_char.x         /= m_factor;
+                temp_char.y         /= m_factor;
+                temp_char.width     /= m_factor;
+                temp_char.height    /= m_factor;
+                temp_char.xOffset   /= m_factor;
+                temp_char.yOffset   /= m_factor;
+                temp_char.xAdvance  /= m_factor;
+                
+                if(nu_arg != 8) {
+                    FZLOGERROR("Font: Line %d. Error parsing FNT char data, syntax is not correct.", i+1);
+                    continue;
                 }
                 
-            } catch (std::runtime_error& error) {
-                FZLOGERROR("%s", error.what());
+                if(charID >= 256) {
+                    FZLOGERROR("Font: Line %d. CharID is out of bounds [0, 255].", i+1);
+                    continue;
+                }
+                
+                
+                m_chars[charID] = temp_char;
+                
+            }else if(l[0]=='k' && l[1]=='e' && l[2]=='r' && l[3]=='n' &&
+                     l[4]=='i' && l[5]=='n' && l[6]=='g' && l[7]==' ') {
+                
+                // KERNING DATA PARSING
+                int first = 0;
+                int second = 0;
+                fzFloat amount = 0;
+                
+                nu_arg = sscanf(l, "kerning first=%d second=%d amount=%f",
+                                &first, &second, &amount);
+                
+                if(first < 0 || second < 0) {
+                    FZLOGERROR("Font: Line %d. Invalid indexes.", i+1);
+                    continue;
+                }
+                if(nu_arg != 3) {
+                    FZLOGERROR("Font: Line %d. Error parsing FNT kerning data.", i+1);
+                    continue;
+                }
+                
+                uint16_t key = generateKey(first, second);
+                m_kerning.insert(pair<uint16_t, fzFloat>(key, amount));
             }
         }
     }
@@ -240,7 +239,10 @@ namespace FORZE {
     
     void Font::loadTTFData(char* data, fzFloat fontHeight)
     {
-        FZLog("TTF NOT IMPLEMENTED");
+        if(data == NULL)
+            FZ_RAISE("Font:TTF: Imposible to load TTF data. Pointer is NULL.");
+        
+        FZ_RAISE_STOP("TTF NOT IMPLEMENTED");
     }
     
     
@@ -250,5 +252,4 @@ namespace FORZE {
         map<uint16_t, fzFloat>::const_iterator it(m_kerning.find(key));
         return (it == m_kerning.end()) ? 0.0f : it->second;
     }
-    
 }

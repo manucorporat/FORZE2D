@@ -65,7 +65,15 @@ namespace FORZE {
             return;
         
         xml_document<> doc;
-        doc.parse<parse_fastest | parse_validate_closing_tags>(data.getPointer());
+        
+        try {
+            doc.parse<parse_fastest | parse_validate_closing_tags>(data.getPointer());
+            
+        }catch(std::exception &error) {
+            data.free();
+            FZLOGERROR("SpriteFrameCache: Error parsing \"%s\". rapidXML exception: %s", error.what());
+            return;
+        }
         
         xml_node<> *rootNode, *subNode, *node;
 
@@ -82,8 +90,8 @@ namespace FORZE {
         
         // Parse metadata
         if(texture == NULL) {
-            FZ_RAISE("SpriteFrameCache: Texture could not be loaded.");
             data.free();
+            FZLOGERROR("SpriteFrameCache: Error parsing \"%s\". Error pTexture could not be loaded.", coordsFilename);
             return;
         }
         
@@ -91,15 +99,15 @@ namespace FORZE {
         rootNode = doc.first_node("frames");
         
         if(rootNode == NULL) {
-            FZLOGERROR("SpriteFrameCache: <frames> tag wasn't found.");
             data.free();
+            FZLOGERROR("SpriteFrameCache: Error parsing \"%s\". <frames> tag wasn't found.", coordsFilename);
             return;
         }
         
         for(subNode = rootNode->first_node(); subNode; subNode = subNode->next_sibling())
         {
             if(strncmp(subNode->name(), "frame", subNode->name_size()) != 0) {
-                FZLOGERROR("SpriteFrameCache: XML tag is not \"frame\".");
+                FZLOGERROR("SpriteFrameCache: Error parsing \"%s\". XML format is not correct.", coordsFilename);
                 continue;
             }
             
@@ -111,7 +119,7 @@ namespace FORZE {
             // NAME
             xml_attribute<> *attribute = subNode->first_attribute("name");
             if(attribute == NULL) {
-                FZ_RAISE("SpriteFrameCache: <node name> attribute wasn't found.");
+                FZLOGERROR("SpriteFrameCache: Error parsing \"%s\". <node name> attribute wasn't found.", coordsFilename);
                 continue;
             }
             int32_t hash = fzHash(attribute->value(), attribute->value_size());
@@ -119,22 +127,23 @@ namespace FORZE {
             if(getSpriteFrameByHash(hash).isValid())
                 continue;
             
+            
             // ORIGIN
             node = subNode->first_node("p");
             if(node == NULL) {
-                FZ_RAISE("SpriteFrameCache: <p> tag wasn't found.");
+                FZLOGERROR("SpriteFrameCache: Error parsing \"%s\". <p> tag wasn't found.", coordsFilename);
                 continue;
             }
             attribute = node->first_attribute("x");
             if(attribute == NULL) {
-                FZ_RAISE("SpriteFrameCache: <p x> attribute wasn't found.");
+                FZLOGERROR("SpriteFrameCache: Error parsing \"%s\". <p x> attribute wasn't found.", coordsFilename);
                 continue;
             }            
             rect.origin.x = atof(attribute->value()) / factor;
             
             attribute = node->first_attribute("y");
             if(attribute == NULL) {
-                FZ_RAISE("SpriteFrameCache: <p y> attribute wasn't found.");
+                FZLOGERROR("SpriteFrameCache: Error parsing \"%s\". <p y> attribute wasn't found.", coordsFilename);
                 continue;
             } 
             rect.origin.y = atof(attribute->value()) / factor;
@@ -143,19 +152,20 @@ namespace FORZE {
             // SIZE
             node = subNode->first_node("s");
             if(node == NULL) {
-                FZ_ASSERT(false, "SpriteFrameCache: <s> tag wasn't found.");
+                FZLOGERROR("SpriteFrameCache: Error parsing \"%s\". <s> tag wasn't found.", coordsFilename);
                 continue;
             }
+            
             attribute = node->first_attribute("x");
             if(attribute == NULL) {
-                FZ_ASSERT(false, "SpriteFrameCache: <s x> attribute wasn't found.");
+                FZLOGERROR("SpriteFrameCache: Error parsing \"%s\". <s x> attribute wasn't found.", coordsFilename);
                 continue;
             }            
             rect.size.width = atof(attribute->value()) / factor;
             
             attribute = node->first_attribute("y");
             if(attribute == NULL) {
-                FZ_ASSERT(false, "SpriteFrameCache: <s y> attribute wasn't found.");
+                FZLOGERROR("SpriteFrameCache: Error parsing \"%s\". <s y> attribute wasn't found.", coordsFilename);
                 continue;
             } 
             rect.size.height = atof(attribute->value()) / factor;
@@ -184,8 +194,9 @@ namespace FORZE {
                 attribute = node->first_attribute("y");
                 if(attribute)
                     originalSize.height = atof(attribute->value()) / factor;
-            } 
-
+            }
+            
+            
             // IS ROTATED
             node = subNode->last_node("r");
             if(node) {

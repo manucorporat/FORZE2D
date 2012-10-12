@@ -270,7 +270,7 @@ namespace FORZE {
         
         const char *extension = fzIO_getExtension(filename);
         if(extension == NULL)
-            FZ_RAISE("Texture2D: File extension is missing.");
+            FZ_RAISE_STOP("Texture2D: File extension is missing.");
 
         
         if(strcasecmp( extension, "png") == 0 )
@@ -283,7 +283,7 @@ namespace FORZE {
             loadPVRCCZFile(filename);
         
         else
-            FZ_RAISE("Texture2D: Invalid file extension.");
+            FZ_RAISE_STOP("Texture2D: Invalid file extension.");
     }
     
     
@@ -339,7 +339,7 @@ namespace FORZE {
                 
                 ResourcesManager::Instance().getPath(filename, step, absolutePath, &factor);
                 if(factor == 0)
-                    FZ_RAISE("Texture2D:IO: File not found.");
+                    FZ_RAISE("Texture2D:PVR:IO: File not found.");
                 
                 file = fopen(absolutePath, "rb");
                 if(file) {
@@ -356,14 +356,14 @@ namespace FORZE {
         fread(header, 1, 8, file);
         if (::png_sig_cmp(header, 0, 8)) {
             fclose(file);
-            FZ_RAISE("Texture2D:PNG: Invalid PNG tag.");
+            FZ_RAISE_STOP("Texture2D:PNG: Invalid PNG tag.");
         }
         
         // initialize stuff
         png_structp png_ptr = png_create_read_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
         if(!png_ptr) {
             fclose(file);
-            FZ_RAISE("Texture2D:PNG: \"png_create_read_struct\" failed, memory issue.");
+            FZ_RAISE_STOP("Texture2D:PNG: \"png_create_read_struct\" failed, memory issue.");
         }
 
         
@@ -371,14 +371,14 @@ namespace FORZE {
         if(!info_ptr) {
             png_destroy_read_struct(&png_ptr, NULL, NULL);
             fclose(file);
-            FZ_RAISE("Texture2D:PNG: \"png_create_info_struct\" failed, memory issue.");
+            FZ_RAISE_STOP("Texture2D:PNG: \"png_create_info_struct\" failed, memory issue.");
         }
         
         
         if (setjmp(png_jmpbuf(png_ptr))) {
             png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
             fclose(file);
-            FZ_RAISE("Texture2D:PNG: Error during init_io.");
+            FZ_RAISE_STOP("Texture2D:PNG: Error during init_io.");
         }
 
 
@@ -421,7 +421,7 @@ namespace FORZE {
             default:
                 png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
                 fclose(file);
-                FZ_RAISE("Texture2D:PNG: Invalid internal format.");
+                FZ_RAISE_STOP("Texture2D:PNG: Invalid internal format.");
         }
         
         uint32_t width = fzMath_nextPOT(sizeWidth);
@@ -437,13 +437,13 @@ namespace FORZE {
         if (setjmp(png_jmpbuf(png_ptr))) {
             png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
             fclose(file);
-            FZ_RAISE("Texture2D:PNG: libpng exception.");
+            FZ_RAISE_STOP("Texture2D:PNG: libpng exception.");
         }
         
               png_byte *buffer;
         try{
             
-            buffer = new(nothrow) png_byte[texLength + structLength];
+            buffer = new png_byte[texLength + structLength];
             
         }catch(std::bad_alloc& error)
         {
@@ -518,7 +518,7 @@ namespace FORZE {
         buffer.free();
         
         if(buffer2.empty())
-            FZ_RAISE("Texture2D:IO: Error descompressing data.");
+            FZ_RAISE_STOP("Texture2D:IO: Error descompressing data.");
         
         m_factor = factor;
         
@@ -536,6 +536,9 @@ namespace FORZE {
     
     void Texture2D::loadPVRData(const char* data)
     {
+        if(data == NULL)
+            FZ_RAISE("Texture2D:PVR: Imposible to load data. Pointer is NULL.");
+        
         // CLEAN OPENGL ERROR
         glGetError();
 
@@ -559,7 +562,7 @@ namespace FORZE {
             (uint32_t)gPVRTexIdentifier[2] != ((pvrTag >> 16) & 0xff) ||
             (uint32_t)gPVRTexIdentifier[3] != ((pvrTag >> 24) & 0xff))
         {
-            FZ_RAISE("Texture2D:PVR: Invalid PVR Tag.");
+            FZ_RAISE_STOP("Texture2D:PVR: Invalid PVR Tag.");
         }
         
         if(flags & kPVRTextureFlagVerticalFlip)
@@ -575,7 +578,7 @@ namespace FORZE {
             }
         }
         if(tableIndex == MAX_PVR_FORMATS)
-            FZ_RAISE("Texture2D:PVR: Unsupported format. Re-encode it with a OpenGL pixel format variant.");
+            FZ_RAISE_STOP("Texture2D:PVR: Unsupported format. Re-encode it with a OpenGL pixel format variant.");
         
         // GET TEXTURE METADATA
         setPixelFormat(pixelFormat, getDefaultTextureFormat());
@@ -590,7 +593,7 @@ namespace FORZE {
         if( !isPOT ) {
             
             if(_pixelFormat_hash[pixelFormat].isCompressed != false)
-                FZ_RAISE("Texture2D:PVR: Compressed textures cannot be NPOT.");
+                FZ_RAISE_STOP("Texture2D:PVR: Compressed textures cannot be NPOT.");
 
             if(DeviceConfig::Instance().isNPOTSupported()) {
                 upload(pixelFormat, 0, width, height, 0, textureData);

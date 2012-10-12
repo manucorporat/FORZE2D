@@ -195,6 +195,7 @@ namespace FORZE {
         if(!fzDevice_getProductName(productName, 512))
             FZ_RAISE("OS Wrapper: Imposible to get product name. No enough memory.");
         
+        
         // GENERATE ABSOLUTE PATH
         nspath = [nspath stringByAppendingPathComponent:[NSString stringWithCString:productName encoding:NSUTF8StringEncoding]];
         nspath = [nspath stringByAppendingPathComponent:[NSString stringWithCString:filename encoding:NSUTF8StringEncoding]];
@@ -340,7 +341,7 @@ static CVReturn drawScene(CVDisplayLinkRef dl, const CVTimeStamp* now, const CVT
     pixelFormat_ = [[NSOpenGLPixelFormat alloc] initWithAttributes:attribs];
     context_ = [[NSOpenGLContext alloc] initWithFormat:pixelFormat_ shareContext:nil];
     if(!context_)
-        FZ_RAISE("OS Wrapper: OpenGL context failed.");
+        FZ_RAISE_STOP("OS Wrapper: OpenGL context failed.");
     
     
     [context_ makeCurrentContext];

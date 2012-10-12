@@ -55,7 +55,7 @@ namespace FORZE {
         // GET RESOURCES PATH
         char tmp[512];
         if(!fzDevice_getResourcesPath(tmp, 512))
-            FZ_RAISE("Buffer too small, impossible to get the resources path.");
+            FZ_RAISE_STOP("ResourcesManager: Buffer too small, impossible to get the resources path.");
         
         p_resourcesPath = fzStrcpy(tmp);
         
