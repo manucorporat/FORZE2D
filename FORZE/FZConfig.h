@@ -51,8 +51,13 @@
 
 #pragma mark - FORZE config
 
+/** @def FZ_RENDER_ON_DEMAND
+ * If enabled, FORZE will optimize the GPU usage just rendering if the content changed.
+ * This feature is still experimental, but several tests show that it works properly.
+ * @warning take care using your own opengl code if this setting is enabled.
+ */
+#define FZ_RENDER_ON_DEMAND 0
 
-#define FZ_RENDER_ON_DEMAND 1
 
 /** @def FZ_STL_CPLUSPLUS11
  * If enabled, FORZE will use features from the STL C++11.
@@ -64,7 +69,7 @@
 
 /** @def FZ_AUTORELEASE
  * If enabled, the autorelease() method will be available in all objects subclass of FORZE::LifeCyle.
- * You should not disable it.
+ * @warning You should not disable it.
  */
 #define FZ_AUTORELEASE 1
 
@@ -95,7 +100,7 @@
 #define FZ_RENDERING_SUBPIXEL 1
 
 
-/** @def CC_USES_VBO
+/** @def FZ_VBO_STREAMING
  FORZE will always VBO for static
  If enabled, batch nodes (texture atlas and particle system) will use VBO instead of vertex list (VBO is recommended by Apple)
 */
@@ -132,6 +137,11 @@
 #define FZ_TEXTURE_NPOT_SUPPORT 0
 
 
+/** @def FZ_IO_SUBFIX_CHAR
+ * This is the character that introduces the filename flags used by FORZE you load the proper file.
+ * E.g. if FZ_IO_SUBFIX_CHAR is '@' then the files should named as: "texture@x2.png", "texture@mac.png",
+ * "font@x4.fnt"...
+ */
 #define FZ_IO_SUBFIX_CHAR '@'
 
 
@@ -149,4 +159,3 @@
 #endif
 
 #endif
-
