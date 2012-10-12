@@ -35,10 +35,6 @@
 
 namespace FORZE {
     
-    //! Returns true if processor's byte order is little endian */
-    bool fzBitOrder_isLittleEndian();
-    
-    
     //! Swap between byte order, short types, 16 bits */
     uint16_t fzBitOrder_int16Swap (uint16_t n);
     
