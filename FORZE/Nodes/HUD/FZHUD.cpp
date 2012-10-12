@@ -36,6 +36,8 @@
 #include "FZDirector.h"
 #include "FZPrimitives.h"
 #include "FZLayer.h"
+#include "FZFontCache.h"
+#include "FZTextureCache.h"
 #include "FZTexture2D.h"
 #define FPS_MAX 60.0f
 #define FPS_SAMPLES 50
@@ -51,15 +53,19 @@ namespace FORZE {
     : m_count(0)
     , m_index(0)
     , m_vertices(NULL)
+    , p_FPSLabel(NULL)
     {
         setIsRelativeAnchorPoint(true);
         setAnchorPoint(1, 0);
 
         // FPS label
-        p_FPSLabel = new Label("00.0", "FPSFont.fnt");
-        p_FPSLabel->setAnchorPoint(1, 0);
-        addChild(p_FPSLabel);
-        
+        Font *font = FontCache::Instance().addFont("FPSFont.fnt", 0);
+        if(font) {
+            p_FPSLabel = new Label();
+            p_FPSLabel->setFont(font);
+            p_FPSLabel->setAnchorPoint(1, 0);
+            addChild(p_FPSLabel);
+        }
         
         onEnter();
         updateLayout();
@@ -80,6 +86,12 @@ namespace FORZE {
         setPosition(size.width-5, 5);
                 
         bool background = size.width > 500 && size.height > 500;
+        
+        if(background) {
+            Texture2D *texture = TextureCache::Instance().addImage("HUD.pvr");
+            if(texture == NULL)
+                background = false;
+        }
         
         
         if(background) {
@@ -111,9 +123,10 @@ namespace FORZE {
                 removeChildByTag(10);
             }
             
-            setContentSize(p_FPSLabel->getContentSize());
+            setContentSize(100, 30);
         }
         
+        if(p_FPSLabel)
         p_FPSLabel->setPosition(m_contentSize.width-14, -8);
         
         Node::updateLayout();
@@ -122,6 +135,7 @@ namespace FORZE {
     
     void HUD::setFrame(fzFloat fps)
     {
+        if(p_FPSLabel)
         p_FPSLabel->setString(FZT("%2.1f", fps));
         
         if(m_vertices == NULL)
