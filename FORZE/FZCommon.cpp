@@ -27,7 +27,6 @@
  @author Manuel Martínez-Almeida
  */
 
-
 #include <cstdio>
 #include <cstdarg>
 #include <cstring>

@@ -40,7 +40,9 @@ public:
 // APPLICATION'S ENTRY POINT
 int main(int argc, char *argv[])
 {
-    //Director::Instance().setWindowSize(kFZSize_720p);
+    // kFZSize_Auto -> canvas size = window size
+    // no window size specified -> window size = screen size
+    // canvas size = window size = screen size
     FORZE_INIT(new AppDelegate(), kFZSize_Auto, argc, argv);
     return EXIT_SUCCESS;
 }

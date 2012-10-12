@@ -40,7 +40,6 @@
  *		from the mapreader.cpp file 
  */
 
-
 #include <zlib.h>
 
 #include "FZData.h"
@@ -49,6 +48,7 @@
 #include "FZBitOrder.h"
 
 #include "base64.h"
+
 
 #define BUFFER_INC_FACTOR (2)
 
