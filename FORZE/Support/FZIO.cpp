@@ -115,11 +115,11 @@ namespace FORZE {
     }
     
     
-    void fzIO_removeFileSuffix(char* filename )
+    void fzIO_removeFileSuffix(char* filename)
     {
         char *start = strchr(filename, FZ_IO_SUBFIX_CHAR);
         if(start) {
-            const char *extension = strchr(filename, '.');
+            const char *extension = fzIO_getExtension(filename);
             if(extension)
                 memmove(start, extension, strlen(start)+1);
             else
