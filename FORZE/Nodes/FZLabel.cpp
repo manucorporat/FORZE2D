@@ -86,8 +86,7 @@ namespace FORZE {
         }
     }
     
-        
-    Label::Label(const char* text, const char* fontFilename, fzFloat lineHeight)
+    Label::Label()
     : SpriteBatch(NULL)
     , m_string()
     , m_color(fzWHITE)
@@ -95,7 +94,12 @@ namespace FORZE {
     {
         setIsRelativeAnchorPoint(true);
         setAnchorPoint(0.5f, 0.5f);
-        
+    }
+    
+    
+    Label::Label(const char* text, const char* fontFilename, fzFloat lineHeight)
+    : Label()
+    {
         Font *font = FontCache::Instance().addFont(fontFilename, lineHeight);
         setFont(font);
         setString(text);
@@ -120,6 +124,8 @@ namespace FORZE {
 
         if(font)
             setTexture(font->getTexture());
+        
+        createFontChars();
     }
     
     
@@ -147,12 +153,14 @@ namespace FORZE {
     
     void Label::createFontChars()
     {
+        fzUInt m_stringLen = m_string.size();
+        if(m_stringLen == 0)
+            return;
+    
         if(p_font == NULL) {
             FZLOGERROR("Label: Impossible to generate label, font config is missing.");
             return;
-        }
-        
-        fzUInt m_stringLen = m_string.size();
+        }        
         
         fzUInt quantityOfLines = 1;
         for(fzUInt i = 0; i < m_stringLen; ++i) {

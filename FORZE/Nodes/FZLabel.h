@@ -51,6 +51,10 @@ namespace FORZE {
         
         
     public:
+        //! Constructs a void label.
+        //! @warning you must set a valid font before set a text
+        Label();
+        
         //! Constructs a bitmap font label, you should use this method when creating .TTF(vectorial) fonts.
         Label(const char* text, const char* fontFilename, fzFloat lineHeight);
         
