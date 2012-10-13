@@ -202,11 +202,11 @@ namespace FORZE {
             if(factor == 0) {
                 FZLOGERROR("IO: \"%s\" not found.", filename);
                 free(filenameCpy);
-                return fzBuffer();
+                return fzBuffer::empty();
             }
 
             fzBuffer buffer = fzIO_loadFile(absolutePath);
-            if(!buffer.empty()) {
+            if(!buffer.isEmpty()) {
                 *outFactor = factor;
                 free(filenameCpy);
                 return buffer;
@@ -224,7 +224,7 @@ namespace FORZE {
         generateAbsolutePath(filename, 1, absolutePath);
         
         fzBuffer buffer = fzIO_loadFile(absolutePath);
-        if(buffer.empty())
+        if(buffer.isEmpty())
             FZLOGERROR("IO: \"%s\" not found.", filename);
         
         return buffer;

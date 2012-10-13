@@ -48,11 +48,11 @@ namespace FORZE {
     {
         FZ_ASSERT(absolutePath, "Absolute path cannot be NULL.");
         if(absolutePath[0] == '\0')
-            return fzBuffer();
+            return fzBuffer::empty();
         
         FILE *f = fopen(absolutePath, "rb");
         if( f == NULL )
-            return fzBuffer();
+            return fzBuffer::empty();
         
         
         fseek(f, 0, SEEK_END);
@@ -63,14 +63,14 @@ namespace FORZE {
         char *buffer = new(nothrow) char[size+1];
         if(buffer == NULL) {
             FZLOGERROR("IO: Impossible to allocate memory.");
-            return fzBuffer();
+            return fzBuffer::empty();
         }
         size_t read = fread(buffer, 1, size, f);
         fclose(f);
         if( read != size ) {
             FZLOGERROR("IO: Abnormal reading error. Probably the path is not a file.");
             delete [] buffer;
-            return fzBuffer();
+            return fzBuffer::empty();
         }
         // NULL TERMINATED
         buffer[size] = '\0';

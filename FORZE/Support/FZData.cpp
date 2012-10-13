@@ -192,7 +192,7 @@ namespace FORZE {
              header->sig[2] == 'Z' &&
              header->sig[3] == '!')) {
             FZLOGERROR("IO:CCZ: Invalid CCZ file.");
-            return fzBuffer();
+            return fzBuffer::empty();
         }
         
         
@@ -200,14 +200,14 @@ namespace FORZE {
         FZLog("VERSION: %d, %d", header->version, fzBitOrder_int16BigToHost(header->version));
         if( fzBitOrder_int16BigToHost(header->version) > 2 ) {
             FZLOGERROR("IO:CCZ: Unsupported version.");
-            return fzBuffer();
+            return fzBuffer::empty();
         }
         
         
         // verify compression format
         if( fzBitOrder_int16BigToHost(header->compression_type) != CCZ_COMPRESSION_ZLIB ) {
             FZLOGERROR("IO:CCZ: Unsupported compression method.");
-            return fzBuffer();
+            return fzBuffer::empty();
         }
         
         
@@ -229,7 +229,7 @@ namespace FORZE {
         if( ret != Z_OK ) {
             FZLOGERROR("IO:CCZ: Failed to uncompress data. Error code: %d.", ret);
             delete [] contentData;
-            return fzBuffer();
+            return fzBuffer::empty();
         }
         FZ_ASSERT(realLen <= expectedLen, "Corrupted .CCZ. The expected uncompressed data length is wrong. Buffer overflow occurred.");
         
@@ -252,8 +252,8 @@ namespace FORZE {
         
         }else{
             FZLOGERROR("Base64: error allocating memory.");
-            return fzBuffer();
-        }        
+            return fzBuffer::empty();
+        }
     }
     
     
@@ -272,7 +272,7 @@ namespace FORZE {
             
         }else{
             FZLOGERROR("Base64: error allocating memory.");
-            return fzBuffer();
+            return fzBuffer::empty();
         }
     }
 }

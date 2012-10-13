@@ -121,6 +121,12 @@ namespace FORZE {
     }
     
     
+    DeviceConfig::~DeviceConfig()
+    {
+        delete p_glExtensions;
+    }
+    
+    
     void DeviceConfig::logDebugMode() const
     {
         char debugMode[40];

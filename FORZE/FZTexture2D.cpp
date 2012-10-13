@@ -489,7 +489,7 @@ namespace FORZE {
     {
         fzUInt factor;
         fzBuffer buffer = ResourcesManager::Instance().loadResource(filename, &factor);
-        if(buffer.empty())
+        if(buffer.isEmpty())
             FZ_RAISE("Texture2D:IO: Error reading file.");
         
         m_factor = factor;
@@ -511,13 +511,13 @@ namespace FORZE {
         fzUInt factor;
         fzBuffer buffer = ResourcesManager::Instance().loadResource(filename, &factor);
         
-        if(buffer.empty())
+        if(buffer.isEmpty())
             FZ_RAISE("Texture2D:IO: Error reading file.");
         
         fzBuffer buffer2 = fzData_inflateCCZ((unsigned char*)buffer.getPointer(), buffer.getLength());
         buffer.free();
         
-        if(buffer2.empty())
+        if(buffer2.isEmpty())
             FZ_RAISE_STOP("Texture2D:IO: Error descompressing data.");
         
         m_factor = factor;

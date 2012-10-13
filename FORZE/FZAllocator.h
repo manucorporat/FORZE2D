@@ -64,7 +64,10 @@ namespace FORZE
         fzUInt m_len;
         
     public:
-        fzBuffer() : p_ptr(NULL), m_len(0) {}
+        static fzBuffer empty() {
+            return fzBuffer(NULL, 0);
+        }
+        fzBuffer() = default;
         fzBuffer(char *pointer, fzUInt length);
         
         const char* getPointer() const {
@@ -86,7 +89,7 @@ namespace FORZE
             m_len = 0;
         }
         
-        bool empty() const {
+        bool isEmpty() const {
             return (p_ptr == NULL || m_len == 0);
         }
     };
