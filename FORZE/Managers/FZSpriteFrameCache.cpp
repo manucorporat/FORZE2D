@@ -61,7 +61,7 @@ namespace FORZE {
     {        
         fzUInt factor;
         fzBuffer data = ResourcesManager::Instance().loadResource(coordsFilename, &factor);
-        if(data.empty())
+        if(data.isEmpty())
             return;
         
         xml_document<> doc;
@@ -245,7 +245,7 @@ namespace FORZE {
     {
         fzUInt factor;
         fzBuffer data = ResourcesManager::Instance().loadResource(plist, &factor);
-        if(data.empty())
+        if(data.isEmpty())
             return;
         
         xml_document<> doc;
