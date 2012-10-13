@@ -82,6 +82,7 @@ namespace FORZE
             return m_len;
         }
         
+        fzBuffer copy() const;
         
         void free() {
             delete [] p_ptr;

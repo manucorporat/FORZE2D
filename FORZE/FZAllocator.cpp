@@ -37,5 +37,13 @@ namespace FORZE {
     : p_ptr(pointer), m_len(length)
     {
         FZ_ASSERT((pointer == NULL) == (length == 0), "If pointer is invalid, length must be 0.");
-    }    
+    }
+    
+    
+    fzBuffer fzBuffer::copy() const
+    {
+        char *copy = new char[getLength()];
+        memcpy(copy, getPointer(), getLength());
+        return fzBuffer(copy, getLength());
+    }
 }
