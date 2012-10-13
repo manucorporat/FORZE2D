@@ -31,6 +31,7 @@
 #include "FZMacros.h"
 #include "FZDataStore.h"
 #include "FZIO.h"
+#include "FZData.h"
 #include "rapidxml.hpp"
 #include "rapidxml_print.hpp"
 #include <cstring>
@@ -83,6 +84,13 @@ namespace FORZE {
         }
     }
     
+    
+    DataStore::~DataStore()
+    {
+        delete p_path;
+    }
+
+    
     void DataStore::reserveCapacity(fzUInt capacity)
     {
         if(capacity <= m_capacity)
@@ -126,32 +134,37 @@ namespace FORZE {
         fzUInt xmlSize = 60;
 
         // ENTRIES
-        char *content = NULL;        
         for(fzUInt i = 0; i < m_num; ++i) {
           
+            char *content = NULL;
             fzStoreEntry& e = p_store[i];
                         
-            switch (e.m_type) {
+            switch (e.type) {
                 case kFZData_string:
-                    content = e.p_ptr;
+                case kFZData_data:
+                {
+                    fzBuffer enconded = fzData_B64Encode(e.data.getPointer(), e.data.getLength());
+                    content = doc.allocate_string(enconded.getPointer());
+                    enconded.free();
                     break;
+                }
                 case kFZData_float:
-                    content = doc.allocate_string(FZT("%f", e.m_float));
+                    content = doc.allocate_string(FZT("%f", e.floatValue));
                     break;
                 case kFZData_integer:
-                    content = doc.allocate_string(FZT("%d", e.m_integer));
+                    content = doc.allocate_string(FZT("%d", e.integerValue));
                     break;
                 default:
-                    FZ_ASSERT(false, "Invalid data type.");
+                    FZLOGERROR("DataStore: Invalid data type.");
                     continue;
             }
             
             node = doc.allocate_node(node_element, XML_ENTRY_TAG, content);
-            node->append_attribute(doc.allocate_attribute(XML_KEY_ATTRIBUTE, e.p_key));
-            node->append_attribute(doc.allocate_attribute(XML_TYPE_ATTRIBUTE, doc.allocate_string(FZT("%d", e.m_type))));
+            node->append_attribute(doc.allocate_attribute(XML_KEY_ATTRIBUTE, e.key));
+            node->append_attribute(doc.allocate_attribute(XML_TYPE_ATTRIBUTE, doc.allocate_string(FZT("%d", e.type))));
             doc.append_node(node);
             
-            xmlSize += 25 + strlen(content) + strlen(e.p_key);
+            xmlSize += 25 + strlen(content) + strlen(e.key);
         }
         
         
@@ -164,7 +177,7 @@ namespace FORZE {
         
         // PRINTING
         char *buffer = new char[xmlSize];
-        char *end = print(buffer, doc, 0);
+        char *end = rapidxml::print(buffer, doc, 0);
         *end = '\0'; // NULL TERMINATION
         
         FZ_ASSERT(end < (buffer + xmlSize), "Memory overflow");
@@ -185,7 +198,7 @@ namespace FORZE {
                 
         fzBuffer buffer = fzIO_loadFile(p_path);
         
-        if(!buffer.empty()) {
+        if(!buffer.isEmpty()) {
             
             xml_document<> doc;
             doc.parse<parse_fastest | parse_validate_closing_tags>(buffer.getPointer());
@@ -204,57 +217,55 @@ namespace FORZE {
             node = node->next_sibling();
             for(; node; node = node->next_sibling())
             {
-                try
-                {
-                    if(strncmp(node->name(), XML_ENTRY_TAG, node->name_size()) != 0)
-                        throw std::runtime_error("XML entry is corrupted");
-                    
-                    fzStoreEntry &entry = p_store[m_num];
-                    
-                    // KEY
-                    xml_attribute<> *attribute = node->first_attribute(XML_KEY_ATTRIBUTE);
-                    if(attribute == NULL)
-                        throw std::runtime_error("Key attribute is missing");
-                    
-                    
-                    entry.p_key = fzStrcpy(attribute->value(), attribute->value_size());
-                    entry.m_hash = fzHash(attribute->value(), attribute->value_size());
-                    
-                    
-                    // ENTRY TYPE
-                    attribute = node->last_attribute(XML_TYPE_ATTRIBUTE);
-                    if(attribute == NULL)
-                        throw std::runtime_error("Type attribute is missing");
-
-                    entry.m_type = atoi(attribute->value());
-                    
-                    
-                    // DATA
-                    const char *data = node->value();
-                    if(data) {
-                        switch (entry.m_type) {
-                            case kFZData_string:
-                            case kFZData_data:
-                                entry.p_ptr = (char*) malloc(node->value_size());
-                                memcpy(entry.p_ptr, data, node->value_size());
-                                break;
-                            case kFZData_integer:
-                                entry.m_integer = atoi(data);
-                                break;
-                            case kFZData_float:
-                                entry.m_float = atof(data);
-                                break;
-                            default:
-                                throw std::runtime_error("Entry type is invalid.");
-                                break;
-                        }
-                    }
-                    ++m_num;
-                    
-                }catch(std::runtime_error& error)
-                {
-                    
+                if(strncmp(node->name(), XML_ENTRY_TAG, node->name_size()) != 0) {
+                    FZLOGERROR("DataStore: XML entry is corrupted.");
+                    continue;
                 }
+                
+                fzStoreEntry &entry = p_store[m_num];
+                
+                // KEY
+                xml_attribute<> *attribute = node->first_attribute(XML_KEY_ATTRIBUTE);
+                if(attribute == NULL) {
+                    FZLOGERROR("DataStore: Key attribute is missing.");
+                    continue;
+                }
+                entry.key = fzStrcpy(attribute->value(), attribute->value_size());
+                entry.hash = fzHash(attribute->value(), attribute->value_size());
+                
+                
+                // ENTRY TYPE
+                attribute = node->last_attribute(XML_TYPE_ATTRIBUTE);
+                if(attribute == NULL) {
+                    FZLOGERROR("DataStore: Type attribute is missing.");
+                    continue;
+                }
+                entry.type = atoi(attribute->value());
+                
+                
+                // DATA
+                const char *data = node->value();
+                if(data) {
+                    switch (entry.type) {
+                        case kFZData_string:
+                        case kFZData_data:
+                        {
+                            fzBuffer decoded = fzData_B64Decode(data, node->value_size());
+                            entry.data = decoded;
+                            break;
+                        }
+                        case kFZData_integer:
+                            entry.integerValue = atoi(data);
+                            break;
+                        case kFZData_float:
+                            entry.floatValue = atof(data);
+                            break;
+                        default:
+                            throw std::runtime_error("Entry type is invalid.");
+                            break;
+                    }
+                }
+                ++m_num;
             }
             buffer.free();
             
@@ -273,7 +284,7 @@ namespace FORZE {
         FZ_ASSERT(p_store, "Store was not allocated.");
 
         for(fzUInt i = 0; i < m_num; ++i) {
-            if( keyhash == p_store[i].m_hash )
+            if( keyhash == p_store[i].hash )
                 return &p_store[i];
         }
         return NULL;
@@ -288,25 +299,29 @@ namespace FORZE {
     
     void DataStore::setEntry(const fzStoreEntry& entry)
     {
-        fzStoreEntry *current = entryForHash(entry.m_hash);
-        if(current)
-            *current = entry;
-        else {
-            reserveCapacity(m_num+1);
-            p_store[m_num] = entry;
-            ++m_num;
-        }
+        fzStoreEntry *current = entryForHash(entry.hash);
+        removeEntry(current);
+        
+        reserveCapacity(m_num+1);
+        p_store[m_num] = entry;
+        ++m_num;
         m_dirty = true;
     }
     
     
     void DataStore::removeForKey(const char *key)
     {
-        fzStoreEntry *entry = entryForKey(key);
+        removeEntry(entryForKey(key));
+    }
+    
+    
+    void DataStore::removeEntry(fzStoreEntry *entry)
+    {
         if(entry) {
-            free(entry->p_key);
-            if(entry->m_type == kFZData_string || entry->m_type == kFZData_data)
-                free(entry->p_ptr);
+            delete entry->key;
+            
+            if(entry->type == kFZData_string || entry->type == kFZData_data)
+                entry->data.free();
             
             *entry = p_store[--m_num];
             m_dirty = true;
@@ -352,11 +367,11 @@ namespace FORZE {
     void DataStore::setFloat(fzFloat value, const char *key)
     {
         fzStoreEntry entry;
-        entry.p_key = fzStrcpy(key);        
-        entry.m_hash = fzHash(key);
-        entry.m_type = kFZData_float;
+        entry.key = fzStrcpy(key);
+        entry.hash = fzHash(key);
+        entry.type = kFZData_float;
         
-        entry.m_float = value;
+        entry.floatValue = value;
         
         setEntry(entry);
     }
@@ -365,11 +380,11 @@ namespace FORZE {
     void DataStore::setInteger(fzInt value, const char *key)
     {
         fzStoreEntry entry;
-        entry.p_key = fzStrcpy(key);
-        entry.m_hash = fzHash(key);
-        entry.m_type = kFZData_integer;
+        entry.key = fzStrcpy(key);
+        entry.hash = fzHash(key);
+        entry.type = kFZData_integer;
         
-        entry.m_integer = value;
+        entry.integerValue = value;
         
         setEntry(entry);
     }
@@ -378,26 +393,26 @@ namespace FORZE {
     void DataStore::setString(const char* value, const char *key)
     {
         fzStoreEntry entry;
-        entry.p_key = fzStrcpy(key);
-        entry.m_hash = fzHash(key);
-        entry.m_type = kFZData_string;
+        entry.key  = fzStrcpy(key);
+        entry.hash = fzHash(key);
+        entry.type = kFZData_string;
         
-        entry.p_ptr = fzStrcpy(value);
+        entry.data = fzBuffer(fzStrcpy(value), strlen(value)+1);
         
         setEntry(entry);
     }
     
+    
     void DataStore::setData(const char* data, fzUInt length, const char *key)
     {
-        FZLog("NOT IMPLEMENTED");
-//        fzStoreEntry entry;
-//        entry.p_key = fzStrcpy(key);
-//        entry.m_hash = fzHash(key);
-//        entry.m_type = kFZData_string;
-//        
-//        entry.p_ptr = fzStrcpy(value);
-//        
-//        setEntry(entry);
+        fzStoreEntry entry;
+        entry.key  = fzStrcpy(key);
+        entry.hash = fzHash(key);
+        entry.type = kFZData_data;
+        
+        entry.data = fzBuffer(fzStrcpy(data), length);
+        
+        setEntry(entry);
     }
     
     
@@ -408,12 +423,12 @@ namespace FORZE {
         fzStoreEntry *entry = entryForKey(key);
         
         if(entry) {
-            FZ_ASSERT(entry->m_type == kFZData_integer, "Value for this key is not an integer.");
-            switch (entry->m_type) {
-                case kFZData_integer: return entry->m_integer;
-                case kFZData_float: return static_cast<fzInt>(entry->m_float);
-                case kFZData_string: return static_cast<fzInt>(*entry->p_ptr);
-                default: return 0;
+            switch (entry->type) {
+                case kFZData_integer: return entry->integerValue;
+                case kFZData_float: return static_cast<fzInt>(entry->floatValue);
+                default:
+                    FZ_RAISE_STOP("DataStore: Imposible to convert type.");
+                    return 0;
             }
         }
         return 0;
@@ -425,31 +440,48 @@ namespace FORZE {
         fzStoreEntry *entry = entryForKey(key);
 
         if(entry) {
-            FZ_ASSERT(entry->m_type == kFZData_float, "Value for this key is not an integer.");
-            switch (entry->m_type) {
-                case kFZData_float: return entry->m_float;
-                case kFZData_integer: return static_cast<fzFloat>(entry->m_integer);
-                case kFZData_string: return static_cast<fzFloat>(*entry->p_ptr);
-                default: return 0;
+            switch (entry->type) {
+                case kFZData_float: return entry->floatValue;
+                case kFZData_integer: return static_cast<fzFloat>(entry->integerValue);
+                default:
+                    FZ_RAISE_STOP("DataStore: Imposible to convert type.");
+                    return 0.f;
             }
         }
-        return 0.0f;
+        return 0.f;
     }
     
     
     const char* DataStore::stringForKey(const char *key) const
     {
+        return dataForKey(key);
         fzStoreEntry *entry = entryForKey(key);
         
         if(entry) {
-            if(entry->m_type != kFZData_string) {
-                FZ_ASSERT(false, "Value for this key is not an string.");
+            if(entry->type != kFZData_string) {
+                FZ_RAISE_STOP("DataStore: Imposible to convert type.");
                 return NULL;
             }
-            return entry->p_ptr;
+            return entry->data.getPointer();
         }
         return NULL;
     }
+    
+    
+    const char* DataStore::dataForKey(const char *key) const
+    {
+        fzStoreEntry *entry = entryForKey(key);
+        
+        if(entry) {
+            if(entry->type != kFZData_string || entry->type != kFZData_data) {
+                FZ_RAISE_STOP("DataStore: Imposible to convert type.");
+                return NULL;
+            }
+            return entry->data.getPointer();
+        }
+        return NULL;
+    }
+    
     
     
     void DataStore::removeAllData()

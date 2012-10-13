@@ -32,6 +32,7 @@
  */
 
 #include "FZTypes.h"
+#include "FZAllocator.h"
 
 
 namespace FORZE {
@@ -48,14 +49,14 @@ namespace FORZE {
         
         struct fzStoreEntry
         {
-            unsigned char m_type;
-            int32_t m_hash;
-            char *p_key;
+            unsigned char type;
+            int32_t hash;
+            char *key;
             
             union {
-                char *p_ptr;
-                fzFloat m_float;
-                fzInt m_integer;
+                fzBuffer data;
+                fzFloat floatValue;
+                fzInt integerValue;
             };
         };
         
@@ -92,11 +93,14 @@ namespace FORZE {
         //! Used internally to get a entry given the key
         fzStoreEntry *entryForKey(const char *key) const;
         
+        void removeEntry(fzStoreEntry *entry);
+        
         
     protected:
         DataStore();
         DataStore(const DataStore& );
         DataStore &operator = (const DataStore& );
+        ~DataStore();
         
         
     public:
@@ -170,6 +174,8 @@ namespace FORZE {
         //! @param key is a NULL-terminated char string.
         //! @return If no value found for key, NULL is returned.
         const char* stringForKey(const char *key) const;
+        
+        const char* dataForKey(const char *key) const;
         
         
         //! Removes an entry giving the key
