@@ -675,7 +675,7 @@ namespace FORZE {
         m_scenesStack.push_back(scene);
         scene->retain();
         
-        p_nextScene = scene;        
+        p_nextScene = scene;
     }
     
     
@@ -723,6 +723,9 @@ namespace FORZE {
 
             //p_runningScene->onEnterTransitionDidFinish();
         }
+#if FZ_RENDER_ON_DEMAND
+        m_sceneIsDirty = true;
+#endif
     }
     
     
