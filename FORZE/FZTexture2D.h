@@ -113,12 +113,6 @@ namespace FORZE {
         
         void allocTexture();
         
-        void loadPNGFile(const char*);
-        void loadPVRFile(const char*);
-        void loadPVRCCZFile(const char*);
-        void loadPVRData(const char*);
-
-        
     protected:
         GLuint          m_textureID;
         fzSize          m_size;
@@ -131,10 +125,18 @@ namespace FORZE {
         void upload(fzPixelFormat format, GLint level, GLsizei width, GLsizei height, GLsizei packetSize, const void *ptr);
         void setPixelFormat(fzPixelFormat pixelFormat, fzTextureFormat textureFormat);
         
-        Texture2D();
+        void loadPNGFile(const char*);
+        void loadPVRFile(const char*);
+        void loadPVRCCZFile(const char*);
+        
+        
     public:
         
         static const fzTextureInfo& getDefaultTextureConfig(fzTextureFormat format);
+        
+        //! Default constructor
+        Texture2D();
+
         
         //! Constructs a texture2d with a data pointer, a format, POT width, height and the content size.
         Texture2D(const void* ptr, fzPixelFormat pixelFormat, fzTextureFormat textureFormat, GLsizei width, GLsizei height, const fzSize &size);
@@ -150,6 +152,8 @@ namespace FORZE {
         // Destructor
         ~Texture2D();
         
+        void loadPVRData(const char*);
+
         
         //! Returns the texture format.
         fzTextureFormat getTextureFormat() const {
