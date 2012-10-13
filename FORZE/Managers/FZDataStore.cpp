@@ -38,7 +38,7 @@
 #include <cstdlib>
 
 
-#define XML_FILENAME "forze_persistent_data_store.xml"
+#define XML_FILENAME "forze2d_datastore.xml"
 #define XML_SIZE_TAG "size"
 #define XML_ENTRY_TAG "e"
 #define XML_KEY_ATTRIBUTE "k"
@@ -75,12 +75,11 @@ namespace FORZE {
         
         // READ DATA
         try {
-            
             readFromMemory();
 
-        } catch (std::runtime_error& error) {
-            
+        } catch (std::exception& error) {
             fzDevice_removePath(p_path);
+            
         }
     }
     
@@ -362,6 +361,14 @@ namespace FORZE {
         
         setString(value, key);
     }
+    
+    void DataStore::setDefaultData(const fzBuffer& data, const char *key)
+    {
+        if(contains(key))
+            return;
+        
+        setData(data, key);
+    }
 
     
     void DataStore::setFloat(fzFloat value, const char *key)
@@ -403,14 +410,14 @@ namespace FORZE {
     }
     
     
-    void DataStore::setData(const char* data, fzUInt length, const char *key)
+    void DataStore::setData(const fzBuffer& data, const char *key)
     {
         fzStoreEntry entry;
         entry.key  = fzStrcpy(key);
         entry.hash = fzHash(key);
         entry.type = kFZData_data;
         
-        entry.data = fzBuffer(fzStrcpy(data), length);
+        entry.data = data;
         
         setEntry(entry);
     }
@@ -454,34 +461,39 @@ namespace FORZE {
     
     const char* DataStore::stringForKey(const char *key) const
     {
-        return dataForKey(key);
         fzStoreEntry *entry = entryForKey(key);
         
         if(entry) {
-            if(entry->type != kFZData_string) {
-                FZ_RAISE_STOP("DataStore: Imposible to convert type.");
-                return NULL;
+            switch (entry->type) {
+                case kFZData_string:
+                    return entry->data.getPointer();
+                    
+                default:
+                    FZ_RAISE_STOP("DataStore: Imposible to convert type.");
+                    return NULL;
             }
-            return entry->data.getPointer();
         }
         return NULL;
     }
     
     
-    const char* DataStore::dataForKey(const char *key) const
+    const fzBuffer DataStore::dataForKey(const char *key) const
     {
         fzStoreEntry *entry = entryForKey(key);
         
         if(entry) {
-            if(entry->type != kFZData_string || entry->type != kFZData_data) {
-                FZ_RAISE_STOP("DataStore: Imposible to convert type.");
-                return NULL;
+            switch (entry->type) {
+                case kFZData_string:
+                case kFZData_data:
+                    return entry->data;
+                    
+                default:
+                    FZ_RAISE_STOP("DataStore: Imposible to convert type.");
+                    return fzBuffer::empty();
             }
-            return entry->data.getPointer();
         }
-        return NULL;
+        return fzBuffer::empty();
     }
-    
     
     
     void DataStore::removeAllData()

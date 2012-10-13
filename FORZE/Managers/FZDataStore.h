@@ -93,6 +93,7 @@ namespace FORZE {
         //! Used internally to get a entry given the key
         fzStoreEntry *entryForKey(const char *key) const;
         
+        //! 
         void removeEntry(fzStoreEntry *entry);
         
         
@@ -133,6 +134,8 @@ namespace FORZE {
         //! @code if(!contain(key)) setString(value, key)
         void setDefaultString(const char* value, const char *key);
         
+        void setDefaultData(const fzBuffer& data, const char *key);
+
         
         //! Sets a float value for the key specified.
         //! @param value is a float.
@@ -155,7 +158,7 @@ namespace FORZE {
         //! Sets a string value for the key specified.
         //! @param value is a NULL-terminated char string.
         //! @param key is a NULL-terminated char string.
-        void setData(const char* data, fzUInt length, const char *key);
+        void setData(const fzBuffer& data, const char *key);
         
         
         //! Returns the integer paired with the given key.
@@ -175,7 +178,7 @@ namespace FORZE {
         //! @return If no value found for key, NULL is returned.
         const char* stringForKey(const char *key) const;
         
-        const char* dataForKey(const char *key) const;
+        const fzBuffer dataForKey(const char *key) const;
         
         
         //! Removes an entry giving the key
