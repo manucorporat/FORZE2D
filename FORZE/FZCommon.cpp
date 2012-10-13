@@ -77,11 +77,7 @@ namespace FORZE {
 
         va_list ap;
         va_start(ap, pszFormat);
-#if FZ_STL_CPLUSPLUS11
-        vsnprintf(_szBuf[_currentPacket], FZLOG_SIZE, pszFormat, ap);
-#else
         vsprintf(_szBuf[_currentPacket], pszFormat, ap);
-#endif
         va_end(ap);
         return _szBuf[_currentPacket];
     }
@@ -98,11 +94,7 @@ namespace FORZE {
         va_list ap;
         va_start(ap, pszFormat);
         memcpy(_szBuf[_currentPacket], SIGN_TEXT, SIGN_LEN);
-#if FZ_STL_CPLUSPLUS11
-        vsnprintf(_szBuf[_currentPacket][SIGN_LEN], FZLOG_SIZE-SIGN_LEN, pszFormat, ap);
-#else
         vsprintf(&_szBuf[_currentPacket][SIGN_LEN], pszFormat, ap);
-#endif
         va_end(ap);
         
         puts(_szBuf[_currentPacket]);
@@ -114,7 +106,7 @@ namespace FORZE {
         if(str == NULL)
             return NULL;
         
-        char *newString = new char[len+1];
+        char *newString = static_cast<char*>(malloc(len+1));
         memcpy(newString, str, len);
         newString[len] = '\0';
         return newString;
