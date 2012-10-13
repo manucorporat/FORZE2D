@@ -54,7 +54,7 @@ namespace FORZE {
     void TMXMapInfo::parseTMXFile(const char* filename)
     {
         fzBuffer data = ResourcesManager::Instance().loadResource(filename, &m_factor);
-        if(data.empty())
+        if(data.isEmpty())
             FZ_RAISE("TMXParser: Impossible to load file.");
         
         try {
