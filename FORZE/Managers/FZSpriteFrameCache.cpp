@@ -84,7 +84,7 @@ namespace FORZE {
             if(subNode) {
                 char *filename = fzStrcpy(subNode->value(), subNode->value_size());
                 texture = TextureCache::Instance().addImage(filename);
-                free(filename);
+                delete filename;
             }
         }
         

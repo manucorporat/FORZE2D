@@ -86,7 +86,7 @@ namespace FORZE {
                 return NULL;
             }
         }
-        free(filenameCpy);
+        delete filenameCpy;
         
         return font;
     }

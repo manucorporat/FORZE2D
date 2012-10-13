@@ -94,6 +94,6 @@ TestLayer::TestLayer(const char* title, const char* message)
 
 TestLayer::~TestLayer()
 {
-    free(p_title);
-    free(p_message);
+    delete p_title;
+    delete p_message;
 }
