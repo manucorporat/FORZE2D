@@ -704,8 +704,8 @@ namespace FORZE {
         
         fzFloat y = center.y + height / 2;
         FZ_LIST_FOREACH(m_children, child) {
-            fzFloat k = child->getContentSize().height * child->getScaleY();
             
+            fzFloat k = child->getContentSize().height * child->getScaleY();
             child->setPosition(center.x, y - k / 2.0f );
             y -= k + padding;
         }
