@@ -38,6 +38,12 @@
 using namespace STD;
 
 namespace FORZE {
+    
+    enum fzLabelAlignment{
+        kFZLabelAlignment_left,
+        kFZLabelAlignment_center,
+        kFZLabelAlignment_right,
+    };
         
     class Font;
     class Label : public SpriteBatch, public RGBAProtocol
@@ -45,10 +51,13 @@ namespace FORZE {
     protected:
         string m_string;
         fzColor3B m_color;
+        fzFloat m_verticalPadding;
+        fzFloat m_horizontalPadding;
+        fzLabelAlignment m_alignment;
+
         Font *p_font;
         
         void createFontChars();
-        
         
     public:
         //! Constructs a void label.
@@ -78,6 +87,38 @@ namespace FORZE {
             return m_string.c_str();
         }
         
+        //! Sets the vertical padding between lines.
+        //! This value is 0 by default.
+        void setVerticalPadding(fzFloat vertical);
+        
+        
+        //! Sets the horizontal padding between characters.
+        //! This value is 0 by default.
+        void setHorizontalPadding(fzFloat vertical);
+
+        
+        //! Sets the text alignment for multiline labels.
+        //! kFZLabelAlignment_left by default.
+        void setAlignment(fzLabelAlignment alignment);
+        
+        
+        //! Returns the text aligment.
+        fzLabelAlignment getAlignment() const {
+            return m_alignment;
+        }
+        
+        
+        //! Returns the vertical padding between lines.
+        fzFloat getVerticalPadding() const {
+            return m_verticalPadding;
+        }
+        
+        
+        //! Returns the horizontal padding between characters.
+        fzFloat getHorizontalPadding() const {
+            return m_horizontalPadding;
+        }
+
         
         //! Sets the color used as filter
         void setColor(const fzColor3B& color);

@@ -90,10 +90,14 @@ namespace FORZE {
     : SpriteBatch(NULL)
     , m_string()
     , m_color(fzWHITE)
+    , m_alignment(kFZLabelAlignment_left)
+    , m_verticalPadding(0)
+    , m_horizontalPadding(0)
     , p_font(NULL)
     {
         setIsRelativeAnchorPoint(true);
         setAnchorPoint(0.5f, 0.5f);
+        setContentSize(FZSizeZero);
     }
     
     
@@ -140,6 +144,33 @@ namespace FORZE {
     }
     
     
+    void Label::setVerticalPadding(fzFloat vertical)
+    {
+        if(vertical != m_verticalPadding) {
+            m_verticalPadding = vertical;
+            createFontChars();
+        }
+    }
+    
+    
+    void Label::setHorizontalPadding(fzFloat horizontal)
+    {
+        if(horizontal != m_horizontalPadding) {
+            m_horizontalPadding = horizontal;
+            createFontChars();
+        }
+    }
+    
+    
+    void Label::setAlignment(fzLabelAlignment alignment)
+    {
+        if(alignment != m_alignment) {
+            m_alignment = alignment;
+            createFontChars();
+        }
+    }
+    
+    
     void Label::setColor(const fzColor3B& color)
     {
         m_color = color;
@@ -153,29 +184,49 @@ namespace FORZE {
     
     void Label::createFontChars()
     {
+        // Get string length
         fzUInt m_stringLen = m_string.size();
         if(m_stringLen == 0)
             return;
     
+        // Is font available?
         if(p_font == NULL) {
             FZLOGERROR("Label: Impossible to generate label, font config is missing.");
             return;
         }        
         
-        fzUInt quantityOfLines = 1;
-        for(fzUInt i = 0; i < m_stringLen; ++i) {
-            char charID = m_string[i];
-            if( charID == '\n')
-                ++quantityOfLines;
-        }
-        
-        fzUInt totalHeight = p_font->getLineHeight() * quantityOfLines;
-        fzInt nextFontPositionY = p_font->getLineHeight() * (quantityOfLines - 1);
-        fzInt nextFontPositionX = 0;
-        fzInt longestLine = 0;
-        
+        // Precalculate label size
+        fzUInt longestLine = 0;
+        fzUInt currentLine = 0;
+        fzFloat lineWidth[100];
         char charId = 0, prevId = 0;
+        memset(lineWidth, 0, sizeof(fzFloat) * 100);
         
+        for(fzUInt i = 0; i < m_stringLen; ++i) {
+            char charId = m_string.at(i);
+            if( charId > 0) {
+                
+                if( charId == '\n') {
+                    longestLine = MAX(longestLine, lineWidth[currentLine]);
+                    ++currentLine;
+                }else
+                {
+                    lineWidth[currentLine] += p_font->getCharInfo(charId).xAdvance + m_horizontalPadding + p_font->getKerning(prevId, charId);
+                    prevId = charId;
+                }
+            }
+        }
+        longestLine = MAX(longestLine, lineWidth[currentLine]);
+
+        
+        fzFloat lineHeight = p_font->getLineHeight() + m_verticalPadding;
+        fzFloat totalHeight = lineHeight * (currentLine+1);
+        
+        fzInt nextFontPositionY = totalHeight - lineHeight;
+        fzInt nextFontPositionX = 0;
+        
+        prevId = 0;
+        currentLine = 0;
         Sprite *fontChar = static_cast<Sprite*>(m_children.front());
         for(fzUInt i = 0; i < m_stringLen; ++i)
         {
@@ -184,14 +235,34 @@ namespace FORZE {
                 FZLOGERROR("Label: CHAR[%d] doesn't exist. It's negative.", charId);
                 continue;
             }
-
             
+            // line jump
             if (charId == '\n') {
+                nextFontPositionY -= lineHeight;
                 nextFontPositionX = 0;
-                nextFontPositionY -= p_font->getLineHeight();
+                ++currentLine;
                 continue;
             }
             
+            // config line start point
+            if (nextFontPositionX == 0)
+            {
+                switch (m_alignment) {
+                    case kFZLabelAlignment_left:
+                        nextFontPositionX = 0;
+                        break;
+                    case kFZLabelAlignment_right:
+                        nextFontPositionX = longestLine - lineWidth[currentLine];
+                        break;
+                    case kFZLabelAlignment_center:
+                        nextFontPositionX = (longestLine - lineWidth[currentLine])/2.0f;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            
+            // get font def
             const fzCharDef& fontDef = p_font->getCharInfo(static_cast<unsigned char>(charId));
             if(fontDef.xAdvance == 0) {
                 char toPrint[3];
@@ -201,36 +272,30 @@ namespace FORZE {
                 continue;
             }
             
-            
+            // get sprite
             if( fontChar == NULL ) {
-                fontChar = new Sprite(fontDef.getRect());
+                fontChar = new Sprite();
                 addChild(fontChar);
                 
             }else {
                 // reusing sprites
-                fontChar->setTextureRect(fontDef.getRect());
                 fontChar->setIsVisible(true);
-                fontChar->setAlpha(255);
             }
             
-            // font kerning
+            // config sprite
             nextFontPositionX += p_font->getKerning(prevId, charId);
-            
             fzFloat yOffset = p_font->getLineHeight() - fontDef.yOffset;
             fzPoint fontPos = fzPoint(nextFontPositionX + fontDef.xOffset + fontDef.width * 0.5f,
-                                    nextFontPositionY + yOffset - fontDef.height * 0.5f );
+                                      nextFontPositionY + yOffset - fontDef.height * 0.5f );
             
+            fontChar->setTextureRect(fontDef.getRect());
             fontChar->setPosition(fontPos);
             fontChar->setColor(m_color);
             
             
-            // update kerning
-            nextFontPositionX += fontDef.xAdvance;
+            // next sprite
+            nextFontPositionX += fontDef.xAdvance + m_horizontalPadding;
             prevId = charId;
-            
-            if (longestLine < nextFontPositionX)
-                longestLine = nextFontPositionX;
-            
             fontChar = static_cast<Sprite*>(fontChar->next());
         }
         
