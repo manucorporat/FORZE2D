@@ -413,12 +413,15 @@ namespace FORZE {
     protected:
         fzFloat m_slice;
         fzFloat m_percentVisible;
+        bool m_initialState;
         
     public:
         /** creates the action */
         Blink(fzFloat duration, fzUInt blinks, fzFloat percentVisible = 0.5f);
         
         // Redefined functions
+        virtual void startWithTarget(void* t) override;
+        virtual void stop() override;
         virtual void update(fzFloat dt) override;
         virtual Blink* reverse() const override;
         virtual Blink* copy() const override;

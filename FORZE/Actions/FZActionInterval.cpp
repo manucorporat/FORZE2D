@@ -782,6 +782,7 @@ namespace FORZE {
     }
     
     
+    
     inline fzFloat BezierBy::bezierat( fzFloat a, fzFloat b, fzFloat c, fzFloat d, fzFloat t )
     {
         const fzFloat tm = 1 - t; 
@@ -1033,6 +1034,21 @@ namespace FORZE {
     , m_slice(1.0f / b)
     , m_percentVisible(p)
     { }
+    
+    
+    void Blink::startWithTarget(void* t)
+    {
+        ActionInterval::startWithTarget(t);
+        Sprite *sprite = static_cast<Sprite*>(p_target);
+        m_initialState = sprite->isVisible();
+    }
+    
+    
+    void Blink::stop()
+    {
+        ((Node*) p_target)->setIsVisible(m_initialState);
+        ActionInterval::stop();
+    }
     
     
     void Blink::update(fzFloat dt)
