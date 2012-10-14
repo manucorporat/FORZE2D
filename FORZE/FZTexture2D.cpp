@@ -339,7 +339,7 @@ namespace FORZE {
                 
                 ResourcesManager::Instance().getPath(filename, step, absolutePath, &factor);
                 if(factor == 0)
-                    FZ_RAISE("Texture2D:PVR:IO: File not found.");
+                    FZ_RAISE("Texture2D:PNG:IO: File not found.");
                 
                 file = fopen(absolutePath, "rb");
                 if(file) {
@@ -356,7 +356,7 @@ namespace FORZE {
         fread(header, 1, 8, file);
         if (::png_sig_cmp(header, 0, 8)) {
             fclose(file);
-            FZ_RAISE_STOP("Texture2D:PNG: Invalid PNG tag.");
+            FZ_RAISE_STOP("Texture2D:PNG: Invalid PNG sign.");
         }
         
         // initialize stuff
@@ -378,15 +378,15 @@ namespace FORZE {
         if (setjmp(png_jmpbuf(png_ptr))) {
             png_destroy_read_struct(&png_ptr, &info_ptr, NULL);
             fclose(file);
-            FZ_RAISE_STOP("Texture2D:PNG: Error during init_io.");
+            FZ_RAISE_STOP("Texture2D:PNG: libpng exception.");
         }
-
-
-        ::png_init_io(png_ptr, file);
-        ::png_set_sig_bytes(png_ptr, 8);
+        
+        // init libpng io
+        png_init_io(png_ptr, file);
+        png_set_sig_bytes(png_ptr, 8);
         
         // get image info
-        ::png_read_info(png_ptr, info_ptr);
+        png_read_info(png_ptr, info_ptr);
    
         // Fix image format
         png_set_expand(png_ptr);
@@ -403,7 +403,7 @@ namespace FORZE {
         png_uint_32 sizeWidth;
         png_uint_32 sizeHeight;
         
-        png_get_IHDR( png_ptr, info_ptr,
+        png_get_IHDR(png_ptr, info_ptr,
                      &sizeWidth,
                      &sizeHeight,
                      &bit_depth,
