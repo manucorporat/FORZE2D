@@ -18,17 +18,24 @@ public:
             fzSize middle = getContentSize()/2;
             DataStore::Instance().setDefaultFloat(middle.width, "positionX");
             DataStore::Instance().setDefaultFloat(middle.height, "positionY");
-        }        
-
-    
-        Sprite *sprite = new Sprite("grossini.png");
+            
+            fzBuffer data = ResourcesManager::Instance().loadResource("HUD.pvr");
+            DataStore::Instance().setDefaultData(data, "image");
+        }
+        
+        // LOAD IMAGE FROM CONTENT IN FILE
+        fzBuffer buffer = DataStore::Instance().dataForKey("image");
+        Texture2D *texture = new Texture2D();
+        texture->loadPVRData(buffer.getPointer());
+        
+        Sprite *s = new Sprite(texture);
         
         float x = DataStore::Instance().floatForKey("positionX");
         float y = DataStore::Instance().floatForKey("positionY");
-        sprite->setPosition(x, y);
         
-        sprite->setName("grossini");
-        addChild(sprite);
+        s->setPosition(x, y);
+        s->setName("grossini");
+        addChild(s);
         
         // save new position each 2 seconds
         schedule(SEL_FLOAT(SavePermanent::savePosition), 2);
@@ -142,8 +149,8 @@ public:
         testing->retain(); // retain 2
         testing->release(); // retain 1
         testing->retain(); // retain 2
-        testing->autorelease(); // retain 1 (deferred release)
-        testing->autorelease(); // retain 0 THE OBJECT WILL BE DELETED (deferred release)
+        //testing->autorelease(); // retain 1 (deferred release)
+        //testing->autorelease(); // retain 0 THE OBJECT WILL BE DELETED (deferred release)
         
         
         

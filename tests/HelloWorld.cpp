@@ -1,7 +1,7 @@
 
 #include "FORZE.h"
-using namespace FORZE;
 
+using namespace FORZE;
 
 // CUSTOM SUBCLASS OF FORZE::SCENE
 class HelloWorld : public Scene {
@@ -9,10 +9,10 @@ public:
     HelloWorld()
     {
         // Label with text and font filename.d
-        Label *label = new Label("Hello world!", "helvdetica.fnt");
+        Label *label = new Label("Hello world!", "font_menu.fnt");
         
         // Place label at the middle of the layer
-        label->setPosition(getContentSize() /2);
+        label->setPosition(getContentSize() / 2);
         
         // Attach label to the layer
         addChild(label);

@@ -48,6 +48,7 @@ public:
     LayerTest2()
     : TestLayer("Layer color", NULL)
     {
+        angle_ = 0;
         LayerGradient *background = new LayerGradient(fzBLACK, fzGRAY);
         ActionInterval *action = new TintBy(1, 255, 255, 255);
         background->runAction(new RepeatForever(new Sequence(action, action->reverse(), NULL)));

@@ -108,18 +108,17 @@ namespace FORZE {
     
     void fzDevice_getDeviceCode(char *deviceCode, fzUInt maxLength)
     {
-        size_t size;
 #if TARGET_IPHONE_SIMULATOR
         char text[] = "simulator";
-        size = strlen(text);
-        memcpy(deviceCode, text, size);
+        strncpy(deviceCode, text, maxLength);
 #else
+        size_t size;
         sysctlbyname("hw.machine", deviceCode, &size, NULL, 0);
-#endif
         deviceCode[size] = '\0';
         
         if(size >= maxLength)
             FZ_RAISE_STOP("OS Wrapper: Memory overload.");
+#endif
     }
     
     
