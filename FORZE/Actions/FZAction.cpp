@@ -50,7 +50,7 @@ namespace FORZE {
     }
     
     
-    void Action::startWithTarget(void* target)
+    void Action::startWithTarget(void *target)
     {
         FZ_ASSERT(target != NULL, "Argument target must be non-NULL");
         p_target = target;
@@ -142,7 +142,7 @@ namespace FORZE {
     }
     
     
-    void RepeatForever::startWithTarget(void* t)
+    void RepeatForever::startWithTarget(void *t)
     {
         Action::startWithTarget(t);
         p_innerAction->startWithTarget(t);

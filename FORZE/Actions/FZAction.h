@@ -41,13 +41,14 @@ namespace FORZE {
         kFZActionTagInvalid = -1
     };
     
+    class Node;
     /** Base class for CCAction objects */
     class Action : public LifeCycle
     {
         friend class ActionManager;
         
     protected:
-        void  *p_target;
+        void *p_target;
         fzInt m_tag;
         
         
@@ -56,6 +57,7 @@ namespace FORZE {
          * 0 means that the action just started
          * 0.5 means that the action is in the middle
          * 1 means that the action is over
+         @warning this method never should be called manually.
          */
         virtual void update(fzFloat time) {};
         
@@ -65,7 +67,7 @@ namespace FORZE {
     public:
         
         //! Called before the action start. It will also set the target.
-        virtual void startWithTarget(void*);
+        virtual void startWithTarget(void* target);
         
         
         //! Called every frame with it's delta time. DON'T override unless you know what you are doing.
@@ -157,7 +159,7 @@ namespace FORZE {
         }
         
         // Redefined functions
-        virtual void startWithTarget(void* t)override;
+        virtual void startWithTarget(void *t)override;
         virtual bool isDone() const override;
         virtual void step(fzFloat dt) override;
         virtual RepeatForever* reverse() const override;

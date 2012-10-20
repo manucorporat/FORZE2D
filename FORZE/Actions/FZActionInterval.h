@@ -81,7 +81,6 @@ namespace FORZE {
         FiniteTimeAction **p_actions;
         fzUInt m_numActions;
         fzUInt m_currentAction;
-        fzFloat m_timeOffset;   
         bool m_startedAction;
 
         Sequence();
@@ -93,7 +92,7 @@ namespace FORZE {
         
         // Redefined functions
         virtual void startWithTarget(void *t) override;
-        virtual void update(fzFloat dt) override;
+        virtual void step(fzFloat dt) override;
         virtual bool isDone() const override;
         virtual void stop() override;
         virtual Sequence* reverse() const override;
@@ -145,7 +144,7 @@ namespace FORZE {
         FiniteTimeAction* getInnerAction() const;
         
         // Redefined functions
-        virtual void startWithTarget(void* t) override;
+        virtual void startWithTarget(void *t) override;
         virtual void update(fzFloat dt) override;
         virtual void stop() override;
         virtual bool isDone() const override;
@@ -169,7 +168,7 @@ namespace FORZE {
         RotateBy(fzFloat duration, fzFloat angle);
         
         // Redefined functions
-        virtual void startWithTarget(void* t) override;
+        virtual void startWithTarget(void *t) override;
         virtual void update(fzFloat dt) override;
         virtual RotateBy* reverse() const override;
         virtual RotateBy* copy() const override;
@@ -189,7 +188,7 @@ namespace FORZE {
         RotateTo(fzFloat duration, fzFloat angleDelta);
         
         // Redefined functions
-        virtual void startWithTarget(void* t) override;
+        virtual void startWithTarget(void *t) override;
         virtual RotateTo* copy() const override;
         virtual RotateTo* reverse() const override;
     };
@@ -208,7 +207,7 @@ namespace FORZE {
         MoveBy(fzFloat duration, const fzPoint& positionDelta);
         
         // Redefined functions
-        virtual void startWithTarget(void* t) override;
+        virtual void startWithTarget(void *t) override;
         virtual void update(fzFloat dt) override;
         virtual MoveBy* reverse() const override;
         virtual MoveBy* copy() const override;
@@ -229,7 +228,7 @@ namespace FORZE {
         MoveTo(fzFloat duration, const fzPoint& newPosition);
         
         // Redefined functions
-        virtual void startWithTarget(void* t) override;
+        virtual void startWithTarget(void *t) override;
         virtual MoveTo* copy() const override;
         virtual MoveTo* reverse() const override;
     };
@@ -250,7 +249,7 @@ namespace FORZE {
         SkewBy(fzFloat duration, fzFloat skewX, fzFloat skewY);
         
         // Redefined functions
-        virtual void startWithTarget(void* t) override;
+        virtual void startWithTarget(void *t) override;
         virtual void update(fzFloat dt) override;
         virtual SkewBy* reverse() const override;
         virtual SkewBy* copy() const override;
@@ -269,7 +268,7 @@ namespace FORZE {
         SkewTo(fzFloat duration, fzFloat skewX, fzFloat skewY);
         
         // Redefined functions
-        virtual void startWithTarget(void* t) override;
+        virtual void startWithTarget(void *t) override;
         virtual SkewTo* copy() const override;
         virtual SkewTo* reverse() const override;
     };
@@ -290,7 +289,7 @@ namespace FORZE {
         JumpBy(fzFloat duration, const fzPoint& position, fzFloat height, fzUInt jumps);
         
         // Redefined functions
-        virtual void startWithTarget(void* t) override;
+        virtual void startWithTarget(void *t) override;
         virtual void update(fzFloat dt) override;
         virtual JumpBy* reverse() const override;
         virtual JumpBy* copy() const override;
@@ -309,7 +308,7 @@ namespace FORZE {
         JumpTo(fzFloat duration, const fzPoint& position, fzFloat height, fzUInt jumps);
         
         // Redefined functions
-        virtual void startWithTarget(void* t) override;
+        virtual void startWithTarget(void *t) override;
         virtual JumpTo* copy() const override;
         virtual JumpTo* reverse() const override;
     };
@@ -341,7 +340,7 @@ namespace FORZE {
         BezierBy(fzFloat duration, const fzBezierConfig& config);
         
         // Redefined functions
-        virtual void startWithTarget(void* t) override;
+        virtual void startWithTarget(void *t) override;
         virtual void update(fzFloat dt) override;
         virtual BezierBy* reverse() const override;
         virtual BezierBy* copy() const override;
@@ -359,7 +358,7 @@ namespace FORZE {
         BezierTo(fzFloat duration, const fzBezierConfig& config);
         
         // Redefined functions
-        virtual void startWithTarget(void* t) override;
+        virtual void startWithTarget(void *t) override;
         virtual BezierTo* copy() const override;
         virtual BezierTo* reverse() const override;
     };
@@ -383,7 +382,7 @@ namespace FORZE {
         ScaleBy(fzFloat duration, fzFloat scaleX, fzFloat scaleY);
         
         // Redefined functions
-        virtual void startWithTarget(void* t) override;
+        virtual void startWithTarget(void *t) override;
         virtual void update(fzFloat dt) override;
         virtual ScaleBy* reverse() const override;
         virtual ScaleBy* copy() const override;
@@ -400,7 +399,7 @@ namespace FORZE {
         ScaleTo(fzFloat duration, fzFloat scaleX, fzFloat scaleY);
         
         // Redefined functions
-        virtual void startWithTarget(void* t) override;
+        virtual void startWithTarget(void *t) override;
         virtual ScaleTo* copy() const override;
         virtual ScaleTo* reverse() const override;
     };
@@ -420,7 +419,7 @@ namespace FORZE {
         Blink(fzFloat duration, fzUInt blinks, fzFloat percentVisible = 0.5f);
         
         // Redefined functions
-        virtual void startWithTarget(void* t) override;
+        virtual void startWithTarget(void *t) override;
         virtual void stop() override;
         virtual void update(fzFloat dt) override;
         virtual Blink* reverse() const override;
@@ -443,7 +442,7 @@ namespace FORZE {
         FadeTo(fzFloat duration, unsigned char opacity);
         
         // Redefined functions
-        virtual void startWithTarget(void* t) override;
+        virtual void startWithTarget(void *t) override;
         virtual void update(fzFloat dt) override;
         virtual FadeTo* copy() const override;
         virtual FadeTo* reverse() const override;
@@ -498,7 +497,7 @@ namespace FORZE {
         TintBy(fzFloat duration, fzFloat redDelta, fzFloat greenDelta, fzFloat blueDelta);
         
         // Redefined functions
-        virtual void startWithTarget(void* t) override;
+        virtual void startWithTarget(void *t) override;
         virtual void update(fzFloat dt) override;
         virtual TintBy* reverse() const override;
         virtual TintBy* copy() const override;
@@ -519,7 +518,7 @@ namespace FORZE {
         TintTo(fzFloat duration, const fzColor3B& color);
         
         // Redefined functions
-        virtual void startWithTarget(void* t) override;
+        virtual void startWithTarget(void *t) override;
         virtual TintTo* copy() const override;
         virtual TintTo* reverse() const override;
     };
@@ -563,7 +562,7 @@ namespace FORZE {
         Animation* getAnimation() const;
         
         // Redefined functions
-        virtual void startWithTarget(void* t) override;
+        virtual void startWithTarget(void *t) override;
         virtual void update(fzFloat dt) override;
         virtual void stop() override;
         virtual Animate* reverse() const override;

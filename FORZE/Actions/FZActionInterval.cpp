@@ -32,6 +32,7 @@
 #include "FZAnimation.h"
 #include "FZSpriteFrame.h"
 #include "FZSprite.h"
+#include "FZLayer.h"
 
 
 #define FZMAX_ACTION_BATCH 32
@@ -107,7 +108,6 @@ namespace FORZE {
     : ActionInterval(0)
     , m_currentAction(0)
     , m_startedAction(false)
-    , m_timeOffset(0)
     , m_numActions(0)
     , p_actions(NULL)
     { }
@@ -158,7 +158,7 @@ namespace FORZE {
             p_actions[i]->retain();
             duration += p_actions[i]->getDuration();
         }
-        
+
         setDuration(duration);
     }
     
@@ -176,39 +176,25 @@ namespace FORZE {
     void Sequence::startWithTarget(void *t)
     {
         m_currentAction = 0;
-        m_timeOffset = 0;
         m_startedAction = false;
-
         
         ActionInterval::startWithTarget(t);
     }
     
     
-    void Sequence::update(fzFloat t)
+    void Sequence::step(fzFloat dt)
     {
         if(m_currentAction < m_numActions)
         {
             FiniteTimeAction *action = p_actions[m_currentAction];
-            if(m_startedAction == false)
-            {
+            if(m_startedAction == false) {
                 action->startWithTarget(p_target);
                 m_startedAction = true;
             }
-            fzFloat current = 1;
-            fzFloat invRate = 0;
-            if(action->getDuration() != 0)
-            {
-                fzFloat rate = getDuration() / action->getDuration();
-                invRate = 1 / rate;
-                current = (t-m_timeOffset) * rate;
-                current = (current < 1.0f) ? current : 1.0f;
-                action->update(current);
-            }
+            action->step(dt);
             
-            if(current == 1)
-            {
+            if(action->isDone()) {
                 action->stop();
-                m_timeOffset += invRate;
                 m_startedAction = false;
                 ++m_currentAction;
             }
@@ -408,7 +394,7 @@ namespace FORZE {
     }
     
     
-    void Repeat::startWithTarget(void* t)
+    void Repeat::startWithTarget(void *t)
     {
         m_total = 0;
         ActionInterval::startWithTarget(t);
@@ -479,7 +465,7 @@ namespace FORZE {
     { }
     
     
-    void RotateBy::startWithTarget(void* t)
+    void RotateBy::startWithTarget(void *t)
     {
         ActionInterval::startWithTarget(t);
         
@@ -517,7 +503,7 @@ namespace FORZE {
     { }
     
     
-    void RotateTo::startWithTarget(void* t)
+    void RotateTo::startWithTarget(void *t)
     {
         RotateBy::startWithTarget(t);
         
@@ -554,7 +540,7 @@ namespace FORZE {
     { }
     
     
-    void MoveBy::startWithTarget(void* t)
+    void MoveBy::startWithTarget(void *t)
     {        
         ActionInterval::startWithTarget(t);
         m_startPosition = ((Node*)p_target)->getPosition();
@@ -587,7 +573,7 @@ namespace FORZE {
     { }
     
     
-    void MoveTo::startWithTarget(void* t)
+    void MoveTo::startWithTarget(void *t)
     {
         MoveBy::startWithTarget(t);
         m_delta = m_original - m_startPosition;
@@ -616,7 +602,7 @@ namespace FORZE {
     { }
     
     
-    void SkewBy::startWithTarget(void* t)
+    void SkewBy::startWithTarget(void *t)
     {
         ActionInterval::startWithTarget(t);
         
@@ -661,7 +647,7 @@ namespace FORZE {
     { }
     
     
-    void SkewTo::startWithTarget(void* t)
+    void SkewTo::startWithTarget(void *t)
     {
         SkewBy::startWithTarget(t);
         
@@ -708,7 +694,7 @@ namespace FORZE {
     { }
     
     
-    void JumpBy::startWithTarget(void* t)
+    void JumpBy::startWithTarget(void *t)
     {
         ActionInterval::startWithTarget(t);
         m_startPosition = ((Node*)p_target)->getPosition();
@@ -746,7 +732,7 @@ namespace FORZE {
     { }
     
     
-    void JumpTo::startWithTarget(void* t)
+    void JumpTo::startWithTarget(void *t)
     {
         m_delta += m_startPosition;
         JumpBy::startWithTarget(t);
@@ -775,7 +761,7 @@ namespace FORZE {
     { }
     
     
-    void BezierBy::startWithTarget(void* t)
+    void BezierBy::startWithTarget(void *t)
     {
         ActionInterval::startWithTarget(t);
         m_startPosition = ((Node*)p_target)->getPosition();
@@ -837,7 +823,7 @@ namespace FORZE {
     { }
     
     
-    void BezierTo::startWithTarget(void* t)
+    void BezierTo::startWithTarget(void *t)
     {
         BezierBy::startWithTarget(t);
         m_config.controlPoint_1 = m_original.controlPoint_1 - m_startPosition;
@@ -876,7 +862,7 @@ namespace FORZE {
     { }
     
     
-    void ScaleBy::startWithTarget(void* t)
+    void ScaleBy::startWithTarget(void *t)
     {
         ActionInterval::startWithTarget(t);
         m_startScaleX = ((Node*)p_target)->getScaleX();
@@ -917,7 +903,7 @@ namespace FORZE {
     { }
     
     
-    void ScaleTo::startWithTarget(void* t)
+    void ScaleTo::startWithTarget(void *t)
     {
         ActionInterval::startWithTarget(t);
         m_startScaleX = ((Node*)p_target)->getScaleX();
@@ -948,7 +934,7 @@ namespace FORZE {
     { }
     
     
-    void FadeTo::startWithTarget(void* t)
+    void FadeTo::startWithTarget(void *t)
     {
         ActionInterval::startWithTarget(t);
         m_startOpacity = ((Node*) p_target)->getOpacity();
@@ -1036,11 +1022,10 @@ namespace FORZE {
     { }
     
     
-    void Blink::startWithTarget(void* t)
+    void Blink::startWithTarget(void *t)
     {
         ActionInterval::startWithTarget(t);
-        Sprite *sprite = static_cast<Sprite*>(p_target);
-        m_initialState = sprite->isVisible();
+        m_initialState = ((Node*)t)->isVisible();
     }
     
     
@@ -1081,11 +1066,12 @@ namespace FORZE {
     { }
     
     
-    void TintBy::startWithTarget(void* t)
+    void TintBy::startWithTarget(void *t)
     {
-        ActionInterval::startWithTarget(t);
-        Sprite *sprite = static_cast<Sprite*>(p_target);
-        m_startColor = sprite->getColor();
+        Node *node = static_cast<Node*>(t);
+        RGBAProtocol *rgba = dynamic_cast<RGBAProtocol*>(node);
+        ActionInterval::startWithTarget(rgba);
+        m_startColor = rgba->getColor();
     }
     
     
@@ -1095,7 +1081,7 @@ namespace FORZE {
                            m_startColor.g + m_deltaG * dt,
                            m_startColor.b + m_deltaB * dt);
         
-        ((Sprite*) p_target)->setColor(newColor);
+        ((RGBAProtocol*)p_target)->setColor(newColor);
     }
     
     
@@ -1127,7 +1113,7 @@ namespace FORZE {
     { }
     
     
-    void TintTo::startWithTarget(void* t)
+    void TintTo::startWithTarget(void *t)
     {
         TintBy::startWithTarget(t);
         
@@ -1217,11 +1203,11 @@ namespace FORZE {
     }
     
     
-    void Animate::startWithTarget(void* target)
+    void Animate::startWithTarget(void *t)
     {
-        //FZ_ASSERT(dynamic_cast<Sprite*>(target), "Target is not a Sprite");
-        ActionInterval::startWithTarget(target);
-        Sprite *sprite = static_cast<Sprite*>(target);
+        Node *node = static_cast<Node*>(t);
+        Sprite *sprite = dynamic_cast<Sprite*>(node);
+        ActionInterval::startWithTarget(sprite);
         
         if( p_animation->restoreOriginalFrame() )
             m_origFrame = sprite->getDisplayFrame();

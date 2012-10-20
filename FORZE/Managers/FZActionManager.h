@@ -108,7 +108,7 @@ namespace FORZE {
         //! Returns the numbers of actions that are running in a certain target
         //! Composable actions are counted as 1 action.
         //! Example: 1 Sequence of 8 actions are counted as 1 action.
-        fzUInt getNumberActions(void *forTarget) const;
+        fzUInt getNumberActions(void *target) const;
         
         
         //! Returns the total numbers of actions that are running.
@@ -135,7 +135,7 @@ namespace FORZE {
         
         //! Removes all actions from a certain target.
         //! All the actions that belongs to the target will be removed.
-        void removeAllActions(void *fromTarget);
+        void removeAllActions(void *target);
         
         
         //! Removes all actions from all the targers.
