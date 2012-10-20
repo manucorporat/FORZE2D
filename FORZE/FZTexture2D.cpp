@@ -489,9 +489,6 @@ namespace FORZE {
     {
         fzUInt factor;
         fzBuffer buffer = ResourcesManager::Instance().loadResource(filename, &factor);
-        if(buffer.isEmpty())
-            FZ_RAISE("Texture2D:IO: Error reading file.");
-        
         m_factor = factor;
         
         // Unpack PVR Data
@@ -499,7 +496,7 @@ namespace FORZE {
             loadPVRData(buffer.getPointer());
             buffer.free();
 
-        } catch(std::runtime_error &error) {
+        } catch(std::exception &error) {
             buffer.free();
             throw error;
         }
@@ -527,7 +524,8 @@ namespace FORZE {
         try {
             loadPVRData(buffer2.getPointer());
             buffer2.free();
-        } catch(std::runtime_error &error) {
+            
+        } catch(std::exception &error) {
             buffer2.free();
             throw error;
         }

@@ -60,8 +60,9 @@ namespace FORZE {
         fseek(f, 0, SEEK_SET);
         
         
-        char *buffer = new(nothrow) char[size+1];
+        char *buffer = new(std::nothrow) char[size+1];
         if(buffer == NULL) {
+            fclose(f);
             FZLOGERROR("IO: Impossible to allocate memory.");
             return fzBuffer::empty();
         }

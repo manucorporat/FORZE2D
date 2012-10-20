@@ -204,7 +204,7 @@ namespace FORZE {
             
             xml_node<> *node = doc.first_node();
             if(strncmp(node->name(), XML_SIZE_TAG, node->name_size()) != 0)
-                throw std::runtime_error("XML is corrupted");
+                FZ_RAISE("DataStore: XML is corrupted.");
 
             
             // RESERVE CAPACITY
@@ -260,7 +260,7 @@ namespace FORZE {
                             entry.floatValue = atof(data);
                             break;
                         default:
-                            throw std::runtime_error("Entry type is invalid.");
+                            FZ_RAISE("DataStore: Entry type is invalid.");
                             break;
                     }
                 }

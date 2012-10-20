@@ -81,7 +81,7 @@ namespace FORZE {
                 // the NIB was loaded, now we have to check if the NIB is compatible with FORZE.
                 // FORZE needs to catch all application events, so the app delegate must be the OSWrapper.
                 if(![[app delegate] isKindOfClass:[_FZOSWRAPPER class]])
-                    throw std::runtime_error("Fatal error. The app delegate specified in the NIB must be subclass of \"_FZOSWRAPPER\"");
+                    FZ_RAISE("OS Wrapper: Fatal error. The app delegate specified in the NIB must be subclass of \"_FZOSWRAPPER\"");
             }        
             
             [[NSApplication sharedApplication] run];

@@ -91,7 +91,7 @@ namespace FORZE {
         FZ_ASSERT(source != NULL, "Argumment must be non-NULL");
         
         if(!compileShader(source))
-            throw std::runtime_error("Error compiling shader.");
+            FZ_RAISE("GLProgram: Error compiling shader.");
     }
     
     
@@ -322,7 +322,7 @@ namespace FORZE {
         if(location != -1) {
             glUniformMatrix4fv(location, count, transpose, matrix);
             CHECK_GL_ERROR_DEBUG();
-        }        
+        }
     }
     
     void GLProgram::setUniform1iv(const char* uniform, fzUInt count, int* values) const
