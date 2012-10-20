@@ -117,8 +117,7 @@ namespace FORZE {
     
     Label::~Label()
     {
-        setFont(NULL);
-        setTexture(NULL);
+        FZ_SAFE_RELEASE(p_font);
     }
     
     
@@ -126,10 +125,10 @@ namespace FORZE {
     {
         FZRETAIN_TEMPLATE(font, p_font);
 
-        if(font)
+        if(font) {
             setTexture(font->getTexture());
-        
-        createFontChars();
+            createFontChars();
+        }
     }
     
     
@@ -182,128 +181,133 @@ namespace FORZE {
     }
     
     
+    const fzColor3B& Label::getColor() const
+    {
+        return m_color;
+    }
+    
+    
     void Label::createFontChars()
     {
         // Get string length
         fzUInt m_stringLen = m_string.size();
-        if(m_stringLen == 0)
-            return;
     
-        // Is font available?
-        if(p_font == NULL) {
-            FZLOGERROR("Label: Impossible to generate label, font config is missing.");
-            return;
-        }        
-        
-        // Precalculate label size
-        fzUInt longestLine = 0;
-        fzUInt currentLine = 0;
-        fzFloat lineWidth[100];
-        char charId = 0, prevId = 0;
-        memset(lineWidth, 0, sizeof(fzFloat) * 100);
-        
-        for(fzUInt i = 0; i < m_stringLen; ++i) {
-            char charId = m_string.at(i);
-            if( charId > 0) {
+        Sprite *fontChar = static_cast<Sprite*>(m_children.front());
+        if(m_stringLen > 0)
+        {
+            // Is font available?
+            if(p_font == NULL) {
+                FZLOGERROR("Label: Impossible to generate label, font config is missing.");
+                return;
+            }
+            
+            // Precalculate label size
+            fzUInt longestLine = 0;
+            fzUInt currentLine = 0;
+            char charId = 0, prevId = 0;
+            fzFloat lineWidth[100];
+            memset(lineWidth, 0, sizeof(fzFloat) * 100);
+            
+            for(fzUInt i = 0; i < m_stringLen; ++i) {
+                charId = m_string.at(i);
+                if(charId < 0)
+                    FZ_RAISE("Label: CHAR[] doesn't exist. It's negative.");
                 
                 if( charId == '\n') {
                     longestLine = MAX(longestLine, lineWidth[currentLine]);
                     ++currentLine;
-                }else
-                {
+                }else {
                     lineWidth[currentLine] += p_font->getCharInfo(charId).xAdvance + m_horizontalPadding + p_font->getKerning(prevId, charId);
                     prevId = charId;
                 }
             }
-        }
-        longestLine = MAX(longestLine, lineWidth[currentLine]);
-
-        
-        fzFloat lineHeight = p_font->getLineHeight() + m_verticalPadding;
-        fzFloat totalHeight = lineHeight * (currentLine+1);
-        
-        fzInt nextFontPositionY = totalHeight - lineHeight;
-        fzInt nextFontPositionX = 0;
-        
-        prevId = 0;
-        currentLine = 0;
-        Sprite *fontChar = static_cast<Sprite*>(m_children.front());
-        for(fzUInt i = 0; i < m_stringLen; ++i)
-        {
-            charId = m_string.at(i);
-            if(charId < 0) {
-                FZLOGERROR("Label: CHAR[%d] doesn't exist. It's negative.", charId);
-                continue;
-            }
+            longestLine = MAX(longestLine, lineWidth[currentLine]);
             
-            // line jump
-            if (charId == '\n') {
-                nextFontPositionY -= lineHeight;
-                nextFontPositionX = 0;
-                ++currentLine;
-                continue;
-            }
             
-            // config line start point
-            if (nextFontPositionX == 0)
+            fzFloat lineHeight = p_font->getLineHeight() + m_verticalPadding;
+            fzFloat totalHeight = lineHeight * (currentLine+1);
+            
+            fzInt nextFontPositionY = totalHeight - lineHeight;
+            fzInt nextFontPositionX = 0;
+            
+            prevId = 0; currentLine = 0;
+            for(fzUInt i = 0; i < m_stringLen; ++i)
             {
-                switch (m_alignment) {
-                    case kFZLabelAlignment_left:
-                        nextFontPositionX = 0;
-                        break;
-                    case kFZLabelAlignment_right:
-                        nextFontPositionX = longestLine - lineWidth[currentLine];
-                        break;
-                    case kFZLabelAlignment_center:
-                        nextFontPositionX = (longestLine - lineWidth[currentLine])/2.0f;
-                        break;
-                    default:
-                        break;
+                charId = m_string.at(i);
+
+                // line jump
+                if (charId == '\n') {
+                    nextFontPositionY -= lineHeight;
+                    nextFontPositionX = 0;
+                    ++currentLine;
+                    continue;
                 }
-            }
-            
-            // get font def
-            const fzCharDef& fontDef = p_font->getCharInfo(static_cast<unsigned char>(charId));
-            if(fontDef.xAdvance == 0) {
-                char toPrint[3];
-                printChar(toPrint, charId);
-                FZLOGERROR("Label: CHAR[%d] '%s' is not included.", charId, toPrint);
-                nextFontPositionX += p_font->getLineHeight();
-                continue;
-            }
-            
-            // get sprite
-            if( fontChar == NULL ) {
-                fontChar = new Sprite();
-                addChild(fontChar);
                 
-            }else {
-                // reusing sprites
-                fontChar->setIsVisible(true);
+                // config line start point
+                if (nextFontPositionX == 0)
+                {
+                    switch (m_alignment) {
+                        case kFZLabelAlignment_left:
+                            nextFontPositionX = 0;
+                            break;
+                        case kFZLabelAlignment_right:
+                            nextFontPositionX = longestLine - lineWidth[currentLine];
+                            break;
+                        case kFZLabelAlignment_center:
+                            nextFontPositionX = (longestLine - lineWidth[currentLine])/2.0f;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                
+                // get font def
+                const fzCharDef& fontDef = p_font->getCharInfo(static_cast<unsigned char>(charId));
+                if(fontDef.xAdvance == 0) {
+                    char toPrint[3];
+                    printChar(toPrint, charId);
+                    FZLOGERROR("Label: CHAR[%d] '%s' is not included.", charId, toPrint);
+                    nextFontPositionX += p_font->getLineHeight();
+                    continue;
+                }
+                
+                // get sprite
+                if( fontChar == NULL ) {
+                    fontChar = new Sprite();
+                    addChild(fontChar);
+                    
+                }else {
+                    // reusing sprites
+                    fontChar->setIsVisible(true);
+                }
+                
+                // config sprite
+                nextFontPositionX += p_font->getKerning(prevId, charId);
+                fzFloat yOffset = p_font->getLineHeight() - fontDef.yOffset;
+                fzPoint fontPos = fzPoint(nextFontPositionX + fontDef.xOffset + fontDef.width * 0.5f,
+                                          nextFontPositionY + yOffset - fontDef.height * 0.5f );
+                
+                fontChar->setTextureRect(fontDef.getRect());
+                fontChar->setPosition(fontPos);
+                fontChar->setColor(m_color);
+                
+                
+                // next sprite
+                nextFontPositionX += fontDef.xAdvance + m_horizontalPadding;
+                prevId = charId;
+                fontChar = static_cast<Sprite*>(fontChar->next());
             }
             
-            // config sprite
-            nextFontPositionX += p_font->getKerning(prevId, charId);
-            fzFloat yOffset = p_font->getLineHeight() - fontDef.yOffset;
-            fzPoint fontPos = fzPoint(nextFontPositionX + fontDef.xOffset + fontDef.width * 0.5f,
-                                      nextFontPositionY + yOffset - fontDef.height * 0.5f );
+            // new content size
+            setContentSize(fzSize(longestLine, totalHeight));
             
-            fontChar->setTextureRect(fontDef.getRect());
-            fontChar->setPosition(fontPos);
-            fontChar->setColor(m_color);
+        }else{
             
-            
-            // next sprite
-            nextFontPositionX += fontDef.xAdvance + m_horizontalPadding;
-            prevId = charId;
-            fontChar = static_cast<Sprite*>(fontChar->next());
+            setContentSize(FZSizeZero);
         }
         
         // make sprites not longer used hidden.
         for(; fontChar; fontChar = static_cast<Sprite*>(fontChar->next()))
             fontChar->setIsVisible(false);
-        
-        // new content size
-        setContentSize(fzSize(longestLine, totalHeight));
     }
 }
