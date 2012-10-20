@@ -115,16 +115,10 @@ namespace FORZE {
         
         
         //! Sets the color used as filter
-        void setColor(const fzColor3B& color) {
-            m_color = color;
-            makeDirty(kFZDirty_color);
-        }
-        
+        virtual void setColor(const fzColor3B& color) override;
         
         //! Returns the color used as filter
-        const fzColor3B& getColor() const {
-            return m_color;
-        }
+        virtual const fzColor3B& getColor() const override;
 
         
         //! Sets the OpenGl blendfunc used by.
@@ -178,7 +172,9 @@ namespace FORZE {
         
     public:
         //! Constructs a full-screen layer with a gradient between start and end in the direction of v
-        LayerGradient(const fzColor4B& start, const fzColor4B& end, const fzPoint& vector = fzPoint(1, 0));
+        LayerGradient(const fzColor4B& start, const fzColor4B& end, const fzSize& size);
+        
+        LayerGradient(const fzColor4B& start, const fzColor4B& end);
         
         
         //! Sets the gradient's start color

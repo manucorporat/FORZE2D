@@ -69,6 +69,7 @@ namespace FORZE {
         return m_trackedEvents;
     }
     
+    
     void Layer::setPriority(fzInt priority)
     {
         if(priority != m_priority) {
@@ -77,6 +78,7 @@ namespace FORZE {
                 registerWithEventDispatcher();
         }
     }
+    
     
     fzInt Layer::getPriority() const
     {
@@ -121,6 +123,19 @@ namespace FORZE {
     LayerColor::LayerColor(const fzColor4B& color)
     : LayerColor(color, Director::Instance().getCanvasSize())
     { }
+    
+    
+    void LayerColor::setColor(const fzColor3B& color)
+    {
+        m_color = color;
+        makeDirty(kFZDirty_color);
+    }
+    
+    
+    const fzColor3B& LayerColor::getColor() const
+    {
+        return m_color;
+    }
     
     
     void LayerColor::updateStuff()
@@ -177,13 +192,23 @@ namespace FORZE {
     
     
 #pragma mark - LayerGradient
+        
+    LayerGradient::LayerGradient(const fzColor4B& start, const fzColor4B& end, const fzSize& size)
+    : LayerColor(start, size)
+    , m_endColor(end)
+    , m_endAlpha(end.a)
+    , m_startAlpha(start.a)
+    , m_vector(0, 1)
+    , m_compressedInterpolation(true)
+    { }
     
-    LayerGradient::LayerGradient(const fzColor4B& s, const fzColor4B& e, const fzPoint& v)
-    : LayerColor(fzWHITE)
-    , m_endColor(e)
-    , m_endAlpha(e.a)
-    , m_startAlpha(s.a)
-    , m_vector(v)
+    
+    LayerGradient::LayerGradient(const fzColor4B& start, const fzColor4B& end)
+    : LayerColor(start)
+    , m_endColor(end)
+    , m_endAlpha(end.a)
+    , m_startAlpha(start.a)
+    , m_vector(0, 1)
     , m_compressedInterpolation(true)
     { }
     
@@ -268,6 +293,18 @@ namespace FORZE {
     void LayerGradient::updateStuff()
     {
         Node::updateStuff();
+        
+        if(m_dirtyFlags & kFZDirty_transform_absolute)
+        {
+            float vertices[8] = {
+                0, 0,
+                m_contentSize.width, 0,
+                0, m_contentSize.height,
+                m_contentSize.width, m_contentSize.height
+            };
+            
+            fzMath_mat4Vec4(m_transformMV, vertices, p_squareVertices);
+        }
         
         if(m_dirtyFlags & kFZDirty_color) {
             GLubyte cachedAlpha = static_cast<GLubyte>((fzFloat)m_alpha * m_cachedOpacity);

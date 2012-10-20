@@ -74,8 +74,8 @@ namespace FORZE {
     public:
         virtual ~RGBAProtocol(){}
 
-        virtual const fzColor3B& getColor() const = 0;
-        virtual void setColor(const fzColor3B&) = 0;
+        virtual const fzColor3B& getColor() const {}
+        virtual void setColor(const fzColor3B&) {}
     };
     
     

@@ -279,12 +279,12 @@ namespace FORZE {
         //! Sets the sprite's color filter
         //! fzWHITE is default
         //! @see getColor()
-        void setColor(const fzColor3B& c);
+        virtual void setColor(const fzColor3B& c) override;
         
         
         //! Returns the sprite's color filter
         //! @see setColor()
-        const fzColor3B& getColor() const;
+        virtual const fzColor3B& getColor() const override;
         
         
         //!

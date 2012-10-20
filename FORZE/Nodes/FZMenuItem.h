@@ -159,8 +159,8 @@ namespace FORZE {
         //! Sets a new string to the inner label
         void setString(const char* str);
         
-        void setColor(const fzColor3B&);
-        const fzColor3B& getColor() const;
+        virtual void setColor(const fzColor3B&) override;
+        virtual const fzColor3B& getColor() const override;
         
         // Redefined functions
         virtual void setIsEnabled(bool) override;

@@ -39,7 +39,7 @@ using namespace STD;
 
 namespace FORZE {
     
-    enum fzLabelAlignment{
+    enum fzLabelAlignment {
         kFZLabelAlignment_left,
         kFZLabelAlignment_center,
         kFZLabelAlignment_right,
@@ -64,8 +64,10 @@ namespace FORZE {
         //! @warning you must set a valid font before set a text
         Label();
         
+        
         //! Constructs a bitmap font label, you should use this method when creating .TTF(vectorial) fonts.
         Label(const char* text, const char* fontFilename, fzFloat lineHeight);
+        
         
         //! Constructs a bitmap font label, this method is recomemded for .FNT fonts.
         Label(const char* text, const char* fontFilename);
@@ -121,13 +123,11 @@ namespace FORZE {
 
         
         //! Sets the color used as filter
-        void setColor(const fzColor3B& color);
+        virtual void setColor(const fzColor3B& color) override;
         
         
         //! Returns the color used as filter
-        const fzColor3B& getColor() const {
-            return m_color;
-        }
+        virtual const fzColor3B& getColor() const override;
     };
 }
 #endif
