@@ -80,14 +80,13 @@ namespace FORZE {
         
         // Destructor
         ~DeviceConfig();
-        
-        bool checkForGLExtension(const char* searchName);
-        
+                
     public:
         //! Gets and allocates the singleton
         static DeviceConfig& Instance();
         static void SimulateInterface(int interface);
         
+        bool checkForGLExtension(const char* searchName);
         
         //! Returns the maximum number of samples supported by OpenGL
         const char* getDeviceCode() const;
