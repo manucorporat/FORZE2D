@@ -602,6 +602,12 @@ namespace FORZE {
         const bool operator != (const fzRect& r) const {
             return !(operator == (r));
         }
+        
+        fzRect& operator *= (fzFloat f) {
+            origin *= f;
+            size *= f;
+            return *this;
+        }
     };
 
     

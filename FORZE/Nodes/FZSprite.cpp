@@ -224,8 +224,7 @@ namespace FORZE {
         fzFloat wide = texture->getPixelsWide();
         fzFloat high = texture->getPixelsHigh();
         
-        rect.origin *= texture->getFactor();
-        rect.size   *= texture->getFactor();
+        rect *= texture->getFactor();
         
 #if FZ_FIX_ARTIFACTS_BY_STRECHING_TEXEL
         wide *= 2;
