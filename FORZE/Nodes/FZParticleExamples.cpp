@@ -61,8 +61,8 @@ namespace FORZE {
 		
         // emitter position
         fzSize winSize = Director::Instance().getCanvasSize();
-        //setPosition(Point2(winSize.width/2, winSize.height/2));
-        setPosition(fzPoint(winSize.width/2, 0));
+        setSourcePosition(winSize/2);
+        setPosition(FZPointZero);
         
         setPosVar(fzPoint(22, 0));
 		
@@ -77,7 +77,7 @@ namespace FORZE {
         
         
         // emits per frame
-        setEmissionRate(totalParticles_ / life_);
+        setEmissionRate(getTotalParticles() / getLife());
 		
         // color of particles
         setStartColor(fzColor4F(0.76f, 0.25f, 0.12f, 1));

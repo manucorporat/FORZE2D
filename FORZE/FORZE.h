@@ -81,6 +81,7 @@
 #include "FZLabel.h"
 #include "FZParticleSystem.h"
 #include "FZParticleSystemQuad.h"
+#include "FZParticleExamples.h"
 #include "FZLayer.h"
 #include "FZMenu.h"
 #include "FZMenuItem.h"

@@ -230,27 +230,27 @@ namespace FORZE {
      */
     
     ParticleSystem::ParticleSystem(fzUInt number, Texture2D *texture)
-    : totalParticles_(number)
-    , particleCount_(0)
-    , particleIdx_(0)
-    , isActive_(true)
-    , autoRemoveOnFinish_(false)
-    , blendFunc_()
-    , texture_(NULL)
-    , positionType_(kFZPositionTypeFree)
-    , emitterMode_(kFZParticleModeGravity)
+    : m_totalParticles(number)
+    , m_particleCount(0)
+    , m_particleIdx(0)
+    , m_isActive(true)
+    , m_autoRemoveOnFinish(false)
+    , m_blendFunc()
+    , p_texture(NULL)
+    , m_positionType(kFZPositionTypeFree)
+    , m_emitterMode(kFZParticleModeGravity)
     {
         FZ_ASSERT(texture != NULL, "Texture cannot be NULL");
         setTexture(texture);
 
-        particles_ = new tFZParticle[totalParticles_];
+        p_particles = new fzParticle[m_totalParticles];
         schedule(); // schedule update()
     }
     
     
     ParticleSystem::~ParticleSystem()
     {
-        delete [] particles_;
+        delete [] p_particles;
     }
     
     
@@ -259,77 +259,69 @@ namespace FORZE {
         if( isFull() )
             return false;
         
-        initParticle(particles_[particleCount_]);
-        ++particleCount_;
+        initParticle(p_particles[m_particleCount]);
+        ++m_particleCount;
         
         return true;
     }
     
     
-    void ParticleSystem::initParticle(tFZParticle& particle)
+    void ParticleSystem::initParticle(fzParticle& particle)
     {
         // timeToLive
-        particle.timeToLive = life_ + lifeVar_ * FZ_RANDOM_MINUS1_1();
+        particle.timeToLive = m_life + m_lifeVar * FZ_RANDOM_MINUS1_1();
         if(particle.timeToLive < 0) particle.timeToLive = 0;
         
         // position
-        particle.pos = sourcePosition_ + posVar_ * FZ_RANDOM_MINUS1_1();
+        particle.pos = m_sourcePosition + m_posVar * FZ_RANDOM_MINUS1_1();
         
         // color
-        fzColor4F start(startColor_.r + startColorVar_.r * FZ_RANDOM_MINUS1_1(),
-                      startColor_.g + startColorVar_.g * FZ_RANDOM_MINUS1_1(),
-                      startColor_.b + startColorVar_.b * FZ_RANDOM_MINUS1_1(),
-                      startColor_.a + startColorVar_.a * FZ_RANDOM_MINUS1_1());
+        fzColor4F start(m_startColor.r + m_startColorVar.r * FZ_RANDOM_MINUS1_1(),
+                      m_startColor.g + m_startColorVar.g * FZ_RANDOM_MINUS1_1(),
+                      m_startColor.b + m_startColorVar.b * FZ_RANDOM_MINUS1_1(),
+                      m_startColor.a + m_startColorVar.a * FZ_RANDOM_MINUS1_1());
         
-        fzColor4F end(endColor_.r + endColorVar_.r * FZ_RANDOM_MINUS1_1(),
-                    endColor_.g + endColorVar_.g * FZ_RANDOM_MINUS1_1(),
-                    endColor_.b + endColorVar_.b * FZ_RANDOM_MINUS1_1(),
-                    endColor_.a + endColorVar_.a * FZ_RANDOM_MINUS1_1());
+        fzColor4F end(m_endColor.r + m_endColorVar.r * FZ_RANDOM_MINUS1_1(),
+                    m_endColor.g + m_endColorVar.g * FZ_RANDOM_MINUS1_1(),
+                    m_endColor.b + m_endColorVar.b * FZ_RANDOM_MINUS1_1(),
+                    m_endColor.a + m_endColorVar.a * FZ_RANDOM_MINUS1_1());
         
         particle.color = start;
         particle.deltaColor = (end - start) * (1 / particle.timeToLive);
         
         // size
-        fzFloat startS = startSize_ + startSizeVar_ * FZ_RANDOM_MINUS1_1();
+        fzFloat startS = m_startSize + m_startSizeVar * FZ_RANDOM_MINUS1_1();
         if(startS < 0) startS = 0;
         particle.size = startS;
         
-        if( endSize_ == kFZParticleStartSizeEqualToEndSize )
+        if( m_endSize == kFZParticleStartSizeEqualToEndSize )
             particle.deltaSize = 0;
         
         else {
-            fzFloat endS = endSize_ + endSizeVar_ * FZ_RANDOM_MINUS1_1();
+            fzFloat endS = m_endSize + m_endSizeVar * FZ_RANDOM_MINUS1_1();
             if(endS < 0) endS = 0;
 
             particle.deltaSize = (endS - startS) / particle.timeToLive;
         }
         
         // rotation
-        fzFloat startA = startSpin_ + startSpinVar_ * FZ_RANDOM_MINUS1_1();
-        fzFloat endA = endSpin_ + endSpinVar_ * FZ_RANDOM_MINUS1_1();
+        fzFloat startA = m_startSpin + m_startSpinVar * FZ_RANDOM_MINUS1_1();
+        fzFloat endA = m_endSpin + m_endSpinVar * FZ_RANDOM_MINUS1_1();
         particle.rotation = startA;
         particle.deltaRotation = (endA - startA) / particle.timeToLive;
         
         
-        // position
-        if( positionType_ == kFZPositionTypeFree )
-            particle.startPos = convertToWorldSpace(FZPointZero);
-        
-        else if( positionType_ == kFZPositionTypeRelative )
-            particle.startPos = m_position;
-        
-        
         // direction
-        fzFloat a = FZ_DEGREES_TO_RADIANS( angle_ + angleVar_ * FZ_RANDOM_MINUS1_1() );	
+        fzFloat a = FZ_DEGREES_TO_RADIANS( m_angle + m_angleVar * FZ_RANDOM_MINUS1_1() );	
         
         // Mode Gravity: A
-        if( emitterMode_ == kFZParticleModeGravity ) {
+        if( m_emitterMode == kFZParticleModeGravity ) {
             
             fzFloat s = mode.A.speed + mode.A.speedVar * FZ_RANDOM_MINUS1_1();
             
             // direction
-            particle.mode.A.dirX = fzMath_sin(a) * s;
-            particle.mode.A.dirY = fzMath_cos(a) * s;
+            particle.mode.A.dirX = fzMath_cos(a) * s;
+            particle.mode.A.dirY = fzMath_sin(a) * s;
             
             // radial accel
             particle.mode.A.radialAccel = mode.A.radialAccel + mode.A.radialAccelVar * FZ_RANDOM_MINUS1_1();
@@ -358,54 +350,47 @@ namespace FORZE {
     
     void ParticleSystem::stopSystem()
     {
-        isActive_ = false;
-        elapsed_ = duration_;
-        emitCounter_ = 0; 
+        m_isActive = false;
+        m_elapsed = m_duration;
+        m_emitCounter = 0; 
     }
     
     
     void ParticleSystem::resetSystem()
     {
-        isActive_ = true;
-        elapsed_ = 0;
-        for(particleIdx_ = 0; particleIdx_ < particleCount_; ++particleIdx_)
-            particles_[particleIdx_].timeToLive = 0;
+        m_isActive = true;
+        m_elapsed = 0;
+        for(m_particleIdx = 0; m_particleIdx < m_particleCount; ++m_particleIdx)
+            p_particles[m_particleIdx].timeToLive = 0;
     }
     
     
     bool ParticleSystem::isFull() const
     {
-        return (particleCount_ == totalParticles_);
+        return (m_particleCount == m_totalParticles);
     }
     
 
     void ParticleSystem::update(fzFloat dt)
     {
-        if( isActive_ && emissionRate_ ) {
-            fzFloat rate = 1.0f / emissionRate_;
-            emitCounter_ += dt;
-            while( particleCount_ < totalParticles_ && emitCounter_ > rate ) {
+        if( m_isActive && m_emissionRate ) {
+            fzFloat rate = 1.0f / m_emissionRate;
+            m_emitCounter += dt;
+            while( m_particleCount < m_totalParticles && m_emitCounter > rate ) {
                 addParticle();
-                emitCounter_ -= rate;
+                m_emitCounter -= rate;
             }
             
-            elapsed_ += dt;
-            if(duration_ != -1 && duration_ < elapsed_)
+            m_elapsed += dt;
+            if(m_duration != -1 && m_duration < m_elapsed)
                 stopSystem();
         }
         
         
-        fzPoint currentPosition;
-        if( positionType_ == kFZPositionTypeFree )
-            currentPosition = convertToWorldSpace(FZPointZero);
-        
-        else if( positionType_ == kFZPositionTypeRelative )
-            currentPosition = m_position;
-        
-        particleIdx_ = 0;
-        while( particleIdx_ < particleCount_ )
+        m_particleIdx = 0;
+        while( m_particleIdx < m_particleCount )
         {
-            tFZParticle& p = particles_[particleIdx_];
+            fzParticle& p = p_particles[m_particleIdx];
             
             // life
             p.timeToLive -= dt;
@@ -413,7 +398,7 @@ namespace FORZE {
             if( p.timeToLive > 0 ) {
                 
                 // Mode A
-                if( emitterMode_ == kFZParticleModeGravity ) {
+                if( m_emitterMode == kFZParticleModeGravity ) {
                     
                     fzPoint tmp(p.pos);
                     if(tmp != FZPointZero)
@@ -459,25 +444,20 @@ namespace FORZE {
                 // angle
                 p.rotation += p.deltaRotation * dt;
                 
-                // update values in quad			
-                fzPoint	newPos = ( positionType_ == kFZPositionTypeFree || positionType_ == kFZPositionTypeRelative )
-                ? p.pos - currentPosition - p.startPos
-                : p.pos;
-                
-                // update quads
-                updateQuadWithParticle(p, newPos);
+                // update values in quad
+                updateQuadWithParticle(p, p.pos);
                 
                 // update particle counter
-                ++particleIdx_;
+                ++m_particleIdx;
                 
             } else {
                 // life < 0
-                --particleCount_;
+                --m_particleCount;
 
-                if( particleIdx_ != particleCount_ )
-                    memmove(&particles_[particleIdx_], &particles_[particleCount_], sizeof(tFZParticle));
+                if( m_particleIdx != m_particleCount )
+                    memmove(&p_particles[m_particleIdx], &p_particles[m_particleCount], sizeof(fzParticle));
                 
-                if( particleCount_ == 0 && autoRemoveOnFinish_ ) {
+                if( m_particleCount == 0 && m_autoRemoveOnFinish ) {
                     unschedule();
                     removeFromParent(true);
                     return;
@@ -485,63 +465,17 @@ namespace FORZE {
             }
         }
         
+        makeDirty(0);
+        
 #if FZ_VBO_STREAMING
         postStep();
 #endif
     }
     
     
-    void ParticleSystem::setIsActive(bool a)
-    {
-        isActive_ = a;
-    }
-    
-    
-    void ParticleSystem::setDuration(fzFloat d)
-    {
-        duration_ = d;
-    }
-    
-    
-    void ParticleSystem::setSourcePosition(const fzPoint& p)
-    {
-        sourcePosition_ = p;
-    }
-    
-    
-    void ParticleSystem::setPosVar(const fzPoint& p)
-    {
-        posVar_ = p;
-    }
-    
-    
-    void ParticleSystem::setLife(fzFloat l)
-    {
-        life_ = l;
-    }
-    
-    
-    void ParticleSystem::setLifeVar(fzFloat l)
-    {
-        lifeVar_ = l;
-    }
-    
-    
-    void ParticleSystem::setAngle(fzFloat a)
-    {
-        angle_ = a;
-    }
-    
-    
-    void ParticleSystem::setAngleVar(fzFloat a)
-    {
-        angleVar_ = a;
-    }
-    
-    
     void ParticleSystem::setGravity(const fzPoint& g)
     {
-        FZ_ASSERT( emitterMode_ == kFZParticleModeGravity, "Particle Mode should be Gravity");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeGravity, "Particle Mode should be Gravity");
         mode.A.gravityX = g.x;
         mode.A.gravityY = g.y;
     }
@@ -549,259 +483,97 @@ namespace FORZE {
     
     void ParticleSystem::setSpeed(fzFloat s)
     {
-        FZ_ASSERT( emitterMode_ == kFZParticleModeGravity, "Particle Mode should be Gravity");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeGravity, "Particle Mode should be Gravity");
         mode.A.speed = s;
     }
     
     
     void ParticleSystem::setSpeedVar(fzFloat s)
     {
-        FZ_ASSERT( emitterMode_ == kFZParticleModeGravity, "Particle Mode should be Gravity");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeGravity, "Particle Mode should be Gravity");
         mode.A.speedVar = s;
     }
     
     
     void ParticleSystem::setTangentialAccel(fzFloat t)
     {
-        FZ_ASSERT( emitterMode_ == kFZParticleModeGravity, "Particle Mode should be Gravity");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeGravity, "Particle Mode should be Gravity");
         mode.A.tangentialAccel = t;
     }
     
     
     void ParticleSystem::setTangentialAccelVar(fzFloat t)
     {
-        FZ_ASSERT( emitterMode_ == kFZParticleModeGravity, "Particle Mode should be Gravity");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeGravity, "Particle Mode should be Gravity");
         mode.A.tangentialAccelVar = t;
     }
     
     
     void ParticleSystem::setRadialAccel(fzFloat r)
     {
-        FZ_ASSERT( emitterMode_ == kFZParticleModeGravity, "Particle Mode should be Gravity");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeGravity, "Particle Mode should be Gravity");
         mode.A.radialAccel = r;
     }
     
     
     void ParticleSystem::setRadialAccelVar(fzFloat r)
     {
-        FZ_ASSERT( emitterMode_ == kFZParticleModeGravity, "Particle Mode should be Gravity");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeGravity, "Particle Mode should be Gravity");
         mode.A.radialAccelVar = r;
     }
     
     
     void ParticleSystem::setStartRadius(fzFloat r)
     {
-        FZ_ASSERT( emitterMode_ == kFZParticleModeRadius, "Particle Mode should be Radius");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeRadius, "Particle Mode should be Radius");
         mode.B.startRadius = r;
     }
     
     
     void ParticleSystem::setStartRadiusVar(fzFloat r)
     {
-        FZ_ASSERT( emitterMode_ == kFZParticleModeRadius, "Particle Mode should be Radius");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeRadius, "Particle Mode should be Radius");
         mode.B.startRadiusVar = r;
     }
     
     
     void ParticleSystem::setEndRadius(fzFloat r)
     {
-        FZ_ASSERT( emitterMode_ == kFZParticleModeRadius, "Particle Mode should be Radius");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeRadius, "Particle Mode should be Radius");
         mode.B.endRadius = r;
     }
     
     
     void ParticleSystem::setEndRadiusVar(fzFloat r)
     {
-        FZ_ASSERT( emitterMode_ == kFZParticleModeRadius, "Particle Mode should be Radius");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeRadius, "Particle Mode should be Radius");
         mode.B.endRadiusVar = r;
     }
     
     
     void ParticleSystem::setRotatePerSecond(fzFloat r)
     {
-        FZ_ASSERT( emitterMode_ == kFZParticleModeRadius, "Particle Mode should be Radius");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeRadius, "Particle Mode should be Radius");
         mode.B.rotatePerSecond = r;
     }
     
     
     void ParticleSystem::setRotatePerSecondVar(fzFloat r)
     {
-        FZ_ASSERT( emitterMode_ == kFZParticleModeRadius, "Particle Mode should be Radius");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeRadius, "Particle Mode should be Radius");
         mode.B.rotatePerSecondVar = r;
     }
-    
-    
-    void ParticleSystem::setStartSize(fzFloat s)
-    {
-        startSize_ = s;
-    }
-    
-    
-    void ParticleSystem::setStartSizeVar(fzFloat s)
-    {
-        startSizeVar_ = s;
-    }
-    
-    
-    void ParticleSystem::setEndSize(fzFloat s)
-    {
-        endSize_ = s;
-    }
-    
-    
-    void ParticleSystem::setEndSizeVar(fzFloat s)
-    {
-        endSizeVar_ = s;
-    }
-    
-    
-    void ParticleSystem::setStartColor(const fzColor4F& c)
-    {
-        startColor_ = c;
-    }
-    
-    
-    void ParticleSystem::setStartColorVar(const fzColor4F& c)
-    {
-        startColorVar_ = c;
-    }
-    
-    
-    void ParticleSystem::setEndColor(const fzColor4F& c)
-    {
-        endColor_ = c;
-    }
-    
-    
-    void ParticleSystem::setEndColorVar(const fzColor4F& c)
-    {
-        endColorVar_ = c;
-    }
-    
-    
-    void ParticleSystem::setStartSpin(fzFloat s)
-    {
-        startSpin_ = s;
-    }
-    
-    
-    void ParticleSystem::setStartSpinVar(fzFloat s)
-    {
-        startSpinVar_ = s;
-    }
-    
-    
-    void ParticleSystem::setEndSpin(fzFloat s)
-    {
-        endSpin_ = s;
-    }
-    
-    
-    void ParticleSystem::setEndSpinVar(fzFloat s)
-    {
-        endSpinVar_ = s;
-    }
-    
-    
-    void ParticleSystem::setEmissionRate(fzFloat r)
-    {
-        emissionRate_ = r;
-    }
-    
-    
-    void ParticleSystem::setTotalParticles(fzUInt t)
-    {
-        totalParticles_ = t;
-    }
-    
+       
     
     void ParticleSystem::setTexture(Texture2D *texture)
     {
-        FZRETAIN_TEMPLATE(texture, texture_);
+        FZRETAIN_TEMPLATE(texture, p_texture);
     }
     
-    
-    void ParticleSystem::setBlendFunc(const fzBlendFunc& b)
-    {
-        blendFunc_ = b;
-    }
-    
-    
-    void ParticleSystem::setPositionType(tFZPositionType e)
-    {
-        positionType_ = e;
-    }
-    
-    
-    void ParticleSystem::setAutoRemoveOnFinish(bool a)
-    {
-        autoRemoveOnFinish_ = a;
-    }
-    
-    
-    void ParticleSystem::setEmitterMode(fzInt e)
-    {
-        emitterMode_ = e;
-    }
-    
-    
-    bool ParticleSystem::getIsActive() const
-    {
-        return isActive_;
-    }
-    
-    
-    bool ParticleSystem::getParticleCount() const
-    {
-        return particleCount_;
-    }
-    
-    
-    fzFloat ParticleSystem::getDuration() const
-    {
-        return duration_;
-    }
-    
-    
-    const fzPoint& ParticleSystem::getSourcePosition() const
-    {
-        return sourcePosition_;
-    }
-    
-    
-    const fzPoint& ParticleSystem::getPosVar() const
-    {
-        return posVar_;
-    }
-    
-    
-    fzFloat ParticleSystem::getLife() const
-    {
-        return life_;
-    }
-    
-    
-    fzFloat ParticleSystem::getLifeVar() const
-    {
-        return lifeVar_;
-    }
-    
-    
-    fzFloat ParticleSystem::getAngle() const
-    {
-        return angle_;
-    }
-    
-    
-    fzFloat ParticleSystem::getAngleVar() const
-    {
-        return angleVar_;
-    }
-    
-    
+        
     const fzPoint& ParticleSystem::getGravity() const
     {
-        FZ_ASSERT( emitterMode_ == kFZParticleModeGravity, "Particle Mode should be Gravity");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeGravity, "Particle Mode should be Gravity");
         return FZPointZero;
         //return mode.A.gravity;
     }
@@ -809,198 +581,84 @@ namespace FORZE {
     
     fzFloat ParticleSystem::getSpeed() const
     {
-        FZ_ASSERT( emitterMode_ == kFZParticleModeGravity, "Particle Mode should be Gravity");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeGravity, "Particle Mode should be Gravity");
         return mode.A.speed;
     }
     
     
     fzFloat ParticleSystem::getSpeedVar() const
     {
-        FZ_ASSERT( emitterMode_ == kFZParticleModeGravity, "Particle Mode should be Gravity");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeGravity, "Particle Mode should be Gravity");
         return mode.A.speedVar;
     }
     
     
     fzFloat ParticleSystem::getTangentialAccel() const
     {
-        FZ_ASSERT( emitterMode_ == kFZParticleModeGravity, "Particle Mode should be Gravity");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeGravity, "Particle Mode should be Gravity");
         return mode.A.tangentialAccel;
     }
     
     
     fzFloat ParticleSystem::getTangentialAccelVar() const
     {
-        FZ_ASSERT( emitterMode_ == kFZParticleModeGravity, "Particle Mode should be Gravity");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeGravity, "Particle Mode should be Gravity");
         return mode.A.tangentialAccelVar;
     }
     
     
     fzFloat ParticleSystem::getRadialAccel() const
     {
-        FZ_ASSERT( emitterMode_ == kFZParticleModeGravity, "Particle Mode should be Gravity");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeGravity, "Particle Mode should be Gravity");
         return mode.A.radialAccel;
     }
     
     
     fzFloat ParticleSystem::getRadialAccelVar() const
     {
-        FZ_ASSERT( emitterMode_ == kFZParticleModeGravity, "Particle Mode should be Gravity");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeGravity, "Particle Mode should be Gravity");
         return mode.A.radialAccelVar;
     }
     
     
     fzFloat ParticleSystem::getStartRadius() const
     {
-        FZ_ASSERT( emitterMode_ == kFZParticleModeRadius, "Particle Mode should be Radius");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeRadius, "Particle Mode should be Radius");
         return mode.B.startRadius;
     }
     
     
     fzFloat ParticleSystem::getStartRadiusVar() const
     {
-        FZ_ASSERT( emitterMode_ == kFZParticleModeRadius, "Particle Mode should be Radius");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeRadius, "Particle Mode should be Radius");
         return mode.B.startRadiusVar;
     }
     
     
     fzFloat ParticleSystem::getEndRadius() const
     {
-        FZ_ASSERT( emitterMode_ == kFZParticleModeRadius, "Particle Mode should be Radius");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeRadius, "Particle Mode should be Radius");
         return mode.B.endRadius;
     }
     
     
     fzFloat ParticleSystem::getEndRadiusVar() const
     {
-        FZ_ASSERT( emitterMode_ == kFZParticleModeRadius, "Particle Mode should be Radius");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeRadius, "Particle Mode should be Radius");
         return mode.B.endRadiusVar;
     }
     
     
     fzFloat ParticleSystem::getRotatePerSecond() const
     {
-        FZ_ASSERT( emitterMode_ == kFZParticleModeRadius, "Particle Mode should be Radius");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeRadius, "Particle Mode should be Radius");
         return mode.B.rotatePerSecond;
     }
     
     
     fzFloat ParticleSystem::getRotatePerSecondVar() const
     {
-        FZ_ASSERT( emitterMode_ == kFZParticleModeRadius, "Particle Mode should be Radius");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeRadius, "Particle Mode should be Radius");
         return mode.B.rotatePerSecondVar;
-    }
-    
-    
-    fzFloat ParticleSystem::getStartSize() const
-    {
-        return startSize_;
-    }
-    
-    
-    fzFloat ParticleSystem::getStartSizeVar() const
-    {
-        return startSizeVar_;
-    }
-    
-    
-    fzFloat ParticleSystem::getEndSize() const
-    {
-        return endSize_;
-    }
-    
-    
-    fzFloat ParticleSystem::getEndSizeVar() const
-    {
-        return endSizeVar_;
-    }
-    
-    
-    const fzColor4F& ParticleSystem::getStartColor() const
-    {
-        return startColor_;
-    }
-    
-    
-    const fzColor4F& ParticleSystem::getStartColorVar() const
-    {
-        return startColorVar_;
-    }
-    
-    
-    const fzColor4F& ParticleSystem::getEndColor() const
-    {
-        return endColor_;
-    }
-    
-    
-    const fzColor4F& ParticleSystem::getEndColorVar() const
-    {
-        return endColorVar_;
-    }
-    
-    
-    fzFloat ParticleSystem::getStartSpin() const
-    {
-        return startSpin_;
-    }
-    
-    
-    fzFloat ParticleSystem::getStartSpinVar() const
-    {
-        return startSpinVar_;
-    }
-    
-    
-    fzFloat ParticleSystem::getEndSpin() const
-    {
-        return endSpin_;
-    }
-    
-    
-    fzFloat ParticleSystem::getEndSpinVar() const
-    {
-        return endSpinVar_;
-    }
-    
-    
-    fzFloat ParticleSystem::getEmissionRate() const
-    {
-        return emissionRate_;
-    }
-    
-    
-    fzUInt ParticleSystem::getTotalParticles() const
-    {
-        return totalParticles_;
-    }
-    
-    
-    Texture2D* ParticleSystem::getTexture() const
-    {
-        return texture_;
-    }
-    
-    
-    const fzBlendFunc& ParticleSystem::getBlendFunc() const
-    {
-        return blendFunc_;
-    }
-    
-    
-    tFZPositionType ParticleSystem::getPositionType() const
-    {
-        return positionType_;
-    }
-    
-    
-    bool ParticleSystem::getAutoRemoveOnFinish() const
-    {
-        return autoRemoveOnFinish_;
-    }
-    
-    
-    fzInt ParticleSystem::getEmitterMode() const
-    {
-        return emitterMode_;
     }
 }

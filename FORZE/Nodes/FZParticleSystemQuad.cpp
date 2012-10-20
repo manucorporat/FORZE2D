@@ -45,11 +45,11 @@ namespace FORZE {
     ParticleSystemQuad::ParticleSystemQuad(fzUInt number, Texture2D *texture)
     : ParticleSystem(number, texture)
     {
-        // allocating quads
-        p_quads = new fzC4_T2_V2_Quad[totalParticles_];
+        // allo cating quads
+        p_quads = new fzC4_T2_V2_Quad[getTotalParticles()];
         
         // initialize only once the texCoords and the indices
-        initTexCoordsWithRect(fzRect(0, 0, texture_->getPixelsWide(), texture_->getPixelsHigh()));
+        initTexCoordsWithRect(fzRect(FZPointZero, p_texture->getContentSize()));
         initIndices();
         
 #if FZ_GL_SHADERS
@@ -71,10 +71,10 @@ namespace FORZE {
     
     void ParticleSystemQuad::initIndices()
     {        
-        GLushort *indices = new GLushort[totalParticles_ * 6];
+        GLushort *indices = new GLushort[m_totalParticles * 6];
         
         fzUInt i = 0;
-        for(; i < totalParticles_; ++i)
+        for(; i < m_totalParticles; ++i)
         {
             const fzUInt i6 = i*6;
             const GLushort i4 = i*4;
@@ -91,8 +91,10 @@ namespace FORZE {
         glGenBuffers(1, &m_indicesVBO);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_indicesVBO);
         // copy indices to vram
-        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLushort) * totalParticles_ * 6, indices, GL_STATIC_DRAW);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLushort) * m_totalParticles * 6, indices, GL_STATIC_DRAW);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+        
+        CHECK_GL_ERROR_DEBUG();
         
         // dealloc indices
         delete [] indices;
@@ -107,20 +109,16 @@ namespace FORZE {
         glBufferData(GL_ARRAY_BUFFER, sizeof(fzC4_T2_V2_Quad) * totalParticles_, p_quads, GL_DYNAMIC_DRAW);	
         glBindBuffer(GL_ARRAY_BUFFER, 0);
 #endif // FZ_USES_VBO
-        
-        
-        //fzOpenglUnLock();
     }
     
     
     void ParticleSystemQuad::initTexCoordsWithRect(fzRect rect)
     {
         // convert to Tex coords        
-        fzUInt wide = texture_->getPixelsWide();
-        fzUInt high = texture_->getPixelsHigh();
+        fzUInt wide = p_texture->getPixelsWide();
+        fzUInt high = p_texture->getPixelsHigh();
         
-        rect.origin *= texture_->getFactor();
-        rect.size *= texture_->getFactor();
+        rect *= p_texture->getFactor();
         
 #if FZ_FIX_ARTIFACTS_BY_STRECHING_TEXEL
         wide *= 2;
@@ -137,7 +135,7 @@ namespace FORZE {
         GLfloat bottom  = top + rect.size.height / high;
         
         fzUInt i = 0;
-        for(; i < totalParticles_; ++i)
+        for(; i < m_totalParticles; ++i)
         {
             p_quads[i].bl.texCoord.x = left;
             p_quads[i].bl.texCoord.y = bottom;
@@ -156,7 +154,7 @@ namespace FORZE {
         FZ_ASSERT( s.getOffset() == FZPointZero, "QuadParticle only supports SpriteFrames with no offsets");
         
         // update texture before updating texture rect
-        if ( s.getTexture()->getName() != texture_->getName() )
+        if ( s.getTexture()->getName() != p_texture->getName() )
             setTexture(s.getTexture());
     }
     
@@ -164,7 +162,7 @@ namespace FORZE {
     void ParticleSystemQuad::setTexture(Texture2D *t, const fzRect& rect)
     {
         // Only update the texture if is different from the current one
-        if( t->getName() != texture_->getName() ) {
+        if( t->getName() != p_texture->getName() ) {
             ParticleSystem::setTexture(t);
             initTexCoordsWithRect(rect);
         }
@@ -173,14 +171,14 @@ namespace FORZE {
     
     void ParticleSystemQuad::setTexture(Texture2D *t)
     {
-        setTexture(t, fzRect(FZPointZero, texture_->getContentSize()));
+        setTexture(t, fzRect(FZPointZero, p_texture->getContentSize()));
     }
     
     
-    void ParticleSystemQuad::updateQuadWithParticle(const tFZParticle& p, const fzPoint& newPos)
+    void ParticleSystemQuad::updateQuadWithParticle(const fzParticle& p, const fzPoint& newPos)
     {
         // colors
-        fzC4_T2_V2_Quad& quad = p_quads[particleIdx_];
+        fzC4_T2_V2_Quad& quad = p_quads[m_particleIdx];
         
         fzColor4B color4B(p.color);
         quad.bl.color = color4B;
@@ -260,7 +258,7 @@ namespace FORZE {
     
     void ParticleSystemQuad::draw()
     {	
-        if(particleIdx_ == 0)
+        if(m_particleIdx == 0)
             return;
         
         // Default Attribs & States: GL_TEXTURE0, k,CCAttribVertex, kCCAttribColor, kCCAttribTexCoords
@@ -268,8 +266,8 @@ namespace FORZE {
         // Unneeded states: -
         
         fzGLSetMode(kFZGLMode_Texture);
-        fzGLBlendFunc( blendFunc_.src, blendFunc_.dst );
-
+        fzGLBlendFunc( m_blendFunc.src, m_blendFunc.dst );
+        p_texture->bind();
         
 #if FZ_GL_SHADERS
         
@@ -282,17 +280,17 @@ namespace FORZE {
         glVertexAttribPointer(kFZAttribColor, 4, GL_UNSIGNED_BYTE, GL_TRUE, sizeof(_fzC4_T2_V2), &p_quads->bl.color);
 #else
         
-        glLoadMatrixf(m_transformMV);
+        glLoadMatrixf(get);
 
         glVertexPointer(2, GL_FLOAT, sizeof(_fzC4_T2_V2), &p_quads->bl.vertex);
         glTexCoordPointer(2, GL_FLOAT, sizeof(_fzC4_T2_V2), &p_quads->bl.texCoord);
         glColorPointer(4, GL_UNSIGNED_BYTE, sizeof(_fzC4_T2_V2), &p_quads->bl.color);
 #endif
                 
-        FZ_ASSERT( particleIdx_ == particleCount_, "Abnormal error in particle quad");
+        FZ_ASSERT( m_particleIdx == m_particleCount, "Abnormal error in particle quad");
     
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_indicesVBO);
-        glDrawElements(GL_TRIANGLES, particleIdx_ * 6, GL_UNSIGNED_SHORT, 0);
+        glDrawElements(GL_TRIANGLES, m_particleIdx * 6, GL_UNSIGNED_SHORT, 0);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
     }
 }

@@ -76,46 +76,7 @@ namespace FORZE {
         /** Living particles are attached to the emitter and are translated along with it. */
         kFZPositionTypeGrouped,
     }tFZPositionType;
-
     
-    /** @struct tCCParticle
-     Structure that contains the values of each particle
-     */
-    typedef struct _sFZParticle {
-        fzPoint		pos;
-        fzPoint		startPos;
-        
-        fzColor4F   color;
-        fzColor4F   deltaColor;
-        
-        fzFloat		size;
-        fzFloat		deltaSize;
-        
-        fzFloat		rotation;
-        fzFloat		deltaRotation;
-        
-        fzFloat		timeToLive;
-        
-        union {
-            // Mode A: gravity, direction, radial accel, tangential accel
-            struct {
-                fzFloat     dirX;
-                fzFloat     dirY;
-                fzFloat		radialAccel;
-                fzFloat		tangentialAccel;
-            } A;
-            
-            // Mode B: radius mode
-            struct {
-                fzFloat		angle;
-                fzFloat		degreesPerSecond;
-                fzFloat		radius;
-                fzFloat		deltaRadius;
-            } B;
-        } mode;
-        
-    } tFZParticle;
-        
     
     /** Particle System base class
      Attributes of a Particle System:
@@ -163,56 +124,90 @@ namespace FORZE {
     class ParticleSystem : public Node, public TextureProtocol
     {
     protected:
+        
+        struct fzParticle {
+            fzPoint		pos;
+            
+            fzColor4F   color;
+            fzColor4F   deltaColor;
+            
+            fzFloat		size;
+            fzFloat		deltaSize;
+            
+            fzFloat		rotation;
+            fzFloat		deltaRotation;
+            
+            fzFloat		timeToLive;
+            
+            union {
+                // Mode A: gravity, direction, radial accel, tangential accel
+                struct {
+                    fzFloat     dirX;
+                    fzFloat     dirY;
+                    fzFloat		radialAccel;
+                    fzFloat		tangentialAccel;
+                } A;
+                
+                // Mode B: radius mode
+                struct {
+                    fzFloat		angle;
+                    fzFloat		degreesPerSecond;
+                    fzFloat		radius;
+                    fzFloat		deltaRadius;
+                } B;
+            } mode;
+        };
+        
         // Start color of the particles
-        fzColor4F startColor_;
+        fzColor4F m_startColor;
         // Start color variance
-        fzColor4F startColorVar_;
+        fzColor4F m_startColorVar;
         // End color of the particles
-        fzColor4F endColor_;
+        fzColor4F m_endColor;
         // End color variance
-        fzColor4F endColorVar_;
+        fzColor4F m_endColorVar;
         
         // position is from "superclass" CocosNode
-        fzPoint sourcePosition_;
+        fzPoint m_sourcePosition;
         // Position variance
-        fzPoint posVar_;
+        fzPoint m_posVar;
         
         // is the particle system active ?
-        fzFloat isActive_;
+        fzFloat m_isActive;
         // duration in seconds of the system. -1 is infinity
-        fzFloat duration_;
+        fzFloat m_duration;
         // time elapsed since the start of the system (in seconds)
-        fzFloat elapsed_;
+        fzFloat m_elapsed;
         // The angle (direction) of the particles measured in degrees
-        fzFloat angle_;
+        fzFloat m_angle;
         // Angle variance measured in degrees;
-        fzFloat angleVar_;
+        fzFloat m_angleVar;
         
         // start ize of the particles
-        fzFloat startSize_;
+        fzFloat m_startSize;
         // start Size variance
-        fzFloat startSizeVar_;
+        fzFloat m_startSizeVar;
         // End size of the particle
-        fzFloat endSize_;
+        fzFloat m_endSize;
         // end size of variance
-        fzFloat endSizeVar_;
+        fzFloat m_endSizeVar;
         
         // How many seconds will the particle live
-        fzFloat life_;
+        fzFloat m_life;
         // Life variance
-        fzFloat lifeVar_;
+        fzFloat m_lifeVar;
         
         // start angle of the particles
-        fzFloat startSpin_;
+        fzFloat m_startSpin;
         // start angle variance
-        fzFloat startSpinVar_;
+        fzFloat m_startSpinVar;
         // End angle of the particle
-        fzFloat endSpin_;
+        fzFloat m_endSpin;
         // end angle ariance
-        fzFloat endSpinVar_;
+        fzFloat m_endSpinVar;
         
         // Different modes
-        fzInt emitterMode_;
+        fzInt m_emitterMode;
         
         union {
             // Mode A:Gravity + Tangential Accel + Radial Accel
@@ -241,29 +236,29 @@ namespace FORZE {
         
 
         // Maximum particles
-        fzUInt totalParticles_;
+        fzUInt m_totalParticles;
         // Count of active particles
-        fzUInt particleCount_;
+        fzUInt m_particleCount;
         //  particle idx
-        fzUInt particleIdx_;
+        fzUInt m_particleIdx;
         
 
         // How many particles can be emitted per second
-        fzFloat emissionRate_;
-        fzFloat emitCounter_;
+        fzFloat m_emissionRate;
+        fzFloat m_emitCounter;
         
         // Array of particles
-        tFZParticle *particles_;
+        fzParticle *p_particles;
         // Texture of the particles
-        Texture2D *texture_;
+        Texture2D *p_texture;
         // blend function
-        fzBlendFunc	blendFunc_;
+        fzBlendFunc	m_blendFunc;
         
         // movment type: free or grouped
-        tFZPositionType	positionType_;
+        tFZPositionType	m_positionType;
         
         // Whether or not the node will be auto-removed when there are not particles
-        bool	autoRemoveOnFinish_;
+        bool	m_autoRemoveOnFinish;
     
         
     public:
@@ -286,7 +281,7 @@ namespace FORZE {
         bool addParticle();
         
         //! Initializes a particle
-        void initParticle(tFZParticle& particle);
+        void initParticle(fzParticle& particle);
         
         //! stop emitting particles. Running particles will continue to run until they die
         void stopSystem();
@@ -298,7 +293,7 @@ namespace FORZE {
         bool isFull() const;
         
         //! should be overriden by subclasses
-        virtual void updateQuadWithParticle(const tFZParticle& particle, const fzPoint& pos) = 0;
+        virtual void updateQuadWithParticle(const fzParticle& particle, const fzPoint& pos) = 0;
         
 #if FZ_VBO_STREAMING
         //! should be overriden by subclasses
@@ -309,43 +304,94 @@ namespace FORZE {
         void update(fzFloat dt);
         
         //! Is the emitter active
-        void setIsActive(bool);
-        bool getIsActive() const;
+        void setIsActive(bool a) {
+            m_isActive = a;
+        }
+        
+        bool getIsActive() const {
+            return m_isActive;
+        }
+        
         
         //! Quantity of particles that are being simulated at the moment
-        bool getParticleCount() const;
+        bool getParticleCount() const {
+            return m_particleCount;
+        }
+        
         
         //! How many seconds the emitter wil run. -1 means 'forever'
-        void setDuration(fzFloat);
-        fzFloat getDuration() const;
+        void setDuration(fzFloat duration) {
+            m_duration = duration;
+        }
+        
+        fzFloat getDuration() const {
+            return m_duration;
+        }
+        
         
         //! sourcePosition of the emitter
-        void setSourcePosition(const fzPoint&);
-        const fzPoint& getSourcePosition() const;
+        void setSourcePosition(const fzPoint& source) {
+            m_sourcePosition = source;
+        }
+        
+        const fzPoint& getSourcePosition() const {
+            return m_sourcePosition;
+        }
+        
         
         //! Position variance of the emitter
-        void setPosVar(const fzPoint&);
-        const fzPoint& getPosVar() const;
+        void setPosVar(const fzPoint& posVar) {
+            m_posVar = posVar;
+        }
+        
+        const fzPoint& getPosVar() const {
+            return m_posVar;
+        }
+        
+        
+        //! life, and life variation of each particle
+        void setLife(fzFloat life) {
+            m_life = life;
+        }
+        
+        fzFloat getLife() const {
+            return m_life;
+        }
+        
+        
+        //! life variance of each particle
+        void setLifeVar(fzFloat lifeVar) {
+            m_lifeVar = lifeVar;
+        }
+        
+        fzFloat getLifeVar() const {
+            return m_lifeVar;
+        }
+        
+        
+        //! angle and angle variation of each particle
+        void setAngle(fzFloat angle) {
+            m_angle = angle;
+        }
+        
+        fzFloat getAngle() const {
+            return m_angle;
+        }
+        
+        
+        //! angle variance of each particle
+        void setAngleVar(fzFloat angleVar) {
+            m_angleVar = angleVar;
+        }
+        
+        fzFloat getAngleVar() const {
+            return m_angleVar;
+        }
+        
         
         //! Gravity value. Only available in 'Gravity' mode
         void setGravity(const fzPoint&);
         const fzPoint& getGravity() const;
-        
-        //! life, and life variation of each particle
-        void setLife(fzFloat);
-        fzFloat getLife() const;
-        
-        //! life variance of each particle
-        void setLifeVar(fzFloat);
-        fzFloat getLifeVar() const;
-        
-        //! angle and angle variation of each particle
-        void setAngle(fzFloat);
-        fzFloat getAngle() const;
-        
-        //! angle variance of each particle
-        void setAngleVar(fzFloat);
-        fzFloat getAngleVar() const;
         
         //! speed of each particle. Only available in 'Gravity' mode
         void setSpeed(fzFloat);
@@ -395,84 +441,191 @@ namespace FORZE {
         void setRotatePerSecondVar(fzFloat r);
         fzFloat getRotatePerSecondVar() const;
         
+        
         //! start size in pixels of each particle
-        void setStartSize(fzFloat s);
-        fzFloat getStartSize() const;
+        void setStartSize(fzFloat s) {
+            m_startSize = s;
+        }
+        
+        fzFloat getStartSize() const {
+            return m_startSize;
+        }
+        
         
         //! size variance in pixels of each particle
-        void setStartSizeVar(fzFloat s);
-        fzFloat getStartSizeVar() const;
+        void setStartSizeVar(fzFloat s) {
+            m_startSizeVar = s;
+        }
+        
+        fzFloat getStartSizeVar() const {
+            return m_startSizeVar;
+        }
+        
         
         //! end size in pixels of each particle
-        void setEndSize(fzFloat s);
-        fzFloat getEndSize() const;
+        void setEndSize(fzFloat s) {
+            m_endSize = s;
+        }
+        
+        fzFloat getEndSize() const {
+            return m_endSize;
+        }
+        
         
         //! end size variance in pixels of each particle
-        void setEndSizeVar(fzFloat);
-        fzFloat getEndSizeVar() const;
+        void setEndSizeVar(fzFloat s) {
+            m_endSizeVar = s;
+        }
+        
+        fzFloat getEndSizeVar() const {
+            return m_endSizeVar;
+        }
+        
         
         //! start color of each particle
-        void setStartColor(const fzColor4F&);
-        const fzColor4F& getStartColor() const;
+        void setStartColor(const fzColor4F& c) {
+            m_startColor = c;
+        }
+        
+        const fzColor4F& getStartColor() const {
+            return m_startColor;
+        }
+        
         
         //! start color variance of each particle
-        void setStartColorVar(const fzColor4F&);
-        const fzColor4F& getStartColorVar() const;
+        void setStartColorVar(const fzColor4F& c) {
+            m_startColorVar = c;
+        }
+        
+        const fzColor4F& getStartColorVar() const {
+            return m_startColorVar;
+        }
+        
         
         //! end color and end color variation of each particle
-        void setEndColor(const fzColor4F&);
-        const fzColor4F& getEndColor() const;
+        void setEndColor(const fzColor4F& c) {
+            m_endColor = c;
+        }
+        
+        const fzColor4F& getEndColor() const {
+            return m_endColor;
+        }
+        
         
         //! end color variance of each particle
-        void setEndColorVar(const fzColor4F&);
-        const fzColor4F& getEndColorVar() const;
+        void setEndColorVar(const fzColor4F& c) {
+            m_endColorVar = c;
+        }
+        
+        const fzColor4F& getEndColorVar() const {
+            return m_endColorVar;
+        }
+        
         
         //! initial angle of each particle
-        void setStartSpin(fzFloat);
-        fzFloat getStartSpin() const;
+        void setStartSpin(fzFloat s) {
+            m_startSpin = s;
+        }
+        
+        fzFloat getStartSpin() const {
+            return m_startSpin;
+        }
+        
         
         //! initial angle of each particle
-        void setStartSpinVar(fzFloat);
-        fzFloat getStartSpinVar() const;
+        void setStartSpinVar(fzFloat s) {
+            m_startSpinVar = s;
+        }
+        
+        fzFloat getStartSpinVar() const {
+            return m_startSpinVar;
+        }
+        
         
         //! initial angle of each particle
-        void setEndSpin(fzFloat);
-        fzFloat getEndSpin() const;
+        void setEndSpin(fzFloat s) {
+            m_endSpin = s;
+        }
+        
+        fzFloat getEndSpin() const {
+            return m_endSpin;
+        }
+        
         
         //! initial angle of each particle
-        void setEndSpinVar(fzFloat);
-        fzFloat getEndSpinVar() const;
+        void setEndSpinVar(fzFloat s) {
+            m_endSpinVar = s;
+        }
+        
+        fzFloat getEndSpinVar() const {
+            return m_endSpinVar;
+        }
+        
         
         //! emission rate of the particles
-        void setEmissionRate(fzFloat);
-        fzFloat getEmissionRate() const;
+        void setEmissionRate(fzFloat r) {
+            m_emissionRate = r;
+        }
+        
+        fzFloat getEmissionRate() const {
+            return m_emissionRate;
+        }
+        
         
         //! maximum particles of the system
-        void setTotalParticles(fzUInt);
-        fzUInt getTotalParticles() const;
+        void setTotalParticles(fzUInt t) {
+            m_totalParticles = t;
+        }
+        
+        fzUInt getTotalParticles() const {
+            return m_totalParticles;
+        }
+        
         
         //! conforms to CocosNodeTexture protocol
         virtual void setTexture(Texture2D*);
-        Texture2D* getTexture() const;
+        Texture2D* getTexture() const {
+            return p_texture;
+        }
+        
         
         //! conforms to CocosNodeTexture protocol
-        void setBlendFunc(const fzBlendFunc&);
-        const fzBlendFunc& getBlendFunc() const;
+        void setBlendFunc(const fzBlendFunc& b) {
+            m_blendFunc = b;
+        }
+        
+        const fzBlendFunc& getBlendFunc() const {
+            return m_blendFunc;
+        }
         
         //! particles movement type: Free or Grouped
-        void setPositionType(tFZPositionType);
-        tFZPositionType getPositionType() const;
+        void setPositionType(tFZPositionType e) {
+            m_positionType = e;
+        }
         
+        tFZPositionType getPositionType() const {
+            return m_positionType;
+        }
         //! whether or not the node will be auto-removed when it has no particles left
-        void setAutoRemoveOnFinish(bool);
-        bool getAutoRemoveOnFinish() const;
+        void setAutoRemoveOnFinish(bool a) {
+            m_autoRemoveOnFinish = a;
+        }
+        
+        bool getAutoRemoveOnFinish() const {
+            return m_autoRemoveOnFinish;
+        }
         
         /** Switch between different kind of emitter modes:
          - kCCParticleModeGravity: uses gravity, speed, radial and tangential acceleration
          - kCCParticleModeRadius: uses radius movement + rotation
          */
-        void setEmitterMode(fzInt);
-        fzInt getEmitterMode() const;
+        void setEmitterMode(fzInt e) {
+            m_emitterMode = e;
+        }
+        
+        fzInt getEmitterMode() const {
+            return m_emitterMode;
+        }
     };
 }
 #endif
