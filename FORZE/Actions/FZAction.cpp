@@ -113,6 +113,12 @@ namespace FORZE {
     }
     
     
+    fzFloat FiniteTimeAction::getElapsed() const
+    {
+        return 0;
+    }
+    
+    
     FiniteTimeAction* FiniteTimeAction::copy() const
     {
         Action::reverse();
@@ -122,7 +128,7 @@ namespace FORZE {
     
 #pragma mark - RepeatForever
     
-    RepeatForever::RepeatForever(ActionInterval *action)
+    RepeatForever::RepeatForever(FiniteTimeAction *action)
     : p_innerAction(action)
     {
         FZ_ASSERT(p_innerAction != NULL, "Action cannot be NULL");
@@ -136,7 +142,7 @@ namespace FORZE {
     }
     
     
-    void RepeatForever::setInnerAction(ActionInterval *action)
+    void RepeatForever::setInnerAction(FiniteTimeAction *action)
     {
         FZRETAIN_TEMPLATE(action, p_innerAction);
     }

@@ -62,10 +62,9 @@ namespace FORZE {
     public:
         
         /** how many seconds had elapsed since the actions started to run. */
-        void setElapsed(fzFloat);
-        fzFloat getElapsed() const;
         
         // Redefined functions
+        virtual fzFloat getElapsed() const override;
         virtual bool isDone() const override;
         virtual void step(fzFloat dt) override;
         virtual void startWithTarget(void *t) override;

@@ -133,6 +133,8 @@ namespace FORZE {
             return m_duration;
         }
         
+        virtual fzFloat getElapsed() const;
+        
         virtual FiniteTimeAction* reverse() const override;
         virtual FiniteTimeAction* copy() const override;
     };
@@ -146,15 +148,15 @@ namespace FORZE {
     class RepeatForever : public Action
     {
     protected:
-        ActionInterval *p_innerAction;
+        FiniteTimeAction *p_innerAction;
         
     public:
-        RepeatForever(ActionInterval *action);
+        RepeatForever(FiniteTimeAction *action);
         ~RepeatForever();
         
         /** Inner action */
-        void setInnerAction(ActionInterval *action);
-        ActionInterval* getInnerAction() const {
+        void setInnerAction(FiniteTimeAction *action);
+        FiniteTimeAction* getInnerAction() const {
             return p_innerAction;
         }
         

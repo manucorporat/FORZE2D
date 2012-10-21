@@ -49,12 +49,6 @@ namespace FORZE {
     }
     
     
-    void ActionInterval::setElapsed(fzFloat e)
-    {
-        m_elapsed = e;
-    }
-    
-    
     fzFloat ActionInterval::getElapsed() const
     {
         return m_elapsed;
