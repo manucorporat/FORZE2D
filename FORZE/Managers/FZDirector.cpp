@@ -672,6 +672,7 @@ namespace FORZE {
 
         m_scenesStack.back()->release();
         m_scenesStack.pop_back();
+        
         m_scenesStack.push_back(scene);
         scene->retain();
         
@@ -683,9 +684,8 @@ namespace FORZE {
     {
         FZ_ASSERT( p_runningScene != NULL, "A running Scene is needed");
         
-        m_scenesStack.back()->retain();
+        m_scenesStack.back()->release();
         m_scenesStack.pop_back();
-        p_runningScene = NULL;
         
         if( m_scenesStack.empty() )
         {
