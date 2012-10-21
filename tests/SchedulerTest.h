@@ -122,4 +122,24 @@ public:
 
 };
 
+class ActionLoop1 : public TestLayer
+{    
+public:
+    ActionLoop1()
+    : TestLayer("Action Loop 2", NULL)
+    {
+        // Loop implemented using actions:
+        // RepeatForever + CallFunc
+        // This method is just for testing
+        // It is not a good practice
+        runAction(new RepeatForever(new CallFunc(this, SEL_VOID(ActionLoop1::loop))));
+    }
+    
+    void loop()
+    {
+        static int number = 0;
+        FZLog("Loop %d", number);
+        ++number;
+    }
+};
 

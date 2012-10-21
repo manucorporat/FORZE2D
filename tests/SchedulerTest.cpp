@@ -5,13 +5,14 @@
 using namespace FORZE;
 
 
-#define NUMBER_OF_TESTS 2
+#define NUMBER_OF_TESTS 3
 
 TestLayer *allTest(fzUInt index)
 {
     switch (index) {
         case 0: return new SchedulingTest();
         case 1: return new UnschedulingTest();
+        case 2: return new ActionLoop1();
 
         default:
             return NULL;
