@@ -88,10 +88,9 @@ namespace FORZE {
         FZ_ASSERT( target != NULL, "Argument target must be non-NULL");
         FZ_ASSERT( action->getTarget() == NULL, "This action is already used.");
         
-        action->startWithTarget(target);
         action->retain();
         
-        fzActionHandler container = {action, paused};
+        fzActionHandler container = {action, paused, false};
         m_actions.insert(pairAction(target, container));
     }
     
@@ -178,6 +177,11 @@ namespace FORZE {
         for(; it != m_actions.end();) {
             Action *action = it->second.action;
 
+            if(it->second.isStarted == false) {
+                action->startWithTarget(it->first);
+                it->second.isStarted = true;
+            }
+            
             if(action->getTarget() == NULL) {
                 
                 m_actions.erase(it++);

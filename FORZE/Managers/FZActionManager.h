@@ -61,6 +61,7 @@ namespace FORZE {
         struct fzActionHandler {
             Action *action;
             bool isPaused;
+            bool isStarted;
         };
        
         // Simplified types
