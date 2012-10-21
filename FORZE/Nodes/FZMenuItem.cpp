@@ -60,6 +60,7 @@ namespace FORZE {
     , m_isWaiting(true)
     {
         setAnchorPoint(0.5f, 0.5f);
+        setPosition(Director::Instance().getCanvasSize()/2);
     }
     
     
