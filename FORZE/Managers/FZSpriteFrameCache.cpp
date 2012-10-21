@@ -71,7 +71,8 @@ namespace FORZE {
             
         }catch(std::exception &error) {
             data.free();
-            FZLOGERROR("SpriteFrameCache: Error parsing \"%s\". rapidXML exception: %s", error.what());
+            FZLOGERROR("SpriteFrameCache: Error parsing \"%s\". rapidXML exception: %s", coordsFilename, error.what());
+            
             return;
         }
         
