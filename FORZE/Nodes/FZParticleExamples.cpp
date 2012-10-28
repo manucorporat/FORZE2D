@@ -36,7 +36,7 @@
 namespace FORZE {
 
     ParticleFire::ParticleFire()
-    : ParticleSystemQuad(400, TextureCache::Instance().addImage("fire_rgba8888.pvr"))
+    : ParticleSystemQuad(500, TextureCache::Instance().addImage("fire_rgba8888.pvr"))
     {
         // duration
         setDuration(kFZParticleDurationInfinity);
@@ -74,8 +74,7 @@ namespace FORZE {
         setStartSize(65);
         setStartSizeVar(16);
         setEndSize(kFZParticleStartSizeEqualToEndSize);
-        
-        
+                
         // emits per frame
         setEmissionRate(getTotalParticles() / getLife());
 		

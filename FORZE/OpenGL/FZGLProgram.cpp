@@ -213,7 +213,7 @@ namespace FORZE {
         glGetProgramiv(m_program, GL_LINK_STATUS, &status);
 
         if (status == GL_FALSE) {
-            FZLOGERROR("GLProgram: Error linking program: %i", m_program);
+            FZLOGERROR("GLProgram: Error linking program: %i.", m_program);
             FZLOGERROR("%s", getProgramLog().c_str());
             
             fzGLDeleteProgram( m_program );

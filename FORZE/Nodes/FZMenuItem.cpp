@@ -48,6 +48,7 @@ namespace FORZE {
         kFZMenuItem_selfMode
     };
     
+    
 #pragma mark - MenuItem
     
     MenuItem::MenuItem(SELProtocol *target, SELECTOR_PTR selector)

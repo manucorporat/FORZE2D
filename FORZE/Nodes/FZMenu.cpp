@@ -39,8 +39,8 @@
 namespace FORZE {
     
     enum {
-        kFZMenuDefaultPriority = 1,
-        kFZMenuDefaultPadding =  5,
+        kFZMenuDefaultPriority  = 1,
+        kFZMenuDefaultPadding   = 5,
     };
     
     
@@ -151,7 +151,6 @@ namespace FORZE {
         setContentSize(size);
         
         
-        
         fzUInt index = 0;
         for(fzUInt i = 0; i < nuColumns; ++i) {
             alignVertically(paddings.y, fzPoint(widths[i], m_contentSize.height/2), fzRange(index, sizes[i]));
@@ -187,7 +186,7 @@ namespace FORZE {
             }
             case kFZEventState_Updated:
             {
-                FZ_ASSERT(!m_isWaiting, "[Event updated] -- invalid state");
+                FZ_ASSERT(!m_isWaiting, "[Event updated] -- invalid state.");
                 
                 MenuItem *currentItem = itemForPosition(point);
                 

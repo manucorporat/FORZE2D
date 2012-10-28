@@ -174,8 +174,7 @@ namespace FORZE {
     {
         m_color = color;
         Sprite *sprite = static_cast<Sprite*>(m_children.front());
-        for(fzUInt i = 0; i < m_string.size() && sprite; ++i, sprite = static_cast<Sprite*>(sprite->next()))
-        {
+        for(fzUInt i = 0; (i < m_string.size()) && sprite; ++i, sprite = static_cast<Sprite*>(sprite->next())) {
             sprite->setColor(color);
         }
     }
