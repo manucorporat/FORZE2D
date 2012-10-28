@@ -34,7 +34,7 @@
 #include "FZGLState.h"
 #include "FZDirector.h"
 #include "FZMath.h"
-#include "matrixStack.h"
+#include "FZMS.h"
 
 
 namespace FORZE {
@@ -82,8 +82,7 @@ namespace FORZE {
         // check if it worked
         GLuint status = fzGLCheckFramebufferStatus(FZ_FRAMEBUFFER);
         if (status != FZ_FRAMEBUFFER_COMPLETE) {
-            FZLOGERROR("Grabber: Could not attach texture to framebuffer. Status: 0x%04X", status);
-            //assert(false);
+            FZLOGERROR("Grabber: Could not attach texture to framebuffer. Status: 0x%04X.", status);
         }
 
         fzGLClearColor(fzColor4F(0,0,0,0));
@@ -173,7 +172,7 @@ namespace FORZE {
         const fzSize& viewPort = getTexture()->getContentSizeInPixels();
         glViewport(0, 0, viewPort.width, viewPort.height);
         
-        fzMS_pushMatrix(m_transform);
+        MS::pushMatrix(m_transform);
     }
     
     
@@ -184,13 +183,13 @@ namespace FORZE {
         const fzSize& viewPort = getTexture()->getContentSizeInPixels();
         glViewport(0, 0, viewPort.width, viewPort.height);
         
-        fzMS_pushMatrix(m_transform);
+        MS::pushMatrix(m_transform);
     }
     
     
     void FBOTexture::end()
     {
-        fzMS_pop();
+        MS::pop();
         m_grabber.end();
         
         fzSize viewPort = Director::Instance().getViewPort();

@@ -82,7 +82,7 @@ namespace FORZE {
     void EventManager::setAccelGyroInterval(fzFloat interval)
     {
         FZ_ASSERT(interval >= 0, "Interval must be positive.");
-        fzOSW_configEventsInterval(Director::Instance().getOSWrapper(), interval);
+        OSW::setEventsInterval(interval);
     }
     
     
@@ -146,7 +146,7 @@ namespace FORZE {
             newFlags |= handler->flags;
         
         uint16_t updatedFlags = m_flags ^ newFlags;
-        fzOSW_configEvents(Director::Instance().getOSWrapper(), updatedFlags, newFlags);
+        OSW::configEvents(updatedFlags, newFlags);
         
         m_flags = newFlags;
     }

@@ -29,24 +29,23 @@
 
 #include "FZMath.h"
 #include "FZMacros.h"
-#include "matrixStack.h"
+#include "FZMS.h"
 
 namespace FORZE {
     
 #define STACK_SIZE 30
 #define STACK_INCREMENT 40
     
-    struct matrixStack {
+    struct FZMS {
         fzUInt capacity;
         fzUInt num;
         float **stack;
     };
-    
-    
-    static matrixStack _modelview_stack;
+    static FZMS _modelview_stack;
     static bool _initialized = false;
     
-    void fzMS_initialize()
+    
+    void MS::initialize()
     {
         if (_initialized)
             return;
@@ -63,7 +62,8 @@ namespace FORZE {
         _initialized = true;
     }
     
-    void fzMS_dealloc()
+    
+    void MS::dealloc()
     {
         if (!_initialized)
             return;
@@ -74,7 +74,7 @@ namespace FORZE {
     }
     
     
-    void fzMS_pushMatrix(float *matrix)
+    void MS::pushMatrix(float *matrix)
     {
         FZ_ASSERT(_initialized, "The matrix stack is not initialized.");
         FZ_ASSERT(matrix != NULL, "Matrix cannot be NULL");
@@ -89,7 +89,7 @@ namespace FORZE {
     }
     
     
-    void fzMS_pop()
+    void MS::pop()
     {
         FZ_ASSERT(_initialized, "The matrix stack is not initialized.");
         FZ_ASSERT(_modelview_stack.num > 1, "Cannot pop an empty stack");
@@ -98,7 +98,7 @@ namespace FORZE {
     }
     
     
-    void fzMS_loadBaseMatrix(float *matrix)
+    void MS::loadBaseMatrix(float *matrix)
     {
         FZ_ASSERT(_initialized, "The matrix stack is not initialized.");
         FZ_ASSERT(matrix != NULL, "Matrix cannot be NULL");
@@ -107,31 +107,31 @@ namespace FORZE {
     }
     
     
-    void fzMS_loadMatrix(float *matrix)
+    void MS::loadMatrix(float *matrix)
     {
         FZ_ASSERT(_initialized, "The matrix stack is not initialized.");
         FZ_ASSERT(matrix != NULL, "Input matrix can not be NULL");
-        FZ_ASSERT(_modelview_stack.num > 1, "Use fzMS_loadBaseMatrix() instead.");
+        FZ_ASSERT(_modelview_stack.num > 1, "Use MS::loadBaseMatrix() instead.");
         
         _modelview_stack.stack[_modelview_stack.num-1] = matrix;
     }
     
     
-    fzUInt fzMS_getLevel()
+    fzUInt MS::getLevel()
     {
         FZ_ASSERT(_initialized, "The matrix stack is not initialized.");
         return _modelview_stack.num;
     }
     
     
-    float* fzMS_getBaseMatrix()
+    float* MS::getBaseMatrix()
     {
         FZ_ASSERT(_initialized, "The matrix stack is not initialized.");
         return _modelview_stack.stack[0];  
     }
     
     
-    float* fzMS_getMatrix()
+    float* MS::getMatrix()
     {
         FZ_ASSERT(_initialized, "The matrix stack is not initialized.");
         return _modelview_stack.stack[_modelview_stack.num-1];

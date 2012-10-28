@@ -219,7 +219,7 @@ namespace FORZE {
         attribute = dataNode->first_attribute("encoding");
         if(attribute != NULL && strncmp(attribute->value(), "base64", attribute->value_size()) == 0) {
             
-            buffer2 = fzData_B64Decode(buffer1.getPointer(), buffer1.getLength());
+            buffer2 = Data::B64Decode(buffer1.getPointer(), buffer1.getLength());
 
         }else {
             
@@ -235,7 +235,7 @@ namespace FORZE {
             strncmp(attribute->value(), "zlib", attribute->value_size()) == 0))
         {
             fzUInt expectedSize = info.m_size.width * info.m_size.height * sizeof(uint32_t);
-            buffer1 = fzData_inflateZIPWithHint((unsigned char*)buffer2.getPointer(), buffer2.getLength(), expectedSize);
+            buffer1 = Data::inflateZIPWithHint((unsigned char*)buffer2.getPointer(), buffer2.getLength(), expectedSize);
             buffer2.free();
             
             

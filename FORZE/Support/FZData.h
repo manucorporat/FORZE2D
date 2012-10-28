@@ -48,42 +48,43 @@
 
 namespace FORZE {
     
-    //! Decodes a 64base encoded memory. The decoded memory is
-    //! expected to be freed by the caller.
-    //! @return the length of the out buffer
-    fzBuffer fzData_B64Decode(const char *input, fzUInt inLength);
-    
-    
-    //! Encodes plain memory to a 64base encoded memory. The encoded memory is
-    //! expected to be freed by the caller.
-    //! @return the length of the out buffer
-    fzBuffer fzData_B64Encode(const char *input, fzUInt inLength);
-    
-    
-    //! Loads a .ccz file at the specified absolute path.
-    //! @param absolutePath is a NULL-terminated char string
-    //! @return a empty fzBuffer if the file could not be loaded.
-    fzBuffer fzData_inflateCCZ(unsigned char *input, unsigned int inLength);
-    
-    
-    /**
-     * Inflates either zlib or gzip deflated memory. The inflated memory is
-     * expected to be freed by the caller.
-     *
-     * It will allocate 256k for the destination buffer. If it is not enought it will multiply the previous buffer size per 2, until there is enough memory.
-     * @return the length of the deflated buffer
-     */
-    fzBuffer fzData_inflateZIP(unsigned char *input, unsigned int inLength);
-    
-    
-    /** 
-     * Inflates either zlib or gzip deflated memory. The inflated memory is
-     * expected to be freed by the caller.
-     *
-     * outLenghtHint is assumed to be the needed room to allocate the inflated buffer.
-     *
-     * @return the length of the deflated buffer
-     */
-    fzBuffer fzData_inflateZIPWithHint(unsigned char *input, unsigned int inLength, unsigned int outLenghtHint );
+    class Data
+    {
+    public:
+        //! Decodes a 64base encoded memory. The decoded memory is
+        //! expected to be freed by the caller.
+        //! @return the length of the out buffer
+        static fzBuffer B64Decode(const char *input, fzUInt inLength);
+        
+        
+        //! Encodes plain memory to a 64base encoded memory. The encoded memory is
+        //! expected to be freed by the caller.
+        //! @return the length of the out buffer
+        static fzBuffer B64Encode(const char *input, fzUInt inLength);
+        
+        
+        //! Loads a .ccz file at the specified absolute path.
+        //! @param absolutePath is a NULL-terminated char string
+        //! @return a empty fzBuffer if the file could not be loaded.
+        static fzBuffer inflateCCZ(unsigned char *input, unsigned int inLength);
+        
+        
+        //! Inflates either zlib or gzip deflated memory. The inflated memory is
+        //! expected to be freed by the caller. It will allocate 256k for the destination buffer.
+        //! If it is not enought it will multiply the previous buffer size per 2, until there is enough memory.
+        //! @return the length of the deflated buffer.
+        static fzBuffer inflateZIP(unsigned char *input, unsigned int inLength);
+        
+        
+        /**
+         * Inflates either zlib or gzip deflated memory. The inflated memory is
+         * expected to be freed by the caller.
+         *
+         * outLenghtHint is assumed to be the needed room to allocate the inflated buffer.
+         *
+         * @return the length of the deflated buffer
+         */
+        static fzBuffer inflateZIPWithHint(unsigned char *input, unsigned int inLength, unsigned int outLenghtHint );
+    };
 }
 #endif

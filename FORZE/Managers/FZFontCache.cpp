@@ -62,12 +62,12 @@ namespace FORZE {
         char *filenameCpy = fzStrcpy(filename);
         
         // Remove "-x" suffix
-        fzIO_removeFileSuffix(filenameCpy);
+        IO::removeFileSuffix(filenameCpy);
         
         unsigned long hash = fzHash(filenameCpy);
         Font *font = getFontForHash(hash);
         
-        if(font != NULL && strcmp(fzIO_getExtension(filenameCpy), "ttf") == 0) {
+        if(font != NULL && strcmp(IO::getExtension(filenameCpy), "ttf") == 0) {
             // Rewritting
             FZ_ASSERT(lineHeight > 0, "Line height must me positive.");
             FZLog("NOT IMPLEMENTED");

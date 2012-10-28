@@ -146,7 +146,7 @@ namespace FORZE {
     }
     
     
-    fzBuffer fzData_inflateZIPWithHint(unsigned char *input, unsigned int inLength, unsigned int outLengthHint)
+    fzBuffer Data::inflateZIPWithHint(unsigned char *input, unsigned int inLength, unsigned int outLengthHint)
     {
         unsigned int outLength = 0;
         unsigned char* output;
@@ -174,13 +174,13 @@ namespace FORZE {
     }
     
     
-    fzBuffer fzData_inflateZIP(unsigned char *input, unsigned int inLength)
+    fzBuffer Data::inflateZIP(unsigned char *input, unsigned int inLength)
     {
-        return fzData_inflateZIPWithHint(input, inLength, 128 * 1024);        
+        return Data::inflateZIPWithHint(input, inLength, 128 * 1024);        
     }
     
     
-    fzBuffer fzData_inflateCCZ(unsigned char *input, unsigned int inLength)
+    fzBuffer Data::inflateCCZ(unsigned char *input, unsigned int inLength)
     {
         // load file into memory
         const CCZHeader *header = reinterpret_cast<const CCZHeader*>(input);
@@ -197,7 +197,6 @@ namespace FORZE {
         
         
         // verify header version
-        FZLog("VERSION: %d, %d", header->version, fzBitOrder_int16BigToHost(header->version));
         if( fzBitOrder_int16BigToHost(header->version) > 2 ) {
             FZLOGERROR("IO:CCZ: Unsupported version.");
             return fzBuffer::empty();
@@ -209,7 +208,6 @@ namespace FORZE {
             FZLOGERROR("IO:CCZ: Unsupported compression method.");
             return fzBuffer::empty();
         }
-        
         
         
         uLong fileLen = inLength-1;
@@ -237,7 +235,7 @@ namespace FORZE {
     }
     
     
-    fzBuffer fzData_B64Encode(const char *input, fzUInt inLength)
+    fzBuffer Data::B64Encode(const char *input, fzUInt inLength)
     {
         FZ_ASSERT(input, "Input pointer cannot be NULL");
         FZ_ASSERT(inLength > 0, "Input data length cannot be 0.");        
@@ -257,7 +255,7 @@ namespace FORZE {
     }
     
     
-    fzBuffer fzData_B64Decode(const char *input, fzUInt inLength)
+    fzBuffer Data::B64Decode(const char *input, fzUInt inLength)
     {
         FZ_ASSERT(input, "Input pointer cannot be NULL");
         FZ_ASSERT(inLength > 0, "Input data length cannot be 0.");
@@ -276,4 +274,3 @@ namespace FORZE {
         }
     }
 }
-

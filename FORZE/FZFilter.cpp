@@ -38,7 +38,7 @@
 #include "FZMacros.h"
 #include "FZResourcesManager.h"
 #include "FZMath.h"
-#include "matrixStack.h"
+#include "FZMS.h"
 
 // Shaders
 #include "_fz_mat_TEX.shader.h"

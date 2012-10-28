@@ -1,6 +1,3 @@
-// DO NOT MODIFY THE HEADERS IF FORZE IS ALREADY COMPILED AS A STATIC LIBRARY
-#ifndef __FZMATRIXSTACK_H_INCLUDED__
-#define __FZMATRIXSTACK_H_INCLUDED__
 /*
  * FORZE ENGINE: http://forzefield.com
  *
@@ -30,37 +27,21 @@
  @author Manuel Martínez-Almeida
  */
 
-#include "FZTypes.h"
-
+#include "FZPlatforms.h"
+#include "FZMacros.h"
 
 namespace FORZE {
     
-    class MS
-    {
-        friend class Director;
-        
-    private:
-        static void initialize();
-        static void dealloc();
-        
-    public:
-        static void loadMatrix(float *matrix);
-        static void loadBaseMatrix(float *matrix);
-        
-        static void pushMatrix(float *matrix);
-        static void pop();
-        
-        static fzUInt getLevel();
-        static float* getMatrix();
-        static float* getBaseMatrix();
-    };
+    void* OSW::p_oswrapper = NULL;
     
-#define FZ_SAFE_APPLY_MATRIX(__SHADER__) { \
-FZ_ASSERT(__SHADER__ != NULL, "Shader can not be NULL"); \
-FZ_ASSERT(MS::getMatrix() != NULL, "Stack base can not be NULL"); \
-(__SHADER__)->setUniform4x4f(kFZUniformMVMatrix_s, 1, GL_FALSE, MS::getMatrix()); \
+    void* OSW::Instance()
+    {
+        FZ_RAISE_STOP("OSW: Instance of OSW was not defined.");
+        return p_oswrapper;
+    }
+    
+    void OSW::setInstance(void *instance)
+    {
+        p_oswrapper = instance;
+    }
 }
-
-}
-
-#endif

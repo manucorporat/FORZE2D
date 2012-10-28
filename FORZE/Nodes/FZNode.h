@@ -93,10 +93,8 @@ namespace FORZE {
     class GridBase;
     class Filter;
     class Camera;
-    class Shadow;
     class Action;
-    class GLProgram;
-    
+    class GLProgram;    
     
     /** Node is the main element.
      * Everything to be rendered inside FORZE must be a subclass of Node.
@@ -126,7 +124,6 @@ namespace FORZE {
         //! z-order value
         fzInt   m_zOrder;
         fzInt   m_realZOrder;
-
         
         //! a tag
         fzInt   m_tag;

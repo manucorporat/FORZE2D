@@ -75,7 +75,7 @@ namespace FORZE {
     {
         FZ_ASSERT(filename != NULL, "Filename cannot be empty.");
         
-        const char *extension = fzIO_getExtension(filename);
+        const char *extension = IO::getExtension(filename);
         if(extension == NULL)
             FZ_RAISE_STOP("Font: Extension is missing.");
         
@@ -165,7 +165,7 @@ namespace FORZE {
             FZ_RAISE_STOP("Font:FNT: Line 3. Error parsing FNT page data, syntax is not correct.");
         
         if(filename[0] == '\0')
-            FZ_RAISE_STOP("Font:FNT: Line 3. Atlas path parsing error");
+            FZ_RAISE_STOP("Font:FNT: Line 3. Atlas path parsing error.");
         
         filename[strlen(filename)-1] = '\0'; // remove last "
         p_texture = TextureCache::Instance().addImage(filename);
@@ -244,7 +244,7 @@ namespace FORZE {
         if(data == NULL)
             FZ_RAISE("Font:TTF: Imposible to load TTF data. Pointer is NULL.");
         
-        FZ_RAISE_STOP("TTF NOT IMPLEMENTED");
+        FZ_RAISE_STOP("Font:TTF: TTF NOT IMPLEMENTED.");
     }
     
     

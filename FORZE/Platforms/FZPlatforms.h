@@ -78,25 +78,37 @@ namespace FORZE {
     // FORZE allocates an private class (Objective-C or C++ class) that connects the OS API with FORZE.
     // All this methods are low level, and they have a different implementation for each platform.
     // The common use never should have to use this methods.
-  
-    //! Initializes the wrapper class, initialize all OS runtime tasks and call notify that to the Director.
-    void fzOSW_init(int argc, char *argv[]);
-  
-    //! Starts the loop thread giving the OSWRAPPER pointer
-    void fzOSW_startRendering(void *oswrapper, fzFloat interval);
-  
-    //! Stops the loop thread giving the OSWRAPPER pointer
-    void fzOSW_stopRendering(void *oswrapper);
-    
-    //! Updates the window size and the rendering rect.
-    void fzOSW_updateWindow(void *oswrapper);
-  
-    void fzOSW_configOrientation(void *oswrapper, int orientation);
+    class OSW
+    {
+    private:
+        static void *p_oswrapper;
+        
+    public:
+        static void* Instance();
+        static void setInstance(void *instance);
 
-    //! Enables or disables the IO events, (touch, accelerometer) giving the OSWRAPPER
-    void fzOSW_configEvents(void *oswrapper, uint16_t dirtyFlags, uint16_t flags);
+        //! Initializes the wrapper class, initialize all OS runtime tasks and call notify that to the Director.
+        static void init(int argc, char *argv[]);
+        
+        //! Starts the loop thread giving the OSWRAPPER pointer
+        static void startRendering(fzFloat interval);
+        
+        //! Stops the loop thread giving the OSWRAPPER pointer
+        static void stopRendering();
+        
+        //! Updates the window size and the rendering rect.
+        static void updateWindow();
+        
+        //! Enables or disables the IO events, (touch, accelerometer) giving the OSWRAPPER
+        static void configEvents(uint16_t dirtyFlags, uint16_t flags);
+        
+        //! Sets event internval
+        static void setEventsInterval(fzFloat interval);
+        
+        //! Sets orientation
+        static void setOrientation(int orientation);
+    };
     
-    void fzOSW_configEventsInterval(void *oswrapper, fzFloat interval);
     
 
     // DEVICE

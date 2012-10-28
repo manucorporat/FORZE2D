@@ -37,7 +37,7 @@
 #include "FZTextureCache.h"
 #include "FZMath.h"
 #include "FZMacros.h"
-#include "matrixStack.h"
+#include "FZMS.h"
 
 
 using namespace STD;
@@ -234,7 +234,7 @@ namespace FORZE {
             m_grabber.begin();
             
 #if !FZ_GL_SHADERS
-            glLoadMatrixf(fzMS_getMatrix());
+            glLoadMatrixf(MS::getMatrix());
 #endif
 
             

@@ -30,7 +30,7 @@
 
 #include "FZTMXLayer.h"
 #include "FZMacros.h"
-#include "matrixStack.h"
+#include "FZMS.h"
 #include "FZSprite.h"
 #include "FZBitOrder.h"
 #include "FZTMXTiledMap.h"
@@ -329,7 +329,7 @@ namespace FORZE {
         char dirtyFlags = m_dirtyFlags & kFZDirty_recursive;
         
         updateStuff();
-        fzMS_pushMatrix(m_transformMV);
+        MS::pushMatrix(m_transformMV);
         
         Sprite *child;
         FZ_LIST_FOREACH(m_children, child)
@@ -337,7 +337,7 @@ namespace FORZE {
             child->makeDirty(dirtyFlags);
             child->updateTransform(quadp);
         }
-        fzMS_pop();
+        MS::pop();
     }
     
     void TMXLayer::render(char dirtyFlags)

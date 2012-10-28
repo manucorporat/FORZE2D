@@ -48,7 +48,7 @@
 #include "FZMacros.h"
 #include "FZTexture2D.h"
 #include "FZMath.h"
-#include "matrixStack.h"
+#include "FZMS.h"
 #include "FZDataStore.h"
 #include "FZHUD.h"
 #include "FZTransitions.h"
@@ -77,7 +77,6 @@ namespace FORZE {
     , p_appdelegate         (NULL)
     , p_nextScene           (NULL)
     , p_notificationNode    (NULL)
-    , p_OSWrapper           (NULL)
     , p_hud                 (NULL)
     , m_resourcesFactor     (1)
     , m_glConfig            ()
@@ -107,7 +106,7 @@ namespace FORZE {
         srandom(time(NULL));
         
         // INITIALIZE MATRIX STACK
-        fzMS_initialize();
+        MS::initialize();
 		
         // GET SCREEN SIZE
         fzDevice_getScreenSize(&m_screenSize, &m_screenFactor);
@@ -189,7 +188,7 @@ namespace FORZE {
     
     void Director::setDisplayFPS(bool toDisplay)
     {
-        FZ_ASSERT( p_OSWrapper, "Too soon, Director was not initialized.");
+        FZ_ASSERT( OSW::Instance(), "Too soon, Director was not initialized.");
         
         if(toDisplay && p_hud == NULL) {
             p_hud = new HUD();
@@ -240,7 +239,7 @@ namespace FORZE {
     void Director::setDefaultGLValues()
     {
         // This method SHOULD be called only after openGLView_ was initialized
-        FZ_ASSERT( p_OSWrapper, "The OSWrapper must be initialized");
+        FZ_ASSERT( OSW::Instance(), "The OSWrapper must be initialized");
         setDepthTest(m_glConfig.depthFormat);
         
         // set other opengl default values
@@ -377,14 +376,12 @@ namespace FORZE {
     
     const GLConfig& Director::getGLConfig() const
     {
-        FZ_ASSERT(p_OSWrapper, "OS Wrapper is not defined.");
         return m_glConfig;
     }
     
     
     GLConfig& Director::getGLConfig()
     {
-        FZ_ASSERT(p_OSWrapper, "OS Wrapper is not defined.");
         return m_glConfig;
     }
     
@@ -398,12 +395,6 @@ namespace FORZE {
     bool Director::isPaused() const
     {
         return m_isPaused;
-    }
-    
-    
-    void* Director::getOSWrapper() const
-    {
-        return p_OSWrapper;
     }
     
     
@@ -572,14 +563,14 @@ namespace FORZE {
         
         
         // Notify changes to the OS Wrapper
-        fzOSW_configOrientation(p_OSWrapper, orientation);
-        fzOSW_updateWindow(p_OSWrapper);
+        OSW::setOrientation(orientation);
+        OSW::updateWindow();
     }
     
     
     void Director::updateProjection()
     {
-        FZ_ASSERT(p_OSWrapper, "OS Wrapper is not defined.");
+        FZ_ASSERT(OSW::Instance(), "OS Wrapper is not defined.");
 
         updateViewRect();
 
@@ -792,7 +783,7 @@ namespace FORZE {
 #if !FZ_GL_SHADERS
             glLoadIdentity();
 #endif
-            fzMS_loadBaseMatrix(m_transformMV);
+            MS::loadBaseMatrix(m_transformMV);
             
             // CLEAR OPENGL BUFFERS
             fzGLClearColor(m_clearColor);
@@ -803,7 +794,7 @@ namespace FORZE {
                 CHECK_GL_ERROR_DEBUG();
             }
             
-            FZ_ASSERT(fzMS_getLevel() == 1, "A matrix hasn't been popped. Review the push/pop code.");
+            FZ_ASSERT(MS::getLevel() == 1, "A matrix hasn't been popped. Review the push/pop code.");
         
             // SHOW FPS
             if( m_displayFPS )
@@ -871,7 +862,7 @@ namespace FORZE {
     {
         if(!isRunning()) {
             m_isRunning = true;
-            fzOSW_startRendering(p_OSWrapper, m_animationInterval);
+            OSW::startRendering(m_animationInterval);
         }
     }
     
@@ -880,7 +871,7 @@ namespace FORZE {
     {
         if(isRunning()) {
             m_isRunning = false;
-            fzOSW_stopRendering(p_OSWrapper);
+            OSW::stopRendering();
         }
     }
     
@@ -929,11 +920,11 @@ namespace FORZE {
     void Director::applicationLaunching(void *OSWrapper)
     {
         FZ_ASSERT(p_appdelegate, "FORZE was not initialized properly. App delegate is missing.");
-        FZ_ASSERT(p_OSWrapper == NULL, "OS Wrapper already initialized.");
+        FZ_ASSERT(OSW::Instance() == NULL, "OS Wrapper already initialized.");
         FZ_ASSERT(OSWrapper, "OS Wrapper can not be NULL");
         
         FZLOGINFO("Director: Application launching.");
-        p_OSWrapper = OSWrapper;
+        OSW::setInstance(OSWrapper);
         
         // GET OPENGL CONFIG
         m_glConfig = p_appdelegate->fzGLConfig();
@@ -947,7 +938,7 @@ namespace FORZE {
     {
         FZ_ASSERT(m_isInitialized == false, "FORZE was already launched.")
         FZ_ASSERT(p_appdelegate, "FORZE was not initialized properly. App delegate is missing.");
-        FZ_ASSERT(p_OSWrapper, "OS wrapper should call Director::applicationLaunching() first.");
+        FZ_ASSERT(OSW::Instance(), "OS wrapper should call Director::applicationLaunching() before.");
         FZLOGINFO("Director: Application launched.");
 
         if(!m_isInitialized) {

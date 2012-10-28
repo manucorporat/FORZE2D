@@ -37,7 +37,7 @@
 #include "FZScheduler.h"
 #include "FZShaderCache.h"
 #include "FZMath.h"
-#include "matrixStack.h"
+#include "FZMS.h"
 #include "FZGLState.h"
 #include "FZGrabber.h"
 
@@ -493,11 +493,11 @@ namespace FORZE {
             m_dirtyFlags = 0;
         }
         
-        fzMS_pushMatrix(m_transformMV);
+        MS::pushMatrix(m_transformMV);
         {
             render(dirtyFlags);
         }
-        fzMS_pop();
+        MS::pop();
     }
     
     
@@ -526,7 +526,7 @@ namespace FORZE {
     {
         // UPDATE TRANSFORM
         if( m_dirtyFlags & kFZDirty_transform_absolute ) {
-            fzMath_mat4Multiply(fzMS_getMatrix(), getNodeToParentTransform(), m_transformMV);
+            fzMath_mat4Multiply(MS::getMatrix(), getNodeToParentTransform(), m_transformMV);
         }
         
         

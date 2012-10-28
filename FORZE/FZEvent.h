@@ -72,11 +72,11 @@ namespace FORZE {
         
         //! Mouse left events
         //! This kind of events returns an position in the canvas
-        kFZEventType_Mouse          = 1 << 2,
+        kFZEventType_Mouse           = 1 << 2,
         
         //! Mouse right events
         //! This kind of events returns an position in the canvas
-        kFZEventType_MouseRight    = 1 << 3,
+        kFZEventType_MouseRight      = 1 << 3,
         
         kFZEventType_MouseMoved      = 1 << 4,
         

@@ -34,7 +34,6 @@
 #include "FZTextureCache.h"
 #include "FZShaderCache.h"
 #include "FZGLState.h"
-#include "matrixStack.h"
 #include "FZPrimitives.h"
 #include "FZDirector.h"
 

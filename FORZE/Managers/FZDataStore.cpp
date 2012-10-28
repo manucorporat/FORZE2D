@@ -142,7 +142,7 @@ namespace FORZE {
                 case kFZData_string:
                 case kFZData_data:
                 {
-                    fzBuffer enconded = fzData_B64Encode(e.data.getPointer(), e.data.getLength());
+                    fzBuffer enconded = Data::B64Encode(e.data.getPointer(), e.data.getLength());
                     content = doc.allocate_string(enconded.getPointer());
                     enconded.free();
                     break;
@@ -181,7 +181,7 @@ namespace FORZE {
         
         FZ_ASSERT(end < (buffer + xmlSize), "Memory overflow");
         
-        bool success = fzIO_writeFile(buffer, p_path);
+        bool success = IO::writeFile(buffer, p_path);
         delete [] buffer;
         
         m_dirty = !success;
@@ -194,8 +194,8 @@ namespace FORZE {
         FZ_ASSERT(p_path, "Path cannot be NULL");
         if(m_dirty)
             return true;
-                
-        fzBuffer buffer = fzIO_loadFile(p_path);
+        
+        fzBuffer buffer = IO::loadFile(p_path);
         
         if(!buffer.isEmpty()) {
             
@@ -249,7 +249,7 @@ namespace FORZE {
                         case kFZData_string:
                         case kFZData_data:
                         {
-                            fzBuffer decoded = fzData_B64Decode(data, node->value_size());
+                            fzBuffer decoded = Data::B64Decode(data, node->value_size());
                             entry.data = decoded;
                             break;
                         }

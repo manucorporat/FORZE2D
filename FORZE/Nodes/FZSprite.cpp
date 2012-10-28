@@ -39,7 +39,7 @@
 #include "FZTextureCache.h"
 #include "FZShaderCache.h"
 #include "FZDirector.h"
-#include "matrixStack.h"
+#include "FZMS.h"
 #include "FZTexture2D.h"
 
 
@@ -403,10 +403,10 @@ namespace FORZE {
             register fzVec4 output[4];
 
 #if FZ_SPRITE_CHILDREN || 1
-            fzMath_mat4Multiply(fzMS_getMatrix(), getNodeToParentTransform(), m_transformMV);            
+            fzMath_mat4Multiply(MS::getMatrix(), getNodeToParentTransform(), m_transformMV);            
             fzMath_mat4Vec4(m_transformMV, (float*)m_vertices, (float*)output);
 #else
-            fzMath_mat4Vec4Affine(fzMS_getMatrix(), getNodeToParentTransform(), m_vertices, (float*)output);
+            fzMath_mat4Vec4Affine(MS::getMatrix(), getNodeToParentTransform(), m_vertices, (float*)output);
 #endif
             quad->bl.vertex = output[0];
             quad->br.vertex = output[1];
@@ -447,12 +447,12 @@ namespace FORZE {
         if(child) {
             unsigned char flags = m_dirtyFlags & kFZDirty_recursive;
             
-            fzMS_pushMatrix(m_transformMV);
+            MS::pushMatrix(m_transformMV);
             for(; child; child = static_cast<Sprite*>(child->next())) {
                 child->makeDirty(flags);
                 child->updateTransform(quadp);
             }
-            fzMS_pop();
+            MS::pop();
         }
 #endif
         m_dirtyFlags = 0;

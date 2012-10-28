@@ -61,7 +61,7 @@ namespace FORZE {
         char *filenameCpy = fzStrcpy(filename);
         
         // Remove "-x" suffix
-        fzIO_removeFileSuffix(filenameCpy);
+        IO::removeFileSuffix(filenameCpy);
         
         
         int32_t hash = fzHash(filenameCpy);

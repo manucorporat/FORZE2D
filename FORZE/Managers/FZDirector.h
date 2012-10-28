@@ -135,10 +135,7 @@ namespace FORZE {
         
         //! Director's instance
         static Director* p_instance;
-        
-        //! Operative system wrapper
-        void *p_OSWrapper;
-        
+
         //! is director initialized
         bool m_isInitialized;
         

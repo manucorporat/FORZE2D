@@ -44,7 +44,7 @@ using namespace STD;
 
 namespace FORZE {
     
-    fzBuffer fzIO_loadFile(const char *absolutePath)
+    fzBuffer IO::loadFile(const char *absolutePath)
     {
         FZ_ASSERT(absolutePath, "Absolute path cannot be NULL.");
         if(absolutePath[0] == '\0')
@@ -80,7 +80,7 @@ namespace FORZE {
     }
     
     
-    bool fzIO_writeFile(const char *data, const char *absolutePath)
+    bool IO::writeFile(const char *data, const char *absolutePath)
     {
         FZ_ASSERT(data, "Data can not be NULL");
         FZ_ASSERT(absolutePath, "absolutePath can not be NULL");
@@ -103,7 +103,20 @@ namespace FORZE {
     }
     
     
-    const char* fzIO_getExtension(const char* filename)
+    void IO::removeFileSuffix(char* filename)
+    {
+        char *start = strchr(filename, FZ_IO_SUBFIX_CHAR);
+        if(start) {
+            const char *extension = IO::getExtension(filename)-1;
+            if(extension)
+                memmove(start, extension, strlen(start)+1);
+            else
+                *start = '\0';
+        }
+    }
+    
+    
+    const char* IO::getExtension(const char* filename)
     {
         if(filename == NULL)
             return NULL;
@@ -113,18 +126,5 @@ namespace FORZE {
             return NULL;
         
         return (++extension);
-    }
-    
-    
-    void fzIO_removeFileSuffix(char* filename)
-    {
-        char *start = strchr(filename, FZ_IO_SUBFIX_CHAR);
-        if(start) {
-            const char *extension = fzIO_getExtension(filename)-1;
-            if(extension)
-                memmove(start, extension, strlen(start)+1);
-            else
-                *start = '\0';
-        }
     }
 }

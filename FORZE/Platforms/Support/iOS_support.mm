@@ -46,7 +46,7 @@ namespace FORZE {
     
 #pragma mark - OS WRAPPER communication protocol
     
-    void fzOSW_init(int argc, char *argv[])
+    void OSW::init(int argc, char *argv[])
     {
         @autoreleasepool {
             UIApplicationMain(argc, argv, nil, @"_FZOSWRAPPER");
@@ -54,25 +54,37 @@ namespace FORZE {
     }
     
     
-    void fzOSW_startRendering(void *oswrapper, fzFloat interval)
+    void OSW::startRendering(fzFloat interval)
     {
-        [(_FZOSWRAPPER*)oswrapper startRendering:interval];
+        [(_FZOSWRAPPER*)Instance() startRendering:interval];
     }
     
     
-    void fzOSW_stopRendering(void *oswrapper)
+    void OSW::stopRendering()
     {
-        [(_FZOSWRAPPER*)oswrapper stopRendering];
+        [(_FZOSWRAPPER*)Instance() stopRendering];
     }
     
     
-    void fzOSW_updateWindow(void *oswrapper)
+    void OSW::updateWindow()
     {
-        [(_FZOSWRAPPER*)oswrapper updateWindow];
+        [(_FZOSWRAPPER*)Instance() updateWindow];
     }
     
     
-    void fzOSW_configOrientation(void *oswrapper, int orientation)
+    void OSW::configEvents(uint16_t dirtyFlags, uint16_t flags)
+    {
+        [(_FZOSWRAPPER*)oswrapper updateEvents:dirtyFlags flags:flags];
+    }
+    
+    
+    void OSW::setEventsInterval(fzFloat interval)
+    {
+        [(_FZOSWRAPPER*)oswrapper setEventInterval:interval];
+    }
+    
+    
+    void OSW::setOrientation(int orientation)
     {
         UIInterfaceOrientation uiorientation;
         switch (orientation) {
@@ -82,25 +94,7 @@ namespace FORZE {
             case kFZOrientation_PortraitUpsideDown: uiorientation = UIInterfaceOrientationPortraitUpsideDown; break;
             default: break;
         }
-        [[UIApplication sharedApplication] setStatusBarOrientation:uiorientation animated:NO];        
-    }
-    
-    
-    void fzOSW_configEvents(void *oswrapper, uint16_t dirtyFlags, uint16_t flags)
-    {
-        [(_FZOSWRAPPER*)oswrapper updateEvents:dirtyFlags flags:flags];
-    }
-    
-    
-    void fzOSW_configEventsInterval(void *oswrapper, fzFloat interval)
-    {
-        [(_FZOSWRAPPER*)oswrapper setEventInterval:interval];
-    }
-    
-    
-    void fzOSW_optimizeFullscreen(void *oswrapper, bool fullscreenMode)
-    {
-        // Nothing to do here.
+        [[UIApplication sharedApplication] setStatusBarOrientation:uiorientation animated:NO];
     }
     
     

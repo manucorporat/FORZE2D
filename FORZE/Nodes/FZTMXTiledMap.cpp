@@ -31,7 +31,6 @@
 #include "FZTMXTiledMap.h"
 #include "FZMacros.h"
 #include "FZTMXParser.h"
-#include "matrixStack.h"
 #include "FZTMXLayer.h"
 #include "FZTextureCache.h"
 #include "FZTexture2D.h"

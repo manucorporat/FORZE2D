@@ -39,7 +39,7 @@
 #include "FZShaderCache.h"
 #include "FZDirector.h"
 #include "FZMath.h"
-#include "matrixStack.h"
+#include "FZMS.h"
 
 namespace FORZE {
 

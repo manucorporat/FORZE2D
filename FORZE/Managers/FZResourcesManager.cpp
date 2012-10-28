@@ -33,7 +33,6 @@
 #include "FZDirector.h"
 #include "FZIO.h"
 #include "FZMacros.h"
-#include "FZBufferManager.h"
 
 
 namespace FORZE {
@@ -187,7 +186,7 @@ namespace FORZE {
 
         // REMOVING FORCED FLAGS
         char *filenameCpy = fzStrcpy(filename);
-        fzIO_removeFileSuffix(filenameCpy);
+        IO::removeFileSuffix(filenameCpy);
         
         // LOOK FOR TEXTURE
         *outFactor = 0;
@@ -205,7 +204,7 @@ namespace FORZE {
                 return fzBuffer::empty();
             }
 
-            fzBuffer buffer = fzIO_loadFile(absolutePath);
+            fzBuffer buffer = IO::loadFile(absolutePath);
             if(!buffer.isEmpty()) {
                 *outFactor = factor;
                 free(filenameCpy);
@@ -223,7 +222,7 @@ namespace FORZE {
         char absolutePath[512];
         generateAbsolutePath(filename, 1, absolutePath);
         
-        fzBuffer buffer = fzIO_loadFile(absolutePath);
+        fzBuffer buffer = IO::loadFile(absolutePath);
         if(buffer.isEmpty())
             FZLOGERROR("IO: \"%s\" not found.", filename);
         

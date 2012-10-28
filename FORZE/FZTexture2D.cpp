@@ -268,7 +268,7 @@ namespace FORZE {
     {
         FZ_ASSERT(filename != NULL, "Filename cannot be empty.");
         
-        const char *extension = fzIO_getExtension(filename);
+        const char *extension = IO::getExtension(filename);
         if(extension == NULL)
             FZ_RAISE_STOP("Texture2D: File extension is missing.");
 
@@ -511,7 +511,7 @@ namespace FORZE {
         if(buffer.isEmpty())
             FZ_RAISE("Texture2D:IO: Error reading file.");
         
-        fzBuffer buffer2 = fzData_inflateCCZ((unsigned char*)buffer.getPointer(), buffer.getLength());
+        fzBuffer buffer2 = Data::inflateCCZ((unsigned char*)buffer.getPointer(), buffer.getLength());
         buffer.free();
         
         if(buffer2.isEmpty())

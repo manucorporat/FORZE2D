@@ -55,9 +55,9 @@ namespace FORZE {
     void fzGLColor(const fzColor4F& color);
     
     
+    //! Best way to changes the line width
     void fzGLLineWidth(fzFloat points);
 
-    
     
     //! Draws a point given x and y coordinate measured in points.
     void fzDrawPoint( const fzVec2& point );

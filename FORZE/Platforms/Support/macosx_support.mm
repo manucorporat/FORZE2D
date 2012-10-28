@@ -45,8 +45,8 @@ using namespace FORZE;
 namespace FORZE {
     
 #pragma mark - OS WRAPPER communication protocol
-    
-    void fzOSW_init(int argc, char *argv[])
+
+    void OSW::init(int argc, char *argv[])
     {
         ////////////////////////////////////////////////
         // CUSTOM IMPLEMENTATION OF NSApplicationMain //
@@ -89,40 +89,40 @@ namespace FORZE {
     }
     
     
-    void fzOSW_startRendering(void *oswrapper, fzFloat interval)
+    void OSW::startRendering(fzFloat interval)
     {
-        [(_FZOSWRAPPER*)oswrapper startRendering:interval];
+        [(_FZOSWRAPPER*)Instance() startRendering:interval];
     }
     
     
-    void fzOSW_stopRendering(void *oswrapper)
+    void OSW::stopRendering()
     {
-        [(_FZOSWRAPPER*)oswrapper stopRendering];
+        [(_FZOSWRAPPER*)Instance() stopRendering];
     }
     
     
-    void fzOSW_updateWindow(void *oswrapper)
+    void OSW::updateWindow()
     {
-        [(_FZOSWRAPPER*)oswrapper updateWindow];
+        [(_FZOSWRAPPER*)Instance() updateWindow];
     }
     
     
-    void fzOSW_configOrientation(void *oswrapper, int orientation)
+    void OSW::configEvents(uint16_t dirtyFlags, uint16_t flags)
     {
-        // ORIENTATION DOESN'T MAKE SENSE IN OSX
+        [(_FZOSWRAPPER*)Instance() updateEvents:dirtyFlags flags:flags];
+    }
+    
+    
+    void OSW::setEventsInterval(fzFloat interval)
+    {
+        // CONSTANT TIME EVENTS DON'T EXIST IN OSX
         // Nothing to do here :)
     }
     
     
-    void fzOSW_configEvents(void *oswrapper, uint16_t dirtyFlags, uint16_t flags)
+    void OSW::setOrientation(int orientation)
     {
-        [(_FZOSWRAPPER*) oswrapper updateEvents:dirtyFlags flags:flags];
-    }
-    
-    
-    void fzOSW_configEventsInterval(void *oswrapper, fzFloat interval)
-    {
-        // CONSTANT TIME EVENTS DON'T EXIST IN OSX
+        // ORIENTATION DOESN'T MAKE SENSE IN OSX
         // Nothing to do here :)
     }
     

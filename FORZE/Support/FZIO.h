@@ -38,27 +38,31 @@
 using namespace STD;
 
 namespace FORZE {
+    
+    class IO
+    {
+    public:
+        //! Loads a file at the specified absolute path.
+        //! @param absolutePath is a NULL-terminated char string
+        //! @return a empty fzBuffer if the file could not be loaded.
+        static fzBuffer loadFile(const char *absolutePath);
         
-    //! Loads a file at the specified absolute path.
-    //! @param absolutePath is a NULL-terminated char string
-    //! @return a empty fzBuffer if the file could not be loaded.
-    fzBuffer fzIO_loadFile(const char *absolutePath);
-    
-   
-    //! Creates a file (overwriting mode "w") at the absolute path with the specified data.
-    //! @param data is a NULL-terminated char string (data to be written)
-    //! @param absolutePath is a NULL-terminated char string
-    //! @return 0 if the file could not be saved
-    bool fzIO_writeFile(const char *data, const char *absolutePath);
-
-    
-    //! Used internally to remove any suffix started by "-" in the filenames.
-    //! Converts "texture-ipad.png" or "texture-x2.png" to "texture.png"
-    void fzIO_removeFileSuffix(char* filename);
-    
-    
-    //! This method returns the substring that match the filename extension.
-    //! For example: "myTexture.pvr.gz" would return "png.gz"
-    const char* fzIO_getExtension(const char* filename);
+        
+        //! Creates a file (overwriting mode "w") at the absolute path with the specified data.
+        //! @param data is a NULL-terminated char string (data to be written)
+        //! @param absolutePath is a NULL-terminated char string
+        //! @return 0 if the file could not be saved
+        static bool writeFile(const char *data, const char *absolutePath);
+        
+        
+        //! Used internally to remove any suffix started by "-" in the filenames.
+        //! Converts "texture-ipad.png" or "texture-x2.png" to "texture.png"
+        static void removeFileSuffix(char* filename);
+        
+        
+        //! This method returns the substring that match the filename extension.
+        //! For example: "myTexture.pvr.gz" would return "png.gz"
+        static const char* getExtension(const char* filename);
+    };
 }
 #endif

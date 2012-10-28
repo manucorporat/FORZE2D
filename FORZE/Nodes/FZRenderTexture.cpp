@@ -33,7 +33,7 @@
 #include "FZMacros.h"
 #include "FZGLState.h"
 #include "FZMath.h"
-#include "matrixStack.h"
+#include "FZMS.h"
 #include "FZLayer.h"
 
 
@@ -73,29 +73,29 @@ namespace FORZE {
     void RenderTexture::begin()
     {
         m_grabber.begin();
-        fzMath_mat4Multiply(fzMS_getMatrix(), getParentToNodeTransform(), m_renderTransform);
-        fzMS_pushMatrix(m_renderTransform);
+        fzMath_mat4Multiply(MS::getMatrix(), getParentToNodeTransform(), m_renderTransform);
+        MS::pushMatrix(m_renderTransform);
     }
     
     
     void RenderTexture::beginWithClear(const fzColor4F& c)
     {
         m_grabber.beginWithClear(c);
-        fzMath_mat4Multiply(fzMS_getMatrix(), getParentToNodeTransform(), m_renderTransform);
-        fzMS_pushMatrix(m_renderTransform);
+        fzMath_mat4Multiply(MS::getMatrix(), getParentToNodeTransform(), m_renderTransform);
+        MS::pushMatrix(m_renderTransform);
     }
     
     
     void RenderTexture::clear(const fzColor4F& c)
     {
-        fzMS_pop();
+        MS::pop();
         m_grabber.clear(c);
     }
     
     
     void RenderTexture::end()
     {
-        fzMS_pop();
+        MS::pop();
         m_grabber.end();
     }
 }

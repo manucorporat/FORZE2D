@@ -108,7 +108,7 @@ abort(); \
     FORZE::Director& __director = FORZE::Director::Instance();      \
     __director.setDelegate((APPDELEGATE));                          \
     __director.setCanvasSize((CANVASSIZE));                         \
-    fzOSW_init((__ARGC__), (__ARGV__));                             \
+    FORZE::OSW::init((__ARGC__), (__ARGV__));                       \
 }
 
  
