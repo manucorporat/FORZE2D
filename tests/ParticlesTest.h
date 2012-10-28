@@ -11,7 +11,6 @@ public:
     ParticleTest()
     : TestLayer("Particles test", NULL)
     {
-        
         setTrackedEvents(kFZEventType_Tap);
         
         ParticleFire *fire = new ParticleFire();

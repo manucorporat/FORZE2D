@@ -37,13 +37,16 @@ public:
 };
 
 
-// APPLICATION'S ENTRY POINT
 int main(int argc, char *argv[])
 {
-    // kFZSize_Auto -> canvas size = window size
-    // no window size specified -> window size = screen size
-    // canvas size = window size = screen size
+#ifdef FZ_OS_DESKTOP
+    // If you are running on a desktop OS (windows, linux, mac)
+    // FORZE is able to simulate a different screen resolution in order to see how your game would look in another devices. In this case iPad (768x1024)
+    Director::Instance().setWindowSize( kFZSize_iPhone );
+#endif
+    
+    // INIT FORZE
+    // kFZSize_iPad = fzSize(768, 1024)
     FORZE_INIT(new AppDelegate(), kFZSize_Auto, argc, argv);
     return EXIT_SUCCESS;
 }
-

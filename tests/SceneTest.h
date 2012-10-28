@@ -92,7 +92,7 @@ public:
     {
         MenuItemLabel *item1 = new MenuItemLabel("Push scene2", "helvetica.fnt",
                                                  this, SEL_PTR(SceneTest1::pushScene));
-
+        
         addChild(item1);
         
         FZLog("SCENE TEST 1 ALLOCATED");
@@ -102,7 +102,6 @@ public:
     {
         FZLog("SCENE TEST 1 DEALLOCATED");
     }
-    
     
     
     void pushScene(void*) {

@@ -35,10 +35,9 @@ public:
     }
 };
 
-
 // APPLICATION'S ENTRY POINT
 int main(int argc, char *argv[])
-{
+{    
     FORZE_INIT(new AppDelegate(), kFZSize_iPhone, argc, argv);
     return EXIT_SUCCESS;
 }

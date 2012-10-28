@@ -44,19 +44,15 @@ public:
 #pragma mark - main
 
 int main(int argc, char *argv[])
-{    
+{
 #ifdef FZ_OS_DESKTOP
     // If you are running on a desktop OS (windows, linux, mac)
-    // FORZE is able to simulate a different screen resolution in order to see how your game would look in another devices.
-    Director::Instance().setWindowSize( kFZSize_iPad / 1.5f );
-    
+    // FORZE is able to simulate a different screen resolution in order to see how your game would look in another devices. In this case iPad (768x1024)
+    Director::Instance().setWindowSize( kFZSize_iPhone );
 #endif
-    
-    // Set a resize mode. @see fzResizeMode
-    Director::Instance().setResizeMode(kFZResizeMode_Fit);
     
     // INIT FORZE
     // kFZSize_iPad = fzSize(768, 1024)
-    FORZE_INIT(new AppDelegate(), kFZSize_iPad, argc, argv);
+    FORZE_INIT(new AppDelegate(), kFZSize_Auto, argc, argv);
     return EXIT_SUCCESS;
 }
