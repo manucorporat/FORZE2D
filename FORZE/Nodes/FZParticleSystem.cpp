@@ -244,7 +244,7 @@ namespace FORZE {
         setTexture(texture);
 
         p_particles = new fzParticle[m_totalParticles];
-        schedule(); // schedule update()
+        schedule();
     }
     
     
@@ -320,8 +320,8 @@ namespace FORZE {
             fzFloat s = mode.A.speed + mode.A.speedVar * FZ_RANDOM_MINUS1_1();
             
             // direction
-            particle.mode.A.dirX = fzMath_cos(a) * s;
-            particle.mode.A.dirY = fzMath_sin(a) * s;
+            particle.mode.A.dir.x = fzMath_cos(a) * s;
+            particle.mode.A.dir.y = fzMath_sin(a) * s;
             
             // radial accel
             particle.mode.A.radialAccel = mode.A.radialAccel + mode.A.radialAccelVar * FZ_RANDOM_MINUS1_1();
@@ -388,6 +388,7 @@ namespace FORZE {
         
         
         m_particleIdx = 0;
+        
         while( m_particleIdx < m_particleCount )
         {
             fzParticle& p = p_particles[m_particleIdx];
@@ -416,10 +417,8 @@ namespace FORZE {
                     }
                     
                     // (gravity + dir + radial + tangential) * dt
-                    tmp.x += mode.A.gravityX;
-                    tmp.y += mode.A.gravityY;
-                    tmp.x += p.mode.A.dirX;
-                    tmp.y += p.mode.A.dirY;
+                    tmp += mode.A.gravity;
+                    tmp += p.mode.A.dir;
 
                     p.pos += tmp * dt;
                 }
@@ -444,8 +443,9 @@ namespace FORZE {
                 // angle
                 p.rotation += p.deltaRotation * dt;
                 
+                
                 // update values in quad
-                updateQuadWithParticle(p, p.pos);
+                updateQuadWithParticle(p);
                 
                 // update particle counter
                 ++m_particleIdx;
@@ -465,6 +465,7 @@ namespace FORZE {
             }
         }
         
+        if(m_particleCount)
         makeDirty(0);
         
 #if FZ_VBO_STREAMING
@@ -476,8 +477,7 @@ namespace FORZE {
     void ParticleSystem::setGravity(const fzPoint& g)
     {
         FZ_ASSERT( m_emitterMode == kFZParticleModeGravity, "Particle Mode should be Gravity");
-        mode.A.gravityX = g.x;
-        mode.A.gravityY = g.y;
+        mode.A.gravity = g;
     }
     
     

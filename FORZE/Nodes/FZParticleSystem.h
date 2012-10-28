@@ -142,8 +142,7 @@ namespace FORZE {
             union {
                 // Mode A: gravity, direction, radial accel, tangential accel
                 struct {
-                    fzFloat     dirX;
-                    fzFloat     dirY;
+                    fzPoint     dir;
                     fzFloat		radialAccel;
                     fzFloat		tangentialAccel;
                 } A;
@@ -212,8 +211,7 @@ namespace FORZE {
         union {
             // Mode A:Gravity + Tangential Accel + Radial Accel
             struct {
-                fzFloat gravityX;
-                fzFloat gravityY;
+                fzPoint gravity;
                 fzFloat speed;
                 fzFloat speedVar;
                 fzFloat tangentialAccel;
@@ -293,7 +291,7 @@ namespace FORZE {
         bool isFull() const;
         
         //! should be overriden by subclasses
-        virtual void updateQuadWithParticle(const fzParticle& particle, const fzPoint& pos) = 0;
+        virtual void updateQuadWithParticle(const fzParticle& particle) = 0;
         
 #if FZ_VBO_STREAMING
         //! should be overriden by subclasses

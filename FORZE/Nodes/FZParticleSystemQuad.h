@@ -61,6 +61,10 @@ namespace FORZE {
         GLuint				m_quadsVBO;
 #endif
         
+        // Redefined functions
+        virtual void updateQuadWithParticle(const fzParticle& particle) override;
+        void postStep();
+        
     public:
         ParticleSystemQuad(fzUInt numberOfParticles, Texture2D *texture);
         
@@ -81,9 +85,6 @@ namespace FORZE {
         void setTexture(Texture2D *texture, const fzRect& rect);
         void setTexture(Texture2D *texture);
         
-        // Redefined functions
-        void updateQuadWithParticle(const fzParticle& particle, const fzPoint& pos);
-        void postStep();
         void draw();
     };
 }

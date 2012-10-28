@@ -37,7 +37,7 @@
 #include "FZShaderCache.h"
 #include "FZGLState.h"
 #include "FZMath.h"
-#include "matrixStack.h"
+#include "FZMS.h"
 
 
 namespace FORZE {
@@ -90,6 +90,7 @@ namespace FORZE {
         // generate vertex buffer object
         glGenBuffers(1, &m_indicesVBO);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_indicesVBO);
+        
         // copy indices to vram
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLushort) * m_totalParticles * 6, indices, GL_STATIC_DRAW);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
@@ -175,7 +176,7 @@ namespace FORZE {
     }
     
     
-    void ParticleSystemQuad::updateQuadWithParticle(const fzParticle& p, const fzPoint& newPos)
+    void ParticleSystemQuad::updateQuadWithParticle(const fzParticle& p)
     {
         // colors
         fzC4_T2_V2_Quad& quad = p_quads[m_particleIdx];
@@ -195,8 +196,8 @@ namespace FORZE {
             
             fzFloat& x2 = size_2;
             fzFloat& y2 = size_2;
-            const fzFloat& x = newPos.x;
-            const fzFloat& y = newPos.y;
+            const fzFloat& x = p.pos.x;
+            const fzFloat& y = p.pos.y;
             
             fzFloat r = -FZ_DEGREES_TO_RADIANS(p.rotation);
             fzFloat sr = fzMath_sin(r);
@@ -228,20 +229,20 @@ namespace FORZE {
             quad.tr.vertex.y = cy;
         } else {
             // bottom-left vertex:
-            quad.bl.vertex.x = newPos.x - size_2;
-            quad.bl.vertex.y = newPos.y - size_2;
+            quad.bl.vertex.x = p.pos.x - size_2;
+            quad.bl.vertex.y = p.pos.y - size_2;
             
             // bottom-right vertex:
-            quad.br.vertex.x = newPos.x + size_2;
-            quad.br.vertex.y = newPos.y - size_2;
+            quad.br.vertex.x = p.pos.x + size_2;
+            quad.br.vertex.y = p.pos.y - size_2;
             
             // top-left vertex:
-            quad.tl.vertex.x = newPos.x - size_2;
-            quad.tl.vertex.y = newPos.y + size_2;
+            quad.tl.vertex.x = p.pos.x - size_2;
+            quad.tl.vertex.y = p.pos.y + size_2;
             
             // top-right vertex:
-            quad.tr.vertex.x = newPos.x + size_2;
-            quad.tr.vertex.y = newPos.y + size_2;				
+            quad.tr.vertex.x = p.pos.x + size_2;
+            quad.tr.vertex.y = p.pos.y + size_2;				
         }
     }
     
