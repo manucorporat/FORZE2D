@@ -36,7 +36,9 @@ namespace FORZE {
     
     void* OSW::Instance()
     {
-        FZ_RAISE_STOP("OSW: Instance of OSW was not defined.");
+        if(p_oswrapper == NULL)
+            FZ_RAISE_STOP("OSW: Instance of OSW was not defined.");
+        
         return p_oswrapper;
     }
     

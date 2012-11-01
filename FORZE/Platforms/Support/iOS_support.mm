@@ -74,13 +74,13 @@ namespace FORZE {
     
     void OSW::configEvents(uint16_t dirtyFlags, uint16_t flags)
     {
-        [(_FZOSWRAPPER*)oswrapper updateEvents:dirtyFlags flags:flags];
+        [(_FZOSWRAPPER*)Instance() updateEvents:dirtyFlags flags:flags];
     }
     
     
     void OSW::setEventsInterval(fzFloat interval)
     {
-        [(_FZOSWRAPPER*)oswrapper setEventInterval:interval];
+        [(_FZOSWRAPPER*)Instance() setEventInterval:interval];
     }
     
     
@@ -96,6 +96,7 @@ namespace FORZE {
         }
         [[UIApplication sharedApplication] setStatusBarOrientation:uiorientation animated:NO];
     }
+    
     
     
 #pragma mark - Device info
@@ -349,7 +350,6 @@ namespace FORZE {
 -(void) setupOpenGL
 {
     CAEAGLLayer *surface = (CAEAGLLayer *)[self layer];
-    
     
     // Config surface
     {

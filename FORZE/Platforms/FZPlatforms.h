@@ -72,21 +72,19 @@ namespace FORZE {
     class GLConfig;
     class GLManager;
     class EventManager;
-    
-    
+        
     // OS WRAPPER
     // FORZE allocates an private class (Objective-C or C++ class) that connects the OS API with FORZE.
     // All this methods are low level, and they have a different implementation for each platform.
     // The common use never should have to use this methods.
     class OSW
-    {
-    private:
-        static void *p_oswrapper;
-        
+    {        
     public:
+        static void* p_oswrapper;
         static void* Instance();
         static void setInstance(void *instance);
-
+        
+        
         //! Initializes the wrapper class, initialize all OS runtime tasks and call notify that to the Director.
         static void init(int argc, char *argv[]);
         

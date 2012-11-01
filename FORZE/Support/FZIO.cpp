@@ -86,8 +86,7 @@ namespace FORZE {
         FZ_ASSERT(absolutePath, "absolutePath can not be NULL");
         
         FILE *f = fopen(absolutePath, "w");
-        if( f == NULL )
-        {
+        if( f == NULL ) {
             FZLOGERROR("IO: \"%s\" can not be opened.", absolutePath);
             return false;
         }
