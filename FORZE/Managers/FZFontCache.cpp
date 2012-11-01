@@ -75,12 +75,12 @@ namespace FORZE {
         
         if(font == NULL) {
             
-            try{
+            try {
                 font = new Font(filenameCpy, lineHeight);
                 font->retain();
                 m_fonts.insert(fontsPair(hash, font));
 
-            }catch(std::exception& error){
+            } catch(std::exception& error){
                 free(filenameCpy);
                 FZLOGERROR("%s", error.what());
                 return NULL;

@@ -47,8 +47,8 @@ namespace FORZE {
         // PARSE TMX FILE
         try {
             m_mapInfo.parseTMXFile(tmxfilename);
-        }catch(std::exception &error)
-        {
+            
+        } catch(std::exception &error) {
             FZLOGERROR("%s", error.what());
             return;
         }

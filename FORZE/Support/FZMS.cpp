@@ -51,7 +51,7 @@ namespace FORZE {
             return;
         
         // Initialize stack
-        _modelview_stack.stack = (float**) malloc(STACK_SIZE * sizeof(float*));
+        _modelview_stack.stack = new float*[STACK_SIZE];
         if(_modelview_stack.stack == NULL)
             FZ_RAISE("MatrixStack: Imposible to allocate memory.");
         
@@ -68,7 +68,7 @@ namespace FORZE {
         if (!_initialized)
             return;
         
-        free(_modelview_stack.stack);
+        delete [] _modelview_stack.stack;
         
         _initialized = false;
     }

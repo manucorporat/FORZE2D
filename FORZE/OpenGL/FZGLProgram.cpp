@@ -71,11 +71,11 @@ namespace FORZE {
         if (logLength < 1)
             return string();
         
-        char *buffer = (char*) malloc(logLength);
+        char *buffer = new char[logLength];
         logFunc(object, logLength, &charsWritten, buffer);
-        string logOut((const char*)buffer, logLength);
+        string logOut((const char*)buffer, logLength);        
+        delete [] buffer;
         
-        free(buffer);
         CHECK_GL_ERROR_DEBUG();
         
         return logOut;
@@ -124,7 +124,7 @@ namespace FORZE {
     }
     
     
-    string GLShader::getShaderLog()
+    string GLShader::getShaderLog() const
     {
         if(!m_shader)
             FZLOGERROR("GLShader: Shader is not compiled yet.");

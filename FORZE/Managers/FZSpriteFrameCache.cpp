@@ -69,7 +69,7 @@ namespace FORZE {
         try {
             doc.parse<parse_fastest | parse_validate_closing_tags>(data.getPointer());
             
-        }catch(std::exception &error) {
+        } catch(std::exception &error) {
             data.free();
             FZLOGERROR("SpriteFrameCache: Error parsing \"%s\". rapidXML exception: %s", coordsFilename, error.what());
             

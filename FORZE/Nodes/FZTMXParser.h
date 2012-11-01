@@ -95,9 +95,6 @@ namespace FORZE {
         , p_tiles(NULL)
         { }
         
-        ~TMXLayerInfo() {
-            
-        }
         
         bool isVisible() const {
             return m_visible;
