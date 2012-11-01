@@ -41,6 +41,7 @@
 #include "FZBitOrder.h"
 #include "FZData.h"
 
+// libpng
 #include "png.h"
 #include "pnginfo.h"
 
@@ -244,15 +245,16 @@ namespace FORZE {
     Texture2D::Texture2D(const void* ptr, fzPixelFormat pixelFormat, fzTextureFormat textureFormat, GLsizei width, GLsizei height, const fzSize &size)
     : Texture2D()
     {
+        m_size = size;
         m_width = width;
         m_height = height;
-        m_size = size;
         
         if(!DeviceConfig::Instance().isNPOTSupported()) {
-          if(fzMath_isPOT(m_width) && fzMath_isPOT(m_height))
-              FZ_RAISE("Texture2D: NPOT textures are not supported.");
+            if(!fzMath_isPOT(width) || !fzMath_isPOT(height)) {
+                FZ_RAISE("Texture2D: NPOT textures are not supported.");
+            }
         }
-        
+
         setPixelFormat(pixelFormat, textureFormat);
         upload(pixelFormat, 0, width, height, 0, ptr);
     }
@@ -441,12 +443,11 @@ namespace FORZE {
         }
         
               png_byte *buffer;
-        try{
+        try {
             
             buffer = new png_byte[texLength + structLength];
             
-        }catch(std::bad_alloc& error)
-        {
+        } catch(std::bad_alloc& error) {
             png_destroy_read_struct(&png_ptr, &info_ptr, (png_info**)NULL);
             fclose(file);
             throw error;
@@ -790,5 +791,4 @@ namespace FORZE {
         FZ_ASSERT(format >= 0 && format < (fzTextureFormat)MAX_TEXTURE_FORMATS, "Invalid texture format");
         return _textureFormat_hash[format];
     }
-    
 }
