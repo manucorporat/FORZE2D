@@ -64,35 +64,53 @@ namespace FORZE
         fzUInt m_len;
         
     public:
+        
+        //! Returns the default empty fzBuffer.
         static fzBuffer empty() {
             return fzBuffer(NULL, 0);
         }
+        
+        //! Default constructor.
         fzBuffer() = default;
+        
+        //! Constructs a buffer from a pointer and a length.
         fzBuffer(char *pointer, fzUInt length);
         
+        
+        //! Returns the buffer start constant pointer.
         const char* getPointer() const {
             return p_ptr;
         }
         
+        
+        //! Returns the buffer start pointer.
         char* getPointer() {
             return p_ptr;
         }
         
+        
+        //! Returns the buffer's length.
         fzUInt getLength() const {
             return m_len;
         }
         
-        fzBuffer copy() const;
         
+        //! Releases the memory of the buffer and makes the buffer empty.
         void free() {
             delete [] p_ptr;
             p_ptr = NULL;
             m_len = 0;
         }
         
+        
+        //! Returns true if the buffer is empty.
         bool isEmpty() const {
             return (p_ptr == NULL || m_len == 0);
         }
+        
+        
+        //! Copies the content of the buffer into a new buffer.
+        fzBuffer copy() const;
     };
 }
 

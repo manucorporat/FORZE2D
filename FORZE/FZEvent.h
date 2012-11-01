@@ -105,8 +105,6 @@ namespace FORZE {
         
 
         
-        
-        
         //! Tap events are a cross platform solution. It's equivalent to:
         //! kFZEventType_Touch in mobile devices (iPhone, Android...)
         //! kFZEventType_Mouse in desktop devices (Mac OSX, Windows, Linux)
@@ -119,44 +117,43 @@ namespace FORZE {
         friend class EventManager;
         
     private:
-        //! type of event
+        // type of event
         fzEventType m_type;
         
-        //! state
+        // state
         fzEventState m_state;
         
-        //! creating time
+        // creating time
         time_t m_creation;
         
-        //! unique identifier
+        // unique identifier
         intptr_t m_identifier;
         
-        //! values
+        // values
         double m_x, m_y, m_z;
         
-        //! delegate
+        // delegate
         EventDelegate *p_delegate;
       
-        //! owner
+        // owner
         void *p_owner;
         
-        //! user data
+        // user data
         void *p_userData;
         
         void update(const Event& event);
         
         
-        //! method used internally to change the event's delegate
+        //! Method used internally to change the event's delegate
         void setDelegate(EventDelegate* d);
         
-        //! method used internally to get the event's type
+        //! Method used internally to get the event's type
         fzEventType getType() const {
             return m_type;
         }
         
-        
     public:
-        //! Constructs a new events to be managed by the EventManager
+        //! Constructs a new events to be managed by the EventManager.
         //! @param identifier. Must be unique identifier used to track the life cicle of the event. Began, Updated, Ended...
         Event(void *owner, intptr_t identifier, fzEventType type, fzEventState state, fzFloat x, fzFloat y, fzFloat z)
         : p_owner(owner)
@@ -186,7 +183,7 @@ namespace FORZE {
         : Event(owner, identifier, type, state, 0, 0, 0) {}
         
         
-        //! This method is used to ensure that the event type
+        //! This method is used to ensure that the event type.
         //! @see fzEventType
         bool isType(fzEventType type) const {
             return !!(m_type & type);
@@ -200,7 +197,7 @@ namespace FORZE {
         }
         
         
-        //! 2D vector.
+        //! Returns a 2D vector.
         //! Used as position in screen
         //! Normalized vector in a stick
         //! @see getVector()
@@ -210,7 +207,7 @@ namespace FORZE {
         }
         
         
-        //! 3D vector
+        //! Returns a 3D vector.
         //! Used by the accelerometer events
         //! @see getPoint()
         //! @see getScalar()
@@ -218,13 +215,17 @@ namespace FORZE {
             return fzPoint3(m_x, m_y, m_z);
         }
         
+        
+        //! Returns a double precision 3D vector.
+        //! Used by the accelerometer events.
+        //! @see getVector()
         fzPoint3Double getVectorDouble() const {
             return fzPoint3Double(m_x, m_y, m_z);
         }
         
         
-        //! Scalar value
-        //! Used as button preasure, for example in Playstation
+        //! Returns a scalar value.
+        //! Used as button preasure, for example in Playstation.
         //! @see getPoint()
         //! @see getVector()
         fzFloat getScalar() const {
@@ -232,14 +233,14 @@ namespace FORZE {
         }
         
         
-        //! Returns the life cycle of the events measured in seconds
+        //! Returns the life cycle of the events measured in seconds.
         fzFloat getElapsed() const {
             time_t now; time(&now);
             return difftime(now, m_creation);
         }
         
         
-        //! Returns the event's delegate
+        //! Returns the event's delegate.
         EventDelegate* getDelegate() const {
             return p_delegate;
         }
@@ -251,14 +252,17 @@ namespace FORZE {
         intptr_t getIdentifier() const {
             return m_identifier;
         }
-      
-      
+        
+        
+        //! Returns the event's owner.
+        //! The creator of the event, usually it's the OS Wrapper.
+        //! This is used because you can dispatch your own events.
         void *getOwner() const {
           return p_owner;
         }
         
         
-        //! Sets user data
+        //! Sets the user data.
         //! Useful user configured value to design integrate the events with your games.
         //! @see getUserData()
         void setUserData(void *data) {
@@ -266,7 +270,7 @@ namespace FORZE {
         }
         
         
-        //! Gets user data
+        //! Returns the user data.
         //! @see setUserData()
         void *getUserData() const {
             return p_userData;

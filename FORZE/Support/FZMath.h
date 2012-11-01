@@ -51,35 +51,35 @@ namespace FORZE {
 #endif
     
     
-    //! Returns next power of two
+    //! Returns next power of two.
     uint32_t fzMath_nextPOT(uint32_t scalar);
     
     
-    //! Returns if "nu" is Power Of Two
+    //! Returns if "nu" is Power Of Two.
     bool fzMath_isPOT(uint32_t scalar);
     
     
-    //! Returns a identity matrix
+    //! Returns a identity matrix.
     void fzMath_mat4Identity(float *matrix);
     
     
-    //! Returns a new matrix after appling the affine transform to the given matrix
+    //! Returns a new matrix after appling the affine transform to the given matrix.
     void fzMath_mat4Multiply(const float* matrixInput, const fzAffineTransform& affine, float* matrixOutput);
     
     
-    //! Returns a new matrix after appling the affine transform to the given matrix
+    //! Returns a new matrix after appling the affine transform to the given matrix.
     void fzMath_mat4Multiply(const float* matrixInput, const float* matrixInput2, float* matrixOutput);
 
     
-    //! Returns four vec2 (8 floats)
+    //! Returns four vec2 (8 floats).
     void fzMath_mat4Vec2(const float* matrixInput, const float* vertices2DInput, float* vertices2DOutput);
 
     
-    //! Returns four vec4 (16 floats)
+    //! Returns four vec4 (16 floats).
     void fzMath_mat4Vec4(const float* matrixInput, const float* vertices2DInput, float* vertices4DOutput);
 
     
-    //! Returns four vec4 (16 floats)
+    //! Returns four vec4 (16 floats).
     void fzMath_mat4Vec4Affine(const float* matrixInput, const fzAffineTransform& affine, const float* vertices2DInput, float* vertices4DOutput);
     
     
@@ -87,25 +87,25 @@ namespace FORZE {
     void fzMath_mat4Copy(const float* m1, float* mat);
     
     
-    //! Prints a log in the console showing the 4x4 matrix
+    //! Prints a log in the console showing the 4x4 matrix.
     void fzMath_mat4print(const float* matrix);
     
     
-    //! Creates an perspective projection matrix
+    //! Creates an perspective projection matrix.
     void fzMath_mat4PerspectiveProjection(fzFloat fovY, fzFloat aspect,
                                           fzFloat zNear, fzFloat zFar,
                                           float *output);
     
     
-    //! Creates an orthographic projection matrix like glOrtho
+    //! Creates an orthographic projection matrix like glOrtho.
     void fzMath_mat4OrthoProjection(fzFloat left, fzFloat right,
                                            fzFloat bottom, fzFloat top,
                                            fzFloat nearVal, fzFloat farVal,
                                            float* output);
     
     
-    //! Builds a translation matrix in the same way as gluLookAt()
-    //! the resulting matrix is stored in output.
+    //! Builds a translation matrix in the same way as gluLookAt().
+    //! the resulting matrix is stored in output..
     void fzMath_mat4LookAt(const fzPoint3& eye,
                            const fzPoint3& center,
                            const fzPoint3& up,

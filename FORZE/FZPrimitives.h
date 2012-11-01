@@ -51,11 +51,11 @@
 
 namespace FORZE {
     
-    //! Changes the color of the primitives
+    //! Changes the color of the primitives.
     void fzGLColor(const fzColor4F& color);
     
     
-    //! Best way to changes the line width
+    //! Best way to changes the line width.
     void fzGLLineWidth(fzFloat points);
 
     
@@ -71,7 +71,7 @@ namespace FORZE {
     void fzDrawLine( const fzVec2& origin, const fzPoint& destination );
     
     
-    //! Draws an array of lines
+    //! Draws an array of lines.
     void fzDrawLines( const fzVec2 *vertices, fzUInt numOfVertices);
     
     

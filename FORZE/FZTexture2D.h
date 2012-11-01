@@ -138,15 +138,15 @@ namespace FORZE {
         Texture2D();
 
         
-        //! Constructs a texture2d with a data pointer, a format, POT width, height and the content size.
+        //! Constructs a Texture2D with a data pointer, a format, POT width, height and the content size.
         Texture2D(const void* ptr, fzPixelFormat pixelFormat, fzTextureFormat textureFormat, GLsizei width, GLsizei height, const fzSize &size);
         
         
-        //! Constructs a blank texture2d with a format and size.
+        //! Constructs a blank Texture2D with a format and size.
         Texture2D(fzTextureFormat format, const fzSize& size);
         
         
-        //! Constructs a texture2d from an image in memory.
+        //! Constructs a Texture2D from an image in ROM.
         Texture2D(const char* filename);
         
         // Destructor
@@ -163,6 +163,7 @@ namespace FORZE {
         
         //! Returns the texture width in pixels.
         //! @warning if you are trying to do something complex with this value, remember that FORZE only works with points, not pixels.
+        //! @see getPixelsHigh()
         fzUInt getPixelsWide() const {
             return m_width;
         }
@@ -170,6 +171,7 @@ namespace FORZE {
         
         //! Returns the texture height in pixels.
         //! @warning if you are trying to do something complex with this value, remember that FORZE only works with points, not pixels
+        //! @see getPixelsWide()
         fzUInt getPixelsHigh() const {
             return m_height;
         }
@@ -181,59 +183,68 @@ namespace FORZE {
         }
         
         
-        //! Returns the texture scaling factor
+        //! Returns the texture scaling factor.
         //! texture-x2.png -> factor 2
         //! texture-x4.png -> factor 4 ...
+        //! @see setFactor()
         fzFloat getFactor() const {
             return m_factor;
         }
         
         
-        
+        //! @see getFactor()
         void setFactor(fzFloat factor) {
             m_factor = factor;
         }
         
-        //! Returns the content size of the texture in points
+        //! Returns the content size of the texture in points.
+        //! @see getContentSizeInPixels()
         fzSize getContentSize() const;
         
         
-        //! Returns the content size of the texture in points
+        //! Returns the content size of the texture in points.
+        //! @see getContentSize()
         const fzSize& getContentSizeInPixels() const {
             return m_size;
         }
         
+        
+        //! Binds the opengl texture.
+        //! @code fzGLBindTexture2D(texture->getName());
         void bind() const;
         
         
-        /** sets the min filter, mag filter, wrap s and wrap t texture parameters.
-         If the texture size is NPOT (non power of 2), then in can only use GL_CLAMP_TO_EDGE in GL_TEXTURE_WRAP_{S,T}.
-         */
+        //! Sets the min filter, mag filter, wrap s and wrap t texture parameters.
+        //! If the texture size is NPOT (non power of 2), then in can only use GL_CLAMP_TO_EDGE in GL_TEXTURE_WRAP_{S,T}.
         void setTexParameters(const fzTexParams&);
         
         
-        /** sets antialias texture parameters:
-         - GL_TEXTURE_MIN_FILTER = GL_LINEAR
-         - GL_TEXTURE_MAG_FILTER = GL_LINEAR         
-         */
+        //! Sets antialias texture parameters:
+        //! - GL_TEXTURE_MIN_FILTER = GL_LINEAR
+        //! - GL_TEXTURE_MAG_FILTER = GL_LINEAR
+        //! @see setTexParameters()
+        //! @see setAliasTexParameters()
         void setAntiAliasTexParameters();
         
-        void draw(fzFloat sX = 1, fzFloat sY = 1) const;
         
-        /** sets alias texture parameters:
-         - GL_TEXTURE_MIN_FILTER = GL_NEAREST
-         - GL_TEXTURE_MAG_FILTER = GL_NEAREST
-        */
+        //! Sets alias texture parameters:
+        //! - GL_TEXTURE_MIN_FILTER = GL_NEAREST
+        //! - GL_TEXTURE_MAG_FILTER = GL_NEAREST
+        //! @see setTexParameters()
+        //! @see setAntiAliasTexParameters()
         void setAliasTexParameters();
         
         
-        /** Generates mipmap images for the texture.
-         It only works if the texture size is POT (power of 2).
-         */
+        //! Generates mipmap images for the texture.
+        //! It only works if the texture size is POT (power of 2).
         void generateMipmap() const;
         
         
-        /** sets the default pixel format for non-PVR images.
+        //! Used in debug mode to quickly render a texture.
+        void draw(fzFloat sX = 1, fzFloat sY = 1) const;
+        
+        
+        /** Sets the default pixel format for non-PVR images.
          If the image contains alpha channel, then the options are:
          - generate 32-bit textures:    kFZTexture2DPixelFormat_RGBA8888 (default)
          - generate 16-bit textures:    kFZTexture2DPixelFormat_RGBA4444
@@ -242,7 +253,6 @@ namespace FORZE {
          - generate 16-bit textures:    kFZTexture2DPixelFormat_IA88
          - generate 8-bit textures:     kFZTexture2DPixelFormat_A8
          */
-        
         static fzTextureFormat getDefaultTextureFormat();
         static void setDefaultTextureFormat(fzTextureFormat);
         
@@ -252,7 +262,7 @@ namespace FORZE {
         static fzTextureInfo getTextureInfo(fzTextureFormat format);
 
         
-        /** returns the alpha pixel format */
+        //! Returns the alpha pixel format.
         bool getHasPremultipliedAlpha() const;
     };
 }

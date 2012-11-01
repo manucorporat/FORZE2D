@@ -37,8 +37,8 @@
 
 namespace FORZE {
     
-    /** Instant actions are immediate actions. They don't have a duration like the CCIntervalAction actions.
-     */
+    //! Instant actions are immediate actions.
+    //! They don't have a duration like the ActionInterval actions.
     class ActionInstant : public FiniteTimeAction
     {
     protected:
@@ -56,7 +56,7 @@ namespace FORZE {
     };
     
     
-    /** Show the node */
+    //! Show the node.
     class Show : public ActionInstant
     {
     public:
@@ -69,7 +69,7 @@ namespace FORZE {
     };
     
     
-    /** Hide the node */
+    //! Hide the node.
     class Hide : public ActionInstant
     {
     public:
@@ -82,7 +82,7 @@ namespace FORZE {
     };
     
     
-    /** Toggles the visibility of a node */
+    //! Toggles the visibility of a node.
     class ToggleVisibility : public ActionInstant
     {
     public:
@@ -95,7 +95,7 @@ namespace FORZE {
     };
     
     
-    /** Flips the sprite horizontally */
+    //! Flips the Sprite horizontally.
     class FlipX : public ActionInstant
     {
     protected:
@@ -112,7 +112,7 @@ namespace FORZE {
     };
     
     
-    /** Flips the sprite vertically */
+    //! Flips the Sprite vertically.
     class FlipY : public ActionInstant
     {
     protected:
@@ -128,7 +128,7 @@ namespace FORZE {
     };
     
     
-    /** Places the node in a certain position */
+    //! Places the node in a certain position.
     class Place : public ActionInstant
     {
     protected:
@@ -145,18 +145,18 @@ namespace FORZE {
     };
     
     
-    /** Calls a 'callback' */
+    //! Calls a 'callback'.
     class CallFunc : public ActionInstant
     {
     protected:
         SELProtocol *p_targetCallback;
         SELECTOR_VOID p_selector;
         
+        void execute();
+
     public:
         // Constructor
-        CallFunc(SELProtocol *target, SELECTOR_VOID selector);
-        void execute();
-        
+        CallFunc(SELProtocol *target, SELECTOR_VOID selector);        
         
         // Redefined functions
         virtual void startWithTarget(void *target) override;
@@ -164,17 +164,17 @@ namespace FORZE {
     };
     
     
-    /** Calls a 'callback' with the node as the first argument */
+    //! Calls a 'callback' with the node as the first argument.
     class CallFuncN : public ActionInstant
     {
     protected:
         SELProtocol *p_targetCallback;
         SELECTOR_PTR p_selector;
         
-    public:
-        //! Constructs a CallFuncND action.
-        CallFuncN(SELProtocol *target, SELECTOR_PTR selector);
         virtual void execute();
+    public:
+        //! Constructs a CallFuncN action.
+        CallFuncN(SELProtocol *target, SELECTOR_PTR selector);
         
         // Redefined functions
         virtual void startWithTarget(void *target) override;
@@ -182,9 +182,8 @@ namespace FORZE {
     };
     
     
-    /** Calls a 'callback' with the node as the first argument and the 2nd argument is data.
-     * ND means: Node and Data. Data is void *, so it could be anything.
-     */
+    //!Calls a 'callback' with the node as the first argument and the 2nd argument is data.
+    //! ND means: Node and Data. Data is void *, so it could be anything.
     class CallFuncND : public ActionInstant
     {
     protected:
@@ -192,10 +191,11 @@ namespace FORZE {
         SELECTOR_2PTR p_selector;
         void *p_pointer;
         
+        void execute();
+
     public:
         //! Constructs a CallFuncND action.
         CallFuncND(SELProtocol *target, SELECTOR_2PTR selector, void *data);
-        void execute();
         
         
         // Redefined functions
@@ -204,9 +204,8 @@ namespace FORZE {
     };
 
     
-    /** Calls a 'callback' with an object as the first argument.
-     O means Object.
-     */
+    //! Calls a 'callback' with an object as the first argument.
+    //! O means Object.
     class CallFuncO : public CallFuncN
     {
     protected:

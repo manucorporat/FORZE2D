@@ -60,13 +60,13 @@ namespace FORZE {
         virtual ~LifeCycle() {}
         
         
-        //! Returns the number of retains
+        //! Returns the number of retains.
         int retainCount() {
             return m_retains;
         }
         
         
-        //! Increments the retain count by 1
+        //! Increments the retain count by 1.
         //! @warning FORZE manages the memory automatically but if you retain an object you have to release it.
         LifeCycle* retain() {
             ++m_retains;
@@ -75,7 +75,7 @@ namespace FORZE {
         
         
         //! Reduces the retain count by 1.
-        //! If the retain count is less or equal to 0, the object is released from memory (deleted)
+        //! If the retain count is less or equal to 0, the object is released from memory (deleted).
         void release() {
             --m_retains;
             if(m_retains <= 0)

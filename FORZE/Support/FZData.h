@@ -63,9 +63,7 @@ namespace FORZE {
         static fzBuffer B64Encode(const char *input, fzUInt inLength);
         
         
-        //! Loads a .ccz file at the specified absolute path.
-        //! @param absolutePath is a NULL-terminated char string
-        //! @return a empty fzBuffer if the file could not be loaded.
+        //! Inflates a CCZ data.
         static fzBuffer inflateCCZ(unsigned char *input, unsigned int inLength);
         
         

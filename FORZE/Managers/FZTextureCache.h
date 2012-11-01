@@ -45,10 +45,9 @@ namespace FORZE {
     
     class Texture2D;
     
-    /** Singleton that handles the loading of textures
-     * Once the texture is loaded, the next time it will return
-     * a reference of the previously loaded texture reducing GPU & CPU memory
-     */
+    //! Singleton that handles the loading of textures.
+    //! Once the texture is loaded, the next time it will return
+    //! a reference of the previously loaded texture reducing GPU & CPU memory
     class TextureCache
     {
     private:
@@ -61,7 +60,7 @@ namespace FORZE {
         typedef pair<int32_t, Texture2D*> texturesPair;
         
         
-        //! singleton instance
+        // singleton instance
         static TextureCache* p_instance;
         texturesMap m_textures;
         
@@ -83,29 +82,29 @@ namespace FORZE {
         static TextureCache& Instance();
         
         
-        //! Returns a Texture2D object given an file image
-        //! If the file image was not previously loaded, it will create a new Texture2D
+        //! Returns a Texture2D object given an file image.
+        //! If the file image was not previously loaded, it will create a new Texture2D.
         //! object and it will return it. It will use the filename as a key.
         //! Otherwise it will return a reference of a previosly loaded image.
         //! Supported image extensions: .png, .pvr, .pvr.ccz
         Texture2D* addImage(const char* filename);
         
         
-        //! Deletes a texture from the cache given the texture pointer
+        //! Deletes a Texture2D from the cache given the Texture2D pointer.
         void removeTexture(Texture2D *texture);
         
         
-        //! Deletes a texture from the cache given a its key name
+        //! Deletes a Texture2D from the cache given a its key name.
         //! @param key is a NULL terminated char string.
         void removeTextureForFilename(const char* key);
         
         
-        //! Removes unused textures
+        //! Removes unused textures.
         //! This method will be called if the system througs a memory warning.
         void removeUnusedTextures();
         
         
-        //! Removes all the textures stored in the cache
+        //! Removes all the textures stored in the cache.
         void removeAllTextures();
     };
 }

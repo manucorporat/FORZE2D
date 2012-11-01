@@ -131,91 +131,92 @@ namespace FORZE {
             kFZDDirty_viewPort = 1 << 0,
             kFZDDirty_projection = 1 << 1,
         };
-        ApplicationProtocol *p_appdelegate;
+        // Application delegate
+        AppDelegateProtocol *p_appdelegate;
         
-        //! Director's instance
+        // Director's instance
         static Director* p_instance;
 
-        //! is director initialized
+        // is director initialized
         bool m_isInitialized;
         
-        //! is the running scene paused
+        // is the running scene paused
         bool m_isPaused;
         
-        //! is director running
+        // is director running
         bool m_isRunning;
         
-        //! is director running
+        // is director running
         unsigned char m_dirtyFlags;
         
-        //! device orientation
+        // device orientation
         fzOrientation m_orientation;
         int m_autoOrientation;
         
-        //! display size in pixels
+        // display size in pixels
         fzSize m_screenSize;
         
-        //! canvas size
+        // canvas size
         fzSize m_originalCanvasSize;
         fzSize m_canvasSize;
         
-        //! window size
+        // window size
         fzSize m_windowSize;
 
-        //! rendering rect
+        // rendering rect
         fzRect m_renderingRect;
         
-        //! screen factor
+        // screen factor
         fzFloat m_screenFactor;
         
-        //! resources factor
+        // resources factor
         fzUInt m_resourcesFactor;
         
         
         fzAffineTransform m_orientationTransform;
         
-        //! current animation interval
+        // current animation interval
         fzFloat m_animationInterval;
         
-        //! cached animation interval (during pausing)
+        // cached animation interval (during pausing)
         fzFloat m_cachedAnimationInterval;
         
-        //! projection used (2D, 3D or custom)
+        // projection used (2D, 3D or custom)
         fzProjection m_projection;
         
-        //! resize mode
+        // resize mode
         fzResizeMode m_resizeMode;
         
-        //! The running scene
+        // The running scene
         Scene *p_runningScene;
         
         /* will be the next 'runningScene' in the next frame
          nextScene is a weak reference. */
         Scene *p_nextScene;
         
-        //! If YES, then "old" scene will receive the cleanup message
+        // If YES, then "old" scene will receive the cleanup message
         bool m_sendCleanupToScene;
         
-        //! scheduled scenes
+        // scheduled scenes
         vector<Scene*> m_scenesStack;
         
         /* This object will be visited after the scene. Useful to hook a notification node */
         id p_notificationNode;
         HUD *p_hud;
         
-        //! last time the main loop was updated
+        // last time the main loop was updated
         struct timeval m_lastUpdate;
         
-        //! delta time since last tick to main loop
+        // delta time since last tick to main loop
         fzFloat m_dt;
         fzFloat m_frameStep;
         
-        /* whether or not the next delta time will be zero */
+        // whether or not the next delta time will be zero
         bool m_nextDeltaTimeZero;
         
         bool m_firstFrame;
 
-        //!opengl manager
+        // opengl manager
         GLConfig m_glConfig;
         
         
@@ -242,32 +243,31 @@ namespace FORZE {
     public:
         fzMat4 m_transformMV;
         
-        int getAutorotation() const
-        {
+        int getAutorotation() const {
             return m_autoOrientation;
         }
 
-        //! Gets and allocates the singleton
+        //! Gets and allocates the singleton.
         static Director& Instance();
         
         
         //! Sets the application's delegate.
-        void setDelegate(ApplicationProtocol *delegate);
+        void setDelegate(AppDelegateProtocol *delegate);
         
         
-        //! Returns the application's delegate
-        ApplicationProtocol* getDelegate() const;
+        //! Returns the application's delegate.
+        AppDelegateProtocol* getDelegate() const;
 
         
         //! Pauses the running scene.
-        //! The running scene will be _drawed_ but all scheduled timers will be paused
-        //! While paused, the draw rate will be 4 FPS to reduce CPU consuption
+        //! The running scene will be _drawed_ but all scheduled timers will be paused.
+        //! While paused, the draw rate will be 4 FPS to reduce CPU consuption.
         //! @see applicationPaused()
         //! @see resume()
         void pause();
         
         
-        //! Resumes the paused scene
+        //! Resumes the paused scene.
         //! The scheduled timers will be activated again.
         //! The "delta time" will be 0 (as if the game wasn't paused.
         //! @see applicationResumed()
@@ -282,8 +282,8 @@ namespace FORZE {
         
         
         //! The main loop is triggered again.
-        //! Call this function only if [stopAnimation] was called earlier
-        //! @warning Dont' call this function to start the main loop. To run the main loop call runWithScene
+        //! Call this function only if [stopAnimation] was called earlier.
+        //! @warning Dont' call this function to start the main loop. To run the main loop. call runWithScene
         //! @see stopAnimation()
         void startAnimation();
         
@@ -294,17 +294,17 @@ namespace FORZE {
         bool isPaused() const;
         
         
-        //! Returns true if the directos us running
+        //! Returns true if the directos us running.
         //! @see stopAnimation()
         //! @see startAnimation()
         bool isRunning() const;
         
         
-        //! Retuns the current delta value
+        //! Retuns the current delta value.
         fzFloat getDelta() const;
         
         
-        //! This method calculate the delta value
+        //! This method calculate the delta value.
         void calculateDeltaTime();
         
         
@@ -315,37 +315,37 @@ namespace FORZE {
         
         void setFullscreen();
         
-        //! Returns the current device orientation
-        //! This value can change dynamically when orientation = kFZOrientation_Auto
+        //! Returns the current device orientation.
+        //! This value can change dynamically when orientation = kFZOrientation_Auto.
         //! @see setOrientation()
         fzOrientation getOrientation() const;
         
         
-        //! Returns the screen size
+        //! Returns the screen size.
         const fzSize& getScreenSize() const;
     
         
-        //! Returns the display size in pixels
+        //! Returns the display size in pixels.
         const fzSize& getWindowSize() const;
     
         
-        //! Returns the canvas size
+        //! Returns the canvas size.
         //! @see FORZE_INIT()
         //! @see setCanvasSize()
         const fzSize& getCanvasSize() const;
         
         
-        //! Returns the view rect
+        //! Returns the view rect.
         //! @see getViewPort()
         const fzRect& getRenderingRect() const;
         
         
-        //! Returns the default view port
+        //! Returns the default view port.
         //! @return getRenderingRect().size * screenFactor
         fzSize getViewPort() const;
 
         
-        //! Returns the max scaling factor applied by the Autoresizing
+        //! Returns the max scaling factor applied by the Autoresizing.
         //! @see setCanvasSize()
         //! @see setResizeMode()
         fzUInt getResourcesFactor() const;
@@ -360,7 +360,7 @@ namespace FORZE {
         fzFloat getContentScaleFactor() const;
         
         
-        //! Sets a new canvas size
+        //! Sets a new canvas size.
         //! @param size. If size is (0, 0) canvas size is equal to screen size
         //! @see getCanvasSize()
         void setCanvasSize(const fzSize& size);
@@ -384,7 +384,7 @@ namespace FORZE {
         void setResizeMode(fzResizeMode resizeMode);
         
         
-        //! Sets if you want to enable the depth test
+        //! Sets if you want to enable the depth test.
         void setDepthTest(bool);
         
         
@@ -398,50 +398,50 @@ namespace FORZE {
         fzFloat getAnimationInteval() const;
         
         
-        //! Sets if you want to display the FPS stats
+        //! Sets if you want to display the FPS stats.
         void setDisplayFPS(bool);
         
         
-        //! Sets the default background color
-        //! fzBLACK is default
+        //! Sets the default background color.
+        //! fzBLACK is default.
         //! @see getClearColor()
         void setClearColor(const fzColor4F&);
         
         
-        //! Sets the default background color
+        //! Sets the default background color.
         //! @see setClearColor()
         const fzColor4F& getClearColor() const;
     
         
         //! Returns the current running Scene.
-        //! Director can only run one Scene at the time
+        //! Director can only run one Scene at the time.
         //! @see runWithScene()
         //! @see pushScene()
         //! @see replaceScene()
         Scene* getRunningScene() const;
         
         
-        //! Sets the projection type
+        //! Sets the projection type.
         //! @see getProjection()
         void setProjection(fzProjection);
         
         
-        //! Returns the projection type
+        //! Returns the projection type.
         //! @see setProjection()
         fzProjection getProjection() const;
         
         
-        //! Returns the Z eye value
+        //! Returns the Z eye value.
         fzFloat getZEye() const;
         
         
-        //! This method converts a UI coordinate to a GL coordinate
+        //! This method converts a UI coordinate to a GL coordinate.
         fzPoint convertToGL(fzPoint uiPoint, bool isFlippedY) const;
         
         
-        //! This method normalizes a position at the canvas size
-        //! For example: The top-right corner is (1, 1)
-        //! Center (0, 0) and Bottom-left corner (-1, -1)
+        //! This method normalizes a position at the canvas size.
+        //! For example: The top-right corner is (1, 1).
+        //! Center (0, 0) and Bottom-left corner (-1, -1).
         //! @see unnormalizedCoord()
         fzPoint normalizedCoord(fzPoint point) const;
         
@@ -452,12 +452,12 @@ namespace FORZE {
         
         fzRect unnormalizedRect(fzRect rect) const;
         
-        //! Returns the Opengl config
+        //! Returns the Opengl config.
         const GLConfig& getGLConfig() const;
         GLConfig& getGLConfig();
         
         
-        //! Draw the scene.
+        //! Draws the scene.
         //! This method is called every frame. Don't call it manually.
         //! Returns true if new content was rendered.
         bool drawScene();

@@ -61,22 +61,22 @@ namespace FORZE {
         
         
     protected:
-        //! sprite batch used to render the tiles
+        // sprite batch used to render the tiles
         TMXTiledMap         *p_batch;
         
-        //! layer size in tiles
+        // layer size in tiles
         fzSize				m_layerSize;
         
-        //! map size in tiles
+        // map size in tiles
         fzSize				m_mapTileSize;
         
-        //! tiles in raw format
+        // tiles in raw format
         uint32_t			*p_tiles;
         
-        //! map orientation
+        // map orientation
         fzTMXOrientation    m_orientation;
         
-        //! properties
+        // properties
         void                *p_properties;
         
 
@@ -85,28 +85,24 @@ namespace FORZE {
         bool    useAutomaticVertexZ_;
         float	alphaFuncValue_;
         
-        //ccCArray		*atlasIndexArray_;
         void appendTileForGID(uint32_t GID, const fzPoint& position);
         
-        
-        //! internal protocol
+        // internal protocol
         virtual void insertChild(Node*) override;
         
     public:
         
-        //! This constructor is used internally by TMXTilesMap at loading
+        //! This constructor is used internally by TMXTilesMap at loading.
         TMXLayer(TMXTiledMap *mapInfo, TMXLayerInfo *layerInfo);
         ~TMXLayer();
 
         
-        //! This method removes the raw data of the tiles
+        //! This method removes the raw data of the tiles.
         //! @see tileGIDAt()
         void releaseMap();
         
         
         //! Returns the sprite at the specified coordinate.
-        //! @param tileCoordinate 
-        //! @param flags @warning if map raw data was released. This valus must be YES.
         //! @return NULL is no tile exists at the specified coordinate.
         Sprite* tileAt(const fzPoint& tileCoordinate);
         
@@ -137,10 +133,12 @@ namespace FORZE {
             return m_mapTileSize;
         }
         
-        virtual void render(char dirtyFlags) override;
         void visitTMXLayer(fzV4_T2_C4_Quad **quadp);
 
         fzPoint calculateLayerOffset(const fzPoint& pos) const;
+        
+        // Redefined
+        virtual void render(char dirtyFlags) override;
     };
 }
 #endif

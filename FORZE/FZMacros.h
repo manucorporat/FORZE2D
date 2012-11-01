@@ -97,11 +97,11 @@ abort(); \
 
 
 //! @def FORZE_INIT
-//! Initializes FORZE ENGINE. This macro must be called just once in main()
-//! @param APPDELEGATE is a weak pointer to a instance of your custom subclass of ApplicationSupport (AppDelegate)
+//! Initializes FORZE ENGINE. This macro must be called just once in main().
+//! @param APPDELEGATE is a weak pointer to a instance of your custom subclass of ApplicationSupport (AppDelegate).
 //! @param CANVASSIZE is a fzSize. This will be the canvas size in which you will design the game.
-//! @param __ARGC__ passed by int main(int argc, char *argv[])
-//! @param __ARGV__ passed by int main(int argc, char *argv[])
+//! @param __ARGC__ passed by int main(int argc, char *argv[]).
+//! @param __ARGV__ passed by int main(int argc, char *argv[]).
 //! @warning this method must be called just once in the application's entry point.
 //! @code FORZE_INIT(new MyAppDelegate(), kFZSize_auto, argc, argv);
 #define FORZE_INIT(APPDELEGATE, CANVASSIZE, __ARGC__, __ARGV__) {   \
@@ -112,10 +112,9 @@ abort(); \
 }
 
  
- /** @def FORZE_END
-  Stops and removes the director from memory.
-  Removes the EAGLView from its parent
-  */
+//! @def FORZE_END
+//! Stops and removes the director from memory.
+//!  Removes the EAGLView from its parent-
 #define FORZE_END()							\
 do {										\
 	FORZE::Director::Instance().end()		\
@@ -143,8 +142,8 @@ __OBJ__ = NULL;                     \
 
 
 #define FZRETAIN_TEMPLATE(__NEWPTR__, __OLDPTR__) { \
-if(__NEWPTR__) (__NEWPTR__)->retain(); \
-if(__OLDPTR__) __OLDPTR__->release(); \
+if(__NEWPTR__) {(__NEWPTR__)->retain();} \
+if(__OLDPTR__) {__OLDPTR__->release();} \
 __OLDPTR__ = __NEWPTR__; \
 }
 
@@ -152,7 +151,7 @@ __OLDPTR__ = __NEWPTR__; \
 
 /*
  * if FORZE_DEBUG is not defined, or if it is 0 then
- *	all CCLOGXXX macros will be disabled
+ *	all FZLOGXXX macros will be disabled
  *
  * if FORZE_DEBUG==1 then:
  *		FZLOG() will be enabled

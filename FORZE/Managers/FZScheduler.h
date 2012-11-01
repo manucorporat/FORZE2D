@@ -99,13 +99,13 @@ namespace FORZE {
         }
         
         
-        //! Enable or disable the timer.
+        //! Enables or disables the timer.
         void setIsPaused(bool p) {
             m_paused = p;
         }
         
         
-        // Returns true is the timer is paused.
+        //! Returns true is the timer is paused.
         bool isPaused() const {
             return m_paused;
         }
@@ -142,21 +142,20 @@ namespace FORZE {
     private:
         typedef list<Timer> timersList;
 
-        //! static instance
         static Scheduler* p_instance;
         
-        //! time scale
+        // time scale
         fzFloat m_timeScale;
         
-        //! list of timers
+        // list of timers
         timersList m_timers;
         
-        //! returns the index giving a priority
+        //! Returns the index giving a priority
         timersList::iterator indexForPriority(fzUInt priority);
         
         Timer *p_currentTimer;
         
-        //! 'tick' the scheduler.
+        // 'tick' the scheduler.
         void tick(fzFloat);
         
         
@@ -171,7 +170,7 @@ namespace FORZE {
         
         
     public:
-        //! Gets and allocates the singleton
+        //! Gets and allocates the singleton.
         static Scheduler& Instance();
         
         
@@ -183,6 +182,7 @@ namespace FORZE {
         fzFloat getTimeScale() const;
         
         
+        //! Returns the current running timer.
         Timer* getCurrentTimer() const;
         
         
@@ -200,29 +200,25 @@ namespace FORZE {
         void unscheduleSelector(const SELECTOR_FLOAT selector, SELProtocol *target);
         
         
-        /** Unschedules all selectors for a given target.
-         This also includes the "update" selector.
-         */
+        //! Unschedules all selectors for a given target.
+        //! This also includes the "update" selector.
         void unscheduleAllSelectors(SELProtocol *target);
         
         
-        /** Unschedules all selectors from all targets.
-         You should NEVER call this method, unless you know what you are doing.
-        */
+        //! Unschedules all selectors from all targets.
+        //! You should NEVER call this method, unless you know what you are doing.
         void unscheduleAllSelectors();
         
         
-        /** Pauses the target.
-         All scheduled selectors/update for a given target won't be 'ticked' until the target is resumed.
-         If the target is not present, nothing happens.
-         */
+        //! Pauses the target.
+        //! All scheduled selectors/update for a given target won't be 'ticked' until the target is resumed.
+        //! If the target is not present, nothing happens.
         void pauseTarget(SELProtocol *target);
         
         
-        /** Resumes the target.
-         The 'target' will be unpaused, so all schedule selectors/update will be 'ticked' again.
-         If the target is not present, nothing happens.
-         */
+        //! Resumes the target.
+        //! The 'target' will be unpaused, so all schedule selectors/update will be 'ticked' again.
+        //! If the target is not present, nothing happens.
         void resumeTarget(SELProtocol *target);
         
     };

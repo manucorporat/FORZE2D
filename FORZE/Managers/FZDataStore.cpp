@@ -79,7 +79,6 @@ namespace FORZE {
 
         } catch (std::exception& error) {
             fzDevice_removePath(p_path);
-            
         }
     }
     

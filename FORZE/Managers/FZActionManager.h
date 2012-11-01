@@ -46,11 +46,11 @@ namespace FORZE {
 
     
     /** ActionManager is a singleton that manages all the actions.
-     Normally you won't need to use this singleton directly. 99% of the cases you will use the CCNode interface,
+     Normally you won't need to use this singleton directly. 99% of the cases you will use the Node interface,
      which uses this singleton.
      But there are some cases where you might need to use this singleton.
      Examples:
-     - When you want to run an action where the target is different from a CCNode. 
+     - When you want to run an action where the target is different from a Node. 
      - When you want to pause / resume the actions
      */
     class ActionManager : public SELProtocol
@@ -88,7 +88,7 @@ namespace FORZE {
         
         
     public:
-        // Get and alloc instance
+        // Gets and allocates the instance.
         static ActionManager& Instance();
         
         
@@ -100,13 +100,12 @@ namespace FORZE {
         void addAction(Action *action, void *target, bool paused);
         
         
-        /** Gets an action given its tag an a target
-         @return NULL is no action was found.
-         */
+        //! Gets an action given its tag an a target.
+        //! @return NULL is no action was found.
         Action* getActionByTag(fzInt tag, void *target);
         
         
-        //! Returns the numbers of actions that are running in a certain target
+        //! Returns the numbers of actions that are running in a certain target.
         //! Composable actions are counted as 1 action.
         //! Example: 1 Sequence of 8 actions are counted as 1 action.
         fzUInt getNumberActions(void *target) const;
@@ -130,7 +129,7 @@ namespace FORZE {
         void removeAction(const Action* action);
         
         
-        //! Removes an action given its tag and the owner target
+        //! Removes an action given its tag and the owner target.
         void removeAction(fzInt tag, void *target);
         
         

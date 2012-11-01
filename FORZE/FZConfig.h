@@ -92,7 +92,7 @@
 
 
 /** @def FZ_RENDERING_SUBPIXEL
- If enabled, the CCNode objects (CCSprite, CCLabel,etc) will be able to render in subpixels.
+ If enabled, the Node objects (Sprite, Label,etc) will be able to render in subpixels.
  If disabled, integer pixels will be used.
  
  To enable set it to 1. Enabled by default.

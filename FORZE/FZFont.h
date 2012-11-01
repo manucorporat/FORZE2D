@@ -60,7 +60,6 @@ namespace FORZE {
     class Texture2D;
     class Font : public LifeCycle
     {
-    private:
     protected:
         fzUInt m_factor;
         Texture2D *p_texture;
@@ -75,7 +74,7 @@ namespace FORZE {
         void loadTTFData(char*, fzFloat);
         
     public:
-        
+        //! Constructs a Font giving the Font's filename and an optional lineHeight param.
         Font(const char* filename, fzFloat lineHeight);
         ~Font();
         

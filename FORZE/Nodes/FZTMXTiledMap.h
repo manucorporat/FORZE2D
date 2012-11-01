@@ -53,6 +53,8 @@ namespace FORZE {
         virtual void insertChild(Node*) override;
         
     public:
+        //! Constructs a TMXTiledMap node from the TMX file.
+        //! This constructor initializes an instance of the TMXParser.
         explicit TMXTiledMap(const char *tmxfilename);
         
         
@@ -60,6 +62,7 @@ namespace FORZE {
             return &m_mapInfo.getTileset();
         }
         
+        // Redefined
         virtual void render(char) override;
     };
 }

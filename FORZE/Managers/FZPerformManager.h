@@ -42,11 +42,11 @@ namespace FORZE {
 
     
     /** ActionManager is a singleton that manages all the actions.
-     Normally you won't need to use this singleton directly. 99% of the cases you will use the CCNode interface,
+     Normally you won't need to use this singleton directly. 99% of the cases you will use the Node interface,
      which uses this singleton.
      But there are some cases where you might need to use this singleton.
      Examples:
-     - When you want to run an action where the target is different from a CCNode. 
+     - When you want to run an action where the target is different from a Node. 
      - When you want to pause / resume the actions
      */
     class PerformManager

@@ -36,7 +36,7 @@
 
 namespace FORZE {
 
-    //! A fire particle system
+    //! A fire particle system.
     class ParticleFire : public ParticleSystemQuad
     {
     public:

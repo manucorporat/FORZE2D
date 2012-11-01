@@ -32,9 +32,7 @@
 
 
 namespace FORZE {
-    
-#pragma mark - GLView configuration
-    
+        
     GLConfig::GLConfig()
     : preserveBackBuffer(false)
     , depthFormat(kFZGLConfigDepthNone)

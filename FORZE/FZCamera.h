@@ -50,12 +50,12 @@ namespace FORZE {
      
      Limitations:
      
-     - Some nodes, like ParallaxNode, CCParticle uses world node coordinates, and they won't work properly if you move them (or any of their ancestors)
+     - Some nodes, like ParallaxNode, Particle uses world node coordinates, and they won't work properly if you move them (or any of their ancestors)
      using the camera.
      
-     - It doesn't work on batched nodes like CCSprite objects when they are parented to a CCSpriteBatchNode object.
+     - It doesn't work on batched nodes like Sprite objects when they are parented to a SpriteBatch object.
      
-	 - It is recommended to use it ONLY if you are going to create 3D effects. For 2D effecs, use the action CCFollow or position/scale/rotate.
+	 - It is recommended to use it ONLY if you are going to create 3D effects. For 2D effecs, use the action Follow or position/scale/rotate.
      */
     class Camera
     {
@@ -72,54 +72,54 @@ namespace FORZE {
     public:
         static const fzFloat defaultEyeZ;
 
-        //! Constructs a default ortho camera
+        //! Constructs a default ortho camera.
         Camera();
         
         
-        //! Sets if the camera values are dirty
+        //! Sets if the camera values are dirty.
         //! @see getDirty()
         void setDirty(bool);
         
         
-        //! Returns if the camera values are dirty
+        //! Returns if the camera values are dirty.
         //! @see setDirty()
-        bool getDirty() const;
+        bool isDirty() const;
         
         
         //! Restores the camera to his default position.
         void restore();
         
         
-        //! Sets the camera using gluLookAt using its eye, center and up_vector
+        //! Sets the camera using gluLookAt using its eye, center and up_vector.
         void locate();
 
         
-        //! Sets the eye values in points
+        //! Sets the eye values in points.
         //! @see getEye()
         void setEye(const fzPoint3& eye);
         
         
-        //! Sets the center values in points
+        //! Sets the center values in points.
         //! @see getCenter()
         void setCenter(const fzPoint3& center);
 
         
-        //! Sets the up values
+        //! Sets the up values.
         //! @see getUp()
         void setUp(const fzPoint3& up);
         
         
-        //! Get the eye vector values in points
+        //! Returns the eye vector values in points.
         //! @see setEye()
         const fzPoint3& getEye() const;
 
         
-        //! Get the center vector values in points
+        //! Returns the center vector values in points.
         //! @see setCenter()
         const fzPoint3& getCenter() const;
 
         
-        //! Get the up vector values
+        //! Returns the up vector values.
         //! @see setUp()
         const fzPoint3& getUp() const;
     };

@@ -48,7 +48,7 @@ namespace FORZE {
     class Sprite;
     /**
      RenderTexture is a generic rendering target. To render things into it,
-     simply construct a render target, call begin on it, call visit on any cocos2d
+     simply construct a render target, call begin on it, call visit on any FORZE2D.
      scenes or objects to render them, and call end. For convienience, render texture
      adds a sprite as it's display child with the results, so you can simply add
      the render texture to your scene and treat it like any other CCNode.
@@ -70,7 +70,7 @@ namespace FORZE {
         // Destructor
         ~RenderTexture();
         
-        /** The CCSprite being used.
+        /** The Sprite being used.
          The sprite, by default, will use the following blending function: GL_ONE, GL_ONE_MINUS_SRC_ALPHA.
          The blending function can be changed in runtime by calling:
          - [[renderTexture sprite] setBlendFunc:(ccBlendFunc){GL_ONE, GL_ONE_MINUS_SRC_ALPHA}];
@@ -83,7 +83,7 @@ namespace FORZE {
         void begin();
         
         
-        /** starts rendering to the texture while clearing the texture first.
+        /** starts rendering to the Texture2D while clearing the Texture2D first.
          This is more efficient then calling -clear first and then -begin */
         void beginWithClear(const fzColor4F& color);
         

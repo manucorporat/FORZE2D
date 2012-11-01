@@ -203,6 +203,7 @@ namespace FORZE {
         p_innerAction->update(t);
     }
     
+    
     ActionInterval* EaseExponentialInOut::reverse() const
     {
         return new EaseExponentialInOut(p_innerAction->reverse());
@@ -225,6 +226,7 @@ namespace FORZE {
         p_innerAction->update(t);
     }
     
+    
     ActionInterval* EaseSineIn::reverse() const
     {
         return new EaseSineOut(p_innerAction->reverse());
@@ -244,6 +246,7 @@ namespace FORZE {
         t = fzMath_sin(t * (fzFloat)M_PI_2);
         p_innerAction->update(t);
     }
+    
     
     ActionInterval* EaseSineOut::reverse() const
     {
@@ -326,6 +329,7 @@ namespace FORZE {
         return new EaseElasticIn(p_innerAction->copy(), m_period);
     }
     
+    
 #pragma mark EaseElasticOut
     
     void EaseElasticOut::update(fzFloat t)
@@ -341,6 +345,7 @@ namespace FORZE {
         
         p_innerAction->update(newT);
     }
+    
     
     ActionInterval* EaseElasticOut::reverse() const
     {
@@ -379,6 +384,7 @@ namespace FORZE {
         p_innerAction->update(newT);
     }
     
+    
     ActionInterval* EaseElasticInOut::reverse() const
     {
         return new EaseElasticInOut(p_innerAction->reverse(), m_period);
@@ -389,6 +395,7 @@ namespace FORZE {
     {
         return new EaseElasticInOut(p_innerAction->copy(), m_period);
     }
+    
     
 #pragma mark - EaseBounce actions
     
@@ -430,6 +437,7 @@ namespace FORZE {
         return new EaseBounceIn(p_innerAction->copy());
     }
     
+    
 #pragma mark EaseBounceOut
     
     void EaseBounceOut::update(fzFloat t)
@@ -463,6 +471,7 @@ namespace FORZE {
         
         p_innerAction->update(newT);
     }
+    
     
     ActionInterval* EaseBounceInOut::reverse() const
     {
@@ -523,6 +532,7 @@ namespace FORZE {
         return new EaseBackOut(p_innerAction->copy());
     }
     
+    
 #pragma mark EaseBackInOut
     
     void EaseBackInOut::update(fzFloat t)
@@ -540,6 +550,7 @@ namespace FORZE {
         
         p_innerAction->update(newT);
     }
+    
     
     ActionInterval* EaseBackInOut::reverse() const
     {

@@ -36,7 +36,7 @@
 
 namespace FORZE {
 
-    /** Base class for CCCamera actions*/
+    //! Base class for Camera actions.
     class ActionCamera : public ActionInterval
     {
     protected:

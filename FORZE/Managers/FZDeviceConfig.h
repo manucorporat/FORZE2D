@@ -88,14 +88,15 @@ namespace FORZE {
         
         bool checkForGLExtension(const char* searchName);
         
-        //! Returns the maximum number of samples supported by OpenGL
+        //! Returns the maximum number of samples supported by OpenGL.
         const char* getDeviceCode() const;
         
-        //! Returns the maximum OpenGL texture size
+        
+        //! Returns the maximum OpenGL texture size.
         GLint getMaxTextureSize() const;
         
         
-        //! Returns the maximum number of samples supported by OpenGL
+        //! Returns the maximum number of samples supported by OpenGL.
         GLint getMaxSamplesAllowed() const;
         
         
@@ -112,15 +113,15 @@ namespace FORZE {
         bool isNPOTSupported() const;
 
         
-        //! Whether or not PVR Texture Compressed is supported
+        //! Whether or not PVR Texture Compressed is supported.
         bool isPVRTCSupported() const;
 
         
-        //! Whether or not BGRA8888 textures are supported
+        //! Whether or not BGRA8888 textures are supported.
         bool isBGRA8888Supported() const;
 
         
-        //! Whether or not glDiscardFramebufferEXT is supported 
+        //! Whether or not glDiscardFramebufferEXT is supported.
         bool isDiscardFramebufferSupported() const;
         
         
@@ -129,15 +130,15 @@ namespace FORZE {
         fzUserInterface getUserInterfaceIdiom() const;
         
         
-        //! Returns the OS version 
+        //! Returns the OS version.
         fzUInt getOSVersion() const;
         
         
-        //! Prints a large log with the system info
+        //! Prints a large log with the system info.
         void logDeviceInfo() const;
         
         
-        //! Prints a log with the debug mode
+        //! Prints a log with the debug mode.
         //! This function is useful to ensure you are running at
         //! release mode, debug mode, assertions on/off...
         void logDebugMode() const;

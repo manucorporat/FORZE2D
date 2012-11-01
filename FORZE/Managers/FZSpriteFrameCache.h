@@ -75,12 +75,12 @@ namespace FORZE {
         
         
         //! Adds multiple Sprite Frames from a plist file.
-        //! The texture will be associated with the created sprite frames.
+        //! The Texture2D will be associated with the created sprite frames.
         void addSpriteFrames(const char* xmlFilename, Texture2D *texture = NULL);
         
         
         //! Adds multiple Sprite Frames from a plist file.
-        //! The texture will be associated with the created sprite frames.
+        //! The Texture2D will be associated with the created sprite frames.
         void addSpriteFramesWithImage(const char* xmlFileName, const char* textureFilename);
 
         

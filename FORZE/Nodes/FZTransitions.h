@@ -63,6 +63,7 @@ namespace FORZE {
         //! Constructs an empty scene.
         Transition(fzFloat duration, Scene *scene);
         
+        // Destructor
         ~Transition();
         
         virtual void cleanup() override;

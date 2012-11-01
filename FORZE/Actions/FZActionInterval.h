@@ -42,7 +42,7 @@ namespace FORZE {
      It has an start time, and a finish time. The finish time is the parameter
      duration plus the start time.
      
-     These CCActionInterval actions have some interesting properties, like:
+     These ActionInterval actions have some interesting properties, like:
      - They can run normally (default)
      - They can run reversed with the reverse method
      - They can run with the time altered with the Accelerate, AccelDeccel and Speed actions.
@@ -60,9 +60,7 @@ namespace FORZE {
         ActionInterval(fzFloat duration);
         
     public:
-        
-        /** how many seconds had elapsed since the actions started to run. */
-        
+                
         // Redefined functions
         virtual fzFloat getElapsed() const override;
         virtual bool isDone() const override;
@@ -73,7 +71,7 @@ namespace FORZE {
     };
     
     
-    /** Runs actions sequentially, one after another */
+    //! Runs actions sequentially, one after another.
     class Sequence : public ActionInterval
     {
     protected:
@@ -99,7 +97,7 @@ namespace FORZE {
     };
     
     
-    /** Spawn a new action immediately */
+    //! Spawn a new action immediately.
     class Spawn : public ActionInterval
     {
     protected:
@@ -123,9 +121,8 @@ namespace FORZE {
     };
     
     
-    /** Repeats an action a number of times.
-     * To repeat an action forever use the CCRepeatForever action.
-     */
+    //! Repeats an action a number of times.
+    //! To repeat an action forever use the RepeatForever action.
     class Repeat : public ActionInterval
     {
     protected:
@@ -150,12 +147,9 @@ namespace FORZE {
         virtual Repeat* reverse() const override;
         virtual Repeat* copy() const override;
     };
-
     
-    /**  Rotates a Node object to a certain angle by modifying it's
-     rotation attribute.
-     The direction will be decided by the shortest angle.
-     */
+    
+    //! Rotates a Node object clockwise a number of degrees by modiying it's rotation attribute.
     class RotateBy : public ActionInterval
     {
     protected:
@@ -172,11 +166,11 @@ namespace FORZE {
         virtual RotateBy* reverse() const override;
         virtual RotateBy* copy() const override;
     };
-    
 
     
-    /** Rotates a Node object clockwise a number of degrees by modiying it's rotation attribute.
-     */
+    //! Rotates a Node object to a certain angle by modifying it's rotation attribute.
+    //! The direction will be decided by the shortest angle.
+    //! @warning This action doesn't support "reverse()".
     class RotateTo : public RotateBy
     {
     protected:
@@ -191,10 +185,11 @@ namespace FORZE {
         virtual RotateTo* copy() const override;
         virtual RotateTo* reverse() const override;
     };
-
     
-    /** Moves a CCNode object to the position x,y. x and y are absolute coordinates by modifying it's position attribute.
-     */
+
+    //! Moves a Node object x,y pixels by modifying it's position attribute.
+    //! x and y are relative to the position of the object.
+    //! Duration is is seconds.
     class MoveBy : public ActionInterval
     {
     protected:
@@ -212,11 +207,8 @@ namespace FORZE {
         virtual MoveBy* copy() const override;
     };
 
-    
-    /**  Moves a Node object x,y pixels by modifying it's position attribute.
-     x and y are relative to the position of the object.
-     Duration is is seconds.
-     */
+    //! Moves a Node object to the position x,y. x and y are absolute coordinates by modifying it's position attribute.
+    //! @warning This action doesn't support "reverse()".
     class MoveTo : public MoveBy
     {
     protected:
@@ -233,8 +225,7 @@ namespace FORZE {
     };
     
     
-    /** Skews a CCNode object to given angles by modifying it's skewX and skewY attributes
-     */
+    //! Skews a Node object to given angles by modifying it's skewX and skewY attributes.
     class SkewBy : public ActionInterval
     {
     protected:
@@ -255,8 +246,8 @@ namespace FORZE {
     };
     
     
-    /** Skews a Node object by skewX and skewY degrees
-     */
+    //! Skews a Node object by skewX and skewY degrees.
+    //! @warning This action doesn't support "reverse()".
     class SkewTo : public SkewBy
     {
     protected:
@@ -273,8 +264,7 @@ namespace FORZE {
     };
 
     
-    /** Moves a Node object simulating a parabolic jump movement by modifying it's position attribute.
-     */
+    //! Moves a Node object simulating a parabolic jump movement by modifying it's position attribute.
     class JumpBy : public ActionInterval
     {
     protected:
@@ -295,8 +285,8 @@ namespace FORZE {
     };
 
     
-    /** Moves a CCNode object to a parabolic position simulating a jump movement by modifying it's position attribute.
-     */
+    //! Moves a Node object to a parabolic position simulating a jump movement by modifying it's position attribute.
+    //! @warning This action doesn't support "reverse()".
     class JumpTo : public JumpBy
     {
     protected:
@@ -324,8 +314,7 @@ namespace FORZE {
     };
     
     
-    /** An action that moves the target with a cubic Bezier curve by a certain distance.
-     */
+    //! An action that moves the target with a cubic Bezier curve by a certain distance.
     class BezierBy : public ActionInterval
     {
     protected:
@@ -346,8 +335,8 @@ namespace FORZE {
     };
     
     
-    /** An action that moves the target with a cubic Bezier curve to a destination point.
-     */
+    //! An action that moves the target with a cubic Bezier curve to a destination point.
+    //! @warning This action doesn't support "reverse()".
     class BezierTo : public BezierBy
     {
     protected:
@@ -363,9 +352,7 @@ namespace FORZE {
     };
     
     
-    /** Scales a CCNode object to a zoom factor by modifying it's scale attribute.
-     @warning This action doesn't support "reverse"
-     */
+    //! Scales a Node object a zoom factor by modifying it's scale attribute.
     class ScaleBy : public ActionInterval
     {
     protected:
@@ -388,8 +375,8 @@ namespace FORZE {
     };
     
     
-    /** Scales a CCNode object a zoom factor by modifying it's scale attribute.
-     */
+    //! Scales a Node object to a zoom factor by modifying it's scale attribute.
+    //! @warning This action doesn't support "reverse()".
     class ScaleTo : public ScaleBy
     {
     public:
@@ -404,8 +391,7 @@ namespace FORZE {
     };
     
     
-    /** Blinks a CCNode object by modifying it's visible attribute
-     */
+    //! Blinks a Node object by modifying it's visible attribute.
     class Blink : public ActionInterval
     {
     protected:
@@ -426,9 +412,8 @@ namespace FORZE {
     };
     
     
-    /** Fades an object that implements the CCRGBAProtocol protocol. It modifies the opacity from the current value to a custom one.
-     @warning This action doesn't support "reverse"
-     */
+    //! Fades an object that implements the Protocol::Color protocol. It modifies the opacity from the current value to a custom one.
+    //! @warning This action doesn't support "reverse"
     class FadeTo : public ActionInterval
     {
     protected:
@@ -449,9 +434,8 @@ namespace FORZE {
     
     
     class FadeOut;
-    /** Fades In an object that implements the CCRGBAProtocol protocol. It modifies the opacity from 0 to 255.
-     The "reverse" of this action is FadeOut
-     */
+    //! Fades In an object that implements the Protocol::Color protocol. It modifies the opacity from 0 to 255.
+    //! The "reverse" of this action is FadeOut.
     class FadeIn : public ActionInterval
     {
     public:
@@ -465,9 +449,8 @@ namespace FORZE {
     };
     
     
-    /** Fades Out an object that implements the CCRGBAProtocol protocol. It modifies the opacity from 255 to 0.
-     The "reverse" of this action is FadeIn
-     */
+    //! Fades Out an object that implements the Protocol::Color protocol. It modifies the opacity from 255 to 0.
+    //! The "reverse" of this action is FadeIn.
     class FadeOut : public ActionInterval
     {
     public:
@@ -482,9 +465,8 @@ namespace FORZE {
     
 
     
-    /** Tints a Node that implements the NodeRGB protocol from current tint to a custom one.
-     @warning This action doesn't support "reverse"
-     */
+    //! Tints a Node that implements the Protocol::Color protocol from current tint to a custom one.
+    //! @warning This action doesn't support "reverse()".
     class TintBy : public ActionInterval
     {
     protected:
@@ -503,8 +485,7 @@ namespace FORZE {
     };
     
     
-    /** Tints a CCNode that implements the CCNodeRGB protocol from current tint to a custom one.
-     */
+    //! Tints a Node that implements the Protocol::Color protocol from current tint to a custom one.
     class TintTo : public TintBy
     {
     protected:
@@ -523,8 +504,7 @@ namespace FORZE {
     };
 
     
-    /** Delays the action a certain amount of seconds
-     */
+    //! Delays the action a certain amount of seconds.
     class DelayTime : public ActionInterval
     {
     public:

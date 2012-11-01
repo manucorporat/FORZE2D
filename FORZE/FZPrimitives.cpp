@@ -71,11 +71,14 @@ namespace FORZE {
 #endif
     }
     
+    
     void fzGLLineWidth(fzFloat points)
     {
         glLineWidth(points * Director::Instance().getContentScaleFactor());
     }
     
+    
+#pragma mark - Drawing algorythms
     
     void fzDrawPoint( const fzVec2& vertices )
     {	

@@ -97,11 +97,11 @@ namespace FORZE {
         void addFrame(const fzAnimationFrame&);
         
         
-        /** Adds a frame with an image filename. Internally it will create a CCSpriteFrame and it will add it */
+        /** Adds a frame with an image filename. Internally it will create a fzSpriteFrame and it will add it */
         void addFrameWithFilename(const char* filename);
 
         
-        /** Adds a frame with a texture and a rect. Internally it will create a CCSpriteFrame and it will add it.
+        /** Adds a frame with a Texture2D and a rect. Internally it will create a fzSpriteFrame and it will add it.
          Added to facilitate the migration from v0.8 to v0.9.
          */
         void addFrameWithTexture(Texture2D *texture, const fzRect& rect);

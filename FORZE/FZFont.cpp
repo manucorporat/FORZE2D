@@ -209,7 +209,6 @@ namespace FORZE {
                     continue;
                 }
                 
-                
                 m_chars[charID] = temp_char;
                 
             }else if(l[0]=='k' && l[1]=='e' && l[2]=='r' && l[3]=='n' &&

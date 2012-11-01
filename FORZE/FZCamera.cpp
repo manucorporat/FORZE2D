@@ -51,7 +51,7 @@ namespace FORZE {
     }
     
     
-    bool Camera::getDirty() const
+    bool Camera::isDirty() const
     {
         return m_isDirty;
     }

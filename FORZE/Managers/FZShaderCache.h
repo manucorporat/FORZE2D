@@ -63,12 +63,12 @@ namespace FORZE {
         ShaderCache(const ShaderCache& );
         ShaderCache &operator = (const ShaderCache& );
         
-        //! Used internally to load the basic shaders in batch
+        //! Used internally to load the basic shaders in batch.
         void loadDefaultShaders();
         
         
     public:
-        //! Gets and allocates the singleton
+        //! Gets and allocates the singleton.
         static ShaderCache& Instance();
         
         

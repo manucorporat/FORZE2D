@@ -65,22 +65,21 @@ namespace FORZE {
         
         
     public:
-        // Get and alloc instance
+        //! Get and allocates instance.
         static AnimationCache& Instance();
         
         
-        /** Adds a CCAnimation with a name */
+        //! Adds a Animation with a name.
         void addAnimation(Animation *animation, const char* name);
         
         
-        /** Deletes a CCAnimation from the cache */
+        //! Deletes a Animation from the cache.
         void removeAnimationByName(const char* name);
         
         
-        /** Returns a CCAnimation that was previously added.
-         If the name is not found it will return nil.
-         You should retain the returned copy if you are going to use it.
-         */
+        //! Returns a Animation that was previously added.
+        //! You should retain the returned copy if you are going to use it.
+        //! @return NULL if the name is not found.
         Animation* getAnimationByName(const char* name) const;
     };
 }

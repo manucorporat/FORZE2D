@@ -78,29 +78,29 @@ namespace FORZE {
        
         
     public:
-        //! Constructs an compile an OpenGL shader
+        //! Constructs an compile an OpenGL shader.
         //! @param source NULL-terminated GLSL code to be compiled.
         //! @param type {GL_VERTEX_SHADER, GL_FRAGMENT_SHADER}
         GLShader(const char *source, GLenum type);
         ~GLShader();
         
         
-        //! Returns the opengl shader reference
+        //! Returns the opengl shader reference.
         GLuint getShader() const {
             return m_shader;
         }
         
         
-        //! Returns the shader type
-        //! GL_VERTEX_SHADER or GL_FRAGMENT_SHADER
+        //! Returns the shader type.
+        //! - GL_VERTEX_SHADER
+        //! - GL_FRAGMENT_SHADER.
         GLenum getShaderType() const {
             return m_shaderType;
         }
         
         
-        //! Returns the compilation log, useful for debugging
-        string getShaderLog();
-
+        //! Returns the compilation log, useful for debugging.
+        string getShaderLog() const;
     };
     
     
@@ -145,11 +145,16 @@ namespace FORZE {
         
         //! Links the program with the attached shaders.
         //! and caches the uniforms' locations.
+        //! @warning This method must be called before using the program.
         bool link();
         
+        
+        //! Prepares the opengl program to be used.
+        //! @code fzGLUseProgram(program->getName())
         void use() const;
         
-        //! This method add the three default attributes
+        
+        //! This method add the three default attributes.
         //! @code addAttribute(kFZAttributeNamePosition, kFZAttribPosition);
         //! @code addAttribute(kFZAttributeNameColor, kFZAttribColor);
         //! @code addAttribute(kFZAttributeNameTexCoord, kFZAttribTexCoords);

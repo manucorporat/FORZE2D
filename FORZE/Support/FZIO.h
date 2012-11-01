@@ -49,9 +49,9 @@ namespace FORZE {
         
         
         //! Creates a file (overwriting mode "w") at the absolute path with the specified data.
-        //! @param data is a NULL-terminated char string (data to be written)
-        //! @param absolutePath is a NULL-terminated char string
-        //! @return 0 if the file could not be saved
+        //! @param data is a NULL-terminated char string (data to be written).
+        //! @param absolutePath is a NULL-terminated char string.
+        //! @return 0 if the file could not be saved.
         static bool writeFile(const char *data, const char *absolutePath);
         
         
@@ -61,7 +61,7 @@ namespace FORZE {
         
         
         //! This method returns the substring that match the filename extension.
-        //! For example: "myTexture.pvr.gz" would return "png.gz"
+        //! For example: "myTexture.pvr.gz" would return "png.gz".
         static const char* getExtension(const char* filename);
     };
 }

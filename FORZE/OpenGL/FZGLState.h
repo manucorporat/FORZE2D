@@ -50,7 +50,7 @@ namespace FORZE {
     };
     
     
-    //! Sets OpenGL settings
+    //! Sets OpenGL settings.
     void fzGLSetMode( fzGLMode mode );
     
     
@@ -74,7 +74,7 @@ namespace FORZE {
     GLuint fzGLGetFramebuffer();
     
     
-    //! Uses a blending function in case it not already used
+    //! Uses a blending function in case it not already used.
     void fzGLBlendFunc(GLenum sfactor, GLenum dfactor);
     void fzGLBlendFunc(const fzBlendFunc& blend);
 
@@ -88,8 +88,7 @@ namespace FORZE {
     void fzGLDeleteProgram( GLuint program );
     
     
-    //! Deletes a texture ID a resets the texture ID cache in case it is being used
+    //! Deletes a texture ID a resets the texture ID cache in case it is being used.
     void fzGLDeleteTexture( GLuint textureID );
-
 }
 #endif

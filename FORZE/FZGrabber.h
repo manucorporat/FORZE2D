@@ -47,36 +47,38 @@ namespace FORZE {
         
         
     public:
-        //! Constructors an high level wrapper for the framebuffer management
+        //! Constructors an high level wrapper for the framebuffer management.
         Grabber();
         ~Grabber();
         
+        //! Returns the associated texture.
         Texture2D *getTexture() const;
         
-        //! Associates texture2d with the framebuffer (FBO)
+        
+        //! Associates a Texture2D with the framebuffer (FBO).
         void grab(Texture2D*);
         
         
-        //! Bind the framebuffer
+        //! Binds the framebuffer.
         //! @see beginWithClear()
         //! @see end()
         void begin();
         
         
-        //! Bind and clean the framebuffer
+        //! Binds and cleans the framebuffer.
         //! @see begin()
         //! @see clear()
         //! @see end()
         void beginWithClear(const fzColor4F& color = fzColor4F(0, 0, 0, 0));
         
         
-        //! Restore the current framebuffer before calling begin()
+        //! Restores the current framebuffer before calling begin().
         //! @see begin()
         //! @see beginWithClear()
         void end();
         
         
-        //! Cleans the framebuffer. This method is automatically called in beginWithClear()
+        //! Cleans the framebuffer. This method is automatically called in beginWithClear().
         //! @see beginWithClear()
         void clear(const fzColor4F& color = fzColor4F(0, 0, 0, 0));
     };
@@ -96,30 +98,31 @@ namespace FORZE {
 
         void config(fzTextureFormat format, fzSize size, const fzPoint& anchorPoint, fzFloat quality);
         
+        
         //! Returns the grabbed texture.
         Texture2D *getTexture() const;
         
         
-        //! Bind the framebuffer
+        //! Binds the framebuffer.
         //! @see beginWithClear()
         //! @see end()
         void begin();
         
         
-        //! Bind and clean the framebuffer
+        //! Binds and cleans the framebuffer.
         //! @see begin()
         //! @see clear()
         //! @see end()
         void beginWithClear(const fzColor4F& color = fzColor4F(0, 0, 0, 0));
         
         
-        //! Restore the current framebuffer before calling begin()
+        //! Restores the current framebuffer before calling begin().
         //! @see begin()
         //! @see beginWithClear()
         void end();
         
         
-        //! Cleans the framebuffer. This method is automatically called in beginWithClear()
+        //! Cleans the framebuffer. This method is automatically called in beginWithClear().
         //! @see beginWithClear()
         void clear(const fzColor4F& color = fzColor4F(0, 0, 0, 0));
     };

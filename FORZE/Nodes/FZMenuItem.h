@@ -47,7 +47,7 @@ namespace FORZE {
 #pragma mark - MenuItem
     
     /** MenuItem base class
-     *  Subclass CCMenuItem (or any subclass) to create your custom CCMenuItem objects.
+     *  Subclass MenuItem (or any subclass) to create your custom MenuItem objects.
      */
     class MenuItem : public Node, public EventDelegate
     {
@@ -76,40 +76,40 @@ namespace FORZE {
         bool m_isEnabled;
         bool m_isSelected;
         
-        //! Makes the MenuItem active
+        //! Makes the MenuItem active.
         virtual void activate();
         
         
-        //! Makes the MenuItem selected
-        //! This method is used internally by the Menu
+        //! Makes the MenuItem selected.
+        //! This method is used internally by the Menu.
         //! @see unselected()
         virtual void selected();
         
         
-        //! Makes the MenuItem unselected
-        //! This method is used internally by the Menu
+        //! Makes the MenuItem unselected.
+        //! This method is used internally by the Menu.
         //! @see selected()
         virtual void unselected();
         
         
     public:
-        //! Constructs a base menu item
+        //! Constructs a base menu item.
         MenuItem(SELProtocol *target, SELECTOR_PTR selector);
         
         
-        //! Returns true if the MenuItem is enabled
+        //! Returns true if the MenuItem is enabled.
         bool isEnabled() const;
         
         
-        //! Returns whether or not the item is selected
+        //! Returns whether or not the item is selected.
         bool isSelected() const;
         
         
-        //! Enable or disabled the MenuItem
+        //! Enable or disabled the MenuItem.
         virtual void setIsEnabled(bool);
         
         
-        // Redefined methods
+        // Redefined
         virtual void onEnter() override;
         virtual void onExit() override;
     };
@@ -125,7 +125,7 @@ namespace FORZE {
 #pragma mark - MenuItemLabel
     
     class Label;
-    class MenuItemLabel : public MenuItem, public RGBAProtocol
+    class MenuItemLabel : public MenuItem, public Protocol::Color
     {
     protected:
         fzColor3B   m_colorBackup;
@@ -138,7 +138,7 @@ namespace FORZE {
         virtual void activate() override;
         
     public:
-        //! Constructs a MenuItem with a label
+        //! Constructs a MenuItem with a label.
         MenuItemLabel(Label *label, SELProtocol *target, SELECTOR_PTR selector);
         MenuItemLabel(const string& str, const string& filename, SELProtocol *target, SELECTOR_PTR selector);
 
@@ -151,18 +151,18 @@ namespace FORZE {
         const fzColor3B& getDisabledColor() const;
         
         
-        /** Label that is rendered. It can be any CCNode that implements the CCLabelProtocol */
+        /** Label that is rendered. It can be any Node that implements the LabelProtocol */
         void setLabel(Label*);
         Label* getLabel() const;
         
         
-        //! Sets a new string to the inner label
+        //! Sets a new string to the inner label.
         void setString(const char* str);
         
-        virtual void setColor(const fzColor3B&) override;
-        virtual const fzColor3B& getColor() const override;
         
         // Redefined functions
+        virtual void setColor(const fzColor3B&) override;
+        virtual const fzColor3B& getColor() const override;
         virtual void setIsEnabled(bool) override;
     };
     
@@ -171,9 +171,8 @@ namespace FORZE {
     
     class Sprite;
 
-    /** A MenuItemFont
-     Helper class that creates a CCMenuItemLabel class with a Label
-     */
+    //! A MenuItemFont.
+    //! Helper class that creates a MenuItemLabel class with a Label.
     class MenuItemImage : public MenuItem
     {
     protected:
@@ -218,13 +217,13 @@ namespace FORZE {
     
 #pragma mark - MenuItemSprite
     
-    /** MenuItemSprite accepts CCNode<CCRGBAProtocol> objects as items.
+    /** MenuItemSprite accepts Node<CCProtocol::Color> objects as items.
      The images has 3 different states:
      - unselected image
      - selected image
      - disabled image    
      */
-    class MenuItemSprite : public MenuItem, public RGBAProtocol
+    class MenuItemSprite : public MenuItem, public Protocol::Color
     {
     protected:
         Sprite *p_normalSprite;

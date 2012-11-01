@@ -36,26 +36,25 @@
 
 namespace FORZE {
     
-    /** Base class for Easing actions */
+    //! Base class for Easing actions.
     class ActionEase : public ActionInterval
     {
     protected:
         ActionInterval *p_innerAction;
         
-        /** creates the action */
         ActionEase(ActionInterval *action);
         
     public:
         ~ActionEase();
 
-        // Redefined functions
-        void startWithTarget(void *t);
-        void stop();
-        void update(fzFloat);
+        // Redefined
+        virtual void startWithTarget(void *t) override;
+        virtual void stop() override;
+        virtual void update(fzFloat) override;
     };
 
     
-    /** Base class for Easing actions with rate parameters */
+    //! Base class for Easing actions with rate parameters.
     class EaseRateAction : public ActionEase
     {
     protected:
@@ -64,145 +63,145 @@ namespace FORZE {
         virtual void update(fzFloat) override;
         
     public:
-        /** creates the action */
+        //! Constructs a EaseRateAction action.
         EaseRateAction(ActionInterval *action, fzFloat rate);
         
-        /** rate value for the actions */
+        //! Sets the rate.
         void setRate(fzFloat);
+        
+        //! Returns the rate.
         fzFloat getRate() const;
         
+        //! Redefined
         virtual ActionInterval* reverse() const override;
         virtual ActionInterval* copy() const override;
     };
     
     
-    /** EaseIn action with a rate */
+    //! EaseIn action with a rate.
     class EaseIn : public EaseRateAction
     {
     public:
-        //using EaseRateAction::EaseRateAction;
         EaseIn(ActionInterval *action, fzFloat rate)
         : EaseRateAction(action, rate) {}
     };
     
     
-    /** EaseOut action with a rate */
+    //! EaseOut action with a rate.
     class EaseOut : public EaseRateAction
     {
-        
     public:
-        //using EaseRateAction::EaseRateAction;
         EaseOut(ActionInterval *action, fzFloat rate)
         : EaseRateAction(action, 1/rate) {}
     };
     
     
-    /** EaseInOut action with a rate */
+    //! EaseInOut action with a rate.
     class EaseInOut : public EaseRateAction
     {
         virtual void update(fzFloat) override;
 
     public:
-        //using EaseRateAction::EaseRateAction;
         EaseInOut(ActionInterval *action, fzFloat rate)
         : EaseRateAction(action, rate) {}
         
+        // Redefined
         virtual ActionInterval* reverse() const override;
         virtual ActionInterval* copy() const override;
     };
     
     
-    /** Ease Exponential In */
+    //! Ease Exponential In.
     class EaseExponentialIn : public ActionEase
     {
         virtual void update(fzFloat) override;
 
     public:
-        //using ActionEase::ActionEase;
         EaseExponentialIn(ActionInterval *action)
         : ActionEase(action) {}
         
+        // Redefined
         virtual ActionInterval* reverse() const override;
         virtual ActionInterval* copy() const override;
     };
 
     
-    /** Ease Exponential Out */
+    //! Ease Exponential Out.
     class EaseExponentialOut : public ActionEase
     {
         virtual void update(fzFloat) override;
 
     public:
-        //using ActionEase::ActionEase;
         EaseExponentialOut(ActionInterval *action)
         : ActionEase(action) {}
         
+        // Redefined
         virtual ActionInterval* reverse() const override;
         virtual ActionInterval* copy() const override;
     };
     
 
-    /** Ease Exponential InOut */
+    //! Ease Exponential InOut.
     class EaseExponentialInOut : public ActionEase
     {
         virtual void update(fzFloat) override;
 
     public:
-        //using ActionEase::ActionEase;
         EaseExponentialInOut(ActionInterval *action)
         : ActionEase(action) {}
         
+        // Redefined
         virtual ActionInterval* reverse() const override;
         virtual ActionInterval* copy() const override;
     };
 
     
-    /** Ease Sine In */
+    //! Ease Sine In.
     class EaseSineIn : public ActionEase
     {
         virtual void update(fzFloat) override;
 
     public:
-        //using ActionEase::ActionEase;
         EaseSineIn(ActionInterval *action)
         : ActionEase(action) {}
         
+        // Redefined
         virtual ActionInterval* reverse() const override;
         virtual ActionInterval* copy() const override;
     };
 
     
-    /** Ease Sine Out */
+    //! Ease Sine Out.
     class EaseSineOut : public ActionEase
     {
         virtual void update(fzFloat) override;
         
     public:
-        //using ActionEase::ActionEase;
         EaseSineOut(ActionInterval *action)
         : ActionEase(action) {}
         
+        // Redefined
         virtual ActionInterval* reverse() const override;
         virtual ActionInterval* copy() const override;
     };
 
     
-    /** Ease Sine InOut */
+    //! Ease Sine InOut.
     class EaseSineInOut : public ActionEase
     {
         virtual void update(fzFloat) override;
 
     public:
-        //using ActionEase::ActionEase;
         EaseSineInOut(ActionInterval *action)
         : ActionEase(action) {}
         
+        // Redefined
         virtual ActionInterval* reverse() const override;
         virtual ActionInterval* copy() const override;
     };
 
     
-    /** Ease Elastic abstract class */
+    //! Ease Elastic abstract class.
     class EaseElastic : public ActionEase
     {
     protected:
@@ -210,8 +209,11 @@ namespace FORZE {
         
         EaseElastic(ActionInterval *action, fzFloat period = 0.3f);
         
-    public:                    
+    public:
+        //! Sets the period.
         void setPeriod(fzFloat);
+        
+        //! Returns the period.
         fzFloat getPeriod() const;
     };
 
@@ -224,10 +226,10 @@ namespace FORZE {
         virtual void update(fzFloat) override;
 
     public:
-        //using EaseElastic::EaseElastic;
         EaseElasticIn(ActionInterval *action, fzFloat period)
         : EaseElastic(action, period) {}
         
+        // Redefined
         virtual ActionInterval* reverse() const override;
         virtual ActionInterval* copy() const override;
     };
@@ -241,10 +243,10 @@ namespace FORZE {
         virtual void update(fzFloat) override;
 
     public:
-        //using EaseElastic::EaseElastic;
         EaseElasticOut(ActionInterval *action, fzFloat period)
         : EaseElastic(action, period) {}
         
+        // Redefined
         virtual ActionInterval* reverse() const override;
         virtual ActionInterval* copy() const override;
     };
@@ -258,10 +260,10 @@ namespace FORZE {
         virtual void update(fzFloat) override;
 
     public:
-        //using EaseElastic::EaseElastic;
         EaseElasticInOut(ActionInterval *action, fzFloat period)
         : EaseElastic(action, period) {}
         
+        // Redefined
         virtual ActionInterval* reverse() const override;
         virtual ActionInterval* copy() const override;
     };
@@ -275,10 +277,10 @@ namespace FORZE {
         virtual void update(fzFloat) override;
         
     public:
-        //using ActionEase::ActionEase;
         EaseBounceIn(ActionInterval *action)
         : ActionEase(action) {}
         
+        // Redefined
         virtual ActionInterval* reverse() const override;
         virtual ActionInterval* copy() const override;
     };
@@ -292,10 +294,10 @@ namespace FORZE {
         virtual void update(fzFloat) override;
         
     public:
-        //using ActionEase::ActionEase;
         EaseBounceOut(ActionInterval *action)
         : ActionEase(action) {}
         
+        // Redefined
         virtual ActionInterval* reverse() const override;
         virtual ActionInterval* copy() const override;
     };
@@ -309,10 +311,10 @@ namespace FORZE {
         virtual void update(fzFloat) override;
         
     public:
-        //using ActionEase::ActionEase;
         EaseBounceInOut(ActionInterval *action)
         : ActionEase(action) {}
         
+        // Redefined
         virtual ActionInterval* reverse() const override;
         virtual ActionInterval* copy() const override;
     };
@@ -326,10 +328,10 @@ namespace FORZE {
         virtual void update(fzFloat) override;
         
     public:
-        //using ActionEase::ActionEase;
         EaseBackIn(ActionInterval *action)
         : ActionEase(action) {}
         
+        // Redefined
         virtual ActionInterval* reverse() const override;
         virtual ActionInterval* copy() const override;
     };
@@ -343,10 +345,10 @@ namespace FORZE {
         virtual void update(fzFloat) override;
         
     public:
-        //using ActionEase::ActionEase;
         EaseBackOut(ActionInterval *action)
         : ActionEase(action) {}
         
+        // Redefined
         virtual ActionInterval* reverse() const override;
         virtual ActionInterval* copy() const override;
     };
@@ -360,10 +362,10 @@ namespace FORZE {
         virtual void update(fzFloat) override;
         
     public:
-        //using ActionEase::ActionEase;
         EaseBackInOut(ActionInterval *action)
         : ActionEase(action) {}
         
+        // Redefined
         virtual ActionInterval* reverse() const override;
         virtual ActionInterval* copy() const override;
     };

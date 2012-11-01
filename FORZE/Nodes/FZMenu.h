@@ -46,10 +46,10 @@ namespace FORZE {
     class Menu : public Layer
     {
     protected:
-        //! menu state
+        // menu state
         bool m_isWaiting;
         
-        //! selected item
+        // selected item
         MenuItem *p_selectedItem;
         
         //! Returns a menuitem placed at the given position
@@ -57,15 +57,15 @@ namespace FORZE {
         
         virtual void insertChild(Node*) override;
         virtual bool detachChild(Node*, bool) override;
-    
+        
         
     public:
-        //! Constructs an empty menu
+        //! Constructs an empty menu.
         explicit Menu();
         
         
-        //! Construct a menu with a list of MenuItem
-        Menu(MenuItem *item, ...);
+        //! Construct a menu with a list of MenuItem.
+        explicit Menu(MenuItem *item, ...);
         
         
         void alignItemsInColumns(fzPoint paddings, fzUInt *sizes, fzUInt nuColumns);

@@ -100,7 +100,7 @@ namespace FORZE {
     }
     
     
-#pragma mark - FZAFFINETRANSFORM IMPLEMENTATION
+#pragma mark - fzAffineTransform implementation
     
     void fzAffineTransform::generateGLMatrix(float *O) const
     {

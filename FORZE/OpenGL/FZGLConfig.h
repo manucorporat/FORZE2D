@@ -54,10 +54,29 @@ namespace FORZE {
     class GLConfig 
     {
     public:
+        //! 
         bool preserveBackBuffer;
+        
+        //! Buffer depth format:
+        //! - Enable it if you want 3D effects.
+        //! - If this is greater than 0, depth test will be enabled automatically.
+        //! kFZGLConfigDepthNone by default.
         fzDepthFormat depthFormat;
+        
+        //! Buffer's color format:
+        //! Bigger format implies better quality and usually slow performance.
+        //! kFZGLConfigColorRGBA8888 by default.
         fzColorFormat colorFormat;
+        
+        //! Full screen antialiasing technique.
+        //! Set the number of samples.
+        //! 0 by default.
         fzUInt multiSampling;
+        
+        //! Render quality.
+        //! Lower quality implies better performance.
+        //! This value must be between (0, 1]
+        //! 1 by default.
         fzFloat quality;
         
         
@@ -77,6 +96,9 @@ namespace FORZE {
                  fzUInt multiSampling,
                  fzFloat quality);
         
+        
+        //! Returns if the GLConfig data is valid.
+        //! This method is called internally before configure the opengl context.
         void validate() const;
     };
 }

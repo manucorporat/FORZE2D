@@ -85,11 +85,11 @@ namespace FORZE {
         : r(red), g(green), b(blue) {}
         
         
-        // Copy constructor
+        //! Copy constructor.
         fzColor3B(const _fzColor4<unsigned char, 255>&);
         
         
-        // Copy constructor
+        //! Copy constructor.
         fzColor3B(const _fzColor4<fzFloat, 1>&);
         
         
@@ -121,29 +121,29 @@ namespace FORZE {
     class _fzColor4
     {
     public:
-        T r; //!< red channel
-        T g; //!< green channel
-        T b; //!< blue channel
-        T a; //!< alpha channel
+        T r; //!< red channel.
+        T g; //!< green channel.
+        T b; //!< blue channel.
+        T a; //!< alpha channel.
         
         
-        //! Default constructor
+        //! Default constructor.
         _fzColor4() = default;
         _fzColor4(T red, T green, T blue, T alpha = N)
         : r(red), g(green), b(blue), a(alpha) {}
         
         
-        //! Copy constructor for fzColor4B
+        //! Copy constructor for fzColor4B.
         _fzColor4(const _fzColor4<unsigned char, 255>& c)
         : r(c.r * N/255.0f), g(c.g * N/255.0f), b(c.b * N/255.0f), a(c.a * N/255.0f) {}
         
         
-        //! Copy constructor for fzColor4F
+        //! Copy constructor for fzColor4F.
         _fzColor4(const _fzColor4<float, 1>& c)
         : r(c.r * N), g(c.g * N), b(c.b * N), a(c.a * N) {}
         
         
-        //! Copy constructor for fzColor3B
+        //! Copy constructor for fzColor3B.
         _fzColor4(const fzColor3B& c)
         : r(c.r * N/255.0f), g(c.g * N/255.0f), b(c.b * N/255.0f), a(N) {}
         
@@ -232,7 +232,7 @@ namespace FORZE {
         { }
         
         
-        //! apply a translation
+        //! Applies a translation.
         fzAffineTransform& translate(fzFloat x, fzFloat y) {
             m[4] += x * m[0]; m[4] += y * m[2];
             m[5] += x * m[1]; m[5] += y * m[3];
@@ -240,7 +240,7 @@ namespace FORZE {
         }
         
         
-        //! apply a scale factor. X and Y axies.
+        //! Applies a scale factor. X and Y axies.
         fzAffineTransform& scale(fzFloat sx, fzFloat sy) {
             m[0] *= sx; m[1] *= sx;
             m[2] *= sy; m[3] *= sy;
@@ -248,7 +248,7 @@ namespace FORZE {
         }
         
         
-        //! apply a scale factor.
+        //! Applies a scale factor.
         fzAffineTransform& scale(fzFloat s) {
             return scale(s, s);
         }
@@ -259,22 +259,21 @@ namespace FORZE {
             return *this;
         }
         
-        // assign a new affine translation giving rotation/scale/translate
+        // Assigns a new affine translation giving rotation/scale/translate.
         void assign(fzFloat *data);
         
         
-        //! apply a rotation given an angle in radians
+        //! Applies a rotation given an angle in radians.
         fzAffineTransform& rotate(fzFloat radians);
         
         
         fzAffineTransform& concat(const fzAffineTransform&);
         
-        //! returns the inverse transform
+        //! Returns the inverse transform.
         fzAffineTransform getInverse() const;
         
-        //! generates a Opengl matrix
+        //! Generates a valid Opengl matrix.
         void generateGLMatrix(float *matrix) const;
-        
     };
     
     
@@ -354,44 +353,44 @@ namespace FORZE {
         T x;
         T y;
         
-        //! default constructor
+        //! Default constructor.
         _fzVec2() = default;
         _fzVec2(T xx, T yy) : x(xx), y(yy) {}
         
-        //! copy constructor for _fzVec2<double>
+        //! Copy constructor for _fzVec2<double>.
         _fzVec2(const _fzVec2<double>& p)
         : x(static_cast<T>(p.x)), y(static_cast<T>(p.y)) {}
         
         
-        //! copy constructor for _fzVec2<float>
+        //! Copy constructor for _fzVec2<float>.
         _fzVec2(const _fzVec2<float>& p)
         : x(static_cast<T>(p.x)), y(static_cast<T>(p.y)) {}
         
         
-        //! copy constructor for fzSize
+        //! Copy constructor for fzSize.
         _fzVec2(const fzSize& s)
         : x(s.width), y(s.height) {}
         
         
-        //! squared length
+        //! Returns the squared length of the vector.
         T lengthSquared() const {
             return x*x + y*y;
         }
         
         
-        //! vector length
+        //! Returns the length of the vector.
         T length() const {
             return sqrtf(lengthSquared());
         }
         
         
-        //! returns a perpendicular copy of the vector
+        //! Returns a the perpendicular vector.
         _fzVec2<T> getPerp() const {
             return _fzVec2<T>(-y, x);
         }
         
         
-        //! dot product
+        //! Returns the dot product.
         T dot(const _fzVec2<T>& p) const {
             T dot = x; dot *= p.x;
             dot += y*p.y;
@@ -399,31 +398,32 @@ namespace FORZE {
         }
         
         
-        //! vector angle
+        //! Returns the angle by the vector x.
         T angle() const {
             return atan(y / x);
         }
         
         
-        //! squared distance
+        //! Returns the distance from the specified point.
         T distance(const _fzVec2<T>& p) const {
             return sqrtf(distanceSquared(p));
         }
         
         
-        //! distance
+        //! Returns the squared distance from the specified point.
         T distanceSquared(const _fzVec2<T>& p) const {
             _fzVec2<T> d(x-p.x, y-p.y);
             return d.lengthSquared();
         }
         
         
-        //! mult cmp
+        //! Retuns the component-by-component multiply.
         _fzVec2<T> compMult(const _fzVec2<T>& p) const {
             return _fzVec2<T>(p.x*x, p.y*y);
         }
         
-        //! normalizes the vector (length = 1)
+        
+        //! Normalizes the vector (length = 1).
         _fzVec2<T>& normalize() {
             const T invLength = length();
             x /= invLength;
@@ -432,7 +432,7 @@ namespace FORZE {
         }
         
         
-        //! applies a FZAffineTransport to the vector      
+        //! Applies a fzAffineTransport to the vector.  
         _fzVec2<T>& applyTransform(const fzAffineTransform& t) {
             float x2 = x;
             x *= t.m[0]; x += t.m[2]*y + t.m[4];
@@ -517,30 +517,30 @@ namespace FORZE {
         T y;
         T z;
 
-        //! default constructor
+        //! Default constructor.
         _fzVec3() = default;
         _fzVec3(T xx, T yy, T zz)
         : x(xx), y(yy), z(zz) {}
         
         
-        //! copy constructor for fzPoint
+        //! Copy constructor for fzPoint.
         _fzVec3(const fzPoint& p)
         : x(p.x), y(p.y), z(0) {}
         
         
-        //! squared vector length
+        //! Returns the squared vector length.
         T lengthSquared() const {
             return x*x + y*y + z*z;
         }
         
         
-        //! vector length
+        //! Returns the vector length.
         T length() const {
             return sqrtf(lengthSquared());
         }
         
         
-        //! normalization
+        //! Normalizes the vector.
         _fzVec3<T>& normalize() {
             const T invLength = length();
             x /= invLength;
@@ -550,7 +550,7 @@ namespace FORZE {
         }
         
         
-        // cross product
+        // Returns the cross product.
         _fzVec3<T> getCrossed(const _fzVec3<T>& p) {
             return _fzVec3<T>((y * p.z) - (z * p.y),
                               (z * p.x) - (x * p.z),

@@ -76,22 +76,22 @@ __NODE__ = static_cast<__typeof__(__NODE__)>((__NODE__)->prev()))
         friend class AutoList;
 
     private:
-        //! weak pointer to the previous object
+        //! Weak pointer to the previous object
         fzListItem *p_prev;
         
-        //! weak pointer to the next object
+        //! Weak pointer to the next object
         fzListItem *p_next;
         
         
     public:
         fzListItem() : p_prev(NULL), p_next(NULL) {}
         
-        //! Returns the previous object
+        //! Returns the previous object.
         fzListItem* prev() {
             return p_prev;
         }
         
-        //! Returns the next object
+        //! Returns the next object.
         fzListItem* next() {
             return p_next;
         }
@@ -101,29 +101,32 @@ __NODE__ = static_cast<__typeof__(__NODE__)>((__NODE__)->prev()))
     class AutoList
     {
     private:
-        //! weak pointer to the first object
+        //! Weak pointer to the first object.
         fzListItem *p_front;
         
-        //! weak pointer to the last object
+        //! Weak pointer to the last object.
         fzListItem *p_back;
         
-        //! number of objects
+        //! Number of objects.
         fzUInt m_count;
         
         
     public:
-        //! Constructs an empty list
+        //! Constructs an empty list.
         AutoList();
         
         
-        //! Inserts a object at a given position
+        //! Inserts a object at a given position.
         //! @param position where you want to insert the object
         //! if position is NULL, the object will be inserted at back
         //! @param object to be inserted
+        //! @see push_front()
+        //! @see push_back()
         void insert(fzListItem *position, fzListItem *object);
         
         
         //! Removes a object from the list.
+        //! @see remove()
         void remove(fzListItem *position);
         
         
@@ -131,19 +134,24 @@ __NODE__ = static_cast<__typeof__(__NODE__)>((__NODE__)->prev()))
         void move(fzListItem *object, fzListItem *newPosition);
 
         
-        //! Inserts a object at front (first one)
+        //! Inserts a object at front (first one).
+        //! @see insert()
+        //! @see push_back()
         void push_front(fzListItem *node) {
             insert(p_front, node);
         }
         
         
-        //! Inserts a object at back (last one)
+        //! Inserts a object at back (last one).
+        //! @see insert()
+        //! @see push_back()
         void push_back(fzListItem *node) {
             insert(NULL, node);
         }
         
         
-        //! Removes all objects from the list
+        //! Removes all objects from the list.
+        //! @see remove()
         void clear() {
             p_front = NULL;
             p_back = NULL;
@@ -151,27 +159,31 @@ __NODE__ = static_cast<__typeof__(__NODE__)>((__NODE__)->prev()))
         }
         
         
-        //! Returns the first object
-        //! @return NULL is the list is empty
+        //! Returns the first object (index 0).
+        //! @return NULL if the list is empty.
+        //! @see back()
         fzListItem *front() {
             return p_front;
         }
         
         
-        //! Returns the last object
-        //! @return NULL is the list is empty
+        //! Returns the last object (last index).
+        //! @return NULL if the list is empty.
+        //! @see front()
         fzListItem *back() {
             return p_back;
         }
         
         
-        //! Returns try if the list is emply
+        //! Returns true if the list is empty.
+        //! size() == 0
+        //! @see size()
         bool empty() const {
             return m_count == 0;
         }
         
         
-        //! Returns the number of objects
+        //! Returns the number of objects listed.
         fzUInt size() const {
             return m_count;
         }

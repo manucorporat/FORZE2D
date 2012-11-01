@@ -60,28 +60,28 @@ namespace FORZE {
             };
         };
         
-        //! Instance
+        // Instance
         static DataStore* p_instance;
         
-        //! array with all entries
+        // array with all entries
         fzStoreEntry *p_store;
         
-        //! number of entries
+        // number of entries
         fzUInt m_num;
         
-        //! store capacity
+        // store capacity
         fzUInt m_capacity;
         
-        //! is data dirty
+        // is data dirty
         bool m_dirty;
         
-        //! data base absolute path.
+        // data base absolute path.
         const char *p_path;
         
-        //! Used intenally to read the xml data base.
+        // Used intenally to read the xml data base.
         bool readFromMemory();
         
-        //! Reserve capacity.
+        //! Used internally to reserve memory.
         void reserveCapacity(fzUInt capacity);
         
         //! Used internally to set or update an entry.
@@ -93,7 +93,7 @@ namespace FORZE {
         //! Used internally to get a entry given the key
         fzStoreEntry *entryForKey(const char *key) const;
         
-        //! 
+        //! Low level way to remove entries.
         void removeEntry(fzStoreEntry *entry);
         
         
@@ -108,8 +108,8 @@ namespace FORZE {
         //! Gets and allocates the singleton.
         static DataStore& Instance();
         
-        //! Sets a float value for the key specified.
-        //! @param value is a float.
+        
+        //! Returns if an entry exists for the specified key.
         //! @param key is a NULL-terminated char string.
         bool contains(const char *key);
         
@@ -156,7 +156,7 @@ namespace FORZE {
         
         
         //! Sets a string value for the key specified.
-        //! @param value is a NULL-terminated char string.
+        //! @param data is a fzBuffer.
         //! @param key is a NULL-terminated char string.
         void setData(const fzBuffer& data, const char *key);
         
@@ -178,10 +178,14 @@ namespace FORZE {
         //! @return If no value found for key, NULL is returned.
         const char* stringForKey(const char *key) const;
         
+        
+        //! Returns the data paired with the given key.
+        //! @param key is a NULL-terminated char string.
+        //! @return If no value found for key, an empty fzBuffer is returned.
         const fzBuffer dataForKey(const char *key) const;
         
         
-        //! Removes an entry giving the key
+        //! Removes an entry giving the key.
         //! @param key is a NULL-terminated char array
         void removeForKey(const char *key);
         

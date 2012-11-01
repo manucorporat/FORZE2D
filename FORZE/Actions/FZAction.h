@@ -42,7 +42,7 @@ namespace FORZE {
     };
     
     class Node;
-    /** Base class for CCAction objects */
+    /** Base class for Action objects */
     class Action : public LifeCycle
     {
         friend class ActionManager;
@@ -52,13 +52,12 @@ namespace FORZE {
         fzInt m_tag;
         
         
-        /** called once per frame. time a value between 0 and 1
-         * For example: 
-         * 0 means that the action just started
-         * 0.5 means that the action is in the middle
-         * 1 means that the action is over
-         @warning this method never should be called manually.
-         */
+        //! Called once per frame. time a value between 0 and 1.
+        //! For example:
+        //! - 0 means that the action just started
+        //! - 0.5 means that the action is in the middle
+        //! - 1 means that the action is over
+        //! @warning this method never should be called manually.
         virtual void update(fzFloat time) {};
         
         // Constructor
@@ -74,7 +73,7 @@ namespace FORZE {
         virtual void step(fzFloat dt) = 0;
         
         
-        ///! Called after the action has finished. It will set the 'target' to NULL.
+        //! Called after the action has finished. It will set the 'target' to NULL.
         virtual void stop();
         
         
@@ -98,13 +97,13 @@ namespace FORZE {
         }
         
         
-        //! Sets an tag value to identify the action.
+        //! Returns an tag value to identify the action.
         fzInt getTag() const {
             return m_tag;
         }
         
         
-        //! Returns a reversed action
+        //! Returns a reversed action.
         virtual Action* reverse() const;
         
         
@@ -123,16 +122,19 @@ namespace FORZE {
     {
     protected:
         fzFloat m_duration;
-        
         FiniteTimeAction();
         
     public:
-        //! duration in seconds of the action
+        
+        //! Sets the duration in seconds of the action.
         virtual void setDuration(fzFloat);
+        
+        //! Returns the duration in seconds of the action.
         fzFloat getDuration() const {
             return m_duration;
         }
         
+        //! Returns the time elapsed in seconds.
         virtual fzFloat getElapsed() const;
         
         virtual FiniteTimeAction* reverse() const override;
@@ -151,11 +153,17 @@ namespace FORZE {
         FiniteTimeAction *p_innerAction;
         
     public:
+        //! Constructs a RepeatForever action from the specified inner action.
         RepeatForever(FiniteTimeAction *action);
+        
+        // Destructor
         ~RepeatForever();
         
-        /** Inner action */
-        void setInnerAction(FiniteTimeAction *action);
+        //! Sets the inner action.
+        void setInnerAction(FiniteTimeAction*);
+        
+        
+        //! Returns the inner action.
         FiniteTimeAction* getInnerAction() const {
             return p_innerAction;
         }
@@ -181,12 +189,14 @@ namespace FORZE {
         fzFloat m_speed;
         
     public:
-        /** creates the action */
+        //! Constructs a Speed action from the specified inner action.
         Speed(Action *action, fzFloat speed);
         ~Speed();
         
-        /** Inner action */
-        void setInnerAction(Action *a);
+        //! Sets the inner action.
+        void setInnerAction(Action*);
+        
+        //! Returns the inner action.
         Action* getInnerAction() const;
         
         /** alter the speed of the inner function in runtime */
@@ -211,16 +221,22 @@ namespace FORZE {
         fzFloat m_step;
         
     public:
-        /** creates the action */
+        //! Constructs a Step action from the specified inner action and step interval.
         Step(Action *action, fzFloat step);
         ~Step();
         
-        /** Inner action */
+        //! Sets the inner action.
         void setInnerAction(Action *a);
+        
+        
+        //! Returns the inner action.
         Action* getInnerAction() const;
         
-        /** alter the speed of the inner function in runtime */
+        
+        //! Sets the step in seconds.
         void setStep(fzFloat);
+        
+        //! Returns the step in seconds.
         fzFloat getStep() const;
         
         // Redefined functions
@@ -234,37 +250,38 @@ namespace FORZE {
     };
     
     
-    /** CCFollow is an action that "follows" a node.
+    /** Follow is an action that "follows" a node.
      Instead of using CCCamera as a "follower", use this action instead.
      */
     class Node;
     class Follow : public Action
     {
     protected:
-        /* node to follow */
+        // node to follow
         Node	*followedNode_;
         
-        /* fast access to the screen dimensions */
+        // fast access to the screen dimensions
         fzPoint halfScreenSize_;
         fzPoint fullScreenSize_;
         
-        /* whether camera should be limited to certain area */
+        // whether camera should be limited to certain area
         bool boundarySet_ : 1;
         
-        /* if screensize is bigger than the boundary - update not needed */
+        // if screensize is bigger than the boundary - update not needed
         bool boundaryFullyCovered_ : 1;
         
-        /* world boundaries */
+        // world boundaries
         bool leftBoundary_ : 1;
         bool rightBoundary_ : 1;
         bool topBoundary_ : 1;
         bool bottomBoundary_ : 1;
         
     public:
-        /** creates the action with no boundary set */
+        //! Constructs a Follow action.
+        //! The rect will be the canvas size.
         Follow(Node *followed);
         
-        /** creates the action with a set boundary */
+        //! Constructs a Follow action.
         Follow(Node *followed, const fzRect& rect);
         
         /** alter behavior - turn on/off boundary */

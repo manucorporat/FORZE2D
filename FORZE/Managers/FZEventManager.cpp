@@ -367,6 +367,7 @@ namespace FORZE {
         }
     }
     
+    
     fzUInt EventManager::getNumberOfEvents(uint16_t type) const
     {
         fzUInt count = 0;

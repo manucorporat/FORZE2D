@@ -38,11 +38,11 @@
 
 namespace FORZE
 {
-    //! Returns an int32 hash value giving a string
+    //! Returns an int32 hash value giving a string.
     int32_t fzHash(const char *str, size_t length);
     
     
-    //! Returns an int32 hash value giving a string
+    //! Returns an int32 hash value giving a string.
     int32_t fzHash(const char *str);
     
     
@@ -54,7 +54,7 @@ namespace FORZE
     char* FZT(const char *pszFormat, ...);
     
     
-    //! This function allocates the necesary memory and copies the string into.
+    //! Allocates the necesary memory and copies the string into.
     //! @param string to be copied.
     //! @param length of the string to be copied. "HOLA" = 4
     //! @return a new pointer to the copied string.
@@ -62,7 +62,7 @@ namespace FORZE
     char* fzStrcpy(const char *string, size_t length);
     
     
-    //! This function allocates the necesary memory and copies the string into.
+    //! Allocates the necesary memory and copies the string into.
     //! @param string is the NULL-terminated string to be copied.
     //! @return a new pointer to the copied string.
     //! @warning the returned pointer must be released using delete

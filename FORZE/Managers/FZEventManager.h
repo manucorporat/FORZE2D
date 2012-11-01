@@ -59,7 +59,8 @@ namespace FORZE {
         kFZEventHandlerMode_Global
         
     };
-        
+    
+    
     /** EventManager catch and dispatch events */
     class EventManager
     {
@@ -119,23 +120,21 @@ namespace FORZE {
 
                 
     public:
-        //! Gets and allocates the singleton
+        //! Gets and allocates the singleton.
         static EventManager& Instance();
         
         
-        //! Sets if you want to track events
+        //! Sets if you want to track events.
         void setIsEnabled(bool);
         
         
-        //! Returns if the system is tracking events
+        //! Returns if the system is tracking events.
         bool isEnabled() const;
         
         
-        //! Add a new event handler
-        //! @param target that will receive the events
+        //! Add a new event handler.
+        //! @param target that will receive the events.
         //! @param flags tell what kind of events will track the target. If this value is 0, removeDelegate(target) is executed.
-        //! @param priority
-        //! @param mode
         void addDelegate(EventDelegate *target, uint16_t flags, fzInt priority, fzEventHandlerMode mode = kFZEventHandlerMode_NoShallow);
         
         
@@ -144,7 +143,7 @@ namespace FORZE {
         void removeDelegate(EventDelegate *target);
         
         
-        //! This method is used internally to track the incoming events
+        //! This method is used internally to track the incoming events.
         void catchEvent(const Event& newEvent);
         
         void cancelAllEvents();

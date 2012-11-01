@@ -42,8 +42,8 @@ namespace FORZE {
     class Font;
     
     /** Singleton that handles the loading of textures
-     * Once the texture is loaded, the next time it will return
-     * a reference of the previously loaded texture reducing GPU & CPU memory
+     * Once the Texture2D is loaded, the next time it will return
+     * a reference of the previously loaded Texture2D reducing GPU & CPU memory
      */
     class FontCache
     {
@@ -72,25 +72,25 @@ namespace FORZE {
         static FontCache& Instance();
         
         
-        //! Returns a Font file.
+        //! Returns and loads if needed a Font instance giving the filename.
         Font* addFont(const char* filename, fzFloat lineHeight);
         
         
-        //! Deletes a Font from the cache given the font pointer
+        //! Removes a Font from the cache given the font instance.
         void removeFont(Font *font);
         
         
-        //! Deletes a Font from the cache given a its key name
-        //! @param key is a NULL terminated char string.
+        //! Removes a Font from the cache given a its key name.
+        //! @param filename is a NULL terminated char string.
         void removeFontForFilename(const char* filename);
         
         
-        //! Removes unused Fonts
+        //! Removes unused Fonts.
         //! This method will be called if the system througs a memory warning.
         void removeUnusedFonts();
         
         
-        //! Removes all the fonts stored in the cache
+        //! Removes all the fonts stored in the cache.
         void removeAllFonts();
     };
 }

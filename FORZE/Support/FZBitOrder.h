@@ -35,39 +35,39 @@
 
 namespace FORZE {
     
-    //! Swap between byte order, short types, 16 bits */
+    //! Swap between byte order, short types, 16 bits.
     uint16_t fzBitOrder_int16Swap (uint16_t n);
     
     
-    //! Swap between byte order, long types, 32 bits */
+    //! Swap between byte order, long types, 32 bits.
     uint32_t fzBitOrder_int32Swap (uint32_t n);
     
     
-    //! Swap between byte order, long long types, 64bits */
+    //! Swap between byte order, long long types, 64bits.
     uint64_t fzBitOrder_int64Swap (uint64_t n);
     
     
-    //! Little endian to host, "Short" */
+    //! Little endian to host, "Short".
     uint16_t fzBitOrder_int16LittleToHost(uint16_t little);
     
     
-    //! Little endian to host, "Long" i.e. int */
+    //! Little endian to host, "Long" i.e. int.
     uint32_t fzBitOrder_int32LittleToHost(uint32_t little);
     
     
-    //! Little endian to host, "double" i.e. long long */
+    //! Little endian to host, "double" i.e. long long.
     uint64_t fzBitOrder_int64LittleToHost(uint64_t little);
     
     
-    //! Big endian to host, "Short" */
+    //! Big endian to host, "Short".
     uint16_t fzBitOrder_int16BigToHost(uint16_t big);
     
     
-    //! Big endian to host, "Long" i.e. int */
+    //! Big endian to host, "Long" i.e. int.
     uint32_t fzBitOrder_int32BigToHost(uint32_t big);
     
     
-    //! Big endian to host, "double" i.e. long long */
+    //! Big endian to host, "double" i.e. long long.
     uint64_t fzBitOrder_int64BigToHost(uint64_t big);
 }
 #endif

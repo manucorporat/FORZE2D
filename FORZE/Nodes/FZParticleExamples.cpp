@@ -87,6 +87,5 @@ namespace FORZE {
         
         // texture
         setBlendFunc(fzBlendFunc(GL_SRC_ALPHA, GL_ONE ));
-        
     }
 }
