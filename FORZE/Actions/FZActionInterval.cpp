@@ -1063,7 +1063,7 @@ namespace FORZE {
     void TintBy::startWithTarget(void *t)
     {
         Node *node = static_cast<Node*>(t);
-        RGBAProtocol *rgba = dynamic_cast<RGBAProtocol*>(node);
+        Protocol::Color *rgba = dynamic_cast<Protocol::Color*>(node);
         ActionInterval::startWithTarget(rgba);
         m_startColor = rgba->getColor();
     }
@@ -1075,7 +1075,7 @@ namespace FORZE {
                            m_startColor.g + m_deltaG * dt,
                            m_startColor.b + m_deltaB * dt);
         
-        ((RGBAProtocol*)p_target)->setColor(newColor);
+        ((Protocol::Color*)p_target)->setColor(newColor);
     }
     
     

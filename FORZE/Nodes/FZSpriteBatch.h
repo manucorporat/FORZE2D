@@ -44,23 +44,21 @@ namespace FORZE {
     /** SpriteBatch is like a batch node: if it contains children, it will draw them in 1 single OpenGL call
      * (often known as "batch draw").
      *
-     * A SpriteBatch can reference one and only one texture (one image file, one texture atlas).
-     * Only the CCSprites that are contained in that texture can be added to the CCSpriteBatchNode.
-     * All CCSprites added to a CCSpriteBatchNode are drawn in one OpenGL ES draw call.
-     * If the CCSprites are not added to a CCSpriteBatchNode then an OpenGL ES draw call will be needed for each one, which is less efficient.
+     * A SpriteBatch can reference one and only one Texture2D (one image file, one texture atlas).
+     * Only the Sprites that are contained in that Texture2D can be added to the SpriteBatch.
+     * All Sprite added to a SpriteBatch are drawn in one OpenGL ES draw call.
+     * If the Sprite are not added to a SpriteBatch then an OpenGL ES draw call will be needed for each one, which is less efficient.
      *
      *
      * Limitations:
-     *  - The only object that is accepted as child (or grandchild, grand-grandchild, etc...) is CCSprite or any subclass of CCSprite. eg: particles, labels and layer can't be added to a CCSpriteBatchNode.
+     *  - The only object that is accepted as child (or grandchild, grand-grandchild, etc...) is Cprite or any subclass of Sprite. eg: particles, labels and layer can't be added to a SpriteBatchN.
      *  - Either all its children are Aliased or Antialiased. It can't be a mix. This is because "alias" is a property of the texture, and all the sprites share the same texture.
      * 
      */
     class Sprite;
-    class SpriteBatch : public Node, public TextureProtocol, public BlendProtocol, public GLProgramProtocol
+    class SpriteBatch : public Node, public Protocol::Texture, public Protocol::Blending
     {
-    private:
-        friend class Sprite;
-        
+        friend class Sprite;        
         
     protected:
         TextureAtlas m_textureAtlas;
@@ -69,52 +67,32 @@ namespace FORZE {
         virtual void insertChild(Node*) override;
         
     public:
-        //! Construct a SpriteBatch with a texture and an initial capacity.
+        //! Constructs a SpriteBatch with a Texture2D and an initial capacity.
         explicit SpriteBatch(Texture2D *texture, fzUInt capacity = 0);
 
         
-        //! Construct a SpriteBatch with am image filename(.png, .pvr..) and an initial capacity.
+        //! Constructs a SpriteBatch with am image filename(.png, .pvr..) and an initial capacity.
         explicit SpriteBatch(const string& filename, fzUInt capacity = 0);
         
         
-        //! Returns the TextureAtlas used by
+        //! Returns the TextureAtlas used by.
         TextureAtlas* getTextureAtlas() {
             return &m_textureAtlas;
         }
         
         
-        //! Sets the texture used by
-        void setTexture(Texture2D* t) {
-            m_textureAtlas.setTexture(t);
-        }
-        
-        
-        //! Returns the texture used by
-        Texture2D* getTexture() const {
-            return m_textureAtlas.getTexture();
-        }
-        
-                
-        //! Sets the blendfunc used by
-        void setBlendFunc(const fzBlendFunc& b) {
-            m_blendFunc = b;
-        }
-        
-        
-        //! Returns the blendfunc used by
-        const fzBlendFunc& getBlendFunc() const {
-            return m_blendFunc;
-        }
-        
-        
-        //! Returns the current capacity of the SpriteBatch
-        //! The capacity is resized dynamically
+        //! Returns the current capacity of the SpriteBatch.
+        //! The capacity is resized dynamically.
         fzUInt getCapacity() const {
             return m_textureAtlas.getCapacity();
         }
 
         
         // Redefined functions
+        virtual void setBlendFunc(const fzBlendFunc& blend) override;
+        virtual const fzBlendFunc& getBlendFunc() const override;
+        virtual void setTexture(Texture2D*) override;
+        virtual Texture2D* getTexture() const override;
         virtual void render(char) override;
         virtual void draw() override;
     };

@@ -73,11 +73,35 @@ namespace FORZE {
             sprite_child->useBatchRender(this);
         }
     }
-
+    
+    
+    void SpriteBatch::setTexture(Texture2D* t)
+    {
+        m_textureAtlas.setTexture(t);
+    }
+    
+    
+    Texture2D* SpriteBatch::getTexture() const
+    {
+        return m_textureAtlas.getTexture();
+    }
+    
+    
+    void SpriteBatch::setBlendFunc(const fzBlendFunc& b)
+    {
+        m_blendFunc = b;
+    }
+    
+    
+    const fzBlendFunc& SpriteBatch::getBlendFunc() const
+    {
+        return m_blendFunc;
+    }
+    
     
     void SpriteBatch::render(char dirtyFlags)
     {
-        FZ_ASSERT(p_parent != NULL, "CCSpriteBatchNode should NOT be root node");
+        FZ_ASSERT(p_parent != NULL, "SpriteBatch should NOT be root node");
         
         // RESERVE MEMORY
         m_textureAtlas.reserveCapacity(m_children.size());

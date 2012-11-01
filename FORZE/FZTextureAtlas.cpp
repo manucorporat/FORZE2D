@@ -118,6 +118,12 @@ namespace FORZE {
     }
     
     
+    Texture2D* TextureAtlas::getTexture() const
+    {
+        return p_texture;
+    }
+    
+    
     void TextureAtlas::initVAO()
     {
         /*

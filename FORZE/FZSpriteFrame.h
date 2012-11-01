@@ -43,7 +43,7 @@ namespace FORZE {
      fzSpriteFrame frame(texture, rect, offset);
      sprite->setDisplayFrame(frame);
      */
-    class fzSpriteFrame : public TextureProtocol
+    class fzSpriteFrame : public Protocol::Texture
     {
     protected:
         Texture2D		*p_texture;
@@ -65,7 +65,7 @@ namespace FORZE {
         fzSpriteFrame(Texture2D *texture, const fzRect& rect, const fzPoint& offset);
         
         
-        //! Constructs a fzSpriteFrame with a texture and a rect.
+        //! Constructs a fzSpriteFrame with a Texture2D and a rect.
         fzSpriteFrame(Texture2D *texture, const fzRect& rect);
         
         
@@ -120,16 +120,6 @@ namespace FORZE {
         const fzSize& getOriginalSize() const;
         
         
-        //! Sets the frame's texture.
-        //! @see getTexture()
-        void setTexture(Texture2D*);
-        
-        
-        //! Returns the frame's texture.
-        //! @see setTexture()
-        Texture2D* getTexture() const;
-        
-        
         //! Used internally to check if the frame is valid to be applied.
         bool isValid() const {
             return p_texture != NULL;
@@ -139,6 +129,11 @@ namespace FORZE {
         // Operators
         bool operator == (const fzSpriteFrame&) const;
         bool operator != (const fzSpriteFrame&) const;
+        
+        
+        // Redefined
+        virtual void setTexture(Texture2D*) override;
+        virtual Texture2D* getTexture() const override;
     };
 }
 #endif

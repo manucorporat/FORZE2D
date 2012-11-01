@@ -35,18 +35,51 @@
 
 namespace FORZE {
     
-#pragma mark - ApplicationProtocol
+#pragma mark - AppDelegateProtocol
     
-    class ApplicationProtocol
+    class Texture2D;
+    class GLProgram;
+    
+    
+#pragma mark - AppDelegateProtocol
+    
+    //! APPDelegate protocol
+    class AppDelegateProtocol
     {
     public:
-        virtual ~ApplicationProtocol(){}
-
+        virtual ~AppDelegateProtocol(){}
+        
+        //! The Director calls this method for the designated delegate when the application was launched succesfully.
+        //! This is the entry point for all the game logic.
+        //! This method is required to be implemented by the developer.
         virtual void applicationLaunched(void *options) = 0;
+        
+        
+        //! The Director calls this method for the designated delegate when the application is paused.
+        //! This method is optional.
         virtual void applicationPaused() {}
+        
+        //! The Director calls this method for the designated delegate when the application is resumed.
+        //! This method is optional.
         virtual void applicationResumed() {}
+        
+        
+        //! The Director calls this method for the designated delegate when the application is terminated.
+        //! This method is optional.
         virtual void applicationTerminate() {}
         
+        
+        //! The Director calls this method for the designated delegate before loading the OpenGL context.
+        //! By default this method returns the default opengl context config.
+        //! But you can override this method and config it by yourself.
+        //! @code
+        //!            virtual GLConfig fzGLConfig()
+        //!            {
+        //!                GLConfig config;
+        //!                config.quality = 0.8f;
+        //!                config.colorFormat = kFZGLConfigColorRGBA8888;
+        //!                return config;
+        //!            }
         virtual GLConfig fzGLConfig()
         {
             GLConfig config;
@@ -54,74 +87,61 @@ namespace FORZE {
         }
     };
     
-    
-#pragma mark - BlendProtocol
-    
-    class BlendProtocol
+    class Protocol
     {
     public:
-        virtual ~BlendProtocol(){}
-        
-        virtual const fzBlendFunc& getBlendFunc() const = 0;
-        virtual void setBlendFunc(const fzBlendFunc&) = 0;
-    };
-    
-    
-#pragma mark - RGBAProtocol
-    
-    class RGBAProtocol
-    {
-    public:
-        virtual ~RGBAProtocol(){}
+#pragma mark - Protocol::Blinding
 
-        virtual const fzColor3B& getColor() const {}
-        virtual void setColor(const fzColor3B&) {}
-    };
-    
-    
-#pragma mark - TextureProtocol
-    
-    class GLProgram;
-    class GLProgramProtocol
-    {
-    protected:
-        GLProgram *p_glprogram;
-        
-    public:
-        GLProgramProtocol() : p_glprogram(NULL) {}
-        
-        virtual ~GLProgramProtocol() {
-#if FZ_GL_SHADERS
-            setGLProgram((GLProgram*)NULL);
-#endif
-        }
-        
-        //! Sets the GLProgram used by the node to render his opengl stuff (NOT INCLUDING children).
-        //! This parammeter doesn't make sense in void elements such as "Node", "Scene" or "Layer".
-        //! @see getGLProgram
-        //! @see setFilter
-        //! @see getFilter
-        virtual void setGLProgram(GLProgram*);
+        //! Blending protocol
+        class Blending
+        {
+        public:
+            virtual ~Blending(){}
+                        
+            //! Sets the OpenGl blendfunc used by.
+            //! @see getBlendFunc()
+            virtual void setBlendFunc(const fzBlendFunc&) = 0;
+            
+            //! Returns the OpenGl blendfunc used by.
+            //! @see setBlendFunc()
+            virtual const fzBlendFunc& getBlendFunc() const = 0;
+        };
         
         
-        //! Sets the GLProgram by a tag value
-        virtual void setGLProgram(fzUInt programKey);
-        
-        
+#pragma mark - Protocol::Color
 
-        virtual GLProgram* getGLProgram() const {
-            return p_glprogram;
-        }
-    };
-    
-    class Texture2D;
-    class TextureProtocol
-    {
-    public:
-        virtual ~TextureProtocol(){}
-
-        virtual Texture2D* getTexture() const = 0;
-        virtual void setTexture(Texture2D*) = 0;
+        //! Color protocol
+        class Color
+        {
+        public:
+            virtual ~Color(){}
+            
+            //! Sets the color used as filter.
+            //! @see setColor()
+            virtual void setColor(const fzColor3B&) = 0;
+            
+            //! Returns the color used as filter.
+            //! @see getColor()
+            virtual const fzColor3B& getColor() const = 0;
+        };
+        
+        
+#pragma mark - Protocol::Texture
+        
+        //! Texture protocol
+        class Texture
+        {
+        public:
+            virtual ~Texture(){}
+            
+            //! Returns the Texture2D associated with the node.
+            //! @see setTexture()
+            virtual Texture2D* getTexture() const = 0;
+            
+            //! Sets the Texture2D used by the node.
+            //! @see getTexture()
+            virtual void setTexture(Texture2D*) = 0;
+        };
     };
 }
 #endif

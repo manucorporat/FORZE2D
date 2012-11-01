@@ -49,7 +49,7 @@ namespace FORZE {
      The quads are rendered using an OpenGL ES VBO.
      To render the quads using an interleaved vertex array list, you should modify the ccConfig.h file 
      */
-    class TextureAtlas : public TextureProtocol
+    class TextureAtlas : public Protocol::Texture
     {
     private:
         unsigned int        m_VAO;
@@ -79,13 +79,13 @@ namespace FORZE {
         virtual ~TextureAtlas();
         
         
-        //! Quantity of quads that can be stored with the current texture atlas size.
+        //! Returns the number of quads that can be stored with the current texture atlas size.
         fzUInt getCapacity() const {
             return m_capacity;
         }
         
         
-        //! Quantity of quads that are going to be drawn.
+        //! Returns the number of quads that are going to be drawn.
         fzUInt getCount() const {
             return m_count;
         }
@@ -100,18 +100,6 @@ namespace FORZE {
             return p_quads;
         }
 
-
-        //! Sets the texture used by.
-        //! @see getTexture()
-        void setTexture(Texture2D*);
-        
-        
-        //! Returns the texture used by.
-        //! @see setTexture()
-        Texture2D* getTexture() const {
-            return p_texture;
-        }
-
         
         //! Removes all Quads.
         //! The TextureAtlas capacity remains untouched. No memory is freed.
@@ -120,15 +108,13 @@ namespace FORZE {
         }
         
         
-        /** resize the capacity of the TextureAtlas.
-         * The new capacity can be lower or higher than the current one
-         * It returns YES if the resize was successful.
-         * If it fails to resize the capacity it will return NO with a new capacity of 0.
-         */
+        //! Resizes the capacity of the TextureAtlas.
+        //! The new capacity can be lower or higher than the current one.
+        //! @return YES if the resize was successful.
         bool resizeCapacity(fzUInt newCapacity);
         
         
-        //! This method is similar to resizeCapacity()
+        //! This method is similar to resizeCapacity(),
         //! but in this case the new capacity can not be lower.
         void reserveCapacity(fzUInt necesaryCapacity);
         
@@ -138,13 +124,17 @@ namespace FORZE {
         void drawQuads();
         
         
-        
         void updateQuad(fzV4_T2_C4_Quad *quad) {
 #if FZ_VBO_STREAMING
             if(m_dirtyMin > quad) m_dirtyMin = quad;
             if(m_dirtyMax < (++quad)) m_dirtyMax = quad;
 #endif
         }
+        
+        
+        // Redefined
+        virtual void setTexture(Texture2D*) override;
+        virtual Texture2D* getTexture() const;
     };
 }
 #endif

@@ -67,7 +67,7 @@ namespace FORZE {
     , m_zOrder                   (0)
     , m_realZOrder               (0)
     , m_tag                      (kFZNodeTagInvalid)
-    
+    , p_glprogram                (NULL)
     , p_grid                     (NULL)
     , p_camera                   (NULL)
     , p_userData                 (NULL)
@@ -83,6 +83,7 @@ namespace FORZE {
     {
 #if FZ_GL_SHADERS
         setFilter(NULL);
+        setGLProgram(nullptr);
 #endif
         
         Node *child;
@@ -188,10 +189,29 @@ namespace FORZE {
         FZ_ASSERT( name, "Name can not be NULL");
         setTag(fzHash(name));
     }
-
     
     
-#pragma mark Effects
+    void Node::setGLProgram(GLProgram *program)
+    {
+#if FZ_GL_SHADERS
+        FZRETAIN_TEMPLATE(program, p_glprogram);
+#else
+        FZ_ASSERT(false, "Shaders are not supported");
+#endif
+    }
+    
+    
+    void Node::setGLProgram(fzUInt programKey)
+    {
+#if FZ_GL_SHADERS
+        setGLProgram(ShaderCache::Instance().getProgramForKey(programKey));
+#else
+        FZ_ASSERT(false, "Shaders are not supported");
+#endif
+    }
+    
+    
+#pragma mark Postprocessing effects
     
     void Node::allocFBO()
     {
@@ -204,13 +224,13 @@ namespace FORZE {
         
         if(FBOisNeeded) {
             
-            if(p_FBO != NULL) {
-                delete p_FBO;
-                p_FBO = NULL;
-            }
+            if(p_FBO == NULL)
+                p_FBO = new FBOTexture(Texture2D::screenTextureFormat(), Director::Instance().getCanvasSize());
             
-        }else if(p_FBO == NULL)
-            p_FBO = new FBOTexture(Texture2D::screenTextureFormat(), Director::Instance().getCanvasSize());
+        }else if(p_FBO != NULL) {
+            delete p_FBO;
+            p_FBO = NULL;
+        }
     }
     
     
@@ -278,6 +298,12 @@ namespace FORZE {
         return rect;
     }
     
+    
+    GLProgram* Node::getGLProgram() const
+    {
+        return p_glprogram;
+    }
+
     
 #pragma mark - Composition
     
@@ -461,10 +487,8 @@ namespace FORZE {
         
         // BEGIN FBO
         // When a Filter or grid effect is enabled, the node is rendered inside a FBO.
-        if(p_FBO) {
+        if(p_FBO)
             p_FBO->beginWithClear();
-        }
-        
         
         internalRender();
         

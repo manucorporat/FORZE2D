@@ -49,7 +49,7 @@ namespace FORZE {
         fzColor3B m_shadowColor;
                 
     public:
-        //! Default constructor
+        //! Default constructor.
         explicit Light();
         
         
@@ -73,7 +73,7 @@ namespace FORZE {
     };
     
     
-    class LightSystem : public Layer, public TextureProtocol, public GLProgramProtocol
+    class LightSystem : public Layer, public Protocol::Texture
     {
     protected:
         Texture2D *p_texture;
@@ -85,24 +85,24 @@ namespace FORZE {
         virtual void insertChild(Node* node) override;
         
     public:
-        //! Constructs a lighting system given the lightTexture and a batch of sprites.
-        //! @param batch is a Node whose children are Sprites.
+        //! Constructs a LightSystem given the texture for the light and a node of sprites.
         LightSystem(Texture2D *lightTexture, Node *batch);
         
         
-        //! Constructs a lighting system given the light filename and a batch of sprites.
-        //! @param batch is a Node whose children are Sprites.
+        //! Constructs a LightSystem given the light filename and a node of sprites.
         LightSystem(const string& filename, Node *batch);
         
         // Destructor
         ~LightSystem();
 
-        //! Sets 
+        
+        //! Sets the batch used by.
         void setBatch(Node *batch);
-        void setTexture(Texture2D*);
         
-        Texture2D *getTexture() const;
         
+        // Redefined
+        virtual void setTexture(Texture2D*) override;
+        virtual Texture2D *getTexture() const override;
         virtual void render(char) override;
         virtual void updateStuff() override;
     };

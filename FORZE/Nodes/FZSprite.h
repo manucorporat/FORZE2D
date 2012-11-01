@@ -53,34 +53,35 @@ namespace FORZE {
     
     /** Sprite is a 2d image ( http://en.wikipedia.org/wiki/Sprite_(computer_graphics) )
      *
-     * FZ::Sprite can be created with an image, or with a sub-rectangle of an image.
+     * Sprite can be created with an image, or with a sub-rectangle of an image.
      *
-     * If the parent or any of its ancestors is a CCSpriteBatchNode then the following features/limitations are valid
-     *	- Features when the parent is a CCBatchNode:
-     *		- MUCH faster rendering, specially if the CCSpriteBatchNode has many children. All the children will be drawn in a single batch.
+     * If the parent or any of its ancestors is a SpriteBatch then the following features/limitations are valid
+     *	- Features when the parent is a SpriteBatch:
+     *		- MUCH faster rendering, specially if the SpriteBatch has many children. All the children will be drawn in a single batch.
      *
      *	- Limitations
-     *		- Camera is not supported yet (eg: CCOrbitCamera action doesn't work)
-     *		- GridBase actions are not supported (eg: CCLens, CCRipple, CCTwirl)
-     *		- The Alias/Antialias property belongs to CCSpriteBatchNode, so you can't individually set the aliased property.
-     *		- The Blending function property belongs to CCSpriteBatchNode, so you can't individually set the blending function property.
+     *		- Camera is not supported yet (eg: OrbitCamera action doesn't work)
+     *		- GridBase actions are not supported (eg: Lens, Ripple, CCTwirl)
+     *		- The Alias/Antialias property belongs to SpriteBatch, so you can't individually set the aliased property.
+     *		- The Blending function property belongs to SpriteBatch, so you can't individually set the blending function property.
      *		- Parallax scroller is not supported, but can be simulated with a "proxy" sprite.
      *
-     *  If the parent is an standard CCNode, then CCSprite behaves like any other CCNode:
+     *  If the parent is an standard Node, then Sprite behaves like any other Node:
      *    - It supports blending functions
      *    - It supports aliasing / antialiasing
      *    - But the rendering will be slower: 1 draw per children.
      *
-     * The default anchorPoint in CCSprite is (0.5, 0.5).
+     * The default anchorPoint in Sprite is (0.5, 0.5).
      */
     
     class TextureAtlas;
-    class Sprite : public Node, public RGBAProtocol, public TextureProtocol, public GLProgramProtocol
-    {        
-    private:
-        char m_mode;
+    class Sprite : public Node, public Protocol::Color, public Protocol::Texture, public Protocol::Blending
+    {
         friend class SpriteBatch;
         friend class TMXLayer;
+        
+    private:
+        char m_mode;
 
     protected:
         
@@ -99,6 +100,7 @@ namespace FORZE {
             } B;
         } mode;
         
+
         fzBlendFunc m_blendFunc;
 
         fzVec2 m_vertices[4];
@@ -106,35 +108,35 @@ namespace FORZE {
 
         // SHARED DATA
         
-        //! rect that defines the portion of the texture that is rendered.
+        // rect that defines the portion of the texture that is rendered.
         fzRect m_textureRect;
         
-        //! tells if the portion of texture that is rendered is rotated (used by Zwoptex)
+        // tells if the portion of texture that is rendered is rotated (used by Zwoptex)
         bool m_rectRotated : 1;
         
-        //! untransformed offset Position (used by Zwoptex)
+        // untransformed offset Position (used by Zwoptex)
         fzPoint	m_offset;
         
-        //! transformed offset position
+        // transformed offset position
         fzPoint m_unflippedOffset;
         
-        //! relative alpha
+        // relative alpha
         unsigned char m_alpha;
         
-        //! 3bytes color
+        // 3bytes color
         fzColor3B	m_color;
         
-        //! is x axis flipped
+        // is x axis flipped
         bool m_flipX : 1;
         
-        //! is y axis flipped
+        // is y axis flipped
         bool m_flipY : 1;
         
 
         void updateTextureCoords(fzRect rect);
         void draw();
         
-        /** tells or not the Sprite is rendered using a CCSpriteBatchNode */
+        /** tells or not the Sprite is rendered using a SpriteBatch */
         void useBatchRender(SpriteBatch* batch);
         
         
@@ -147,6 +149,7 @@ namespace FORZE {
         
 
     public:
+        //! Constructs a void Sprite.
         Sprite();
         
         //! Constructs a sprite with a texture.
@@ -155,9 +158,9 @@ namespace FORZE {
         explicit Sprite(Texture2D* texture);
         
         
-        //! Constructs a sprite with a texture and a rect in points.
+        //! Constructs a sprite with a Texture2D and a rect in points.
         //! The offset will be (0,0).
-        //! @param rect defines the portion of the texture to be rendered by the Sprite.
+        //! @param rect defines the portion of the Texture2D to be rendered by the Sprite.
         Sprite(Texture2D* texture, const fzRect& rect);
         
         
@@ -168,39 +171,39 @@ namespace FORZE {
         
         //! Constructs a sprite with an image filename, and a rect.
         //! The offset will be (0,0).
-        //! @param rect defines the portion of the texture to be rendered by the Sprite.
+        //! @param rect defines the portion of the Texture2D to be rendered by the Sprite.
         Sprite(const string& filename, const fzRect& rect);
         
         
-        //! Constructs a sprite with a rect in points
-        //! @param rect defines the portion of the texture to initialize the sprite.
+        //! Constructs a sprite with a rect in points.
+        //! @param rect defines the portion of the Texture2D to initialize the sprite.
         //! @warning this method is only a good practice if the sprite will be attached to a SpriteBatch.
         Sprite(const fzRect& rect);
         
         
-        //! Constructs an sprite from a fzSpriteFrame
+        //! Constructs an sprite from a fzSpriteFrame.
         Sprite(const fzSpriteFrame& spriteFrame);
         
         // Destructor
         ~Sprite();
 
         
-        //! Configures the sprite to use self-rendering
+        //! Configures the sprite to use self-rendering.
         void useSelfRender();
         
         
-        //! Sets the sprite's texture
-        //! @param texture if this param is NULL the current texture will be released
-        //! @warning this method only can be used when the sprite is using self-rendering
-        void setTexture(Texture2D *texture);
+        //! Sets the sprite's texture.
+        //! @param texture if this param is NULL the current Texture2D will be released.
+        //! @warning this method only can be used when the sprite is using self-rendering.
+        virtual void setTexture(Texture2D *texture) override;
         
         
-        //! rReturns the Texture2D used by the sprite
-        Texture2D* getTexture() const;
+        //! Returns the Texture2D used by the sprite.
+        virtual Texture2D* getTexture() const override;
         
         
         //! Updates the texture rect of the sprite.
-        //! This method complex method is used by zwoptex
+        //! This method complex method is used by zwoptex.
         //! @see setTextureRect()
         void setTextureRect(const fzRect& rect, const fzSize& untrimmedSize, bool rotated = false);
         
@@ -213,13 +216,15 @@ namespace FORZE {
         }
         
         
-        //! Configures the sprite automatically given a SpriteFrame
+        //! Configures the sprite automatically giving a fzSpriteFrame.
         void setDisplayFrame(const fzSpriteFrame& spriteFrame);
+        
+        
+        //! Configures the Sprite automatically giving the frame name.
         void setDisplayFrame(const char *spriteFrameName);
-
         
         
-        //! Returns the rect of the sprite in points */
+        //! Returns the rect of the sprite in points.
         const fzRect& getTextureRect() const {
             return m_textureRect;
         }
@@ -239,7 +244,7 @@ namespace FORZE {
         
         
         /** whether or not the sprite is flipped vertically.
-         It only flips the texture of the sprite, and not the texture of the sprite's children.
+         It only flips the Texture2D of the sprite, and not the Texture2D of the sprite's children.
          Also, flipping the texture doesn't alter the anchorPoint.
          If you want to flip the anchorPoint too, and/or to flip the children too use:
          
@@ -257,7 +262,7 @@ namespace FORZE {
         }
         
         
-        //! Sets the alpha channel (no recursive opacity)
+        //! Sets the alpha channel (no recursive opacity).
         //! @see getAlpha()
         //! @see setOpacity()
         virtual void setAlpha(unsigned char a) {
@@ -268,41 +273,21 @@ namespace FORZE {
         }
         
         
-        //! Returns the alpha channel (no recursive opacity)
+        //! Returns the alpha channel (no recursive opacity).
         //! @see setAlpha()
         //! @see getOpacity()
         unsigned char getAlpha() const {
             return m_alpha;
         }
+
         
-        
-        //! Sets the sprite's color filter
-        //! fzWHITE is default
-        //! @see getColor()
-        virtual void setColor(const fzColor3B& c) override;
-        
-        
-        //! Returns the sprite's color filter
-        //! @see setColor()
-        virtual const fzColor3B& getColor() const override;
-        
-        
-        //!
+        //! Returns the fzSpriteFrame based in the Sprite config.
+        //! Texture2D, rect, size...
         fzSpriteFrame getDisplayFrame() const;
         
         
-        //! Returns the sprite's vertices
+        //! Returns the sprite's vertices.
         void getVertices(float *vertices) const;
-        
-        
-        //! Sets the opengl blendfunc used
-        //! @see getBlendFunc()
-        virtual void setBlendFunc(const fzBlendFunc&);
-        
-        
-        //! Returns the opengl blendfunc used
-        //! @see setBlendFunc()
-        const fzBlendFunc& getBlendFunc() const;
         
         
         //! Sets a weak reference to the SpriteBatch that renders the Sprite.
@@ -310,28 +295,33 @@ namespace FORZE {
         virtual void setBatch(SpriteBatch*);
         
         
-        //! Returns a weak reference to the SpriteBatch that renders the Sprite
+        //! Returns a weak reference to the SpriteBatch that renders the Sprite.
         //! @see setBatch()
         SpriteBatch* getBatch() const;
         
         
-        //! Returns a weak reference to the TextureAtlas used by the SpriteBatch
+        //! Returns a weak reference to the TextureAtlas used by the SpriteBatch.
         TextureAtlas* getTextureAtlas() const;
         
 
         /** whether or not to transform according to its parent transfomrations.
          Useful for health bars. eg: Don't rotate the health bar, even if the parent rotates.
-         IMPORTANT: Only valid if it is rendered using an CCSpriteBatchNode.
+         IMPORTANT: Only valid if it is rendered using an SpriteBatch.
          */
         void setHonorTransform(fzHonorTransform);
         fzHonorTransform getHonorTransform() const;
         
         
-        /** [ZWOPTEX SUPPORT] @return offset position */
+        //! [ZWOPTEX SUPPORT] @return offset position
         const fzPoint& getOffsetPosition() const {
             return m_offset;
         }
         
+        // Redefined
+        virtual void setColor(const fzColor3B& c) override;
+        virtual const fzColor3B& getColor() const override;
+        virtual void setBlendFunc(const fzBlendFunc&) override;
+        virtual const fzBlendFunc& getBlendFunc() const override;
         virtual void updateStuff() override;
     };
 }

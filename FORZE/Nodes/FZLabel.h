@@ -46,7 +46,7 @@ namespace FORZE {
     };
         
     class Font;
-    class Label : public SpriteBatch, public RGBAProtocol
+    class Label : public SpriteBatch, public Protocol::Color
     {
     protected:
         string m_string;
@@ -89,6 +89,7 @@ namespace FORZE {
             return m_string.c_str();
         }
         
+        
         //! Sets the vertical padding between lines.
         //! This value is 0 by default.
         void setVerticalPadding(fzFloat vertical);
@@ -122,11 +123,8 @@ namespace FORZE {
         }
 
         
-        //! Sets the color used as filter
+        // Redefined
         virtual void setColor(const fzColor3B& color) override;
-        
-        
-        //! Returns the color used as filter
         virtual const fzColor3B& getColor() const override;
     };
 }

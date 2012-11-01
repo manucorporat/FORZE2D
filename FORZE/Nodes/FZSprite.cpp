@@ -499,7 +499,6 @@ namespace FORZE {
         fzGLColor(m_color);
         glVertexPointer(3, GL_FLOAT, sizeof(fzVec4), mode.A.m_finalVertices);	
         glTexCoordPointer(2, GL_FLOAT, 0, m_texCoords);
-        
 #endif
         
         // Rendering
@@ -528,7 +527,7 @@ namespace FORZE {
     
 //    void Sprite::setDisplayFrameWithAnimationName(const char* animationName, fzUInt index)
 //    {
-//        FZ_ASSERT( animationName, "CCSprite#setDisplayFrameWithAnimationName. animationName must not be nil");
+//        FZ_ASSERT( animationName, "Sprite#setDisplayFrameWithAnimationName. animationName must not be nil");
 //        
 //        Animation *animation = AnimationCache::Instance().animationByName(animationName);
 //        fzSpriteFrame frame = animation->getFrames().at(frameIndex);

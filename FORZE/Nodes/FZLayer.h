@@ -76,13 +76,13 @@ namespace FORZE {
     
     
 #pragma mark - LayerColor
-    /** LayerColor is a subclass of Layer that implements the RGBAProtocol protocol.
+    /** LayerColor is a subclass of Layer that implements the Protocol::Color protocol.
      
      All features from Layer are valid, plus the following new features:
      - opacity
      - RGB colors
      */
-    class LayerColor : public Layer, public RGBAProtocol, public GLProgramProtocol
+    class LayerColor : public Layer, public Protocol::Color, public Protocol::Blending
     {
     protected:
         float         p_squareVertices[16];
@@ -93,47 +93,32 @@ namespace FORZE {
         fzBlendFunc   m_blendFunc;
             
     public:
-        //! Constructs a layer with color and a size
+        //! Constructs a layer with color and a size.
         LayerColor(const fzColor4B& color, const fzSize& size);
         
         
-        //! Constructs a full-screen layer with color
+        //! Constructs a full-screen layer with color.
         LayerColor(const fzColor4B& color);
         
         
-        //! Sets the alpha channel. No recursive opacity
+        //! Sets the alpha channel. No recursive opacity.
         void setAlpha(GLubyte alpha) {
             m_alpha = alpha;
             makeDirty(kFZDirty_color);
         }
         
         
-        //! Returns the alpha channel
+        //! Returns the alpha channel.
         GLubyte getAlpha() const {
             return m_alpha;
         }
         
         
-        //! Sets the color used as filter
+        // Redefined
+        virtual void setBlendFunc(const fzBlendFunc& blend) override;
+        virtual const fzBlendFunc& getBlendFunc() const override;
         virtual void setColor(const fzColor3B& color) override;
-        
-        //! Returns the color used as filter
         virtual const fzColor3B& getColor() const override;
-
-        
-        //! Sets the OpenGl blendfunc used by.
-        void setBlendFunc(const fzBlendFunc& blend) {
-            m_blendFunc = blend;
-        }
-        
-        
-        //! Returns the OpenGl blendfunc used by.
-        const fzBlendFunc& getBlendFunc() const {
-            return m_blendFunc;
-        }
-        
-        
-        // Redefined functions
         virtual void updateStuff() override;
         virtual void draw() override;
     };

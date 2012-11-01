@@ -127,6 +127,16 @@ namespace FORZE {
     }
     
     
+    void Filter::setGLProgram(GLProgram *program)
+    {
+#if FZ_GL_SHADERS
+        FZRETAIN_TEMPLATE(program, p_glprogram);
+#else
+        FZ_ASSERT(false, "Shaders are not supported");
+#endif
+    }
+    
+    
     void Filter::draw()
     {        
         // Bind texture

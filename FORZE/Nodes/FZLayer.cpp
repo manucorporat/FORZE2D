@@ -137,6 +137,18 @@ namespace FORZE {
         return m_color;
     }
     
+
+    void LayerColor::setBlendFunc(const fzBlendFunc& blend)
+    {
+        m_blendFunc = blend;
+    }
+    
+    
+    const fzBlendFunc& LayerColor::getBlendFunc() const
+    {
+        return m_blendFunc;
+    }
+    
     
     void LayerColor::updateStuff()
     {        

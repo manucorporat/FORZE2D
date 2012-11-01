@@ -112,75 +112,76 @@ namespace FORZE {
         
     protected:
         
-        //! is visible
+        // is visible
         bool    m_isVisible;
 
-        //! dirty tags
+        // dirty tags
         unsigned char m_dirtyFlags;
         
-        //! cached absolute transform matrix
+        // cached absolute transform matrix
         fzMat4 m_transformMV;
         
-        //! z-order value
+        // z-order value
         fzInt   m_zOrder;
         fzInt   m_realZOrder;
         
-        //! a tag
+        // a tag
         fzInt   m_tag;
         
-        //! rotation angle
+        // rotation angle
         fzFloat m_rotation;	
         
-        //! scaling factors
+        // scaling factors
         fzFloat m_scaleX, m_scaleY;
         
-        //! openGL real Z vertex
+        // openGL real Z vertex
         fzFloat m_vertexZ;
         
-        //! opacity
+        // opacity
         fzFloat m_opacity;
         
-        //! cached opacity 
+        // cached opacity 
         fzFloat m_cachedOpacity;
         
-        //! skew angles
+        // skew angles
         fzFloat m_skewX, m_skewY;
         
-        //! camera management
+        // camera management
         Camera *p_camera;
         
         FBOTexture *p_FBO;
         
 #if FZ_GL_SHADERS
-        //! filter management
+        // filter management
         Filter *p_filter;
+        GLProgram *p_glprogram;
 #endif
         
-        //! weak ref to parent
+        // weak ref to parent
         Node    *p_parent;
         
-        //! grid management
+        // grid management
         GridBase *p_grid;
         
-        //! user data field
+        // user data field
         void    *p_userData;
         
-        //! array of children
+        // array of children
         AutoList m_children;
         
-        //! position of the node
+        // position of the node
         fzPoint  m_position;
         
-        //! anchor point in points
+        // anchor point in points
         fzPoint  m_anchorPointInPoints;	
         
-        //! anchor point normalized
+        // anchor point normalized
         fzPoint  m_anchorPoint;	
         
-        //! untransformed size of the node
+        // untransformed size of the node
         fzSize  m_contentSize;
         
-        //! transform matrix
+        // transform matrix
         fzAffineTransform m_transform;
         
         
@@ -198,24 +199,24 @@ namespace FORZE {
         virtual bool detachChild(Node*, bool);
         
         
-        //! Internal protocol to insert a child
+        //! Internal protocol to insert a child.
         virtual void insertChild(Node*);
       
         
-        //! Reorders a child (Node) according to a new z value
+        //! Reorders a child (Node) according to a new z value.
         void reorderChild(Node*);
         
         
-        //! @return child(position) giving a zOrder
+        //! Returns the child(position) giving a zOrder.
         fzListItem* indexForZOrder(fzInt z);
         
         
-        //! set parent
+        //! Sets parent.
         void setParent(Node* p) {
             p_parent = p;
         }
         
-        //! Opacity protocol
+        //! Opacity protocol.
         fzFloat getCachedOpacity() const {
             return m_cachedOpacity;
         }
@@ -245,7 +246,7 @@ namespace FORZE {
         
     
     public:
-        //! Constructs a blank node
+        //! Constructs a blank node.
         explicit Node();
         ~Node();
         
@@ -273,14 +274,14 @@ namespace FORZE {
         }
         
         
-        //! Sets the x scale
+        //! Sets the x scale.
         void setScaleX(fzFloat sx) {
             m_scaleX = sx;
             makeDirty(kFZDirty_transform);
         }
         
         
-        //! Sets the x scale
+        //! Sets the y scale.
         void setScaleY(fzFloat sy) {
             m_scaleY = sy;
             makeDirty(kFZDirty_transform);
@@ -296,41 +297,41 @@ namespace FORZE {
         }
         
         
-        //! Sets the relative node's position giving a fzPoint
+        //! Sets the relative node's position giving a fzPoint.
         void setPosition(const fzPoint& newPosition) {
             m_position = newPosition;
             makeDirty(kFZDirty_transform);
         }
         
         
-        //! Sets the relative node's position giving two scalars
+        //! Sets the relative node's position giving two scalars.
         void setPosition(fzFloat x, fzFloat y) {
             setPosition(fzPoint(x, y));
         }
         
         
-        //! Tells if the anchor point affect the node's position
+        //! Tells if the anchor point affect the node's position.
         void setIsRelativeAnchorPoint(bool rAP) {
             m_isRelativeAnchorPoint = rAP;
             makeDirty(kFZDirty_transform);
         }
         
         
-        //! Sets the relative center of transform giving a fzPoint
+        //! Sets the relative center of transform giving a fzPoint.
         void setAnchorPoint(const fzPoint& normalized);
         
         
-        //! Sets the absolute center of transform (in points)
-        void setAnchorPointInPoints(const fzPoint& points);
-        
-        
-        //! Sets the relative center of transform giving two scalars
+        //! Sets the relative center of transform giving two scalars.
         void setAnchorPoint(fzFloat x, fzFloat y) {
             setAnchorPoint(fzPoint(x, y));
         }
         
         
-        //! Sets the node's content size, something like bounds (width and height)
+        //! Sets the absolute center of transform (in points).
+        void setAnchorPointInPoints(const fzPoint& points);
+        
+        
+        //! Sets the node's content size, something like bounds (width and height).
         void setContentSize(const fzSize& points);
         
         
@@ -348,11 +349,11 @@ namespace FORZE {
         
         
         //! Sets the recursive opacity. This property will affect all children.
-        //! @param normalizedOpacity [0, 1]
+        //! @param normalizedOpacity [0, 1].
         void setOpacity(fzFloat normalizedOpacity);
         
         
-        //! Sets the per-pixel-filter effect applied as post-rendering technique to all Opengl stuff rendered inside the node (INCLUDING children)
+        //! Sets the per-pixel-filter effect applied as post-rendering technique to all Opengl stuff rendered inside the node (INCLUDING children).
         //! Filters will be make your node opaque so it only should be used as post-processing effect for just a layer (like gameplay) or in the whole scene.
         void setFilter(Filter *filter);
         
@@ -361,6 +362,7 @@ namespace FORZE {
         void setTag(fzInt tag) {
             m_tag = tag;
         }
+        
         
         void setName(const char* name);
         
@@ -374,7 +376,7 @@ namespace FORZE {
         
 #pragma mark - Getters
         
-        //! returns if the node is visible or not. */
+        //! Returns if the node is visible or not.
         bool isVisible() const {
             return m_isVisible;
         }
@@ -384,12 +386,12 @@ namespace FORZE {
         fzFloat getScale() const;
         
         
-        //! Returns the x scale
+        //! Returns the x scale.
         fzFloat getScaleX() const {
             return m_scaleX;
         }
         
-        //! Returns the y scale
+        //! Returns the y scale.
         fzFloat getScaleY() const {
             return m_scaleY;
         }
@@ -406,37 +408,38 @@ namespace FORZE {
         }
         
         
-        //! Returns the relative node's position in points
+        //! Returns the relative node's position in points.
         const fzPoint& getPosition() const {
             return m_position;
         }
         
         
-        //! Returns if the anchor point affect the node's position
+        //! Returns if the anchor point affect the node's position.
         bool isRelativeAnchorPoint() const {
             return m_isRelativeAnchorPoint;
         }
         
         
-        //! Returns the anchor point
+        //! Returns the anchor point.
         const fzPoint& getAnchorPoint() const {
             return m_anchorPoint;
         }
         
         
-        //! Returns the absolute center of transform (in points)
+        //! Returns the absolute center of transform (in points).
         const fzPoint& getAnchorPointInPoints() const {
             return m_anchorPointInPoints;
         }
         
         
-        //! Returns the node's content size, (width and height)
+        //! Returns the node's content size, (width and height).
         const fzSize& getContentSize() const {
             return m_contentSize;
         }
         
         
-        //! Returns the node's z vertex. Default value: 0
+        //! Returns the node's z vertex.
+        //! Default value: 0
         fzFloat getVertexZ() const {
             return m_vertexZ;
         }
@@ -448,11 +451,11 @@ namespace FORZE {
         }
         
         
-        /** Sets the value used by FORZE to order the rendering of all node siblings, higher value will be rendered over smaller ones. */
+        //! Sets the value used by FORZE to order the rendering of all node siblings, higher value will be rendered over smaller ones.
         void setZOrder(fzInt);
         
         
-        /** Returns the value used by FORZE to order the rendering of all node siblings, higher value will be rendered over smaller ones. */
+        //! Returns the value used by FORZE to order the rendering of all node siblings, higher value will be rendered over smaller ones.
         fzInt getZOrder() const {
             return m_zOrder;
         }
@@ -473,7 +476,7 @@ namespace FORZE {
         }
         
         
-        //! Returns if the node is running
+        //! Returns if the node is running.
         //! @see onEnter()
         //! @see onExit()
         bool isRunning() const {
@@ -481,13 +484,13 @@ namespace FORZE {
         }
         
         
-        //! Returns the node's parent
+        //! Returns the node's parent.
         Node* getParent() const {
             return p_parent;
         }
         
         
-        //! Returns the node's camera
+        //! Returns the node's camera.
         Camera* getCamera();
         
         
@@ -504,9 +507,8 @@ namespace FORZE {
         //! Adds a child to the container.
         //! @param node to be added.
         //! @param zOrder this value is used as rendering priority
-        void addChild(Node* node);
         void addChild(Node* node, fzInt zOrder);
-
+        void addChild(Node* node);
         
         
         //! Remove itself from its parent node.
@@ -523,14 +525,14 @@ namespace FORZE {
 
         
         //! Removes a child from the container by tag value.
-        //! @param tag's child to remove.
+        //! @param tag 's child to remove.
         //! @param cleanup all running actions.
         //! @see removeChild()
         void removeChildByTag(fzInt tag, bool cleanup = true);
         
         
         //! Removes a child from the container by tag value.
-        //! @param tag's child to remove.
+        //! @param tag 's child to remove.
         //! @param cleanup all running actions.
         //! @see removeChild()
         void removeChildByName(const char* name, bool cleanup = true);
@@ -541,36 +543,36 @@ namespace FORZE {
         void removeAllChildren(bool cleanup = true);
         
         
-        //! Gets a child from the container given its tag
-        //! @param tag used to search the child
-        //! @return returns a Node object
+        //! Gets a child from the container given its tag.
+        //! @param tag used to search the child.
+        //! @return returns a Node object.
         //! @see setTag()
         //! @see getTag()
         Node* getChildByTag(fzInt tag);
         
         
-        //! Gets a child from the container given its tag
-        //! @param tag used to search the child
-        //! @return returns a Node object
+        //! Gets a child from the container given its tag.
+        //! @param name used to search the child.
+        //! @return returns a Node object.
         //! @see setTag()
         //! @see getTag()
         Node* getChildByName(const char* name);
         
         
-        //! Stops all running actions and schedulers
+        //! Stops all running actions and schedulers.
         virtual void cleanup();
         
         
 #pragma mark - Scene management
         
-        //! callback that is called every time the Node enters the 'stage'.
+        //! Callback that is called every time the Node enters the 'stage'.
         //! In transitions, this callback is called when the transition starts.
         //! @see onExit()
         //! @see isRunning()
         virtual void onEnter();
         
         
-        //! callback that is called every time the Node leaves the 'stage'.
+        //! Callback that is called every time the Node leaves the 'stage'.
         //! In transitions, this callback is called when the transition finishes.
         //! @see onEnter()
         //! @see isRunning()
@@ -605,9 +607,8 @@ namespace FORZE {
     protected:
         //! Unschedule the current schedule.
         void unscheduleCurrent();
+        
     public:
-        
-        
         //! Unschedules all selectors.
         void unscheduleAllSelectors();
         
@@ -657,11 +658,11 @@ namespace FORZE {
 #pragma mark - Miscelaneous
       
       
-        //! This function align vertically the menu items
+        //! This function align vertically the menu items.
         void alignVertically(fzFloat padding, const fzPoint& center, const fzRange& range);
       
       
-        //! This function align horizontally the menu items
+        //! This function align horizontally the menu items.
         void alignHorizontally(fzFloat padding, const fzPoint& center, const fzRange& range);
       
         
@@ -676,7 +677,7 @@ namespace FORZE {
         
         // TRANSFORMATION METHODS
         
-        //! Returns the matrix that transform the node's (local) space coordinates into the parent's space coordinates
+        //! Returns the matrix that transform the node's (local) space coordinates into the parent's space coordinates.
         const fzAffineTransform& getNodeToParentTransform();
         
         
@@ -688,15 +689,15 @@ namespace FORZE {
         fzAffineTransform getNodeToWorldTransform();
         
         
-        //! Returns the inverse world affine transform matrix
+        //! Returns the inverse world affine transform matrix.
         fzAffineTransform getWorldToNodeTransform();
         
         
-        //! Converts a Point to node (local) space coordinates
+        //! Converts a Point to node (local) space coordinates.
         const fzPoint& convertToNodeSpace(fzPoint);
         
         
-        //! Converts a Point to world space coordinates. The result is in Points
+        //! Converts a Point to world space coordinates. The result is in Points.
         const fzPoint& convertToWorldSpace(fzPoint);
         
         
@@ -710,6 +711,19 @@ namespace FORZE {
          treating the returned/received node point as anchor relative.
          */
         fzPoint convertToWorldSpaceAR(const fzPoint&);
+        
+        // Redefined
+        
+        //! Sets the GLProgram used by the node to render his opengl stuff (NOT INCLUDING children).
+        //! This parammeter doesn't make sense in void elements such as "Node", "Scene" or "Layer".
+        //! @see getGLProgram()
+        void setGLProgram(GLProgram*);
+        
+        //! Sets the GLProgram by a tag value
+        void setGLProgram(fzUInt programKey);
+        
+        //! Returns the GLProgram.
+        GLProgram* getGLProgram() const;
     };
 }
 #endif

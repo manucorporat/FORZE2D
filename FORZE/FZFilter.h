@@ -44,18 +44,22 @@ using namespace STD;
 
 namespace FORZE {
     
+    class Texture2D;
     class Node;
-    class Filter : public LifeCycle, public GLProgramProtocol, public TextureProtocol
+    class Filter : public LifeCycle, public Protocol::Texture
     {
         friend class Node;
         
     protected:
-        //! Framebuffer manager
-        Texture2D *p_texture;
+        GLProgram *p_glprogram;
+        Texture2D *p_texture;        
+        _fzT2_V2_Quad m_quad;
         
-        //! GLProgram applied to the texture
-        _fzT2_V2_Quad m_quad;        
+        void setGLProgram(GLProgram*);
         
+        // Redefined
+        virtual void setTexture(Texture2D*) override;
+        virtual Texture2D *getTexture() const override;
         
     private:
         //! Used internally to initialize the filter
@@ -69,9 +73,6 @@ namespace FORZE {
         //! Constructs an user defined filter with a fragment shader
         Filter(const GLShader& fragmentShader, fzFloat quality);
 
-        void setTexture(Texture2D*);
-        Texture2D *getTexture() const;
-        
         void draw();
     };
     
@@ -98,7 +99,6 @@ namespace FORZE {
     {
     private:
         fzPoint3 m_intensity;
-        
         
     public:
         //! Constructs a FilterGrayscale, default quality is 1
@@ -137,7 +137,6 @@ namespace FORZE {
     {
     private:
         fzFloat m_factor;
-        
         
     public:
         //! Constructs a FilterToon, default quality is 1
