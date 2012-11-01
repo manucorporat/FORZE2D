@@ -108,7 +108,7 @@ namespace FORZE {
      FORZE uses a another approach, but the results are almost identical. 
      
      FORZE supports all the variables used by Particle Designer plus a bit more:
-     - spinning particles (supported when using CCParticleSystemQuad)
+     - spinning particles (supported when using ParticleSystemQuad)
      - tangential acceleration (Gravity mode)
      - radial acceleration (Gravity mode)
      - radius direction (Radius mode) (Particle Designer supports outwards to inwards direction only)
@@ -121,7 +121,7 @@ namespace FORZE {
      @endcode
      
      */
-    class ParticleSystem : public Node, public TextureProtocol
+    class ParticleSystem : public Node, public Protocol::Texture, public Protocol::Blending
     {
     protected:
         
@@ -260,7 +260,7 @@ namespace FORZE {
     
         
     public:
-        /** initializes a CCParticleSystem from a plist file.
+        /** initializes a ParticleSystem from a plist file.
          This plist files can be creted manually or with Particle Designer:
          http://particledesigner.71squared.com/
          */
@@ -581,20 +581,13 @@ namespace FORZE {
         
         
         //! conforms to CocosNodeTexture protocol
-        virtual void setTexture(Texture2D*);
-        Texture2D* getTexture() const {
-            return p_texture;
-        }
+        virtual void setTexture(Texture2D*) override;
+        virtual Texture2D* getTexture() const override;
         
         
         //! conforms to CocosNodeTexture protocol
-        void setBlendFunc(const fzBlendFunc& b) {
-            m_blendFunc = b;
-        }
-        
-        const fzBlendFunc& getBlendFunc() const {
-            return m_blendFunc;
-        }
+        virtual void setBlendFunc(const fzBlendFunc& blend) override;
+        virtual const fzBlendFunc& getBlendFunc() const override;
         
         //! particles movement type: Free or Grouped
         void setPositionType(tFZPositionType e) {

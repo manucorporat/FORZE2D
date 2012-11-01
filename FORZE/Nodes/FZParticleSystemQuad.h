@@ -39,19 +39,9 @@
 namespace FORZE {
     
     /** ParticleSystemQuad is a subclass of CCParticleSystem
-     
      It includes all the features of ParticleSystem.
-     
-     Special features and Limitations:	
-     - Particle size can be any float number.
-     - The system can be scaled
-     - The particles can be rotated
-     - On 1st and 2nd gen iPhones: It is only a bit slower that CCParticleSystemPoint
-     - On 3rd gen iPhone and iPads: It is MUCH faster than CCParticleSystemPoint
-     - It consumes more RAM and more GPU memory than CCParticleSystemPoint
-     - It supports subrects
      */
-    class ParticleSystemQuad : public ParticleSystem, public GLProgramProtocol
+    class ParticleSystemQuad : public ParticleSystem
     {
     protected:
         fzC4_T2_V2_Quad     *p_quads;
@@ -73,17 +63,18 @@ namespace FORZE {
         /** initialices the indices for the vertices */
         void initIndices();
         
-        /** initilizes the texture with a rectangle measured Points */
+        /** initilizes the Texture2D with a rectangle measured Points */
         void initTexCoordsWithRect(fzRect rect);
         
-        /** Sets a new CCSpriteFrame as particle.
+        /** Sets a new fzSpriteFrame as particle.
          WARNING: this method is experimental. Use setTexture:withRect instead.
          */
         void setDisplayFrame(const fzSpriteFrame& s);
         
-        /** Sets a new texture with a rect. The rect is in Points */
+        /** Sets a new Texture2D with a rect. The rect is in Points */
         void setTexture(Texture2D *texture, const fzRect& rect);
         void setTexture(Texture2D *texture);
+        
         
         void draw();
     };

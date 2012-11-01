@@ -123,7 +123,7 @@ namespace FORZE {
     
 #pragma mark - Setters
     
-    void Director::setDelegate(ApplicationProtocol *delegate)
+    void Director::setDelegate(AppDelegateProtocol *delegate)
     {
         FZ_ASSERT(delegate, "You cannot set a NULL app delegate.");
         p_appdelegate = delegate;
@@ -262,7 +262,7 @@ namespace FORZE {
     
 #pragma mark - Getters
     
-    ApplicationProtocol* Director::getDelegate() const
+    AppDelegateProtocol* Director::getDelegate() const
     {
         return p_appdelegate;
     }
@@ -413,7 +413,6 @@ namespace FORZE {
         
         Texture2D *texture;
         try {
-            
             texture = new Texture2D(pixels, (fzTextureFormat)format,
                                     fzMath_nextPOT(viewPort.width), fzMath_nextPOT(viewPort.height), viewPort);
             
@@ -920,7 +919,7 @@ namespace FORZE {
     void Director::applicationLaunching(void *OSWrapper)
     {
         FZ_ASSERT(p_appdelegate, "FORZE was not initialized properly. App delegate is missing.");
-        FZ_ASSERT(OSW::Instance() == NULL, "OS Wrapper already initialized.");
+        FZ_ASSERT(OSW::p_oswrapper == NULL, "OS Wrapper already initialized.");
         FZ_ASSERT(OSWrapper, "OS Wrapper can not be NULL");
         
         FZLOGINFO("Director: Application launching.");
@@ -981,7 +980,6 @@ namespace FORZE {
 //        setOrientation(toOrientation);
 //    }
 //    
-    
     void Director::applicationPaused()
     {
         FZ_ASSERT(p_appdelegate, "FORZE was not initialized properly. App delegate is missing.");

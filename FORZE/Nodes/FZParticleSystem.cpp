@@ -41,9 +41,9 @@
 // Radius mode support, from 71 squared
 //		http://particledesigner.71squared.com/
 //
-// IMPORTANT: Particle Designer is supported by cocos2d, but
-// 'Radius Mode' in Particle Designer uses a fixed emit rate of 30 hz. Since that can't be guarateed in cocos2d,
-//  cocos2d uses a another approach, but the results are almost identical. 
+// IMPORTANT: Particle Designer is supported by FORZE2D, but
+// 'Radius Mode' in Particle Designer uses a fixed emit rate of 30 hz. Since that can't be guarateed in FORZE2D,
+//  FORZE2D uses a another approach, but the results are almost identical. 
 //
 
 #include "FZParticleSystem.h"
@@ -233,13 +233,34 @@ namespace FORZE {
     : m_totalParticles(number)
     , m_particleCount(0)
     , m_particleIdx(0)
+    , m_duration(0)
+    , m_elapsed(0)
+    , m_angle(0)
+    , m_angleVar(0)
+    , m_startSize(0)
+    , m_startSizeVar(0)
+    , m_endSize(kFZParticleStartSizeEqualToEndSize)
+    , m_endSizeVar(0)
+    , m_startSpin(0)
+    , m_startSpinVar(0)
+    , m_endSpin(0)
+    , m_endSpinVar(0)
+    , m_life(1)
+    , m_lifeVar(0)
     , m_isActive(true)
     , m_autoRemoveOnFinish(false)
     , m_blendFunc()
     , p_texture(NULL)
+    , p_particles(NULL)
+    , m_startColor(fzWHITE)
+    , m_startColorVar(fzBLACK)
+    , m_endColor(fzWHITE)
+    , m_endColorVar(fzBLACK)
     , m_positionType(kFZPositionTypeFree)
     , m_emitterMode(kFZParticleModeGravity)
     {
+        memset(&mode, 0, sizeof(mode));
+        
         FZ_ASSERT(texture != NULL, "Texture cannot be NULL");
         setTexture(texture);
 
@@ -268,7 +289,7 @@ namespace FORZE {
     
     void ParticleSystem::initParticle(fzParticle& particle)
     {
-        // timeToLive
+        // time to live
         particle.timeToLive = m_life + m_lifeVar * FZ_RANDOM_MINUS1_1();
         if(particle.timeToLive < 0) particle.timeToLive = 0;
         
@@ -570,7 +591,23 @@ namespace FORZE {
         FZRETAIN_TEMPLATE(texture, p_texture);
     }
     
-        
+    Texture2D* ParticleSystem::getTexture() const
+    {
+        return p_texture;
+    }
+    
+    
+    void ParticleSystem::setBlendFunc(const fzBlendFunc& b)
+    {
+        m_blendFunc = b;
+    }
+    
+    const fzBlendFunc& ParticleSystem::getBlendFunc() const
+    {
+        return m_blendFunc;
+    }
+    
+    
     const fzPoint& ParticleSystem::getGravity() const
     {
         FZ_ASSERT( m_emitterMode == kFZParticleModeGravity, "Particle Mode should be Gravity");
