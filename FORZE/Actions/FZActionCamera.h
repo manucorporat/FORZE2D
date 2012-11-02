@@ -55,7 +55,7 @@ namespace FORZE {
     public:
         ActionCamera(fzFloat duration);
         
-        // Redefined functions
+        // Redefined
         void startWithTarget(void *target);
     };
     
@@ -85,7 +85,8 @@ namespace FORZE {
         /** positions the camera according to spherical coordinates */
         void sphericalRadius(fzFloat& newRadius, fzFloat& zenith, fzFloat& azimuth);
         
-        // Redefined functions
+        
+        // Redefined
         void startWithTarget(void *target);
         void update(fzFloat delta);
         

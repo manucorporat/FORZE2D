@@ -61,7 +61,7 @@ namespace FORZE {
         
     public:
                 
-        // Redefined functions
+        // Redefined
         virtual fzFloat getElapsed() const override;
         virtual bool isDone() const override;
         virtual void step(fzFloat dt) override;
@@ -82,12 +82,14 @@ namespace FORZE {
 
         Sequence();
     public:
+        //! Constructs a Sequence action.
         Sequence(FiniteTimeAction *action1, ...) NULL_TERMINATION;
         Sequence(FiniteTimeAction **actions, fzUInt nuActions);
 
         ~Sequence();
         
-        // Redefined functions
+        
+        // Redefined
         virtual void startWithTarget(void *t) override;
         virtual void step(fzFloat dt) override;
         virtual bool isDone() const override;
@@ -106,13 +108,14 @@ namespace FORZE {
         
         Spawn();
     public:
-        /** helper constructor to create an array of spawned actions */
+        //! Constructs a Spawn action.
         Spawn(FiniteTimeAction *action1, ...);
         Spawn(FiniteTimeAction **actions, fzUInt nuActions);
 
         ~Spawn();
         
-        // Redefined functions
+        
+        // Redefined
         virtual void startWithTarget(void *t) override;
         virtual void update(fzFloat dt) override;
         virtual void stop() override;
@@ -131,15 +134,19 @@ namespace FORZE {
         fzUInt m_total;
         
     public:
-        // Constructor
+        //! Constructs a Repeat action.
         Repeat(FiniteTimeAction *action, fzUInt times);
         ~Repeat();
         
-        /** Inner action */
+        //! Sets the inner action.
         void setInnerAction(FiniteTimeAction *action);
+        
+        
+        //! Returns the inner action.
         FiniteTimeAction* getInnerAction() const;
         
-        // Redefined functions
+        
+        // Redefined
         virtual void startWithTarget(void *t) override;
         virtual void update(fzFloat dt) override;
         virtual void stop() override;
@@ -157,7 +164,7 @@ namespace FORZE {
         fzFloat m_delta;
         
     public:
-        /** creates the action */
+        //! Constructs a RotateBy action.
         RotateBy(fzFloat duration, fzFloat angle);
         
         // Redefined functions
@@ -177,7 +184,7 @@ namespace FORZE {
         fzFloat m_original;
         
     public:
-        /** creates the action */
+        //! Constructs a RotateTo action.
         RotateTo(fzFloat duration, fzFloat angleDelta);
         
         // Redefined functions
@@ -197,10 +204,10 @@ namespace FORZE {
         fzPoint m_delta;
         
     public:
-        /** creates the action */
+        //! Constructs a MoveBy action.
         MoveBy(fzFloat duration, const fzPoint& positionDelta);
         
-        // Redefined functions
+        // Redefined
         virtual void startWithTarget(void *t) override;
         virtual void update(fzFloat dt) override;
         virtual MoveBy* reverse() const override;
@@ -215,10 +222,10 @@ namespace FORZE {
         fzPoint m_original;
         
     public:
-        /** creates the action */
+        //! Constructs a MoveTo action.
         MoveTo(fzFloat duration, const fzPoint& newPosition);
         
-        // Redefined functions
+        // Redefined
         virtual void startWithTarget(void *t) override;
         virtual MoveTo* copy() const override;
         virtual MoveTo* reverse() const override;
@@ -235,10 +242,10 @@ namespace FORZE {
         fzFloat m_deltaY;
         
     public:
-        /** creates the action */
+        //! Constructs a SkewBy action.
         SkewBy(fzFloat duration, fzFloat skewX, fzFloat skewY);
         
-        // Redefined functions
+        // Redefined
         virtual void startWithTarget(void *t) override;
         virtual void update(fzFloat dt) override;
         virtual SkewBy* reverse() const override;
@@ -254,7 +261,7 @@ namespace FORZE {
         fzFloat m_originalX, m_originalY;
         
     public:
-        /** creates the action */
+        //! Constructs a SkewTo action.
         SkewTo(fzFloat duration, fzFloat skewX, fzFloat skewY);
         
         // Redefined functions
@@ -274,10 +281,10 @@ namespace FORZE {
         fzUInt  m_jumps;
         
     public:
-        /** creates the action */
+        //! Constructs a JumpBy action.
         JumpBy(fzFloat duration, const fzPoint& position, fzFloat height, fzUInt jumps);
         
-        // Redefined functions
+        // Redefined
         virtual void startWithTarget(void *t) override;
         virtual void update(fzFloat dt) override;
         virtual JumpBy* reverse() const override;
@@ -293,10 +300,10 @@ namespace FORZE {
         fzPoint m_original;
         
     public:
-        /** creates the action */
+        //! Constructs a JumpTo action.
         JumpTo(fzFloat duration, const fzPoint& position, fzFloat height, fzUInt jumps);
         
-        // Redefined functions
+        // Redefined
         virtual void startWithTarget(void *t) override;
         virtual JumpTo* copy() const override;
         virtual JumpTo* reverse() const override;
@@ -324,10 +331,10 @@ namespace FORZE {
         fzFloat bezierat(fzFloat, fzFloat, fzFloat, fzFloat, fzFloat);
         
     public:
-        //! Constructs a bezier action
+        //! Constructs a BezierBy action.
         BezierBy(fzFloat duration, const fzBezierConfig& config);
         
-        // Redefined functions
+        // Redefined
         virtual void startWithTarget(void *t) override;
         virtual void update(fzFloat dt) override;
         virtual BezierBy* reverse() const override;
@@ -342,10 +349,10 @@ namespace FORZE {
     protected:
         fzBezierConfig m_original;
     public:
-        //! Constructs a bezier action
+        //! Constructs a BezierTo action.
         BezierTo(fzFloat duration, const fzBezierConfig& config);
         
-        // Redefined functions
+        // Redefined
         virtual void startWithTarget(void *t) override;
         virtual BezierTo* copy() const override;
         virtual BezierTo* reverse() const override;
@@ -363,11 +370,11 @@ namespace FORZE {
         fzFloat m_deltaY;
         
     public:
-        //! Constructs a ScaleBy action
+        //! Constructs a ScaleBy action.
         ScaleBy(fzFloat duration, fzFloat scale);
         ScaleBy(fzFloat duration, fzFloat scaleX, fzFloat scaleY);
         
-        // Redefined functions
+        // Redefined
         virtual void startWithTarget(void *t) override;
         virtual void update(fzFloat dt) override;
         virtual ScaleBy* reverse() const override;
@@ -380,11 +387,11 @@ namespace FORZE {
     class ScaleTo : public ScaleBy
     {
     public:
-        //! Constructs a ScaleTo action
+        //! Constructs a ScaleTo action.
         ScaleTo(fzFloat duration, fzFloat scale);
         ScaleTo(fzFloat duration, fzFloat scaleX, fzFloat scaleY);
         
-        // Redefined functions
+        // Redefined
         virtual void startWithTarget(void *t) override;
         virtual ScaleTo* copy() const override;
         virtual ScaleTo* reverse() const override;
@@ -400,10 +407,10 @@ namespace FORZE {
         bool m_initialState;
         
     public:
-        /** creates the action */
+        //! Constructs a Blink action.
         Blink(fzFloat duration, fzUInt blinks, fzFloat percentVisible = 0.5f);
         
-        // Redefined functions
+        // Redefined
         virtual void startWithTarget(void *t) override;
         virtual void stop() override;
         virtual void update(fzFloat dt) override;
@@ -422,10 +429,10 @@ namespace FORZE {
         fzFloat m_original;
         
     public:
-        /** creates the action */
+        //! Constructs a FadeTo action.
         FadeTo(fzFloat duration, unsigned char opacity);
         
-        // Redefined functions
+        // Redefined
         virtual void startWithTarget(void *t) override;
         virtual void update(fzFloat dt) override;
         virtual FadeTo* copy() const override;
@@ -439,10 +446,10 @@ namespace FORZE {
     class FadeIn : public ActionInterval
     {
     public:
-        /** creates the action */
+        //! Constructs a FadeIn action.
         explicit FadeIn(fzFloat duration);
         
-        // Redefined functions
+        // Redefined
         virtual void update(fzFloat dt) override;
         virtual ActionInterval* reverse() const override;
         virtual ActionInterval* copy() const override;
@@ -454,10 +461,10 @@ namespace FORZE {
     class FadeOut : public ActionInterval
     {
     public:
-        /** creates the action */
+        //! Constructs a FadeOut action.
         explicit FadeOut(fzFloat duration);
         
-        // Redefined functions
+        // Redefined
         virtual void update(fzFloat dt) override;
         virtual ActionInterval* reverse() const override;
         virtual ActionInterval* copy() const override;
@@ -474,10 +481,10 @@ namespace FORZE {
         fzFloat m_deltaR, m_deltaG, m_deltaB;
         
     public:
-        /** creates the action */
+        //! Constructs a TintBy action.
         TintBy(fzFloat duration, fzFloat redDelta, fzFloat greenDelta, fzFloat blueDelta);
         
-        // Redefined functions
+        // Redefined
         virtual void startWithTarget(void *t) override;
         virtual void update(fzFloat dt) override;
         virtual TintBy* reverse() const override;
@@ -493,11 +500,11 @@ namespace FORZE {
 
         
     public:
-        /** creates the action */
+        //! Constructs a TintTo action.
         TintTo(fzFloat duration, fzFloat red, fzFloat green, fzFloat blue);
         TintTo(fzFloat duration, const fzColor3B& color);
         
-        // Redefined functions
+        // Redefined
         virtual void startWithTarget(void *t) override;
         virtual TintTo* copy() const override;
         virtual TintTo* reverse() const override;
@@ -508,10 +515,10 @@ namespace FORZE {
     class DelayTime : public ActionInterval
     {
     public:
-        /** creates the action */
+        //! Constructs a DelayTime action.
         explicit DelayTime(fzFloat duration);
         
-        // Redefined functions
+        // Redefined
         virtual void update(fzFloat dt) override;
         virtual DelayTime* reverse() const override;
         virtual DelayTime* copy() const override;
@@ -531,16 +538,16 @@ namespace FORZE {
 
         
     public:
-        /** creates the action */
+        //! Constructs a Animate action.
         explicit Animate(Animation *animation);
         
         // Destructor
         ~Animate();
         
-        /** animation used for the animage */
+        //! Returns the Animation.
         Animation* getAnimation() const;
         
-        // Redefined functions
+        // Redefined
         virtual void startWithTarget(void *t) override;
         virtual void update(fzFloat dt) override;
         virtual void stop() override;

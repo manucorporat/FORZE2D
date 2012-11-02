@@ -74,9 +74,8 @@ namespace FORZE {
         
         Animation(const vector<fzSpriteFrame>& frames, fzFloat delay);
 
-
         
-        /** delay between frames in seconds. */
+        //! Sets delay
         void setDelay(fzFloat);
         fzFloat getDelay() const;
         

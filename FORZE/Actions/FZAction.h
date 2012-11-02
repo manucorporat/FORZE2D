@@ -168,7 +168,8 @@ namespace FORZE {
             return p_innerAction;
         }
         
-        // Redefined functions
+        
+        // Redefined
         virtual void startWithTarget(void *t)override;
         virtual bool isDone() const override;
         virtual void step(fzFloat dt) override;
@@ -203,7 +204,8 @@ namespace FORZE {
         void setSpeed(fzFloat);
         fzFloat getSpeed() const;
         
-        // Redefined functions
+        
+        // Redefined
         virtual void startWithTarget(void *t) override;
         virtual void stop() override;
         virtual void step(fzFloat dt) override;
@@ -236,10 +238,12 @@ namespace FORZE {
         //! Sets the step in seconds.
         void setStep(fzFloat);
         
+        
         //! Returns the step in seconds.
         fzFloat getStep() const;
         
-        // Redefined functions
+        
+        // Redefined
         virtual void startWithTarget(void *t) override;
         virtual void stop() override;
         virtual void step(fzFloat dt) override;
@@ -288,7 +292,7 @@ namespace FORZE {
         void setBoundarySet(bool);
         bool getBoundarySet() const;
         
-        // Redefined functions
+        // Redefined
         virtual void step(fzFloat delta) override;
         virtual bool isDone() const override;
     };

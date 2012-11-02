@@ -47,7 +47,7 @@ namespace FORZE {
 
     public:
         
-        // Redefined functions
+        // Redefined
         virtual bool isDone() const override;
         virtual void step(fzFloat dt) override;
         
@@ -63,7 +63,7 @@ namespace FORZE {
         // Constructor
         Show() { };
         
-        // Redefined functions
+        // Redefined
         virtual void startWithTarget(void *t) override;
         virtual Show* copy() const override;
     };
@@ -76,7 +76,7 @@ namespace FORZE {
         // Constructor
         Hide() { };
         
-        // Redefined functions
+        // Redefined
         virtual void startWithTarget(void *t) override;
         virtual Hide* copy() const override;
     };
@@ -89,7 +89,7 @@ namespace FORZE {
         // Constructor
         ToggleVisibility() { };
         
-        // Redefined functions
+        // Redefined
         virtual void startWithTarget(void *t) override;
         virtual ActionInstant* copy() const override;
     };
@@ -105,7 +105,7 @@ namespace FORZE {
         // Constructor
         FlipX(bool flipx);
         
-        // Redefined functions
+        // Redefined
         virtual void startWithTarget(void *t) override;
         virtual ActionInstant* copy() const override;
         
@@ -122,7 +122,7 @@ namespace FORZE {
         // Constructor
         FlipY(bool flipy);
         
-        // Redefined functions
+        // Redefined
         virtual void startWithTarget(void *t) override;
         virtual ActionInstant* copy() const override;
     };
@@ -139,7 +139,7 @@ namespace FORZE {
         Place(fzFloat x, fzFloat y);
 
         
-        // Redefined functions
+        // Redefined
         virtual void startWithTarget(void *t) override;
         virtual ActionInstant* copy() const override;
     };
@@ -172,11 +172,13 @@ namespace FORZE {
         SELECTOR_PTR p_selector;
         
         virtual void execute();
+        
     public:
         //! Constructs a CallFuncN action.
         CallFuncN(SELProtocol *target, SELECTOR_PTR selector);
         
-        // Redefined functions
+        
+        // Redefined
         virtual void startWithTarget(void *target) override;
         virtual ActionInstant* copy() const override;
     };
@@ -198,7 +200,7 @@ namespace FORZE {
         CallFuncND(SELProtocol *target, SELECTOR_2PTR selector, void *data);
         
         
-        // Redefined functions
+        // Redefined
         virtual void startWithTarget(void *target) override;
         virtual ActionInstant* copy() const override;
     };
@@ -215,7 +217,7 @@ namespace FORZE {
         //! Constructs a CallFuncO action.
         CallFuncO(SELProtocol *t, SELECTOR_PTR selector, void *object);
         
-        // Redefined functions
+        // Redefined
         virtual void execute() override;
         virtual ActionInstant* copy() const override;
     };

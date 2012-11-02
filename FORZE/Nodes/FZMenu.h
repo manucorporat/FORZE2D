@@ -38,10 +38,10 @@ namespace FORZE {
     
     class MenuItem;
     
-    /** A Menu
+    /** A Menu.
      * Features and Limitation:
      *  - You can add MenuItem objects in runtime using addChild()
-     *  - But the only accecpted children are MenuItem objects
+     *  - But the only accepted children are MenuItem objects
      */
     class Menu : public Layer
     {
@@ -52,7 +52,7 @@ namespace FORZE {
         // selected item
         MenuItem *p_selectedItem;
         
-        //! Returns a menuitem placed at the given position
+        //! Returns a MenuItem placed at the given position.
         MenuItem* itemForPosition(const fzPoint& position);
         
         virtual void insertChild(Node*) override;
@@ -60,7 +60,7 @@ namespace FORZE {
         
         
     public:
-        //! Constructs an empty menu.
+        //! Constructs an empty Menu.
         explicit Menu();
         
         
@@ -70,7 +70,8 @@ namespace FORZE {
         
         void alignItemsInColumns(fzPoint paddings, fzUInt *sizes, fzUInt nuColumns);
         
-        // Redefined functions
+        
+        // Redefined
         virtual bool event(Event& event) override;
         virtual void onExit() override;
     };
