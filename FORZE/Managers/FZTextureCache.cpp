@@ -75,7 +75,8 @@ namespace FORZE {
                 m_textures.insert(texturesPair(hash, tex));
                 
             } catch(std::exception& error) {
-                free(filenameCpy);
+                delete filenameCpy;
+                
                 FZLOGERROR("%s", error.what());
                 return NULL;
             }

@@ -81,7 +81,8 @@ namespace FORZE {
                 m_fonts.insert(fontsPair(hash, font));
 
             } catch(std::exception& error){
-                free(filenameCpy);
+                delete filenameCpy;
+
                 FZLOGERROR("%s", error.what());
                 return NULL;
             }
