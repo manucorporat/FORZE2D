@@ -1,6 +1,7 @@
 
 
 #import "LabelTest.h"
+#import "FZProtocols.h"
 
 using namespace FORZE;
 
@@ -23,7 +24,7 @@ TestLayer *allTest(fzUInt index)
 /************* APPLICATION DELEGATE **************/
 /*************************************************/
 
-class AppDelegate : public ApplicationProtocol
+class AppDelegate : public AppDelegateProtocol
 {
 public:
     AppDelegate() {}

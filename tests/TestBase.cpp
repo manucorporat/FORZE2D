@@ -7,16 +7,22 @@ using namespace FORZE;
 
 #define TEST_LAYER 2
 
+#define TITLE_OFFSET 44
+#define MESSAGE_OFFSET 70
+
+
 TestScene::TestScene(TestLayer* (*func)(fzUInt), fzUInt number)
 : p_function(func)
 , m_nuLayers(number)
 , m_currentLayer(0)
 {
     p_title = new Label(NULL, "font_menu.fnt");
-    p_title->setPosition(getContentSize().width/2, getContentSize().height-60);
+    p_title->setPosition(getContentSize().width/2, getContentSize().height-TITLE_OFFSET);
     
     p_message = new Label(NULL, "font_menu.fnt");
-    p_message->setPosition(getContentSize().width/2, getContentSize().height-96);
+    p_message->setAnchorPoint(0.5, 1);
+    p_message->setAlignment(kFZLabelAlignment_center);
+    p_message->setPosition(getContentSize().width/2, getContentSize().height-MESSAGE_OFFSET);
     p_message->setScale(0.5f);
     
 
@@ -43,8 +49,8 @@ void TestScene::updateLayout()
 {
     setContentSize(FZ_CANVAS_SIZE());
     
-    p_title->setPosition(getContentSize().width/2, getContentSize().height-60);
-    p_message->setPosition(getContentSize().width/2, getContentSize().height-96);
+    p_title->setPosition(getContentSize().width/2, getContentSize().height-TITLE_OFFSET);
+    p_message->setPosition(getContentSize().width/2, getContentSize().height-MESSAGE_OFFSET);
     getChildByName("Menu")->setPosition(getContentSize().width/2, 50);
     
     Node::updateLayout();

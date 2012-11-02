@@ -18,8 +18,8 @@ TestLayer *allTest(fzUInt index)
 
 // APPLICATION DELEGATE
 // A instance of this object will receive the application events
-// through the ApplicationProtocol protocol
-class AppDelegate : public ApplicationProtocol {
+// through the AppDelegateProtocol protocol
+class AppDelegate : public AppDelegateProtocol {
 public:
     AppDelegate() {}
     

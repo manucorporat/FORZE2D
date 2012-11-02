@@ -312,7 +312,7 @@ public:
         FZLog("Reorder %d", z);
         Node *node;
         FZ_LIST_FOREACH(getChildren(), node) {
-            FZLog("%d %p", node->getTag(), static_cast<fzListItem*>(node));
+            FZLog("%d %d %p", node->getZOrder(), node->getTag(), static_cast<fzListItem*>(node));
         }
     }
 };

@@ -23,7 +23,7 @@ TestLayer *allTest(fzUInt index)
 /************* APPLICATION DELEGATE **************/
 /*************************************************/
 
-class AppDelegate : public ApplicationProtocol
+class AppDelegate : public AppDelegateProtocol
 {
 public:
     AppDelegate() {}
@@ -37,12 +37,6 @@ public:
         
         // RUN SCENE
         Director::Instance().runWithScene(scene);
-    }
-    
-    GLConfig fzGLConfig()
-    {
-        GLConfig config; // default config
-        return config;
     }
 };
 

@@ -15,13 +15,13 @@ public:
         label->setPosition(getContentSize() / 2);
         
         // Attach label to the layer
-        addChild(label);
+        addChild(label);        
     }
 };
 
 
 // APPLICATION DELEGATE
-class AppDelegate : public ApplicationProtocol {
+class AppDelegate : public AppDelegateProtocol {
 public:
     AppDelegate() {}
     
@@ -34,6 +34,9 @@ public:
         Director::Instance().pushScene(scene);
     }
 };
+
+
+
 
 // APPLICATION'S ENTRY POINT
 int main(int argc, char *argv[])

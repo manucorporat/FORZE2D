@@ -12,7 +12,7 @@ void SceneTest3::replaceScene2() {
 /************* APPLICATION DELEGATE **************/
 /*************************************************/
 
-class AppDelegate : public ApplicationProtocol
+class AppDelegate : public AppDelegateProtocol
 {
 public:
     AppDelegate() {}

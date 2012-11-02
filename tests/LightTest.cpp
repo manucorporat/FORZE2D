@@ -23,7 +23,7 @@ TestLayer *allTest2(fzUInt index)
 /************* APPLICATION DELEGATE **************/
 /*************************************************/
 
-class AppDelegate : public ApplicationProtocol
+class AppDelegate : public AppDelegateProtocol
 {
 public:
     AppDelegate() {}

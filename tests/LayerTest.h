@@ -41,12 +41,13 @@ public:
     }
 };
 
+
 class LayerTest2 : public TestLayer
 {
     float angle_;
 public:
     LayerTest2()
-    : TestLayer("Layer color", NULL)
+    : TestLayer("Gradient layer", "Compressed interpolation:\ndisabled | enabled")
     {
         angle_ = 0;
         LayerGradient *background = new LayerGradient(fzBLACK, fzGRAY);

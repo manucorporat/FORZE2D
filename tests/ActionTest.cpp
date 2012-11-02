@@ -475,7 +475,7 @@ ActionCallFuncND::ActionCallFuncND()
 /************* APPLICATION DELEGATE **************/
 /*************************************************/
 
-class AppDelegate : public ApplicationProtocol
+class AppDelegate : public AppDelegateProtocol
 {
 public:
     AppDelegate() {}
