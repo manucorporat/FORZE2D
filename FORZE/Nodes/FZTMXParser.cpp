@@ -63,7 +63,7 @@ namespace FORZE {
             
         } catch(std::exception& error) {
             data.free();
-            throw error;
+            throw;
         }
     }
     

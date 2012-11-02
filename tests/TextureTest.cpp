@@ -66,7 +66,7 @@ public:
 #pragma mark - main
 
 int main(int argc, char *argv[])
-{    
+{
 #ifdef FZ_OS_DESKTOP
     // If you are running on a desktop OS (windows, linux, mac)
     // FORZE is able to simulate a different screen resolution in order to see how your game would look in another devices. In this case iPad (768x1024)

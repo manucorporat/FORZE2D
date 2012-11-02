@@ -108,7 +108,7 @@ namespace FORZE {
             
         } catch(std::exception &error) {
             buffer.free();
-            throw error;
+            throw;
         }
     }
     
@@ -124,7 +124,7 @@ namespace FORZE {
             
         } catch(std::exception &error) {
             buffer.free();
-            throw error;
+            throw;
         }
     }
     

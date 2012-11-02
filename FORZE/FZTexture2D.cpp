@@ -450,7 +450,7 @@ namespace FORZE {
         } catch(std::bad_alloc& error) {
             png_destroy_read_struct(&png_ptr, &info_ptr, (png_info**)NULL);
             fclose(file);
-            throw error;
+            throw;
         }
 
         png_byte *pixels = buffer;
@@ -499,7 +499,7 @@ namespace FORZE {
 
         } catch(std::exception &error) {
             buffer.free();
-            throw error;
+            throw;
         }
     }
     
@@ -528,7 +528,7 @@ namespace FORZE {
             
         } catch(std::exception &error) {
             buffer2.free();
-            throw error;
+            throw;
         }
     }
     
