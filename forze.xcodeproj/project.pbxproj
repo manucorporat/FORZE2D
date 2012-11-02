@@ -924,6 +924,7 @@
 		A90B05A71633198300371F8B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A90B059F1633198300371F8B /* Default-568h@2x.png */; };
 		A90B05A81633198300371F8B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A90B059F1633198300371F8B /* Default-568h@2x.png */; };
 		A90B05A91633198300371F8B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A90B059F1633198300371F8B /* Default-568h@2x.png */; };
+		A90FDD531644259B008A3E21 /* HelloWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9DEA934161BACBE00A45D46 /* HelloWorld.cpp */; };
 		A91A6D6E1642FE5C0025ADE5 /* libforze_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 979297B5151B818D0088AF66 /* libforze_ios.a */; };
 		A91A6D6F1642FE5C0025ADE5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198E16149BDA007D2287 /* QuartzCore.framework */; };
 		A91A6D701642FE5C0025ADE5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198C16149BD5007D2287 /* CoreGraphics.framework */; };
@@ -5189,6 +5190,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A90FDD531644259B008A3E21 /* HelloWorld.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5458,7 +5460,7 @@
 		5018F24E0DFDEAC500C013A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DOXYGEN_PATH = /Applications/Doxygen.app/Contents/Resources/doxygen;
 				GCC_PREFIX_HEADER = MAC/Prefix_mac.pch;
 				HEADER_SEARCH_PATHS = FORZE/;
@@ -5471,7 +5473,7 @@
 		5018F24F0DFDEAC500C013A5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DOXYGEN_PATH = /Applications/Doxygen.app/Contents/Resources/doxygen;
 				GCC_PREFIX_HEADER = MAC/Prefix_mac.pch;
 				HEADER_SEARCH_PATHS = FORZE/;
@@ -5584,7 +5586,7 @@
 		9709CA14152A2772000CE0C2 /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				DOXYGEN_PATH = /Applications/Doxygen.app/Contents/Resources/doxygen;
 				GCC_PREFIX_HEADER = MAC/Prefix_mac.pch;
 				HEADER_SEARCH_PATHS = FORZE/;

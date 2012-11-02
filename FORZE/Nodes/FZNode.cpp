@@ -52,27 +52,27 @@ namespace FORZE {
     , m_isRunning                (false)
     , m_isVisible                (true)
     , m_isRelativeAnchorPoint    (true)
-    , m_rotation                 (0.0f)
-    , m_scaleX                   (1.0f)
-    , m_scaleY                   (1.0f)
-    , m_vertexZ                  (0.0f)
+    , m_rotation                 (0)
+    , m_scaleX                   (1)
+    , m_scaleY                   (1)
+    , m_vertexZ                  (0)
     , m_opacity                  (1)
     , m_cachedOpacity            (1)
     , m_skewX                    (0)
     , m_skewY                    (0)
+    , m_zOrder                   (0)
+    , m_realZOrder               (0)
     , m_position                 (FZPointZero) // default value
     , m_anchorPointInPoints      (FZPointZero) // default value
     , m_anchorPoint              (FZPointZero) // default value
     , m_contentSize              (FZSizeZero) // default value
-    , m_zOrder                   (0)
-    , m_realZOrder               (0)
     , m_tag                      (kFZNodeTagInvalid)
     , p_glprogram                (NULL)
     , p_grid                     (NULL)
     , p_camera                   (NULL)
     , p_userData                 (NULL)
     , p_parent                   (NULL)
-    , p_FBO(NULL)
+    , p_FBO                      (NULL)
 #if FZ_GL_SHADERS
     , p_filter                   (NULL)
 #endif
