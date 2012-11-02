@@ -57,6 +57,7 @@ namespace FORZE {
     
     Filter::Filter(fzFloat quality)
     : p_texture(NULL)
+    , p_glprogram(NULL)
     {   
         FZ_ASSERT(quality > 0 && quality <= 1, "Quality is out of bounds (0, 1]");
     }
