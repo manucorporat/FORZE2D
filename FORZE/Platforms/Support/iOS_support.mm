@@ -137,7 +137,15 @@ namespace FORZE {
     
     uint16_t fzDevice_getCapacities()
     {
-        uint16_t capacities = kFZEventType_Touch | kFZEventType_Accelerometer | kFZEventType_Gyro;
+        uint16_t capacities = kFZEventType_Touch;
+        
+        CMMotionManager *m = [[CMMotionManager alloc] init];
+        if([m isAccelerometerAvailable])
+            capacities |= kFZEventType_Accelerometer;
+        if([m isGyroAvailable])
+            capacities |= kFZEventType_Gyro;
+
+        [m release];
         return capacities;
     }
     
@@ -622,7 +630,7 @@ namespace FORZE {
 }
 
 
-- (void) updateEvents:(unsigned char)dirtyFlags flags:(unsigned char)flags
+- (void) updateEvents:(uint16_t)dirtyFlags flags:(uint16_t)flags
 {
     if(dirtyFlags & kFZEventType_Touch) {
         [window_ setUserInteractionEnabled:(flags & kFZEventType_Touch)];
@@ -658,7 +666,7 @@ namespace FORZE {
     
     if(dirtyFlags & kFZEventType_Gyro)
     {
-        if(flags & kFZEventType_Accelerometer) {
+        if(flags & kFZEventType_Gyro) {
             [motionManager_ startGyroUpdatesToQueue:queue withHandler:
              ^(CMGyroData *data, NSError *error)
              {

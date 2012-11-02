@@ -85,7 +85,7 @@ namespace FORZE {
 }
 - (EAGLRenderingAPI) openGLAPI;
 
-- (void) updateEvents:(unsigned char)dirtyFlags flags:(unsigned char)flags;
+- (void) updateEvents:(uint16_t)dirtyFlags flags:(uint16_t)flags;
 - (void) updateWindow;
 - (void) setEventInterval:(float)interval;
 - (void) startRendering:(float)interval;
