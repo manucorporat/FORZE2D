@@ -23,7 +23,7 @@ public:
 
         
         // LOAD GLSL SHADER
-        GLProgram *program = new GLProgram("simulation.vert", "simulation2.frag");
+        GLProgram *program = new GLProgram("simulation.vert", "simulation.frag");
         program->addGenericAttributes();
         program->link();
         layerColor_->setGLProgram(program);

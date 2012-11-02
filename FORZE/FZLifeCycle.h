@@ -90,7 +90,6 @@ namespace FORZE {
             return this;
         }
 #endif
-
     };
 }
 

@@ -251,6 +251,7 @@ namespace FORZE {
                             break;
                         case kFZLabelAlignment_right:
                             nextFontPositionX = longestLine - lineWidth[currentLine];
+                            //nextFontPositionX = (longestLine - lineWidth[currentLine])/2.0f;
                             break;
                         case kFZLabelAlignment_center:
                             nextFontPositionX = (longestLine - lineWidth[currentLine])/2.0f;
