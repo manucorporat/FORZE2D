@@ -154,9 +154,7 @@ namespace FORZE {
                 FZLog("TMX Objects are not implemented");
 
             }
-        }
-        
-        return true;
+        }        
     }
     
     
@@ -341,6 +339,8 @@ namespace FORZE {
         attribute = rootNode->first_attribute("y");
         if(attribute == NULL)
             info.m_offset.y = atoi(attribute->value());
+        
+        return true;
     }
     
     
@@ -355,6 +355,8 @@ namespace FORZE {
             info.m_properties[i].key = node->first_attribute("name")->value();
             info.m_properties[i].value = node->last_attribute("value")->value();                               
         }
+        
+        return true;
     }
     
     

@@ -1259,7 +1259,7 @@ namespace FORZE {
     
     Animate* Animate::copy() const
     {
-        
+        return NULL;
     }
 
     Animate* Animate::reverse() const

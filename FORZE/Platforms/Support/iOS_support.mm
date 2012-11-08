@@ -229,6 +229,8 @@ namespace FORZE {
         return !!(autorotation & kFZOrientation_Portrait);
     if(interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown)
         return !!(autorotation & kFZOrientation_PortraitUpsideDown);
+    
+    return false;
 }
 
 

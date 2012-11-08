@@ -188,11 +188,11 @@ namespace FORZE {
     }
     
     
-    bool DataStore::readFromMemory()
+    void DataStore::readFromMemory()
     {
         FZ_ASSERT(p_path, "Path cannot be NULL");
         if(m_dirty)
-            return true;
+            return;
         
         fzBuffer buffer = IO::loadFile(p_path);
         

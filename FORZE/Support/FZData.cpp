@@ -41,6 +41,7 @@
  */
 
 #include <zlib.h>
+#include <new>
 
 #include "FZData.h"
 #include "FZMacros.h"

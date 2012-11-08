@@ -79,7 +79,7 @@ namespace FORZE {
         const char *p_path;
         
         // Used intenally to read the xml data base.
-        bool readFromMemory();
+        void readFromMemory();
         
         //! Used internally to reserve memory.
         void reserveCapacity(fzUInt capacity);
