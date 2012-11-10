@@ -930,9 +930,9 @@ namespace FORZE {
     
 #pragma mark - FadeTo
     
-    FadeTo::FadeTo(fzFloat d, GLubyte o)
-    : ActionInterval(d)
-    , m_original(o)
+    FadeTo::FadeTo(fzFloat duration, fzFloat opacity)
+    : ActionInterval(duration)
+    , m_original(opacity)
     { }
     
     
@@ -1017,10 +1017,10 @@ namespace FORZE {
     
 #pragma mark - Blink
     
-    Blink::Blink(fzFloat d, fzUInt b, fzFloat p)
-    : ActionInterval(d)
-    , m_slice(1.0f / b)
-    , m_percentVisible(p)
+    Blink::Blink(fzFloat duration, fzUInt blinks, fzFloat percent)
+    : ActionInterval(duration)
+    , m_blinks(blinks)
+    , m_percentVisible(percent)
     { }
     
     
@@ -1040,15 +1040,16 @@ namespace FORZE {
     
     void Blink::update(fzFloat dt)
     {
-        fzFloat m = fmodf(dt, m_slice);
-        bool isVisible = (m < (m_slice * m_percentVisible));
+        fzFloat slice = 1.0f / m_blinks;
+        fzFloat m = fmodf(dt, slice);
+        bool isVisible = (m < (slice * m_percentVisible));
         ((Node*) p_target)->setIsVisible(isVisible);
     }
     
     
     Blink* Blink::copy() const
     {
-        return new Blink(m_duration, 1.0f/m_slice, m_percentVisible);
+        return new Blink(m_duration, m_blinks, m_percentVisible);
     }
     
     

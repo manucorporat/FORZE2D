@@ -424,13 +424,13 @@ namespace FORZE {
     class FadeTo : public ActionInterval
     {
     protected:
-        unsigned char m_startOpacity;
+        fzFloat m_startOpacity;
         fzFloat m_delta;
         fzFloat m_original;
         
     public:
         //! Constructs a FadeTo action.
-        FadeTo(fzFloat duration, unsigned char opacity);
+        FadeTo(fzFloat duration, fzFloat opacity);
         
         // Redefined
         virtual void startWithTarget(void *t) override;
