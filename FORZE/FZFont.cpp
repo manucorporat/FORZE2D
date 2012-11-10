@@ -38,7 +38,6 @@
 
 namespace FORZE {
     
-    uint16_t generateKey(uint8_t first, uint8_t second)
     static uint16_t generateKey(uint8_t first, uint8_t second)
     {
         uint16_t key = first; key <<= 8;
@@ -46,7 +45,6 @@ namespace FORZE {
         return key;
     }
     
-    fzUInt getSubtrings(char *str, char** lines, fzUInt max)
     static fzUInt getSubtrings(char *str, char** lines, fzUInt max)
     {
         fzUInt line = 0;
