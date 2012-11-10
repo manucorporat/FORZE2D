@@ -41,10 +41,10 @@
 
 //! @def FZ_SWAP
 //! Simple macro that swaps 2 variables
-#define FZ_SWAP( __X__, __Y__ ) ({  \
+#define FZ_SWAP( __X__, __Y__ ) {   \
 __typeof__(__X__) temp  = (__X__);  \
 __X__ = __Y__; __Y__ = temp;        \
-})
+}
 
 
 //! @def FZ_RANDOM_MINUS1_1

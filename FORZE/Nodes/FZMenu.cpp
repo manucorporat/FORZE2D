@@ -125,7 +125,7 @@ namespace FORZE {
         fzSize size(-paddings.x, 0);
         Node *node = (Node*)m_children.front();
         
-        fzFloat widths[nuColumns];
+        fzFloat *widths = new fzFloat[nuColumns];
         
         
         for(fzUInt i = 0; i < nuColumns; ++i) {
@@ -156,6 +156,7 @@ namespace FORZE {
             alignVertically(paddings.y, fzPoint(widths[i], m_contentSize.height/2), fzRange(index, sizes[i]));
             index += sizes[i];
         }
+        delete [] widths;
     }
     
     

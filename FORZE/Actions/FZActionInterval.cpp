@@ -214,21 +214,25 @@ namespace FORZE {
     
     Sequence* Sequence::reverse() const
     {
-        FiniteTimeAction *buffer[m_numActions];
+        FiniteTimeAction **buffer = new FiniteTimeAction*[m_numActions];
         for(fzUInt i = 0; i < m_numActions; ++i)
             buffer[i] = p_actions[m_numActions-1-i]->reverse();
         
-        return new Sequence(buffer, m_numActions);
+        Sequence *seq = new Sequence(buffer, m_numActions);
+        delete [] buffer;
+        return seq;
     }
     
     
     Sequence* Sequence::copy() const
     {
-        FiniteTimeAction *buffer[m_numActions];
+        FiniteTimeAction **buffer = new FiniteTimeAction*[m_numActions];
         for(fzUInt i = 0; i < m_numActions; ++i)
             buffer[i] = p_actions[i]->copy();
         
-        return new Sequence(buffer, m_numActions);
+        Sequence *seq = new Sequence(buffer, m_numActions);
+        delete [] buffer;
+        return seq;
     }
     
     
@@ -338,21 +342,25 @@ namespace FORZE {
     
     Spawn* Spawn::reverse() const
     {
-        FiniteTimeAction *buffer[m_numActions];
+        FiniteTimeAction **buffer = new FiniteTimeAction*[m_numActions];
         for(fzUInt i = 0; i < m_numActions; ++i)
             buffer[i] = p_actions[i]->reverse();
         
-        return new Spawn(p_actions, m_numActions);
+        Spawn *spaw = new Spawn(p_actions, m_numActions);
+        delete [] buffer;
+        return spaw;
     }
     
     
     Spawn* Spawn::copy() const
     {
-        FiniteTimeAction *buffer[m_numActions];
+        FiniteTimeAction **buffer = new FiniteTimeAction*[m_numActions];
         for(fzUInt i = 0; i < m_numActions; ++i)
             buffer[i] = p_actions[i]->copy();
         
-        return new Spawn(p_actions, m_numActions);
+        Spawn *spaw = new Spawn(p_actions, m_numActions);
+        delete [] buffer;
+        return spaw;
     }
     
     

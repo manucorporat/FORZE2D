@@ -120,7 +120,7 @@ namespace FORZE {
         FZ_ASSERT(filename != NULL, "Filename can not be NULL.");
         FZ_ASSERT(absolutePath != NULL, "AbsolutePath must be a valid pointer.");
 
-        fzUInt u;
+        int u;
         if(suffix == NULL) 
             u = sprintf(absolutePath, "%s/%s", p_resourcesPath, filename);
         
@@ -129,13 +129,15 @@ namespace FORZE {
             char *extension = strchr(filename, '.');
             
             // GET NAME
-            intptr_t nameLength = extension - filename;
-            char name[nameLength+1];
+            size_t nameLength = extension - filename;
+            char *name = new char[nameLength+1];
             memcpy(name, filename, nameLength);
             name[nameLength] = '\0';
 
             // BUILD 
             u = sprintf(absolutePath, "%s/%s%c%s%s", p_resourcesPath, name, FZ_IO_SUBFIX_CHAR, suffix, extension);
+            
+            delete [] name;
         }
         FZ_ASSERT(u > 0, "Error generating absolute path. sprintf().");
     }
