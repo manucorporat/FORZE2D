@@ -64,7 +64,7 @@ namespace FORZE {
         // Remove "-x" suffix
         IO::removeFileSuffix(filenameCpy);
         
-        unsigned long hash = fzHash(filenameCpy);
+        int32_t hash = fzHash(filenameCpy);
         Font *font = getFontForHash(hash);
         
         if(font != NULL && strcmp(IO::getExtension(filenameCpy), "ttf") == 0) {

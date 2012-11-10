@@ -163,6 +163,7 @@ namespace FORZE {
             sprite->useBatchRender(mode.B.p_batchNode);
         }
 #else
+        (void)child;
         FZ_ASSERT(false, "Children in Sprite are disabled. Set FZ_SPRITE_CHILDREN 1");
 #endif
     }

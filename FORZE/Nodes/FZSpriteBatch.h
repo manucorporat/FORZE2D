@@ -93,7 +93,7 @@ namespace FORZE {
         virtual const fzBlendFunc& getBlendFunc() const override;
         virtual void setTexture(Texture2D*) override;
         virtual Texture2D* getTexture() const override;
-        virtual void render(char) override;
+        virtual void render(unsigned char) override;
         virtual void draw() override;
     };
 }

@@ -92,7 +92,7 @@ namespace FORZE {
     
     struct fzTextureInfo
     {
-        uint32_t openGLFormat;
+        GLint openGLFormat;
         uint8_t dataBBP;
         bool isCompressed;
     };

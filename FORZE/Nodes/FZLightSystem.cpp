@@ -210,7 +210,7 @@ namespace FORZE {
     }
 
     
-    void LightSystem::render(char dirtyFlags)
+    void LightSystem::render(unsigned char dirtyFlags)
     {
         Light *light;
         Sprite *sprite;

@@ -155,7 +155,7 @@ namespace FORZE {
     public:
         //! Constructs a new events to be managed by the EventManager.
         //! @param identifier. Must be unique identifier used to track the life cicle of the event. Began, Updated, Ended...
-        Event(void *owner, intptr_t identifier, fzEventType type, fzEventState state, fzFloat x, fzFloat y, fzFloat z)
+        Event(void *owner, intptr_t identifier, fzEventType type, fzEventState state, double x, double y, double z)
         : p_owner(owner)
         , m_identifier(identifier)
         , m_type(type)
@@ -203,7 +203,7 @@ namespace FORZE {
         //! @see getVector()
         //! @see getScalar()
         fzPoint getPoint() const {
-            return fzPoint(m_x, m_y);
+            return fzPoint((fzFloat)m_x, (fzFloat)m_y);
         }
         
         
@@ -212,7 +212,7 @@ namespace FORZE {
         //! @see getPoint()
         //! @see getScalar()
         fzPoint3 getVector() const {
-            return fzPoint3(m_x, m_y, m_z);
+            return fzPoint3((fzFloat)m_x, (fzFloat)m_y, (fzFloat)m_z);
         }
         
         
@@ -228,13 +228,13 @@ namespace FORZE {
         //! Used as button preasure, for example in Playstation.
         //! @see getPoint()
         //! @see getVector()
-        fzFloat getScalar() const {
+        double getScalar() const {
             return m_z;
         }
         
         
         //! Returns the life cycle of the events measured in seconds.
-        fzFloat getElapsed() const {
+        double getElapsed() const {
             time_t now; time(&now);
             return difftime(now, m_creation);
         }

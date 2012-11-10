@@ -103,7 +103,7 @@ namespace FORZE {
         // Redefined
         virtual void setTexture(Texture2D*) override;
         virtual Texture2D *getTexture() const override;
-        virtual void render(char) override;
+        virtual void render(unsigned char) override;
         virtual void updateStuff() override;
     };
 }

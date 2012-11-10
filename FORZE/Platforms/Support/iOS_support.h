@@ -72,7 +72,7 @@ namespace FORZE {
     
     // Motion events
     CMMotionManager *motionManager_;
-    UIViewController *viewController_;
+    //UIViewController *viewController_;
     
     // OpenGl
     EAGLContext	*context_;

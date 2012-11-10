@@ -222,7 +222,7 @@ namespace FORZE {
                 nu_arg = sscanf(l, "kerning first=%d second=%d amount=%f",
                                 &first, &second, &amount);
                 
-                if(first < 0 || second < 0) {
+                if(first < 0 || second < 0 || first > 255 || second > 255) {
                     FZLOGERROR("Font:FNT: Line %d. Invalid indexes.", i+1);
                     continue;
                 }
@@ -231,7 +231,7 @@ namespace FORZE {
                     continue;
                 }
                 
-                uint16_t key = generateKey(first, second);
+                uint16_t key = generateKey((uint8_t)first, (uint8_t)second);
                 m_kerning.insert(pair<uint16_t, fzFloat>(key, amount));
             }
         }

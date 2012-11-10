@@ -183,13 +183,13 @@ namespace FORZE {
         void setUniform3f(const char* uniform, float v1, float v2, float v3) const;
         void setUniform4f(const char* uniform, float v1, float v2, float v3, float v4) const;
         
-        void setUniform1iv(const char* uniform, fzUInt count, int* values) const;
-        void setUniform1fv(const char* uniform, fzUInt count, float* values) const;
-        void setUniform2fv(const char* uniform, fzUInt count, float* values) const;
-        void setUniform3fv(const char* uniform, fzUInt count, float* values) const;
-        void setUniform4fv(const char* uniform, fzUInt count, float* values) const;
+        void setUniform1iv(const char* uniform, GLsizei count, int* values) const;
+        void setUniform1fv(const char* uniform, GLsizei count, float* values) const;
+        void setUniform2fv(const char* uniform, GLsizei count, float* values) const;
+        void setUniform3fv(const char* uniform, GLsizei count, float* values) const;
+        void setUniform4fv(const char* uniform, GLsizei count, float* values) const;
         
-        void setUniform4x4f(const char* uniform, fzUInt count, bool transpose, float *matrix) const;
+        void setUniform4x4f(const char* uniform, GLsizei count, bool transpose, float *matrix) const;
     };
 }
 #endif

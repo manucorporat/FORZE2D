@@ -238,13 +238,12 @@ namespace FORZE {
                     FZLOGERROR("DataStore: Type attribute is missing.");
                     continue;
                 }
-                entry.type = atoi(attribute->value());
-                
+                int type = atoi(attribute->value());                
                 
                 // DATA
                 const char *data = node->value();
                 if(data) {
-                    switch (entry.type) {
+                    switch (type) {
                         case kFZData_string:
                         case kFZData_data:
                         {
@@ -263,6 +262,8 @@ namespace FORZE {
                             break;
                     }
                 }
+                entry.type = static_cast<unsigned char>(type);
+
                 ++m_num;
             }
             buffer.free();
@@ -335,7 +336,7 @@ namespace FORZE {
     }
     
 
-    void DataStore::setDefaultFloat(fzFloat value, const char *key)
+    void DataStore::setDefaultFloat(double value, const char *key)
     {
         if(contains(key))
             return;
@@ -344,7 +345,7 @@ namespace FORZE {
     }
     
     
-    void DataStore::setDefaultInteger(fzInt value, const char *key)
+    void DataStore::setDefaultInteger(int32_t value, const char *key)
     {
         if(contains(key))
             return;
@@ -370,7 +371,7 @@ namespace FORZE {
     }
 
     
-    void DataStore::setFloat(fzFloat value, const char *key)
+    void DataStore::setFloat(double value, const char *key)
     {
         fzStoreEntry entry;
         entry.key = fzStrcpy(key);
@@ -383,7 +384,7 @@ namespace FORZE {
     }
     
     
-    void DataStore::setInteger(fzInt value, const char *key)
+    void DataStore::setInteger(int32_t value, const char *key)
     {
         fzStoreEntry entry;
         entry.key = fzStrcpy(key);
@@ -424,7 +425,7 @@ namespace FORZE {
     
 #pragma mark - Getters
     
-    fzInt DataStore::integerForKey(const char *key) const
+    int32_t DataStore::integerForKey(const char *key) const
     {
         fzStoreEntry *entry = entryForKey(key);
         
@@ -441,7 +442,7 @@ namespace FORZE {
     }
     
     
-    fzFloat DataStore::floatForKey(const char *key) const
+    double DataStore::floatForKey(const char *key) const
     {
         fzStoreEntry *entry = entryForKey(key);
 

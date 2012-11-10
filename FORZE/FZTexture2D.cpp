@@ -324,6 +324,7 @@ namespace FORZE {
             }
         }
 #else
+        (void)textureFormat;
         fzPixelInfo pixelInfo = _pixelFormat_hash[pixelFormat];
         m_format = pixelInfo.textureFormat;
 #endif
@@ -663,7 +664,6 @@ namespace FORZE {
                 ++level;
             }
         }
-        return true;
     }
     
     

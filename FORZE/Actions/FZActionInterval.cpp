@@ -113,12 +113,12 @@ namespace FORZE {
 
         FiniteTimeAction *buffer[FZMAX_ACTION_BATCH];
         fzFloat duration = 0;
+        m_numActions = 0;
         
         va_list params;
         va_start(params, action1);
         
-        while(action1)
-        {
+        while(action1) {
             buffer[m_numActions] = action1;
             duration += action1->getDuration();
             ++m_numActions;
@@ -252,6 +252,7 @@ namespace FORZE {
         
         FiniteTimeAction *buffer[FZMAX_ACTION_BATCH];
         fzFloat duration = 0;
+        m_numActions = 0;
         
         va_list params;
         va_start(params, action1);
@@ -1146,7 +1147,7 @@ namespace FORZE {
     { }
     
     
-    void DelayTime::update(fzFloat dt)
+    void DelayTime::update(fzFloat)
     {
         return;
     }

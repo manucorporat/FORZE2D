@@ -84,7 +84,7 @@ namespace FORZE {
     }
 
     
-    void TMXTiledMap::render(char dirtyFlags)
+    void TMXTiledMap::render(unsigned char dirtyFlags)
     {        
         // RESERVE MEMORY
         TMXLayer *layer;

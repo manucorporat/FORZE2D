@@ -315,7 +315,7 @@ namespace FORZE {
         }        
     }
     
-    void GLProgram::setUniform4x4f(const char* uniform, fzUInt count, bool transpose, float *matrix) const
+    void GLProgram::setUniform4x4f(const char* uniform, GLsizei count, bool transpose, float *matrix) const
     {
         use();
         GLint location = getUniform(uniform);
@@ -325,7 +325,7 @@ namespace FORZE {
         }
     }
     
-    void GLProgram::setUniform1iv(const char* uniform, fzUInt count, int* values) const
+    void GLProgram::setUniform1iv(const char* uniform, GLsizei count, int* values) const
     {
         if(count == 0)
             return;
@@ -337,7 +337,7 @@ namespace FORZE {
         }        
     }
     
-    void GLProgram::setUniform1fv(const char* uniform, fzUInt count, float* values) const
+    void GLProgram::setUniform1fv(const char* uniform, GLsizei count, float* values) const
     {
         if(count == 0)
             return;
@@ -349,7 +349,7 @@ namespace FORZE {
         }
     }
     
-    void GLProgram::setUniform2fv(const char* uniform, fzUInt count, float* values) const
+    void GLProgram::setUniform2fv(const char* uniform, GLsizei count, float* values) const
     {
         if(count == 0)
             return;
@@ -361,7 +361,7 @@ namespace FORZE {
         }
     }
     
-    void GLProgram::setUniform3fv(const char* uniform, fzUInt count, float* values) const
+    void GLProgram::setUniform3fv(const char* uniform, GLsizei count, float* values) const
     {
         if(count == 0)
             return;
@@ -373,7 +373,7 @@ namespace FORZE {
         }
     }
     
-    void GLProgram::setUniform4fv(const char* uniform, fzUInt count, float* values) const
+    void GLProgram::setUniform4fv(const char* uniform, GLsizei count, float* values) const
     {
         if(count == 0)
             return;

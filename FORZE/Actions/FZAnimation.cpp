@@ -78,7 +78,7 @@ namespace FORZE {
     }
     
     
-    fzUInt Animation::getTotalDelayUnit() const
+    fzFloat Animation::getTotalDelayUnit() const
     {
         return m_totalDelayUnits;
     }

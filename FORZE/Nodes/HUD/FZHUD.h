@@ -39,6 +39,7 @@ namespace FORZE {
     class HUDProtocol
     {
     public:
+        virtual ~HUDProtocol() {}
         virtual bool needsFPS() const = 0;
         virtual bool needsMemory() const = 0;
 

@@ -42,7 +42,8 @@ namespace FORZE {
     };
     
     class Node;
-    /** Base class for Action objects */
+    
+    //! Base class for Action objects.
     class Action : public LifeCycle
     {
         friend class ActionManager;
@@ -52,7 +53,8 @@ namespace FORZE {
         fzInt m_tag;
         
         
-        //! Called once per frame. time a value between 0 and 1.
+        //! Called once per frame.
+        //! @param time a value between 0 and 1.
         //! For example:
         //! - 0 means that the action just started
         //! - 0.5 means that the action is in the middle

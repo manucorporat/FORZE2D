@@ -138,7 +138,7 @@ namespace FORZE {
         fzPoint calculateLayerOffset(const fzPoint& pos) const;
         
         // Redefined
-        virtual void render(char dirtyFlags) override;
+        virtual void render(unsigned char dirtyFlags) override;
     };
 }
 #endif

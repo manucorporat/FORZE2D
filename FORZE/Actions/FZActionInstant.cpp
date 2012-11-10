@@ -49,7 +49,7 @@ namespace FORZE {
     }
     
     
-    void ActionInstant::step(fzFloat dt)
+    void ActionInstant::step(fzFloat)
     {
         update(1);
     }

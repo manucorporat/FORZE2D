@@ -43,7 +43,7 @@ namespace FORZE {
     private:
         Texture2D *p_texture;
         GLuint	m_fbo;
-        GLint	m_oldFBO;
+        GLuint	m_oldFBO;
         
         
     public:

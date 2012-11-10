@@ -35,7 +35,7 @@ using namespace STD;
 
 namespace FORZE {
     
-    bool EventDelegate::event(Event& event)
+    bool EventDelegate::event(Event&)
     {
         FZLOGERROR("EventDelegate: bool event(Event&) should be overwritten.");
         return false;

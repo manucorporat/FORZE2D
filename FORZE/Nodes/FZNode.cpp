@@ -525,7 +525,7 @@ namespace FORZE {
     }
     
     
-    void Node::render(char dirtyFlags)
+    void Node::render(unsigned char dirtyFlags)
     {
         // ITERATE CHILDREN
         Node *child = static_cast<Node*>(m_children.front());

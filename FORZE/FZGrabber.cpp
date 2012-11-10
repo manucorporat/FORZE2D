@@ -40,7 +40,7 @@
 namespace FORZE {
         
     Grabber::Grabber()
-    : m_fbo(0), m_oldFBO(-1), p_texture(NULL)
+    : m_fbo(0), m_oldFBO(0xffffff), p_texture(NULL)
     { }
     
     
@@ -89,7 +89,7 @@ namespace FORZE {
         glClear(GL_COLOR_BUFFER_BIT);
         
         fzGLBindFramebuffer(m_oldFBO);
-        m_oldFBO = -1;
+        m_oldFBO = 0xffffff;
         
         CHECK_GL_ERROR_DEBUG();
     }
@@ -98,7 +98,7 @@ namespace FORZE {
     void Grabber::begin()
     {
         FZ_ASSERT(m_fbo != 0, "FBO is uninitilialez, you must grab a texture first.");  
-        FZ_ASSERT(m_oldFBO == -1, "This FBO is already opened");
+        FZ_ASSERT(m_oldFBO == 0xffffff, "This FBO is already opened");
         
         // cache current framebuffer
         m_oldFBO = fzGLGetFramebuffer();
@@ -122,7 +122,7 @@ namespace FORZE {
     void Grabber::end()
     {
         fzGLBindFramebuffer(m_oldFBO);
-        m_oldFBO = -1;
+        m_oldFBO = 0xffffff;
     }
     
     
@@ -170,7 +170,8 @@ namespace FORZE {
         m_grabber.begin();
         
         const fzSize& viewPort = getTexture()->getContentSizeInPixels();
-        glViewport(0, 0, viewPort.width, viewPort.height);
+        
+        glViewport(0, 0, (GLsizei)viewPort.width, (GLsizei)viewPort.height);
         
         MS::pushMatrix(m_transform);
     }
@@ -181,7 +182,7 @@ namespace FORZE {
         m_grabber.beginWithClear(color);
         
         const fzSize& viewPort = getTexture()->getContentSizeInPixels();
-        glViewport(0, 0, viewPort.width, viewPort.height);
+        glViewport(0, 0, (GLsizei)viewPort.width, (GLsizei)viewPort.height);
         
         MS::pushMatrix(m_transform);
     }
@@ -193,12 +194,12 @@ namespace FORZE {
         m_grabber.end();
         
         fzSize viewPort = Director::Instance().getViewPort();
-        glViewport(0, 0, viewPort.width, viewPort.height);
+        glViewport(0, 0, (GLsizei)viewPort.width, (GLsizei)viewPort.height);
     }
     
     
     void FBOTexture::clear(const fzColor4F& color)
     {
-        m_grabber.clear();
+        m_grabber.clear(color);
     }
 }

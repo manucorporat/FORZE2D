@@ -63,7 +63,7 @@ namespace FORZE {
         }
         
         // Redefined
-        virtual void render(char) override;
+        virtual void render(unsigned char) override;
     };
 }
 #endif

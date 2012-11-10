@@ -79,7 +79,7 @@ namespace FORZE {
         void setDelay(fzFloat);
         fzFloat getDelay() const;
         
-        fzUInt getTotalDelayUnit() const;
+        fzFloat getTotalDelayUnit() const;
         fzUInt getLoops() const;
         fzFloat getDuration() const;
         bool restoreOriginalFrame() const;

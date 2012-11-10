@@ -402,7 +402,7 @@ namespace FORZE {
     class Blink : public ActionInterval
     {
     protected:
-        fzFloat m_slice;
+        fzUInt m_blinks;
         fzFloat m_percentVisible;
         bool m_initialState;
         

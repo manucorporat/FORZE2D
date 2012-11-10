@@ -234,7 +234,7 @@ namespace FORZE {
         
         //! Override this method to draw your own node.
         //! If you enable any other GL state, you should disable it after drawing your node.
-        virtual void render(char);
+        virtual void render(unsigned char);
         
         
         //! Override this method to draw your own node.
@@ -253,7 +253,7 @@ namespace FORZE {
 
 #pragma mark - Setters
         
-        void makeDirty(char flags) {
+        void makeDirty(unsigned char flags) {
             m_dirtyFlags |= flags;
 #if FZ_RENDER_ON_DEMAND
             Director::Instance().m_sceneIsDirty = true;

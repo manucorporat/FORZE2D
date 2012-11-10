@@ -326,7 +326,7 @@ namespace FORZE {
         if (!m_isVisible)
             return;
         
-        char dirtyFlags = m_dirtyFlags & kFZDirty_recursive;
+        unsigned char dirtyFlags = m_dirtyFlags & kFZDirty_recursive;
         
         updateStuff();
         MS::pushMatrix(m_transformMV);
@@ -340,7 +340,7 @@ namespace FORZE {
         MS::pop();
     }
     
-    void TMXLayer::render(char dirtyFlags)
+    void TMXLayer::render(unsigned char dirtyFlags)
     {
         FZ_ASSERT(false, "You can not render a TMXLayer manually.");
     }

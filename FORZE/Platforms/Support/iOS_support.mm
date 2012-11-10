@@ -92,7 +92,7 @@ namespace FORZE {
             case kFZOrientation_LandscapeRight: uiorientation = UIInterfaceOrientationLandscapeRight; break;
             case kFZOrientation_Portrait: uiorientation = UIInterfaceOrientationPortrait; break;
             case kFZOrientation_PortraitUpsideDown: uiorientation = UIInterfaceOrientationPortraitUpsideDown; break;
-            default: break;
+            default: return;
         }
         [[UIApplication sharedApplication] setStatusBarOrientation:uiorientation animated:NO];
     }
@@ -119,6 +119,7 @@ namespace FORZE {
     
     void fzDevice_getOSVersion(unsigned int *os)
     {
+        (void)os;
         FZLog("NOT IMPLEMENTED");
     }
     

@@ -101,9 +101,9 @@ namespace FORZE {
 		printf("FORZE ENGINE 0.0.99 \n");
 		
         // RANDOM STUFF
-        srand(time(NULL));
-        srand48(time(NULL));
-        srandom(time(NULL));
+        unsigned int t = (unsigned int)time(NULL);
+        srand(t);
+        srandom(t);
         
         // INITIALIZE MATRIX STACK
         MS::initialize();
@@ -580,7 +580,7 @@ namespace FORZE {
         // The view port must be the display size in pixels.
         // Display size is not equal to the screen size, an application could not use the whole screen.
         fzSize viewPort = getViewPort();
-        glViewport(0, 0, viewPort.width, viewPort.height);
+        glViewport(0, 0, (GLsizei)viewPort.width, (GLsizei)viewPort.height);
         
         
         // PROJECTION

@@ -99,7 +99,7 @@ namespace FORZE {
     }
     
     
-    void SpriteBatch::render(char dirtyFlags)
+    void SpriteBatch::render(unsigned char dirtyFlags)
     {
         FZ_ASSERT(p_parent != NULL, "SpriteBatch should NOT be root node");
         

@@ -55,8 +55,8 @@ namespace FORZE {
             
             union {
                 fzBuffer data;
-                fzFloat floatValue;
-                fzInt integerValue;
+                double floatValue;
+                int32_t integerValue;
             };
         };
         
@@ -118,14 +118,14 @@ namespace FORZE {
         //! @param value is a float.
         //! @param key is a NULL-terminated char string.
         //! @code if(!contain(key)) setFloat(value, key)
-        void setDefaultFloat(fzFloat value, const char *key);
+        void setDefaultFloat(double value, const char *key);
         
         
         //! Sets the default integer value for the key specified.
         //! @param value is an integer.
         //! @param key is a NULL-terminated char string.
         //! @code if(!contain(key)) setInteger(value, key)
-        void setDefaultInteger(fzInt value, const char *key);
+        void setDefaultInteger(int32_t value, const char *key);
         
         
         //! Sets the default string value for the key specified.
@@ -140,13 +140,13 @@ namespace FORZE {
         //! Sets a float value for the key specified.
         //! @param value is a float.
         //! @param key is a NULL-terminated char string.
-        void setFloat(fzFloat value, const char *key);
+        void setFloat(double value, const char *key);
         
         
         //! Sets an integer value for the key specified.
         //! @param value is an integer.
         //! @param key is a NULL-terminated char string.
-        void setInteger(fzInt value, const char *key);
+        void setInteger(int32_t value, const char *key);
         
         
         //! Sets a string value for the key specified.
@@ -164,13 +164,13 @@ namespace FORZE {
         //! Returns the integer paired with the given key.
         //! @param key is a NULL-terminated char string.
         //! @return if no value found for key, 0 is returned.
-        fzInt integerForKey(const char *key) const;
+        int32_t integerForKey(const char *key) const;
         
         
         //! Returns the float value paired with the given key.
         //! @param key is a NULL-terminated char string.
         //! @return if no value found for key, 0.0 is returned.
-        fzFloat floatForKey(const char *key) const;
+        double floatForKey(const char *key) const;
         
         
         //! Returns the string paired with the given key.
