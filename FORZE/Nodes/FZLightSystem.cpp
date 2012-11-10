@@ -70,7 +70,7 @@ namespace FORZE {
     }
     
     
-    fzFloat fastAngle(fzVec2 v1, fzVec2 v2)
+    static fzFloat fastAngle(fzVec2 v1, fzVec2 v2)
     {
         fzFloat dot = v1.dot(v2); // dot product
         v1.x *= v1.x; v1.y *= v1.y;
@@ -84,7 +84,7 @@ namespace FORZE {
     }
     
     
-    void generateShape(const fzVec2 *input, fzVec2 *output, fzUInt nuVertices)
+    static void generateShape(const fzVec2 *input, fzVec2 *output, fzUInt nuVertices)
     {
         output[0] = input[0];
         const fzUInt iterations = nuVertices >> 1;

@@ -399,7 +399,7 @@ namespace FORZE {
     
 #pragma mark - EaseBounce actions
     
-    fzFloat bounceTime(fzFloat t)
+    static fzFloat bounceTime(fzFloat t)
     {
         if (t < 1 / 2.75f)
             return 7.5625f * t * t;

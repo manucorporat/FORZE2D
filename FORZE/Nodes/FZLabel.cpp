@@ -40,7 +40,7 @@ using namespace STD;
 namespace FORZE {
     
     // Auxiliar function to print special charaters properly, suck as /n /t...
-    void printChar(char *toPrint, char c)
+    static void printChar(char *toPrint, char c)
     {
         switch(c)
         {
