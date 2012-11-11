@@ -630,6 +630,7 @@ namespace FORZE {
 {
     [motionManager_ setAccelerometerUpdateInterval:interval];
     [motionManager_ setGyroUpdateInterval:interval];
+    [motionManager_ setDeviceMotionUpdateInterval:interval];
 }
 
 
@@ -648,9 +649,10 @@ namespace FORZE {
     if(dirtyFlags & kFZEventType_Accelerometer)
     {
         if(flags & kFZEventType_Accelerometer) {
+
             [motionManager_ startAccelerometerUpdatesToQueue:queue withHandler:
              ^(CMAccelerometerData *data, NSError *error)
-             {
+            {
                  if(data) {
                      CMAcceleration acceleration = [data acceleration];
                      Event event(self, 0, kFZEventType_Accelerometer, kFZEventState_Indifferent,
