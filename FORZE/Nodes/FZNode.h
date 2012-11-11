@@ -656,13 +656,14 @@ namespace FORZE {
 
 
 #pragma mark - Miscelaneous
-      
-      
+        
         //! This function align vertically the menu items.
+        void alignVertically(fzFloat padding, const fzPoint& center, const fzRange& range, bool (*func)(Node*));
         void alignVertically(fzFloat padding, const fzPoint& center, const fzRange& range);
       
       
         //! This function align horizontally the menu items.
+        void alignHorizontally(fzFloat padding, const fzPoint& center, const fzRange& range, bool (*func)(Node*));
         void alignHorizontally(fzFloat padding, const fzPoint& center, const fzRange& range);
       
         
@@ -673,9 +674,8 @@ namespace FORZE {
         //! This function align horizontally the menu items.
         void alignChildrenHorizontally(fzFloat padding = kFZNodeDefaultPadding);
       
-      
         
-        // TRANSFORMATION METHODS
+#pragma mark Transforms
         
         //! Returns the matrix that transform the node's (local) space coordinates into the parent's space coordinates.
         const fzAffineTransform& getNodeToParentTransform();
@@ -712,15 +712,16 @@ namespace FORZE {
          */
         fzPoint convertToWorldSpaceAR(const fzPoint&);
         
-        // Redefined
-        
+                
         //! Sets the GLProgram used by the node to render his opengl stuff (NOT INCLUDING children).
         //! This parammeter doesn't make sense in void elements such as "Node", "Scene" or "Layer".
         //! @see getGLProgram()
         void setGLProgram(GLProgram*);
         
+        
         //! Sets the GLProgram by a tag value
         void setGLProgram(fzUInt programKey);
+        
         
         //! Returns the GLProgram.
         GLProgram* getGLProgram() const;

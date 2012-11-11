@@ -716,38 +716,62 @@ namespace FORZE {
 
 #pragma mark - Miscelaneous
     
-    void Node::alignVertically(fzFloat padding, const fzPoint& center, const fzRange& range)
-    {
-        fzFloat height = -padding;
-        
-        Node *child;
-        FZ_LIST_FOREACH(m_children, child) {
-            height += child->getContentSize().height * child->getScaleY() + padding;
-        }
-        
-        
-        fzFloat y = center.y + height / 2;
-        FZ_LIST_FOREACH(m_children, child) {
-            
-            fzFloat k = child->getContentSize().height * child->getScaleY();
-            child->setPosition(center.x, y - k / 2.0f );
-            y -= k + padding;
-        }
+    static bool allNodes(Node*) {
+        return true;
     }
-    
-    
-    void Node::alignHorizontally(fzFloat padding, const fzPoint& center, const fzRange& range)
+
+    void Node::alignVertically(fzFloat padding,
+                               const fzPoint& center,
+                               const fzRange& range,
+                               bool (*func)(Node*))
     {
-        fzFloat width = -padding;
-        
         if(range.size == 0)
             return;
         
         fzUInt index = 0;
         fzUInt endIndex = range.endIndex();
+        fzFloat height = -padding;
+        
         Node *child;
         FZ_LIST_FOREACH(m_children, child) {
-            if(index >= range.origin)
+            if(index >= range.origin && func(child))
+                height += child->getContentSize().height * child->getScaleY() + padding;
+            
+            ++index;
+            if(index >= endIndex) break;
+        }
+        
+        index = 0;
+        fzFloat y = center.y + height / 2;
+        FZ_LIST_FOREACH(m_children, child) {
+            if(index >= range.origin && func(child)) {
+                fzFloat k = child->getContentSize().height * child->getScaleY();
+                child->setPosition(center.x, y - k/2.0f );
+                y -= k + padding;
+            }
+            
+            ++index;
+            if(index >= endIndex)
+                break;
+        }
+    }
+    
+    
+    void Node::alignHorizontally(fzFloat padding,
+                                 const fzPoint& center,
+                                 const fzRange& range,
+                                 bool (*func)(Node*))
+    {        
+        if(range.size == 0)
+            return;
+        
+        fzUInt index = 0;
+        fzUInt endIndex = range.endIndex();
+        fzFloat width = -padding;
+
+        Node *child;
+        FZ_LIST_FOREACH(m_children, child) {
+            if(index >= range.origin && func(child))
                 width += child->getContentSize().width * child->getScaleX() + padding;
             
             ++index;
@@ -758,7 +782,7 @@ namespace FORZE {
         index = 0;
         fzFloat x = center.x - width / 2;
         FZ_LIST_FOREACH(m_children, child) {
-            if(index >= range.origin) {
+            if(index >= range.origin && func(child)) {
                 const fzFloat k = child->getContentSize().width * child->getScaleX();
                 child->setPosition(x + k / 2.0f, center.y);
                 x += k + padding;
@@ -768,6 +792,18 @@ namespace FORZE {
             if(index >= endIndex)
                 break;
         }
+    }
+    
+    
+    void Node::alignVertically(fzFloat padding, const fzPoint& center, const fzRange& range)
+    {
+        alignVertically(padding, center, range, allNodes);
+    }
+    
+    
+    void Node::alignHorizontally(fzFloat padding, const fzPoint& center, const fzRange& range)
+    {
+        alignHorizontally(padding, center, range, allNodes);
     }
     
     
