@@ -161,8 +161,8 @@ namespace FORZE {
     void Node::setContentSize(const fzSize& s)
     {
         if( m_contentSize != s ) {
-            FZ_ASSERT(s.width >= 0, "The content size can not be negative.");
-            FZ_ASSERT(s.height >= 0, "The content size can not be negative.");
+//            FZ_ASSERT(s.width >= 0, "The content size can not be negative.");
+//            FZ_ASSERT(s.height >= 0, "The content size can not be negative.");
 
             m_contentSize = s;
             
