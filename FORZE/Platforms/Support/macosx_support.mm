@@ -356,7 +356,6 @@ static CVReturn drawScene(CVDisplayLinkRef dl, const CVTimeStamp* now, const CVT
     GLint swapInt = 1;
     [context_ setValues:&swapInt forParameter:NSOpenGLCPSwapInterval]; 
     
-    FZLOGINFO("OS Wrapper: OpenGL context initialized succesfully.");
     
     mgrDirector_->updateViewRect();
     fzRect rect = mgrDirector_->getRenderingRect();

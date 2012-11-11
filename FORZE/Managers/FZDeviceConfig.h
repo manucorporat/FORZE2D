@@ -136,12 +136,6 @@ namespace FORZE {
         
         //! Prints a large log with the system info.
         void logDeviceInfo() const;
-        
-        
-        //! Prints a log with the debug mode.
-        //! This function is useful to ensure you are running at
-        //! release mode, debug mode, assertions on/off...
-        void logDebugMode() const;
     };
 }
 #endif

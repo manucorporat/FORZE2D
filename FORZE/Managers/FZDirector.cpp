@@ -99,8 +99,9 @@ namespace FORZE {
     , m_windowSize          (FZSizeZero)
     , m_renderingRect       (FZRectZero)
     {
-		printf("FORZE ENGINE 0.0.99 \n");
-		
+		printf("FORZE ENGINE "FORZE_VERSION"\n");
+		logDebugMode();
+        
         // RANDOM STUFF
         unsigned int t = (unsigned int)time(NULL);
         srand(t);
@@ -118,6 +119,38 @@ namespace FORZE {
         setFullscreen();
 #else
         setOrientation(kFZOrientation_Portrait);
+#endif
+    }
+    
+    
+    void Director::logDebugMode() const
+    {
+#if !defined(NDEBUG) || (defined(FORZE_DEBUG) && FORZE_DEBUG)
+        char debugMode[60];
+        strcpy(debugMode, "DEBUG MODE: ");
+        
+        // ASSETION
+#ifndef NDEBUG
+        strcat(debugMode, "-assertions ");
+#endif
+        
+#if defined(FORZE_DEBUG) && FORZE_DEBUG
+        switch (FORZE_DEBUG) {
+            case 1:
+                strcat(debugMode, "-errors ");
+                break;
+            default:
+                strcat(debugMode, "-errors -info");
+                break;
+                
+                break;
+        }
+#endif
+        
+        FZLog("%s", debugMode);
+        
+#else
+        FZLog("RELEASE MODE");
 #endif
     }
     
@@ -939,7 +972,6 @@ namespace FORZE {
         FZ_ASSERT(m_isInitialized == false, "FORZE was already launched.")
         FZ_ASSERT(p_appdelegate, "FORZE was not initialized properly. App delegate is missing.");
         FZ_ASSERT(OSW::Instance(), "OS wrapper should call Director::applicationLaunching() before.");
-        FZLOGINFO("Director: Application launched.");
 
         if(!m_isInitialized) {
             
@@ -947,18 +979,18 @@ namespace FORZE {
 
             // initialize singletons
             DataStore::Instance();
-            DeviceConfig::Instance().logDebugMode();
             DeviceConfig::Instance().logDeviceInfo();
             
             // set default GL values
             setDefaultGLValues();
             
+            FZLOGINFO("Director: Application launched.");
             p_appdelegate->applicationLaunched(options);
             
             if(m_scenesStack.size() == 0)
             {
                 FZLOGERROR("Director: A running scene is expected before applicationLaunched() is called.");
-                FZLOGERROR("Director: You should call Director::Instance().runWithScene( <YOUR FORZE::SCENE> ).\n");
+                FZLOGERROR("Director: You should call Director::Instance().runWithScene( <YOUR FORZE::Scene> ).\n");
             }
             startAnimation();
         }

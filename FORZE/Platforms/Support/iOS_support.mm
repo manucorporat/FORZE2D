@@ -395,7 +395,6 @@ namespace FORZE {
     // setup default framebuffers
     [self setupFramebuffer];
     
-    FZLOGINFO("OS Wrapper: OpenGL context initialized succesfully.");
     
     // set default window size
     CGRect windowRect = [window_ frame];

@@ -28,8 +28,6 @@
  @author Manuel Martínez-Almeida
  */
 
-#define FORZE_VERSION 0x00010000
-
 // BASE
 #include "FZCommon.h"
 #include "FZAllocator.h"

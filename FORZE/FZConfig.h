@@ -38,6 +38,9 @@
 
 #include "FZPlatformsHeader.h"
 
+#define FORZE_VERSION "1.0"
+
+
 #pragma mark - STL config
 // You can replace easy the Standard Library used by FORZE.
 #define STL_VECTOR <vector>

@@ -127,41 +127,6 @@ namespace FORZE {
     }
     
     
-    void DeviceConfig::logDebugMode() const
-    {
-        char debugMode[60];
-        strcpy(debugMode, "DEBUG MODE: ");
-        
-        // ASSETION
-#ifndef NDEBUG
-        strcat(debugMode, "ASSERTIONS");
-#endif
-        
-#if !defined(NDEBUG) && defined(FORZE_DEBUG) && FORZE_DEBUG
-        strcat(debugMode, " | ");
-#endif
-        
-#if defined(FORZE_DEBUG) && FORZE_DEBUG
-        switch (FORZE_DEBUG) {
-            case 1:
-                strcat(debugMode, "ERRORS");
-                break;
-            default:
-                strcat(debugMode, "INFO | ERRORS");
-                break;
-                
-                break;
-        }
-#endif
-        
-#if !defined(NDEBUG) || (defined(FORZE_DEBUG) && FORZE_DEBUG)
-        FZLog("%s", debugMode);
-#else
-        FZLog("RELEASE MODE");
-#endif
-    }
-    
-    
     void DeviceConfig::logDeviceInfo() const
     {
         FZLOGINFO("****************** DEVICE INFO ******************");

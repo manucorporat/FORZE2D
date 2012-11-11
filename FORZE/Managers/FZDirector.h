@@ -200,7 +200,7 @@ namespace FORZE {
         // scheduled scenes
         vector<Scene*> m_scenesStack;
         
-        /* This object will be visited after the scene. Useful to hook a notification node */
+        // This object will be visited after the scene. Useful to hook a notification node
         id p_notificationNode;
         HUD *p_hud;
         
@@ -455,6 +455,12 @@ namespace FORZE {
         //! Returns the Opengl config.
         const GLConfig& getGLConfig() const;
         GLConfig& getGLConfig();
+        
+        
+        //! Prints a log with the debug mode.
+        //! This function is useful to ensure you are running at
+        //! release mode, debug mode, assertions on/off...
+        void logDebugMode() const;
         
         
         //! Draws the scene.
