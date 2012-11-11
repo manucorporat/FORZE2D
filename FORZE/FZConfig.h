@@ -38,7 +38,7 @@
 
 #include "FZPlatformsHeader.h"
 
-#define FORZE_VERSION "1.0"
+#define FORZE_VERSION "0.1 beta1"
 
 
 #pragma mark - STL config
