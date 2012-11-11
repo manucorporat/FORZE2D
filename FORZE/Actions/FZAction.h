@@ -30,7 +30,6 @@
  @author Manuel Martinez-Almeida
  */
 
-#include <sys/time.h>
 #include "FZTypes.h"
 #include "FZLifeCycle.h"
 

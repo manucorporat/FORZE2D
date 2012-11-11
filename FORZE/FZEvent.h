@@ -30,7 +30,8 @@
  @author Manuel Martínez-Almeida
  */
 
-#include <ctime>
+#include <sys/time.h>
+#include <unistd.h>
 #include "FZTypes.h"
 
 
@@ -124,7 +125,7 @@ namespace FORZE {
         fzEventState m_state;
         
         // creating time
-        time_t m_creation;
+        struct timeval m_creation;
         
         // unique identifier
         intptr_t m_identifier;
@@ -155,21 +156,7 @@ namespace FORZE {
     public:
         //! Constructs a new events to be managed by the EventManager.
         //! @param identifier. Must be unique identifier used to track the life cicle of the event. Began, Updated, Ended...
-        Event(void *owner, intptr_t identifier, fzEventType type, fzEventState state, double x, double y, double z)
-        : p_owner(owner)
-        , m_identifier(identifier)
-        , m_type(type)
-        , m_state(state)
-        , m_x(x)
-        , m_y(y)
-        , m_z(z)
-        , p_delegate(NULL)
-        , p_userData(NULL)
-        {
-            if(state == kFZEventState_Began)
-                time(&m_creation);
-        }
-        
+        Event(void *owner, intptr_t identifier, fzEventType type, fzEventState state, double x, double y, double z);
         
         Event(void *owner, intptr_t identifier, fzEventType type, fzEventState state, fzPoint point, fzFloat scalar)
         : Event(owner, identifier, type, state, point.x, point.y, scalar) {}
@@ -234,10 +221,7 @@ namespace FORZE {
         
         
         //! Returns the life cycle of the events measured in seconds.
-        double getElapsed() const {
-            time_t now; time(&now);
-            return difftime(now, m_creation);
-        }
+        fzFloat getElapsed() const;
         
         
         //! Returns the event's delegate.

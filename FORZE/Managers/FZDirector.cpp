@@ -32,6 +32,7 @@
  */
 
 #include <unistd.h>
+#include <sys/time.h>
 
 #include "FZDirector.h"
 #include "FZActionManager.h"

@@ -33,6 +33,22 @@
 
 namespace FORZE {
     
+    Event::Event(void *owner, intptr_t identifier, fzEventType type, fzEventState state, double x, double y, double z)
+    : p_owner(owner)
+    , m_identifier(identifier)
+    , m_type(type)
+    , m_state(state)
+    , m_x(x)
+    , m_y(y)
+    , m_z(z)
+    , p_delegate(NULL)
+    , p_userData(NULL)
+    {
+        if(state == kFZEventState_Began)
+            gettimeofday(&m_creation, NULL);
+    }
+    
+    
     void Event::update(const Event& event)
     {
         FZ_ASSERT(m_state != kFZEventState_Indifferent, "Events with indifferent state can not be updated.");
@@ -47,6 +63,17 @@ namespace FORZE {
     {
         FZ_ASSERT(m_state != kFZEventState_Indifferent, "Events with indifferent state can not have a delegate.");
         p_delegate = d;
+    }
+    
+    
+    fzFloat Event::getElapsed() const
+    {
+        struct timeval now;
+        gettimeofday(&now, NULL);
+
+        fzFloat t = (now.tv_sec - m_creation.tv_sec) + (now.tv_usec - m_creation.tv_usec) / 1000000.0f;
+        
+        return t;
     }
     
     
