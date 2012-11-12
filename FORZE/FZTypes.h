@@ -116,7 +116,7 @@ namespace FORZE {
     
 #pragma mark - fzColor4 interface
 
-    /** RGB color composed of 3 bytes */
+    //! RGB color composed of 3 bytes.
     template<typename T, int N>
     class _fzColor4
     {
@@ -211,7 +211,7 @@ namespace FORZE {
     
 #pragma mark - fzAffineTransform interface    
     
-    /** affine tranform interface composed of 6 floats */
+    //! Affine tranform interface composed of 6 floats.
     class fzAffineTransform
     {
     public:
@@ -279,7 +279,7 @@ namespace FORZE {
     
 #pragma mark - fzSize interface
     
-    /** A size composed of 2 GLfloats: width, height */
+    //! A size composed of 2 GLfloats: width, height.
     class fzSize
     {
     public:
@@ -345,7 +345,7 @@ namespace FORZE {
     
 #pragma mark - fzPoint interface
     
-    /** A point composed of 2 GLfloats: x, y */
+    //! A point composed of 2 GLfloats: x, y.
     template<typename T>
     class _fzVec2
     {
@@ -508,7 +508,7 @@ namespace FORZE {
     
 #pragma mark - fzPoint3 interface
     
-    /** A vertex composed of 3 floats: x, y, z */
+    //! A vertex composed of 3 floats: x, y, z.
     template<typename T>
     class _fzVec3
     {
@@ -613,43 +613,43 @@ namespace FORZE {
     
 #pragma mark - Predefined values
     
-    //! White color (255,255,255)
+    //! White color (255,255,255).
     static const fzColor3B fzWHITE(255,255,255);
-    //! Yellow color (255,255,0)
+    //! Yellow color (255,255,0).
     static const fzColor3B fzYELLOW(255,255,0);
-    //! Blue color (0,0,255)
+    //! Blue color (0,0,255).
     static const fzColor3B fzBLUE(0,0,255);
-    //! Green Color (0,255,0)
+    //! Green Color (0,255,0).
     static const fzColor3B fzGREEN(0,255,0);
-    //! Red Color (255,0,0,)
+    //! Red Color (255,0,0,).
     static const fzColor3B fzRED(255,0,0);
-    //! Magenta Color (255,0,255)
+    //! Magenta Color (255,0,255).
     static const fzColor3B fzMAGENTA(255,0,255);
-    //! Black Color (0,0,0)
+    //! Black Color (0,0,0).
     static const fzColor3B fzBLACK(0,0,0);
-    //! Orange Color (255,127,0)
+    //! Orange Color (255,127,0).
     static const fzColor3B fzORANGE(255,127,0);
-    //! Gray Color (166,166,166)
+    //! Gray Color (166,166,166).
     static const fzColor3B fzGRAY(166,166,166);
     
     
-    // fzPoint zero value
+    //! fzPoint zero value.
     static const fzPoint FZPointZero(0, 0);
-    // fzPoint 3 zero valie
+    //! fzPoint 3 zero value.
     static const fzPoint3 FZPoint3Zero(0, 0, 0);
-    // fzSize zero value
+    //! fzSize zero value.
     static const fzSize FZSizeZero(0, 0);
-    // fzRect zero value
+    //! fzRect zero value.
     static const fzRect FZRectZero(0, 0, 0, 0);
     
     
-    // fzAffineTransform Identity
+    //! fzAffineTransform Identity.
     static const fzAffineTransform FZAffineTransformIdentity(1, 0, 0, 1, 0, 0);
 
 #pragma mark -    
 #pragma mark Opengl types
     
-    //! Tex parameters
+    //! Tex parameters.
     class fzTexParams
     {
     public:
