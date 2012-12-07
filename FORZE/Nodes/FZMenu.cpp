@@ -28,12 +28,13 @@
  @author Manuel Martínez-Almeida
  */
 
+#include <stdarg.h>
+
 #include "FZMenu.h"
 #include "FZMenuItem.h"
 #include "FZMacros.h"
 #include "FZDirector.h"
 #include "FZEventManager.h"
-
 
 
 namespace FORZE {
@@ -139,14 +140,14 @@ namespace FORZE {
                     return;
                 }
                 
-                width = MAX(width, node->getContentSize().width);
+                width = fzMax(width, node->getContentSize().width);
                 height += node->getContentSize().height + paddings.y;
                 node = (Node*)node->next();
             }
             
             size.width += width + paddings.x;
             widths[i] = size.width + width/2 + paddings.x;
-            size.height = MAX(height, size.height);
+            size.height = fzMin(height, size.height);
         }
         setContentSize(size);
         

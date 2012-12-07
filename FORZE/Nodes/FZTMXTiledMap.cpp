@@ -70,8 +70,8 @@ namespace FORZE {
             TMXLayer *layer = new TMXLayer(this, info);
             addChild(layer);
             
-            maxWidth = MAX(maxWidth, layer->getContentSize().width);
-            maxHeight = MAX(maxHeight, layer->getContentSize().height);
+            maxWidth = fzMax(maxWidth, layer->getContentSize().width);
+            maxHeight = fzMax(maxHeight, layer->getContentSize().height);
         }
         setContentSize(maxWidth, maxHeight);
     }

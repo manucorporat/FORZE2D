@@ -32,6 +32,7 @@
 #include "FZNode.h"
 #include "FZDirector.h"
 #include "FZMacros.h"
+#include "FZMath.h"
 
 
 namespace FORZE {
@@ -402,7 +403,7 @@ namespace FORZE {
     
     void Follow::step(fzFloat delta)
     {
-#define CLAMP(x,y,z) MIN(MAX(x,y),z)
+#define CLAMP(x,y,z) fzMin(fzMax(x, y),z)
         
         fzPoint tempPos = halfScreenSize_ - followedNode_->getPosition();
         if(boundarySet_)
@@ -411,8 +412,8 @@ namespace FORZE {
             if(boundaryFullyCovered_)
                 return;
             
-            tempPos.x = CLAMP(tempPos.x, leftBoundary_, rightBoundary_);
-            tempPos.y = CLAMP(tempPos.y, bottomBoundary_, topBoundary_);
+            tempPos.x = CLAMP(tempPos.x, (fzFloat)leftBoundary_, (fzFloat)rightBoundary_);
+            tempPos.y = CLAMP(tempPos.y, (fzFloat)bottomBoundary_, (fzFloat)topBoundary_);
         }
         ((Node*)p_target)->setPosition(tempPos);
         

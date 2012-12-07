@@ -30,9 +30,7 @@
  @author Manuel Martínez-Almeida
  */
 
-#include <cstring>
 #include "FZTypes.h"
-
 
 namespace FORZE {
     
@@ -111,5 +109,16 @@ namespace FORZE {
                            const fzPoint3& up,
                            float *output);
     
+    
+    
+    template <typename T>
+    inline T fzMin(T a, T b) {
+        return (a<b) ? a : b;
+    }
+    
+    template <typename T>
+    inline T fzMax(T a, T b) {
+        return (a>b) ? a : b;
+    }
 }
 #endif

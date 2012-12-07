@@ -69,7 +69,7 @@ namespace FORZE {
             return;
         
         // COLOR ARRAY
-        BOOL flagEnabled = (mode & kGLColors);
+        bool flagEnabled = (mode & kGLColors);
         if(flagEnabled != (_fzCurrentMode & kGLColors))
         {
             if(flagEnabled)

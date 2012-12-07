@@ -539,7 +539,7 @@ namespace FORZE {
                 {                    
                     fzFloat factorX = windowSize.width / canvasSize.width;
                     fzFloat factorY = windowSize.height / canvasSize.height;
-                    fzFloat factor = MIN(factorX, factorY);
+                    fzFloat factor = fzMin(factorX, factorY);
                     factor = (factor >= 1.0f) ? static_cast<fzInt>(factor) : factor;
                     
                     m_renderingRect.size = canvasSize * factor;
@@ -551,7 +551,7 @@ namespace FORZE {
                 {
                     fzFloat factorX = windowSize.width / canvasSize.width;
                     fzFloat factorY = windowSize.height / canvasSize.height;
-                    fzFloat factor = MIN(factorX, factorY);
+                    fzFloat factor = fzMax(factorX, factorY);
                     factor = (factor >= 1.0f) ? static_cast<fzInt>(factor) : factor;
 
                     newCanvasSize = windowSize / factor;
@@ -580,7 +580,7 @@ namespace FORZE {
         
         
         // COMPUTE FINAL FACTOR
-        fzFloat newFactor = roundf(MAX(MAX(factorX, factorY), 1));
+        fzFloat newFactor = roundf(fzMax(fzMax(factorX, factorY), 1.0f));
         if(newFactor > DeviceConfig::Instance().getMaxFactor())
             newFactor = DeviceConfig::Instance().getMaxFactor();
         
@@ -770,7 +770,7 @@ namespace FORZE {
             m_nextDeltaTimeZero = false;
         } else {
             fzFloat newDt = (now.tv_sec - m_lastUpdate.tv_sec) + (now.tv_usec - m_lastUpdate.tv_usec) / 1000000.0f;
-            newDt = MAX(0, newDt);
+            newDt = fzMax(0.0f, newDt);
 #if 0
             if(newDt > (getAnimationInteval()*3.0f))
                 newDt = getAnimationInteval();

@@ -38,6 +38,7 @@
 
 using namespace STD;
 
+using namespace FORZE;
 namespace FORZE {
     
     TMXLayer::TMXLayer(TMXTiledMap *tiledMap, TMXLayerInfo *layerInfo)
@@ -120,14 +121,14 @@ namespace FORZE {
                     appendTileForGID(GID, fzPoint(x, y));
                     
                     // Optimization: update min and max GID rendered by the layer
-                    m_minGID = MIN(GID, m_minGID);
-                    m_maxGID = MAX(GID, m_maxGID);
+                    m_minGID = fzMin(GID, m_minGID);
+                    m_maxGID = fzMax(GID, m_maxGID);
                 }
             }
         }
         
-        FZ_ASSERT(m_maxGID >= getTileset()->getFirstGID() &&
-                  m_minGID >= getTileset()->getFirstGID(), "TMX: Only 1 tilset per layer is supported");
+        //FZ_ASSERT(m_maxGID >= getTileset()->getFirstGID() &&
+         //         m_minGID >= getTileset()->getFirstGID(), "TMX: Only 1 tilset per layer is supported");
     }
     
     

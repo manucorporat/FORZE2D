@@ -201,7 +201,7 @@ namespace FORZE {
             }
             
             // Precalculate label size
-            fzUInt longestLine = 0;
+            fzFloat longestLine = 0;
             fzUInt currentLine = 0;
             char charId = 0, prevId = 0;
             fzFloat lineWidth[100];
@@ -213,14 +213,14 @@ namespace FORZE {
                     FZ_RAISE("Label: CHAR[] doesn't exist. It's negative.");
                 
                 if( charId == '\n') {
-                    longestLine = MAX(longestLine, lineWidth[currentLine]);
+                    longestLine = fzMax(longestLine, lineWidth[currentLine]);
                     ++currentLine;
                 }else {
                     lineWidth[currentLine] += p_font->getCharInfo(charId).xAdvance + m_horizontalPadding + p_font->getKerning(prevId, charId);
                     prevId = charId;
                 }
             }
-            longestLine = MAX(longestLine, lineWidth[currentLine]);
+            longestLine = fzMax(longestLine, lineWidth[currentLine]);
             
             
             fzFloat lineHeight = p_font->getLineHeight() + m_verticalPadding;

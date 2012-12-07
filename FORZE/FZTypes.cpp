@@ -34,17 +34,6 @@
 
 namespace FORZE {
     
-    template <typename T>
-    inline T min(T a, T b) {
-        return (a<b) ? a : b;
-    }
-    
-    template <typename T>
-    inline T max(T a, T b) {
-        return (a>b) ? a : b;
-    }
-    
-    
 #pragma mark - fzColor3B implementation
     
     fzColor3B::fzColor3B(const _fzColor4<unsigned char, 255>& c)
@@ -71,11 +60,11 @@ namespace FORZE {
             fzMath_mat4Vec2(matrix, vertices, output);
         }
         
-        origin.x = min(min(min(output[0], output[2]), output[4]), output[6]);
-        origin.y = min(min(min(output[1], output[3]), output[5]), output[7]);
+        origin.x = fzMin(fzMin(fzMin(output[0], output[2]), output[4]), output[6]);
+        origin.y = fzMin(fzMin(fzMin(output[1], output[3]), output[5]), output[7]);
         
-        size.width = (max(max(max(output[0], output[2]), output[4]), output[6])) - origin.x;
-        size.height = (max(max(max(output[1], output[3]), output[5]), output[7])) - origin.y;
+        size.width = (fzMax(fzMax(fzMax(output[0], output[2]), output[4]), output[6])) - origin.x;
+        size.height = (fzMax(fzMax(fzMax(output[1], output[3]), output[5]), output[7])) - origin.y;
         
         return *this;
     }

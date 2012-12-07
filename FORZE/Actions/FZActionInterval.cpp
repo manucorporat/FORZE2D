@@ -28,6 +28,8 @@
  @author Manuel Martínez-Almeida
  */
 
+#include <stdarg.h>
+
 #include "FZActionInterval.h"
 #include "FZAnimation.h"
 #include "FZSpriteFrame.h"
@@ -70,7 +72,7 @@ namespace FORZE {
             m_elapsed += dt;
         
         dt = m_elapsed/m_duration;
-        update(MIN(1, dt));
+        update(fzMin(1.0f, dt));
     }
     
     
@@ -260,7 +262,7 @@ namespace FORZE {
         while(action1)
         {
             buffer[m_numActions] = action1;
-            duration = MAX(duration, action1->getDuration());
+            duration = fzMax(duration, action1->getDuration());
             ++m_numActions;
             
             action1 = va_arg(params, FiniteTimeAction*);
@@ -290,7 +292,7 @@ namespace FORZE {
         {
             p_actions[i] = buffer[i];
             p_actions[i]->retain();
-            duration = MAX(duration, p_actions[i]->getDuration());
+            duration = fzMax(duration, p_actions[i]->getDuration());
         }
         setDuration(duration);
     }
@@ -436,7 +438,7 @@ namespace FORZE {
                 r = 1.0f;
                 m_total++; // this is the added line
             }
-            p_innerAction->update(MIN(r, 1));
+            p_innerAction->update(fzMin(r, 1.0f));
         }
     }
     
