@@ -35,7 +35,7 @@
 using namespace STD;
 
 namespace FORZE {
-    
+        
     bool EventDelegate::event(Event&)
     {
         FZLOGERROR("EventDelegate: bool event(Event&) should be overwritten.");
@@ -229,15 +229,28 @@ namespace FORZE {
     
     
     Event* EventManager::addEvent(const Event& newEvent)
-    {   
+    {
+        FZ_ASSERT(newEvent.getOwner(), "Event owner can not be NULL.");
+
         if(!(newEvent.getType() & m_flags))
             return NULL;
-
-        FZ_ASSERT(newEvent.getOwner(), "Event owner can not be NULL");
             
-        switch (newEvent.getState()) {
-                
+        switch (newEvent.getState())
+        {
             case kFZEventState_Began:
+#if FORZE_DEBUG > 0
+            {
+                eventList::const_iterator it(m_events.begin());
+                for(; it != m_events.end(); ++it) {
+                    if(newEvent.getIdentifier() == it->getIdentifier() &&
+                       newEvent.getOwner() == it->getOwner())
+                    {
+                        FZLOGERROR("EventManager: Event duplicated:");
+                        it->log();
+                    }
+                }
+            }
+#endif
             case kFZEventState_Indifferent:
             {
                 FZ_ASSERT(newEvent.getDelegate() == NULL, "Event delegate should be NULL");
@@ -263,7 +276,7 @@ namespace FORZE {
             }
             default:
             {
-                FZ_ASSERT(false, "Invalid event state");
+                FZ_ASSERT(false, "Invalid event state.");
                 return NULL;
             }
         }
@@ -275,6 +288,9 @@ namespace FORZE {
         p_mutex->lock();
         
         // the events are cached in order to dispatch them correctly.
+        if(m_enabled)
+            m_buffer.push(newEvent);
+        
         p_mutex->unlock();
     }
     
