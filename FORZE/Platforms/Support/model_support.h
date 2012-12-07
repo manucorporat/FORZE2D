@@ -1,6 +1,6 @@
 // DO NOT MODIFY THE HEADERS IF FORZE IS ALREADY COMPILED AS A STATIC LIBRARY
-#ifndef __FZPLATFORMSHEADER_H_INCLUDED__
-#define __FZPLATFORMSHEADER_H_INCLUDED__
+#ifndef __FZSUPPORT_IOS_H_INCLUDED__
+#define __FZSUPPORT_IOS_H_INCLUDED__
 /*
  * FORZE ENGINE: http://forzefield.com
  *
@@ -30,64 +30,13 @@
  @author Manuel Martínez-Almeida
  */
 
-#ifdef __cplusplus
-#if __cplusplus <= 199711L
+#if !defined(FZ_OS) || (FZ_OS == kFZPLATFORM_MODEL)
 
-#error This library needs at least a C++11 compliant compiler.
-#error Try to change the "C++ Language Dialect" setting to [-std=c++11]
+#include "gl.h"
+#include "glext.h"
 
-#endif
-
-#else
-
-#error C++ is not available. Maybe the compiler is not compiling the headers as C++ files.
-#error Try to change the "Compile Sources As" setting.
+#define FZ_GL_SHADERS 1
 
 #endif
-
-
-
-/** @def kFZPLATFORM_IOS_GL_1
- * iOS. Opengl ES 1.0 rendering. ARMv6 and ARMv7. All iDevices.
- */
-#define kFZPLATFORM_IOS_GL_1 0
-
-
-/** @def kFZPLATFORM_IOS_GL_2
- * iOS. Opengl ES 2.0 rendering. Shader. Only available for ARMv7 iDevices.
- */
-#define kFZPLATFORM_IOS_GL_2 1
-
-
-/** @def kFZPLATFORM_IOS_GL_2
- * Mac OS X. Opengl 1.1 rendering. Shaders.
- */
-#define kFZPLATFORM_MAC 2
-
-
-/** @def kFZPLATFORM_PSVITA
- * Playstation VITA. Shaders.
- */
-#define kFZPLATFORM_PSVITA 3
-
-
-/** @def kFZPLATFORM_WINDOWS
- * Windows. OpenGL. Shaders.
- */
-#define kFZPLATFORM_WINDOWS 4
-
-
-#define kFZPLATFORM_ANDROID 5
-
-#define kFZPLATFORM_MODEL 6
-
-
-
-// USAGE:
-// INCLUDE THIS CODE IN YOUR PREFIX HEADER.
-// #include "FZPlatformsHeader.h"
-// #define FZ_OS kFZPLATFORM_IOS_GL_2
-// //#define FZ_OS kFZPLATFORM_MAC
-// ...
 
 #endif

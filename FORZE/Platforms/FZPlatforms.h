@@ -31,35 +31,39 @@
  */
 
 #include "FZPlatformsHeader.h"
-#include "FZTypes.h"
-
 
 #ifndef FZ_OS
 
-#error "FORZE: Operative system was not specified."
+//#warning FORZE: The operative system was not specified.
+//#warning You must define FZ_OS. See FZPlatformsHeader.h
 
-#else
+#define FZ_OS kFZPLATFORM_MODEL
+#endif
+
+#include "FZTypes.h"
 
 #if (FZ_OS == kFZPLATFORM_IOS_GL_1)
 #define FZ_OS_MOBILE 1
-#import "iOSGL1_support.h"
+#include "iOSGL1_support.h"
 
 #elif (FZ_OS == kFZPLATFORM_IOS_GL_2)
 #define FZ_OS_MOBILE 1
-#import "iOSGL2_support.h"
+#include "iOSGL2_support.h"
 
 #elif (FZ_OS == kFZPLATFORM_MAC)
 #define FZ_OS_DESKTOP 1
-#import "macosx_support.h"
+#include "macosx_support.h"
 
 #elif (FZ_OS == kFZPLATFORM_PSVITA)
-#import "psvita_support.h"
+#include "psvita_support.h"
+
+#elif (FZ_OS == kFZPLATFORM_MODEL)
+#include "model_support.h"
 
 #else
 
 #error "FORZE: Invalid operative system."
 
-#endif
 #endif
 
 #include "FZDefaultOpenGLAPI.h"
