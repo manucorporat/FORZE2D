@@ -124,11 +124,13 @@ namespace FORZE {
         FZ_ASSERT(filename != NULL, "Filename can not be NULL.");
         FZ_ASSERT(absolutePath != NULL, "AbsolutePath must be a valid pointer.");
 
-        int u;
-        if(suffix == NULL) 
-            u = sprintf(absolutePath, "%s/%s", p_resourcesPath, filename);
-        
-        else {
+        if(suffix == NULL) {
+            if(filename[0] == '/')
+                strcpy(absolutePath, filename);
+            else
+                sprintf(absolutePath, "%s/%s", p_resourcesPath, filename);
+            
+        } else {
             // GET EXTENSION
             char *extension = strchr(filename, '.');
             
@@ -138,12 +140,14 @@ namespace FORZE {
             memcpy(name, filename, nameLength);
             name[nameLength] = '\0';
 
-            // BUILD 
-            u = sprintf(absolutePath, "%s/%s%c%s%s", p_resourcesPath, name, FZ_IO_SUBFIX_CHAR, suffix, extension);
+            // BUILD
+            if(filename[0] == '/')
+                sprintf(absolutePath, "%s%c%s%s", name, FZ_IO_SUBFIX_CHAR, suffix, extension);
+            else
+                sprintf(absolutePath, "%s/%s%c%s%s", p_resourcesPath, name, FZ_IO_SUBFIX_CHAR, suffix, extension);
             
             delete [] name;
         }
-        FZ_ASSERT(u > 0, "Error generating absolute path. sprintf().");
     }
     
     
@@ -166,14 +170,12 @@ namespace FORZE {
     void ResourcesManager::getPath(const char *filename, fzUInt priority, char *absolutePath, fzUInt *factor) const
     {
         *factor = 0;
-        if(priority < m_nuRules)
-        {
+        if(priority < m_nuRules) {
             // RULES
             _generateAbsolutePath(filename, m_rules[priority].flag, absolutePath);
             *factor = m_rules[priority].factor;
             
-        }else
-        {
+        }else{
             // FACTOR
             fzUInt preferedFactor = Director::Instance().getResourcesFactor();
             fzInt tmpFactor = m_nuRules-priority + preferedFactor;
