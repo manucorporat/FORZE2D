@@ -33,6 +33,7 @@
 
 #include "FZTypes.h"
 #include "FZAllocator.h"
+#include "FZSelectors.h"
 
 
 namespace FORZE {
@@ -40,7 +41,7 @@ namespace FORZE {
 #define FZRULE_MAXSIZE 8
 #define FZRULE_NU 6
 
-    class ResourcesManager
+    class ResourcesManager : public SELProtocol
     {
     private:
         static ResourcesManager* p_instance;

@@ -33,6 +33,7 @@
 
 #include "FZTypes.h"
 #include "FZConfig.h"
+#include "FZSelectors.h"
 #include STL_MAP
 
 using namespace STD;
@@ -45,7 +46,7 @@ namespace FORZE {
      * Once the Texture2D is loaded, the next time it will return
      * a reference of the previously loaded Texture2D reducing GPU & CPU memory
      */
-    class FontCache
+    class FontCache : public SELProtocol
     {
     private:
         // Simplified typedefs

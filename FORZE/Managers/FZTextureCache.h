@@ -32,6 +32,7 @@
  */
 
 #include "FZConfig.h"
+#include "FZSelectors.h"
 #if FZ_STL_CPLUSPLUS11
 #include STL_UNORDERED_MAP
 #else
@@ -48,7 +49,7 @@ namespace FORZE {
     //! Singleton that handles the loading of textures.
     //! Once the texture is loaded, the next time it will return
     //! a reference of the previously loaded texture reducing GPU & CPU memory
-    class TextureCache
+    class TextureCache : public SELProtocol
     {
     private:
         // Simplified typedefs

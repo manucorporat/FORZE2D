@@ -31,6 +31,7 @@
  */
 
 #include "FZPlatforms.h"
+#include "FZSelectors.h"
 
 
 namespace FORZE {
@@ -54,7 +55,7 @@ namespace FORZE {
 
     
     /** Configuration contains some openGL variables */
-    class DeviceConfig
+    class DeviceConfig : public SELProtocol
     {
     private:
         static DeviceConfig* p_instance;
