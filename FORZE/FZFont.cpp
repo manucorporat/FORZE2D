@@ -108,7 +108,7 @@ namespace FORZE {
             loadFNTData(buffer.getPointer());
             buffer.free();
             
-        } catch(std::exception &error) {
+        } catch(...) {
             buffer.free();
             throw;
         }
@@ -124,7 +124,7 @@ namespace FORZE {
             loadTTFData(buffer.getPointer(), fontHeight);
             buffer.free();
             
-        } catch(std::exception &error) {
+        } catch(...) {
             buffer.free();
             throw;
         }

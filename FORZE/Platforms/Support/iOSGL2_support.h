@@ -45,7 +45,6 @@
 
 #pragma mark - OpenGL settings
 
-#define FZ_GL_PVRTC 1
 #define FZ_GL_SHADERS 1
 
 

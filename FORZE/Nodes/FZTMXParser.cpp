@@ -61,7 +61,7 @@ namespace FORZE {
             parseTMXData(data.getPointer());
             data.free();
             
-        } catch(std::exception& error) {
+        } catch(...) {
             data.free();
             throw;
         }

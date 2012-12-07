@@ -135,10 +135,8 @@ namespace FORZE {
         { kFZTextureFormat_LA88,        GL_LUMINANCE_ALPHA, FZ_P_88,    16,  false },
         { kFZTextureFormat_A8,          GL_ALPHA,           FZ_P_8,     8,	 false },
         { kFZTextureFormat_L8,          GL_LUMINANCE,       FZ_P_8,     8,	 false }
-#if FZ_GL_PVRTC
         , { kFZTextureFormat_PVRTC4, 0, 0, 4, true}
         , { kFZTextureFormat_PVRTC2, 0, 0, 2, true}
-#endif
     };
     
     static const fzTextureInfo _textureFormat_hash[] =
@@ -152,7 +150,7 @@ namespace FORZE {
         { FZ_T_LA88,        16,  false },
         { FZ_T_A8,          8,	 false },
         { FZ_T_L8,          8,	 false }
-#if FZ_GL_PVRTC
+#if defined(GL_IMG_texture_compression_pvrtc) && GL_IMG_texture_compression_pvrtc
         , { GL_COMPRESSED_RGBA_PVRTC_4BPPV1_IMG, 4, true}
         , { GL_COMPRESSED_RGBA_PVRTC_2BPPV1_IMG, 2, true}
 #endif
@@ -227,13 +225,17 @@ namespace FORZE {
                          ptr);
             
 
-        }else if(DeviceConfig::Instance().isPVRTCSupported())
-        {
+        }else if(!DeviceConfig::Instance().isPVRTCSupported())
+        {            
             // COMPRESSED TEXTURE
             glCompressedTexImage2D(GL_TEXTURE_2D, level,
                                    textureInfo.openGLFormat,
                                    width, height, 0, packetSize, ptr);
+        }else{
+            
+            FZ_RAISE("Texture2D: PVRTC textures are not supported.");
         }
+        
         CHECK_GL_ERROR_DEBUG();
     }
     
@@ -345,8 +347,10 @@ namespace FORZE {
             while (true) {
                 
                 ResourcesManager::Instance().getPath(filename, step, absolutePath, &factor);
-                if(factor == 0)
-                    FZ_RAISE("Texture2D:PNG:IO: File not found.");
+                if(factor == 0) {
+                    char *message = FZT("Texture2D:PNG:IO: \"%s\" not found.", filename);
+                    FZ_RAISE(message);
+                }
                 
                 file = fopen(absolutePath, "rb");
                 if(file) {
@@ -474,16 +478,21 @@ namespace FORZE {
         
         // UPLOADING TEXTURE DATA TO GPU
         setPixelFormat(pixelFormat, getDefaultTextureFormat());
-        upload(pixelFormat,
-               0,
-               width,
-               height,
-               0,
-               pixels
-               );
         
-        delete [] buffer;
-        
+        try {
+            upload(pixelFormat,
+                   0,
+                   width,
+                   height,
+                   0,
+                   pixels
+                   );
+            delete [] buffer;
+            
+        } catch(...) {
+            delete [] buffer;
+            throw;
+        }
         
         m_width = width;
         m_height = height;
@@ -531,7 +540,7 @@ namespace FORZE {
             loadPVRData(buffer2.getPointer());
             buffer2.free();
             
-        } catch(std::exception &error) {
+        } catch(...) {
             buffer2.free();
             throw;
         }
@@ -584,6 +593,7 @@ namespace FORZE {
         if(tableIndex == MAX_PVR_FORMATS)
             FZ_RAISE_STOP("Texture2D:PVR: Unsupported format. Re-encode it with a OpenGL pixel format variant.");
         
+        
         // GET TEXTURE METADATA
         setPixelFormat(pixelFormat, getDefaultTextureFormat());
         m_size      = fzSize(width, height);
@@ -607,7 +617,12 @@ namespace FORZE {
             }else{
                 // If NPOT is not supported, the texture will be expanded.
                 unsigned char *expanded = expand(pixelFormat, width, height, widthPOT, heightPOT, textureData);
-                upload(pixelFormat, 0, widthPOT, heightPOT, 0, expanded);
+                try {
+                    upload(pixelFormat, 0, widthPOT, heightPOT, 0, expanded);
+                } catch(...) {
+                    delete [] expanded;
+                    throw;
+                }
                 m_width  = widthPOT;
                 m_height = heightPOT;
                 delete [] expanded;

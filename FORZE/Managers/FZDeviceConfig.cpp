@@ -106,12 +106,8 @@ namespace FORZE {
         m_supportsNPOT       = checkForGLExtension(FZ_EXTENSION_POT);
         m_supportsBGRA8888   = checkForGLExtension(FZ_EXTENSION_BGRA);
         m_supportsDiscardFB  = checkForGLExtension(FZ_EXTENSION_DISCARD_FRAMEBUFFER);
-#if FZ_GL_PVRTC
         m_supportsPVRTC      = checkForGLExtension(FZ_EXTENSION_PVRTC);
-#else
-        m_supportsPVRTC      = false;
-#endif
-        
+
         // USER INTERFACE IDIOM
         if(interface == -1)
             m_userInterfaceIdiom = static_cast<fzUserInterface>(fzDevice_getUserInterfaceIdiom());
