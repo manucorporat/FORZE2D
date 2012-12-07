@@ -27,6 +27,9 @@
  @author Manuel Martínez-Almeida
  */
 
+#include <stdio.h>
+#include <string.h>
+
 #include "FZMath.h"
 #include "FZMacros.h"
 #include "neon_support.h"

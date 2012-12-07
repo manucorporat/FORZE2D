@@ -28,14 +28,15 @@
  @author Manuel Martínez-Almeida
  */
 
+#include <string.h>
+#include <stdlib.h>
+
 #include "FZMacros.h"
 #include "FZDataStore.h"
 #include "FZIO.h"
 #include "FZData.h"
 #include "rapidxml.hpp"
 #include "rapidxml_print.hpp"
-#include <cstring>
-#include <cstdlib>
 
 
 #define XML_FILENAME "forze2d_datastore.xml"
@@ -69,7 +70,6 @@ namespace FORZE {
         {
             char buffer[1024];
             fzDevice_getPersistentPath(XML_FILENAME, buffer, 1024);
-            strcat(buffer, XML_FILENAME);
             p_path = fzStrcpy(buffer);
         }
         

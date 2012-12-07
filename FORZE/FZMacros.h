@@ -31,12 +31,12 @@
  @author Manuel Martínez-Almeida
  */
 
-#include <math.h>
 #include <assert.h>
 #include <stdexcept>
+
+#include "FZPlatforms.h"
 #include "FZConfig.h"
 #include "FZCommon.h"
-#include "FZPlatforms.h"
 
 
 //! @def FZ_SWAP
@@ -73,7 +73,9 @@ __X__ = __Y__; __Y__ = temp;        \
 //! Built-in custom assert
 #define FZ_ASSERT(__CONDITION__, __MESSAGE__) { \
 if (!(__CONDITION__)) { \
-printf("\nFORZE_E: ASSERTION: Line %d - \"" __FILE__ "\" \n * CONDITION: \"" #__CONDITION__ "\" \n * MESSAGE: \"" __MESSAGE__ "\" \n", __LINE__);\
+printf("\n\nFORZE_E: ASSERTION: Line %d - \"" __FILE__ "\"\n" \
+       " - CONDITION: \"" #__CONDITION__ "\"\n" \
+       " - MESSAGE: \"" __MESSAGE__ "\" \n", __LINE__); \
 abort(); \
 }}
 

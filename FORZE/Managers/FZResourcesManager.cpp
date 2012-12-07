@@ -28,6 +28,10 @@
  @author Manuel Martínez-Almeida
  */
 
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
 #include "FZResourcesManager.h"
 #include "FZDeviceConfig.h"
 #include "FZDirector.h"

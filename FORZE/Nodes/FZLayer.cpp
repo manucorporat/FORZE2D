@@ -28,7 +28,6 @@
  @author Manuel Martínez-Almeida
  */
 
-//#import <stdarg.h>
 #include "FZLayer.h"
 #include "FZMacros.h"
 #include "FZDirector.h"

@@ -31,8 +31,6 @@
  @author Manuel Martínez-Almeida
  */
 
-#include "FZConfig.h"
-#include "FZTypes.h"
 #include "FZSpriteFrame.h"
 #include "FZLifeCycle.h"
 #include STL_VECTOR

@@ -27,7 +27,6 @@
  @author Manuel Martínez-Almeida
  */
 
-#include <stdarg.h>
 #include "FZHUD.h"
 #include "FZSprite.h"
 #include "FZLabel.h"

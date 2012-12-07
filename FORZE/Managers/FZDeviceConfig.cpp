@@ -27,6 +27,7 @@
  @author Manuel Martínez-Almeida
  */
 
+#include <string.h>
 #include "FZDeviceConfig.h"
 #include "FZMacros.h"
 

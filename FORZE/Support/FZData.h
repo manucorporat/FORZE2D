@@ -42,7 +42,6 @@
  *
  */
 
-#include <stdint.h>
 #include "FZAllocator.h"
 
 

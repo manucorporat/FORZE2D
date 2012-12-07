@@ -30,8 +30,6 @@
  @author Manuel Martínez-Almeida
  */
 
-#include <math.h>
-#include <stdio.h>
 #include "FZPlatformsHeader.h"
 #include "FZTypes.h"
 

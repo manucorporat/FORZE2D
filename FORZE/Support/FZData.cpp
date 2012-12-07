@@ -41,6 +41,8 @@
  */
 
 #include <zlib.h>
+#include <string.h>
+#include <stdlib.h>
 #include <new>
 
 #include "FZData.h"

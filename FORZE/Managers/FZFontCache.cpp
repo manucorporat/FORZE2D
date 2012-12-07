@@ -28,6 +28,8 @@
  @author Manuel Martínez-Almeida
  */
 
+#include <string.h>
+
 #include "FZFontCache.h"
 #include "FZFont.h"
 #include "FZMacros.h"

@@ -28,6 +28,10 @@
  @author Manuel Martínez-Almeida
  */
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 #include "FZTexture2D.h"
 #include "FZMacros.h"
 #include "FZAllocator.h"

@@ -30,8 +30,8 @@
  @author Manuel Martínez-Almeida
  */
 
-#include <stdio.h>
 #include <stdint.h>
+#include <stddef.h>
 #include <float.h>
 #include <math.h>
 #include "FZConfig.h"

@@ -30,7 +30,7 @@
 
 #include <zlib.h>
 #include <stdio.h>
-#include <cstring>
+#include <string.h>
 
 #include "FZIO.h"
 #include "FZBitOrder.h"

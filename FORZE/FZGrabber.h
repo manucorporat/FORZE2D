@@ -31,7 +31,6 @@
  @author Manuel Martínez-Almeida
  */
 
-#include "FZPlatforms.h"
 #include "FZTexture2D.h"
 
 

@@ -31,32 +31,10 @@
  */
 
 #include "FZTypes.h"
-#include <stdlib.h>
 
 
 namespace FORZE
 {   
-#if 0
-    class Allocator
-    {
-    public:
-        virtual Allocator* getAllocator(void *ptr) {
-            return (Allocator*)((size_t)ptr - sizeof(void*));
-        }
-        virtual void *allocate(size_t size) {
-            void *allocation = malloc(size+1);
-            void **ptrs = reinterpret_cast<void**>(allocation);
-            ptrs[0] = this;
-            return &ptrs[1];
-            
-        }
-        virtual void deallocate(void *ptr) {
-            free(ptr);
-        }
-    };
-#endif
-    
-
     class fzBuffer
     {
     private:

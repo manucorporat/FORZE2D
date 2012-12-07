@@ -28,6 +28,8 @@
  @author Manuel Martínez-Almeida
  */
 
+#include <stdlib.h>
+
 #include "FZGrid.h"
 #include "FZTexture2D.h"
 #include "FZMacros.h"

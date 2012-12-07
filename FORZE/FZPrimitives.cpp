@@ -28,14 +28,9 @@
  @author Manuel Martínez-Almeida
  */
 
-#include <math.h>
-#include <stdlib.h>
-#include <string.h>
-
-#include "FZPrimitives.h"
 #include "FZMacros.h"
+#include "FZPrimitives.h"
 #include "FZGLState.h"
-#include "FZPlatforms.h"
 #include "FZShaderCache.h"
 #include "FZDirector.h"
 #include "FZMath.h"
