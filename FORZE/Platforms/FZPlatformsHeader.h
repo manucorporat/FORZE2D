@@ -32,12 +32,17 @@
 
 #ifdef __cplusplus
 #if __cplusplus <= 199711L
-#error "This library needs at least a C++11 compliant compiler."
-#error "Set the C++ Language Dialect to [-std=c++11]"
+
+#error This library needs at least a C++11 compliant compiler.
+#error Try to change the "C++ Language Dialect" setting to [-std=c++11]
 
 #endif
+
 #else
-#error "C++ is not available. Maybe the compilers is not compiling the header files as C++ files."
+
+#error C++ is not available. Maybe the compiler is not compiling the headers as C++ files.
+#error Try to change the "Compile Sources As" setting.
+
 #endif
 
 

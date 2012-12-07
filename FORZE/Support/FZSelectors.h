@@ -40,10 +40,6 @@ namespace FORZE
     public:
         virtual ~SELProtocol() {}
         virtual void update(fzFloat) {};
-        virtual void tick(fzFloat) {};
-        virtual void callfunc() {};
-        virtual void callfunc(void*) {};
-        virtual void callfunc(void*, void*) {};
     };
     
     // Types

@@ -109,7 +109,8 @@ namespace FORZE {
         //! Tap events are a cross platform solution. It's equivalent to:
         //! kFZEventType_Touch in mobile devices (iPhone, Android...)
         //! kFZEventType_Mouse in desktop devices (Mac OSX, Windows, Linux)
-        kFZEventType_Tap = kFZEventType_Touch | kFZEventType_Mouse
+        kFZEventType_Tap = kFZEventType_Touch | kFZEventType_Mouse,
+        kFZEventType_All = 0xffff
     };
         
     class EventDelegate;
@@ -160,11 +161,6 @@ namespace FORZE {
         
         Event(void *owner, intptr_t identifier, fzEventType type, fzEventState state, fzPoint point, fzFloat scalar)
         : Event(owner, identifier, type, state, point.x, point.y, scalar) {}
-
-        
-        Event(void *owner, intptr_t identifier, fzEventType type, fzEventState state, fzPoint3 point3)
-        : Event(owner, identifier, type, state, point3.x, point3.y, point3.z) {}
-      
       
         Event(void *owner, intptr_t identifier, fzEventType type, fzEventState state)
         : Event(owner, identifier, type, state, 0, 0, 0) {}

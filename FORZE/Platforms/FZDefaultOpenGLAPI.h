@@ -155,7 +155,6 @@
 #endif
 
 
-
 // EXTENSIONS
 #ifndef FZ_EXTENSION_PVRTC
 #define FZ_EXTENSION_PVRTC NULL
