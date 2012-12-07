@@ -93,6 +93,11 @@ namespace FORZE {
         
         //! Removes all the fonts stored in the cache.
         void removeAllFonts();
+        
+        
+        const map<int32_t, Font*>& getFonts() const {
+            return m_fonts;
+        }
     };
 }
 #endif

@@ -104,6 +104,11 @@ namespace FORZE {
         
         //! Removes all the textures stored in the cache.
         void removeAllTextures();
+        
+        
+        const map<int32_t, Texture2D*>& getTextures() const {
+            return m_textures;
+        }
     };
 }
 #endif

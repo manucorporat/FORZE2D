@@ -149,6 +149,12 @@ namespace FORZE {
         //! This method is used internally to track the incoming events.
         void catchEvent(const Event& newEvent);
         
+        
+        const list<Event>& getEvent() const {
+            return m_events;
+        }
+        
+        
         void cancelAllEvents();
         
         void setAccelGyroInterval(fzFloat interval);
