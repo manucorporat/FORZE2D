@@ -81,7 +81,7 @@ namespace FORZE {
     }
     
     
-    void ResourcesManager::addRule(const char *deviceCode, const char *flag, fzFloat factor)
+    void ResourcesManager::addRule(const char *deviceCode, const char *flag, fzUInt factor)
     {
         FZ_ASSERT(deviceCode, "Device code can not be NULL.");
         FZ_ASSERT(flag, "Flag can not be NULL.");
@@ -113,13 +113,13 @@ namespace FORZE {
             memcpy(m_rules[m_nuRules].flag, flag, flagLength+1);
             m_rules[m_nuRules].factor = factor;
             
-            FZLOGINFO("ResourcesManager: New rule:\"%c%s\" Factor:%0.1f.", FZ_IO_SUBFIX_CHAR, m_rules[m_nuRules].flag, m_rules[m_nuRules].factor);
+            FZLOGINFO("ResourcesManager: New rule:\"%c%s\" Factor:%d.", FZ_IO_SUBFIX_CHAR, m_rules[m_nuRules].flag, m_rules[m_nuRules].factor);
             ++m_nuRules;
         }
     }
     
     
-    void ResourcesManager::generateAbsolutePath(const char *filename, const char *suffix, char *absolutePath) const
+    void ResourcesManager::_generateAbsolutePath(const char *filename, const char *suffix, char *absolutePath) const
     {
         FZ_ASSERT(filename != NULL, "Filename can not be NULL.");
         FZ_ASSERT(absolutePath != NULL, "AbsolutePath must be a valid pointer.");
@@ -151,14 +151,14 @@ namespace FORZE {
     {
         FZ_ASSERT(factor <= 99, "Factor is out of bounds [0, 99]");
         
-        if(factor == 1)
-            generateAbsolutePath(filename, nullptr, absolutePath);
+        if(factor == 1 || factor == 0)
+            _generateAbsolutePath(filename, nullptr, absolutePath);
         
         else {
             char suffix[4];
             sprintf(suffix, "x%d", factor);
             
-            generateAbsolutePath(filename, suffix, absolutePath);
+            _generateAbsolutePath(filename, suffix, absolutePath);
         }
     }
 
@@ -169,7 +169,7 @@ namespace FORZE {
         if(priority < m_nuRules)
         {
             // RULES
-            generateAbsolutePath(filename, m_rules[priority].flag, absolutePath);
+            _generateAbsolutePath(filename, m_rules[priority].flag, absolutePath);
             *factor = m_rules[priority].factor;
             
         }else
@@ -188,7 +188,7 @@ namespace FORZE {
     fzBuffer ResourcesManager::loadResource(const char *filename, fzUInt *outFactor) const
     {
         FZ_ASSERT(filename != NULL, "Filename can not be NULL.");
-        FZ_ASSERT(filename != NULL, "outFactor can not be NULL.");
+        FZ_ASSERT(outFactor != NULL, "outFactor can not be NULL.");
 
         // REMOVING FORCED FLAGS
         char *filenameCpy = fzStrcpy(filename);
@@ -206,14 +206,14 @@ namespace FORZE {
             
             if(factor == 0) {
                 FZLOGERROR("IO: \"%s\" not found.", filename);
-                free(filenameCpy);
+                delete filenameCpy;
                 return fzBuffer::empty();
             }
 
             fzBuffer buffer = IO::loadFile(absolutePath);
             if(!buffer.isEmpty()) {
                 *outFactor = factor;
-                free(filenameCpy);
+                delete filenameCpy;
                 return buffer;
             }
             ++priority;
@@ -233,5 +233,39 @@ namespace FORZE {
             FZLOGERROR("IO: \"%s\" not found.", filename);
         
         return buffer;
+    }
+    
+    
+    void ResourcesManager::checkFile(const char* filename) const
+    {
+        FZ_ASSERT(filename != NULL, "Filename can not be NULL.");
+        
+        // REMOVING FORCED FLAGS
+        char *filenameCpy = fzStrcpy(filename);
+        IO::removeFileSuffix(filenameCpy);
+        
+        // LOOK FOR TEXTURE
+        char absolutePath[512];
+        fzUInt factor, priority = 0;
+        
+        FZLog("ResourcesManager:");
+        while (true) {
+            
+            // Get texture path for priority
+            getPath(filenameCpy, priority, absolutePath, &factor);
+            
+            if(factor == 0)
+                return;
+            
+            char *file = strrchr(absolutePath, '/')+1;
+            if(IO::checkFile(absolutePath))
+                printf(" - NOT FOUND: %s\n", file);
+            else
+                printf(" - FOUND: %s\n", file);
+
+            ++priority;
+        }
+        
+        delete filenameCpy;
     }
 }

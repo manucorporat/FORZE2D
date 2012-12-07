@@ -34,7 +34,6 @@
 
 #include "FZIO.h"
 #include "FZBitOrder.h"
-
 #include "FZDeviceConfig.h"
 #include "FZMacros.h"
 #include "FZDirector.h"
@@ -77,6 +76,20 @@ namespace FORZE {
         buffer[size] = '\0';
         
         return fzBuffer(buffer, size+1);
+    }
+    
+    
+    bool IO::checkFile(const char *absolutePath)
+    {
+        if(absolutePath[0] == '\0' || absolutePath == NULL)
+            return false;
+        
+        FILE *f = fopen(absolutePath, "rb");
+        if( f == NULL ) {
+            fclose(f);
+            return true;
+        } else
+            return false;
     }
     
     

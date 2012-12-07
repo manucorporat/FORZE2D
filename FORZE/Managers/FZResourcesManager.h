@@ -48,14 +48,13 @@ namespace FORZE {
 
         struct {
             char flag[FZRULE_MAXSIZE];
-            fzFloat factor;
+            fzUInt factor;
         } m_rules[FZRULE_NU];
         
         fzUInt m_nuRules;
         char *p_resourcesPath;
 
-        void generateAbsolutePath(const char *filename, const char *suffix, char *absolutePath) const;
-        void generateAbsolutePath(const char *filename, fzUInt factor, char *absolutePath) const;
+        void _generateAbsolutePath(const char *filename, const char *suffix, char *absolutePath) const;
         
         
     protected:
@@ -70,13 +69,14 @@ namespace FORZE {
         //! Gets and allocates the singleton.
         static ResourcesManager& Instance();
         
+        void generateAbsolutePath(const char *filename, fzUInt factor, char *absolutePath) const;
         
         //! Low level method to get the absolute resource path.
         void getPath(const char *filename, fzUInt priority, char *absolutePath, fzUInt *factor) const;
         
         
         //! Adding new rules, you can load specified files for each platform version.
-        void addRule(const char *device, const char *prefix, fzFloat factor = 1);    
+        void addRule(const char *device, const char *prefix, fzUInt factor = 1);
         
         
         //! High level method to load a file.
@@ -86,6 +86,8 @@ namespace FORZE {
         
         //! High level method to load a file without scaling factor.
         fzBuffer loadResource(const char *filename) const;
+        
+        void checkFile(const char* file) const;
     };
 }
 #endif

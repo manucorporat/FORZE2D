@@ -74,9 +74,6 @@ namespace FORZE {
         TextureCache(const TextureCache& ) = delete;
         TextureCache &operator = (const TextureCache& ) ;
         
-        // Destructor
-        ~TextureCache();
-        
         
     public:
         //! Gets and allocates the singleton.

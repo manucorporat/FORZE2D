@@ -48,6 +48,9 @@ namespace FORZE {
         static fzBuffer loadFile(const char *absolutePath);
         
         
+        static bool checkFile(const char *absolutePath);
+        
+        
         //! Creates a file (overwriting mode "w") at the absolute path with the specified data.
         //! @param data is a NULL-terminated char string (data to be written).
         //! @param absolutePath is a NULL-terminated char string.
