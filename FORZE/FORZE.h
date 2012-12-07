@@ -29,10 +29,10 @@
  */
 
 // BASE
+#include "FZPlatforms.h"
 #include "FZCommon.h"
 #include "FZAllocator.h"
 #include "FZTypes.h"
-#include "FZPlatforms.h"
 #include "FZConfig.h"
 #include "FZMacros.h"
 #include "FZProtocols.h"
@@ -92,12 +92,14 @@
 
 
 // OTHERS
+#include "FZIO.h"
 #include "FZFont.h"
 #include "FZEvent.h"
 #include "FZFilter.h"
 #include "FZGrid.h"
 #include "FZAnimation.h"
 #include "FZSpriteFrame.h"
+#include "FZConsole.h"
 
 
 #pragma mark - HELPER MACROS
