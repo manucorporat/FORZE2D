@@ -35,34 +35,32 @@
 #if FZ_GL_SHADERS
 
 const char __fz_frag_TEX[] =
-"#ifdef GL_ES \n\
-precision lowp float; \n\
-varying mediump vec2 v_texCoord; \n\
-uniform lowp sampler2D u_texture; \n\
-#else \n\
-varying vec2 v_texCoord; \n\
-uniform sampler2D u_texture; \n\
-#endif \n\
-\
-void main() { \n\
-gl_FragColor = texture2D(u_texture, v_texCoord); \n\
-}";
+"#ifdef GL_ES \n"
+"precision lowp float; \n"
+"varying mediump vec2 v_texCoord; \n"
+"uniform lowp sampler2D u_texture; \n"
+"#else \n"
+"varying vec2 v_texCoord; \n"
+"uniform sampler2D u_texture; \n"
+"#endif \n"
+"void main() { \n"
+"gl_FragColor = texture2D(u_texture, v_texCoord); \n"
+"}";
 
 
 const char __fz_vert_mat_TEX[] =
-"attribute vec4 a_position; \n\
-attribute vec2 a_texCoord; \n\
-uniform	mat4 u_MVMatrix; \n\
-#ifdef GL_ES \n\
-varying mediump vec2 v_texCoord; \n\
-#else \n\
-varying vec2 v_texCoord; \n\
-#endif \n\
-\
-void main() { \n\
-    gl_Position = u_MVMatrix * a_position; \n\
-    v_texCoord = a_texCoord; \n\
-}";
+"attribute vec4 a_position; \n"
+"attribute vec2 a_texCoord; \n"
+"uniform	mat4 u_MVMatrix; \n"
+"#ifdef GL_ES \n"
+"varying mediump vec2 v_texCoord; \n"
+"#else \n"
+"varying vec2 v_texCoord; \n"
+"#endif \n"
+"void main() { \n"
+"    gl_Position = u_MVMatrix * a_position; \n"
+"    v_texCoord = a_texCoord; \n"
+"}";
 
 
 #endif

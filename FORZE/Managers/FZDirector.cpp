@@ -991,8 +991,8 @@ namespace FORZE {
             
             if(m_scenesStack.size() == 0)
             {
-                FZLOGERROR("Director: A running scene is expected before applicationLaunched() is called.");
-                FZLOGERROR("Director: You should call Director::Instance().runWithScene( <YOUR FORZE::Scene> ).\n");
+                FZLOGERROR("Director: A running scene is expected before applicationLaunched() is called. \n"
+                           " - You should call Director::Instance().runWithScene( <YOUR FORZE::Scene> ).\n");
             }
             startAnimation();
         }

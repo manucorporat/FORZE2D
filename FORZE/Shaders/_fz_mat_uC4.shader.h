@@ -35,25 +35,23 @@
 #if FZ_GL_SHADERS
 
 const char __fz_frag_uC4[] =
-"#ifdef GL_ES \n\
-precision lowp float; \n\
-uniform	lowp vec4 u_color; \n\
-#else \n\
-uniform	vec4 u_color; \n\
-#endif \n\
-\
-void main() { \n\
-gl_FragColor = u_color; \n\
-}";
+"#ifdef GL_ES \n"
+"precision lowp float; \n"
+"uniform lowp vec4 u_color; \n"
+"#else \n"
+"uniform vec4 u_color; \n"
+"#endif \n"
+"void main() { \n"
+"gl_FragColor = u_color; \n"
+"}";
 
 
 const char __fz_vert_mat_uC4[] =
-"attribute vec4 a_position; \n\
-uniform	mat4 u_MVMatrix; \n\
-\
-void main() { \n\
-    gl_Position = u_MVMatrix * a_position; \n\
-}";
+"attribute vec4 a_position; \n"
+"uniform	mat4 u_MVMatrix; \n"
+"void main() { \n"
+"    gl_Position = u_MVMatrix * a_position; \n"
+"}";
 
 #endif
 #endif

@@ -99,6 +99,8 @@ namespace FORZE {
         
         //! Returns kerning space betwen two characters.
         fzFloat getKerning(unsigned char first, unsigned char second) const;
+        
+        void log() const;
     };
 
 }

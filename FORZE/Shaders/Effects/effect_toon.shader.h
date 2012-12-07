@@ -35,20 +35,19 @@
 #if FZ_GL_SHADERS
 
 const char effect_toon_frag[] =
-"#ifdef GL_ES \n\
-precision mediump float; \n\
-varying mediump vec2 v_texCoord; \n\
-uniform mediump float u_factor; \n\
-uniform lowp sampler2D u_texture; \n\
-#else \n\
-varying vec2 v_texCoord; \n\
-uniform float u_factor; \n\
-uniform sampler2D u_texture; \n\
-#endif \n\
-\
-void main() { \n\
-    gl_FragColor.rgb = floor(texture2D(u_texture, v_texCoord).rgb * u_factor) / u_factor; \n\
-}";
+"#ifdef GL_ES \n"
+"precision mediump float; \n"
+"varying mediump vec2 v_texCoord; \n"
+"uniform mediump float u_factor; \n"
+"uniform lowp sampler2D u_texture; \n"
+"#else \n"
+"varying vec2 v_texCoord; \n"
+"uniform float u_factor; \n"
+"uniform sampler2D u_texture; \n"
+"#endif \n"
+"void main() { \n"
+"    gl_FragColor.rgb = floor(texture2D(u_texture, v_texCoord).rgb * u_factor) / u_factor; \n"
+"}";
 
 
 

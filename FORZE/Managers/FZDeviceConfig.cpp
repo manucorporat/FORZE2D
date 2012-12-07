@@ -130,26 +130,33 @@ namespace FORZE {
     
     void DeviceConfig::logDeviceInfo() const
     {
-        FZLOGINFO("****************** DEVICE INFO ******************");
-        FZLOGINFO("DEVICE CODE:                     %s", getDeviceCode());
-        FZLOGINFO("USER INTERFACE IDIOM:            %s", userInterfaceIdiomToText(getUserInterfaceIdiom()));
-       // FZLOGINFO("OS Version: 0x%08x", OSVersion_);
-        FZLOGINFO("GL_VENDOR:                       %s", glGetString (GL_VENDOR) );
-        FZLOGINFO("GL_RENDERER:                     %s", glGetString (GL_RENDERER) );
-        FZLOGINFO("GL_VERSION:                      %s", glGetString (GL_VERSION) );
-#if FZ_GL_SHADERS
-        FZLOGINFO("GL_SHADING_LANGUAGE_VERSION:     %s", glGetString (GL_SHADING_LANGUAGE_VERSION) );
-#endif
+        FZLOGINFO("DeviceConfig: System Info:\n"
+                  " - DEVICE CODE:                     %s\n"
+                  " - USER INTERFACE IDIOM:            %s\n"
+                  " - GL_VENDOR:                       %s\n"
+                  " - GL_RENDERER:                     %s\n"
+                  " - GL_VERSION:                      %s\n"
+                  " - GL_SHADING_LANGUAGE_VERSION:     %s\n"
+                  " - GL_MAX_TEXTURE_SIZE:             %d %cx%d\n"
+                  " - GL_MAX_SAMPLES:                  %d\n"
+                  " - GL supports PVRTC textures:      %s\n"
+                  " - GL supports BGRA8888 textures:   %s\n"
+                  " - GL supports discard_framebuffer: %s\n"
+                  " - VBO streaming in TextureAtlas:   %s\n"
+                  , getDeviceCode(),
+                  userInterfaceIdiomToText(getUserInterfaceIdiom()),
+                  glGetString (GL_VENDOR),
+                  glGetString (GL_RENDERER),
+                  glGetString (GL_VERSION),
+                  glGetString (GL_SHADING_LANGUAGE_VERSION),
+                  getMaxTextureSize(), FZ_IO_SUBFIX_CHAR, getMaxFactor(),
+                  getMaxSamplesAllowed(),
+                  boolToText(isPVRTCSupported()),
+                  boolToText(isBGRA8888Supported()),
+                  boolToText(isNPOTSupported()),
+                  boolToText(isDiscardFramebufferSupported()),
+                  boolToText(FZ_VBO_STREAMING));
 
-        FZLOGINFO("GL_MAX_TEXTURE_SIZE:             %d %cx%d", getMaxTextureSize(), FZ_IO_SUBFIX_CHAR, getMaxFactor());
-        FZLOGINFO("GL_MAX_SAMPLES:                  %d", getMaxSamplesAllowed());
-        FZLOGINFO("GL supports PVRTC textures:      %s", boolToText(isPVRTCSupported()));
-        FZLOGINFO("GL supports BGRA8888 textures:   %s", boolToText(isBGRA8888Supported()));
-        FZLOGINFO("GL supports NPOT textures:       %s", boolToText(isNPOTSupported()));
-        FZLOGINFO("GL supports discard_framebuffer: %s", boolToText(isDiscardFramebufferSupported()));
-        
-        FZLOGINFO("VBO streaming in TextureAtlas:   %s", boolToText(FZ_VBO_STREAMING));
-        FZLOGINFO("*************************************************\n");
     }
     
     const char* DeviceConfig::getDeviceCode() const

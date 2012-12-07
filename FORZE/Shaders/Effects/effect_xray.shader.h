@@ -35,21 +35,20 @@
 #if FZ_GL_SHADERS
 
 const char effect_xray_frag[] =
-"#ifdef GL_ES \n\
-precision lowp float; \n\
-varying mediump vec2 v_texCoord; \n\
-uniform lowp vec3 u_intensity; \n\
-uniform lowp sampler2D u_texture; \n\
-#else \n\
-varying vec2 v_texCoord; \n\
-uniform vec3 u_intensity; \n\
-uniform sampler2D u_texture; \n\
-#endif \n\
-\
-void main() { \n\
-float value = 1.0 - dot(texture2D(u_texture, v_texCoord).rgb, u_intensity); \n\
-gl_FragColor.rgb = vec3(value * 0.8, value, value * 0.96); \n\
-}";
+"#ifdef GL_ES \n"
+"precision lowp float; \n"
+"varying mediump vec2 v_texCoord; \n"
+"uniform lowp vec3 u_intensity; \n"
+"uniform lowp sampler2D u_texture; \n"
+"#else \n"
+"varying vec2 v_texCoord; \n"
+"uniform vec3 u_intensity; \n"
+"uniform sampler2D u_texture; \n"
+"#endif \n"
+"void main() { \n"
+"    float value = 1.0 - dot(texture2D(u_texture, v_texCoord).rgb, u_intensity); \n"
+"    gl_FragColor.rgb = vec3(value * 0.8, value, value * 0.96); \n"
+"}";
 
 #endif
 #endif

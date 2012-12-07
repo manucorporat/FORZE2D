@@ -35,24 +35,23 @@
 #if FZ_GL_SHADERS
 
 const char effect_color_frag[] =
-"#ifdef GL_ES \n\
-precision lowp float; \n\
-varying mediump vec2 v_texCoord; \n\
-uniform lowp float u_brightness; \n\
-uniform lowp float u_contrast; \n\
-uniform lowp sampler2D u_texture; \n\
-#else \n\
-varying vec2 v_texCoord; \n\
-uniform float u_brightness; \n\
-uniform float u_contrast; \n\
-uniform sampler2D u_texture; \n\
-#endif \n\
-\
-void main() { \n\
-    vec3 newColor = texture2D(u_texture, v_texCoord).rgb - 0.5; \n\
-    newColor *= u_contrast; \n\
-    gl_FragColor.rgb = newColor + u_brightness; \n\
-}";
+"#ifdef GL_ES \n"
+"precision lowp float; \n"
+"varying mediump vec2 v_texCoord; \n"
+"uniform lowp float u_brightness; \n"
+"uniform lowp float u_contrast; \n"
+"uniform lowp sampler2D u_texture; \n"
+"#else \n"
+"varying vec2 v_texCoord; \n"
+"uniform float u_brightness; \n"
+"uniform float u_contrast; \n"
+"uniform sampler2D u_texture; \n"
+"#endif \n"
+"void main() { \n"
+"    vec3 newColor = texture2D(u_texture, v_texCoord).rgb - 0.5; \n"
+"    newColor *= u_contrast; \n"
+"    gl_FragColor.rgb = newColor + u_brightness; \n"
+"}";
 
 
 #endif

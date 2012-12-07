@@ -244,6 +244,8 @@ namespace FORZE {
         void draw(fzFloat sX = 1, fzFloat sY = 1) const;
         
         
+        void log() const;
+        
         /** Sets the default pixel format for non-PVR images.
          If the image contains alpha channel, then the options are:
          - generate 32-bit textures:    kFZTexture2DPixelFormat_RGBA8888 (default)

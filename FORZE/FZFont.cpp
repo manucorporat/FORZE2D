@@ -255,4 +255,20 @@ namespace FORZE {
         map<uint16_t, fzFloat>::const_iterator it(m_kerning.find(key));
         return (it == m_kerning.end()) ? 0.0f : it->second;
     }
+    
+    void Font::log() const
+    {
+        printf("FORZE_E: Font ( %p ):\n"
+              " - Texture: %d\n"
+              " - Line height: %f\n"
+              " - Factor: %d\n"
+              " - Chars:", this, p_texture->getName(), m_lineHeight, m_factor);
+        
+        for(int i = 0; i < 256; ++i) {
+            if(m_chars[i].xAdvance > 0)
+                printf("%c", i);
+        }
+        printf("\n\n");
+    }
+    
 }

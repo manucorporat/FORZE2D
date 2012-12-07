@@ -35,31 +35,29 @@
 #if FZ_GL_SHADERS
 
 const char __fz_frag_aC4[] =
-"#ifdef GL_ES \n\
-precision lowp float; \n\
-varying lowp vec4 v_fragmentColor; \n\
-#else \n\
-varying vec4 v_fragmentColor; \n\
-#endif \n\
-\
-void main() { \n\
-	gl_FragColor = v_fragmentColor; \n\
-}";
+"#ifdef GL_ES \n"
+"precision lowp float; \n"
+"varying lowp vec4 v_fragmentColor; \n"
+"#else \n"
+"varying vec4 v_fragmentColor; \n"
+"#endif \n"
+"void main() { \n"
+"	gl_FragColor = v_fragmentColor; \n"
+"}";
 
 
 const char __fz_vert_mat_aC4[] =
-"attribute vec4 a_position; \n\
-attribute vec4 a_color; \n\
-#ifdef GL_ES \n\
-varying lowp vec4 v_fragmentColor; \n\
-#else \n\
-varying vec4 v_fragmentColor; \n\
-#endif \n\
-\
-void main() { \n\
-    gl_Position = a_position; \n\
-	v_fragmentColor = a_color; \n\
-}";
+"attribute vec4 a_position; \n"
+"attribute vec4 a_color; \n"
+"#ifdef GL_ES \n"
+"varying lowp vec4 v_fragmentColor; \n"
+"#else \n"
+"varying vec4 v_fragmentColor; \n"
+"#endif \n"
+"void main() { \n"
+"    gl_Position = a_position; \n"
+"	v_fragmentColor = a_color; \n"
+"}";
 
 #endif
 #endif

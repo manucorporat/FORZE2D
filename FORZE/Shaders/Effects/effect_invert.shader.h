@@ -35,18 +35,17 @@
 #if FZ_GL_SHADERS
 
 const char effect_invert_frag[] =
-"#ifdef GL_ES \n\
-precision lowp float; \n\
-varying mediump vec2 v_texCoord; \n\
-uniform lowp sampler2D u_texture; \n\
-#else \n\
-varying vec2 v_texCoord; \n\
-uniform sampler2D u_texture; \n\
-#endif \n\
-\
-void main() { \n\
-gl_FragColor.rgb = 1.0 - texture2D(u_texture, v_texCoord).rgb; \n\
-}";
+"#ifdef GL_ES \n"
+"precision lowp float; \n"
+"varying mediump vec2 v_texCoord; \n"
+"uniform lowp sampler2D u_texture; \n"
+"#else \n"
+"varying vec2 v_texCoord; \n"
+"uniform sampler2D u_texture; \n"
+"#endif \n"
+"void main() { \n"
+"    gl_FragColor.rgb = 1.0 - texture2D(u_texture, v_texCoord).rgb; \n"
+"}";
 
 #endif
 #endif

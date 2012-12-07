@@ -760,6 +760,17 @@ namespace FORZE {
     }
     
     
+    void Texture2D::log() const
+    {
+        FZLog("Texture2D( %p ):\n"
+              " - ID: %d\n"
+              " - Width: %d\n"
+              " - Height: %d\n"
+              " - ContentSize: {%f, %f}\n"
+              " - Factor: %f\n", this, m_textureID, m_width, m_height,
+              m_size.width, m_size.height, m_factor);
+    }
+    
 #pragma mark - Static methods
     
     void Texture2D::setDefaultTextureFormat(fzTextureFormat format)

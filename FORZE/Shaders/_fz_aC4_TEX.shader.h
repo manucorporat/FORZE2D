@@ -35,39 +35,37 @@
 #if FZ_GL_SHADERS
 
 const char __fz_frag_aC4_TEX[] =
-"#ifdef GL_ES \n\
-precision lowp float; \n\
-varying lowp vec4 v_fragmentColor; \n\
-varying mediump vec2 v_texCoord; \n\
-uniform lowp sampler2D u_texture; \n\
-#else \n\
-varying vec4 v_fragmentColor; \n\
-varying vec2 v_texCoord; \n\
-uniform sampler2D u_texture; \n\
-#endif \n\
-\
-void main() { \n\
-	gl_FragColor = v_fragmentColor * texture2D(u_texture, v_texCoord); \n\
-}";
+"#ifdef GL_ES \n"
+"precision lowp float; \n"
+"varying lowp vec4 v_fragmentColor; \n"
+"varying mediump vec2 v_texCoord; \n"
+"uniform lowp sampler2D u_texture; \n"
+"#else \n"
+"varying vec4 v_fragmentColor; \n"
+"varying vec2 v_texCoord; \n"
+"uniform sampler2D u_texture; \n"
+"#endif \n"
+"void main() { \n"
+"	gl_FragColor = v_fragmentColor * texture2D(u_texture, v_texCoord); \n"
+"}";
 
 
 const char __fz_vert_nomat_aC4_TEX[] =
-"attribute vec4 a_position; \n\
-attribute vec2 a_texCoord; \n\
-attribute vec4 a_color; \n\
-#ifdef GL_ES \n\
-varying lowp vec4 v_fragmentColor; \n\
-varying mediump vec2 v_texCoord; \n\
-#else \n\
-varying vec4 v_fragmentColor; \n\
-varying vec2 v_texCoord; \n\
-#endif \n\
-\
-void main() { \n\
-gl_Position = a_position; \n\
-v_fragmentColor = a_color; \n\
-v_texCoord = a_texCoord; \n\
-}";
+"attribute vec4 a_position; \n"
+"attribute vec2 a_texCoord; \n"
+"attribute vec4 a_color; \n"
+"#ifdef GL_ES \n"
+"varying lowp vec4 v_fragmentColor; \n"
+"varying mediump vec2 v_texCoord; \n"
+"#else \n"
+"varying vec4 v_fragmentColor; \n"
+"varying vec2 v_texCoord; \n"
+"#endif \n"
+"void main() { \n"
+"gl_Position = a_position; \n"
+"v_fragmentColor = a_color; \n"
+"v_texCoord = a_texCoord; \n"
+"}";
 
 
 const char __fz_vert_mat_aC4_TEX[] =

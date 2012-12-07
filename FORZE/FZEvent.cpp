@@ -101,6 +101,9 @@ namespace FORZE {
             case kFZEventState_Indifferent:  s = "Indifferent"; break;
             default: s = "Unknow"; break;
         }
-        FZLog("Event( %d ): \n - Type: %s \n - State: %s \n - Values: { %f, %f } * %f", m_identifier, t, s, m_x, m_y, m_z);
+        FZLog("Event( %d ):\n"
+              " - Type: %s\n"
+              " - State: %s\n"
+              " - Values: { %f, %f } * %f\n", m_identifier, t, s, m_x, m_y, m_z);
     }
 }
