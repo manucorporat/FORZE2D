@@ -43,6 +43,7 @@
 #include "FZAnimationCache.h"
 #include "FZEventManager.h"
 #include "FZSpriteFrameCache.h"
+#include "FZResourcesManager.h"
 #include "FZScheduler.h"
 #include "FZDeviceConfig.h"
 #include "FZScene.h"
@@ -121,7 +122,7 @@ namespace FORZE {
         setFullscreen();
 #else
         setOrientation(kFZOrientation_Portrait);
-#endif
+#endif        
     }
     
     
@@ -710,13 +711,10 @@ namespace FORZE {
     {
         FZ_ASSERT( p_runningScene != NULL, "A running Scene is needed");
         
-        m_scenesStack.back()->release();
-        m_scenesStack.pop_back();
-        
-        if( m_scenesStack.empty() )
-        {
-            //end();
-        }else {
+        if( !m_scenesStack.empty() ) {
+            m_scenesStack.back()->release();
+            m_scenesStack.pop_back();
+            
             m_sendCleanupToScene = true;
             p_nextScene = m_scenesStack.back();
         }
@@ -725,8 +723,8 @@ namespace FORZE {
     
     void Director::setNextScene()
     {
-        bool runningIsTransition = (p_runningScene) ? dynamic_cast<Transition*>(p_runningScene) : false;
-        bool newIsTransition = (p_nextScene) ? dynamic_cast<Transition*>(p_nextScene) : false;
+        bool runningIsTransition = (p_runningScene != NULL) ? dynamic_cast<Transition*>(p_runningScene) : false;
+        bool newIsTransition = (p_nextScene != NULL) ? dynamic_cast<Transition*>(p_nextScene) : false;
 
         // If it is not a transition, call onExit/cleanup
         if(p_runningScene) {
@@ -739,15 +737,17 @@ namespace FORZE {
             }
             p_runningScene->release();
         }
-        
         p_runningScene = p_nextScene;
-        p_runningScene->retain();
         p_nextScene = NULL;
-        
-        if( ! runningIsTransition ) {
-            p_runningScene->onEnter();
 
-            //p_runningScene->onEnterTransitionDidFinish();
+        if(p_runningScene) {
+            p_runningScene->retain();
+            
+            if( ! runningIsTransition ) {
+                p_runningScene->onEnter();
+                
+                //p_runningScene->onEnterTransitionDidFinish();
+            }
         }
 #if FZ_RENDER_ON_DEMAND
         m_sceneIsDirty = true;
@@ -789,7 +789,7 @@ namespace FORZE {
     
 
     bool Director::drawScene()
-    {   
+    {
         // CALCULATE DELTA TIME
         calculateDeltaTime();
 
@@ -893,16 +893,17 @@ namespace FORZE {
 #pragma mark - Threading management
     
     void Director::startAnimation()
-    {
+    {        
         if(!isRunning()) {
             m_isRunning = true;
+            m_nextDeltaTimeZero = true;
             OSW::startRendering(m_animationInterval);
-        }
+        }        
     }
     
     
     void Director::stopAnimation()
-    {
+    {        
         if(isRunning()) {
             m_isRunning = false;
             OSW::stopRendering();
@@ -980,6 +981,7 @@ namespace FORZE {
 
             // initialize singletons
             DataStore::Instance();
+            ResourcesManager::Instance();
             DeviceConfig::Instance().logDeviceInfo();
             
             // set default GL values
