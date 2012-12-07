@@ -50,7 +50,10 @@ namespace FORZE {
     
     ActionManager::ActionManager()
     : m_actions()
-    { }
+    {
+        Scheduler::Instance().scheduleSelector(SEL_FLOAT(ActionManager::update),
+                                               this, 0, false);
+    }
     
     
     Action* ActionManager::getActionByTag(fzInt tag, void *target)

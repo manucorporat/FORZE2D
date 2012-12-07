@@ -799,7 +799,6 @@ namespace FORZE {
         // SCHEDULE
         if(!m_isPaused) {
             Scheduler::Instance().tick( m_dt );
-            ActionManager::Instance().update( m_dt );
         }
         
         if(m_dirtyFlags)
