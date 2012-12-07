@@ -171,7 +171,7 @@ namespace FORZE {
     {
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *nspath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
-        
+        nspath = [nspath stringByAppendingPathComponent:[NSString stringWithCString:filename encoding:NSUTF8StringEncoding]];
         return [nspath getCString:absolutePath maxLength:maxLength encoding:NSUTF8StringEncoding];
     }
     
@@ -348,9 +348,7 @@ namespace FORZE {
 {
     FZ_ASSERT(context_, "OpenGl context was not created.");
     
-    [eventLock_ lock];
     mgrDirector_->drawScene();
-    [eventLock_ unlock];
 
     [self swapBuffers];
 }
@@ -534,7 +532,6 @@ namespace FORZE {
 {
     // STEP ZERO.
     motionManager_ = [[CMMotionManager alloc] init];
-    eventLock_ = [[NSLock alloc] init];
     mgrDirector_ = &Director::Instance();
     mgrEvents_ = &EventManager::Instance();
     
@@ -657,10 +654,7 @@ namespace FORZE {
                      Event event(self, 0, kFZEventType_Accelerometer, kFZEventState_Indifferent,
                                  acceleration.x, acceleration.y, acceleration.z);
                      
-                     [eventLock_ lock];
                      mgrEvents_->catchEvent(event);
-                     [eventLock_ unlock];
-
                  }
              }];
         }else{
@@ -679,10 +673,7 @@ namespace FORZE {
                      Event event(self, 0, kFZEventType_Gyro, kFZEventState_Indifferent,
                                  rotationRate.x, rotationRate.y, rotationRate.z);
                      
-                     [eventLock_ lock];
                      mgrEvents_->catchEvent(event);
-                     [eventLock_ unlock];
-
                  }
              }];
         }else{
@@ -696,7 +687,6 @@ namespace FORZE {
 {   
     FZ_ASSERT(mgrEvents_ != NULL, "HAT isn't configured properly, the events can't be dispatched");
     
-    [eventLock_ lock];
     for(UITouch *touch in touches)
     {
         CGPoint cgp = [touch locationInView:[touch view]];
@@ -708,12 +698,11 @@ namespace FORZE {
                     identifier,
                     type,
                     state,
-                    point
+                    point, 0
                     );
         
         mgrEvents_->catchEvent(event);
     }
-    [eventLock_ unlock];
 }
 
 

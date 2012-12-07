@@ -68,7 +68,6 @@ namespace FORZE {
     
     // Threading
     CADisplayLink *displayLink_;
-    NSLock *eventLock_;
     
     // Motion events
     CMMotionManager *motionManager_;

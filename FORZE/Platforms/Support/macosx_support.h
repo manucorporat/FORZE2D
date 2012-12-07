@@ -34,8 +34,7 @@
 #if defined(FZ_OS) && (FZ_OS == kFZPLATFORM_MAC)
 
 // Import OSX base headers
-#import <Availability.h>
-#import <Foundation/Foundation.h>
+#import <AppKit/AppKit.h>
 #import <QuartzCore/QuartzCore.h>
 
 // Import OpenGL headers
@@ -89,7 +88,6 @@ namespace FORZE {
     
     // Threading
     CVDisplayLinkRef displayLink_;
-    NSLock *eventLock_;
     
     // OpenGL
     NSOpenGLContext *context_;

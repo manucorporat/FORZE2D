@@ -30,6 +30,7 @@
 
 #include "FZPerformManager.h"
 #include "FZMacros.h"
+#include "tinythread.h"
 
 
 using namespace STD;
@@ -57,7 +58,9 @@ namespace FORZE {
     PerformManager::PerformManager()
     : m_asyncPerforms()
     , m_syncPerforms()
-    { }
+    {
+        p_mutex = new recursive_mutex();
+    }
     
     
     inline void PerformManager::execute(const fzPerform& perform)
@@ -83,20 +86,27 @@ namespace FORZE {
     
     void PerformManager::schedule(const fzPerform& perform, bool async)
     {
+        p_mutex->lock();
+        
         m_syncPerforms.push(perform);
-
         if(async == true) {
             FZLog("ASYNC performing is not implemented yet.");
         }
+        
+        p_mutex->unlock();
     }
     
     
     void PerformManager::clean()
     {
+        p_mutex->lock();
+
         while (!m_syncPerforms.empty()) {
             execute(m_syncPerforms.front());
             m_syncPerforms.pop();
         }
+        
+        p_mutex->unlock();
     }
     
     void PerformManager::perform(SELProtocol *target, SELECTOR_FLOAT selector, float withFloat, bool async)

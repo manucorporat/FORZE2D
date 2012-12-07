@@ -38,7 +38,7 @@
 #include <sys/types.h>
 #include <sys/sysctl.h>
 #include <OpenGL/OpenGL.h>
-
+#include <CoreGraphics/CoreGraphics.h>
 
 using namespace FORZE;
 
@@ -485,9 +485,7 @@ static CVReturn drawScene(CVDisplayLinkRef dl, const CVTimeStamp* now, const CVT
     CHECK_GL_FRAMEBUFFER();
 
     // drawing code
-    [eventLock_ lock];
     bool toFlush = mgrDirector_->drawScene();
-    [eventLock_ unlock];
     
     if(toFlush)
     [context_ flushBuffer];
@@ -505,7 +503,6 @@ static CVReturn drawScene(CVDisplayLinkRef dl, const CVTimeStamp* now, const CVT
     // STEP ZERO. weak pointers
     mgrDirector_ = &Director::Instance();
     mgrEvents_ = &EventManager::Instance();
-    eventLock_ = [[NSLock alloc] init];
     
     // FIRST STEP. Notify Director::applicationLaunching()
     // - gets opengl context config
@@ -583,7 +580,7 @@ static CVReturn drawScene(CVDisplayLinkRef dl, const CVTimeStamp* now, const CVT
 
 - (void) windowDidResize:(NSNotification *)notificatio
 {
-    CGRect frame = [[window_ contentView] frame];
+    NSRect frame = [[window_ contentView] frame];
     Director::Instance().setWindowSize(fzSize(frame.size.width, frame.size.height));
 }
 
@@ -602,12 +599,10 @@ static CVReturn drawScene(CVDisplayLinkRef dl, const CVTimeStamp* now, const CVT
     Event event(self, identifier,
                 type,
                 state,
-                point
+                point, 0
                 );
     
-    [eventLock_ lock];
     mgrEvents_->catchEvent(event);
-    [eventLock_ unlock];
 }
 
 
@@ -621,11 +616,9 @@ static CVReturn drawScene(CVDisplayLinkRef dl, const CVTimeStamp* now, const CVT
 
     Event event(self, keyCode,
                 kFZEventType_Keyboard,
-                state, FZPointZero);
+                state);
     
-    [eventLock_ lock];
     mgrEvents_->catchEvent(event);
-    [eventLock_ unlock];
 }
 
 
@@ -640,12 +633,10 @@ static CVReturn drawScene(CVDisplayLinkRef dl, const CVTimeStamp* now, const CVT
         Event event(self, identifier,
                     kFZEventType_Trackpad,
                     state,
-                    fzPoint(cgp.x, cgp.y)
+                    fzPoint(cgp.x, cgp.y), 0
                     );
         
-        [eventLock_ lock];
         mgrEvents_->catchEvent(event);
-        [eventLock_ unlock];
     }
 }
 
@@ -673,12 +664,10 @@ static CVReturn drawScene(CVDisplayLinkRef dl, const CVTimeStamp* now, const CVT
     Event event(self, identifier,
                 kFZEventType_MouseMoved,
                 kFZEventState_Indifferent,
-                point
+                point, 0
                 );
     
-    [eventLock_ lock];
     mgrEvents_->catchEvent(event);
-    [eventLock_ unlock];
 }
 
 - (void)mouseUp:(NSEvent *)nsevent {

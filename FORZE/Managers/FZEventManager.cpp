@@ -30,6 +30,7 @@
 #include "FZEventManager.h"
 #include "FZDirector.h"
 #include "FZMacros.h"
+#include "tinythread.h"
 
 using namespace STD;
 
@@ -60,16 +61,21 @@ namespace FORZE {
     , m_flags(0)
     , m_enabled(true)
     {
+        p_mutex = new recursive_mutex();
     }
     
     
     EventManager::~EventManager()
-    { }
+    {
+        delete p_mutex;
+    }
     
     
     void EventManager::setIsEnabled(bool isEnabled)
     {
+        p_mutex->lock();
         m_enabled = isEnabled;
+        p_mutex->unlock();
     }
     
     
@@ -172,11 +178,9 @@ namespace FORZE {
             if(priority != handler->priority) {
                 updateHandlerFlags(handler, 0);
                 handler = NULL;
-            }else{
                 
-                if(flags != handler->flags)
-                    updateHandlerFlags(handler, flags);
-            }
+            }else if(flags != handler->flags)
+                updateHandlerFlags(handler, flags);
         }
         
         if(handler == NULL && flags != 0) {
@@ -267,12 +271,11 @@ namespace FORZE {
     
     
     void EventManager::catchEvent(const Event& newEvent)
-    {        
-        if(!m_enabled)
-            return;
+    {
+        p_mutex->lock();
         
         // the events are cached in order to dispatch them correctly.
-        m_buffer.push(newEvent);
+        p_mutex->unlock();
     }
     
     
@@ -290,6 +293,7 @@ namespace FORZE {
     
     void EventManager::dispatchEvents()
     {
+        p_mutex->lock();
         while(!m_buffer.empty())
         {
             Event *event = addEvent(m_buffer.front());
@@ -349,6 +353,8 @@ namespace FORZE {
         }
         m_handlers.remove_if(isHandlerFinished);
         m_events.remove_if(isEventFinished);
+        
+        p_mutex->unlock();
     }
     
     

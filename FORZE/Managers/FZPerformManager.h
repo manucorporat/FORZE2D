@@ -40,7 +40,7 @@ using namespace STD;
 
 namespace FORZE {
 
-    
+    class recursive_mutex;
     /** ActionManager is a singleton that manages all the actions.
      Normally you won't need to use this singleton directly. 99% of the cases you will use the Node interface,
      which uses this singleton.
@@ -69,6 +69,8 @@ namespace FORZE {
             } value;
         };
         typedef queue<fzPerform> performsQueue;
+        
+        recursive_mutex *p_mutex;
         
         // Manager's instance
         static PerformManager* p_instance;

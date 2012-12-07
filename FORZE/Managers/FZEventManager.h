@@ -39,7 +39,7 @@ using namespace STD;
 
 namespace FORZE {
     
-    /** EventDelegate is the protocol for catch events */
+    //! EventDelegate is the protocol for catch events.
     class EventDelegate
     {
     public:
@@ -49,19 +49,20 @@ namespace FORZE {
     
     enum fzEventHandlerMode
     {
-        // This event handler mode is transparent for the next handlers
+        //! This event handler mode is transparent for the next handlers.
         kFZEventHandlerMode_NoShallow,
         
-        // This event handler mode can stop the propagation of the event
+        //! This event handler mode can stop the propagation of the event.
         kFZEventHandlerMode_Shallow,
         
-        // This event handler mode receives all catched events
+        //! This event handler mode receives all catched events.
         kFZEventHandlerMode_Global
         
     };
     
+    class recursive_mutex;
     
-    /** EventManager catch and dispatch events */
+    //! EventManager catch and dispatch events.
     class EventManager
     {
         friend class Director;
@@ -82,6 +83,8 @@ namespace FORZE {
         typedef list<Event> eventList;
         typedef queue<Event> eventQueue;
         
+        // Mutex
+        recursive_mutex *p_mutex;
         
         // Director's instance
         static EventManager* p_instance;
