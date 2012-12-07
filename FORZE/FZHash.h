@@ -1,6 +1,6 @@
 // DO NOT MODIFY THE HEADERS IF FORZE IS ALREADY COMPILED AS A STATIC LIBRARY
-#ifndef __FZCOMMON_H_INCLUDED__
-#define __FZCOMMON_H_INCLUDED__
+#ifndef __FZHASH_H_INCLUDED__
+#define __FZHASH_H_INCLUDED__
 /*
  * FORZE ENGINE: http://forzefield.com
  *
@@ -31,35 +31,36 @@
  */
 
 #include <stdint.h>
-#include "FZHash.h"
 
 namespace FORZE
 {
-    //! Custom print function used by FORZE.
-    void FZLog(const char *pszFormat, ...);
+#pragma mark - HASH ITERATION FUNCTION
+
+#define __HASH_FUNCTION(__HASH__, __VALUE__) \
+((((__HASH__) << 5) + (__HASH__)) + (__VALUE__))
+    
+
+#pragma mark - Compiler time recursive implementation
+    
+    constexpr int32_t __fzHashRecursive(int32_t hash, const char* str)
+    {
+        return (!*str ? hash
+                : __fzHashRecursive(__HASH_FUNCTION(hash, *str), str+1));
+    }
     
     
-    //! String with format.
-    char* FZT(const char *pszFormat, ...);
+    constexpr int32_t fzHashConst(const char* str)
+    {
+        return (!str ? 0 : __fzHashRecursive(5381, str));
+    }
     
     
-    //! Allocates the necesary memory and copies the string into.
-    //! @param string to be copied.
-    //! @param length of the string to be copied. "HOLA" = 4
-    //! @return a new pointer to the copied string.
-    //! @warning the returned pointer must be released using delete
-    char* fzStrcpy(const char *string, size_t length);
+#pragma mark - Runtime implementation
     
+    int32_t fzHash(const char *str, size_t length);
     
-    //! Allocates the necesary memory and copies the string into.
-    //! @param string is the NULL-terminated string to be copied.
-    //! @return a new pointer to the copied string.
-    //! @warning the returned pointer must be released using delete
-    char* fzStrcpy(const char *string);
-    
-    
-    //! Returns a localized string for the given key.
-    const char* FZTLocalized(const char *key);
+    //! Returns an int32 hash value giving a string.
+    int32_t fzHash(const char *str);
 }
 
 #endif

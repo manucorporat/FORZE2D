@@ -1,6 +1,3 @@
-// DO NOT MODIFY THE HEADERS IF FORZE IS ALREADY COMPILED AS A STATIC LIBRARY
-#ifndef __FZCOMMON_H_INCLUDED__
-#define __FZCOMMON_H_INCLUDED__
 /*
  * FORZE ENGINE: http://forzefield.com
  *
@@ -30,36 +27,26 @@
  @author Manuel Martínez-Almeida
  */
 
-#include <stdint.h>
+#include <string.h>
 #include "FZHash.h"
 
-namespace FORZE
-{
-    //! Custom print function used by FORZE.
-    void FZLog(const char *pszFormat, ...);
-    
-    
-    //! String with format.
-    char* FZT(const char *pszFormat, ...);
-    
-    
-    //! Allocates the necesary memory and copies the string into.
-    //! @param string to be copied.
-    //! @param length of the string to be copied. "HOLA" = 4
-    //! @return a new pointer to the copied string.
-    //! @warning the returned pointer must be released using delete
-    char* fzStrcpy(const char *string, size_t length);
-    
-    
-    //! Allocates the necesary memory and copies the string into.
-    //! @param string is the NULL-terminated string to be copied.
-    //! @return a new pointer to the copied string.
-    //! @warning the returned pointer must be released using delete
-    char* fzStrcpy(const char *string);
-    
-    
-    //! Returns a localized string for the given key.
-    const char* FZTLocalized(const char *key);
-}
 
-#endif
+namespace FORZE {
+    
+    int32_t fzHash(const char *str, size_t length)
+    {
+        int32_t hash = 5381;
+        while (length > 0) {
+            hash = __HASH_FUNCTION(hash, *str);
+            ++str;
+            --length;
+        }
+        return hash;
+    }
+    
+    
+    int32_t fzHash(const char *str)
+    {
+        return fzHash(str, strlen(str));
+    }
+}

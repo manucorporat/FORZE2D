@@ -27,10 +27,10 @@
  @author Manuel Martínez-Almeida
  */
 
-#include <cstdio>
-#include <cstdarg>
-#include <cstring>
-#include <cstdlib>
+#include <stdio.h>
+#include <stdarg.h>
+#include <string.h>
+#include <stdlib.h>
 #include "FZCommon.h"
 
 
@@ -40,34 +40,11 @@ namespace FORZE {
 #define FZLOG_SIZE 512
     static int _currentPacket = 0;
     static char _szBuf[FZLOG_NU][FZLOG_SIZE];
-
     
     const char* FZTLocalized(const char *key)
     {
         return key;
     }
-    
-    
-    int32_t fzHash(const char *str, size_t length)
-    {
-        int32_t hash = 5381;
-        
-        while (length > 0) {
-            int32_t c = *str;
-            hash = ((hash << 5) + hash) + c;
-            
-            ++str;
-            --length;
-        }
-        return hash;
-    }
-    
-    
-    int32_t fzHash(const char *str)
-    {
-        return fzHash(str, strlen(str));
-    }
-
     
     char* FZT(const char *pszFormat, ...)
     {
