@@ -581,6 +581,8 @@ namespace FORZE {
         
 #pragma mark - Schedule management
         
+        virtual void update(fzFloat);
+
         //! Schedules a custom selector with an calling interval.
         //! @param interval cannot be negative.
         //! @see unschedule()

@@ -39,7 +39,6 @@ namespace FORZE
     {
     public:
         virtual ~SELProtocol() {}
-        virtual void update(fzFloat) {};
     };
     
     // Types

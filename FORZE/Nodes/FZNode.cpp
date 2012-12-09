@@ -175,7 +175,7 @@ namespace FORZE {
     
     void Node::setOpacity(fzFloat o)
     {
-        FZ_ASSERT( o >= 0.0f && o <= 1.0f, "Opacity must be between [0, 1]");
+        FZ_ASSERT( o >= 0.0f && o <= 1.0f, "Opacity must be between [0, 1].");
         
         if(m_opacity != o) {
             m_opacity = o;
@@ -186,7 +186,7 @@ namespace FORZE {
     
     void Node::setName(const char* name)
     {
-        FZ_ASSERT( name, "Name can not be NULL");
+        FZ_ASSERT( name, "Name can not be NULL.");
         setTag(fzHash(name));
     }
     
@@ -196,7 +196,7 @@ namespace FORZE {
 #if FZ_GL_SHADERS
         FZRETAIN_TEMPLATE(program, p_glprogram);
 #else
-        FZ_ASSERT(false, "Shaders are not supported");
+        FZ_ASSERT(false, "Shaders are not supported.");
 #endif
     }
     
@@ -206,7 +206,7 @@ namespace FORZE {
 #if FZ_GL_SHADERS
         setGLProgram(ShaderCache::Instance().getProgramForKey(programKey));
 #else
-        FZ_ASSERT(false, "Shaders are not supported");
+        FZ_ASSERT(false, "Shaders are not supported.");
 #endif
     }
     
@@ -236,7 +236,7 @@ namespace FORZE {
     
     void Node::setFilter(Filter *filter)
     {
-        FZ_ASSERT(FZ_GL_SHADERS, "Shaders are not supported");
+        FZ_ASSERT(FZ_GL_SHADERS, "Shaders are not supported.");
         
 #if FZ_GL_SHADERS
         if(filter == p_filter)
@@ -252,7 +252,7 @@ namespace FORZE {
     
     fzFloat Node::getScale() const
     {
-        FZ_ASSERT( m_scaleX == m_scaleY, "Node: ScaleX != ScaleY. Don't know which one to return");
+        FZ_ASSERT( m_scaleX == m_scaleY, "Node: ScaleX != ScaleY. Don't know which one to return.");
         return m_scaleX;
     }
     
@@ -309,7 +309,7 @@ namespace FORZE {
     
     Node* Node::getChildByTag(fzInt tag)
     {
-        FZ_ASSERT( tag != kFZNodeTagInvalid, "Invalid tag");
+        FZ_ASSERT( tag != kFZNodeTagInvalid, "Invalid tag.");
         
         Node *child = NULL;
         FZ_LIST_FOREACH(m_children, child)
@@ -336,8 +336,8 @@ namespace FORZE {
   
     void Node::addChild(Node *node, fzInt z)
     {
-        FZ_ASSERT( node != NULL, "Argument must be non-NULL");
-        FZ_ASSERT( node->getParent() == NULL, "This node was already attached");
+        FZ_ASSERT( node != NULL, "Argument must be non-NULL.");
+        FZ_ASSERT( node->getParent() == NULL, "This node was already attached.");
 
         node->setZOrder(z);
       
@@ -437,8 +437,8 @@ namespace FORZE {
     
     void Node::reorderChild(Node* child)
     {
-        FZ_ASSERT( child, "Child must be non-NULL");
-        FZ_ASSERT( child->getParent() == this, "This node isn't child of this node");
+        FZ_ASSERT( child, "Child must be non-NULL.");
+        FZ_ASSERT( child->getParent() == this, "This node isn't child of this node.");
         
         m_children.move(child, indexForZOrder(child->getZOrder()));
         child->m_realZOrder = child->getZOrder();
@@ -503,7 +503,7 @@ namespace FORZE {
             }else
 #endif
             {
-                FZ_ASSERT(false, "GRID SUPPORT IS NOT AVAILABLE");
+                FZ_ASSERT(false, "GRID SUPPORT IS NOT AVAILABLE.");
             }
         }
     }
@@ -658,6 +658,15 @@ namespace FORZE {
     
     
 #pragma mark - Scheduler
+    
+    void Node::update(fzFloat)
+    {
+        static bool p = true;
+        if(p) {
+            FZLOGERROR("Node: update() method should be redefined.");
+            p = false;
+        }
+    }
     
     void Node::schedule()
     {
