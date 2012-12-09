@@ -49,7 +49,7 @@ namespace FORZE {
     , multiSampling(sampling)
     , quality(qualitya)
     {
-        FZ_ASSERT(quality > 0 && quality <= 1.0f, "Quality out of bounds (0, 1]");
+        FZ_ASSERT(quality > 0 && quality <= 1.0f, "Quality out of bounds (0, 1].");
     }
     
     

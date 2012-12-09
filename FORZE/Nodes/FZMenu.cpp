@@ -90,7 +90,7 @@ namespace FORZE {
     
     void Menu::insertChild(Node* node)
     {
-        FZ_ASSERT(dynamic_cast<MenuItem*>(node), "Child must be subclass of MenuItem");
+        FZ_ASSERT(dynamic_cast<MenuItem*>(node), "Child must be subclass of MenuItem.");
         
         MenuItem *item = static_cast<MenuItem*>(node);
         item->useBatchMode();

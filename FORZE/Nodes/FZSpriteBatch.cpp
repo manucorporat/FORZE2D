@@ -60,7 +60,7 @@ namespace FORZE {
     
     void SpriteBatch::insertChild(Node* node)
     {
-        FZ_ASSERT( dynamic_cast<Sprite*>(node), "SpriteBatch's children must be Sprites");
+        FZ_ASSERT( dynamic_cast<Sprite*>(node), "SpriteBatch's children must be Sprites.");
 
         Sprite *sprite = static_cast<Sprite*>(node);
         
@@ -101,7 +101,7 @@ namespace FORZE {
     
     void SpriteBatch::render(unsigned char dirtyFlags)
     {
-        FZ_ASSERT(p_parent != NULL, "SpriteBatch should NOT be root node");
+        FZ_ASSERT(p_parent != NULL, "SpriteBatch should NOT be root node.");
         
         // RESERVE MEMORY
         m_textureAtlas.reserveCapacity(m_children.size());

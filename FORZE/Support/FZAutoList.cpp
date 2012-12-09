@@ -41,11 +41,11 @@ namespace FORZE {
     
     void AutoList::insert(fzListItem *position, fzListItem *newItem)
     {
-        FZ_ASSERT(newItem != NULL, "New item cannot be NULL");
+        FZ_ASSERT(newItem != NULL, "New item cannot be NULL.");
 
         if(position != NULL)
         {
-            FZ_ASSERT(m_count > 0, "Strange bug: List is empty");
+            FZ_ASSERT(m_count > 0, "Strange bug: List is empty.");
             
             // POSITION != NULL -> INSERT AT POSITION
             newItem->p_next = position;
@@ -75,8 +75,8 @@ namespace FORZE {
     
     void AutoList::remove(fzListItem *position)
     {   
-        FZ_ASSERT(position != NULL, "Position cannot be NULL");
-        FZ_ASSERT(m_count > 0, "List is empty");
+        FZ_ASSERT(position != NULL, "Position cannot be NULL.");
+        FZ_ASSERT(m_count > 0, "List is empty.");
         
         fzListItem *prev = position->p_prev;
         fzListItem *next = position->p_next;
@@ -100,8 +100,8 @@ namespace FORZE {
     
     void AutoList::move(fzListItem *object, fzListItem *newPosition)
     {
-        FZ_ASSERT(object != NULL, "Object cannot be NULL");
-        FZ_ASSERT(m_count > 0, "List is empty");
+        FZ_ASSERT(object != NULL, "Object cannot be NULL.");
+        FZ_ASSERT(m_count > 0, "List is empty.");
         
         if(object == newPosition || (newPosition == NULL && p_back == object))
             return;

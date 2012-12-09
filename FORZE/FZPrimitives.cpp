@@ -93,7 +93,7 @@ namespace FORZE {
     
     void fzDrawPoints( const fzVec2 *vertices, fzUInt numberOfPoints )
     {
-        FZ_ASSERT( numberOfPoints > 0, "Number of points can not be 0");
+        FZ_ASSERT( numberOfPoints > 0, "Number of points can not be 0.");
 
         fzGLSetMode(kFZGLMode_Primitives);
         
@@ -128,7 +128,7 @@ namespace FORZE {
     
     void fzDrawLines( const fzVec2 *vertices, fzUInt numOfVertices)    
     {    
-        FZ_ASSERT( numOfVertices > 0, "Number of vertices can not be 0");
+        FZ_ASSERT( numOfVertices > 0, "Number of vertices can not be 0.");
 
         fzGLSetMode(kFZGLMode_Primitives);            
 #if FZ_GL_SHADERS
@@ -146,7 +146,7 @@ namespace FORZE {
     
     void fzDrawPoly( const fzVec2 *vertices, fzUInt numOfVertices, bool closePolygon )
     {    
-        FZ_ASSERT( numOfVertices > 0, "Number of vertices can not be 0");
+        FZ_ASSERT( numOfVertices > 0, "Number of vertices can not be 0.");
 
         fzGLSetMode(kFZGLMode_Primitives);            
 #if FZ_GL_SHADERS
@@ -167,7 +167,7 @@ namespace FORZE {
     
     void fzDrawShape( const fzVec2 *vertices, fzUInt numOfVertices)
     {    
-        FZ_ASSERT( numOfVertices > 0, "Number of vertices can not be 0");
+        FZ_ASSERT( numOfVertices > 0, "Number of vertices can not be 0.");
         
         fzGLSetMode(kFZGLMode_Primitives);            
 #if FZ_GL_SHADERS

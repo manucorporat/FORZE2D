@@ -62,7 +62,7 @@ namespace FORZE {
     
     void Grabber::grab(Texture2D* texture)
     {
-        FZ_ASSERT(texture, "Texture can not be NULL");
+        FZ_ASSERT(texture, "Texture can not be NULL.");
         
         FZRETAIN_TEMPLATE(texture, p_texture);
         
@@ -98,7 +98,7 @@ namespace FORZE {
     void Grabber::begin()
     {
         FZ_ASSERT(m_fbo != 0, "FBO is uninitilialez, you must grab a texture first.");  
-        FZ_ASSERT(m_oldFBO == 0xffffff, "This FBO is already opened");
+        FZ_ASSERT(m_oldFBO == 0xffffff, "This FBO is already opened.");
         
         // cache current framebuffer
         m_oldFBO = fzGLGetFramebuffer();

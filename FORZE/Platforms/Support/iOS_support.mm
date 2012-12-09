@@ -573,49 +573,49 @@ namespace FORZE {
 
 - (void) applicationWillResignActive:(id)a
 {
-    FZ_ASSERT(mgrDirector_, "mgrDirector_ can not be NULL");
+    FZ_ASSERT(mgrDirector_, "mgrDirector_ can not be NULL.");
     mgrDirector_->applicationPaused();
 }
 
 
 - (void) applicationDidBecomeActive:(id)a
 {
-    FZ_ASSERT(mgrDirector_, "mgrDirector_ can not be NULL");
+    FZ_ASSERT(mgrDirector_, "mgrDirector_ can not be NULL.");
     mgrDirector_->applicationResumed();
 }
 
 
 - (void) applicationWillTerminate:(id)a
 {
-    FZ_ASSERT(mgrDirector_, "mgrDirector_ can not be NULL");
+    FZ_ASSERT(mgrDirector_, "mgrDirector_ can not be NULL.");
     mgrDirector_->applicationTerminate();
 }
 
 
 - (void) applicationSignificantTimeChange:(id)a
 {
-    FZ_ASSERT(mgrDirector_, "mgrDirector_ can not be NULL");
+    FZ_ASSERT(mgrDirector_, "mgrDirector_ can not be NULL.");
     mgrDirector_->applicationSignificantTimeChange();
 }
 
 
 - (void) applicationDidReceiveMemoryWarning:(id)a
 {
-    FZ_ASSERT(mgrDirector_, "mgrDirector_ can not be NULL");
+    FZ_ASSERT(mgrDirector_, "mgrDirector_ can not be NULL.");
     mgrDirector_->applicationDidReceiveMemoryWarning();
 }
 
 
 - (void) applicationDidEnterBackground:(id)a
 {
-    FZ_ASSERT(mgrDirector_, "mgrDirector_ can not be NULL");
+    FZ_ASSERT(mgrDirector_, "mgrDirector_ can not be NULL.");
     mgrDirector_->stopAnimation();
 }
 
 
 - (void) applicationWillEnterForeground:(id)a
 {
-    FZ_ASSERT(mgrDirector_, "mgrDirector_ can not be NULL");
+    FZ_ASSERT(mgrDirector_, "mgrDirector_ can not be NULL.");
     mgrDirector_->startAnimation();
 }
 
@@ -685,7 +685,7 @@ namespace FORZE {
 
 - (void) dispatchTouches:(NSSet*) touches type:(fzEventType)type state:(fzEventState)state
 {   
-    FZ_ASSERT(mgrEvents_ != NULL, "HAT isn't configured properly, the events can't be dispatched");
+    FZ_ASSERT(mgrEvents_ != NULL, "HAT isn't configured properly, the events can't be dispatched.");
     
     for(UITouch *touch in touches)
     {

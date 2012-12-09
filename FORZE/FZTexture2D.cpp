@@ -180,11 +180,11 @@ namespace FORZE {
     {
         FZ_ASSERT(format >=0 && format < MAX_TEXTURE_FORMATS, "Texture format is not supported.");
         FZ_ASSERT(_pixelFormat_hash[format].isCompressed == false, "Compressed textures cannot be expanded.");
-        FZ_ASSERT(toX >= fromX && toY >= fromY, "You cannot reduce a texture");
-        FZ_ASSERT(toX != fromX || toY != fromY, "Not to resize  TO == FROM");
+        FZ_ASSERT(toX >= fromX && toY >= fromY, "You cannot reduce a texture.");
+        FZ_ASSERT(toX != fromX || toY != fromY, "Not to resize  TO == FROM.");
         
         uint8_t bytesPerPixel = _pixelFormat_hash[format].dataBBP >> 3;
-        FZ_ASSERT(bytesPerPixel > 0, "Strange bug: memory corruption?");
+        FZ_ASSERT(bytesPerPixel > 0, "Strange bug: memory corruption?.");
         fzUInt rowSize = fromX * bytesPerPixel;
         fzUInt rowPOTSize = toX * bytesPerPixel;
         
@@ -591,7 +591,7 @@ namespace FORZE {
             }
         }
         if(tableIndex == MAX_PVR_FORMATS)
-            FZ_RAISE_STOP("Texture2D:PVR: Unsupported format. Re-encode it with a OpenGL pixel format variant.");
+            FZ_RAISE("Texture2D:PVR: Unsupported format. Re-encode it with a OpenGL pixel format variant.");
         
         
         // GET TEXTURE METADATA
@@ -655,8 +655,10 @@ namespace FORZE {
                         break;
                         
                     case kPVRTexturePixelTypeBGRA_8888:
-                        FZ_ASSERT(DeviceConfig::Instance().isBGRA8888Supported(), "BGRA8888 not supported on this device");
+                        if(!DeviceConfig::Instance().isBGRA8888Supported())
+                            FZ_RAISE("BGRA8888 not supported on this device.");
                         
+                        break;
                     default:
                         blockSize     = 1;
                         widthBlocks   = widthPOT;
@@ -811,14 +813,14 @@ namespace FORZE {
     
     fzPixelInfo Texture2D::getPixelInfo(fzPixelFormat format)
     {
-        FZ_ASSERT(format >= 0 && format < MAX_PIXEL_FORMATS, "Invalid pixel format");
+        FZ_ASSERT(format >= 0 && format < MAX_PIXEL_FORMATS, "Invalid pixel format.");
         return _pixelFormat_hash[format];
     }
     
     
     fzTextureInfo Texture2D::getTextureInfo(fzTextureFormat format)
     {
-        FZ_ASSERT(format >= 0 && format < (fzTextureFormat)MAX_TEXTURE_FORMATS, "Invalid texture format");
+        FZ_ASSERT(format >= 0 && format < (fzTextureFormat)MAX_TEXTURE_FORMATS, "Invalid texture format.");
         return _textureFormat_hash[format];
     }
 }

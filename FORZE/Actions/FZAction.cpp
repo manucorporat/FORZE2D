@@ -53,7 +53,7 @@ namespace FORZE {
     
     void Action::startWithTarget(void *target)
     {
-        FZ_ASSERT(target != NULL, "Argument target must be non-NULL");
+        FZ_ASSERT(target != NULL, "Argument target must be non-NULL.");
         p_target = target;
     }
     
@@ -102,7 +102,7 @@ namespace FORZE {
     
     void FiniteTimeAction::setDuration(fzFloat duration)
     {
-        FZ_ASSERT(duration >= 0, "Duration must be positive");
+        FZ_ASSERT(duration >= 0, "Duration must be positive.");
         m_duration = (duration < FLT_EPSILON) ? FLT_EPSILON : duration;
     }
     
@@ -132,7 +132,7 @@ namespace FORZE {
     RepeatForever::RepeatForever(FiniteTimeAction *action)
     : p_innerAction(action)
     {
-        FZ_ASSERT(p_innerAction != NULL, "Action cannot be NULL");
+        FZ_ASSERT(p_innerAction != NULL, "Action cannot be NULL.");
         p_innerAction->retain();
     }
     
@@ -191,7 +191,7 @@ namespace FORZE {
     : p_innerAction(a)
     , m_speed(s)
     {
-        FZ_ASSERT(p_innerAction != NULL, "ActionInterval cannot be NULL");
+        FZ_ASSERT(p_innerAction != NULL, "ActionInterval cannot be NULL.");
         p_innerAction->retain();
     }
     
@@ -271,7 +271,7 @@ namespace FORZE {
     , m_step(s)
     , m_elapsed(0)
     {
-        FZ_ASSERT(p_innerAction != NULL, "ActionInterval cannot be NULL");
+        FZ_ASSERT(p_innerAction != NULL, "ActionInterval cannot be NULL.");
         p_innerAction->retain();
     }
     

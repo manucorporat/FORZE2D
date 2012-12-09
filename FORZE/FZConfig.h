@@ -39,11 +39,15 @@
 #include "FZPlatformsHeader.h"
 
 
-#define FORZE_VERSION "0.1 beta1"
+#define FORZE_VERSION "v0.1 beta2"
+#define FORZE_SIGN "FORZE2D: "
+#define FORZE_SIGN_LEN 9
+
 
 
 #pragma mark - STL config
-// You can replace easy the Standard Library used by FORZE.
+
+// You can replace easily the Standard Library used by FORZE.
 #define STL_VECTOR <vector>
 #define STL_STRING <string>
 #define STL_LIST <list>

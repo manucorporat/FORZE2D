@@ -39,7 +39,7 @@ namespace FORZE {
     Transition::Transition(fzFloat duration, Scene *scene)
     {
         FZ_ASSERT(duration >= 0, "Duration cannot be negative.");
-        FZ_ASSERT(scene, "Argumment cannot be NULL");
+        FZ_ASSERT(scene, "Argumment cannot be NULL.");
 
         p_inScene = scene;
         p_inScene->retain();

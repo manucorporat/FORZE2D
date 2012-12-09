@@ -45,7 +45,7 @@ namespace FORZE {
     : ActionInterval(action->getDuration())
     , p_innerAction(action)
     {
-        FZ_ASSERT( action != NULL, "Ease: arguments must be non-NULL");
+        FZ_ASSERT( action != NULL, "Ease: arguments must be non-NULL.");
         p_innerAction->retain();
     }
     
@@ -58,7 +58,7 @@ namespace FORZE {
     
     void ActionEase::startWithTarget(void *t)
     {
-        FZ_ASSERT(p_innerAction, "Inner action cannot be NULL");
+        FZ_ASSERT(p_innerAction, "Inner action cannot be NULL.");
         Action::startWithTarget(t);
         p_innerAction->startWithTarget(t);
     }

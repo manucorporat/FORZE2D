@@ -105,7 +105,7 @@ namespace FORZE {
     
     EventManager::fzEventHandler* EventManager::getHandlerForTarget(void* target)
     {
-        FZ_ASSERT(target, "Target can not be NULL");
+        FZ_ASSERT(target, "Target can not be NULL.");
         
         handlerList::iterator handler(m_handlers.begin());
         for (; handler != m_handlers.end(); ++handler) {
@@ -118,7 +118,7 @@ namespace FORZE {
     
     void EventManager::updateHandlerFlags(fzEventHandler* handler, uint16_t flags)
     {
-        FZ_ASSERT(handler, "Handler can not be NULL");
+        FZ_ASSERT(handler, "Handler can not be NULL.");
         
         handler->flags = flags;
         
@@ -132,7 +132,7 @@ namespace FORZE {
     
     bool EventManager::invalidateDelegate(EventDelegate *target)
     {
-        FZ_ASSERT(target, "Target can not be NULL");
+        FZ_ASSERT(target, "Target can not be NULL.");
 
         fzEventHandler *handler = getHandlerForTarget(target);
         if(handler) {
@@ -169,7 +169,7 @@ namespace FORZE {
     
     void EventManager::addDelegate(EventDelegate *target, uint16_t flags, fzInt priority, fzEventHandlerMode mode)
     {
-        FZ_ASSERT(target != NULL, "Target argument must be non-NULL");
+        FZ_ASSERT(target != NULL, "Target argument must be non-NULL.");
         
         fzEventHandler *handler = getHandlerForTarget(target);
         if(handler) {
@@ -220,7 +220,7 @@ namespace FORZE {
     
     void EventManager::removeDelegate(EventDelegate *target)
     {
-        FZ_ASSERT(target != NULL, "Target argument must be non-NULL");
+        FZ_ASSERT(target != NULL, "Target argument must be non-NULL.");
         
         // INVALIDATE
         if(invalidateDelegate(target))
@@ -253,7 +253,7 @@ namespace FORZE {
 #endif
             case kFZEventState_Indifferent:
             {
-                FZ_ASSERT(newEvent.getDelegate() == NULL, "Event delegate should be NULL");
+                FZ_ASSERT(newEvent.getDelegate() == NULL, "Event delegate should be NULL.");
                 m_events.push_back(newEvent);
                 return &(m_events.back());
             }
@@ -360,7 +360,7 @@ namespace FORZE {
                     }
                     default:
                     {
-                        FZ_ASSERT(false, "Invalid state");
+                        FZ_ASSERT(false, "Invalid event state.");
                         break;
                     }
                 }

@@ -52,7 +52,7 @@ namespace FORZE {
     , m_originalSize(s)
     , m_isRotated(ro)
     {
-        FZ_ASSERT(m_originalSize.width >= m_rect.size.width && m_originalSize.height >= m_rect.size.height, "Original size can not be smaller than the trimmed size");
+        FZ_ASSERT(m_originalSize.width >= m_rect.size.width && m_originalSize.height >= m_rect.size.height, "Original size can not be smaller than the trimmed size.");
 
         setTexture(t);
     }

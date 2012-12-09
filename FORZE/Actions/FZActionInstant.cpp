@@ -184,8 +184,8 @@ namespace FORZE {
     : p_targetCallback(t)
     , p_selector(s)
     {
-        FZ_ASSERT( p_targetCallback != NULL, "Selector must be non-NULL");
-        FZ_ASSERT( p_selector != NULL, "Target must be non-NULL");
+        FZ_ASSERT( p_targetCallback != NULL, "Selector must be non-NULL.");
+        FZ_ASSERT( p_selector != NULL, "Target must be non-NULL.");
     }
     
     
@@ -214,8 +214,8 @@ namespace FORZE {
     : p_targetCallback(t)
     , p_selector(s)
     {
-        FZ_ASSERT( p_targetCallback != NULL, "Selector must be non-NULL");
-        FZ_ASSERT( p_selector != NULL, "Target must be non-NULL");
+        FZ_ASSERT( p_targetCallback != NULL, "Selector must be non-NULL.");
+        FZ_ASSERT( p_selector != NULL, "Target must be non-NULL.");
     }
     
     
@@ -245,8 +245,8 @@ namespace FORZE {
     , p_selector(s)
     , p_pointer(d)
     {
-        FZ_ASSERT( p_targetCallback != NULL, "Selector must be non-NULL");
-        FZ_ASSERT( p_selector != NULL, "Target must be non-NULL");
+        FZ_ASSERT( p_targetCallback != NULL, "Selector must be non-NULL.");
+        FZ_ASSERT( p_selector != NULL, "Target must be non-NULL.");
     }
     
     

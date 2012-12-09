@@ -392,7 +392,7 @@ static CVReturn drawScene(CVDisplayLinkRef dl, const CVTimeStamp* now, const CVT
 
 - (void) updateWindow
 {
-    FZ_ASSERT(context_ != NULL, "Opengl context has not been created");
+    FZ_ASSERT(context_ != NULL, "Opengl context has not been created.");
     @autoreleasepool
     {
         fzSize windowSize       = mgrDirector_->getWindowSize();
@@ -438,7 +438,7 @@ static CVReturn drawScene(CVDisplayLinkRef dl, const CVTimeStamp* now, const CVT
 
 - (void) setupDisplayLink
 {
-    FZ_ASSERT(context_ != NULL, "Opengl context has not been created");
+    FZ_ASSERT(context_ != NULL, "Opengl context has not been created.");
 
     CVReturn status;
     status = CVDisplayLinkCreateWithActiveCGDisplays(&displayLink_);
@@ -539,20 +539,20 @@ static CVReturn drawScene(CVDisplayLinkRef dl, const CVTimeStamp* now, const CVT
 
 - (void) applicationWillResignActive:(id)a
 {
-    FZ_ASSERT(mgrDirector_, "mgrDirector_ can not be NULL");
+    FZ_ASSERT(mgrDirector_, "mgrDirector_ can not be NULL.");
     mgrDirector_->applicationPaused();
 }
 
 
 - (void) applicationDidBecomeActive:(id)a
 {
-    FZ_ASSERT(mgrDirector_, "mgrDirector_ can not be NULL");
+    FZ_ASSERT(mgrDirector_, "mgrDirector_ can not be NULL.");
     mgrDirector_->applicationResumed();
 }
 
 - (void) applicationWillTerminate:(NSApplication *)a
 {
-    FZ_ASSERT(mgrDirector_, "mgrDirector_ can not be NULL");
+    FZ_ASSERT(mgrDirector_, "mgrDirector_ can not be NULL.");
     mgrDirector_->applicationTerminate();
 }
 
@@ -561,7 +561,7 @@ static CVReturn drawScene(CVDisplayLinkRef dl, const CVTimeStamp* now, const CVT
 
 - (void)lockFocus
 {
-    FZ_ASSERT(context_ != NULL, "Opengl context has not been created");
+    FZ_ASSERT(context_ != NULL, "Opengl context has not been created.");
     
     [super lockFocus];
     if ([context_ view] != self)
@@ -571,7 +571,7 @@ static CVReturn drawScene(CVDisplayLinkRef dl, const CVTimeStamp* now, const CVT
 
 -(void) viewDidMoveToWindow
 { 
-    FZ_ASSERT(context_ != NULL, "Opengl context has not been created");
+    FZ_ASSERT(context_ != NULL, "Opengl context has not been created.");
 
     [super viewDidMoveToWindow];
     if ([self window] == nil)
@@ -589,7 +589,7 @@ static CVReturn drawScene(CVDisplayLinkRef dl, const CVTimeStamp* now, const CVT
 
 - (void) dispatchMouse:(NSEvent*)nsevent type:(fzEventType)type state:(fzEventState)state
 {   
-    FZ_ASSERT(mgrEvents_ != NULL, "HAT isn't configured properly, the events can't be dispatched");
+    FZ_ASSERT(mgrEvents_ != NULL, "HAT isn't configured properly, the events can't be dispatched.");
     NSPoint mouseP = [self convertPoint:[nsevent locationInWindow] fromView:[window_ contentView]];
     
     fzPoint point(mouseP.x, mouseP.y);
@@ -608,7 +608,7 @@ static CVReturn drawScene(CVDisplayLinkRef dl, const CVTimeStamp* now, const CVT
 
 - (void) dispatchKey:(NSEvent*)nsevent state:(fzEventState)state
 {   
-    FZ_ASSERT(mgrEvents_ != NULL, "HAT isn't configured properly, the events can't be dispatched");
+    FZ_ASSERT(mgrEvents_ != NULL, "HAT isn't configured properly, the events can't be dispatched.");
     
     //NSString *chars = [nsevent charactersIgnoringModifiers];
     //intptr_t keyCode = [chars characterAtIndex:0]; // identifier = keyCode
@@ -624,7 +624,7 @@ static CVReturn drawScene(CVDisplayLinkRef dl, const CVTimeStamp* now, const CVT
 
 - (void) dispatchTrackpad:(NSSet*)touches state:(fzEventState)state
 {   
-    FZ_ASSERT(mgrEvents_ != NULL, "HAT isn't configured properly, the events can't be dispatched");
+    FZ_ASSERT(mgrEvents_ != NULL, "HAT isn't configured properly, the events can't be dispatched.");
     for(NSTouch *touch in touches)
     {
         NSPoint cgp = [touch normalizedPosition];
@@ -654,7 +654,7 @@ static CVReturn drawScene(CVDisplayLinkRef dl, const CVTimeStamp* now, const CVT
 
 - (void)mouseMoved:(NSEvent *)nsevent
 {
-    FZ_ASSERT(mgrEvents_ != NULL, "HAT isn't configured properly, the events can't be dispatched");
+    FZ_ASSERT(mgrEvents_ != NULL, "HAT isn't configured properly, the events can't be dispatched.");
     NSPoint mouseP = [self convertPoint:[nsevent locationInWindow] fromView:[window_ contentView]];
     
     fzPoint point(mouseP.x, mouseP.y);

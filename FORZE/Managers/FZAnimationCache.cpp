@@ -60,14 +60,14 @@ namespace FORZE {
     
     void AnimationCache::removeAnimationByName(const char* name)
     {
-        FZ_ASSERT(name != NULL, "AnimationCache: Name can't be empty");
+        FZ_ASSERT(name != NULL, "Name argument must be non-NULL.");
         m_animations.erase(fzHash(name));
     }
     
     
     Animation* AnimationCache::getAnimationByName(const char* name) const
     {
-        FZ_ASSERT(name != NULL, "AnimationCache: Name can't be empty");
+        FZ_ASSERT(name != NULL, "Name argument must be non-NULL.");
 
         animationMap::const_iterator it(m_animations.find(fzHash(name)));
         if(it == m_animations.end())

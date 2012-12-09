@@ -76,7 +76,7 @@ namespace FORZE {
     
     void TMXLayer::insertChild(Node *node)
     {
-        FZ_ASSERT( dynamic_cast<Sprite*>(node), "SpriteBatch's children must be Sprites");
+        FZ_ASSERT( dynamic_cast<Sprite*>(node), "SpriteBatch's children must be Sprites.");
         
         Sprite *sprite = static_cast<Sprite*>(node);
         
@@ -143,8 +143,8 @@ namespace FORZE {
     
     Sprite* TMXLayer::tileAt(const fzPoint& coord)
     {
-        FZ_ASSERT( coord.x < m_layerSize.width && coord.y < m_layerSize.height && coord.x >=0 && coord.y >=0, "TMXLayer: invalid position");
-        FZ_ASSERT( p_tiles, "TMXLayer: the tiles map has been released");
+        FZ_ASSERT( coord.x < m_layerSize.width && coord.y < m_layerSize.height && coord.x >=0 && coord.y >=0, "TMXLayer: invalid position.");
+        FZ_ASSERT( p_tiles, "TMXLayer: the tiles map has been released.");
         
         Sprite *tile = NULL;
         uint32_t gid = tileGIDAt(coord);
@@ -173,8 +173,8 @@ namespace FORZE {
     
     uint32_t TMXLayer::tileGIDAt(const fzPoint& coord, bool flags) const
     {
-        FZ_ASSERT( coord.x < m_layerSize.width && coord.y < m_layerSize.height && coord.x >=0 && coord.y >=0, "TMXLayer: invalid position");
-        FZ_ASSERT( p_tiles, "TMXLayer: the tiles map has been released");
+        FZ_ASSERT( coord.x < m_layerSize.width && coord.y < m_layerSize.height && coord.x >=0 && coord.y >=0, "TMXLayer: invalid position.");
+        FZ_ASSERT( p_tiles, "TMXLayer: the tiles map has been released.");
         
         fzInt idx = coord.x + coord.y * m_layerSize.width;
         return (flags) ? p_tiles[ idx ] : (p_tiles[ idx ] & kFlippedMask);
@@ -183,9 +183,9 @@ namespace FORZE {
     
     void TMXLayer::setTileGID(uint32_t GID, const fzPoint& coord, bool flags)
     {
-        FZ_ASSERT( coord.x < m_layerSize.width && coord.y < m_layerSize.height && coord.x >=0 && coord.y >=0, "TMXLayer: invalid position");
-        FZ_ASSERT( p_tiles, "TMXLayer: the tiles map has been released");
-        FZ_ASSERT( GID == 0 || GID >= getTileset()->getFirstGID(), "TMXLayer: invalid gid" );
+        FZ_ASSERT( coord.x < m_layerSize.width && coord.y < m_layerSize.height && coord.x >=0 && coord.y >=0, "TMXLayer: invalid position.");
+        FZ_ASSERT( p_tiles, "TMXLayer: the tiles map has been released.");
+        FZ_ASSERT( GID == 0 || GID >= getTileset()->getFirstGID(), "TMXLayer: invalid gid." );
         
         uint32_t currentGID = tileGIDAt(coord, flags);
         
@@ -205,7 +205,7 @@ namespace FORZE {
                 fzInt idx = coord.x + coord.y * m_layerSize.width;
                 Sprite *sprite = static_cast<Sprite*>(getChildByTag(idx));
                 
-                FZ_ASSERT(sprite, "Sprite was not found");
+                FZ_ASSERT(sprite, "Sprite was not found.");
                 
                 const fzRect& rect = getTileset()->rectForGID(GID);
                 sprite->setTextureRect(rect);
@@ -216,8 +216,8 @@ namespace FORZE {
     
     void TMXLayer::removeTileAt(const fzPoint& coord)
     {
-        FZ_ASSERT( coord.x < m_layerSize.width && coord.y < m_layerSize.height && coord.x >=0 && coord.y >=0, "TMXLayer: invalid position");
-        FZ_ASSERT( p_tiles, "TMXLayer: the tiles map has been released");
+        FZ_ASSERT( coord.x < m_layerSize.width && coord.y < m_layerSize.height && coord.x >=0 && coord.y >=0, "TMXLayer: invalid position.");
+        FZ_ASSERT( p_tiles, "TMXLayer: the tiles map has been released.");
         
         fzInt idx = coord.x + coord.y * m_layerSize.width;
         uint32_t GID = p_tiles[idx];
@@ -260,7 +260,7 @@ namespace FORZE {
                 break;
             }
             default:
-                FZ_ASSERT(false, "Invalid map orientation");
+                FZ_ASSERT(false, "Invalid map orientation.");
                 break;
         }
         return FZPointZero;
@@ -281,10 +281,10 @@ namespace FORZE {
                     ret = coord.y - m_layerSize.height;
                     break;
                 case kFZTMXOrientationHex:
-                    FZ_ASSERT(false, "TMX Hexa zOrder not supported");
+                    FZ_ASSERT(false, "TMX Hexa zOrder not supported.");
                     break;
                 default:
-                    FZ_ASSERT(false, "TMX invalid value");
+                    FZ_ASSERT(false, "TMX invalid value.");
                     break;
             }
         } else
@@ -309,7 +309,7 @@ namespace FORZE {
                 
                 break;
             case kFZTMXOrientationHex:
-                FZ_ASSERT(coord == FZPointZero, "Offset calculation is not implemented for hexagonal maps");
+                FZ_ASSERT(coord == FZPointZero, "Offset calculation is not implemented for hexagonal maps.");
                 break;
         }
         return FZPointZero;

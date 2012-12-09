@@ -152,7 +152,7 @@ namespace FORZE {
     
     void ParticleSystemQuad::setDisplayFrame(const fzSpriteFrame& s)
     {
-        FZ_ASSERT( s.getOffset() == FZPointZero, "QuadParticle only supports SpriteFrames with no offsets");
+        FZ_ASSERT( s.getOffset() == FZPointZero, "QuadParticle only supports SpriteFrames with no offsets.");
         
         // update texture before updating texture rect
         if ( s.getTexture()->getName() != p_texture->getName() )
@@ -288,7 +288,7 @@ namespace FORZE {
         glColorPointer(4, GL_UNSIGNED_BYTE, sizeof(_fzC4_T2_V2), &p_quads->bl.color);
 #endif
                 
-        FZ_ASSERT( m_particleIdx == m_particleCount, "Abnormal error in particle quad");
+        FZ_ASSERT( m_particleIdx == m_particleCount, "Abnormal error in particle quad.");
     
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_indicesVBO);
         glDrawElements(GL_TRIANGLES, m_particleIdx * 6, GL_UNSIGNED_SHORT, 0);

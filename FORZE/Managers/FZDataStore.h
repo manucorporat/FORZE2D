@@ -197,7 +197,7 @@ namespace FORZE {
         //! Saves the changes in the persistent memory.
         //! You don't have to call this method unless you want to force the saving,
         //! FORZE saves the data automatically.
-        //! @return If data could not be saved, false is returned. Change to debug mode.
+        //! @return false if data could not be saved. Change to debug mode.
         bool save();
     };
 }

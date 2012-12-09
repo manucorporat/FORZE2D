@@ -122,7 +122,7 @@ namespace FORZE {
     
     bool MenuItem::event(Event& event)
     {
-        FZ_ASSERT(event.isType(kFZEventType_Tap), "Event is a touch event");
+        FZ_ASSERT(event.isType(kFZEventType_Tap), "Event is a touch event.");
         
         if(!isVisible())
             return false;
@@ -143,7 +143,7 @@ namespace FORZE {
             }
             case kFZEventState_Updated:
             {
-                FZ_ASSERT(!m_isWaiting, "[Event updated] -- invalid state");
+                FZ_ASSERT(!m_isWaiting, "[Event updated] -- invalid state.");
                 
                 bool isSelected = getBoundingBox().contains(event.getPoint());
                 if (isSelected != m_isSelected) {
@@ -335,7 +335,7 @@ namespace FORZE {
     , m_colorDisabled(fzGRAY)
     , p_sprite(sprite)
     {
-        FZ_ASSERT(sprite, "Sprite cannot be NULL");
+        FZ_ASSERT(sprite, "Sprite cannot be NULL.");
         setColorNormal(sprite->getColor());
         
         p_sprite->setAnchorPoint(FZPointZero);
@@ -458,7 +458,7 @@ namespace FORZE {
     
     void MenuItemSprite::setNormalSprite(Sprite *s)
     {
-        FZ_ASSERT(s, "Normal sprite can not be NULL");
+        FZ_ASSERT(s, "Normal sprite can not be NULL.");
         
         if( s != p_normalSprite ) {
             s->setAnchorPoint(FZPointZero);

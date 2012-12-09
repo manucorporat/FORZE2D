@@ -110,7 +110,7 @@ namespace FORZE {
     
     bool DataStore::save()
     {
-        FZ_ASSERT(p_path, "Path cannot be NULL");
+        FZ_ASSERT(p_path, "Path cannot be NULL.");
 
         if(!m_dirty)
             return true;
@@ -178,7 +178,7 @@ namespace FORZE {
         char *end = rapidxml::print(buffer, doc, 0);
         *end = '\0'; // NULL TERMINATION
         
-        FZ_ASSERT(end < (buffer + xmlSize), "Memory overflow");
+        FZ_ASSERT(end < (buffer + xmlSize), "Memory overflow.");
         
         bool success = IO::writeFile(buffer, p_path);
         delete [] buffer;
@@ -190,7 +190,7 @@ namespace FORZE {
     
     void DataStore::readFromMemory()
     {
-        FZ_ASSERT(p_path, "Path cannot be NULL");
+        FZ_ASSERT(p_path, "Path cannot be NULL.");
         if(m_dirty)
             return;
         
@@ -268,7 +268,7 @@ namespace FORZE {
             }
             buffer.free();
             
-            FZ_ASSERT(m_num <= m_capacity, "Memory overflow");
+            FZ_ASSERT(m_num <= m_capacity, "Memory overflow.");
         }
     }
     

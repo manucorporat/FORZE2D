@@ -135,7 +135,7 @@ namespace FORZE {
     
     void Sprite::useBatchRender(SpriteBatch* batch)
     {
-        FZ_ASSERT(batch != NULL, "Batch node cannot be NULL");
+        FZ_ASSERT(batch != NULL, "Batch node cannot be NULL.");
         
         if(m_mode == kFZSprite_BatchRendering)
             return;
@@ -154,7 +154,7 @@ namespace FORZE {
     void Sprite::insertChild(Node *child)
     {
 #if FZ_SPRITE_CHILDREN
-        FZ_ASSERT(dynamic_cast<Sprite*>(child), "Child should be a sprite");
+        FZ_ASSERT(dynamic_cast<Sprite*>(child), "Child should be a sprite.");
         
         Node::insertChild(child);
         
@@ -164,7 +164,7 @@ namespace FORZE {
         }
 #else
         (void)child;
-        FZ_ASSERT(false, "Children in Sprite are disabled. Set FZ_SPRITE_CHILDREN 1");
+        FZ_ASSERT(false, "Children in Sprite are disabled. Set FZ_SPRITE_CHILDREN 1.");
 #endif
     }
     
@@ -173,7 +173,7 @@ namespace FORZE {
     
     void Sprite::setTexture(Texture2D* texture)
     {
-        FZ_ASSERT( m_mode == kFZSprite_SelfRendering, "Sprite mode is not kFZSprite_SelfRendering");
+        FZ_ASSERT( m_mode == kFZSprite_SelfRendering, "Sprite mode is not kFZSprite_SelfRendering.");
 
         if(m_mode != kFZSprite_SelfRendering)
             return;
@@ -274,7 +274,7 @@ namespace FORZE {
     
     void Sprite::setBlendFunc(const fzBlendFunc& blend)
     {
-        FZ_ASSERT( m_mode == kFZSprite_SelfRendering, "Sprite mode is not kFZSprite_SelfRendering");
+        FZ_ASSERT( m_mode == kFZSprite_SelfRendering, "Sprite mode is not kFZSprite_SelfRendering.");
         m_blendFunc = blend;
     }
     
@@ -299,7 +299,7 @@ namespace FORZE {
     
     void Sprite::setBatch(SpriteBatch *batch)
     {
-        FZ_ASSERT( m_mode == kFZSprite_BatchRendering, "Sprite mode is not kFZSprite_BatchRendering");
+        FZ_ASSERT( m_mode == kFZSprite_BatchRendering, "Sprite mode is not kFZSprite_BatchRendering.");
         mode.B.p_batchNode = batch;
     }
     
@@ -328,7 +328,7 @@ namespace FORZE {
     
     const fzBlendFunc& Sprite::getBlendFunc() const
     {
-        FZ_ASSERT( m_mode == kFZSprite_SelfRendering, "Sprite mode is not kFZSprite_SelfRendering");
+        FZ_ASSERT( m_mode == kFZSprite_SelfRendering, "Sprite mode is not kFZSprite_SelfRendering.");
         return m_blendFunc;
     }
     
@@ -336,7 +336,7 @@ namespace FORZE {
     SpriteBatch* Sprite::getBatch() const
     {
         if(m_mode != kFZSprite_BatchRendering) {
-            FZ_ASSERT( false, "Sprite mode is not kFZSprite_BatchRendering");
+            FZ_ASSERT( false, "Sprite mode is not kFZSprite_BatchRendering.");
             return NULL;
         }            
         return mode.B.p_batchNode;
@@ -346,7 +346,7 @@ namespace FORZE {
     TextureAtlas* Sprite::getTextureAtlas() const
     {
         if(m_mode != kFZSprite_BatchRendering) {
-            FZ_ASSERT( false, "Sprite mode is not kFZSprite_BatchRendering");
+            FZ_ASSERT( false, "Sprite mode is not kFZSprite_BatchRendering.");
             return NULL;
         }    
         return mode.B.p_batchNode->getTextureAtlas();
@@ -379,7 +379,7 @@ namespace FORZE {
     
     bool Sprite::updateTransform(fzV4_T2_C4_Quad **quadp)
     {        
-        FZ_ASSERT( m_mode == kFZSprite_BatchRendering, "Sprite mode is not kFZSprite_BatchRendering");
+        FZ_ASSERT( m_mode == kFZSprite_BatchRendering, "Sprite mode is not kFZSprite_BatchRendering.");
         
         if(!m_isVisible)
             return false;
@@ -388,7 +388,7 @@ namespace FORZE {
         fzV4_T2_C4_Quad *quad = *quadp;
         ++(*quadp);
         
-        FZ_ASSERT( quad != NULL, "Quad cannot be NULL");
+        FZ_ASSERT( quad != NULL, "Quad cannot be NULL.");
 
         if( mode.B.p_currentQuad != quad) {
             mode.B.p_currentQuad = quad;
@@ -475,7 +475,7 @@ namespace FORZE {
     
     void Sprite::draw()
     {
-        FZ_ASSERT(m_mode == kFZSprite_SelfRendering, "If Sprite is being rendered by SpriteBatch, Sprite::draw SHOULD NOT be called");
+        FZ_ASSERT(m_mode == kFZSprite_SelfRendering, "If Sprite is being rendered by SpriteBatch, Sprite::draw SHOULD NOT be called.");
 
         // Bind texture
         fzGLSetMode(kFZGLMode_TextureNoColor);

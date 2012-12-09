@@ -45,7 +45,7 @@ namespace FORZE {
   class LifeCycle : public SELProtocol
     {
     private:
-        //! counts the number of retains
+        // counts the number of retains
         int m_retains;
         
         

@@ -261,7 +261,7 @@ namespace FORZE {
     {
         memset(&mode, 0, sizeof(mode));
         
-        FZ_ASSERT(texture != NULL, "Texture cannot be NULL");
+        //FZ_ASSERT(texture != NULL, "Texture cannot be NULL");
         setTexture(texture);
 
         p_particles = new fzParticle[m_totalParticles];
@@ -497,21 +497,21 @@ namespace FORZE {
     
     void ParticleSystem::setGravity(const fzPoint& g)
     {
-        FZ_ASSERT( m_emitterMode == kFZParticleModeGravity, "Particle Mode should be Gravity");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeGravity, "Particle Mode should be Gravity.");
         mode.A.gravity = g;
     }
     
     
     void ParticleSystem::setSpeed(fzFloat s)
     {
-        FZ_ASSERT( m_emitterMode == kFZParticleModeGravity, "Particle Mode should be Gravity");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeGravity, "Particle Mode should be Gravity.");
         mode.A.speed = s;
     }
     
     
     void ParticleSystem::setSpeedVar(fzFloat s)
     {
-        FZ_ASSERT( m_emitterMode == kFZParticleModeGravity, "Particle Mode should be Gravity");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeGravity, "Particle Mode should be Gravity.");
         mode.A.speedVar = s;
     }
     
@@ -525,63 +525,63 @@ namespace FORZE {
     
     void ParticleSystem::setTangentialAccelVar(fzFloat t)
     {
-        FZ_ASSERT( m_emitterMode == kFZParticleModeGravity, "Particle Mode should be Gravity");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeGravity, "Particle Mode should be Gravity.");
         mode.A.tangentialAccelVar = t;
     }
     
     
     void ParticleSystem::setRadialAccel(fzFloat r)
     {
-        FZ_ASSERT( m_emitterMode == kFZParticleModeGravity, "Particle Mode should be Gravity");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeGravity, "Particle Mode should be Gravity.");
         mode.A.radialAccel = r;
     }
     
     
     void ParticleSystem::setRadialAccelVar(fzFloat r)
     {
-        FZ_ASSERT( m_emitterMode == kFZParticleModeGravity, "Particle Mode should be Gravity");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeGravity, "Particle Mode should be Gravity.");
         mode.A.radialAccelVar = r;
     }
     
     
     void ParticleSystem::setStartRadius(fzFloat r)
     {
-        FZ_ASSERT( m_emitterMode == kFZParticleModeRadius, "Particle Mode should be Radius");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeRadius, "Particle Mode should be Radius.");
         mode.B.startRadius = r;
     }
     
     
     void ParticleSystem::setStartRadiusVar(fzFloat r)
     {
-        FZ_ASSERT( m_emitterMode == kFZParticleModeRadius, "Particle Mode should be Radius");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeRadius, "Particle Mode should be Radius.");
         mode.B.startRadiusVar = r;
     }
     
     
     void ParticleSystem::setEndRadius(fzFloat r)
     {
-        FZ_ASSERT( m_emitterMode == kFZParticleModeRadius, "Particle Mode should be Radius");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeRadius, "Particle Mode should be Radius.");
         mode.B.endRadius = r;
     }
     
     
     void ParticleSystem::setEndRadiusVar(fzFloat r)
     {
-        FZ_ASSERT( m_emitterMode == kFZParticleModeRadius, "Particle Mode should be Radius");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeRadius, "Particle Mode should be Radius.");
         mode.B.endRadiusVar = r;
     }
     
     
     void ParticleSystem::setRotatePerSecond(fzFloat r)
     {
-        FZ_ASSERT( m_emitterMode == kFZParticleModeRadius, "Particle Mode should be Radius");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeRadius, "Particle Mode should be Radius.");
         mode.B.rotatePerSecond = r;
     }
     
     
     void ParticleSystem::setRotatePerSecondVar(fzFloat r)
     {
-        FZ_ASSERT( m_emitterMode == kFZParticleModeRadius, "Particle Mode should be Radius");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeRadius, "Particle Mode should be Radius.");
         mode.B.rotatePerSecondVar = r;
     }
        
@@ -610,7 +610,7 @@ namespace FORZE {
     
     const fzPoint& ParticleSystem::getGravity() const
     {
-        FZ_ASSERT( m_emitterMode == kFZParticleModeGravity, "Particle Mode should be Gravity");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeGravity, "Particle Mode should be Gravity.");
         return FZPointZero;
         //return mode.A.gravity;
     }
@@ -618,7 +618,7 @@ namespace FORZE {
     
     fzFloat ParticleSystem::getSpeed() const
     {
-        FZ_ASSERT( m_emitterMode == kFZParticleModeGravity, "Particle Mode should be Gravity");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeGravity, "Particle Mode should be Gravity.");
         return mode.A.speed;
     }
     
@@ -632,14 +632,14 @@ namespace FORZE {
     
     fzFloat ParticleSystem::getTangentialAccel() const
     {
-        FZ_ASSERT( m_emitterMode == kFZParticleModeGravity, "Particle Mode should be Gravity");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeGravity, "Particle Mode should be Gravity.");
         return mode.A.tangentialAccel;
     }
     
     
     fzFloat ParticleSystem::getTangentialAccelVar() const
     {
-        FZ_ASSERT( m_emitterMode == kFZParticleModeGravity, "Particle Mode should be Gravity");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeGravity, "Particle Mode should be Gravity.");
         return mode.A.tangentialAccelVar;
     }
     
@@ -653,49 +653,49 @@ namespace FORZE {
     
     fzFloat ParticleSystem::getRadialAccelVar() const
     {
-        FZ_ASSERT( m_emitterMode == kFZParticleModeGravity, "Particle Mode should be Gravity");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeGravity, "Particle Mode should be Gravity.");
         return mode.A.radialAccelVar;
     }
     
     
     fzFloat ParticleSystem::getStartRadius() const
     {
-        FZ_ASSERT( m_emitterMode == kFZParticleModeRadius, "Particle Mode should be Radius");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeRadius, "Particle Mode should be Radius.");
         return mode.B.startRadius;
     }
     
     
     fzFloat ParticleSystem::getStartRadiusVar() const
     {
-        FZ_ASSERT( m_emitterMode == kFZParticleModeRadius, "Particle Mode should be Radius");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeRadius, "Particle Mode should be Radius.");
         return mode.B.startRadiusVar;
     }
     
     
     fzFloat ParticleSystem::getEndRadius() const
     {
-        FZ_ASSERT( m_emitterMode == kFZParticleModeRadius, "Particle Mode should be Radius");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeRadius, "Particle Mode should be Radius.");
         return mode.B.endRadius;
     }
     
     
     fzFloat ParticleSystem::getEndRadiusVar() const
     {
-        FZ_ASSERT( m_emitterMode == kFZParticleModeRadius, "Particle Mode should be Radius");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeRadius, "Particle Mode should be Radius.");
         return mode.B.endRadiusVar;
     }
     
     
     fzFloat ParticleSystem::getRotatePerSecond() const
     {
-        FZ_ASSERT( m_emitterMode == kFZParticleModeRadius, "Particle Mode should be Radius");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeRadius, "Particle Mode should be Radius.");
         return mode.B.rotatePerSecond;
     }
     
     
     fzFloat ParticleSystem::getRotatePerSecondVar() const
     {
-        FZ_ASSERT( m_emitterMode == kFZParticleModeRadius, "Particle Mode should be Radius");
+        FZ_ASSERT( m_emitterMode == kFZParticleModeRadius, "Particle Mode should be Radius.");
         return mode.B.rotatePerSecondVar;
     }
 }

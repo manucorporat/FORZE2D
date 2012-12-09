@@ -58,8 +58,8 @@ namespace FORZE {
     
     Action* ActionManager::getActionByTag(fzInt tag, void *target)
     {
-        FZ_ASSERT( tag != kFZActionTagInvalid, "Invalid tag");
-        FZ_ASSERT( target != NULL, "Argument target must be non-NULL");
+        FZ_ASSERT( tag != kFZActionTagInvalid, "Invalid tag.");
+        FZ_ASSERT( target != NULL, "Argument target must be non-NULL.");
         
         const pairSearch& p = m_actions.equal_range(target);
         actionsMap::const_iterator it(p.first);
@@ -74,7 +74,7 @@ namespace FORZE {
     
     fzUInt ActionManager::getNumberActions(void *target) const
     {
-        FZ_ASSERT( target != NULL, "Argument target must be non-NULL");
+        FZ_ASSERT( target != NULL, "Argument target must be non-NULL.");
         return m_actions.count(target);
     }
     
@@ -87,8 +87,8 @@ namespace FORZE {
     
     void ActionManager::addAction(Action *action, void *target, bool paused)
     {
-        FZ_ASSERT( action != NULL, "Argument action must be non-nil");
-        FZ_ASSERT( target != NULL, "Argument target must be non-NULL");
+        FZ_ASSERT( action != NULL, "Argument action must be non-NULL.");
+        FZ_ASSERT( target != NULL, "Argument target must be non-NULL.");
         FZ_ASSERT( action->getTarget() == NULL, "This action is already used.");
         
         action->retain();
@@ -100,7 +100,7 @@ namespace FORZE {
     
     void ActionManager::pauseTarget(void *target)
     {
-        FZ_ASSERT( target != NULL, "Argument target must be non-NULL");
+        FZ_ASSERT( target != NULL, "Argument target must be non-NULL.");
         
         const pairSearch& p = m_actions.equal_range(target);
         actionsMap::iterator it(p.first);
@@ -111,7 +111,7 @@ namespace FORZE {
     
     void ActionManager::resumeTarget(void *target)
     {
-        FZ_ASSERT( target != NULL, "Argument target must be non-NULL");
+        FZ_ASSERT( target != NULL, "Argument target must be non-NULL.");
         
         const pairSearch& p = m_actions.equal_range(target);
         actionsMap::iterator it(p.first);
@@ -122,7 +122,7 @@ namespace FORZE {
     
     void ActionManager::removeAction(const Action* action)
     {
-        FZ_ASSERT( action != NULL, "Argument action must be non-NULL");
+        FZ_ASSERT( action != NULL, "Argument action must be non-NULL.");
         
         const pairSearch& p = m_actions.equal_range(action->getTarget());
         actionsMap::const_iterator it(p.first);
@@ -139,8 +139,8 @@ namespace FORZE {
     
     void ActionManager::removeAction(fzInt tag, void *target)
     {
-        FZ_ASSERT( tag != kFZActionTagInvalid, "Invalid tag");
-        FZ_ASSERT( target != NULL, "Argument target must be non-NULL");
+        FZ_ASSERT( tag != kFZActionTagInvalid, "Invalid tag.");
+        FZ_ASSERT( target != NULL, "Argument target must be non-NULL.");
         
         const pairSearch& p = m_actions.equal_range(target);
         actionsMap::const_iterator it(p.first);
@@ -157,7 +157,7 @@ namespace FORZE {
     
     void ActionManager::removeAllActions(void *target)
     {
-        FZ_ASSERT( target != NULL, "Argument target must be non-NULL");
+        FZ_ASSERT( target != NULL, "Argument target must be non-NULL.");
         
         const pairSearch& p = m_actions.equal_range(target);
         actionsMap::const_iterator it(p.first);

@@ -95,8 +95,8 @@ namespace FORZE {
     
     bool IO::writeFile(const char *data, const char *absolutePath)
     {
-        FZ_ASSERT(data, "Data can not be NULL");
-        FZ_ASSERT(absolutePath, "absolutePath can not be NULL");
+        FZ_ASSERT(data, "Data can not be NULL.");
+        FZ_ASSERT(absolutePath, "absolutePath can not be NULL.");
         
         FILE *f = fopen(absolutePath, "w");
         if( f == NULL ) {

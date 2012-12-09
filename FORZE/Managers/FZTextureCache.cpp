@@ -55,7 +55,7 @@ namespace FORZE {
     
     Texture2D* TextureCache::addImage(const char* filename)
     {
-        FZ_ASSERT(filename != NULL, "fileimage argument must be non-NULL");
+        FZ_ASSERT(filename != NULL, "filename argument must be non-NULL.");
         
         // Make string mutable
         char *filenameCpy = fzStrcpy(filename);
@@ -98,7 +98,7 @@ namespace FORZE {
     
     Texture2D* TextureCache::getTextureForFilename(const char* filename) const
     {
-        FZ_ASSERT(filename, "Filename can not be NULL");
+        FZ_ASSERT(filename, "Filename can not be NULL.");
         return getTextureForHash(fzHash(filename)); 
     }
     
@@ -118,7 +118,7 @@ namespace FORZE {
     
     void TextureCache::removeTextureForFilename(const char* filename)
     {
-        FZ_ASSERT(filename, "Filename can not be NULL");
+        FZ_ASSERT(filename, "Filename can not be NULL.");
 
         int32_t hash = fzHash(filename);
         Texture2D *tex = getTextureForHash(hash);

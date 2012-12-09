@@ -265,7 +265,7 @@ namespace FORZE {
         
         for(frameNode = rootNode->first_node(); frameNode; frameNode = frameNode->next_sibling())
         {
-            FZ_ASSERT(strncmp(frameNode->name(), "node", frameNode->name_size()) == 0, "XML tag is not \"node\"");
+            FZ_ASSERT(strncmp(frameNode->name(), "node", frameNode->name_size()) == 0, "XML tag is not \"node\".");
 
             // NAME
             xml_attribute<> *attribute = frameNode->first_attribute("name");

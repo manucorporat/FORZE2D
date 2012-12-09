@@ -79,7 +79,7 @@ namespace FORZE {
 
     void TMXTiledMap::insertChild(Node* node)
     {
-        FZ_ASSERT( dynamic_cast<TMXLayer*>(node), "SpriteBatch's children must be Sprites");
+        FZ_ASSERT( dynamic_cast<TMXLayer*>(node), "SpriteBatch's children must be Sprites.");
         Node::insertChild(node);
     }
 

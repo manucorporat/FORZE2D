@@ -111,7 +111,7 @@ namespace FORZE {
     Sequence::Sequence(FiniteTimeAction *action1, ...)
     : Sequence()
     {
-        FZ_ASSERT(action1 != NULL, "Action cannot be NULL");
+        FZ_ASSERT(action1 != NULL, "Action cannot be NULL.");
 
         FiniteTimeAction *buffer[FZMAX_ACTION_BATCH];
         fzFloat duration = 0;
@@ -131,8 +131,8 @@ namespace FORZE {
         
         
         p_actions = new FiniteTimeAction*[m_numActions];
-        for(fzUInt i = 0; i < m_numActions; ++i)
-        {
+        fzUInt i = 0;
+        for(; i < m_numActions; ++i) {
             p_actions[i] = buffer[i];
             p_actions[i]->retain();
         }
@@ -250,7 +250,7 @@ namespace FORZE {
     Spawn::Spawn(FiniteTimeAction *action1, ...)
     : Spawn()
     {
-        FZ_ASSERT(action1 != NULL, "Action cannot be NULL");
+        FZ_ASSERT(action1 != NULL, "Action cannot be NULL.");
         
         FiniteTimeAction *buffer[FZMAX_ACTION_BATCH];
         fzFloat duration = 0;
@@ -375,7 +375,7 @@ namespace FORZE {
     , p_innerAction(a)
     , m_total(0)
     {
-        FZ_ASSERT(p_innerAction != NULL, "Action cannot be NULL");
+        FZ_ASSERT(p_innerAction != NULL, "Action cannot be NULL.");
         p_innerAction->retain();
         setDuration(p_innerAction->getDuration() * m_times);
     }
@@ -1175,7 +1175,7 @@ namespace FORZE {
     , m_nextFrame(0)
     , m_executedLoops(0)
     {
-        FZ_ASSERT(animation != NULL, "Argument Animation must be non-nil");
+        FZ_ASSERT(animation != NULL, "Argument Animation must be non-NULL.");
         animation->retain();
         
         fzFloat singleDuration = animation->getDuration();

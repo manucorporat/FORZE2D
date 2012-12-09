@@ -240,7 +240,7 @@ namespace FORZE {
     
     fzBuffer Data::B64Encode(const char *input, fzUInt inLength)
     {
-        FZ_ASSERT(input, "Input pointer cannot be NULL");
+        FZ_ASSERT(input, "Input pointer cannot be NULL.");
         FZ_ASSERT(inLength > 0, "Input data length cannot be 0.");        
         
         //should be enough to store 6-bit buffers in 8-bit buffers
@@ -260,7 +260,7 @@ namespace FORZE {
     
     fzBuffer Data::B64Decode(const char *input, fzUInt inLength)
     {
-        FZ_ASSERT(input, "Input pointer cannot be NULL");
+        FZ_ASSERT(input, "Input pointer cannot be NULL.");
         FZ_ASSERT(inLength > 0, "Input data length cannot be 0.");
         
         //should be enough to store 6-bit buffers in 8-bit buffers

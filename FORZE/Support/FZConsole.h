@@ -44,7 +44,6 @@ namespace FORZE {
         thread *p_thread;
         FILE *p_stream;
         
-        
         Console();
         explicit Console(FILE *stream);
 

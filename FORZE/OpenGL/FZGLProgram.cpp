@@ -87,8 +87,8 @@ namespace FORZE {
     GLShader::GLShader(const char *source, GLenum type)
     : m_shaderType(type), m_shader(0)
     {
-        FZ_ASSERT(m_shaderType == GL_VERTEX_SHADER || m_shaderType == GL_FRAGMENT_SHADER, "Invalid shader type");
-        FZ_ASSERT(source != NULL, "Argumment must be non-NULL");
+        FZ_ASSERT(m_shaderType == GL_VERTEX_SHADER || m_shaderType == GL_FRAGMENT_SHADER, "Invalid shader type.");
+        FZ_ASSERT(source != NULL, "Argumment must be non-NULL.");
         
         if(!compileShader(source))
             FZ_RAISE("GLProgram: Error compiling shader.");
@@ -104,7 +104,8 @@ namespace FORZE {
     
     bool GLShader::compileShader(const char* source)
     {
-        FZ_ASSERT(m_shader == 0, "Shader is already compiled");
+        if(m_shader != 0)
+            return true;
         
         m_shader = glCreateShader(m_shaderType);
         

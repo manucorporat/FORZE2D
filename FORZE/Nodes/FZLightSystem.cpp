@@ -56,16 +56,16 @@ namespace FORZE {
     
     inline fzInt previousVertex(fzInt current, fzInt total)
     {
-        FZ_ASSERT(current >= 0 && total > 0, "Invalid indexes");
-        FZ_ASSERT(current < total, "Index can not be bigger than total");
+        FZ_ASSERT(current >= 0 && total > 0, "Invalid indexes.");
+        FZ_ASSERT(current < total, "Index can not be bigger than total.");
         return (current == 0) ? total-1 : current-1;
     }
     
     
     inline fzInt nextVertex(fzInt current, fzInt total)
     {
-        FZ_ASSERT(current >= 0 && total > 0, "Invalid indexes");
-        FZ_ASSERT(current < total, "Index can not be bigger than total");
+        FZ_ASSERT(current >= 0 && total > 0, "Invalid indexes.");
+        FZ_ASSERT(current < total, "Index can not be bigger than total.");
         return (current == (total-1)) ? 0 : current+1;
     }
     
@@ -104,8 +104,8 @@ namespace FORZE {
     , p_batch(NULL)
     , p_texture(NULL)
     {
-        FZ_ASSERT(batch != NULL, "Sprite batch cannot be NULL");
-        FZ_ASSERT(texture != NULL, "Texture cannot be NULL");
+        FZ_ASSERT(batch != NULL, "Sprite batch cannot be NULL.");
+        FZ_ASSERT(texture != NULL, "Texture cannot be NULL.");
 
         setTexture(texture);
         setBatch(batch);
@@ -131,7 +131,7 @@ namespace FORZE {
     
     void LightSystem::insertChild(Node* node)
     {
-        FZ_ASSERT( dynamic_cast<Light*>(node), "LightSystem's children must be Lights");
+        FZ_ASSERT( dynamic_cast<Light*>(node), "LightSystem's children must be Lights.");
 
         Light *sprite = static_cast<Light*>(node);        
 
@@ -244,7 +244,7 @@ namespace FORZE {
             
             FZ_LIST_FOREACH(p_batch->getChildren(), sprite)
             {
-                FZ_ASSERT(dynamic_cast<Sprite*>(sprite), "All children must be sprites");
+                FZ_ASSERT(dynamic_cast<Sprite*>(sprite), "All children must be sprites.");
                 
                 if(reference.distanceSquared(sprite->getPosition()) > radius_2)
                     continue;

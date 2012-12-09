@@ -56,8 +56,8 @@ namespace FORZE {
     };
     
 #define FZ_SAFE_APPLY_MATRIX(__SHADER__) { \
-FZ_ASSERT(__SHADER__ != NULL, "Shader can not be NULL"); \
-FZ_ASSERT(MS::getMatrix() != NULL, "Stack base can not be NULL"); \
+FZ_ASSERT(__SHADER__ != NULL, "Shader can not be NULL."); \
+FZ_ASSERT(MS::getMatrix() != NULL, "Stack base can not be NULL."); \
 (__SHADER__)->setUniform4x4f(kFZUniformMVMatrix_s, 1, GL_FALSE, MS::getMatrix()); \
 }
 

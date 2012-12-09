@@ -62,7 +62,7 @@ namespace FORZE {
     
     void fzMath_mat4Identity(float *m)
     {
-        FZ_ASSERT(m != NULL, "Input matrix 1 cannot be NULL");
+        FZ_ASSERT(m != NULL, "Input matrix 1 cannot be NULL.");
 
         m[1] = m[2] = m[3] = m[4] =
         m[6] = m[7] = m[8] = m[9] =
@@ -83,8 +83,8 @@ namespace FORZE {
     
     void fzMath_mat4Multiply(const float* m1, const fzAffineTransform &affine, float* mat)
     {
-        FZ_ASSERT(m1 != NULL, "Input matrix 1 cannot be NULL");
-        FZ_ASSERT(mat != NULL, "Output pointer cannot be NULL");
+        FZ_ASSERT(m1 != NULL, "Input matrix 1 cannot be NULL.");
+        FZ_ASSERT(mat != NULL, "Output pointer cannot be NULL.");
         FZ_ASSERT(m1 != mat, "Input matrix and output matrix cannot be the same one.");
 
         const float* m2 = affine.m;
@@ -121,8 +121,8 @@ namespace FORZE {
     
     void fzMath_mat4Multiply(const float* m1, const float* m2, float* mat)
     {
-        FZ_ASSERT(m1 != NULL, "Input matrix 1 cannot be NULL");
-        FZ_ASSERT(m2 != NULL, "Input matrix 2 cannot be NULL");
+        FZ_ASSERT(m1 != NULL, "Input matrix 1 cannot be NULL.");
+        FZ_ASSERT(m2 != NULL, "Input matrix 2 cannot be NULL.");
         FZ_ASSERT(m1 != mat, "Input matrix and output matrix cannot be the same one.");
 
         
@@ -150,9 +150,9 @@ namespace FORZE {
     
     void fzMath_mat4Vec2(const float* m1, const float* m2, float* mat)
     {
-        FZ_ASSERT(m1 != NULL, "Input matrix 1 cannot be NULL");
-        FZ_ASSERT(m2 != NULL, "Input matrix 2 cannot be NULL");
-        FZ_ASSERT(mat != NULL, "Output pointer cannot be NULL");
+        FZ_ASSERT(m1 != NULL, "Input matrix 1 cannot be NULL.");
+        FZ_ASSERT(m2 != NULL, "Input matrix 2 cannot be NULL.");
+        FZ_ASSERT(mat != NULL, "Output pointer cannot be NULL.");
         
 #if defined(__ARM_NEON__) && 0
         
@@ -178,9 +178,9 @@ namespace FORZE {
     
     void fzMath_mat4Vec4(const float* m1, const float* m2, float* mat)
     {
-        FZ_ASSERT(m1 != NULL, "Input matrix 1 cannot be NULL");
-        FZ_ASSERT(m2 != NULL, "Input matrix 2 cannot be NULL");
-        FZ_ASSERT(mat != NULL, "Output pointer cannot be NULL");
+        FZ_ASSERT(m1 != NULL, "Input matrix 1 cannot be NULL.");
+        FZ_ASSERT(m2 != NULL, "Input matrix 2 cannot be NULL.");
+        FZ_ASSERT(mat != NULL, "Output pointer cannot be NULL.");
         
 #if defined(__ARM_NEON__)
         
@@ -209,9 +209,9 @@ namespace FORZE {
     
     
     void fzMath_mat4Vec4Affine(const float* matrixInput, const fzAffineTransform& affine, const float* vertices2DInput, float* vertices4DOutput) {
-        FZ_ASSERT(matrixInput != NULL, "Input matrix 1 cannot be NULL");
-        FZ_ASSERT(vertices2DInput != NULL, "Input matrix 2 cannot be NULL");
-        FZ_ASSERT(vertices4DOutput != NULL, "Output pointer cannot be NULL");
+        FZ_ASSERT(matrixInput != NULL, "Input matrix 1 cannot be NULL.");
+        FZ_ASSERT(vertices2DInput != NULL, "Input matrix 2 cannot be NULL.");
+        FZ_ASSERT(vertices4DOutput != NULL, "Output pointer cannot be NULL.");
         
 #if defined(__ARM_NEON__)
         
@@ -231,14 +231,14 @@ namespace FORZE {
                                           fzFloat zNear, fzFloat zFar,
                                           float *output)
     {
-        FZ_ASSERT(output != NULL, "Output pointer cannot be NULL");
+        FZ_ASSERT(output != NULL, "Output pointer cannot be NULL.");
 
         fzFloat r = FZ_DEGREES_TO_RADIANS(fovY / 2);
         fzFloat deltaZ = zFar - zNear;
         fzFloat cotangent = 1/tanf(r);
         
         if (deltaZ == 0 || cotangent == 0 || aspect == 0) {
-            FZLOGERROR("Perpertive impossible");
+            FZLOGERROR("Perpertive impossible.");
             return;
         }
         
@@ -256,7 +256,7 @@ namespace FORZE {
                                     fzFloat nearVal, fzFloat farVal,
                                     float* output )
     {
-        FZ_ASSERT(output != NULL, "Output pointer cannot be NULL");
+        FZ_ASSERT(output != NULL, "Output pointer cannot be NULL.");
 
         fzFloat tx = -((right + left) / (right - left));
         fzFloat ty = -((top + bottom) / (top - bottom));
@@ -281,7 +281,7 @@ namespace FORZE {
   
     void fzMath_mat4LookAt(const fzPoint3& eye, const fzPoint3& center, const fzPoint3& up, float *output)
     {     
-        FZ_ASSERT(output != NULL, "Output pointer cannot be NULL");
+        FZ_ASSERT(output != NULL, "Output pointer cannot be NULL.");
 
         fzPoint3 f(center);
         f.x -= eye.x;

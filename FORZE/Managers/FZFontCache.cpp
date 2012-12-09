@@ -58,7 +58,7 @@ namespace FORZE {
     
     Font* FontCache::addFont(const char* filename, fzFloat lineHeight)
     {
-        FZ_ASSERT(filename != NULL, "Filename argument must be non-NULL");
+        FZ_ASSERT(filename != NULL, "Filename argument must be non-NULL.");
         
         // Make string mutable
         char *filenameCpy = fzStrcpy(filename);
@@ -107,14 +107,14 @@ namespace FORZE {
     
     Font* FontCache::getFontForFilename(const char* filename) const
     {
-        FZ_ASSERT(filename, "Filename can not be NULL");
+        FZ_ASSERT(filename, "Filename can not be NULL.");
         return getFontForHash(fzHash(filename));
     }
     
     
     void FontCache::removeFont(Font *font)
     {
-        FZ_ASSERT(font, "Font can not be NULL");
+        FZ_ASSERT(font, "Font can not be NULL.");
 
         fontsMap::iterator it(m_fonts.begin());
         for(; it != m_fonts.end(); ++it) {
@@ -129,7 +129,7 @@ namespace FORZE {
     
     void FontCache::removeFontForFilename(const char* filename)
     {
-        FZ_ASSERT(filename, "Filename can not be NULL");
+        FZ_ASSERT(filename, "Filename can not be NULL.");
 
         int32_t hash = fzHash(filename);
         Font *font = getFontForHash(hash);

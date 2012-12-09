@@ -53,7 +53,7 @@ namespace FORZE {
     
     void ParallaxNode::addChild(Node *child, fzInt zOrder, fzPoint ratio, fzPoint offset)
     {
-        FZ_ASSERT(child, "Argument must be non-nil");        
+        FZ_ASSERT(child, "Argument must be non-NULL.");        
         
         fzParallaxObject &obj = p_parallaxArray[m_count];
         obj.ratio = ratio;
