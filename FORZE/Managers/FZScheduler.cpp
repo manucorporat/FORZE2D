@@ -165,7 +165,10 @@ namespace FORZE {
     
     void Scheduler::unscheduleAllSelectors()
     {
-        m_timers.clear();
+        FZLOGINFO("Scheduler: warning: unscheduleAllSelectors() is dangerous, actions could stop working.");
+        timersList::iterator it(m_timers.begin());
+        for(; it != m_timers.end(); ++it)
+            it->p_target = NULL;
     }
     
     
