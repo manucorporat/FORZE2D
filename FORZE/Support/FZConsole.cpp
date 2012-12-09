@@ -39,12 +39,13 @@
 #include "FZFont.h"
 #include "FZScheduler.h"
 #include "tinythread.h"
+#include "FZNode.h"
 #include "FZResourcesManager.h"
 #include "FZPerformManager.h"
 
 
 #define CAPACITY 10
-#define MAXLENGTH 512
+#define MAXLENGTH 1024
 
 
 
@@ -70,18 +71,27 @@ namespace FORZE {
               " - pfps[]: Prints the framerate.\n"
               " - pinfo[]: Prints the system info.\n"
               " - pevents[]: Prints the active events.\n"
-              " - ptextures[]: Prints the allocated textures.\n\n"
+              " - pnodes[]: Prints the rendering tree.\n"
+              " - pfonts[]: Prints the cached fonts.\n"
+              " - ptextures[]: Prints the cached textures.\n\n"
               
               " - sfps[ framerate ]: Sets the framerate.\n"
               " - scanvassize[ width, height ]: Sets the canvas size.\n"
+              " - swindowsize[ width, height ]: Sets the window size.\n"
               " - sresizemode[ mode ]: Sets the resize mode.\n"
-              " - stimescale[ scale ]: Sets the time scale.\n\n"
+              " - stimescale[ scale ]: Sets the time scale.\n"
+              " - shud[ bool ]: Enables or disables the HUD.\n\n"
               
               " - event[identifier, type, state, x, y, z]: Creates a event.\n"
-              " - resume[]: resumes the director.\n"
-              " - pause[]: pauses the director.\n"
-              " - startanimation[]: starts the rendering thread.\n"
-              " - stopanimation[]: stops the rendering thread.\n"
+              " - resume[]: Resumes the director.\n"
+              " - pause[]: Pauses the director.\n"
+              " - startanimation[]: Starts the rendering thread.\n"
+              " - stopanimation[]: Stops the rendering thread.\n"
+              " - releasetextures[]: Purges the cache.\n"
+              " - releasefonts[]: Purges the cache.\n"
+              " - loadtexture[ filename ]: Caches if posible the specified texture filename.\n"
+              " - loadfont[ filename ]: Caches if posible the specified font filename.\n"
+              " - checkfile[ filename ]: Performs a complete check of the file availability.\n"
               " - pop[]: pops the current scene.\n");
 
         return true;
@@ -128,6 +138,29 @@ namespace FORZE {
         return true;
     }
     
+    static int __iterate(Node *node, int level) {
+        
+        Node *n;
+        int count = 1;
+        for(int i = 0; i < level; ++i)
+            printf("\t");
+        
+        printf("-level %d, %p\n", level, node);
+        FZ_LIST_FOREACH(node->getChildren(), n) {
+            count += __iterate(n, level+1);
+        }
+        return count;
+    }
+    
+    static bool __cmd_pnodes(const char*,float* values, int nuValues) {
+        FZLog("Nodes:");
+        Node *node = (Node*)Director::Instance().getRunningScene();
+        int count = __iterate(node, 0);
+        printf("%d nodes in total.\n\n", count);
+        return true;
+    }
+
+    
     static bool __cmd_sfps(const char*,float* v, int) {
         Director::Instance().setAnimationInterval(1.0f/v[0]);
         return true;
@@ -142,6 +175,10 @@ namespace FORZE {
     }
     static bool __cmd_scanvassize(const char*,float* v, int) {
         Director::Instance().setCanvasSize(fzSize(v[0], v[1]));
+        return true;
+    }
+    static bool __cmd_swindowsize(const char*,float* v, int) {
+        Director::Instance().setWindowSize(fzSize(v[0], v[1]));
         return true;
     }
     static bool __cmd_sresizemode(const char*,float* v, int) {
@@ -191,11 +228,19 @@ namespace FORZE {
     static bool __cmd_loadtexture(const char* text,float*, int) {
         
         PerformManager::Instance().perform(&TextureCache::Instance(),
-                                           SEL_PTR(TextureCache::addImage), (void*)text, false);
+                                           SEL_PTR(TextureCache::addImage),
+                                           (void*)text, false);
         
         return true;
     }
-    
+    static bool __cmd_loadfont(const char* text,float*, int) {
+        
+        PerformManager::Instance().perform(&FontCache::Instance(),
+                                           SEL_PTR(FontCache::addFont),
+                                           (void*)text, false);
+        
+        return true;
+    }
     static bool __cmd_checkfile(const char* text, float*, int) {
         
         ResourcesManager::Instance().checkFile(text);
@@ -223,10 +268,12 @@ namespace FORZE {
         {fzHashConst("pevents"), __cmd_pevents, 0},
         {fzHashConst("ptextures"), __cmd_ptextures, 0},
         {fzHashConst("pfonts"), __cmd_pfonts, 0},
+        {fzHashConst("pnodes"), __cmd_pnodes, 0},
 
         // SET COMMANDS
         {fzHashConst("sfps"), __cmd_sfps, 1},
         {fzHashConst("scanvassize"), __cmd_scanvassize, 2},
+        {fzHashConst("swindowsize"), __cmd_swindowsize, 2},
         {fzHashConst("sresizemode"), __cmd_sresizemode, 1},
         {fzHashConst("stimescale"), __cmd_stimescale, 1},
         {fzHashConst("shud"), __cmd_shud, 1},
@@ -241,6 +288,7 @@ namespace FORZE {
         {fzHashConst("releasetextures"), __cmd_releasetextures, 0},
         {fzHashConst("releasefonts"), __cmd_releasefonts, 0},
         {fzHashConst("loadtexture"), __cmd_loadtexture, 0},
+        {fzHashConst("loadfont"), __cmd_loadfont, 0},
         {fzHashConst("checkfile"), __cmd_checkfile, 0},
     };
     
@@ -283,8 +331,8 @@ namespace FORZE {
     
     bool Console::peekMessage(FILE *stream)
     {
-        char line[MAXLENGTH];
-        char command[MAXLENGTH];
+        static char line[MAXLENGTH];
+        static char command[MAXLENGTH];
         char *arguments;
         
         int nuValues = 0;
@@ -295,7 +343,6 @@ namespace FORZE {
         
         // GET ARGUMMENTS
         arguments = strchr(line, '[');
-
         if(arguments != NULL) {
             *arguments = '\0';
             ++arguments;
@@ -305,6 +352,9 @@ namespace FORZE {
             
             char *end = strrchr(arguments, ']');
             if(end) *end = '\0';
+            
+            if(*arguments == '\0')
+                arguments = NULL;
         }
         
         // NORMALIZE COMMAND's TEXT

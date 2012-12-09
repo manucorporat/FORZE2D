@@ -220,7 +220,7 @@ namespace FORZE {
     
     bool fzDevice_getResourcesPath(char *path, fzUInt maxLength)
     {
-        strncpy(path, "/resources/", maxLength);
+        path[0] = '/0';
         return true;
     }
     

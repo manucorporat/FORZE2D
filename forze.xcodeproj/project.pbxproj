@@ -725,9 +725,9 @@
 		97C9BA9615068BD000B8AEE5 /* FZMath.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B97F15068BCF00B8AEE5 /* FZMath.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		97C9BA9A15068BD000B8AEE5 /* FZSelectors.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B98215068BCF00B8AEE5 /* FZSelectors.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		97C9BA9B15068BD000B8AEE5 /* FZMS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B98315068BCF00B8AEE5 /* FZMS.cpp */; };
-		97C9BA9D15068BD000B8AEE5 /* FZMS.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B98415068BCF00B8AEE5 /* FZMS.h */; settings = {ATTRIBUTES = (); }; };
+		97C9BA9D15068BD000B8AEE5 /* FZMS.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B98415068BCF00B8AEE5 /* FZMS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		97C9BA9E15068BD000B8AEE5 /* FZData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B98515068BCF00B8AEE5 /* FZData.cpp */; };
-		97C9BAA015068BD000B8AEE5 /* FZData.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B98615068BCF00B8AEE5 /* FZData.h */; settings = {ATTRIBUTES = (); }; };
+		97C9BAA015068BD000B8AEE5 /* FZData.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B98615068BCF00B8AEE5 /* FZData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		97ED8EA3157E1289007C451A /* kerning_test.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 97ED8EA1157E1289007C451A /* kerning_test.fnt */; };
 		97ED8EA4157E1289007C451A /* kerning_test.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 97ED8EA1157E1289007C451A /* kerning_test.fnt */; };
 		97ED8EA5157E1289007C451A /* kerning_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 97ED8EA2157E1289007C451A /* kerning_test.png */; };
@@ -924,6 +924,7 @@
 		A90B05A71633198300371F8B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A90B059F1633198300371F8B /* Default-568h@2x.png */; };
 		A90B05A81633198300371F8B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A90B059F1633198300371F8B /* Default-568h@2x.png */; };
 		A90B05A91633198300371F8B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A90B059F1633198300371F8B /* Default-568h@2x.png */; };
+		A90C7B09167414B600CB83DF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A90C7B08167414B600CB83DF /* Cocoa.framework */; };
 		A90FDD531644259B008A3E21 /* HelloWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9DEA934161BACBE00A45D46 /* HelloWorld.cpp */; };
 		A91A6D6E1642FE5C0025ADE5 /* libforze_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 979297B5151B818D0088AF66 /* libforze_ios.a */; };
 		A91A6D6F1642FE5C0025ADE5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198E16149BDA007D2287 /* QuartzCore.framework */; };
@@ -1133,6 +1134,22 @@
 		A94A9618162AECD90035F4B6 /* LabelTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99AAE191629C2CE002D177D /* LabelTest.cpp */; };
 		A94A961B162B41E50035F4B6 /* kerning_test.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 97ED8EA1157E1289007C451A /* kerning_test.fnt */; };
 		A94A961C162B41E50035F4B6 /* kerning_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 97ED8EA2157E1289007C451A /* kerning_test.png */; };
+		A94E6341166CD75F00100D6E /* model_support.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94E633F166CD75F00100D6E /* model_support.cpp */; };
+		A94E6342166CD75F00100D6E /* model_support.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94E633F166CD75F00100D6E /* model_support.cpp */; };
+		A94E6343166CD75F00100D6E /* model_support.h in Headers */ = {isa = PBXBuildFile; fileRef = A94E6340166CD75F00100D6E /* model_support.h */; };
+		A94E6344166CD75F00100D6E /* model_support.h in Headers */ = {isa = PBXBuildFile; fileRef = A94E6340166CD75F00100D6E /* model_support.h */; };
+		A94E6349166D078800100D6E /* gl.h in Headers */ = {isa = PBXBuildFile; fileRef = A94E6347166D078800100D6E /* gl.h */; };
+		A94E634A166D078800100D6E /* gl.h in Headers */ = {isa = PBXBuildFile; fileRef = A94E6347166D078800100D6E /* gl.h */; };
+		A94E634B166D078800100D6E /* glext.h in Headers */ = {isa = PBXBuildFile; fileRef = A94E6348166D078800100D6E /* glext.h */; };
+		A94E634C166D078800100D6E /* glext.h in Headers */ = {isa = PBXBuildFile; fileRef = A94E6348166D078800100D6E /* glext.h */; };
+		A94E634F166D42C600100D6E /* FZConsole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94E634D166D42C500100D6E /* FZConsole.cpp */; };
+		A94E6350166D42C600100D6E /* FZConsole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94E634D166D42C500100D6E /* FZConsole.cpp */; };
+		A94E6351166D42C600100D6E /* FZConsole.h in Headers */ = {isa = PBXBuildFile; fileRef = A94E634E166D42C500100D6E /* FZConsole.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A94E6352166D42C600100D6E /* FZConsole.h in Headers */ = {isa = PBXBuildFile; fileRef = A94E634E166D42C500100D6E /* FZConsole.h */; };
+		A95B739116701A65001725FB /* tinythread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A95B738F16701A65001725FB /* tinythread.cpp */; };
+		A95B739216701A65001725FB /* tinythread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A95B738F16701A65001725FB /* tinythread.cpp */; };
+		A95B739316701A65001725FB /* tinythread.h in Headers */ = {isa = PBXBuildFile; fileRef = A95B739016701A65001725FB /* tinythread.h */; };
+		A95B739416701A65001725FB /* tinythread.h in Headers */ = {isa = PBXBuildFile; fileRef = A95B739016701A65001725FB /* tinythread.h */; };
 		A95C198516149BBA007D2287 /* libforze_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 979297B5151B818D0088AF66 /* libforze_ios.a */; };
 		A95C198716149BC5007D2287 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198616149BC5007D2287 /* CoreMotion.framework */; };
 		A95C198916149BC9007D2287 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198816149BC9007D2287 /* UIKit.framework */; };
@@ -1326,6 +1343,10 @@
 		A9B8754016222CF30007D6CC /* enemiesSheet.xml in Resources */ = {isa = PBXBuildFile; fileRef = A9B8753B16222CEE0007D6CC /* enemiesSheet.xml */; };
 		A9B8754116222CF30007D6CC /* enemiesSheet@x2.pvr in Resources */ = {isa = PBXBuildFile; fileRef = A9B8753C16222CF00007D6CC /* enemiesSheet@x2.pvr */; };
 		A9B8754216222CF30007D6CC /* enemiesSheet@x2.pvr in Resources */ = {isa = PBXBuildFile; fileRef = A9B8753C16222CF00007D6CC /* enemiesSheet@x2.pvr */; };
+		A9BFDA71166A5EA1005E7DE2 /* FZHash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9BFDA6F166A5EA0005E7DE2 /* FZHash.cpp */; };
+		A9BFDA72166A5EA1005E7DE2 /* FZHash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9BFDA6F166A5EA0005E7DE2 /* FZHash.cpp */; };
+		A9BFDA73166A5EA1005E7DE2 /* FZHash.h in Headers */ = {isa = PBXBuildFile; fileRef = A9BFDA70166A5EA1005E7DE2 /* FZHash.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A9BFDA74166A5EA1005E7DE2 /* FZHash.h in Headers */ = {isa = PBXBuildFile; fileRef = A9BFDA70166A5EA1005E7DE2 /* FZHash.h */; };
 		CA16DF2815F3CD0000E025BF /* libforze_mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5018F24D0DFDEAC400C013A5 /* libforze_mac.a */; };
 		CA16DF2915F3CD0000E025BF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 503092B210447296005F7AFC /* libz.dylib */; };
 		CA16DF2A15F3CD0000E025BF /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9791DFA31554AE2A0080871B /* AppKit.framework */; };
@@ -1954,6 +1975,7 @@
 		97FB2E6D1520B44F00D44E7C /* _fz_aC4_TEX.shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _fz_aC4_TEX.shader.h; sourceTree = "<group>"; };
 		A908C2AE162EC4ED006F2930 /* mac-ParticlesTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mac-ParticlesTest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A90B059F1633198300371F8B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "IOS/Default-568h@2x.png"; sourceTree = "<group>"; };
+		A90C7B08167414B600CB83DF /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		A918A053161E09AF004725E5 /* ShaderTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderTest.cpp; sourceTree = "<group>"; };
 		A91A6D871642FE5C0025ADE5 /* ios-ParticleTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-ParticleTest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A91A6DA81642FE610025ADE5 /* ios-SceneTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-SceneTest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1963,6 +1985,14 @@
 		A927C79F1634131A00B2AE52 /* mac-SceneTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mac-SceneTest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A92E28441607C34400C63C79 /* FZDefaultOpenGLAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FZDefaultOpenGLAPI.h; sourceTree = "<group>"; };
 		A94A9614162AEC660035F4B6 /* mac-LabelTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mac-LabelTest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A94E633F166CD75F00100D6E /* model_support.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = model_support.cpp; sourceTree = "<group>"; };
+		A94E6340166CD75F00100D6E /* model_support.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = model_support.h; sourceTree = "<group>"; };
+		A94E6347166D078800100D6E /* gl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gl.h; sourceTree = "<group>"; };
+		A94E6348166D078800100D6E /* glext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glext.h; sourceTree = "<group>"; };
+		A94E634D166D42C500100D6E /* FZConsole.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZConsole.cpp; sourceTree = "<group>"; };
+		A94E634E166D42C500100D6E /* FZConsole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZConsole.h; sourceTree = "<group>"; };
+		A95B738F16701A65001725FB /* tinythread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinythread.cpp; sourceTree = "<group>"; };
+		A95B739016701A65001725FB /* tinythread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinythread.h; sourceTree = "<group>"; };
 		A95C198616149BC5007D2287 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		A95C198816149BC9007D2287 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		A95C198A16149BCF007D2287 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -1994,6 +2024,8 @@
 		A9B8753A16222CEC0007D6CC /* enemiesSheet.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; path = enemiesSheet.pvr; sourceTree = "<group>"; };
 		A9B8753B16222CEE0007D6CC /* enemiesSheet.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = enemiesSheet.xml; sourceTree = "<group>"; };
 		A9B8753C16222CF00007D6CC /* enemiesSheet@x2.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; path = "enemiesSheet@x2.pvr"; sourceTree = "<group>"; };
+		A9BFDA6F166A5EA0005E7DE2 /* FZHash.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZHash.cpp; sourceTree = "<group>"; };
+		A9BFDA70166A5EA1005E7DE2 /* FZHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZHash.h; sourceTree = "<group>"; };
 		A9DEA934161BACBE00A45D46 /* HelloWorld.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HelloWorld.cpp; sourceTree = "<group>"; };
 		CA16DF2215F3CC7700E025BF /* MiscTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MiscTest.cpp; sourceTree = "<group>"; };
 		CA16DF2315F3CC7700E025BF /* MiscTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MiscTest.h; sourceTree = "<group>"; };
@@ -2173,6 +2205,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A90C7B09167414B600CB83DF /* Cocoa.framework in Frameworks */,
 				978EDF41151800EC00D70CAB /* libforze_mac.a in Frameworks */,
 				97A1FDEF149D32730075C229 /* libz.dylib in Frameworks */,
 				9791DFA41554AE2A0080871B /* AppKit.framework in Frameworks */,
@@ -2463,6 +2496,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				A90C7B08167414B600CB83DF /* Cocoa.framework */,
 				A96D7CBB16285B6400B25A60 /* LICENSE_artwork.txt */,
 				A96D7CBC16285B6400B25A60 /* LICENSE_libb64.txt */,
 				E0BC7D711342CC58001B4DCC /* LICENSE_FORZE.txt */,
@@ -2561,8 +2595,8 @@
 		97929704151B81450088AF66 /* IOS */ = {
 			isa = PBXGroup;
 			children = (
-				A90B059F1633198300371F8B /* Default-568h@2x.png */,
 				A91C2559161DD5B4004E5496 /* Frameworks */,
+				A90B059F1633198300371F8B /* Default-568h@2x.png */,
 				97929706151B81600088AF66 /* Info_ios.plist */,
 				97929707151B81600088AF66 /* Prefix_ios.pch */,
 			);
@@ -2843,6 +2877,8 @@
 				97C9B90015068BCF00B8AEE5 /* FZAnimation.h */,
 				97C9B90115068BCF00B8AEE5 /* FZCamera.cpp */,
 				97C9B90215068BCF00B8AEE5 /* FZCamera.h */,
+				A9BFDA6F166A5EA0005E7DE2 /* FZHash.cpp */,
+				A9BFDA70166A5EA1005E7DE2 /* FZHash.h */,
 				97C9B90315068BCF00B8AEE5 /* FZCommon.cpp */,
 				97C9B90415068BCF00B8AEE5 /* FZCommon.h */,
 				97C9B90515068BCF00B8AEE5 /* FZConfig.h */,
@@ -2896,6 +2932,7 @@
 		97C9B8B615068BCF00B8AEE5 /* external */ = {
 			isa = PBXGroup;
 			children = (
+				A95B738E16701A65001725FB /* tinythread */,
 				A97611521624B96C00A23623 /* libb64 */,
 				97C9B8E115068BCF00B8AEE5 /* libpng */,
 				97C9B8FB15068BCF00B8AEE5 /* rapidXML */,
@@ -3072,6 +3109,9 @@
 		97C9B96415068BCF00B8AEE5 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				A94E6346166D078800100D6E /* GLAPI */,
+				A94E633F166CD75F00100D6E /* model_support.cpp */,
+				A94E6340166CD75F00100D6E /* model_support.h */,
 				97C9B96515068BCF00B8AEE5 /* iOS_support.h */,
 				97C9B96615068BCF00B8AEE5 /* iOS_support.mm */,
 				97C9B96915068BCF00B8AEE5 /* iOSGL2_support.h */,
@@ -3098,6 +3138,8 @@
 		97C9B97515068BCF00B8AEE5 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				A94E634D166D42C500100D6E /* FZConsole.cpp */,
+				A94E634E166D42C500100D6E /* FZConsole.h */,
 				97C9B98215068BCF00B8AEE5 /* FZSelectors.h */,
 				97C9B97815068BCF00B8AEE5 /* FZBitOrder.cpp */,
 				97C9B97915068BCF00B8AEE5 /* FZBitOrder.h */,
@@ -3119,14 +3161,32 @@
 			isa = PBXGroup;
 			children = (
 				A95C199116149BF3007D2287 /* libz.dylib */,
+				A97883EB160F80A900A93735 /* OpenGLES.framework */,
 				A95C198E16149BDA007D2287 /* QuartzCore.framework */,
 				A95C198C16149BD5007D2287 /* CoreGraphics.framework */,
+				A95C198616149BC5007D2287 /* CoreMotion.framework */,
 				A95C198A16149BCF007D2287 /* Foundation.framework */,
 				A95C198816149BC9007D2287 /* UIKit.framework */,
-				A95C198616149BC5007D2287 /* CoreMotion.framework */,
-				A97883EB160F80A900A93735 /* OpenGLES.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A94E6346166D078800100D6E /* GLAPI */ = {
+			isa = PBXGroup;
+			children = (
+				A94E6347166D078800100D6E /* gl.h */,
+				A94E6348166D078800100D6E /* glext.h */,
+			);
+			path = GLAPI;
+			sourceTree = "<group>";
+		};
+		A95B738E16701A65001725FB /* tinythread */ = {
+			isa = PBXGroup;
+			children = (
+				A95B738F16701A65001725FB /* tinythread.cpp */,
+				A95B739016701A65001725FB /* tinythread.h */,
+			);
+			path = tinythread;
 			sourceTree = "<group>";
 		};
 		A97611521624B96C00A23623 /* libb64 */ = {
@@ -3214,6 +3274,10 @@
 				9734523E155941BD009EAC2A /* FZFont.h in Headers */,
 				979DF87C151F5EDE0096376C /* FZTMXLayer.h in Headers */,
 				979DF880151F5EDE0096376C /* FZTMXTiledMap.h in Headers */,
+				97C9BA9D15068BD000B8AEE5 /* FZMS.h in Headers */,
+				97C9BAA015068BD000B8AEE5 /* FZData.h in Headers */,
+				A9BFDA73166A5EA1005E7DE2 /* FZHash.h in Headers */,
+				A94E6351166D42C600100D6E /* FZConsole.h in Headers */,
 				A930905B16090BFF002104D6 /* FZDefaultOpenGLAPI.h in Headers */,
 				97C9BA8315068BD000B8AEE5 /* _fz_mat_aC4.shader.h in Headers */,
 				97C9BA8515068BD000B8AEE5 /* _fz_mat_TEX.shader.h in Headers */,
@@ -3224,8 +3288,6 @@
 				978E52BF150B93500058D364 /* effect_grayscale.shader.h in Headers */,
 				978E52C0150B93500058D364 /* effect_invert.shader.h in Headers */,
 				978B23CB151C0AE100ED9528 /* effect_toon.shader.h in Headers */,
-				97C9BA9D15068BD000B8AEE5 /* FZMS.h in Headers */,
-				97C9BAA015068BD000B8AEE5 /* FZData.h in Headers */,
 				97C9B9BF15068BD000B8AEE5 /* cexcept.h in Headers */,
 				97C9B9C215068BD000B8AEE5 /* png.h in Headers */,
 				97C9B9C315068BD000B8AEE5 /* pngconf.h in Headers */,
@@ -3240,6 +3302,10 @@
 				972535A31531169A00FC3CBF /* rapidxml_print.hpp in Headers */,
 				97361B8D155BD5B8002E65ED /* effect_xray.shader.h in Headers */,
 				A976115D1624B96C00A23623 /* base64.h in Headers */,
+				A94E6343166CD75F00100D6E /* model_support.h in Headers */,
+				A94E6349166D078800100D6E /* gl.h in Headers */,
+				A94E634B166D078800100D6E /* glext.h in Headers */,
+				A95B739316701A65001725FB /* tinythread.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3342,6 +3408,12 @@
 				972535A41531169A00FC3CBF /* rapidxml_print.hpp in Headers */,
 				97361B8E155BD5B8002E65ED /* effect_xray.shader.h in Headers */,
 				A976115E1624B96C00A23623 /* base64.h in Headers */,
+				A9BFDA74166A5EA1005E7DE2 /* FZHash.h in Headers */,
+				A94E6344166CD75F00100D6E /* model_support.h in Headers */,
+				A94E634A166D078800100D6E /* gl.h in Headers */,
+				A94E634C166D078800100D6E /* glext.h in Headers */,
+				A94E6352166D42C600100D6E /* FZConsole.h in Headers */,
+				A95B739416701A65001725FB /* tinythread.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4970,6 +5042,10 @@
 				32553F9315E7DFBC0051629E /* FZPerformManager.cpp in Sources */,
 				A976115B1624B96C00A23623 /* base64.c in Sources */,
 				A992ECF1163D863E00CD0C33 /* FZPlatforms.cpp in Sources */,
+				A9BFDA71166A5EA1005E7DE2 /* FZHash.cpp in Sources */,
+				A94E634F166D42C600100D6E /* FZConsole.cpp in Sources */,
+				A94E6341166CD75F00100D6E /* model_support.cpp in Sources */,
+				A95B739116701A65001725FB /* tinythread.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5165,6 +5241,10 @@
 				32553F9415E7DFBC0051629E /* FZPerformManager.cpp in Sources */,
 				A976115C1624B96C00A23623 /* base64.c in Sources */,
 				A992ECF2163D863E00CD0C33 /* FZPlatforms.cpp in Sources */,
+				A9BFDA72166A5EA1005E7DE2 /* FZHash.cpp in Sources */,
+				A94E6342166CD75F00100D6E /* model_support.cpp in Sources */,
+				A94E6350166D42C600100D6E /* FZConsole.cpp in Sources */,
+				A95B739216701A65001725FB /* tinythread.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5545,10 +5625,10 @@
 		9709CA13152A2772000CE0C2 /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_CXX0X_EXTENSIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
@@ -5572,23 +5652,23 @@
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = NO;
+				GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = YES;
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
 				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;
 				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
-				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = YES;
 				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
 				GCC_WARN_PEDANTIC = YES;
 				GCC_WARN_PROTOTYPE_CONVERSION = YES;
 				GCC_WARN_SHADOW = YES;
 				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = (
@@ -6853,10 +6933,10 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_CXX0X_EXTENSIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
@@ -6880,23 +6960,23 @@
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = NO;
+				GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = YES;
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
 				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;
 				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
-				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = YES;
 				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
 				GCC_WARN_PEDANTIC = YES;
 				GCC_WARN_PROTOTYPE_CONVERSION = YES;
 				GCC_WARN_SHADOW = YES;
 				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -6911,10 +6991,10 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_CXX0X_EXTENSIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
@@ -6938,23 +7018,23 @@
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = NO;
+				GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = YES;
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
 				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;
 				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
-				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = YES;
 				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
 				GCC_WARN_PEDANTIC = YES;
 				GCC_WARN_PROTOTYPE_CONVERSION = YES;
 				GCC_WARN_SHADOW = YES;
 				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = (
