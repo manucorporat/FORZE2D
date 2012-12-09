@@ -66,6 +66,11 @@ namespace FORZE {
         setupDefaultRules();
     }
     
+    ResourcesManager::~ResourcesManager()
+    {
+        delete p_resourcesPath;
+    }
+
     
     void ResourcesManager::setupDefaultRules()
     {
@@ -132,13 +137,13 @@ namespace FORZE {
             
         } else {
             // GET EXTENSION
-            char *extension = strchr(filename, '.');
+            const char *extension = strchr(filename, '.');
+            if(extension == NULL)
+                extension = filename + strlen(filename);
             
             // GET NAME
             size_t nameLength = extension - filename;
-            char *name = new char[nameLength+1];
-            memcpy(name, filename, nameLength);
-            name[nameLength] = '\0';
+            char *name = fzStrcpy(filename, nameLength);
 
             // BUILD
             if(filename[0] == '/')
@@ -153,7 +158,7 @@ namespace FORZE {
     
     void ResourcesManager::generateAbsolutePath(const char *filename, fzUInt factor, char *absolutePath) const
     {
-        FZ_ASSERT(factor <= 99, "Factor is out of bounds [0, 99]");
+        FZ_ASSERT(factor <= 99, "Factor is out of bounds [0, 99].");
         
         if(factor == 1 || factor == 0)
             _generateAbsolutePath(filename, nullptr, absolutePath);
@@ -167,7 +172,7 @@ namespace FORZE {
     }
 
     
-    void ResourcesManager::getPath(const char *filename, fzUInt priority, char *absolutePath, fzUInt *factor) const
+    bool ResourcesManager::getPath(const char *filename, fzUInt priority, char *absolutePath, fzUInt *factor) const
     {
         *factor = 0;
         if(priority < m_nuRules) {
@@ -184,6 +189,7 @@ namespace FORZE {
                 *factor = tmpFactor;
             }
         }
+        return (*factor > 0);
     }
     
     
@@ -201,17 +207,8 @@ namespace FORZE {
         char absolutePath[512];
         fzUInt factor, priority = 0;
         
-        while (true) {
-            
-            // Get texture path for priority
-            getPath(filenameCpy, priority, absolutePath, &factor);
-            
-            if(factor == 0) {
-                FZLOGERROR("IO: \"%s\" not found.", filename);
-                delete filenameCpy;
-                return fzBuffer::empty();
-            }
-
+        while (getPath(filenameCpy, priority, absolutePath, &factor))
+        {
             fzBuffer buffer = IO::loadFile(absolutePath);
             if(!buffer.isEmpty()) {
                 *outFactor = factor;
@@ -220,12 +217,16 @@ namespace FORZE {
             }
             ++priority;
         }
+        
+        FZLOGERROR("IO: \"%s\" not found.", filename);
+        delete filenameCpy;
+        return fzBuffer::empty();
     }
     
     
     fzBuffer ResourcesManager::loadResource(const char *filename) const
     {
-        FZ_ASSERT(filename, "Filename cannot be NULL");
+        FZ_ASSERT(filename, "Filename cannot be NULL.");
         
         char absolutePath[512];
         generateAbsolutePath(filename, 1, absolutePath);
@@ -251,14 +252,9 @@ namespace FORZE {
         fzUInt factor, priority = 0;
         
         FZLog("ResourcesManager:");
-        while (true) {
-            
-            // Get texture path for priority
-            getPath(filenameCpy, priority, absolutePath, &factor);
-            
-            if(factor == 0)
-                return;
-            
+        
+        while (getPath(filenameCpy, priority, absolutePath, &factor))
+        {
             char *file = strrchr(absolutePath, '/')+1;
             if(IO::checkFile(absolutePath))
                 printf(" - NOT FOUND: %s\n", file);

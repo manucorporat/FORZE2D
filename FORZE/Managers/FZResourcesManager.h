@@ -62,6 +62,7 @@ namespace FORZE {
         ResourcesManager(const ResourcesManager& );
         ResourcesManager &operator = (const ResourcesManager& );
         
+        ~ResourcesManager();
         void setupDefaultRules();
         
         
@@ -72,7 +73,7 @@ namespace FORZE {
         void generateAbsolutePath(const char *filename, fzUInt factor, char *absolutePath) const;
         
         //! Low level method to get the absolute resource path.
-        void getPath(const char *filename, fzUInt priority, char *absolutePath, fzUInt *factor) const;
+        bool getPath(const char *filename, fzUInt priority, char *absolutePath, fzUInt *factor) const;
         
         
         //! Adding new rules, you can load specified files for each platform version.
