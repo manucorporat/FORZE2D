@@ -203,7 +203,7 @@ namespace FORZE {
         
         ~TMXObjectGroup() {
             if(p_name)
-                free(p_name);
+                delete p_name;
         }
     };
     

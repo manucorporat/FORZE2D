@@ -463,7 +463,7 @@ ActionCallFuncND::ActionCallFuncND()
 : ActionBase("CallFuncND", NULL)
 {
 	ActionInterval *action = new Sequence(new MoveBy(2, fzPoint(200, 0)),
-                                          new CallFuncND(grossini, SEL_2PTR(Node::removeFromParent), (void*)YES), NULL);
+                                          new CallFuncND(grossini, SEL_2PTR(Node::removeFromParent), (void*)true), NULL);
     
     grossini->runAction(action);
 }

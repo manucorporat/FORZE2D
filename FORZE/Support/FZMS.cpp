@@ -36,12 +36,13 @@ namespace FORZE {
 #define STACK_SIZE 30
 #define STACK_INCREMENT 40
     
-    struct FZMS {
+    static struct
+    {
         fzUInt capacity;
         fzUInt num;
         float **stack;
-    };
-    static FZMS _modelview_stack = {0, 0, NULL};    
+        
+    } _modelview_stack = {0, 0, NULL};    
     
     void MS::initialize()
     {
@@ -62,7 +63,7 @@ namespace FORZE {
     void MS::dealloc()
     {
         if(_modelview_stack.stack) {
-            delete [] _modelview_stack.stack;
+            free(_modelview_stack.stack);
             _modelview_stack.capacity = 0;
             _modelview_stack.stack = NULL;
         }
@@ -72,7 +73,7 @@ namespace FORZE {
     void MS::pushMatrix(float *matrix)
     {
         FZ_ASSERT(_modelview_stack.stack, "The matrix stack is not initialized.");
-        FZ_ASSERT(matrix != NULL, "Matrix cannot be NULL");
+        FZ_ASSERT(matrix != NULL, "Matrix cannot be NULL.");
         
         _modelview_stack.stack[_modelview_stack.num++] = matrix;
         
@@ -86,7 +87,7 @@ namespace FORZE {
     void MS::pop()
     {
         FZ_ASSERT(_modelview_stack.stack, "The matrix stack is not initialized.");
-        FZ_ASSERT(_modelview_stack.num > 1, "Cannot pop an empty stack");
+        FZ_ASSERT(_modelview_stack.num > 1, "Cannot pop an empty stack.");
         
         --_modelview_stack.num;
     }
@@ -95,7 +96,7 @@ namespace FORZE {
     void MS::loadBaseMatrix(float *matrix)
     {
         FZ_ASSERT(_modelview_stack.stack, "The matrix stack is not initialized.");
-        FZ_ASSERT(matrix != NULL, "Matrix cannot be NULL");
+        FZ_ASSERT(matrix != NULL, "Matrix cannot be NULL.");
         
         _modelview_stack.stack[0] = matrix;
     }
@@ -104,7 +105,7 @@ namespace FORZE {
     void MS::loadMatrix(float *matrix)
     {
         FZ_ASSERT(_modelview_stack.stack, "The matrix stack is not initialized.");
-        FZ_ASSERT(matrix != NULL, "Input matrix can not be NULL");
+        FZ_ASSERT(matrix != NULL, "Input matrix can not be NULL.");
         FZ_ASSERT(_modelview_stack.num > 1, "Use MS::loadBaseMatrix() instead.");
         
         _modelview_stack.stack[_modelview_stack.num-1] = matrix;

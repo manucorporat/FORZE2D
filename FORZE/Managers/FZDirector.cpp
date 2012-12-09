@@ -252,10 +252,10 @@ namespace FORZE {
     
     void Director::setClearColor(const fzColor4F& color)
     {
-        FZ_ASSERT(color.r >= 0 && color.r <= 1.0f, "Red component is out of bounds [0, 1]");
-        FZ_ASSERT(color.g >= 0 && color.g <= 1.0f, "Green component is out of bounds [0, 1]");
-        FZ_ASSERT(color.b >= 0 && color.b <= 1.0f, "Blue component is out of bounds [0, 1]");
-        FZ_ASSERT(color.a >= 0 && color.a <= 1.0f, "Alpha component is out of bounds [0, 1]");
+        FZ_ASSERT(color.r >= 0 && color.r <= 1.0f, "Red component is out of bounds [0, 1].");
+        FZ_ASSERT(color.g >= 0 && color.g <= 1.0f, "Green component is out of bounds [0, 1].");
+        FZ_ASSERT(color.b >= 0 && color.b <= 1.0f, "Blue component is out of bounds [0, 1].");
+        FZ_ASSERT(color.a >= 0 && color.a <= 1.0f, "Alpha component is out of bounds [0, 1].");
 
         m_clearColor = color;
     }
@@ -276,7 +276,7 @@ namespace FORZE {
     void Director::setDefaultGLValues()
     {
         // This method SHOULD be called only after openGLView_ was initialized
-        FZ_ASSERT( OSW::Instance(), "The OSWrapper must be initialized");
+        FZ_ASSERT( OSW::Instance(), "The OSWrapper must be initialized.");
         setDepthTest(m_glConfig.depthFormat);
         
         // set other opengl default values
@@ -672,8 +672,8 @@ namespace FORZE {
     
     void Director::runWithScene(Scene *scene)
     {
-        FZ_ASSERT( scene != NULL, "Scene must be non-NULL");
-        FZ_ASSERT( p_runningScene == NULL, "You can't run an scene if another Scene is running. Use replaceScene or pushScene instead");
+        FZ_ASSERT( scene != NULL, "Scene must be non-NULL.");
+        FZ_ASSERT( p_runningScene == NULL, "You can't run an scene if another Scene is running. Use replaceScene or pushScene instead.");
 
         pushScene(scene);
     }
@@ -681,7 +681,7 @@ namespace FORZE {
     
     void Director::pushScene(Scene *scene)
     {
-        FZ_ASSERT( scene != NULL, "Argument must be non-NULL");
+        FZ_ASSERT( scene != NULL, "Argument must be non-NULL.");
         
         m_sendCleanupToScene = false;
         
@@ -693,7 +693,7 @@ namespace FORZE {
     
     void Director::replaceScene(Scene *scene)
     {
-        FZ_ASSERT( scene != NULL, "Scene must be non-NULL");
+        FZ_ASSERT( scene != NULL, "Scene must be non-NULL.");
         
         m_sendCleanupToScene = true;
 
@@ -709,7 +709,7 @@ namespace FORZE {
     
     void Director::popScene()
     {
-        FZ_ASSERT( p_runningScene != NULL, "A running Scene is needed");
+        FZ_ASSERT( p_runningScene != NULL, "A running Scene is needed.");
         
         if( !m_scenesStack.empty() ) {
             m_scenesStack.back()->release();

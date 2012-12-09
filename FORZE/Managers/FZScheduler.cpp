@@ -100,9 +100,9 @@ namespace FORZE {
     
     void Scheduler::scheduleSelector(const SELECTOR_FLOAT selector, SELProtocol *target, fzFloat interval, bool paused, fzUInt priority)
     {
-        FZ_ASSERT( selector != NULL, "Selector must be non-NULL");
-        FZ_ASSERT( target != NULL, "Target must be non-NULL");
-        FZ_ASSERT( interval >= 0, "Interval must be positive");
+        FZ_ASSERT( selector != NULL, "Selector must be non-NULL.");
+        FZ_ASSERT( target != NULL, "Target must be non-NULL.");
+        FZ_ASSERT( interval >= 0, "Interval must be positive.");
 
         Timer *updatedTimer = NULL;
         fzUInt i = 0;
@@ -136,8 +136,8 @@ namespace FORZE {
     
     void Scheduler::unscheduleSelector(const SELECTOR_FLOAT selector, SELProtocol *target)
     {
-        FZ_ASSERT( selector != NULL, "Selector must be non-NULL");
-        FZ_ASSERT( target != NULL, "Target must be non-NULL");
+        FZ_ASSERT( selector != NULL, "Selector must be non-NULL.");
+        FZ_ASSERT( target != NULL, "Target must be non-NULL.");
         
         timersList::iterator it(m_timers.begin());
         for(; it != m_timers.end(); ++it) {
@@ -153,7 +153,7 @@ namespace FORZE {
     
     void Scheduler::unscheduleAllSelectors(SELProtocol *target)
     {
-        FZ_ASSERT(target != NULL, "Target must be non-NULL");
+        FZ_ASSERT(target != NULL, "Target must be non-NULL.");
         
         timersList::iterator it(m_timers.begin());
         for(; it != m_timers.end(); ++it) {
@@ -174,7 +174,7 @@ namespace FORZE {
     
     void Scheduler::pauseTarget(SELProtocol *target)
     {
-        FZ_ASSERT(target, "Target can not be NULL");
+        FZ_ASSERT(target, "Target can not be NULL.");
         
         timersList::iterator it(m_timers.begin());
         for(; it != m_timers.end(); ++it) {
@@ -186,7 +186,7 @@ namespace FORZE {
     
     void Scheduler::resumeTarget(SELProtocol *target)
     {
-        FZ_ASSERT(target, "Target can not be NULL");
+        FZ_ASSERT(target, "Target can not be NULL.");
 
         timersList::iterator it(m_timers.begin());
         for(; it != m_timers.end(); ++it) {
@@ -210,7 +210,7 @@ namespace FORZE {
     void Scheduler::tick(fzFloat dt)
     {
         FZ_ASSERT(dt >= 0.0f, "Tick delta must be positive.");
-        FZ_ASSERT(p_currentTimer == NULL, "You can not call Scheduler::tick() inside Scheduler::tick().");
+        FZ_ASSERT(p_currentTimer == NULL, "Scheduler::tick() can not call himself.");
         dt *= m_timeScale;
         
         timersList::iterator it(m_timers.begin());

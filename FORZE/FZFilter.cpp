@@ -59,7 +59,7 @@ namespace FORZE {
     : p_texture(NULL)
     , p_glprogram(NULL)
     {   
-        FZ_ASSERT(quality > 0 && quality <= 1, "Quality is out of bounds (0, 1]");
+        FZ_ASSERT(quality > 0 && quality <= 1, "Quality is out of bounds (0, 1].");
     }
     
     
@@ -133,7 +133,7 @@ namespace FORZE {
 #if FZ_GL_SHADERS
         FZRETAIN_TEMPLATE(program, p_glprogram);
 #else
-        FZ_ASSERT(false, "Shaders are not supported");
+        FZ_ASSERT(false, "Shaders are not supported.");
 #endif
     }
     
@@ -173,7 +173,7 @@ namespace FORZE {
     
     void FilterColor::setBrightness(fzFloat brightness)
     {
-        FZ_ASSERT(brightness >= -1.0f && brightness <= 1.0f, "Brightness is out of bounds [-1, 1]");
+        FZ_ASSERT(brightness >= -1.0f && brightness <= 1.0f, "Brightness is out of bounds [-1, 1].");
         if(m_brightness != brightness) {
             p_glprogram->setUniform1f("u_brightness", brightness + 0.5f);
             m_brightness = brightness;
@@ -183,7 +183,7 @@ namespace FORZE {
     
     void FilterColor::setContrast(fzFloat contrast)
     {
-        FZ_ASSERT(contrast >= 0 && contrast <= 5.0f, "Brightness is out of bounds [0, 5]");
+        FZ_ASSERT(contrast >= 0 && contrast <= 5.0f, "Brightness is out of bounds [0, 5].");
 
         if(m_contrast != contrast) {
             p_glprogram->setUniform1f("u_contrast", contrast);
@@ -216,10 +216,10 @@ namespace FORZE {
     
     void FilterGrayscale::setIntensity(const fzPoint3& intensity)
     {
-        FZ_ASSERT(intensity.x >= 0 && intensity.x <= 1.0, "X (red) component is out of bounds [0, 1]");
-        FZ_ASSERT(intensity.y >= 0 && intensity.y <= 1.0, "Y (green) component is out of bounds [0, 1]");
-        FZ_ASSERT(intensity.z >= 0 && intensity.z <= 1.0, "Z (blue) component is out of bounds [0, 1]");
-        FZ_ASSERT((intensity.x+intensity.y+intensity.z) <= 1, "Summation of intensity components must be less of equal to 1.0");
+        FZ_ASSERT(intensity.x >= 0 && intensity.x <= 1.0, "X (red) component is out of bounds [0, 1].");
+        FZ_ASSERT(intensity.y >= 0 && intensity.y <= 1.0, "Y (green) component is out of bounds [0, 1].");
+        FZ_ASSERT(intensity.z >= 0 && intensity.z <= 1.0, "Z (blue) component is out of bounds [0, 1].");
+        FZ_ASSERT((intensity.x+intensity.y+intensity.z) <= 1, "Summation of intensity components must be less of equal to 1.0.");
         
         //if(m_intensity != intensity)
         {
@@ -247,10 +247,10 @@ namespace FORZE {
     
     void FilterXRay::setIntensity(const fzPoint3& intensity)
     {
-        FZ_ASSERT(intensity.x >= 0 && intensity.x <= 1.0, "X (red) component is out of bounds [0, 1]");
-        FZ_ASSERT(intensity.y >= 0 && intensity.y <= 1.0, "Y (green) component is out of bounds [0, 1]");
-        FZ_ASSERT(intensity.z >= 0 && intensity.z <= 1.0, "Z (blue) component is out of bounds [0, 1]");
-        FZ_ASSERT((intensity.x+intensity.y+intensity.z) <= 1, "Summation of intensity components must be less of equal to 1.0");
+        FZ_ASSERT(intensity.x >= 0 && intensity.x <= 1.0, "X (red) component is out of bounds [0, 1].");
+        FZ_ASSERT(intensity.y >= 0 && intensity.y <= 1.0, "Y (green) component is out of bounds [0, 1].");
+        FZ_ASSERT(intensity.z >= 0 && intensity.z <= 1.0, "Z (blue) component is out of bounds [0, 1].");
+        FZ_ASSERT((intensity.x+intensity.y+intensity.z) <= 1, "Summation of intensity components must be less of equal to 1.0.");
         
         //if(m_intensity != intensity)
         {
@@ -279,7 +279,7 @@ namespace FORZE {
     
     void FilterToon::setFactor(fzFloat factor)
     {
-        FZ_ASSERT(factor >= 0 && factor <= 255, "Factor is out of bounds [0, 255]");
+        FZ_ASSERT(factor >= 0 && factor <= 255, "Factor is out of bounds [0, 255].");
         if(m_factor != factor) {
             
             p_glprogram->setUniform1f("u_factor", factor);
