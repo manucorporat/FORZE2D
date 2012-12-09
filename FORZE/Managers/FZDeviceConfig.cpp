@@ -30,6 +30,7 @@
 #include <string.h>
 #include "FZDeviceConfig.h"
 #include "FZMacros.h"
+#include "FZMath.h"
 
 
 namespace FORZE {
@@ -138,8 +139,8 @@ namespace FORZE {
                   " - GL supports PVRTC textures:      %s\n"
                   " - GL supports BGRA8888 textures:   %s\n"
                   " - GL supports discard_framebuffer: %s\n"
-                  " - VBO streaming in TextureAtlas:   %s\n"
-                  , getDeviceCode(),
+                  " - VBO streaming in TextureAtlas:   %s\n",
+                  getDeviceCode(),
                   userInterfaceIdiomToText(getUserInterfaceIdiom()),
                   glGetString (GL_VENDOR),
                   glGetString (GL_RENDERER),
@@ -179,7 +180,7 @@ namespace FORZE {
     
     fzUInt DeviceConfig::getMaxFactor() const
     {
-        return m_maxTextureSize >> 10;
+        return fzMax(m_maxTextureSize >> 10, 1);
     }
     
     
