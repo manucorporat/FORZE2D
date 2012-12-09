@@ -31,6 +31,7 @@
 #include <stdarg.h>
 #include <string.h>
 #include <stdlib.h>
+#include "FZConfig.h"
 #include "FZCommon.h"
 
 
@@ -70,15 +71,13 @@ namespace FORZE {
         if(_currentPacket >= FZLOG_NU)
             _currentPacket = 0;
         
-#define SIGN_TEXT "FORZE_E: "
-#define SIGN_LEN 9
         va_list ap;
         va_start(ap, pszFormat);
-        memcpy(_szBuf[_currentPacket], SIGN_TEXT, SIGN_LEN);
+        memcpy(_szBuf[_currentPacket], FORZE_SIGN, FORZE_SIGN_LEN);
 #if FZ_STL_CPLUSPLUS11
-        vsnprintf(_szBuf[_currentPacket][SIGN_LEN], FZLOG_SIZE-SIGN_LEN, pszFormat, ap);
+        vsnprintf(_szBuf[_currentPacket][FORZE_SIGN_LEN], FZLOG_SIZE-FORZE_SIGN_LEN, pszFormat, ap);
 #else
-        vsprintf(&_szBuf[_currentPacket][SIGN_LEN], pszFormat, ap);
+        vsprintf(&_szBuf[_currentPacket][FORZE_SIGN_LEN], pszFormat, ap);
 #endif
         va_end(ap);
         

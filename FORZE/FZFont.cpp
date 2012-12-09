@@ -258,11 +258,11 @@ namespace FORZE {
     
     void Font::log() const
     {
-        printf("FORZE_E: Font ( %p ):\n"
-              " - Texture: %d\n"
+        printf(FORZE_SIGN "Font ( %p ):\n"
+              " - Texture: %p\n"
               " - Line height: %f\n"
               " - Factor: %d\n"
-              " - Chars:", this, p_texture->getName(), m_lineHeight, m_factor);
+              " - Chars:", this, p_texture, m_lineHeight, m_factor);
         
         for(int i = 0; i < 256; ++i) {
             if(m_chars[i].xAdvance > 0)

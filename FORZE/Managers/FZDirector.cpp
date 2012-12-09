@@ -102,7 +102,7 @@ namespace FORZE {
     , m_windowSize          (FZSizeZero)
     , m_renderingRect       (FZRectZero)
     {
-		printf("FORZE ENGINE "FORZE_VERSION"\n");
+        FZLog(FORZE_VERSION);
 		logDebugMode();
         
         // RANDOM STUFF

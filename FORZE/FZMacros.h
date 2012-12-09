@@ -73,7 +73,7 @@ __X__ = __Y__; __Y__ = temp;        \
 //! Built-in custom assert
 #define FZ_ASSERT(__CONDITION__, __MESSAGE__) { \
 if (!(__CONDITION__)) { \
-printf("\n\nFORZE_E: ASSERTION: Line %d - \"" __FILE__ "\"\n" \
+printf("\n\n" FORZE_SIGN "ASSERTION: Line %d - \"" __FILE__ "\"\n" \
        " - CONDITION: \"" #__CONDITION__ "\"\n" \
        " - MESSAGE: \"" __MESSAGE__ "\" \n", __LINE__); \
 abort(); \
