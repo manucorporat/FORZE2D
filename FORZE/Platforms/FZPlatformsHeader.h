@@ -46,40 +46,39 @@
 #endif
 
 
+#define kFZPLATFORM_MODEL 0
 
 /** @def kFZPLATFORM_IOS_GL_1
  * iOS. Opengl ES 1.0 rendering. ARMv6 and ARMv7. All iDevices.
  */
-#define kFZPLATFORM_IOS_GL_1 0
+#define kFZPLATFORM_IOS_GL_1 1
 
 
 /** @def kFZPLATFORM_IOS_GL_2
  * iOS. Opengl ES 2.0 rendering. Shader. Only available for ARMv7 iDevices.
  */
-#define kFZPLATFORM_IOS_GL_2 1
+#define kFZPLATFORM_IOS_GL_2 2
 
 
 /** @def kFZPLATFORM_IOS_GL_2
  * Mac OS X. Opengl 1.1 rendering. Shaders.
  */
-#define kFZPLATFORM_MAC 2
+#define kFZPLATFORM_MAC 3
 
 
 /** @def kFZPLATFORM_PSVITA
  * Playstation VITA. Shaders.
  */
-#define kFZPLATFORM_PSVITA 3
+#define kFZPLATFORM_PSVITA 4
 
 
 /** @def kFZPLATFORM_WINDOWS
  * Windows. OpenGL. Shaders.
  */
-#define kFZPLATFORM_WINDOWS 4
+#define kFZPLATFORM_WINDOWS 5
 
 
-#define kFZPLATFORM_ANDROID 5
-
-#define kFZPLATFORM_MODEL 6
+#define kFZPLATFORM_ANDROID 6
 
 
 
