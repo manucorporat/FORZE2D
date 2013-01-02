@@ -66,6 +66,9 @@ namespace FORZE {
         //! This method returns the substring that match the filename extension.
         //! For example: "myTexture.pvr.gz" would return "png.gz".
         static const char* getExtension(const char* filename);
+        
+        
+        static char* appendPaths(const char* path1, const char* path2, char *output);
     };
 }
 #endif

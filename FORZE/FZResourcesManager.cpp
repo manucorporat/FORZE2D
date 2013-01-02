@@ -38,6 +38,7 @@
 #include "FZIO.h"
 #include "FZMacros.h"
 
+#define STRING_MAX_SIZE 512
 
 namespace FORZE {
     
@@ -56,8 +57,8 @@ namespace FORZE {
     : m_nuRules(0)
     {
         // GET RESOURCES PATH
-        char tmp[512];
-        if(!fzDevice_getResourcesPath(tmp, 512))
+        char tmp[STRING_MAX_SIZE];
+        if(!fzDevice_getResourcesPath(tmp, STRING_MAX_SIZE))
             FZ_RAISE_STOP("ResourcesManager: Buffer too small, impossible to get the resources path.");
         
         p_resourcesPath = fzStrcpy(tmp);
@@ -133,7 +134,7 @@ namespace FORZE {
             if(filename[0] == '/')
                 strcpy(absolutePath, filename);
             else
-                sprintf(absolutePath, "%s/%s", p_resourcesPath, filename);
+                IO::appendPaths(p_resourcesPath, filename, absolutePath);
             
         } else {
             // GET EXTENSION
@@ -149,8 +150,12 @@ namespace FORZE {
             if(filename[0] == '/')
                 sprintf(absolutePath, "%s%c%s%s", name, FZ_IO_SUBFIX_CHAR, suffix, extension);
             else
-                sprintf(absolutePath, "%s/%s%c%s%s", p_resourcesPath, name, FZ_IO_SUBFIX_CHAR, suffix, extension);
-            
+            {
+                char relativePath[STRING_MAX_SIZE];
+                sprintf(relativePath, "%s%c%s%s", name, FZ_IO_SUBFIX_CHAR, suffix, extension);
+                IO::appendPaths(p_resourcesPath, relativePath, absolutePath);
+            }
+
             delete [] name;
         }
     }
@@ -204,7 +209,7 @@ namespace FORZE {
         
         // LOOK FOR TEXTURE
         *outFactor = 0;
-        char absolutePath[512];
+        char absolutePath[STRING_MAX_SIZE];
         fzUInt factor, priority = 0;
         
         while (getPath(filenameCpy, priority, absolutePath, &factor))
@@ -228,7 +233,7 @@ namespace FORZE {
     {
         FZ_ASSERT(filename, "Filename cannot be NULL.");
         
-        char absolutePath[512];
+        char absolutePath[STRING_MAX_SIZE];
         generateAbsolutePath(filename, 1, absolutePath);
         
         fzBuffer buffer = IO::loadFile(absolutePath);
@@ -248,7 +253,7 @@ namespace FORZE {
         IO::removeFileSuffix(filenameCpy);
         
         // LOOK FOR TEXTURE
-        char absolutePath[512];
+        char absolutePath[STRING_MAX_SIZE];
         fzUInt factor, priority = 0;
         
         FZLog("ResourcesManager:");

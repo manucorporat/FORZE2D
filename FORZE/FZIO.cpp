@@ -139,4 +139,18 @@ namespace FORZE {
         
         return (++extension);
     }
+    
+    
+    char* IO::appendPaths(const char* path1, const char* path2, char *output)
+    {
+        if(path1 == NULL || *path1 == '\0')
+            strcpy(output, path2);
+        
+        else {
+            strcpy(output, path1);
+            strcat(output, "/");
+            strcat(output, path2);
+        }
+        return output;
+    }
 }
