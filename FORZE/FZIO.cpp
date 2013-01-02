@@ -81,15 +81,15 @@ namespace FORZE {
     
     bool IO::checkFile(const char *absolutePath)
     {
-        if(absolutePath[0] == '\0' || absolutePath == NULL)
+        if(absolutePath == NULL || absolutePath[0] == '\0')
             return false;
         
         FILE *f = fopen(absolutePath, "rb");
-        if( f == NULL ) {
+        if( f != NULL ) {
             fclose(f);
             return true;
-        } else
-            return false;
+        }
+        return false;
     }
     
     

@@ -255,11 +255,10 @@ namespace FORZE {
         
         while (getPath(filenameCpy, priority, absolutePath, &factor))
         {
-            char *file = strrchr(absolutePath, '/')+1;
             if(IO::checkFile(absolutePath))
-                printf(" - NOT FOUND: %s\n", file);
+                printf(" - FOUND: %s\n", absolutePath);
             else
-                printf(" - FOUND: %s\n", file);
+                printf(" - NOT FOUND: %s\n", absolutePath);
 
             ++priority;
         }
