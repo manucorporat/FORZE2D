@@ -80,7 +80,6 @@ namespace FORZE {
     : p_runningScene        (NULL)
     , p_appdelegate         (NULL)
     , p_nextScene           (NULL)
-    , p_notificationNode    (NULL)
     , p_hud                 (NULL)
     , m_resourcesFactor     (1)
     , m_glConfig            ()
@@ -136,7 +135,7 @@ namespace FORZE {
 #ifndef NDEBUG
         strcat(debugMode, "-assertions ");
 #endif
-        
+
 #if defined(FORZE_DEBUG) && FORZE_DEBUG
         switch (FORZE_DEBUG) {
             case 1:

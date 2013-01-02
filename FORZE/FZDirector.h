@@ -201,7 +201,6 @@ namespace FORZE {
         vector<Scene*> m_scenesStack;
         
         // This object will be visited after the scene. Useful to hook a notification node
-        id p_notificationNode;
         HUD *p_hud;
         
         // last time the main loop was updated
