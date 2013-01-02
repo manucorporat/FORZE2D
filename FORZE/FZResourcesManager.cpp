@@ -231,8 +231,7 @@ namespace FORZE {
     
     fzBuffer ResourcesManager::loadResource(const char *filename) const
     {
-        FZ_ASSERT(filename, "Filename cannot be NULL.");
-        
+        FZ_ASSERT(filename != NULL, "Filename can not be NULL.");
         char absolutePath[STRING_MAX_SIZE];
         generateAbsolutePath(filename, 1, absolutePath);
         
@@ -246,7 +245,8 @@ namespace FORZE {
     
     void ResourcesManager::checkFile(const char* filename) const
     {
-        FZ_ASSERT(filename != NULL, "Filename can not be NULL.");
+        if(filename == NULL)
+            return;
         
         // REMOVING FORCED FLAGS
         char *filenameCpy = fzStrcpy(filename);

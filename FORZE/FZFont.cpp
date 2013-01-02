@@ -28,7 +28,6 @@
  */
 
 #include <string.h>
-
 #include "FZFont.h"
 #include "FZCommon.h"
 #include "FZMacros.h"

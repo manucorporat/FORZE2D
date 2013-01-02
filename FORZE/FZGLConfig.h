@@ -100,6 +100,8 @@ namespace FORZE {
         //! Returns if the GLConfig data is valid.
         //! This method is called internally before configure the opengl context.
         void validate() const;
+        
+        void log() const;
     };
 }
 #endif

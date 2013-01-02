@@ -125,6 +125,8 @@ namespace FORZE {
             return p_texture != NULL;
         }
         
+        void log() const;
+
         
         // Operators
         bool operator == (const fzSpriteFrame&) const;

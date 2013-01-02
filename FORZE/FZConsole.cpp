@@ -34,7 +34,9 @@
 #include "FZDirector.h"
 #include "FZDeviceConfig.h"
 #include "FZTextureCache.h"
+#include "FZSpriteFrameCache.h"
 #include "FZFontCache.h"
+#include "FZSpriteFrame.h"
 #include "FZTexture2D.h"
 #include "FZFont.h"
 #include "FZScheduler.h"
@@ -53,15 +55,6 @@ namespace FORZE {
         
 #pragma mark - FUNCTIONS
     
-    static bool __cmd_clear(const char*,float*, int) {
-        for(int i = 0; i < 200; ++i)
-            printf("\n");
-        
-        return true;
-    }
-    static bool __cmd_exit(const char*,float*, int) {
-        return false;
-    }
     static bool __cmd_help(const char*,float*, int) {
         
         FZLog("Console:\n"
@@ -97,6 +90,16 @@ namespace FORZE {
         return true;
     }
     
+    static bool __cmd_clear(const char*,float*, int) {
+        for(int i = 0; i < 200; ++i)
+            printf("\n");
+        
+        return true;
+    }
+    static bool __cmd_exit(const char*,float*, int) {
+        return false;
+    }
+    
     static bool __cmd_pfps(const char*,float*, int) {
         FZLog("Console: %f\n", 1/Director::Instance().getDelta());
         return true;
@@ -116,24 +119,36 @@ namespace FORZE {
         return true;
     }
     
-    static bool __cmd_ptextures(const char*,float* values, int nuValues) {
+    static bool __cmd_ptextures(const char* text,float* values, int nuValues) {
         
-        const map<int32_t, Texture2D*>& textures = TextureCache::Instance().getTextures();
-        map<int32_t, Texture2D*>::const_iterator it(textures.begin());
-        for(; it != textures.end(); ++it) {
-            if(nuValues == 0 || (nuValues > 0 && values[0] == it->second->getName()))
-                it->second->log();
+        if(text == NULL) {
+            const map<int32_t, Texture2D*>& textures = TextureCache::Instance().getTextures();
+            map<int32_t, Texture2D*>::const_iterator it(textures.begin());
+            for(; it != textures.end(); ++it) {
+                if(nuValues == 0 || (nuValues > 0 && values[0] == it->second->getName()))
+                    it->second->log();
+            }
+        }else{
+            
+            Texture2D *t = TextureCache::Instance().getTextureByName(text);
+            if(t) t->log();
         }
-        
         return true;
     }
     
-    static bool __cmd_pfonts(const char*,float* values, int nuValues) {
+    static bool __cmd_pfonts(const char* text,float* values, int nuValues) {
         
-        const map<int32_t, Font*>& fonts = FontCache::Instance().getFonts();
-        map<int32_t, Font*>::const_iterator it(fonts.begin());
-        for(; it != fonts.end(); ++it)
-            it->second->log();
+        if(text == NULL) {
+            
+            const map<int32_t, Font*>& fonts = FontCache::Instance().getFonts();
+            map<int32_t, Font*>::const_iterator it(fonts.begin());
+            for(; it != fonts.end(); ++it)
+                it->second->log();
+        }else{
+            
+            Font *f = FontCache::Instance().getFontByName(text);
+            if(f) f->log();
+        }
         
         return true;
     }
@@ -159,8 +174,16 @@ namespace FORZE {
         printf("%d nodes in total.\n\n", count);
         return true;
     }
-
     
+    static bool __cmd_pframes(const char*,float* values, int nuValues) {
+        const map<int32_t, fzSpriteFrame>& fonts = SpriteFrameCache::Instance().getFrames();
+        map<int32_t, fzSpriteFrame>::const_iterator it(fonts.begin());
+        for(; it != fonts.end(); ++it)
+            it->second.log();
+        
+        return true;
+    }
+
     static bool __cmd_sfps(const char*,float* v, int) {
         Director::Instance().setAnimationInterval(1.0f/v[0]);
         return true;

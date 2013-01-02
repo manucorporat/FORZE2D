@@ -115,6 +115,11 @@ namespace FORZE {
          You should retain the returned copy if you are going to use it.
          */
         fzSpriteFrame getSpriteFrameByKey(const char* key) const;
+        
+        
+        const map<int32_t, fzSpriteFrame>& getFrames() const {
+            return m_frames;
+        }
     };
 }
 #endif

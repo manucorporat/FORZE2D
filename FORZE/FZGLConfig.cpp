@@ -58,4 +58,18 @@ namespace FORZE {
         if(quality <= 0 || quality > 1.0f)
             FZ_RAISE_STOP("GLConfig: Quality out of bounds (0, 1].");
     }
+    
+    
+    void GLConfig::log() const
+    {
+        FZLog("GLConfig( %p ):\n"
+              " - Quality: %f\n"
+              " - Back buffer: %d\n"
+              " - Depth format: %d\n"
+              " - Color format: %d\n"
+              " - Multisampling: %d\n",
+              this, preserveBackBuffer,
+              depthFormat, colorFormat,
+              multiSampling);
+    }
 }
