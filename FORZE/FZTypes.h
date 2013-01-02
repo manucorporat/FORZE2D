@@ -63,7 +63,7 @@ namespace FORZE {
 #endif
     
     // predefined class
-    template<typename T, int N> struct _fzColor4;
+    template<typename T, int N> class _fzColor4;
     template<typename T> class _fzVec2;
     
     
@@ -105,11 +105,11 @@ namespace FORZE {
             return fzColor3B(r*k, g*k, b*k);
         }
         
-        const bool operator == (const fzColor3B& c) const {
+        bool operator == (const fzColor3B& c) const {
             return (r == c.r && g == c.g && b == c.b);
         }
         
-        const bool operator != (const fzColor3B& c) const {
+        bool operator != (const fzColor3B& c) const {
             return !(operator == (c));
         }
     };
@@ -196,11 +196,11 @@ namespace FORZE {
         }
 
 
-        const bool operator == (const _fzColor4<T,N>& c) const {
+        bool operator == (const _fzColor4<T,N>& c) const {
             return (r == c.r && g == c.g && b == c.b && a == c.a);
         }
         
-        const bool operator != (const _fzColor4<T,N>& c) const {
+        bool operator != (const _fzColor4<T,N>& c) const {
             return !(operator == (c));
         }
     };
@@ -333,11 +333,11 @@ namespace FORZE {
             return *this;
         }
         
-        const bool operator == (const fzSize& s) const {
+        bool operator == (const fzSize& s) const {
             return (width == s.width && height == s.height);
 
         }
-        const bool operator != (const fzSize& s) const {
+        bool operator != (const fzSize& s) const {
             return !(operator == (s));
         }
     };
@@ -478,11 +478,11 @@ namespace FORZE {
             return _fzVec2<T>(-x, -y);
         }
         
-        const bool operator == (const _fzVec2<T>& p) const {
+        bool operator == (const _fzVec2<T>& p) const {
             return (x == p.x && y == p.y);
         }
         
-        const bool operator != (const _fzVec2<T>& p) const {
+        bool operator != (const _fzVec2<T>& p) const {
             return !(operator == (p));
         }
     };
@@ -595,11 +595,11 @@ namespace FORZE {
         
         bool intersect(const fzRect& r) const;
         
-        const bool operator == (const fzRect& r) const {
+        bool operator == (const fzRect& r) const {
             return origin == r.origin && size == r.size;
         }
         
-        const bool operator != (const fzRect& r) const {
+        bool operator != (const fzRect& r) const {
             return !(operator == (r));
         }
         
