@@ -32,8 +32,8 @@
 
 #include "FZMath.h"
 #include "FZMacros.h"
-#include "neon_support.h"
-#include "SSE_support.h"
+#include "Optimized/neon_support.h"
+#include "Optimized/SSE_support.h"
 
 
 namespace FORZE {

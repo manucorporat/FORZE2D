@@ -30,7 +30,7 @@
 #include "FZEventManager.h"
 #include "FZDirector.h"
 #include "FZMacros.h"
-#include "tinythread.h"
+#include "external/tinythread/tinythread.h"
 
 using namespace STD;
 

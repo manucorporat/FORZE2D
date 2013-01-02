@@ -31,11 +31,11 @@
 
 #if defined(FZ_OS) && (FZ_OS == kFZPLATFORM_IOS_GL_1 || FZ_OS == kFZPLATFORM_IOS_GL_2)
 
-#include "FZEventManager.h"
-#include "FZDeviceConfig.h"
-#include "FZDirector.h"
-#include "FZMacros.h"
-#include "FZGLState.h"
+#include "../FZEventManager.h"
+#include "../FZDeviceConfig.h"
+#include "../FZDirector.h"
+#include "../FZMacros.h"
+#include "../FZGLState.h"
 #include <sys/types.h>
 #include <sys/sysctl.h>
 

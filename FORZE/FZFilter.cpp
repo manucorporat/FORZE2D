@@ -41,12 +41,12 @@
 #include "FZMS.h"
 
 // Shaders
-#include "_fz_mat_TEX.shader.h"
-#include "effect_color.shader.h"
-#include "effect_grayscale.shader.h"
-#include "effect_invert.shader.h"
-#include "effect_toon.shader.h"
-#include "effect_xray.shader.h"
+#include "Shaders/_fz_mat_TEX.shader.h"
+#include "Shaders/Effects/effect_color.shader.h"
+#include "Shaders/Effects/effect_grayscale.shader.h"
+#include "Shaders/Effects/effect_invert.shader.h"
+#include "Shaders/Effects/effect_toon.shader.h"
+#include "Shaders/Effects/effect_xray.shader.h"
 
 
 using namespace STD;

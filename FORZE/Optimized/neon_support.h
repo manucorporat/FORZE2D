@@ -31,7 +31,7 @@
  */
 
 #ifdef __arm__
-#include "arm/arch.h"
+#include <arm/arch.h>
 #endif
 
 #ifdef __ARM_NEON__

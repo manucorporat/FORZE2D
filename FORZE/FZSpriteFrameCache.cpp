@@ -34,7 +34,7 @@
 #include "FZMacros.h"
 #include "FZSprite.h"
 #include "FZIO.h"
-#include "rapidxml.hpp"
+#include "external/rapidxml/rapidxml.hpp"
 
 
 using namespace rapidxml;

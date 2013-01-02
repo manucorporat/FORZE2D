@@ -35,8 +35,8 @@
 #include "FZDataStore.h"
 #include "FZIO.h"
 #include "FZData.h"
-#include "rapidxml.hpp"
-#include "rapidxml_print.hpp"
+#include "external/rapidxml/rapidxml.hpp"
+#include "external/rapidxml/rapidxml_print.hpp"
 
 
 #define XML_FILENAME "forze2d_datastore.xml"

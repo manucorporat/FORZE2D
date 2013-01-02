@@ -33,11 +33,11 @@
 #if FZ_GL_SHADERS
 
 // DEFAULT SHADERS
-#include "../Shaders/_fz_aC4_TEX.shader.h"
-#include "../Shaders/_fz_mat_TEX.shader.h"
-#include "../Shaders/_fz_mat_aC4.shader.h"
-#include "../Shaders/_fz_mat_uC4.shader.h"
-#include "../Shaders/_fz_mat_uC4_TEX.shader.h"
+#include "Shaders/_fz_aC4_TEX.shader.h"
+#include "Shaders/_fz_mat_TEX.shader.h"
+#include "Shaders/_fz_mat_aC4.shader.h"
+#include "Shaders/_fz_mat_uC4.shader.h"
+#include "Shaders/_fz_mat_uC4_TEX.shader.h"
 
 
 namespace FORZE {

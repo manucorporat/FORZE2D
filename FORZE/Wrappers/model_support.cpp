@@ -31,14 +31,13 @@
 
 #if !defined(FZ_OS) || (FZ_OS == kFZPLATFORM_MODEL)
 
-
-#include "FZEventManager.h"
-#include "FZDeviceConfig.h"
-#include "FZDirector.h"
-#include "FZMacros.h"
-#include "FZGLState.h"
-#include "FZConsole.h"
-#include "tinythread.h"
+#include "../FZEventManager.h"
+#include "../FZDeviceConfig.h"
+#include "../FZDirector.h"
+#include "../FZMacros.h"
+#include "../FZGLState.h"
+#include "../FZConsole.h"
+#include "../external/tinythread/tinythread.h"
 
 using namespace FORZE;
 

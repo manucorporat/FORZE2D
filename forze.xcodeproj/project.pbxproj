@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		32553F9315E7DFBC0051629E /* FZPerformManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32553F9115E7DFBC0051629E /* FZPerformManager.cpp */; };
-		32553F9415E7DFBC0051629E /* FZPerformManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32553F9115E7DFBC0051629E /* FZPerformManager.cpp */; };
-		32553F9515E7DFBC0051629E /* FZPerformManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 32553F9215E7DFBC0051629E /* FZPerformManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		32553F9615E7DFBC0051629E /* FZPerformManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 32553F9215E7DFBC0051629E /* FZPerformManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		32DE9A7515C1B95300671FDF /* libforze_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 979297B5151B818D0088AF66 /* libforze_ios.a */; };
 		9704DD7E152F5C30007FA760 /* TestBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9704DD7C152F5C30007FA760 /* TestBase.cpp */; };
 		9705E37A157BC42E009A21AF /* ActionTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9788D54F1417C3DB00DCC802 /* ActionTest.cpp */; };
@@ -333,16 +329,8 @@
 		970D3FC015249D96001FFC26 /* neon_support.h in Headers */ = {isa = PBXBuildFile; fileRef = 970D3FBD15249D96001FFC26 /* neon_support.h */; };
 		970D3FC115249D96001FFC26 /* SSE_support.h in Headers */ = {isa = PBXBuildFile; fileRef = 970D3FBE15249D96001FFC26 /* SSE_support.h */; };
 		970D3FC215249D96001FFC26 /* SSE_support.h in Headers */ = {isa = PBXBuildFile; fileRef = 970D3FBE15249D96001FFC26 /* SSE_support.h */; };
-		971DFA041551774700BBE693 /* FZParallaxNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 971DFA021551774700BBE693 /* FZParallaxNode.cpp */; };
-		971DFA051551774700BBE693 /* FZParallaxNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 971DFA021551774700BBE693 /* FZParallaxNode.cpp */; };
-		971DFA061551774700BBE693 /* FZParallaxNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 971DFA031551774700BBE693 /* FZParallaxNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		971DFA071551774700BBE693 /* FZParallaxNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 971DFA031551774700BBE693 /* FZParallaxNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		972535A31531169A00FC3CBF /* rapidxml_print.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 972535A21531169A00FC3CBF /* rapidxml_print.hpp */; };
 		972535A41531169A00FC3CBF /* rapidxml_print.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 972535A21531169A00FC3CBF /* rapidxml_print.hpp */; };
-		9734523015592C36009EAC2A /* FZFontCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9734522E15592C36009EAC2A /* FZFontCache.cpp */; };
-		9734523115592C36009EAC2A /* FZFontCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9734522E15592C36009EAC2A /* FZFontCache.cpp */; };
-		9734523215592C36009EAC2A /* FZFontCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 9734522F15592C36009EAC2A /* FZFontCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9734523315592C36009EAC2A /* FZFontCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 9734522F15592C36009EAC2A /* FZFontCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9734523C155941BD009EAC2A /* FZFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9734523A155941BC009EAC2A /* FZFont.cpp */; };
 		9734523D155941BD009EAC2A /* FZFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9734523A155941BC009EAC2A /* FZFont.cpp */; };
 		9734523E155941BD009EAC2A /* FZFont.h in Headers */ = {isa = PBXBuildFile; fileRef = 9734523B155941BC009EAC2A /* FZFont.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -358,22 +346,10 @@
 		97361B8D155BD5B8002E65ED /* effect_xray.shader.h in Headers */ = {isa = PBXBuildFile; fileRef = 97361B8C155BD5B8002E65ED /* effect_xray.shader.h */; };
 		97361B8E155BD5B8002E65ED /* effect_xray.shader.h in Headers */ = {isa = PBXBuildFile; fileRef = 97361B8C155BD5B8002E65ED /* effect_xray.shader.h */; };
 		975DD30C14A7884300D55DE6 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97A2487214A62DA500AB2023 /* OpenGL.framework */; };
-		9767ABA3153B36BF001BCCDC /* FZResourcesManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9767ABA1153B36BF001BCCDC /* FZResourcesManager.cpp */; };
-		9767ABA4153B36BF001BCCDC /* FZResourcesManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9767ABA1153B36BF001BCCDC /* FZResourcesManager.cpp */; };
-		9767ABA5153B36BF001BCCDC /* FZResourcesManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 9767ABA2153B36BF001BCCDC /* FZResourcesManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9767ABA6153B36BF001BCCDC /* FZResourcesManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 9767ABA2153B36BF001BCCDC /* FZResourcesManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97801DB81549EA8F0019DB49 /* FZTransitions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97801DB61549EA8F0019DB49 /* FZTransitions.cpp */; };
-		97801DB91549EA8F0019DB49 /* FZTransitions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97801DB61549EA8F0019DB49 /* FZTransitions.cpp */; };
-		97801DBA1549EA8F0019DB49 /* FZTransitions.h in Headers */ = {isa = PBXBuildFile; fileRef = 97801DB71549EA8F0019DB49 /* FZTransitions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97801DBB1549EA8F0019DB49 /* FZTransitions.h in Headers */ = {isa = PBXBuildFile; fileRef = 97801DB71549EA8F0019DB49 /* FZTransitions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9788D5221417B80100DCC802 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 970C6E391403EAEE00E4CC0D /* Foundation.framework */; };
 		9788D5511417C3DB00DCC802 /* ActionTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9788D54F1417C3DB00DCC802 /* ActionTest.cpp */; };
 		978B23CB151C0AE100ED9528 /* effect_toon.shader.h in Headers */ = {isa = PBXBuildFile; fileRef = 978B23CA151C0AE100ED9528 /* effect_toon.shader.h */; };
 		978B23CC151C0AE100ED9528 /* effect_toon.shader.h in Headers */ = {isa = PBXBuildFile; fileRef = 978B23CA151C0AE100ED9528 /* effect_toon.shader.h */; };
-		978E2E491530893800443FDC /* FZDataStore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 978E2E471530893700443FDC /* FZDataStore.cpp */; };
-		978E2E4A1530893800443FDC /* FZDataStore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 978E2E471530893700443FDC /* FZDataStore.cpp */; };
-		978E2E4B1530893800443FDC /* FZDataStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 978E2E481530893700443FDC /* FZDataStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		978E2E4C1530893800443FDC /* FZDataStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 978E2E481530893700443FDC /* FZDataStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		978E52BE150B93500058D364 /* effect_color.shader.h in Headers */ = {isa = PBXBuildFile; fileRef = 978E52BB150B93500058D364 /* effect_color.shader.h */; };
 		978E52BF150B93500058D364 /* effect_grayscale.shader.h in Headers */ = {isa = PBXBuildFile; fileRef = 978E52BC150B93500058D364 /* effect_grayscale.shader.h */; };
 		978E52C0150B93500058D364 /* effect_invert.shader.h in Headers */ = {isa = PBXBuildFile; fileRef = 978E52BD150B93500058D364 /* effect_invert.shader.h */; };
@@ -383,11 +359,6 @@
 		9791DF9E155491A10080871B /* FZAllocator.h in Headers */ = {isa = PBXBuildFile; fileRef = 9791DF9B155491A10080871B /* FZAllocator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9791DF9F155491A10080871B /* FZAllocator.h in Headers */ = {isa = PBXBuildFile; fileRef = 9791DF9B155491A10080871B /* FZAllocator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9791DFA41554AE2A0080871B /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9791DFA31554AE2A0080871B /* AppKit.framework */; };
-		9792970B151B818C0088AF66 /* FZAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B8AC15068BCF00B8AEE5 /* FZAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9792970C151B818D0088AF66 /* FZActionCamera.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B8AE15068BCF00B8AEE5 /* FZActionCamera.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9792970D151B818D0088AF66 /* FZActionEase.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B8B015068BCF00B8AEE5 /* FZActionEase.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9792970E151B818D0088AF66 /* FZActionInstant.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B8B215068BCF00B8AEE5 /* FZActionInstant.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9792970F151B818D0088AF66 /* FZActionInterval.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B8B415068BCF00B8AEE5 /* FZActionInterval.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		97929710151B818D0088AF66 /* FORZE.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B8FF15068BCF00B8AEE5 /* FORZE.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		97929711151B818D0088AF66 /* FZAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B90015068BCF00B8AEE5 /* FZAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		97929712151B818D0088AF66 /* FZCamera.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B90215068BCF00B8AEE5 /* FZCamera.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -405,43 +376,6 @@
 		9792971E151B818D0088AF66 /* FZTexture2D.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B91615068BCF00B8AEE5 /* FZTexture2D.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9792971F151B818D0088AF66 /* FZTextureAtlas.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B91815068BCF00B8AEE5 /* FZTextureAtlas.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		97929720151B818D0088AF66 /* FZTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B91A15068BCF00B8AEE5 /* FZTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97929721151B818D0088AF66 /* FZActionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B91F15068BCF00B8AEE5 /* FZActionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97929722151B818D0088AF66 /* FZAnimationCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B92115068BCF00B8AEE5 /* FZAnimationCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97929724151B818D0088AF66 /* FZDeviceConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B92515068BCF00B8AEE5 /* FZDeviceConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97929725151B818D0088AF66 /* FZDirector.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B92715068BCF00B8AEE5 /* FZDirector.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97929726151B818D0088AF66 /* FZEventManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B92915068BCF00B8AEE5 /* FZEventManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97929728151B818D0088AF66 /* FZScheduler.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B92F15068BCF00B8AEE5 /* FZScheduler.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97929729151B818D0088AF66 /* FZShaderCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B93115068BCF00B8AEE5 /* FZShaderCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9792972A151B818D0088AF66 /* FZSpriteFrameCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B93315068BCF00B8AEE5 /* FZSpriteFrameCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9792972B151B818D0088AF66 /* FZTextureCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B93515068BCF00B8AEE5 /* FZTextureCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9792972C151B818D0088AF66 /* FZLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B93A15068BCF00B8AEE5 /* FZLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9792972D151B818D0088AF66 /* FZLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B93E15068BCF00B8AEE5 /* FZLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9792972E151B818D0088AF66 /* FZLightSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B94015068BCF00B8AEE5 /* FZLightSystem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9792972F151B818D0088AF66 /* FZMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B94215068BCF00B8AEE5 /* FZMenu.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97929730151B818D0088AF66 /* FZMenuItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B94415068BCF00B8AEE5 /* FZMenuItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97929731151B818D0088AF66 /* FZNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B94615068BCF00B8AEE5 /* FZNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97929732151B818D0088AF66 /* FZParticleExamples.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B94715068BCF00B8AEE5 /* FZParticleExamples.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97929733151B818D0088AF66 /* FZParticleSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B94A15068BCF00B8AEE5 /* FZParticleSystem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97929734151B818D0088AF66 /* FZParticleSystemQuad.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B94C15068BCF00B8AEE5 /* FZParticleSystemQuad.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97929735151B818D0088AF66 /* FZRenderTexture.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B94E15068BCF00B8AEE5 /* FZRenderTexture.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97929736151B818D0088AF66 /* FZScene.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B95015068BCF00B8AEE5 /* FZScene.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97929737151B818D0088AF66 /* FZSprite.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B95215068BCF00B8AEE5 /* FZSprite.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97929738151B818D0088AF66 /* FZSpriteBatch.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B95415068BCF00B8AEE5 /* FZSpriteBatch.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97929739151B818D0088AF66 /* FZTMXParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B95615068BCF00B8AEE5 /* FZTMXParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9792973A151B818D0088AF66 /* FZHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B95915068BCF00B8AEE5 /* FZHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9792973B151B818D0088AF66 /* FZGLConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B95C15068BCF00B8AEE5 /* FZGLConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9792973C151B818D0088AF66 /* FZGLProgram.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B95E15068BCF00B8AEE5 /* FZGLProgram.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9792973D151B818D0088AF66 /* FZGLState.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B96015068BCF00B8AEE5 /* FZGLState.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9792973E151B818D0088AF66 /* FZPlatforms.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B96215068BCF00B8AEE5 /* FZPlatforms.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9792973F151B818D0088AF66 /* FZPlatformsHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B96315068BCF00B8AEE5 /* FZPlatformsHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97929740151B818D0088AF66 /* iOS_support.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B96515068BCF00B8AEE5 /* iOS_support.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97929742151B818D0088AF66 /* iOSGL2_support.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B96915068BCF00B8AEE5 /* iOSGL2_support.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97929743151B818D0088AF66 /* macosx_support.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B96B15068BCF00B8AEE5 /* macosx_support.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97929745151B818D0088AF66 /* FZBitOrder.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B97915068BCF00B8AEE5 /* FZBitOrder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97929746151B818D0088AF66 /* FZAutoList.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B97B15068BCF00B8AEE5 /* FZAutoList.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97929747151B818D0088AF66 /* FZIO.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B97D15068BCF00B8AEE5 /* FZIO.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97929748151B818D0088AF66 /* FZMath.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B97F15068BCF00B8AEE5 /* FZMath.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9792974A151B818D0088AF66 /* FZSelectors.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B98215068BCF00B8AEE5 /* FZSelectors.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9792974B151B818D0088AF66 /* _fz_mat_aC4.shader.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B97015068BCF00B8AEE5 /* _fz_mat_aC4.shader.h */; settings = {ATTRIBUTES = (); }; };
 		9792974D151B818D0088AF66 /* _fz_mat_TEX.shader.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B97215068BCF00B8AEE5 /* _fz_mat_TEX.shader.h */; settings = {ATTRIBUTES = (); }; };
 		9792974E151B818D0088AF66 /* _fz_mat_uC4.shader.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B97315068BCF00B8AEE5 /* _fz_mat_uC4.shader.h */; settings = {ATTRIBUTES = (); }; };
@@ -449,8 +383,6 @@
 		97929750151B818D0088AF66 /* effect_color.shader.h in Headers */ = {isa = PBXBuildFile; fileRef = 978E52BB150B93500058D364 /* effect_color.shader.h */; };
 		97929751151B818D0088AF66 /* effect_grayscale.shader.h in Headers */ = {isa = PBXBuildFile; fileRef = 978E52BC150B93500058D364 /* effect_grayscale.shader.h */; };
 		97929752151B818D0088AF66 /* effect_invert.shader.h in Headers */ = {isa = PBXBuildFile; fileRef = 978E52BD150B93500058D364 /* effect_invert.shader.h */; };
-		97929754151B818D0088AF66 /* FZMS.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B98415068BCF00B8AEE5 /* FZMS.h */; settings = {ATTRIBUTES = (); }; };
-		97929755151B818D0088AF66 /* FZData.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B98615068BCF00B8AEE5 /* FZData.h */; settings = {ATTRIBUTES = (); }; };
 		97929756151B818D0088AF66 /* cexcept.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B8E415068BCF00B8AEE5 /* cexcept.h */; settings = {ATTRIBUTES = (); }; };
 		97929757151B818D0088AF66 /* png.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B8E615068BCF00B8AEE5 /* png.h */; settings = {ATTRIBUTES = (); }; };
 		97929758151B818D0088AF66 /* pngconf.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B8E715068BCF00B8AEE5 /* pngconf.h */; settings = {ATTRIBUTES = (); }; };
@@ -460,12 +392,6 @@
 		9792975C151B818D0088AF66 /* pngpriv.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B8EF15068BCF00B8AEE5 /* pngpriv.h */; settings = {ATTRIBUTES = (); }; };
 		9792975D151B818D0088AF66 /* pngstruct.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B8F515068BCF00B8AEE5 /* pngstruct.h */; settings = {ATTRIBUTES = (); }; };
 		9792975E151B818D0088AF66 /* rapidxml.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B8FC15068BCF00B8AEE5 /* rapidxml.hpp */; settings = {ATTRIBUTES = (); }; };
-		97929761151B818D0088AF66 /* FZAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B8AB15068BCF00B8AEE5 /* FZAction.cpp */; };
-		97929762151B818D0088AF66 /* FZActionCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B8AD15068BCF00B8AEE5 /* FZActionCamera.cpp */; };
-		97929763151B818D0088AF66 /* FZActionEase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B8AF15068BCF00B8AEE5 /* FZActionEase.cpp */; };
-		97929764151B818D0088AF66 /* FZActionInstant.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B8B115068BCF00B8AEE5 /* FZActionInstant.cpp */; };
-		97929765151B818D0088AF66 /* FZActionInterval.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B8B315068BCF00B8AEE5 /* FZActionInterval.cpp */; };
-		97929766151B818D0088AF66 /* FZAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B8B515068BCF00B8AEE5 /* FZAnimation.cpp */; };
 		97929767151B818D0088AF66 /* png.c in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B8E515068BCF00B8AEE5 /* png.c */; };
 		97929768151B818D0088AF66 /* pngerror.c in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B8E915068BCF00B8AEE5 /* pngerror.c */; };
 		97929769151B818D0088AF66 /* pngget.c in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B8EA15068BCF00B8AEE5 /* pngget.c */; };
@@ -492,51 +418,7 @@
 		9792977E151B818D0088AF66 /* FZTexture2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B91515068BCF00B8AEE5 /* FZTexture2D.cpp */; };
 		9792977F151B818D0088AF66 /* FZTextureAtlas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B91715068BCF00B8AEE5 /* FZTextureAtlas.cpp */; };
 		97929780151B818D0088AF66 /* FZTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B91915068BCF00B8AEE5 /* FZTypes.cpp */; };
-		97929781151B818D0088AF66 /* FZActionManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B91E15068BCF00B8AEE5 /* FZActionManager.cpp */; };
-		97929782151B818D0088AF66 /* FZAnimationCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B92015068BCF00B8AEE5 /* FZAnimationCache.cpp */; };
-		97929784151B818D0088AF66 /* FZDeviceConfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B92415068BCF00B8AEE5 /* FZDeviceConfig.cpp */; };
-		97929785151B818D0088AF66 /* FZDirector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B92615068BCF00B8AEE5 /* FZDirector.cpp */; };
-		97929786151B818D0088AF66 /* FZEventManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B92815068BCF00B8AEE5 /* FZEventManager.cpp */; };
-		97929788151B818D0088AF66 /* FZScheduler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B92E15068BCF00B8AEE5 /* FZScheduler.cpp */; };
-		97929789151B818D0088AF66 /* FZShaderCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B93015068BCF00B8AEE5 /* FZShaderCache.cpp */; };
-		9792978A151B818D0088AF66 /* FZSpriteFrameCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B93215068BCF00B8AEE5 /* FZSpriteFrameCache.cpp */; };
-		9792978B151B818D0088AF66 /* FZTextureCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B93415068BCF00B8AEE5 /* FZTextureCache.cpp */; };
-		9792978C151B818D0088AF66 /* FZLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B93915068BCF00B8AEE5 /* FZLabel.cpp */; };
-		9792978D151B818D0088AF66 /* FZLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B93D15068BCF00B8AEE5 /* FZLayer.cpp */; };
-		9792978E151B818D0088AF66 /* FZLightSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B93F15068BCF00B8AEE5 /* FZLightSystem.cpp */; };
-		9792978F151B818D0088AF66 /* FZMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B94115068BCF00B8AEE5 /* FZMenu.cpp */; };
-		97929790151B818D0088AF66 /* FZMenuItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B94315068BCF00B8AEE5 /* FZMenuItem.cpp */; };
-		97929791151B818D0088AF66 /* FZNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B94515068BCF00B8AEE5 /* FZNode.cpp */; };
-		97929792151B818D0088AF66 /* FZParticleExamples.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B94815068BCF00B8AEE5 /* FZParticleExamples.cpp */; };
-		97929793151B818D0088AF66 /* FZParticleSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B94915068BCF00B8AEE5 /* FZParticleSystem.cpp */; };
-		97929794151B818D0088AF66 /* FZParticleSystemQuad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B94B15068BCF00B8AEE5 /* FZParticleSystemQuad.cpp */; };
-		97929795151B818D0088AF66 /* FZRenderTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B94D15068BCF00B8AEE5 /* FZRenderTexture.cpp */; };
-		97929796151B818D0088AF66 /* FZScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B94F15068BCF00B8AEE5 /* FZScene.cpp */; };
-		97929797151B818D0088AF66 /* FZSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B95115068BCF00B8AEE5 /* FZSprite.cpp */; };
-		97929798151B818D0088AF66 /* FZSpriteBatch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B95315068BCF00B8AEE5 /* FZSpriteBatch.cpp */; };
-		97929799151B818D0088AF66 /* FZTMXParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B95515068BCF00B8AEE5 /* FZTMXParser.cpp */; };
-		9792979A151B818D0088AF66 /* FZHUD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B95815068BCF00B8AEE5 /* FZHUD.cpp */; };
-		9792979B151B818D0088AF66 /* FZGLConfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B95B15068BCF00B8AEE5 /* FZGLConfig.cpp */; };
-		9792979C151B818D0088AF66 /* FZGLProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B95D15068BCF00B8AEE5 /* FZGLProgram.cpp */; };
-		9792979D151B818D0088AF66 /* FZGLState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B95F15068BCF00B8AEE5 /* FZGLState.cpp */; };
-		9792979E151B818D0088AF66 /* iOS_support.mm in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B96615068BCF00B8AEE5 /* iOS_support.mm */; };
-		979297A0151B818D0088AF66 /* iOSGL2_support.mm in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B96A15068BCF00B8AEE5 /* iOSGL2_support.mm */; };
-		979297A1151B818D0088AF66 /* macosx_support.mm in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B96C15068BCF00B8AEE5 /* macosx_support.mm */; };
-		979297A4151B818D0088AF66 /* FZBitOrder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B97815068BCF00B8AEE5 /* FZBitOrder.cpp */; };
-		979297A5151B818D0088AF66 /* FZAutoList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B97A15068BCF00B8AEE5 /* FZAutoList.cpp */; };
-		979297A6151B818D0088AF66 /* FZIO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B97C15068BCF00B8AEE5 /* FZIO.cpp */; };
-		979297A7151B818D0088AF66 /* FZMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B97E15068BCF00B8AEE5 /* FZMath.cpp */; };
-		979297A9151B818D0088AF66 /* FZMS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B98315068BCF00B8AEE5 /* FZMS.cpp */; };
-		979297AA151B818D0088AF66 /* FZData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B98515068BCF00B8AEE5 /* FZData.cpp */; };
 		979C21801492D5A7004A3060 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97EEB21014046DCB0073CC55 /* QuartzCore.framework */; };
-		979DF87A151F5EDE0096376C /* FZTMXLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 979DF876151F5EDE0096376C /* FZTMXLayer.cpp */; };
-		979DF87B151F5EDE0096376C /* FZTMXLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 979DF876151F5EDE0096376C /* FZTMXLayer.cpp */; };
-		979DF87C151F5EDE0096376C /* FZTMXLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 979DF877151F5EDE0096376C /* FZTMXLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		979DF87D151F5EDE0096376C /* FZTMXLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 979DF877151F5EDE0096376C /* FZTMXLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		979DF87E151F5EDE0096376C /* FZTMXTiledMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 979DF878151F5EDE0096376C /* FZTMXTiledMap.cpp */; };
-		979DF87F151F5EDE0096376C /* FZTMXTiledMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 979DF878151F5EDE0096376C /* FZTMXTiledMap.cpp */; };
-		979DF880151F5EDE0096376C /* FZTMXTiledMap.h in Headers */ = {isa = PBXBuildFile; fileRef = 979DF879151F5EDE0096376C /* FZTMXTiledMap.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		979DF881151F5EDE0096376C /* FZTMXTiledMap.h in Headers */ = {isa = PBXBuildFile; fileRef = 979DF879151F5EDE0096376C /* FZTMXTiledMap.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		97A1FDEF149D32730075C229 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 503092B210447296005F7AFC /* libz.dylib */; };
 		97A2487314A62DA500AB2023 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97A2487214A62DA500AB2023 /* OpenGL.framework */; };
 		97C35048157D66DB001E055D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F30157D66DA001E055D /* Default.png */; };
@@ -586,17 +468,6 @@
 		97C35248157D68EB001E055D /* FPSFont@x2.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F3B157D66DA001E055D /* FPSFont@x2.pvr */; };
 		97C35249157D68EB001E055D /* HUD.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F3C157D66DA001E055D /* HUD.pvr */; };
 		97C3524A157D68EB001E055D /* HUD@x2.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F3D157D66DA001E055D /* HUD@x2.pvr */; };
-		97C9B98715068BD000B8AEE5 /* FZAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B8AB15068BCF00B8AEE5 /* FZAction.cpp */; };
-		97C9B98915068BD000B8AEE5 /* FZAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B8AC15068BCF00B8AEE5 /* FZAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9B98A15068BD000B8AEE5 /* FZActionCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B8AD15068BCF00B8AEE5 /* FZActionCamera.cpp */; };
-		97C9B98C15068BD000B8AEE5 /* FZActionCamera.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B8AE15068BCF00B8AEE5 /* FZActionCamera.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9B98D15068BD000B8AEE5 /* FZActionEase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B8AF15068BCF00B8AEE5 /* FZActionEase.cpp */; };
-		97C9B98F15068BD000B8AEE5 /* FZActionEase.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B8B015068BCF00B8AEE5 /* FZActionEase.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9B99015068BD000B8AEE5 /* FZActionInstant.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B8B115068BCF00B8AEE5 /* FZActionInstant.cpp */; };
-		97C9B99215068BD000B8AEE5 /* FZActionInstant.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B8B215068BCF00B8AEE5 /* FZActionInstant.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9B99315068BD000B8AEE5 /* FZActionInterval.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B8B315068BCF00B8AEE5 /* FZActionInterval.cpp */; };
-		97C9B99515068BD000B8AEE5 /* FZActionInterval.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B8B415068BCF00B8AEE5 /* FZActionInterval.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9B99615068BD000B8AEE5 /* FZAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B8B515068BCF00B8AEE5 /* FZAnimation.cpp */; };
 		97C9B9BF15068BD000B8AEE5 /* cexcept.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B8E415068BCF00B8AEE5 /* cexcept.h */; settings = {ATTRIBUTES = (); }; };
 		97C9B9C015068BD000B8AEE5 /* png.c in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B8E515068BCF00B8AEE5 /* png.c */; };
 		97C9B9C215068BD000B8AEE5 /* png.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B8E615068BCF00B8AEE5 /* png.h */; settings = {ATTRIBUTES = (); }; };
@@ -649,85 +520,10 @@
 		97C9BA0B15068BD000B8AEE5 /* FZTextureAtlas.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B91815068BCF00B8AEE5 /* FZTextureAtlas.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		97C9BA0C15068BD000B8AEE5 /* FZTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B91915068BCF00B8AEE5 /* FZTypes.cpp */; };
 		97C9BA0E15068BD000B8AEE5 /* FZTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B91A15068BCF00B8AEE5 /* FZTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9BA1215068BD000B8AEE5 /* FZActionManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B91E15068BCF00B8AEE5 /* FZActionManager.cpp */; };
-		97C9BA1415068BD000B8AEE5 /* FZActionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B91F15068BCF00B8AEE5 /* FZActionManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9BA1515068BD000B8AEE5 /* FZAnimationCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B92015068BCF00B8AEE5 /* FZAnimationCache.cpp */; };
-		97C9BA1715068BD000B8AEE5 /* FZAnimationCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B92115068BCF00B8AEE5 /* FZAnimationCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9BA1B15068BD000B8AEE5 /* FZDeviceConfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B92415068BCF00B8AEE5 /* FZDeviceConfig.cpp */; };
-		97C9BA1D15068BD000B8AEE5 /* FZDeviceConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B92515068BCF00B8AEE5 /* FZDeviceConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9BA1E15068BD000B8AEE5 /* FZDirector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B92615068BCF00B8AEE5 /* FZDirector.cpp */; };
-		97C9BA2015068BD000B8AEE5 /* FZDirector.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B92715068BCF00B8AEE5 /* FZDirector.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9BA2115068BD000B8AEE5 /* FZEventManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B92815068BCF00B8AEE5 /* FZEventManager.cpp */; };
-		97C9BA2315068BD000B8AEE5 /* FZEventManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B92915068BCF00B8AEE5 /* FZEventManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9BA2A15068BD000B8AEE5 /* FZScheduler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B92E15068BCF00B8AEE5 /* FZScheduler.cpp */; };
-		97C9BA2C15068BD000B8AEE5 /* FZScheduler.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B92F15068BCF00B8AEE5 /* FZScheduler.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9BA2D15068BD000B8AEE5 /* FZShaderCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B93015068BCF00B8AEE5 /* FZShaderCache.cpp */; };
-		97C9BA2F15068BD000B8AEE5 /* FZShaderCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B93115068BCF00B8AEE5 /* FZShaderCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9BA3015068BD000B8AEE5 /* FZSpriteFrameCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B93215068BCF00B8AEE5 /* FZSpriteFrameCache.cpp */; };
-		97C9BA3215068BD000B8AEE5 /* FZSpriteFrameCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B93315068BCF00B8AEE5 /* FZSpriteFrameCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9BA3315068BD000B8AEE5 /* FZTextureCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B93415068BCF00B8AEE5 /* FZTextureCache.cpp */; };
-		97C9BA3515068BD000B8AEE5 /* FZTextureCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B93515068BCF00B8AEE5 /* FZTextureCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9BA3915068BD000B8AEE5 /* FZLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B93915068BCF00B8AEE5 /* FZLabel.cpp */; };
-		97C9BA3B15068BD000B8AEE5 /* FZLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B93A15068BCF00B8AEE5 /* FZLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9BA3F15068BD000B8AEE5 /* FZLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B93D15068BCF00B8AEE5 /* FZLayer.cpp */; };
-		97C9BA4115068BD000B8AEE5 /* FZLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B93E15068BCF00B8AEE5 /* FZLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9BA4215068BD000B8AEE5 /* FZLightSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B93F15068BCF00B8AEE5 /* FZLightSystem.cpp */; };
-		97C9BA4415068BD000B8AEE5 /* FZLightSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B94015068BCF00B8AEE5 /* FZLightSystem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9BA4515068BD000B8AEE5 /* FZMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B94115068BCF00B8AEE5 /* FZMenu.cpp */; };
-		97C9BA4715068BD000B8AEE5 /* FZMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B94215068BCF00B8AEE5 /* FZMenu.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9BA4815068BD000B8AEE5 /* FZMenuItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B94315068BCF00B8AEE5 /* FZMenuItem.cpp */; };
-		97C9BA4A15068BD000B8AEE5 /* FZMenuItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B94415068BCF00B8AEE5 /* FZMenuItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9BA4B15068BD000B8AEE5 /* FZNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B94515068BCF00B8AEE5 /* FZNode.cpp */; };
-		97C9BA4D15068BD000B8AEE5 /* FZNode.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B94615068BCF00B8AEE5 /* FZNode.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9BA4E15068BD000B8AEE5 /* FZParticleExamples.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B94715068BCF00B8AEE5 /* FZParticleExamples.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9BA4F15068BD000B8AEE5 /* FZParticleExamples.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B94815068BCF00B8AEE5 /* FZParticleExamples.cpp */; };
-		97C9BA5115068BD000B8AEE5 /* FZParticleSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B94915068BCF00B8AEE5 /* FZParticleSystem.cpp */; };
-		97C9BA5315068BD000B8AEE5 /* FZParticleSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B94A15068BCF00B8AEE5 /* FZParticleSystem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9BA5415068BD000B8AEE5 /* FZParticleSystemQuad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B94B15068BCF00B8AEE5 /* FZParticleSystemQuad.cpp */; };
-		97C9BA5615068BD000B8AEE5 /* FZParticleSystemQuad.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B94C15068BCF00B8AEE5 /* FZParticleSystemQuad.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9BA5715068BD000B8AEE5 /* FZRenderTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B94D15068BCF00B8AEE5 /* FZRenderTexture.cpp */; };
-		97C9BA5915068BD000B8AEE5 /* FZRenderTexture.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B94E15068BCF00B8AEE5 /* FZRenderTexture.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9BA5A15068BD000B8AEE5 /* FZScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B94F15068BCF00B8AEE5 /* FZScene.cpp */; };
-		97C9BA5C15068BD000B8AEE5 /* FZScene.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B95015068BCF00B8AEE5 /* FZScene.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9BA5D15068BD000B8AEE5 /* FZSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B95115068BCF00B8AEE5 /* FZSprite.cpp */; };
-		97C9BA5F15068BD000B8AEE5 /* FZSprite.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B95215068BCF00B8AEE5 /* FZSprite.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9BA6015068BD000B8AEE5 /* FZSpriteBatch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B95315068BCF00B8AEE5 /* FZSpriteBatch.cpp */; };
-		97C9BA6215068BD000B8AEE5 /* FZSpriteBatch.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B95415068BCF00B8AEE5 /* FZSpriteBatch.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9BA6315068BD000B8AEE5 /* FZTMXParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B95515068BCF00B8AEE5 /* FZTMXParser.cpp */; };
-		97C9BA6515068BD000B8AEE5 /* FZTMXParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B95615068BCF00B8AEE5 /* FZTMXParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9BA6615068BD000B8AEE5 /* FZHUD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B95815068BCF00B8AEE5 /* FZHUD.cpp */; };
-		97C9BA6815068BD000B8AEE5 /* FZHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B95915068BCF00B8AEE5 /* FZHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9BA6915068BD000B8AEE5 /* FZGLConfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B95B15068BCF00B8AEE5 /* FZGLConfig.cpp */; };
-		97C9BA6B15068BD000B8AEE5 /* FZGLConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B95C15068BCF00B8AEE5 /* FZGLConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9BA6C15068BD000B8AEE5 /* FZGLProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B95D15068BCF00B8AEE5 /* FZGLProgram.cpp */; };
-		97C9BA6E15068BD000B8AEE5 /* FZGLProgram.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B95E15068BCF00B8AEE5 /* FZGLProgram.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9BA6F15068BD000B8AEE5 /* FZGLState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B95F15068BCF00B8AEE5 /* FZGLState.cpp */; };
-		97C9BA7115068BD000B8AEE5 /* FZGLState.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B96015068BCF00B8AEE5 /* FZGLState.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9BA7215068BD000B8AEE5 /* FZPlatforms.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B96215068BCF00B8AEE5 /* FZPlatforms.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9BA7315068BD000B8AEE5 /* FZPlatformsHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B96315068BCF00B8AEE5 /* FZPlatformsHeader.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9BA7415068BD000B8AEE5 /* iOS_support.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B96515068BCF00B8AEE5 /* iOS_support.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9BA7515068BD000B8AEE5 /* iOS_support.mm in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B96615068BCF00B8AEE5 /* iOS_support.mm */; };
-		97C9BA7A15068BD000B8AEE5 /* iOSGL2_support.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B96915068BCF00B8AEE5 /* iOSGL2_support.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9BA7B15068BD000B8AEE5 /* iOSGL2_support.mm in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B96A15068BCF00B8AEE5 /* iOSGL2_support.mm */; };
-		97C9BA7D15068BD000B8AEE5 /* macosx_support.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B96B15068BCF00B8AEE5 /* macosx_support.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9BA7E15068BD000B8AEE5 /* macosx_support.mm in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B96C15068BCF00B8AEE5 /* macosx_support.mm */; };
 		97C9BA8315068BD000B8AEE5 /* _fz_mat_aC4.shader.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B97015068BCF00B8AEE5 /* _fz_mat_aC4.shader.h */; settings = {ATTRIBUTES = (); }; };
 		97C9BA8515068BD000B8AEE5 /* _fz_mat_TEX.shader.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B97215068BCF00B8AEE5 /* _fz_mat_TEX.shader.h */; settings = {ATTRIBUTES = (); }; };
 		97C9BA8615068BD000B8AEE5 /* _fz_mat_uC4.shader.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B97315068BCF00B8AEE5 /* _fz_mat_uC4.shader.h */; settings = {ATTRIBUTES = (); }; };
 		97C9BA8715068BD000B8AEE5 /* _fz_mat_uC4_TEX.shader.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B97415068BCF00B8AEE5 /* _fz_mat_uC4_TEX.shader.h */; settings = {ATTRIBUTES = (); }; };
-		97C9BA8B15068BD000B8AEE5 /* FZBitOrder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B97815068BCF00B8AEE5 /* FZBitOrder.cpp */; };
-		97C9BA8D15068BD000B8AEE5 /* FZBitOrder.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B97915068BCF00B8AEE5 /* FZBitOrder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9BA8E15068BD000B8AEE5 /* FZAutoList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B97A15068BCF00B8AEE5 /* FZAutoList.cpp */; };
-		97C9BA9015068BD000B8AEE5 /* FZAutoList.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B97B15068BCF00B8AEE5 /* FZAutoList.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9BA9115068BD000B8AEE5 /* FZIO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B97C15068BCF00B8AEE5 /* FZIO.cpp */; };
-		97C9BA9315068BD000B8AEE5 /* FZIO.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B97D15068BCF00B8AEE5 /* FZIO.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9BA9415068BD000B8AEE5 /* FZMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B97E15068BCF00B8AEE5 /* FZMath.cpp */; };
-		97C9BA9615068BD000B8AEE5 /* FZMath.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B97F15068BCF00B8AEE5 /* FZMath.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9BA9A15068BD000B8AEE5 /* FZSelectors.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B98215068BCF00B8AEE5 /* FZSelectors.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9BA9B15068BD000B8AEE5 /* FZMS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B98315068BCF00B8AEE5 /* FZMS.cpp */; };
-		97C9BA9D15068BD000B8AEE5 /* FZMS.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B98415068BCF00B8AEE5 /* FZMS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		97C9BA9E15068BD000B8AEE5 /* FZData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B98515068BCF00B8AEE5 /* FZData.cpp */; };
-		97C9BAA015068BD000B8AEE5 /* FZData.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B98615068BCF00B8AEE5 /* FZData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		97ED8EA3157E1289007C451A /* kerning_test.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 97ED8EA1157E1289007C451A /* kerning_test.fnt */; };
 		97ED8EA4157E1289007C451A /* kerning_test.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 97ED8EA1157E1289007C451A /* kerning_test.fnt */; };
 		97ED8EA5157E1289007C451A /* kerning_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 97ED8EA2157E1289007C451A /* kerning_test.png */; };
@@ -1104,8 +900,6 @@
 		A927C7951634131A00B2AE52 /* HUD.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F3C157D66DA001E055D /* HUD.pvr */; };
 		A927C7971634131A00B2AE52 /* HUD@x2.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F3D157D66DA001E055D /* HUD@x2.pvr */; };
 		A927C7A21634133300B2AE52 /* SceneTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99AAE1F1629C2CE002D177D /* SceneTest.cpp */; };
-		A930905B16090BFF002104D6 /* FZDefaultOpenGLAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = A92E28441607C34400C63C79 /* FZDefaultOpenGLAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A930905C16090C03002104D6 /* FZDefaultOpenGLAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = A92E28441607C34400C63C79 /* FZDefaultOpenGLAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A94A95EC162AEC660035F4B6 /* libforze_mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5018F24D0DFDEAC400C013A5 /* libforze_mac.a */; };
 		A94A95ED162AEC660035F4B6 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 503092B210447296005F7AFC /* libz.dylib */; };
 		A94A95EE162AEC660035F4B6 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9791DFA31554AE2A0080871B /* AppKit.framework */; };
@@ -1134,18 +928,6 @@
 		A94A9618162AECD90035F4B6 /* LabelTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99AAE191629C2CE002D177D /* LabelTest.cpp */; };
 		A94A961B162B41E50035F4B6 /* kerning_test.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 97ED8EA1157E1289007C451A /* kerning_test.fnt */; };
 		A94A961C162B41E50035F4B6 /* kerning_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 97ED8EA2157E1289007C451A /* kerning_test.png */; };
-		A94E6341166CD75F00100D6E /* model_support.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94E633F166CD75F00100D6E /* model_support.cpp */; };
-		A94E6342166CD75F00100D6E /* model_support.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94E633F166CD75F00100D6E /* model_support.cpp */; };
-		A94E6343166CD75F00100D6E /* model_support.h in Headers */ = {isa = PBXBuildFile; fileRef = A94E6340166CD75F00100D6E /* model_support.h */; };
-		A94E6344166CD75F00100D6E /* model_support.h in Headers */ = {isa = PBXBuildFile; fileRef = A94E6340166CD75F00100D6E /* model_support.h */; };
-		A94E6349166D078800100D6E /* gl.h in Headers */ = {isa = PBXBuildFile; fileRef = A94E6347166D078800100D6E /* gl.h */; };
-		A94E634A166D078800100D6E /* gl.h in Headers */ = {isa = PBXBuildFile; fileRef = A94E6347166D078800100D6E /* gl.h */; };
-		A94E634B166D078800100D6E /* glext.h in Headers */ = {isa = PBXBuildFile; fileRef = A94E6348166D078800100D6E /* glext.h */; };
-		A94E634C166D078800100D6E /* glext.h in Headers */ = {isa = PBXBuildFile; fileRef = A94E6348166D078800100D6E /* glext.h */; };
-		A94E634F166D42C600100D6E /* FZConsole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94E634D166D42C500100D6E /* FZConsole.cpp */; };
-		A94E6350166D42C600100D6E /* FZConsole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94E634D166D42C500100D6E /* FZConsole.cpp */; };
-		A94E6351166D42C600100D6E /* FZConsole.h in Headers */ = {isa = PBXBuildFile; fileRef = A94E634E166D42C500100D6E /* FZConsole.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A94E6352166D42C600100D6E /* FZConsole.h in Headers */ = {isa = PBXBuildFile; fileRef = A94E634E166D42C500100D6E /* FZConsole.h */; };
 		A95B739116701A65001725FB /* tinythread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A95B738F16701A65001725FB /* tinythread.cpp */; };
 		A95B739216701A65001725FB /* tinythread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A95B738F16701A65001725FB /* tinythread.cpp */; };
 		A95B739316701A65001725FB /* tinythread.h in Headers */ = {isa = PBXBuildFile; fileRef = A95B739016701A65001725FB /* tinythread.h */; };
@@ -1301,8 +1083,6 @@
 		A976115D1624B96C00A23623 /* base64.h in Headers */ = {isa = PBXBuildFile; fileRef = A97611561624B96C00A23623 /* base64.h */; };
 		A976115E1624B96C00A23623 /* base64.h in Headers */ = {isa = PBXBuildFile; fileRef = A97611561624B96C00A23623 /* base64.h */; };
 		A97883EC160F80A900A93735 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A97883EB160F80A900A93735 /* OpenGLES.framework */; };
-		A992ECF1163D863E00CD0C33 /* FZPlatforms.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A992ECF0163D863E00CD0C33 /* FZPlatforms.cpp */; };
-		A992ECF2163D863E00CD0C33 /* FZPlatforms.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A992ECF0163D863E00CD0C33 /* FZPlatforms.cpp */; };
 		A99804F2161F80B70037A7EB /* helvetica@x2.fnt in Resources */ = {isa = PBXBuildFile; fileRef = A99804F0161F80B70037A7EB /* helvetica@x2.fnt */; };
 		A99804F3161F80B70037A7EB /* helvetica@x2.fnt in Resources */ = {isa = PBXBuildFile; fileRef = A99804F0161F80B70037A7EB /* helvetica@x2.fnt */; };
 		A99804F4161F80B70037A7EB /* helvetica@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = A99804F1161F80B70037A7EB /* helvetica@x2.png */; };
@@ -1337,6 +1117,226 @@
 		A998A082162C8E9100877502 /* TestBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9704DD7C152F5C30007FA760 /* TestBase.cpp */; };
 		A998A08C162C8EA500877502 /* LayerTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99AAE1B1629C2CE002D177D /* LayerTest.cpp */; };
 		A998EF361620986500C8493E /* grossini_dance_atlas.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F6A157D66DA001E055D /* grossini_dance_atlas.png */; };
+		A99E9BA616922F1F00438E54 /* FZAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B4016922F1F00438E54 /* FZAction.cpp */; };
+		A99E9BA716922F1F00438E54 /* FZAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B4016922F1F00438E54 /* FZAction.cpp */; };
+		A99E9BA816922F1F00438E54 /* FZAction.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B4116922F1F00438E54 /* FZAction.h */; };
+		A99E9BA916922F1F00438E54 /* FZAction.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B4116922F1F00438E54 /* FZAction.h */; };
+		A99E9BAA16922F1F00438E54 /* FZActionCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B4216922F1F00438E54 /* FZActionCamera.cpp */; };
+		A99E9BAB16922F1F00438E54 /* FZActionCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B4216922F1F00438E54 /* FZActionCamera.cpp */; };
+		A99E9BAC16922F1F00438E54 /* FZActionCamera.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B4316922F1F00438E54 /* FZActionCamera.h */; };
+		A99E9BAD16922F1F00438E54 /* FZActionCamera.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B4316922F1F00438E54 /* FZActionCamera.h */; };
+		A99E9BAE16922F1F00438E54 /* FZActionEase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B4416922F1F00438E54 /* FZActionEase.cpp */; };
+		A99E9BAF16922F1F00438E54 /* FZActionEase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B4416922F1F00438E54 /* FZActionEase.cpp */; };
+		A99E9BB016922F1F00438E54 /* FZActionEase.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B4516922F1F00438E54 /* FZActionEase.h */; };
+		A99E9BB116922F1F00438E54 /* FZActionEase.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B4516922F1F00438E54 /* FZActionEase.h */; };
+		A99E9BB216922F1F00438E54 /* FZActionInstant.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B4616922F1F00438E54 /* FZActionInstant.cpp */; };
+		A99E9BB316922F1F00438E54 /* FZActionInstant.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B4616922F1F00438E54 /* FZActionInstant.cpp */; };
+		A99E9BB416922F1F00438E54 /* FZActionInstant.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B4716922F1F00438E54 /* FZActionInstant.h */; };
+		A99E9BB516922F1F00438E54 /* FZActionInstant.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B4716922F1F00438E54 /* FZActionInstant.h */; };
+		A99E9BB616922F1F00438E54 /* FZActionInterval.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B4816922F1F00438E54 /* FZActionInterval.cpp */; };
+		A99E9BB716922F1F00438E54 /* FZActionInterval.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B4816922F1F00438E54 /* FZActionInterval.cpp */; };
+		A99E9BB816922F1F00438E54 /* FZActionInterval.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B4916922F1F00438E54 /* FZActionInterval.h */; };
+		A99E9BB916922F1F00438E54 /* FZActionInterval.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B4916922F1F00438E54 /* FZActionInterval.h */; };
+		A99E9BBA16922F1F00438E54 /* FZActionManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B4A16922F1F00438E54 /* FZActionManager.cpp */; };
+		A99E9BBB16922F1F00438E54 /* FZActionManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B4A16922F1F00438E54 /* FZActionManager.cpp */; };
+		A99E9BBC16922F1F00438E54 /* FZActionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B4B16922F1F00438E54 /* FZActionManager.h */; };
+		A99E9BBD16922F1F00438E54 /* FZActionManager.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B4B16922F1F00438E54 /* FZActionManager.h */; };
+		A99E9BBE16922F1F00438E54 /* FZAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B4C16922F1F00438E54 /* FZAnimation.cpp */; };
+		A99E9BBF16922F1F00438E54 /* FZAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B4C16922F1F00438E54 /* FZAnimation.cpp */; };
+		A99E9BC016922F1F00438E54 /* FZAnimationCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B4D16922F1F00438E54 /* FZAnimationCache.cpp */; };
+		A99E9BC116922F1F00438E54 /* FZAnimationCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B4D16922F1F00438E54 /* FZAnimationCache.cpp */; };
+		A99E9BC216922F1F00438E54 /* FZAnimationCache.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B4E16922F1F00438E54 /* FZAnimationCache.h */; };
+		A99E9BC316922F1F00438E54 /* FZAnimationCache.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B4E16922F1F00438E54 /* FZAnimationCache.h */; };
+		A99E9BC416922F1F00438E54 /* FZAutoList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B4F16922F1F00438E54 /* FZAutoList.cpp */; };
+		A99E9BC516922F1F00438E54 /* FZAutoList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B4F16922F1F00438E54 /* FZAutoList.cpp */; };
+		A99E9BC616922F1F00438E54 /* FZAutoList.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B5016922F1F00438E54 /* FZAutoList.h */; };
+		A99E9BC716922F1F00438E54 /* FZAutoList.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B5016922F1F00438E54 /* FZAutoList.h */; };
+		A99E9BCC16922F1F00438E54 /* FZBitOrder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B5316922F1F00438E54 /* FZBitOrder.cpp */; };
+		A99E9BCD16922F1F00438E54 /* FZBitOrder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B5316922F1F00438E54 /* FZBitOrder.cpp */; };
+		A99E9BCE16922F1F00438E54 /* FZBitOrder.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B5416922F1F00438E54 /* FZBitOrder.h */; };
+		A99E9BCF16922F1F00438E54 /* FZBitOrder.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B5416922F1F00438E54 /* FZBitOrder.h */; };
+		A99E9BD016922F1F00438E54 /* FZConsole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B5516922F1F00438E54 /* FZConsole.cpp */; };
+		A99E9BD116922F1F00438E54 /* FZConsole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B5516922F1F00438E54 /* FZConsole.cpp */; };
+		A99E9BD216922F1F00438E54 /* FZConsole.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B5616922F1F00438E54 /* FZConsole.h */; };
+		A99E9BD316922F1F00438E54 /* FZConsole.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B5616922F1F00438E54 /* FZConsole.h */; };
+		A99E9BD416922F1F00438E54 /* FZData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B5716922F1F00438E54 /* FZData.cpp */; };
+		A99E9BD516922F1F00438E54 /* FZData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B5716922F1F00438E54 /* FZData.cpp */; };
+		A99E9BD616922F1F00438E54 /* FZData.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B5816922F1F00438E54 /* FZData.h */; };
+		A99E9BD716922F1F00438E54 /* FZData.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B5816922F1F00438E54 /* FZData.h */; };
+		A99E9BD816922F1F00438E54 /* FZDataStore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B5916922F1F00438E54 /* FZDataStore.cpp */; };
+		A99E9BD916922F1F00438E54 /* FZDataStore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B5916922F1F00438E54 /* FZDataStore.cpp */; };
+		A99E9BDA16922F1F00438E54 /* FZDataStore.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B5A16922F1F00438E54 /* FZDataStore.h */; };
+		A99E9BDB16922F1F00438E54 /* FZDataStore.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B5A16922F1F00438E54 /* FZDataStore.h */; };
+		A99E9BDC16922F1F00438E54 /* FZDefaultOpenGLAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B5B16922F1F00438E54 /* FZDefaultOpenGLAPI.h */; };
+		A99E9BDD16922F1F00438E54 /* FZDefaultOpenGLAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B5B16922F1F00438E54 /* FZDefaultOpenGLAPI.h */; };
+		A99E9BDE16922F1F00438E54 /* FZDeviceConfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B5C16922F1F00438E54 /* FZDeviceConfig.cpp */; };
+		A99E9BDF16922F1F00438E54 /* FZDeviceConfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B5C16922F1F00438E54 /* FZDeviceConfig.cpp */; };
+		A99E9BE016922F1F00438E54 /* FZDeviceConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B5D16922F1F00438E54 /* FZDeviceConfig.h */; };
+		A99E9BE116922F1F00438E54 /* FZDeviceConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B5D16922F1F00438E54 /* FZDeviceConfig.h */; };
+		A99E9BE216922F1F00438E54 /* FZDirector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B5E16922F1F00438E54 /* FZDirector.cpp */; };
+		A99E9BE316922F1F00438E54 /* FZDirector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B5E16922F1F00438E54 /* FZDirector.cpp */; };
+		A99E9BE416922F1F00438E54 /* FZDirector.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B5F16922F1F00438E54 /* FZDirector.h */; };
+		A99E9BE516922F1F00438E54 /* FZDirector.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B5F16922F1F00438E54 /* FZDirector.h */; };
+		A99E9BE616922F1F00438E54 /* FZEventManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B6016922F1F00438E54 /* FZEventManager.cpp */; };
+		A99E9BE716922F1F00438E54 /* FZEventManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B6016922F1F00438E54 /* FZEventManager.cpp */; };
+		A99E9BE816922F1F00438E54 /* FZEventManager.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B6116922F1F00438E54 /* FZEventManager.h */; };
+		A99E9BE916922F1F00438E54 /* FZEventManager.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B6116922F1F00438E54 /* FZEventManager.h */; };
+		A99E9BEA16922F1F00438E54 /* FZFontCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B6216922F1F00438E54 /* FZFontCache.cpp */; };
+		A99E9BEB16922F1F00438E54 /* FZFontCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B6216922F1F00438E54 /* FZFontCache.cpp */; };
+		A99E9BEC16922F1F00438E54 /* FZFontCache.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B6316922F1F00438E54 /* FZFontCache.h */; };
+		A99E9BED16922F1F00438E54 /* FZFontCache.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B6316922F1F00438E54 /* FZFontCache.h */; };
+		A99E9BEE16922F1F00438E54 /* FZGLConfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B6416922F1F00438E54 /* FZGLConfig.cpp */; };
+		A99E9BEF16922F1F00438E54 /* FZGLConfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B6416922F1F00438E54 /* FZGLConfig.cpp */; };
+		A99E9BF016922F1F00438E54 /* FZGLConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B6516922F1F00438E54 /* FZGLConfig.h */; };
+		A99E9BF116922F1F00438E54 /* FZGLConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B6516922F1F00438E54 /* FZGLConfig.h */; };
+		A99E9BF216922F1F00438E54 /* FZGLProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B6616922F1F00438E54 /* FZGLProgram.cpp */; };
+		A99E9BF316922F1F00438E54 /* FZGLProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B6616922F1F00438E54 /* FZGLProgram.cpp */; };
+		A99E9BF416922F1F00438E54 /* FZGLProgram.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B6716922F1F00438E54 /* FZGLProgram.h */; };
+		A99E9BF516922F1F00438E54 /* FZGLProgram.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B6716922F1F00438E54 /* FZGLProgram.h */; };
+		A99E9BF616922F1F00438E54 /* FZGLState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B6816922F1F00438E54 /* FZGLState.cpp */; };
+		A99E9BF716922F1F00438E54 /* FZGLState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B6816922F1F00438E54 /* FZGLState.cpp */; };
+		A99E9BF816922F1F00438E54 /* FZGLState.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B6916922F1F00438E54 /* FZGLState.h */; };
+		A99E9BF916922F1F00438E54 /* FZGLState.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B6916922F1F00438E54 /* FZGLState.h */; };
+		A99E9BFA16922F1F00438E54 /* FZHUD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B6A16922F1F00438E54 /* FZHUD.cpp */; };
+		A99E9BFB16922F1F00438E54 /* FZHUD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B6A16922F1F00438E54 /* FZHUD.cpp */; };
+		A99E9BFC16922F1F00438E54 /* FZHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B6B16922F1F00438E54 /* FZHUD.h */; };
+		A99E9BFD16922F1F00438E54 /* FZHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B6B16922F1F00438E54 /* FZHUD.h */; };
+		A99E9BFE16922F1F00438E54 /* FZIO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B6C16922F1F00438E54 /* FZIO.cpp */; };
+		A99E9BFF16922F1F00438E54 /* FZIO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B6C16922F1F00438E54 /* FZIO.cpp */; };
+		A99E9C0016922F1F00438E54 /* FZIO.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B6D16922F1F00438E54 /* FZIO.h */; };
+		A99E9C0116922F1F00438E54 /* FZIO.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B6D16922F1F00438E54 /* FZIO.h */; };
+		A99E9C0216922F1F00438E54 /* FZLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B6E16922F1F00438E54 /* FZLabel.cpp */; };
+		A99E9C0316922F1F00438E54 /* FZLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B6E16922F1F00438E54 /* FZLabel.cpp */; };
+		A99E9C0416922F1F00438E54 /* FZLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B6F16922F1F00438E54 /* FZLabel.h */; };
+		A99E9C0516922F1F00438E54 /* FZLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B6F16922F1F00438E54 /* FZLabel.h */; };
+		A99E9C0616922F1F00438E54 /* FZLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B7016922F1F00438E54 /* FZLayer.cpp */; };
+		A99E9C0716922F1F00438E54 /* FZLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B7016922F1F00438E54 /* FZLayer.cpp */; };
+		A99E9C0816922F1F00438E54 /* FZLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B7116922F1F00438E54 /* FZLayer.h */; };
+		A99E9C0916922F1F00438E54 /* FZLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B7116922F1F00438E54 /* FZLayer.h */; };
+		A99E9C0A16922F1F00438E54 /* FZLightSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B7216922F1F00438E54 /* FZLightSystem.cpp */; };
+		A99E9C0B16922F1F00438E54 /* FZLightSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B7216922F1F00438E54 /* FZLightSystem.cpp */; };
+		A99E9C0C16922F1F00438E54 /* FZLightSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B7316922F1F00438E54 /* FZLightSystem.h */; };
+		A99E9C0D16922F1F00438E54 /* FZLightSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B7316922F1F00438E54 /* FZLightSystem.h */; };
+		A99E9C0E16922F1F00438E54 /* FZMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B7416922F1F00438E54 /* FZMath.cpp */; };
+		A99E9C0F16922F1F00438E54 /* FZMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B7416922F1F00438E54 /* FZMath.cpp */; };
+		A99E9C1016922F1F00438E54 /* FZMath.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B7516922F1F00438E54 /* FZMath.h */; };
+		A99E9C1116922F1F00438E54 /* FZMath.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B7516922F1F00438E54 /* FZMath.h */; };
+		A99E9C1216922F1F00438E54 /* FZMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B7616922F1F00438E54 /* FZMenu.cpp */; };
+		A99E9C1316922F1F00438E54 /* FZMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B7616922F1F00438E54 /* FZMenu.cpp */; };
+		A99E9C1416922F1F00438E54 /* FZMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B7716922F1F00438E54 /* FZMenu.h */; };
+		A99E9C1516922F1F00438E54 /* FZMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B7716922F1F00438E54 /* FZMenu.h */; };
+		A99E9C1616922F1F00438E54 /* FZMenuItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B7816922F1F00438E54 /* FZMenuItem.cpp */; };
+		A99E9C1716922F1F00438E54 /* FZMenuItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B7816922F1F00438E54 /* FZMenuItem.cpp */; };
+		A99E9C1816922F1F00438E54 /* FZMenuItem.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B7916922F1F00438E54 /* FZMenuItem.h */; };
+		A99E9C1916922F1F00438E54 /* FZMenuItem.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B7916922F1F00438E54 /* FZMenuItem.h */; };
+		A99E9C1A16922F1F00438E54 /* FZMS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B7A16922F1F00438E54 /* FZMS.cpp */; };
+		A99E9C1B16922F1F00438E54 /* FZMS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B7A16922F1F00438E54 /* FZMS.cpp */; };
+		A99E9C1C16922F1F00438E54 /* FZMS.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B7B16922F1F00438E54 /* FZMS.h */; };
+		A99E9C1D16922F1F00438E54 /* FZMS.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B7B16922F1F00438E54 /* FZMS.h */; };
+		A99E9C1E16922F1F00438E54 /* FZNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B7C16922F1F00438E54 /* FZNode.cpp */; };
+		A99E9C1F16922F1F00438E54 /* FZNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B7C16922F1F00438E54 /* FZNode.cpp */; };
+		A99E9C2016922F1F00438E54 /* FZNode.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B7D16922F1F00438E54 /* FZNode.h */; };
+		A99E9C2116922F1F00438E54 /* FZNode.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B7D16922F1F00438E54 /* FZNode.h */; };
+		A99E9C2216922F1F00438E54 /* FZParallaxNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B7E16922F1F00438E54 /* FZParallaxNode.cpp */; };
+		A99E9C2316922F1F00438E54 /* FZParallaxNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B7E16922F1F00438E54 /* FZParallaxNode.cpp */; };
+		A99E9C2416922F1F00438E54 /* FZParallaxNode.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B7F16922F1F00438E54 /* FZParallaxNode.h */; };
+		A99E9C2516922F1F00438E54 /* FZParallaxNode.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B7F16922F1F00438E54 /* FZParallaxNode.h */; };
+		A99E9C2616922F1F00438E54 /* FZParticleExamples.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B8016922F1F00438E54 /* FZParticleExamples.cpp */; };
+		A99E9C2716922F1F00438E54 /* FZParticleExamples.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B8016922F1F00438E54 /* FZParticleExamples.cpp */; };
+		A99E9C2816922F1F00438E54 /* FZParticleExamples.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B8116922F1F00438E54 /* FZParticleExamples.h */; };
+		A99E9C2916922F1F00438E54 /* FZParticleExamples.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B8116922F1F00438E54 /* FZParticleExamples.h */; };
+		A99E9C2A16922F1F00438E54 /* FZParticleSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B8216922F1F00438E54 /* FZParticleSystem.cpp */; };
+		A99E9C2B16922F1F00438E54 /* FZParticleSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B8216922F1F00438E54 /* FZParticleSystem.cpp */; };
+		A99E9C2C16922F1F00438E54 /* FZParticleSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B8316922F1F00438E54 /* FZParticleSystem.h */; };
+		A99E9C2D16922F1F00438E54 /* FZParticleSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B8316922F1F00438E54 /* FZParticleSystem.h */; };
+		A99E9C2E16922F1F00438E54 /* FZParticleSystemQuad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B8416922F1F00438E54 /* FZParticleSystemQuad.cpp */; };
+		A99E9C2F16922F1F00438E54 /* FZParticleSystemQuad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B8416922F1F00438E54 /* FZParticleSystemQuad.cpp */; };
+		A99E9C3016922F1F00438E54 /* FZParticleSystemQuad.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B8516922F1F00438E54 /* FZParticleSystemQuad.h */; };
+		A99E9C3116922F1F00438E54 /* FZParticleSystemQuad.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B8516922F1F00438E54 /* FZParticleSystemQuad.h */; };
+		A99E9C3216922F1F00438E54 /* FZPerformManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B8616922F1F00438E54 /* FZPerformManager.cpp */; };
+		A99E9C3316922F1F00438E54 /* FZPerformManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B8616922F1F00438E54 /* FZPerformManager.cpp */; };
+		A99E9C3416922F1F00438E54 /* FZPerformManager.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B8716922F1F00438E54 /* FZPerformManager.h */; };
+		A99E9C3516922F1F00438E54 /* FZPerformManager.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B8716922F1F00438E54 /* FZPerformManager.h */; };
+		A99E9C3616922F1F00438E54 /* FZPlatforms.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B8816922F1F00438E54 /* FZPlatforms.cpp */; };
+		A99E9C3716922F1F00438E54 /* FZPlatforms.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B8816922F1F00438E54 /* FZPlatforms.cpp */; };
+		A99E9C3816922F1F00438E54 /* FZPlatforms.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B8916922F1F00438E54 /* FZPlatforms.h */; };
+		A99E9C3916922F1F00438E54 /* FZPlatforms.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B8916922F1F00438E54 /* FZPlatforms.h */; };
+		A99E9C3A16922F1F00438E54 /* FZPlatformsHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B8A16922F1F00438E54 /* FZPlatformsHeader.h */; };
+		A99E9C3B16922F1F00438E54 /* FZPlatformsHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B8A16922F1F00438E54 /* FZPlatformsHeader.h */; };
+		A99E9C3C16922F1F00438E54 /* FZRenderTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B8B16922F1F00438E54 /* FZRenderTexture.cpp */; };
+		A99E9C3D16922F1F00438E54 /* FZRenderTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B8B16922F1F00438E54 /* FZRenderTexture.cpp */; };
+		A99E9C3E16922F1F00438E54 /* FZRenderTexture.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B8C16922F1F00438E54 /* FZRenderTexture.h */; };
+		A99E9C3F16922F1F00438E54 /* FZRenderTexture.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B8C16922F1F00438E54 /* FZRenderTexture.h */; };
+		A99E9C4016922F1F00438E54 /* FZResourcesManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B8D16922F1F00438E54 /* FZResourcesManager.cpp */; };
+		A99E9C4116922F1F00438E54 /* FZResourcesManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B8D16922F1F00438E54 /* FZResourcesManager.cpp */; };
+		A99E9C4216922F1F00438E54 /* FZResourcesManager.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B8E16922F1F00438E54 /* FZResourcesManager.h */; };
+		A99E9C4316922F1F00438E54 /* FZResourcesManager.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B8E16922F1F00438E54 /* FZResourcesManager.h */; };
+		A99E9C4416922F1F00438E54 /* FZScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B8F16922F1F00438E54 /* FZScene.cpp */; };
+		A99E9C4516922F1F00438E54 /* FZScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B8F16922F1F00438E54 /* FZScene.cpp */; };
+		A99E9C4616922F1F00438E54 /* FZScene.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B9016922F1F00438E54 /* FZScene.h */; };
+		A99E9C4716922F1F00438E54 /* FZScene.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B9016922F1F00438E54 /* FZScene.h */; };
+		A99E9C4816922F1F00438E54 /* FZScheduler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B9116922F1F00438E54 /* FZScheduler.cpp */; };
+		A99E9C4916922F1F00438E54 /* FZScheduler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B9116922F1F00438E54 /* FZScheduler.cpp */; };
+		A99E9C4A16922F1F00438E54 /* FZScheduler.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B9216922F1F00438E54 /* FZScheduler.h */; };
+		A99E9C4B16922F1F00438E54 /* FZScheduler.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B9216922F1F00438E54 /* FZScheduler.h */; };
+		A99E9C4C16922F1F00438E54 /* FZSelectors.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B9316922F1F00438E54 /* FZSelectors.h */; };
+		A99E9C4D16922F1F00438E54 /* FZSelectors.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B9316922F1F00438E54 /* FZSelectors.h */; };
+		A99E9C4E16922F1F00438E54 /* FZShaderCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B9416922F1F00438E54 /* FZShaderCache.cpp */; };
+		A99E9C4F16922F1F00438E54 /* FZShaderCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B9416922F1F00438E54 /* FZShaderCache.cpp */; };
+		A99E9C5016922F1F00438E54 /* FZShaderCache.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B9516922F1F00438E54 /* FZShaderCache.h */; };
+		A99E9C5116922F1F00438E54 /* FZShaderCache.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B9516922F1F00438E54 /* FZShaderCache.h */; };
+		A99E9C5216922F1F00438E54 /* FZSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B9616922F1F00438E54 /* FZSprite.cpp */; };
+		A99E9C5316922F1F00438E54 /* FZSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B9616922F1F00438E54 /* FZSprite.cpp */; };
+		A99E9C5416922F1F00438E54 /* FZSprite.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B9716922F1F00438E54 /* FZSprite.h */; };
+		A99E9C5516922F1F00438E54 /* FZSprite.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B9716922F1F00438E54 /* FZSprite.h */; };
+		A99E9C5616922F1F00438E54 /* FZSpriteBatch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B9816922F1F00438E54 /* FZSpriteBatch.cpp */; };
+		A99E9C5716922F1F00438E54 /* FZSpriteBatch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B9816922F1F00438E54 /* FZSpriteBatch.cpp */; };
+		A99E9C5816922F1F00438E54 /* FZSpriteBatch.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B9916922F1F00438E54 /* FZSpriteBatch.h */; };
+		A99E9C5916922F1F00438E54 /* FZSpriteBatch.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B9916922F1F00438E54 /* FZSpriteBatch.h */; };
+		A99E9C5A16922F1F00438E54 /* FZSpriteFrameCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B9A16922F1F00438E54 /* FZSpriteFrameCache.cpp */; };
+		A99E9C5B16922F1F00438E54 /* FZSpriteFrameCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B9A16922F1F00438E54 /* FZSpriteFrameCache.cpp */; };
+		A99E9C5C16922F1F00438E54 /* FZSpriteFrameCache.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B9B16922F1F00438E54 /* FZSpriteFrameCache.h */; };
+		A99E9C5D16922F1F00438E54 /* FZSpriteFrameCache.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B9B16922F1F00438E54 /* FZSpriteFrameCache.h */; };
+		A99E9C5E16922F1F00438E54 /* FZTextureCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B9C16922F1F00438E54 /* FZTextureCache.cpp */; };
+		A99E9C5F16922F1F00438E54 /* FZTextureCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B9C16922F1F00438E54 /* FZTextureCache.cpp */; };
+		A99E9C6016922F1F00438E54 /* FZTextureCache.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B9D16922F1F00438E54 /* FZTextureCache.h */; };
+		A99E9C6116922F1F00438E54 /* FZTextureCache.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B9D16922F1F00438E54 /* FZTextureCache.h */; };
+		A99E9C6216922F1F00438E54 /* FZTMXLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B9E16922F1F00438E54 /* FZTMXLayer.cpp */; };
+		A99E9C6316922F1F00438E54 /* FZTMXLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B9E16922F1F00438E54 /* FZTMXLayer.cpp */; };
+		A99E9C6416922F1F00438E54 /* FZTMXLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B9F16922F1F00438E54 /* FZTMXLayer.h */; };
+		A99E9C6516922F1F00438E54 /* FZTMXLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B9F16922F1F00438E54 /* FZTMXLayer.h */; };
+		A99E9C6616922F1F00438E54 /* FZTMXParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9BA016922F1F00438E54 /* FZTMXParser.cpp */; };
+		A99E9C6716922F1F00438E54 /* FZTMXParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9BA016922F1F00438E54 /* FZTMXParser.cpp */; };
+		A99E9C6816922F1F00438E54 /* FZTMXParser.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9BA116922F1F00438E54 /* FZTMXParser.h */; };
+		A99E9C6916922F1F00438E54 /* FZTMXParser.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9BA116922F1F00438E54 /* FZTMXParser.h */; };
+		A99E9C6A16922F1F00438E54 /* FZTMXTiledMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9BA216922F1F00438E54 /* FZTMXTiledMap.cpp */; };
+		A99E9C6B16922F1F00438E54 /* FZTMXTiledMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9BA216922F1F00438E54 /* FZTMXTiledMap.cpp */; };
+		A99E9C6C16922F1F00438E54 /* FZTMXTiledMap.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9BA316922F1F00438E54 /* FZTMXTiledMap.h */; };
+		A99E9C6D16922F1F00438E54 /* FZTMXTiledMap.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9BA316922F1F00438E54 /* FZTMXTiledMap.h */; };
+		A99E9C6E16922F1F00438E54 /* FZTransitions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9BA416922F1F00438E54 /* FZTransitions.cpp */; };
+		A99E9C6F16922F1F00438E54 /* FZTransitions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9BA416922F1F00438E54 /* FZTransitions.cpp */; };
+		A99E9C7016922F1F00438E54 /* FZTransitions.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9BA516922F1F00438E54 /* FZTransitions.h */; };
+		A99E9C7116922F1F00438E54 /* FZTransitions.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9BA516922F1F00438E54 /* FZTransitions.h */; };
+		A99E9C7E16922F4A00438E54 /* gl.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9C7416922F4A00438E54 /* gl.h */; };
+		A99E9C7F16922F4A00438E54 /* gl.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9C7416922F4A00438E54 /* gl.h */; };
+		A99E9C8016922F4A00438E54 /* glext.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9C7516922F4A00438E54 /* glext.h */; };
+		A99E9C8116922F4A00438E54 /* glext.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9C7516922F4A00438E54 /* glext.h */; };
+		A99E9C8216922F4A00438E54 /* iOS_support.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9C7616922F4A00438E54 /* iOS_support.h */; };
+		A99E9C8316922F4A00438E54 /* iOS_support.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9C7616922F4A00438E54 /* iOS_support.h */; };
+		A99E9C8416922F4A00438E54 /* iOS_support.mm in Sources */ = {isa = PBXBuildFile; fileRef = A99E9C7716922F4A00438E54 /* iOS_support.mm */; };
+		A99E9C8516922F4A00438E54 /* iOS_support.mm in Sources */ = {isa = PBXBuildFile; fileRef = A99E9C7716922F4A00438E54 /* iOS_support.mm */; };
+		A99E9C8616922F4A00438E54 /* iOSGL2_support.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9C7816922F4A00438E54 /* iOSGL2_support.h */; };
+		A99E9C8716922F4A00438E54 /* iOSGL2_support.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9C7816922F4A00438E54 /* iOSGL2_support.h */; };
+		A99E9C8816922F4A00438E54 /* iOSGL2_support.mm in Sources */ = {isa = PBXBuildFile; fileRef = A99E9C7916922F4A00438E54 /* iOSGL2_support.mm */; };
+		A99E9C8916922F4A00438E54 /* iOSGL2_support.mm in Sources */ = {isa = PBXBuildFile; fileRef = A99E9C7916922F4A00438E54 /* iOSGL2_support.mm */; };
+		A99E9C8A16922F4A00438E54 /* macosx_support.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9C7A16922F4A00438E54 /* macosx_support.h */; };
+		A99E9C8B16922F4A00438E54 /* macosx_support.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9C7A16922F4A00438E54 /* macosx_support.h */; };
+		A99E9C8C16922F4A00438E54 /* macosx_support.mm in Sources */ = {isa = PBXBuildFile; fileRef = A99E9C7B16922F4A00438E54 /* macosx_support.mm */; };
+		A99E9C8D16922F4A00438E54 /* macosx_support.mm in Sources */ = {isa = PBXBuildFile; fileRef = A99E9C7B16922F4A00438E54 /* macosx_support.mm */; };
+		A99E9C8E16922F4A00438E54 /* model_support.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9C7C16922F4A00438E54 /* model_support.cpp */; };
+		A99E9C8F16922F4A00438E54 /* model_support.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9C7C16922F4A00438E54 /* model_support.cpp */; };
+		A99E9C9016922F4A00438E54 /* model_support.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9C7D16922F4A00438E54 /* model_support.h */; };
+		A99E9C9116922F4A00438E54 /* model_support.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9C7D16922F4A00438E54 /* model_support.h */; };
 		A9B8753D16222CF30007D6CC /* enemiesSheet.pvr in Resources */ = {isa = PBXBuildFile; fileRef = A9B8753A16222CEC0007D6CC /* enemiesSheet.pvr */; };
 		A9B8753E16222CF30007D6CC /* enemiesSheet.pvr in Resources */ = {isa = PBXBuildFile; fileRef = A9B8753A16222CEC0007D6CC /* enemiesSheet.pvr */; };
 		A9B8753F16222CF30007D6CC /* enemiesSheet.xml in Resources */ = {isa = PBXBuildFile; fileRef = A9B8753B16222CEE0007D6CC /* enemiesSheet.xml */; };
@@ -1585,8 +1585,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		32553F9115E7DFBC0051629E /* FZPerformManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZPerformManager.cpp; sourceTree = "<group>"; };
-		32553F9215E7DFBC0051629E /* FZPerformManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZPerformManager.h; sourceTree = "<group>"; };
 		5018F24D0DFDEAC400C013A5 /* libforze_mac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libforze_mac.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		503092B210447296005F7AFC /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		9704DD7C152F5C30007FA760 /* TestBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestBase.cpp; sourceTree = "<group>"; };
@@ -1619,24 +1617,14 @@
 		970C6E391403EAEE00E4CC0D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		970D3FBD15249D96001FFC26 /* neon_support.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = neon_support.h; sourceTree = "<group>"; };
 		970D3FBE15249D96001FFC26 /* SSE_support.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSE_support.h; sourceTree = "<group>"; };
-		971DFA021551774700BBE693 /* FZParallaxNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZParallaxNode.cpp; sourceTree = "<group>"; };
-		971DFA031551774700BBE693 /* FZParallaxNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZParallaxNode.h; sourceTree = "<group>"; };
 		972535A21531169A00FC3CBF /* rapidxml_print.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml_print.hpp; sourceTree = "<group>"; };
-		9734522E15592C36009EAC2A /* FZFontCache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZFontCache.cpp; sourceTree = "<group>"; };
-		9734522F15592C36009EAC2A /* FZFontCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZFontCache.h; sourceTree = "<group>"; };
 		9734523A155941BC009EAC2A /* FZFont.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZFont.cpp; sourceTree = "<group>"; };
 		9734523B155941BC009EAC2A /* FZFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZFont.h; sourceTree = "<group>"; };
 		97361B8C155BD5B8002E65ED /* effect_xray.shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = effect_xray.shader.h; sourceTree = "<group>"; };
-		9767ABA1153B36BF001BCCDC /* FZResourcesManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZResourcesManager.cpp; sourceTree = "<group>"; };
-		9767ABA2153B36BF001BCCDC /* FZResourcesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZResourcesManager.h; sourceTree = "<group>"; };
-		97801DB61549EA8F0019DB49 /* FZTransitions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZTransitions.cpp; sourceTree = "<group>"; };
-		97801DB71549EA8F0019DB49 /* FZTransitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZTransitions.h; sourceTree = "<group>"; };
 		9788D51F1417B80100DCC802 /* mac-ActionTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mac-ActionTest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9788D5451417B99B00DCC802 /* ActionTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionTest.h; sourceTree = "<group>"; };
 		9788D54F1417C3DB00DCC802 /* ActionTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ActionTest.cpp; sourceTree = "<group>"; };
 		978B23CA151C0AE100ED9528 /* effect_toon.shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = effect_toon.shader.h; sourceTree = "<group>"; };
-		978E2E471530893700443FDC /* FZDataStore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZDataStore.cpp; sourceTree = "<group>"; };
-		978E2E481530893700443FDC /* FZDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZDataStore.h; sourceTree = "<group>"; };
 		978E52BB150B93500058D364 /* effect_color.shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = effect_color.shader.h; sourceTree = "<group>"; };
 		978E52BC150B93500058D364 /* effect_grayscale.shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = effect_grayscale.shader.h; sourceTree = "<group>"; };
 		978E52BD150B93500058D364 /* effect_invert.shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = effect_invert.shader.h; sourceTree = "<group>"; };
@@ -1648,10 +1636,6 @@
 		97929706151B81600088AF66 /* Info_ios.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info_ios.plist; path = IOS/Info_ios.plist; sourceTree = "<group>"; };
 		97929707151B81600088AF66 /* Prefix_ios.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Prefix_ios.pch; path = IOS/Prefix_ios.pch; sourceTree = "<group>"; };
 		979297B5151B818D0088AF66 /* libforze_ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libforze_ios.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		979DF876151F5EDE0096376C /* FZTMXLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZTMXLayer.cpp; sourceTree = "<group>"; };
-		979DF877151F5EDE0096376C /* FZTMXLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZTMXLayer.h; sourceTree = "<group>"; };
-		979DF878151F5EDE0096376C /* FZTMXTiledMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZTMXTiledMap.cpp; sourceTree = "<group>"; };
-		979DF879151F5EDE0096376C /* FZTMXTiledMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZTMXTiledMap.h; sourceTree = "<group>"; };
 		97A2487214A62DA500AB2023 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		97C34F21157D66DA001E055D /* dragon_animation-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dragon_animation-hd.png"; sourceTree = "<group>"; };
 		97C34F22157D66DA001E055D /* dragon_animation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dragon_animation.png; sourceTree = "<group>"; };
@@ -1821,17 +1805,6 @@
 		97C3501E157D66DB001E055D /* orthogonal-test6.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "orthogonal-test6.tmx"; sourceTree = "<group>"; };
 		97C35022157D66DB001E055D /* tmw_desert_spacing-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tmw_desert_spacing-hd.png"; sourceTree = "<group>"; };
 		97C35023157D66DB001E055D /* tmw_desert_spacing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tmw_desert_spacing.png; sourceTree = "<group>"; };
-		97C9B8AB15068BCF00B8AEE5 /* FZAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZAction.cpp; sourceTree = "<group>"; };
-		97C9B8AC15068BCF00B8AEE5 /* FZAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZAction.h; sourceTree = "<group>"; };
-		97C9B8AD15068BCF00B8AEE5 /* FZActionCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZActionCamera.cpp; sourceTree = "<group>"; };
-		97C9B8AE15068BCF00B8AEE5 /* FZActionCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZActionCamera.h; sourceTree = "<group>"; };
-		97C9B8AF15068BCF00B8AEE5 /* FZActionEase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZActionEase.cpp; sourceTree = "<group>"; };
-		97C9B8B015068BCF00B8AEE5 /* FZActionEase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZActionEase.h; sourceTree = "<group>"; };
-		97C9B8B115068BCF00B8AEE5 /* FZActionInstant.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZActionInstant.cpp; sourceTree = "<group>"; };
-		97C9B8B215068BCF00B8AEE5 /* FZActionInstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZActionInstant.h; sourceTree = "<group>"; };
-		97C9B8B315068BCF00B8AEE5 /* FZActionInterval.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZActionInterval.cpp; sourceTree = "<group>"; };
-		97C9B8B415068BCF00B8AEE5 /* FZActionInterval.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZActionInterval.h; sourceTree = "<group>"; };
-		97C9B8B515068BCF00B8AEE5 /* FZAnimation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FZAnimation.cpp; path = Actions/FZAnimation.cpp; sourceTree = "<group>"; };
 		97C9B8E415068BCF00B8AEE5 /* cexcept.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cexcept.h; sourceTree = "<group>"; };
 		97C9B8E515068BCF00B8AEE5 /* png.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = png.c; sourceTree = "<group>"; };
 		97C9B8E615068BCF00B8AEE5 /* png.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = png.h; sourceTree = "<group>"; };
@@ -1884,85 +1857,10 @@
 		97C9B91815068BCF00B8AEE5 /* FZTextureAtlas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZTextureAtlas.h; sourceTree = "<group>"; };
 		97C9B91915068BCF00B8AEE5 /* FZTypes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZTypes.cpp; sourceTree = "<group>"; };
 		97C9B91A15068BCF00B8AEE5 /* FZTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZTypes.h; sourceTree = "<group>"; };
-		97C9B91E15068BCF00B8AEE5 /* FZActionManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZActionManager.cpp; sourceTree = "<group>"; };
-		97C9B91F15068BCF00B8AEE5 /* FZActionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZActionManager.h; sourceTree = "<group>"; };
-		97C9B92015068BCF00B8AEE5 /* FZAnimationCache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZAnimationCache.cpp; sourceTree = "<group>"; };
-		97C9B92115068BCF00B8AEE5 /* FZAnimationCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZAnimationCache.h; sourceTree = "<group>"; };
-		97C9B92415068BCF00B8AEE5 /* FZDeviceConfig.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZDeviceConfig.cpp; sourceTree = "<group>"; };
-		97C9B92515068BCF00B8AEE5 /* FZDeviceConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZDeviceConfig.h; sourceTree = "<group>"; };
-		97C9B92615068BCF00B8AEE5 /* FZDirector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZDirector.cpp; sourceTree = "<group>"; };
-		97C9B92715068BCF00B8AEE5 /* FZDirector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZDirector.h; sourceTree = "<group>"; };
-		97C9B92815068BCF00B8AEE5 /* FZEventManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZEventManager.cpp; sourceTree = "<group>"; };
-		97C9B92915068BCF00B8AEE5 /* FZEventManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZEventManager.h; sourceTree = "<group>"; };
-		97C9B92E15068BCF00B8AEE5 /* FZScheduler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZScheduler.cpp; sourceTree = "<group>"; };
-		97C9B92F15068BCF00B8AEE5 /* FZScheduler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZScheduler.h; sourceTree = "<group>"; };
-		97C9B93015068BCF00B8AEE5 /* FZShaderCache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZShaderCache.cpp; sourceTree = "<group>"; };
-		97C9B93115068BCF00B8AEE5 /* FZShaderCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZShaderCache.h; sourceTree = "<group>"; };
-		97C9B93215068BCF00B8AEE5 /* FZSpriteFrameCache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZSpriteFrameCache.cpp; sourceTree = "<group>"; };
-		97C9B93315068BCF00B8AEE5 /* FZSpriteFrameCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZSpriteFrameCache.h; sourceTree = "<group>"; };
-		97C9B93415068BCF00B8AEE5 /* FZTextureCache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZTextureCache.cpp; sourceTree = "<group>"; };
-		97C9B93515068BCF00B8AEE5 /* FZTextureCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZTextureCache.h; sourceTree = "<group>"; };
-		97C9B93915068BCF00B8AEE5 /* FZLabel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZLabel.cpp; sourceTree = "<group>"; };
-		97C9B93A15068BCF00B8AEE5 /* FZLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZLabel.h; sourceTree = "<group>"; };
-		97C9B93D15068BCF00B8AEE5 /* FZLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZLayer.cpp; sourceTree = "<group>"; };
-		97C9B93E15068BCF00B8AEE5 /* FZLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZLayer.h; sourceTree = "<group>"; };
-		97C9B93F15068BCF00B8AEE5 /* FZLightSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZLightSystem.cpp; sourceTree = "<group>"; };
-		97C9B94015068BCF00B8AEE5 /* FZLightSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZLightSystem.h; sourceTree = "<group>"; };
-		97C9B94115068BCF00B8AEE5 /* FZMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZMenu.cpp; sourceTree = "<group>"; };
-		97C9B94215068BCF00B8AEE5 /* FZMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZMenu.h; sourceTree = "<group>"; };
-		97C9B94315068BCF00B8AEE5 /* FZMenuItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZMenuItem.cpp; sourceTree = "<group>"; };
-		97C9B94415068BCF00B8AEE5 /* FZMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZMenuItem.h; sourceTree = "<group>"; };
-		97C9B94515068BCF00B8AEE5 /* FZNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZNode.cpp; sourceTree = "<group>"; };
-		97C9B94615068BCF00B8AEE5 /* FZNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZNode.h; sourceTree = "<group>"; };
-		97C9B94715068BCF00B8AEE5 /* FZParticleExamples.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZParticleExamples.h; sourceTree = "<group>"; };
-		97C9B94815068BCF00B8AEE5 /* FZParticleExamples.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZParticleExamples.cpp; sourceTree = "<group>"; };
-		97C9B94915068BCF00B8AEE5 /* FZParticleSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZParticleSystem.cpp; sourceTree = "<group>"; };
-		97C9B94A15068BCF00B8AEE5 /* FZParticleSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZParticleSystem.h; sourceTree = "<group>"; };
-		97C9B94B15068BCF00B8AEE5 /* FZParticleSystemQuad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZParticleSystemQuad.cpp; sourceTree = "<group>"; };
-		97C9B94C15068BCF00B8AEE5 /* FZParticleSystemQuad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZParticleSystemQuad.h; sourceTree = "<group>"; };
-		97C9B94D15068BCF00B8AEE5 /* FZRenderTexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZRenderTexture.cpp; sourceTree = "<group>"; };
-		97C9B94E15068BCF00B8AEE5 /* FZRenderTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZRenderTexture.h; sourceTree = "<group>"; };
-		97C9B94F15068BCF00B8AEE5 /* FZScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZScene.cpp; sourceTree = "<group>"; };
-		97C9B95015068BCF00B8AEE5 /* FZScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZScene.h; sourceTree = "<group>"; };
-		97C9B95115068BCF00B8AEE5 /* FZSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZSprite.cpp; sourceTree = "<group>"; };
-		97C9B95215068BCF00B8AEE5 /* FZSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZSprite.h; sourceTree = "<group>"; };
-		97C9B95315068BCF00B8AEE5 /* FZSpriteBatch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZSpriteBatch.cpp; sourceTree = "<group>"; };
-		97C9B95415068BCF00B8AEE5 /* FZSpriteBatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZSpriteBatch.h; sourceTree = "<group>"; };
-		97C9B95515068BCF00B8AEE5 /* FZTMXParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZTMXParser.cpp; sourceTree = "<group>"; };
-		97C9B95615068BCF00B8AEE5 /* FZTMXParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZTMXParser.h; sourceTree = "<group>"; };
-		97C9B95815068BCF00B8AEE5 /* FZHUD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZHUD.cpp; sourceTree = "<group>"; };
-		97C9B95915068BCF00B8AEE5 /* FZHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZHUD.h; sourceTree = "<group>"; };
-		97C9B95B15068BCF00B8AEE5 /* FZGLConfig.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZGLConfig.cpp; sourceTree = "<group>"; };
-		97C9B95C15068BCF00B8AEE5 /* FZGLConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZGLConfig.h; sourceTree = "<group>"; };
-		97C9B95D15068BCF00B8AEE5 /* FZGLProgram.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZGLProgram.cpp; sourceTree = "<group>"; };
-		97C9B95E15068BCF00B8AEE5 /* FZGLProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZGLProgram.h; sourceTree = "<group>"; };
-		97C9B95F15068BCF00B8AEE5 /* FZGLState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZGLState.cpp; sourceTree = "<group>"; };
-		97C9B96015068BCF00B8AEE5 /* FZGLState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZGLState.h; sourceTree = "<group>"; };
-		97C9B96215068BCF00B8AEE5 /* FZPlatforms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZPlatforms.h; sourceTree = "<group>"; };
-		97C9B96315068BCF00B8AEE5 /* FZPlatformsHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZPlatformsHeader.h; sourceTree = "<group>"; };
-		97C9B96515068BCF00B8AEE5 /* iOS_support.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iOS_support.h; sourceTree = "<group>"; };
-		97C9B96615068BCF00B8AEE5 /* iOS_support.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = iOS_support.mm; sourceTree = "<group>"; };
-		97C9B96915068BCF00B8AEE5 /* iOSGL2_support.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iOSGL2_support.h; sourceTree = "<group>"; };
-		97C9B96A15068BCF00B8AEE5 /* iOSGL2_support.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = iOSGL2_support.mm; sourceTree = "<group>"; };
-		97C9B96B15068BCF00B8AEE5 /* macosx_support.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = macosx_support.h; sourceTree = "<group>"; };
-		97C9B96C15068BCF00B8AEE5 /* macosx_support.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = macosx_support.mm; sourceTree = "<group>"; };
 		97C9B97015068BCF00B8AEE5 /* _fz_mat_aC4.shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _fz_mat_aC4.shader.h; sourceTree = "<group>"; };
 		97C9B97215068BCF00B8AEE5 /* _fz_mat_TEX.shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _fz_mat_TEX.shader.h; sourceTree = "<group>"; };
 		97C9B97315068BCF00B8AEE5 /* _fz_mat_uC4.shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _fz_mat_uC4.shader.h; sourceTree = "<group>"; };
 		97C9B97415068BCF00B8AEE5 /* _fz_mat_uC4_TEX.shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _fz_mat_uC4_TEX.shader.h; sourceTree = "<group>"; };
-		97C9B97815068BCF00B8AEE5 /* FZBitOrder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZBitOrder.cpp; sourceTree = "<group>"; };
-		97C9B97915068BCF00B8AEE5 /* FZBitOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZBitOrder.h; sourceTree = "<group>"; };
-		97C9B97A15068BCF00B8AEE5 /* FZAutoList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZAutoList.cpp; sourceTree = "<group>"; };
-		97C9B97B15068BCF00B8AEE5 /* FZAutoList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZAutoList.h; sourceTree = "<group>"; };
-		97C9B97C15068BCF00B8AEE5 /* FZIO.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZIO.cpp; sourceTree = "<group>"; };
-		97C9B97D15068BCF00B8AEE5 /* FZIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZIO.h; sourceTree = "<group>"; };
-		97C9B97E15068BCF00B8AEE5 /* FZMath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZMath.cpp; sourceTree = "<group>"; };
-		97C9B97F15068BCF00B8AEE5 /* FZMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZMath.h; sourceTree = "<group>"; };
-		97C9B98215068BCF00B8AEE5 /* FZSelectors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZSelectors.h; sourceTree = "<group>"; };
-		97C9B98315068BCF00B8AEE5 /* FZMS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZMS.cpp; sourceTree = "<group>"; };
-		97C9B98415068BCF00B8AEE5 /* FZMS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZMS.h; sourceTree = "<group>"; };
-		97C9B98515068BCF00B8AEE5 /* FZData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZData.cpp; sourceTree = "<group>"; };
-		97C9B98615068BCF00B8AEE5 /* FZData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZData.h; sourceTree = "<group>"; };
 		97ED8EA1157E1289007C451A /* kerning_test.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kerning_test.fnt; sourceTree = "<group>"; };
 		97ED8EA2157E1289007C451A /* kerning_test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kerning_test.png; sourceTree = "<group>"; };
 		97ED8ED5157E1D2E007C451A /* mac-TextureTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mac-TextureTest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1983,14 +1881,7 @@
 		A91A6DE81642FE9B0025ADE5 /* ios-LabelTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-LabelTest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A91A6E3D1643296F0025ADE5 /* simulation.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = simulation.vert; sourceTree = "<group>"; };
 		A927C79F1634131A00B2AE52 /* mac-SceneTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mac-SceneTest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A92E28441607C34400C63C79 /* FZDefaultOpenGLAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FZDefaultOpenGLAPI.h; sourceTree = "<group>"; };
 		A94A9614162AEC660035F4B6 /* mac-LabelTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mac-LabelTest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A94E633F166CD75F00100D6E /* model_support.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = model_support.cpp; sourceTree = "<group>"; };
-		A94E6340166CD75F00100D6E /* model_support.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = model_support.h; sourceTree = "<group>"; };
-		A94E6347166D078800100D6E /* gl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gl.h; sourceTree = "<group>"; };
-		A94E6348166D078800100D6E /* glext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glext.h; sourceTree = "<group>"; };
-		A94E634D166D42C500100D6E /* FZConsole.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZConsole.cpp; sourceTree = "<group>"; };
-		A94E634E166D42C500100D6E /* FZConsole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZConsole.h; sourceTree = "<group>"; };
 		A95B738F16701A65001725FB /* tinythread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinythread.cpp; sourceTree = "<group>"; };
 		A95B739016701A65001725FB /* tinythread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinythread.h; sourceTree = "<group>"; };
 		A95C198616149BC5007D2287 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
@@ -2008,7 +1899,6 @@
 		A97611551624B96C00A23623 /* base64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = base64.c; sourceTree = "<group>"; };
 		A97611561624B96C00A23623 /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
 		A97883EB160F80A900A93735 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
-		A992ECF0163D863E00CD0C33 /* FZPlatforms.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZPlatforms.cpp; sourceTree = "<group>"; };
 		A99804F0161F80B70037A7EB /* helvetica@x2.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "helvetica@x2.fnt"; sourceTree = "<group>"; };
 		A99804F1161F80B70037A7EB /* helvetica@x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "helvetica@x2.png"; sourceTree = "<group>"; };
 		A99804F8161FA7500037A7EB /* simulation.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = simulation.frag; sourceTree = "<group>"; };
@@ -2021,6 +1911,116 @@
 		A99AAE1E1629C2CE002D177D /* ParticlesTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParticlesTest.h; sourceTree = "<group>"; };
 		A99AAE1F1629C2CE002D177D /* SceneTest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SceneTest.cpp; sourceTree = "<group>"; };
 		A99AAE201629C2CE002D177D /* SceneTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneTest.h; sourceTree = "<group>"; };
+		A99E9B4016922F1F00438E54 /* FZAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZAction.cpp; sourceTree = "<group>"; };
+		A99E9B4116922F1F00438E54 /* FZAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZAction.h; sourceTree = "<group>"; };
+		A99E9B4216922F1F00438E54 /* FZActionCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZActionCamera.cpp; sourceTree = "<group>"; };
+		A99E9B4316922F1F00438E54 /* FZActionCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZActionCamera.h; sourceTree = "<group>"; };
+		A99E9B4416922F1F00438E54 /* FZActionEase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZActionEase.cpp; sourceTree = "<group>"; };
+		A99E9B4516922F1F00438E54 /* FZActionEase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZActionEase.h; sourceTree = "<group>"; };
+		A99E9B4616922F1F00438E54 /* FZActionInstant.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZActionInstant.cpp; sourceTree = "<group>"; };
+		A99E9B4716922F1F00438E54 /* FZActionInstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZActionInstant.h; sourceTree = "<group>"; };
+		A99E9B4816922F1F00438E54 /* FZActionInterval.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZActionInterval.cpp; sourceTree = "<group>"; };
+		A99E9B4916922F1F00438E54 /* FZActionInterval.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZActionInterval.h; sourceTree = "<group>"; };
+		A99E9B4A16922F1F00438E54 /* FZActionManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZActionManager.cpp; sourceTree = "<group>"; };
+		A99E9B4B16922F1F00438E54 /* FZActionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZActionManager.h; sourceTree = "<group>"; };
+		A99E9B4C16922F1F00438E54 /* FZAnimation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZAnimation.cpp; sourceTree = "<group>"; };
+		A99E9B4D16922F1F00438E54 /* FZAnimationCache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZAnimationCache.cpp; sourceTree = "<group>"; };
+		A99E9B4E16922F1F00438E54 /* FZAnimationCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZAnimationCache.h; sourceTree = "<group>"; };
+		A99E9B4F16922F1F00438E54 /* FZAutoList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZAutoList.cpp; sourceTree = "<group>"; };
+		A99E9B5016922F1F00438E54 /* FZAutoList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZAutoList.h; sourceTree = "<group>"; };
+		A99E9B5316922F1F00438E54 /* FZBitOrder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZBitOrder.cpp; sourceTree = "<group>"; };
+		A99E9B5416922F1F00438E54 /* FZBitOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZBitOrder.h; sourceTree = "<group>"; };
+		A99E9B5516922F1F00438E54 /* FZConsole.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZConsole.cpp; sourceTree = "<group>"; };
+		A99E9B5616922F1F00438E54 /* FZConsole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZConsole.h; sourceTree = "<group>"; };
+		A99E9B5716922F1F00438E54 /* FZData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZData.cpp; sourceTree = "<group>"; };
+		A99E9B5816922F1F00438E54 /* FZData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZData.h; sourceTree = "<group>"; };
+		A99E9B5916922F1F00438E54 /* FZDataStore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZDataStore.cpp; sourceTree = "<group>"; };
+		A99E9B5A16922F1F00438E54 /* FZDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZDataStore.h; sourceTree = "<group>"; };
+		A99E9B5B16922F1F00438E54 /* FZDefaultOpenGLAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZDefaultOpenGLAPI.h; sourceTree = "<group>"; };
+		A99E9B5C16922F1F00438E54 /* FZDeviceConfig.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZDeviceConfig.cpp; sourceTree = "<group>"; };
+		A99E9B5D16922F1F00438E54 /* FZDeviceConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZDeviceConfig.h; sourceTree = "<group>"; };
+		A99E9B5E16922F1F00438E54 /* FZDirector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZDirector.cpp; sourceTree = "<group>"; };
+		A99E9B5F16922F1F00438E54 /* FZDirector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZDirector.h; sourceTree = "<group>"; };
+		A99E9B6016922F1F00438E54 /* FZEventManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZEventManager.cpp; sourceTree = "<group>"; };
+		A99E9B6116922F1F00438E54 /* FZEventManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZEventManager.h; sourceTree = "<group>"; };
+		A99E9B6216922F1F00438E54 /* FZFontCache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZFontCache.cpp; sourceTree = "<group>"; };
+		A99E9B6316922F1F00438E54 /* FZFontCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZFontCache.h; sourceTree = "<group>"; };
+		A99E9B6416922F1F00438E54 /* FZGLConfig.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZGLConfig.cpp; sourceTree = "<group>"; };
+		A99E9B6516922F1F00438E54 /* FZGLConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZGLConfig.h; sourceTree = "<group>"; };
+		A99E9B6616922F1F00438E54 /* FZGLProgram.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZGLProgram.cpp; sourceTree = "<group>"; };
+		A99E9B6716922F1F00438E54 /* FZGLProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZGLProgram.h; sourceTree = "<group>"; };
+		A99E9B6816922F1F00438E54 /* FZGLState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZGLState.cpp; sourceTree = "<group>"; };
+		A99E9B6916922F1F00438E54 /* FZGLState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZGLState.h; sourceTree = "<group>"; };
+		A99E9B6A16922F1F00438E54 /* FZHUD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZHUD.cpp; sourceTree = "<group>"; };
+		A99E9B6B16922F1F00438E54 /* FZHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZHUD.h; sourceTree = "<group>"; };
+		A99E9B6C16922F1F00438E54 /* FZIO.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZIO.cpp; sourceTree = "<group>"; };
+		A99E9B6D16922F1F00438E54 /* FZIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZIO.h; sourceTree = "<group>"; };
+		A99E9B6E16922F1F00438E54 /* FZLabel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZLabel.cpp; sourceTree = "<group>"; };
+		A99E9B6F16922F1F00438E54 /* FZLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZLabel.h; sourceTree = "<group>"; };
+		A99E9B7016922F1F00438E54 /* FZLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZLayer.cpp; sourceTree = "<group>"; };
+		A99E9B7116922F1F00438E54 /* FZLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZLayer.h; sourceTree = "<group>"; };
+		A99E9B7216922F1F00438E54 /* FZLightSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZLightSystem.cpp; sourceTree = "<group>"; };
+		A99E9B7316922F1F00438E54 /* FZLightSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZLightSystem.h; sourceTree = "<group>"; };
+		A99E9B7416922F1F00438E54 /* FZMath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZMath.cpp; sourceTree = "<group>"; };
+		A99E9B7516922F1F00438E54 /* FZMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZMath.h; sourceTree = "<group>"; };
+		A99E9B7616922F1F00438E54 /* FZMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZMenu.cpp; sourceTree = "<group>"; };
+		A99E9B7716922F1F00438E54 /* FZMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZMenu.h; sourceTree = "<group>"; };
+		A99E9B7816922F1F00438E54 /* FZMenuItem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZMenuItem.cpp; sourceTree = "<group>"; };
+		A99E9B7916922F1F00438E54 /* FZMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZMenuItem.h; sourceTree = "<group>"; };
+		A99E9B7A16922F1F00438E54 /* FZMS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZMS.cpp; sourceTree = "<group>"; };
+		A99E9B7B16922F1F00438E54 /* FZMS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZMS.h; sourceTree = "<group>"; };
+		A99E9B7C16922F1F00438E54 /* FZNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZNode.cpp; sourceTree = "<group>"; };
+		A99E9B7D16922F1F00438E54 /* FZNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZNode.h; sourceTree = "<group>"; };
+		A99E9B7E16922F1F00438E54 /* FZParallaxNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZParallaxNode.cpp; sourceTree = "<group>"; };
+		A99E9B7F16922F1F00438E54 /* FZParallaxNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZParallaxNode.h; sourceTree = "<group>"; };
+		A99E9B8016922F1F00438E54 /* FZParticleExamples.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZParticleExamples.cpp; sourceTree = "<group>"; };
+		A99E9B8116922F1F00438E54 /* FZParticleExamples.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZParticleExamples.h; sourceTree = "<group>"; };
+		A99E9B8216922F1F00438E54 /* FZParticleSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZParticleSystem.cpp; sourceTree = "<group>"; };
+		A99E9B8316922F1F00438E54 /* FZParticleSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZParticleSystem.h; sourceTree = "<group>"; };
+		A99E9B8416922F1F00438E54 /* FZParticleSystemQuad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZParticleSystemQuad.cpp; sourceTree = "<group>"; };
+		A99E9B8516922F1F00438E54 /* FZParticleSystemQuad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZParticleSystemQuad.h; sourceTree = "<group>"; };
+		A99E9B8616922F1F00438E54 /* FZPerformManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZPerformManager.cpp; sourceTree = "<group>"; };
+		A99E9B8716922F1F00438E54 /* FZPerformManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZPerformManager.h; sourceTree = "<group>"; };
+		A99E9B8816922F1F00438E54 /* FZPlatforms.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZPlatforms.cpp; sourceTree = "<group>"; };
+		A99E9B8916922F1F00438E54 /* FZPlatforms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZPlatforms.h; sourceTree = "<group>"; };
+		A99E9B8A16922F1F00438E54 /* FZPlatformsHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZPlatformsHeader.h; sourceTree = "<group>"; };
+		A99E9B8B16922F1F00438E54 /* FZRenderTexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZRenderTexture.cpp; sourceTree = "<group>"; };
+		A99E9B8C16922F1F00438E54 /* FZRenderTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZRenderTexture.h; sourceTree = "<group>"; };
+		A99E9B8D16922F1F00438E54 /* FZResourcesManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZResourcesManager.cpp; sourceTree = "<group>"; };
+		A99E9B8E16922F1F00438E54 /* FZResourcesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZResourcesManager.h; sourceTree = "<group>"; };
+		A99E9B8F16922F1F00438E54 /* FZScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZScene.cpp; sourceTree = "<group>"; };
+		A99E9B9016922F1F00438E54 /* FZScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZScene.h; sourceTree = "<group>"; };
+		A99E9B9116922F1F00438E54 /* FZScheduler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZScheduler.cpp; sourceTree = "<group>"; };
+		A99E9B9216922F1F00438E54 /* FZScheduler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZScheduler.h; sourceTree = "<group>"; };
+		A99E9B9316922F1F00438E54 /* FZSelectors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZSelectors.h; sourceTree = "<group>"; };
+		A99E9B9416922F1F00438E54 /* FZShaderCache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZShaderCache.cpp; sourceTree = "<group>"; };
+		A99E9B9516922F1F00438E54 /* FZShaderCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZShaderCache.h; sourceTree = "<group>"; };
+		A99E9B9616922F1F00438E54 /* FZSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZSprite.cpp; sourceTree = "<group>"; };
+		A99E9B9716922F1F00438E54 /* FZSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZSprite.h; sourceTree = "<group>"; };
+		A99E9B9816922F1F00438E54 /* FZSpriteBatch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZSpriteBatch.cpp; sourceTree = "<group>"; };
+		A99E9B9916922F1F00438E54 /* FZSpriteBatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZSpriteBatch.h; sourceTree = "<group>"; };
+		A99E9B9A16922F1F00438E54 /* FZSpriteFrameCache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZSpriteFrameCache.cpp; sourceTree = "<group>"; };
+		A99E9B9B16922F1F00438E54 /* FZSpriteFrameCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZSpriteFrameCache.h; sourceTree = "<group>"; };
+		A99E9B9C16922F1F00438E54 /* FZTextureCache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZTextureCache.cpp; sourceTree = "<group>"; };
+		A99E9B9D16922F1F00438E54 /* FZTextureCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZTextureCache.h; sourceTree = "<group>"; };
+		A99E9B9E16922F1F00438E54 /* FZTMXLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZTMXLayer.cpp; sourceTree = "<group>"; };
+		A99E9B9F16922F1F00438E54 /* FZTMXLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZTMXLayer.h; sourceTree = "<group>"; };
+		A99E9BA016922F1F00438E54 /* FZTMXParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZTMXParser.cpp; sourceTree = "<group>"; };
+		A99E9BA116922F1F00438E54 /* FZTMXParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZTMXParser.h; sourceTree = "<group>"; };
+		A99E9BA216922F1F00438E54 /* FZTMXTiledMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZTMXTiledMap.cpp; sourceTree = "<group>"; };
+		A99E9BA316922F1F00438E54 /* FZTMXTiledMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZTMXTiledMap.h; sourceTree = "<group>"; };
+		A99E9BA416922F1F00438E54 /* FZTransitions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZTransitions.cpp; sourceTree = "<group>"; };
+		A99E9BA516922F1F00438E54 /* FZTransitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZTransitions.h; sourceTree = "<group>"; };
+		A99E9C7416922F4A00438E54 /* gl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gl.h; sourceTree = "<group>"; };
+		A99E9C7516922F4A00438E54 /* glext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glext.h; sourceTree = "<group>"; };
+		A99E9C7616922F4A00438E54 /* iOS_support.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iOS_support.h; sourceTree = "<group>"; };
+		A99E9C7716922F4A00438E54 /* iOS_support.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = iOS_support.mm; sourceTree = "<group>"; };
+		A99E9C7816922F4A00438E54 /* iOSGL2_support.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iOSGL2_support.h; sourceTree = "<group>"; };
+		A99E9C7916922F4A00438E54 /* iOSGL2_support.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = iOSGL2_support.mm; sourceTree = "<group>"; };
+		A99E9C7A16922F4A00438E54 /* macosx_support.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = macosx_support.h; sourceTree = "<group>"; };
+		A99E9C7B16922F4A00438E54 /* macosx_support.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = macosx_support.mm; sourceTree = "<group>"; };
+		A99E9C7C16922F4A00438E54 /* model_support.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = model_support.cpp; sourceTree = "<group>"; };
+		A99E9C7D16922F4A00438E54 /* model_support.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = model_support.h; sourceTree = "<group>"; };
 		A9B8753A16222CEC0007D6CC /* enemiesSheet.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; path = enemiesSheet.pvr; sourceTree = "<group>"; };
 		A9B8753B16222CEE0007D6CC /* enemiesSheet.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = enemiesSheet.xml; sourceTree = "<group>"; };
 		A9B8753C16222CF00007D6CC /* enemiesSheet@x2.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; path = "enemiesSheet@x2.pvr"; sourceTree = "<group>"; };
@@ -2864,21 +2864,28 @@
 		97C9B8A915068BCF00B8AEE5 /* FORZE */ = {
 			isa = PBXGroup;
 			children = (
-				97C9B8AA15068BCF00B8AEE5 /* Actions */,
-				97C9B91B15068BCF00B8AEE5 /* Managers */,
-				97C9B93615068BCF00B8AEE5 /* Nodes */,
-				97C9B95A15068BCF00B8AEE5 /* OpenGL */,
+				A95CD76D16933124006CF22C /* OpenGL */,
+				A95CD76C16932FC3006CF22C /* Actions */,
+				A95CD76B16932FBC006CF22C /* Support */,
+				A95CD76916932FAB006CF22C /* Managers */,
+				A95CD76816932FA0006CF22C /* Nodes */,
 				97C9B96F15068BCF00B8AEE5 /* Shaders */,
 				97C9B8B615068BCF00B8AEE5 /* external */,
+				970D3FBC15249D96001FFC26 /* Optimized */,
+				A99E9C7216922F4A00438E54 /* Wrappers */,
+				A99E9B4C16922F1F00438E54 /* FZAnimation.cpp */,
+				A99E9B5B16922F1F00438E54 /* FZDefaultOpenGLAPI.h */,
+				A99E9B8816922F1F00438E54 /* FZPlatforms.cpp */,
+				A99E9B8916922F1F00438E54 /* FZPlatforms.h */,
+				A99E9B8A16922F1F00438E54 /* FZPlatformsHeader.h */,
+				A99E9BA016922F1F00438E54 /* FZTMXParser.cpp */,
+				A99E9BA116922F1F00438E54 /* FZTMXParser.h */,
 				97C9B8FF15068BCF00B8AEE5 /* FORZE.h */,
 				9791DF9A155491A10080871B /* FZAllocator.cpp */,
 				9791DF9B155491A10080871B /* FZAllocator.h */,
-				97C9B8B515068BCF00B8AEE5 /* FZAnimation.cpp */,
 				97C9B90015068BCF00B8AEE5 /* FZAnimation.h */,
 				97C9B90115068BCF00B8AEE5 /* FZCamera.cpp */,
 				97C9B90215068BCF00B8AEE5 /* FZCamera.h */,
-				A9BFDA6F166A5EA0005E7DE2 /* FZHash.cpp */,
-				A9BFDA70166A5EA1005E7DE2 /* FZHash.h */,
 				97C9B90315068BCF00B8AEE5 /* FZCommon.cpp */,
 				97C9B90415068BCF00B8AEE5 /* FZCommon.h */,
 				97C9B90515068BCF00B8AEE5 /* FZConfig.h */,
@@ -2896,37 +2903,14 @@
 				97C9B90F15068BCF00B8AEE5 /* FZMacros.h */,
 				97C9B91015068BCF00B8AEE5 /* FZPrimitives.cpp */,
 				97C9B91115068BCF00B8AEE5 /* FZPrimitives.h */,
-				97C9B91215068BCF00B8AEE5 /* FZProtocols.h */,
-				97C9B91615068BCF00B8AEE5 /* FZTexture2D.h */,
-				97C9B91515068BCF00B8AEE5 /* FZTexture2D.cpp */,
 				97C9B91415068BCF00B8AEE5 /* FZSpriteFrame.h */,
 				97C9B91315068BCF00B8AEE5 /* FZSpriteFrame.cpp */,
 				97C9B91715068BCF00B8AEE5 /* FZTextureAtlas.cpp */,
 				97C9B91815068BCF00B8AEE5 /* FZTextureAtlas.h */,
 				97C9B91915068BCF00B8AEE5 /* FZTypes.cpp */,
 				97C9B91A15068BCF00B8AEE5 /* FZTypes.h */,
-				970D3FBC15249D96001FFC26 /* Optimized */,
-				97C9B96115068BCF00B8AEE5 /* Platforms */,
-				97C9B97515068BCF00B8AEE5 /* Support */,
 			);
 			path = FORZE;
-			sourceTree = "<group>";
-		};
-		97C9B8AA15068BCF00B8AEE5 /* Actions */ = {
-			isa = PBXGroup;
-			children = (
-				97C9B8AB15068BCF00B8AEE5 /* FZAction.cpp */,
-				97C9B8AC15068BCF00B8AEE5 /* FZAction.h */,
-				97C9B8AD15068BCF00B8AEE5 /* FZActionCamera.cpp */,
-				97C9B8AE15068BCF00B8AEE5 /* FZActionCamera.h */,
-				97C9B8AF15068BCF00B8AEE5 /* FZActionEase.cpp */,
-				97C9B8B015068BCF00B8AEE5 /* FZActionEase.h */,
-				97C9B8B115068BCF00B8AEE5 /* FZActionInstant.cpp */,
-				97C9B8B215068BCF00B8AEE5 /* FZActionInstant.h */,
-				97C9B8B315068BCF00B8AEE5 /* FZActionInterval.cpp */,
-				97C9B8B415068BCF00B8AEE5 /* FZActionInterval.h */,
-			);
-			path = Actions;
 			sourceTree = "<group>";
 		};
 		97C9B8B615068BCF00B8AEE5 /* external */ = {
@@ -2995,133 +2979,6 @@
 			path = rapidXML;
 			sourceTree = "<group>";
 		};
-		97C9B91B15068BCF00B8AEE5 /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-				32553F9115E7DFBC0051629E /* FZPerformManager.cpp */,
-				32553F9215E7DFBC0051629E /* FZPerformManager.h */,
-				97C9B91E15068BCF00B8AEE5 /* FZActionManager.cpp */,
-				97C9B91F15068BCF00B8AEE5 /* FZActionManager.h */,
-				97C9B92015068BCF00B8AEE5 /* FZAnimationCache.cpp */,
-				97C9B92115068BCF00B8AEE5 /* FZAnimationCache.h */,
-				978E2E471530893700443FDC /* FZDataStore.cpp */,
-				978E2E481530893700443FDC /* FZDataStore.h */,
-				97C9B92415068BCF00B8AEE5 /* FZDeviceConfig.cpp */,
-				97C9B92515068BCF00B8AEE5 /* FZDeviceConfig.h */,
-				97C9B92615068BCF00B8AEE5 /* FZDirector.cpp */,
-				97C9B92715068BCF00B8AEE5 /* FZDirector.h */,
-				97C9B92815068BCF00B8AEE5 /* FZEventManager.cpp */,
-				97C9B92915068BCF00B8AEE5 /* FZEventManager.h */,
-				9734522E15592C36009EAC2A /* FZFontCache.cpp */,
-				9734522F15592C36009EAC2A /* FZFontCache.h */,
-				9767ABA1153B36BF001BCCDC /* FZResourcesManager.cpp */,
-				9767ABA2153B36BF001BCCDC /* FZResourcesManager.h */,
-				97C9B92E15068BCF00B8AEE5 /* FZScheduler.cpp */,
-				97C9B92F15068BCF00B8AEE5 /* FZScheduler.h */,
-				97C9B93015068BCF00B8AEE5 /* FZShaderCache.cpp */,
-				97C9B93115068BCF00B8AEE5 /* FZShaderCache.h */,
-				97C9B93215068BCF00B8AEE5 /* FZSpriteFrameCache.cpp */,
-				97C9B93315068BCF00B8AEE5 /* FZSpriteFrameCache.h */,
-				97C9B93415068BCF00B8AEE5 /* FZTextureCache.cpp */,
-				97C9B93515068BCF00B8AEE5 /* FZTextureCache.h */,
-			);
-			path = Managers;
-			sourceTree = "<group>";
-		};
-		97C9B93615068BCF00B8AEE5 /* Nodes */ = {
-			isa = PBXGroup;
-			children = (
-				97C9B93915068BCF00B8AEE5 /* FZLabel.cpp */,
-				97C9B93A15068BCF00B8AEE5 /* FZLabel.h */,
-				97C9B93D15068BCF00B8AEE5 /* FZLayer.cpp */,
-				97C9B93E15068BCF00B8AEE5 /* FZLayer.h */,
-				97C9B93F15068BCF00B8AEE5 /* FZLightSystem.cpp */,
-				97C9B94015068BCF00B8AEE5 /* FZLightSystem.h */,
-				97C9B94115068BCF00B8AEE5 /* FZMenu.cpp */,
-				97C9B94215068BCF00B8AEE5 /* FZMenu.h */,
-				97C9B94315068BCF00B8AEE5 /* FZMenuItem.cpp */,
-				97C9B94415068BCF00B8AEE5 /* FZMenuItem.h */,
-				97C9B94515068BCF00B8AEE5 /* FZNode.cpp */,
-				97C9B94615068BCF00B8AEE5 /* FZNode.h */,
-				97C9B94815068BCF00B8AEE5 /* FZParticleExamples.cpp */,
-				97C9B94715068BCF00B8AEE5 /* FZParticleExamples.h */,
-				97C9B94915068BCF00B8AEE5 /* FZParticleSystem.cpp */,
-				97C9B94A15068BCF00B8AEE5 /* FZParticleSystem.h */,
-				97C9B94B15068BCF00B8AEE5 /* FZParticleSystemQuad.cpp */,
-				97C9B94C15068BCF00B8AEE5 /* FZParticleSystemQuad.h */,
-				97C9B94D15068BCF00B8AEE5 /* FZRenderTexture.cpp */,
-				97C9B94E15068BCF00B8AEE5 /* FZRenderTexture.h */,
-				97C9B95115068BCF00B8AEE5 /* FZSprite.cpp */,
-				97C9B95215068BCF00B8AEE5 /* FZSprite.h */,
-				97C9B95315068BCF00B8AEE5 /* FZSpriteBatch.cpp */,
-				97C9B95415068BCF00B8AEE5 /* FZSpriteBatch.h */,
-				97C9B94F15068BCF00B8AEE5 /* FZScene.cpp */,
-				97C9B95015068BCF00B8AEE5 /* FZScene.h */,
-				971DFA021551774700BBE693 /* FZParallaxNode.cpp */,
-				971DFA031551774700BBE693 /* FZParallaxNode.h */,
-				979DF876151F5EDE0096376C /* FZTMXLayer.cpp */,
-				979DF877151F5EDE0096376C /* FZTMXLayer.h */,
-				979DF878151F5EDE0096376C /* FZTMXTiledMap.cpp */,
-				979DF879151F5EDE0096376C /* FZTMXTiledMap.h */,
-				97C9B95515068BCF00B8AEE5 /* FZTMXParser.cpp */,
-				97C9B95615068BCF00B8AEE5 /* FZTMXParser.h */,
-				97801DB61549EA8F0019DB49 /* FZTransitions.cpp */,
-				97801DB71549EA8F0019DB49 /* FZTransitions.h */,
-				97C9B95715068BCF00B8AEE5 /* HUD */,
-			);
-			path = Nodes;
-			sourceTree = "<group>";
-		};
-		97C9B95715068BCF00B8AEE5 /* HUD */ = {
-			isa = PBXGroup;
-			children = (
-				97C9B95815068BCF00B8AEE5 /* FZHUD.cpp */,
-				97C9B95915068BCF00B8AEE5 /* FZHUD.h */,
-			);
-			path = HUD;
-			sourceTree = "<group>";
-		};
-		97C9B95A15068BCF00B8AEE5 /* OpenGL */ = {
-			isa = PBXGroup;
-			children = (
-				97C9B95B15068BCF00B8AEE5 /* FZGLConfig.cpp */,
-				97C9B95C15068BCF00B8AEE5 /* FZGLConfig.h */,
-				97C9B95D15068BCF00B8AEE5 /* FZGLProgram.cpp */,
-				97C9B95E15068BCF00B8AEE5 /* FZGLProgram.h */,
-				97C9B95F15068BCF00B8AEE5 /* FZGLState.cpp */,
-				97C9B96015068BCF00B8AEE5 /* FZGLState.h */,
-			);
-			path = OpenGL;
-			sourceTree = "<group>";
-		};
-		97C9B96115068BCF00B8AEE5 /* Platforms */ = {
-			isa = PBXGroup;
-			children = (
-				97C9B96215068BCF00B8AEE5 /* FZPlatforms.h */,
-				A992ECF0163D863E00CD0C33 /* FZPlatforms.cpp */,
-				97C9B96315068BCF00B8AEE5 /* FZPlatformsHeader.h */,
-				A92E28441607C34400C63C79 /* FZDefaultOpenGLAPI.h */,
-				97C9B96415068BCF00B8AEE5 /* Support */,
-			);
-			path = Platforms;
-			sourceTree = "<group>";
-		};
-		97C9B96415068BCF00B8AEE5 /* Support */ = {
-			isa = PBXGroup;
-			children = (
-				A94E6346166D078800100D6E /* GLAPI */,
-				A94E633F166CD75F00100D6E /* model_support.cpp */,
-				A94E6340166CD75F00100D6E /* model_support.h */,
-				97C9B96515068BCF00B8AEE5 /* iOS_support.h */,
-				97C9B96615068BCF00B8AEE5 /* iOS_support.mm */,
-				97C9B96915068BCF00B8AEE5 /* iOSGL2_support.h */,
-				97C9B96A15068BCF00B8AEE5 /* iOSGL2_support.mm */,
-				97C9B96B15068BCF00B8AEE5 /* macosx_support.h */,
-				97C9B96C15068BCF00B8AEE5 /* macosx_support.mm */,
-			);
-			path = Support;
-			sourceTree = "<group>";
-		};
 		97C9B96F15068BCF00B8AEE5 /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
@@ -3133,28 +2990,6 @@
 				97C9B97415068BCF00B8AEE5 /* _fz_mat_uC4_TEX.shader.h */,
 			);
 			path = Shaders;
-			sourceTree = "<group>";
-		};
-		97C9B97515068BCF00B8AEE5 /* Support */ = {
-			isa = PBXGroup;
-			children = (
-				A94E634D166D42C500100D6E /* FZConsole.cpp */,
-				A94E634E166D42C500100D6E /* FZConsole.h */,
-				97C9B98215068BCF00B8AEE5 /* FZSelectors.h */,
-				97C9B97815068BCF00B8AEE5 /* FZBitOrder.cpp */,
-				97C9B97915068BCF00B8AEE5 /* FZBitOrder.h */,
-				97C9B97A15068BCF00B8AEE5 /* FZAutoList.cpp */,
-				97C9B97B15068BCF00B8AEE5 /* FZAutoList.h */,
-				97C9B97C15068BCF00B8AEE5 /* FZIO.cpp */,
-				97C9B97D15068BCF00B8AEE5 /* FZIO.h */,
-				97C9B97E15068BCF00B8AEE5 /* FZMath.cpp */,
-				97C9B97F15068BCF00B8AEE5 /* FZMath.h */,
-				97C9B98315068BCF00B8AEE5 /* FZMS.cpp */,
-				97C9B98415068BCF00B8AEE5 /* FZMS.h */,
-				97C9B98515068BCF00B8AEE5 /* FZData.cpp */,
-				97C9B98615068BCF00B8AEE5 /* FZData.h */,
-			);
-			path = Support;
 			sourceTree = "<group>";
 		};
 		A91C2559161DD5B4004E5496 /* Frameworks */ = {
@@ -3171,15 +3006,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		A94E6346166D078800100D6E /* GLAPI */ = {
-			isa = PBXGroup;
-			children = (
-				A94E6347166D078800100D6E /* gl.h */,
-				A94E6348166D078800100D6E /* glext.h */,
-			);
-			path = GLAPI;
-			sourceTree = "<group>";
-		};
 		A95B738E16701A65001725FB /* tinythread */ = {
 			isa = PBXGroup;
 			children = (
@@ -3187,6 +3013,139 @@
 				A95B739016701A65001725FB /* tinythread.h */,
 			);
 			path = tinythread;
+			sourceTree = "<group>";
+		};
+		A95CD76816932FA0006CF22C /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				A99E9B6A16922F1F00438E54 /* FZHUD.cpp */,
+				A99E9B6B16922F1F00438E54 /* FZHUD.h */,
+				A99E9B8F16922F1F00438E54 /* FZScene.cpp */,
+				A99E9B9016922F1F00438E54 /* FZScene.h */,
+				A99E9BA416922F1F00438E54 /* FZTransitions.cpp */,
+				A99E9BA516922F1F00438E54 /* FZTransitions.h */,
+				A99E9B8B16922F1F00438E54 /* FZRenderTexture.cpp */,
+				A99E9B8C16922F1F00438E54 /* FZRenderTexture.h */,
+				A99E9B8016922F1F00438E54 /* FZParticleExamples.cpp */,
+				A99E9B8116922F1F00438E54 /* FZParticleExamples.h */,
+				A99E9B6E16922F1F00438E54 /* FZLabel.cpp */,
+				A99E9B6F16922F1F00438E54 /* FZLabel.h */,
+				A99E9B7016922F1F00438E54 /* FZLayer.cpp */,
+				A99E9B7116922F1F00438E54 /* FZLayer.h */,
+				A99E9B7216922F1F00438E54 /* FZLightSystem.cpp */,
+				A99E9B7316922F1F00438E54 /* FZLightSystem.h */,
+				A99E9B7616922F1F00438E54 /* FZMenu.cpp */,
+				A99E9B7716922F1F00438E54 /* FZMenu.h */,
+				A99E9B7816922F1F00438E54 /* FZMenuItem.cpp */,
+				A99E9B7916922F1F00438E54 /* FZMenuItem.h */,
+				A99E9B7C16922F1F00438E54 /* FZNode.cpp */,
+				A99E9B7D16922F1F00438E54 /* FZNode.h */,
+				A99E9B7E16922F1F00438E54 /* FZParallaxNode.cpp */,
+				A99E9B7F16922F1F00438E54 /* FZParallaxNode.h */,
+				A99E9B8216922F1F00438E54 /* FZParticleSystem.cpp */,
+				A99E9B8316922F1F00438E54 /* FZParticleSystem.h */,
+				A99E9B8416922F1F00438E54 /* FZParticleSystemQuad.cpp */,
+				A99E9B8516922F1F00438E54 /* FZParticleSystemQuad.h */,
+				A99E9B9616922F1F00438E54 /* FZSprite.cpp */,
+				A99E9B9716922F1F00438E54 /* FZSprite.h */,
+				A99E9B9816922F1F00438E54 /* FZSpriteBatch.cpp */,
+				A99E9B9916922F1F00438E54 /* FZSpriteBatch.h */,
+				A99E9B9E16922F1F00438E54 /* FZTMXLayer.cpp */,
+				A99E9B9F16922F1F00438E54 /* FZTMXLayer.h */,
+				A99E9BA216922F1F00438E54 /* FZTMXTiledMap.cpp */,
+				A99E9BA316922F1F00438E54 /* FZTMXTiledMap.h */,
+			);
+			name = Nodes;
+			sourceTree = "<group>";
+		};
+		A95CD76916932FAB006CF22C /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				A99E9B5916922F1F00438E54 /* FZDataStore.cpp */,
+				A99E9B5A16922F1F00438E54 /* FZDataStore.h */,
+				A99E9B5C16922F1F00438E54 /* FZDeviceConfig.cpp */,
+				A99E9B5D16922F1F00438E54 /* FZDeviceConfig.h */,
+				A99E9B5E16922F1F00438E54 /* FZDirector.cpp */,
+				A99E9B5F16922F1F00438E54 /* FZDirector.h */,
+				A99E9B6016922F1F00438E54 /* FZEventManager.cpp */,
+				A99E9B6116922F1F00438E54 /* FZEventManager.h */,
+				A99E9B6216922F1F00438E54 /* FZFontCache.cpp */,
+				A99E9B6316922F1F00438E54 /* FZFontCache.h */,
+				A99E9B8616922F1F00438E54 /* FZPerformManager.cpp */,
+				A99E9B8716922F1F00438E54 /* FZPerformManager.h */,
+				A99E9B8D16922F1F00438E54 /* FZResourcesManager.cpp */,
+				A99E9B8E16922F1F00438E54 /* FZResourcesManager.h */,
+				A99E9B9116922F1F00438E54 /* FZScheduler.cpp */,
+				A99E9B9216922F1F00438E54 /* FZScheduler.h */,
+				A99E9B9416922F1F00438E54 /* FZShaderCache.cpp */,
+				A99E9B9516922F1F00438E54 /* FZShaderCache.h */,
+				A99E9B9A16922F1F00438E54 /* FZSpriteFrameCache.cpp */,
+				A99E9B9B16922F1F00438E54 /* FZSpriteFrameCache.h */,
+				A99E9B9C16922F1F00438E54 /* FZTextureCache.cpp */,
+				A99E9B9D16922F1F00438E54 /* FZTextureCache.h */,
+				A99E9B4A16922F1F00438E54 /* FZActionManager.cpp */,
+				A99E9B4B16922F1F00438E54 /* FZActionManager.h */,
+				A99E9B4D16922F1F00438E54 /* FZAnimationCache.cpp */,
+				A99E9B4E16922F1F00438E54 /* FZAnimationCache.h */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
+		A95CD76B16932FBC006CF22C /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				A99E9B9316922F1F00438E54 /* FZSelectors.h */,
+				97C9B91215068BCF00B8AEE5 /* FZProtocols.h */,
+				A99E9B4F16922F1F00438E54 /* FZAutoList.cpp */,
+				A99E9B5016922F1F00438E54 /* FZAutoList.h */,
+				A99E9B5316922F1F00438E54 /* FZBitOrder.cpp */,
+				A99E9B5416922F1F00438E54 /* FZBitOrder.h */,
+				A99E9B5516922F1F00438E54 /* FZConsole.cpp */,
+				A99E9B5616922F1F00438E54 /* FZConsole.h */,
+				A99E9B5716922F1F00438E54 /* FZData.cpp */,
+				A99E9B5816922F1F00438E54 /* FZData.h */,
+				A99E9B6C16922F1F00438E54 /* FZIO.cpp */,
+				A99E9B6D16922F1F00438E54 /* FZIO.h */,
+				A99E9B7416922F1F00438E54 /* FZMath.cpp */,
+				A99E9B7516922F1F00438E54 /* FZMath.h */,
+				A99E9B7A16922F1F00438E54 /* FZMS.cpp */,
+				A99E9B7B16922F1F00438E54 /* FZMS.h */,
+				A9BFDA6F166A5EA0005E7DE2 /* FZHash.cpp */,
+				A9BFDA70166A5EA1005E7DE2 /* FZHash.h */,
+			);
+			name = Support;
+			sourceTree = "<group>";
+		};
+		A95CD76C16932FC3006CF22C /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				A99E9B4016922F1F00438E54 /* FZAction.cpp */,
+				A99E9B4116922F1F00438E54 /* FZAction.h */,
+				A99E9B4216922F1F00438E54 /* FZActionCamera.cpp */,
+				A99E9B4316922F1F00438E54 /* FZActionCamera.h */,
+				A99E9B4416922F1F00438E54 /* FZActionEase.cpp */,
+				A99E9B4516922F1F00438E54 /* FZActionEase.h */,
+				A99E9B4616922F1F00438E54 /* FZActionInstant.cpp */,
+				A99E9B4716922F1F00438E54 /* FZActionInstant.h */,
+				A99E9B4816922F1F00438E54 /* FZActionInterval.cpp */,
+				A99E9B4916922F1F00438E54 /* FZActionInterval.h */,
+			);
+			name = Actions;
+			sourceTree = "<group>";
+		};
+		A95CD76D16933124006CF22C /* OpenGL */ = {
+			isa = PBXGroup;
+			children = (
+				A99E9B6416922F1F00438E54 /* FZGLConfig.cpp */,
+				A99E9B6516922F1F00438E54 /* FZGLConfig.h */,
+				A99E9B6616922F1F00438E54 /* FZGLProgram.cpp */,
+				A99E9B6716922F1F00438E54 /* FZGLProgram.h */,
+				A99E9B6816922F1F00438E54 /* FZGLState.cpp */,
+				A99E9B6916922F1F00438E54 /* FZGLState.h */,
+				97C9B91615068BCF00B8AEE5 /* FZTexture2D.h */,
+				97C9B91515068BCF00B8AEE5 /* FZTexture2D.cpp */,
+			);
+			name = OpenGL;
 			sourceTree = "<group>";
 		};
 		A97611521624B96C00A23623 /* libb64 */ = {
@@ -3198,6 +3157,31 @@
 			path = libb64;
 			sourceTree = "<group>";
 		};
+		A99E9C7216922F4A00438E54 /* Wrappers */ = {
+			isa = PBXGroup;
+			children = (
+				A99E9C7316922F4A00438E54 /* GLAPI */,
+				A99E9C7616922F4A00438E54 /* iOS_support.h */,
+				A99E9C7716922F4A00438E54 /* iOS_support.mm */,
+				A99E9C7816922F4A00438E54 /* iOSGL2_support.h */,
+				A99E9C7916922F4A00438E54 /* iOSGL2_support.mm */,
+				A99E9C7A16922F4A00438E54 /* macosx_support.h */,
+				A99E9C7B16922F4A00438E54 /* macosx_support.mm */,
+				A99E9C7C16922F4A00438E54 /* model_support.cpp */,
+				A99E9C7D16922F4A00438E54 /* model_support.h */,
+			);
+			path = Wrappers;
+			sourceTree = "<group>";
+		};
+		A99E9C7316922F4A00438E54 /* GLAPI */ = {
+			isa = PBXGroup;
+			children = (
+				A99E9C7416922F4A00438E54 /* gl.h */,
+				A99E9C7516922F4A00438E54 /* glext.h */,
+			);
+			path = GLAPI;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -3205,12 +3189,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				97C9B98915068BD000B8AEE5 /* FZAction.h in Headers */,
-				978E2E4B1530893800443FDC /* FZDataStore.h in Headers */,
-				97C9B98C15068BD000B8AEE5 /* FZActionCamera.h in Headers */,
-				97C9B98F15068BD000B8AEE5 /* FZActionEase.h in Headers */,
-				97C9B99215068BD000B8AEE5 /* FZActionInstant.h in Headers */,
-				97C9B99515068BD000B8AEE5 /* FZActionInterval.h in Headers */,
 				97C9B9E815068BD000B8AEE5 /* FORZE.h in Headers */,
 				97C9B9E915068BD000B8AEE5 /* FZAnimation.h in Headers */,
 				97C9B9EC15068BD000B8AEE5 /* FZCamera.h in Headers */,
@@ -3228,57 +3206,9 @@
 				97C9BA0815068BD000B8AEE5 /* FZTexture2D.h in Headers */,
 				97C9BA0B15068BD000B8AEE5 /* FZTextureAtlas.h in Headers */,
 				97C9BA0E15068BD000B8AEE5 /* FZTypes.h in Headers */,
-				97C9BA1415068BD000B8AEE5 /* FZActionManager.h in Headers */,
-				97C9BA1715068BD000B8AEE5 /* FZAnimationCache.h in Headers */,
-				97C9BA1D15068BD000B8AEE5 /* FZDeviceConfig.h in Headers */,
-				97C9BA2015068BD000B8AEE5 /* FZDirector.h in Headers */,
-				97C9BA2315068BD000B8AEE5 /* FZEventManager.h in Headers */,
-				97C9BA2C15068BD000B8AEE5 /* FZScheduler.h in Headers */,
-				97C9BA2F15068BD000B8AEE5 /* FZShaderCache.h in Headers */,
-				97C9BA3215068BD000B8AEE5 /* FZSpriteFrameCache.h in Headers */,
-				97C9BA3515068BD000B8AEE5 /* FZTextureCache.h in Headers */,
-				97C9BA3B15068BD000B8AEE5 /* FZLabel.h in Headers */,
-				97C9BA4115068BD000B8AEE5 /* FZLayer.h in Headers */,
-				97C9BA4415068BD000B8AEE5 /* FZLightSystem.h in Headers */,
-				97C9BA4715068BD000B8AEE5 /* FZMenu.h in Headers */,
-				97C9BA4A15068BD000B8AEE5 /* FZMenuItem.h in Headers */,
-				97C9BA4D15068BD000B8AEE5 /* FZNode.h in Headers */,
-				97C9BA4E15068BD000B8AEE5 /* FZParticleExamples.h in Headers */,
-				97C9BA5315068BD000B8AEE5 /* FZParticleSystem.h in Headers */,
-				97C9BA5615068BD000B8AEE5 /* FZParticleSystemQuad.h in Headers */,
-				97C9BA5915068BD000B8AEE5 /* FZRenderTexture.h in Headers */,
-				97C9BA5C15068BD000B8AEE5 /* FZScene.h in Headers */,
-				97C9BA5F15068BD000B8AEE5 /* FZSprite.h in Headers */,
-				97C9BA6215068BD000B8AEE5 /* FZSpriteBatch.h in Headers */,
-				97C9BA6515068BD000B8AEE5 /* FZTMXParser.h in Headers */,
-				97C9BA6815068BD000B8AEE5 /* FZHUD.h in Headers */,
-				97C9BA6B15068BD000B8AEE5 /* FZGLConfig.h in Headers */,
-				97C9BA6E15068BD000B8AEE5 /* FZGLProgram.h in Headers */,
-				97C9BA7115068BD000B8AEE5 /* FZGLState.h in Headers */,
-				97C9BA7215068BD000B8AEE5 /* FZPlatforms.h in Headers */,
-				97C9BA7315068BD000B8AEE5 /* FZPlatformsHeader.h in Headers */,
-				97C9BA7415068BD000B8AEE5 /* iOS_support.h in Headers */,
-				97C9BA7A15068BD000B8AEE5 /* iOSGL2_support.h in Headers */,
-				97C9BA7D15068BD000B8AEE5 /* macosx_support.h in Headers */,
-				97C9BA8D15068BD000B8AEE5 /* FZBitOrder.h in Headers */,
-				97C9BA9015068BD000B8AEE5 /* FZAutoList.h in Headers */,
-				97C9BA9315068BD000B8AEE5 /* FZIO.h in Headers */,
-				97C9BA9615068BD000B8AEE5 /* FZMath.h in Headers */,
-				97C9BA9A15068BD000B8AEE5 /* FZSelectors.h in Headers */,
-				9767ABA5153B36BF001BCCDC /* FZResourcesManager.h in Headers */,
-				97801DBA1549EA8F0019DB49 /* FZTransitions.h in Headers */,
-				971DFA061551774700BBE693 /* FZParallaxNode.h in Headers */,
 				9791DF9E155491A10080871B /* FZAllocator.h in Headers */,
-				32553F9515E7DFBC0051629E /* FZPerformManager.h in Headers */,
-				9734523215592C36009EAC2A /* FZFontCache.h in Headers */,
 				9734523E155941BD009EAC2A /* FZFont.h in Headers */,
-				979DF87C151F5EDE0096376C /* FZTMXLayer.h in Headers */,
-				979DF880151F5EDE0096376C /* FZTMXTiledMap.h in Headers */,
-				97C9BA9D15068BD000B8AEE5 /* FZMS.h in Headers */,
-				97C9BAA015068BD000B8AEE5 /* FZData.h in Headers */,
 				A9BFDA73166A5EA1005E7DE2 /* FZHash.h in Headers */,
-				A94E6351166D42C600100D6E /* FZConsole.h in Headers */,
-				A930905B16090BFF002104D6 /* FZDefaultOpenGLAPI.h in Headers */,
 				97C9BA8315068BD000B8AEE5 /* _fz_mat_aC4.shader.h in Headers */,
 				97C9BA8515068BD000B8AEE5 /* _fz_mat_TEX.shader.h in Headers */,
 				97C9BA8615068BD000B8AEE5 /* _fz_mat_uC4.shader.h in Headers */,
@@ -3302,10 +3232,64 @@
 				972535A31531169A00FC3CBF /* rapidxml_print.hpp in Headers */,
 				97361B8D155BD5B8002E65ED /* effect_xray.shader.h in Headers */,
 				A976115D1624B96C00A23623 /* base64.h in Headers */,
-				A94E6343166CD75F00100D6E /* model_support.h in Headers */,
-				A94E6349166D078800100D6E /* gl.h in Headers */,
-				A94E634B166D078800100D6E /* glext.h in Headers */,
 				A95B739316701A65001725FB /* tinythread.h in Headers */,
+				A99E9BA816922F1F00438E54 /* FZAction.h in Headers */,
+				A99E9BAC16922F1F00438E54 /* FZActionCamera.h in Headers */,
+				A99E9BB016922F1F00438E54 /* FZActionEase.h in Headers */,
+				A99E9BB416922F1F00438E54 /* FZActionInstant.h in Headers */,
+				A99E9BB816922F1F00438E54 /* FZActionInterval.h in Headers */,
+				A99E9BBC16922F1F00438E54 /* FZActionManager.h in Headers */,
+				A99E9BC216922F1F00438E54 /* FZAnimationCache.h in Headers */,
+				A99E9BC616922F1F00438E54 /* FZAutoList.h in Headers */,
+				A99E9BCE16922F1F00438E54 /* FZBitOrder.h in Headers */,
+				A99E9BD216922F1F00438E54 /* FZConsole.h in Headers */,
+				A99E9BD616922F1F00438E54 /* FZData.h in Headers */,
+				A99E9BDA16922F1F00438E54 /* FZDataStore.h in Headers */,
+				A99E9BDC16922F1F00438E54 /* FZDefaultOpenGLAPI.h in Headers */,
+				A99E9BE016922F1F00438E54 /* FZDeviceConfig.h in Headers */,
+				A99E9BE416922F1F00438E54 /* FZDirector.h in Headers */,
+				A99E9BE816922F1F00438E54 /* FZEventManager.h in Headers */,
+				A99E9BEC16922F1F00438E54 /* FZFontCache.h in Headers */,
+				A99E9BF016922F1F00438E54 /* FZGLConfig.h in Headers */,
+				A99E9BF416922F1F00438E54 /* FZGLProgram.h in Headers */,
+				A99E9BF816922F1F00438E54 /* FZGLState.h in Headers */,
+				A99E9BFC16922F1F00438E54 /* FZHUD.h in Headers */,
+				A99E9C0016922F1F00438E54 /* FZIO.h in Headers */,
+				A99E9C0416922F1F00438E54 /* FZLabel.h in Headers */,
+				A99E9C0816922F1F00438E54 /* FZLayer.h in Headers */,
+				A99E9C0C16922F1F00438E54 /* FZLightSystem.h in Headers */,
+				A99E9C1016922F1F00438E54 /* FZMath.h in Headers */,
+				A99E9C1416922F1F00438E54 /* FZMenu.h in Headers */,
+				A99E9C1816922F1F00438E54 /* FZMenuItem.h in Headers */,
+				A99E9C1C16922F1F00438E54 /* FZMS.h in Headers */,
+				A99E9C2016922F1F00438E54 /* FZNode.h in Headers */,
+				A99E9C2416922F1F00438E54 /* FZParallaxNode.h in Headers */,
+				A99E9C2816922F1F00438E54 /* FZParticleExamples.h in Headers */,
+				A99E9C2C16922F1F00438E54 /* FZParticleSystem.h in Headers */,
+				A99E9C3016922F1F00438E54 /* FZParticleSystemQuad.h in Headers */,
+				A99E9C3416922F1F00438E54 /* FZPerformManager.h in Headers */,
+				A99E9C3816922F1F00438E54 /* FZPlatforms.h in Headers */,
+				A99E9C3A16922F1F00438E54 /* FZPlatformsHeader.h in Headers */,
+				A99E9C3E16922F1F00438E54 /* FZRenderTexture.h in Headers */,
+				A99E9C4216922F1F00438E54 /* FZResourcesManager.h in Headers */,
+				A99E9C4616922F1F00438E54 /* FZScene.h in Headers */,
+				A99E9C4A16922F1F00438E54 /* FZScheduler.h in Headers */,
+				A99E9C4C16922F1F00438E54 /* FZSelectors.h in Headers */,
+				A99E9C5016922F1F00438E54 /* FZShaderCache.h in Headers */,
+				A99E9C5416922F1F00438E54 /* FZSprite.h in Headers */,
+				A99E9C5816922F1F00438E54 /* FZSpriteBatch.h in Headers */,
+				A99E9C5C16922F1F00438E54 /* FZSpriteFrameCache.h in Headers */,
+				A99E9C6016922F1F00438E54 /* FZTextureCache.h in Headers */,
+				A99E9C6416922F1F00438E54 /* FZTMXLayer.h in Headers */,
+				A99E9C6816922F1F00438E54 /* FZTMXParser.h in Headers */,
+				A99E9C6C16922F1F00438E54 /* FZTMXTiledMap.h in Headers */,
+				A99E9C7016922F1F00438E54 /* FZTransitions.h in Headers */,
+				A99E9C7E16922F4A00438E54 /* gl.h in Headers */,
+				A99E9C8016922F4A00438E54 /* glext.h in Headers */,
+				A99E9C8216922F4A00438E54 /* iOS_support.h in Headers */,
+				A99E9C8616922F4A00438E54 /* iOSGL2_support.h in Headers */,
+				A99E9C8A16922F4A00438E54 /* macosx_support.h in Headers */,
+				A99E9C9016922F4A00438E54 /* model_support.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3313,11 +3297,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9792970B151B818C0088AF66 /* FZAction.h in Headers */,
-				9792970C151B818D0088AF66 /* FZActionCamera.h in Headers */,
-				9792970D151B818D0088AF66 /* FZActionEase.h in Headers */,
-				9792970E151B818D0088AF66 /* FZActionInstant.h in Headers */,
-				9792970F151B818D0088AF66 /* FZActionInterval.h in Headers */,
 				97929710151B818D0088AF66 /* FORZE.h in Headers */,
 				97929711151B818D0088AF66 /* FZAnimation.h in Headers */,
 				97929712151B818D0088AF66 /* FZCamera.h in Headers */,
@@ -3335,54 +3314,8 @@
 				9792971E151B818D0088AF66 /* FZTexture2D.h in Headers */,
 				9792971F151B818D0088AF66 /* FZTextureAtlas.h in Headers */,
 				97929720151B818D0088AF66 /* FZTypes.h in Headers */,
-				97929721151B818D0088AF66 /* FZActionManager.h in Headers */,
-				97929722151B818D0088AF66 /* FZAnimationCache.h in Headers */,
-				97929724151B818D0088AF66 /* FZDeviceConfig.h in Headers */,
-				97929725151B818D0088AF66 /* FZDirector.h in Headers */,
-				97929726151B818D0088AF66 /* FZEventManager.h in Headers */,
-				97929728151B818D0088AF66 /* FZScheduler.h in Headers */,
-				97929729151B818D0088AF66 /* FZShaderCache.h in Headers */,
-				9792972A151B818D0088AF66 /* FZSpriteFrameCache.h in Headers */,
-				9792972B151B818D0088AF66 /* FZTextureCache.h in Headers */,
-				9792972C151B818D0088AF66 /* FZLabel.h in Headers */,
-				9792972D151B818D0088AF66 /* FZLayer.h in Headers */,
-				9792972E151B818D0088AF66 /* FZLightSystem.h in Headers */,
-				9792972F151B818D0088AF66 /* FZMenu.h in Headers */,
-				97929730151B818D0088AF66 /* FZMenuItem.h in Headers */,
-				97929731151B818D0088AF66 /* FZNode.h in Headers */,
-				97929732151B818D0088AF66 /* FZParticleExamples.h in Headers */,
-				97929733151B818D0088AF66 /* FZParticleSystem.h in Headers */,
-				97929734151B818D0088AF66 /* FZParticleSystemQuad.h in Headers */,
-				97929735151B818D0088AF66 /* FZRenderTexture.h in Headers */,
-				97929736151B818D0088AF66 /* FZScene.h in Headers */,
-				97929737151B818D0088AF66 /* FZSprite.h in Headers */,
-				97929738151B818D0088AF66 /* FZSpriteBatch.h in Headers */,
-				979DF87D151F5EDE0096376C /* FZTMXLayer.h in Headers */,
-				979DF881151F5EDE0096376C /* FZTMXTiledMap.h in Headers */,
-				97801DBB1549EA8F0019DB49 /* FZTransitions.h in Headers */,
-				971DFA071551774700BBE693 /* FZParallaxNode.h in Headers */,
 				9791DF9F155491A10080871B /* FZAllocator.h in Headers */,
-				9734523315592C36009EAC2A /* FZFontCache.h in Headers */,
 				9734523F155941BD009EAC2A /* FZFont.h in Headers */,
-				97929739151B818D0088AF66 /* FZTMXParser.h in Headers */,
-				9792973A151B818D0088AF66 /* FZHUD.h in Headers */,
-				9792973B151B818D0088AF66 /* FZGLConfig.h in Headers */,
-				9792973C151B818D0088AF66 /* FZGLProgram.h in Headers */,
-				9792973D151B818D0088AF66 /* FZGLState.h in Headers */,
-				9792973E151B818D0088AF66 /* FZPlatforms.h in Headers */,
-				9792973F151B818D0088AF66 /* FZPlatformsHeader.h in Headers */,
-				97929740151B818D0088AF66 /* iOS_support.h in Headers */,
-				97929742151B818D0088AF66 /* iOSGL2_support.h in Headers */,
-				97929743151B818D0088AF66 /* macosx_support.h in Headers */,
-				97929745151B818D0088AF66 /* FZBitOrder.h in Headers */,
-				97929746151B818D0088AF66 /* FZAutoList.h in Headers */,
-				97929747151B818D0088AF66 /* FZIO.h in Headers */,
-				978E2E4C1530893800443FDC /* FZDataStore.h in Headers */,
-				9767ABA6153B36BF001BCCDC /* FZResourcesManager.h in Headers */,
-				97929748151B818D0088AF66 /* FZMath.h in Headers */,
-				9792974A151B818D0088AF66 /* FZSelectors.h in Headers */,
-				A930905C16090C03002104D6 /* FZDefaultOpenGLAPI.h in Headers */,
-				32553F9615E7DFBC0051629E /* FZPerformManager.h in Headers */,
 				9792974B151B818D0088AF66 /* _fz_mat_aC4.shader.h in Headers */,
 				9792974D151B818D0088AF66 /* _fz_mat_TEX.shader.h in Headers */,
 				9792974E151B818D0088AF66 /* _fz_mat_uC4.shader.h in Headers */,
@@ -3390,8 +3323,6 @@
 				97929750151B818D0088AF66 /* effect_color.shader.h in Headers */,
 				97929751151B818D0088AF66 /* effect_grayscale.shader.h in Headers */,
 				97929752151B818D0088AF66 /* effect_invert.shader.h in Headers */,
-				97929754151B818D0088AF66 /* FZMS.h in Headers */,
-				97929755151B818D0088AF66 /* FZData.h in Headers */,
 				97929756151B818D0088AF66 /* cexcept.h in Headers */,
 				97929757151B818D0088AF66 /* png.h in Headers */,
 				97929758151B818D0088AF66 /* pngconf.h in Headers */,
@@ -3409,11 +3340,64 @@
 				97361B8E155BD5B8002E65ED /* effect_xray.shader.h in Headers */,
 				A976115E1624B96C00A23623 /* base64.h in Headers */,
 				A9BFDA74166A5EA1005E7DE2 /* FZHash.h in Headers */,
-				A94E6344166CD75F00100D6E /* model_support.h in Headers */,
-				A94E634A166D078800100D6E /* gl.h in Headers */,
-				A94E634C166D078800100D6E /* glext.h in Headers */,
-				A94E6352166D42C600100D6E /* FZConsole.h in Headers */,
 				A95B739416701A65001725FB /* tinythread.h in Headers */,
+				A99E9BA916922F1F00438E54 /* FZAction.h in Headers */,
+				A99E9BAD16922F1F00438E54 /* FZActionCamera.h in Headers */,
+				A99E9BB116922F1F00438E54 /* FZActionEase.h in Headers */,
+				A99E9BB516922F1F00438E54 /* FZActionInstant.h in Headers */,
+				A99E9BB916922F1F00438E54 /* FZActionInterval.h in Headers */,
+				A99E9BBD16922F1F00438E54 /* FZActionManager.h in Headers */,
+				A99E9BC316922F1F00438E54 /* FZAnimationCache.h in Headers */,
+				A99E9BC716922F1F00438E54 /* FZAutoList.h in Headers */,
+				A99E9BCF16922F1F00438E54 /* FZBitOrder.h in Headers */,
+				A99E9BD316922F1F00438E54 /* FZConsole.h in Headers */,
+				A99E9BD716922F1F00438E54 /* FZData.h in Headers */,
+				A99E9BDB16922F1F00438E54 /* FZDataStore.h in Headers */,
+				A99E9BDD16922F1F00438E54 /* FZDefaultOpenGLAPI.h in Headers */,
+				A99E9BE116922F1F00438E54 /* FZDeviceConfig.h in Headers */,
+				A99E9BE516922F1F00438E54 /* FZDirector.h in Headers */,
+				A99E9BE916922F1F00438E54 /* FZEventManager.h in Headers */,
+				A99E9BED16922F1F00438E54 /* FZFontCache.h in Headers */,
+				A99E9BF116922F1F00438E54 /* FZGLConfig.h in Headers */,
+				A99E9BF516922F1F00438E54 /* FZGLProgram.h in Headers */,
+				A99E9BF916922F1F00438E54 /* FZGLState.h in Headers */,
+				A99E9BFD16922F1F00438E54 /* FZHUD.h in Headers */,
+				A99E9C0116922F1F00438E54 /* FZIO.h in Headers */,
+				A99E9C0516922F1F00438E54 /* FZLabel.h in Headers */,
+				A99E9C0916922F1F00438E54 /* FZLayer.h in Headers */,
+				A99E9C0D16922F1F00438E54 /* FZLightSystem.h in Headers */,
+				A99E9C1116922F1F00438E54 /* FZMath.h in Headers */,
+				A99E9C1516922F1F00438E54 /* FZMenu.h in Headers */,
+				A99E9C1916922F1F00438E54 /* FZMenuItem.h in Headers */,
+				A99E9C1D16922F1F00438E54 /* FZMS.h in Headers */,
+				A99E9C2116922F1F00438E54 /* FZNode.h in Headers */,
+				A99E9C2516922F1F00438E54 /* FZParallaxNode.h in Headers */,
+				A99E9C2916922F1F00438E54 /* FZParticleExamples.h in Headers */,
+				A99E9C2D16922F1F00438E54 /* FZParticleSystem.h in Headers */,
+				A99E9C3116922F1F00438E54 /* FZParticleSystemQuad.h in Headers */,
+				A99E9C3516922F1F00438E54 /* FZPerformManager.h in Headers */,
+				A99E9C3916922F1F00438E54 /* FZPlatforms.h in Headers */,
+				A99E9C3B16922F1F00438E54 /* FZPlatformsHeader.h in Headers */,
+				A99E9C3F16922F1F00438E54 /* FZRenderTexture.h in Headers */,
+				A99E9C4316922F1F00438E54 /* FZResourcesManager.h in Headers */,
+				A99E9C4716922F1F00438E54 /* FZScene.h in Headers */,
+				A99E9C4B16922F1F00438E54 /* FZScheduler.h in Headers */,
+				A99E9C4D16922F1F00438E54 /* FZSelectors.h in Headers */,
+				A99E9C5116922F1F00438E54 /* FZShaderCache.h in Headers */,
+				A99E9C5516922F1F00438E54 /* FZSprite.h in Headers */,
+				A99E9C5916922F1F00438E54 /* FZSpriteBatch.h in Headers */,
+				A99E9C5D16922F1F00438E54 /* FZSpriteFrameCache.h in Headers */,
+				A99E9C6116922F1F00438E54 /* FZTextureCache.h in Headers */,
+				A99E9C6516922F1F00438E54 /* FZTMXLayer.h in Headers */,
+				A99E9C6916922F1F00438E54 /* FZTMXParser.h in Headers */,
+				A99E9C6D16922F1F00438E54 /* FZTMXTiledMap.h in Headers */,
+				A99E9C7116922F1F00438E54 /* FZTransitions.h in Headers */,
+				A99E9C7F16922F4A00438E54 /* gl.h in Headers */,
+				A99E9C8116922F4A00438E54 /* glext.h in Headers */,
+				A99E9C8316922F4A00438E54 /* iOS_support.h in Headers */,
+				A99E9C8716922F4A00438E54 /* iOSGL2_support.h in Headers */,
+				A99E9C8B16922F4A00438E54 /* macosx_support.h in Headers */,
+				A99E9C9116922F4A00438E54 /* model_support.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4962,12 +4946,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				97C9B98715068BD000B8AEE5 /* FZAction.cpp in Sources */,
-				97C9B98A15068BD000B8AEE5 /* FZActionCamera.cpp in Sources */,
-				97C9B98D15068BD000B8AEE5 /* FZActionEase.cpp in Sources */,
-				97C9B99015068BD000B8AEE5 /* FZActionInstant.cpp in Sources */,
-				97C9B99315068BD000B8AEE5 /* FZActionInterval.cpp in Sources */,
-				97C9B99615068BD000B8AEE5 /* FZAnimation.cpp in Sources */,
 				97C9B9C015068BD000B8AEE5 /* png.c in Sources */,
 				97C9B9C515068BD000B8AEE5 /* pngerror.c in Sources */,
 				97C9B9C715068BD000B8AEE5 /* pngget.c in Sources */,
@@ -4994,58 +4972,64 @@
 				97C9BA0615068BD000B8AEE5 /* FZTexture2D.cpp in Sources */,
 				97C9BA0915068BD000B8AEE5 /* FZTextureAtlas.cpp in Sources */,
 				97C9BA0C15068BD000B8AEE5 /* FZTypes.cpp in Sources */,
-				97C9BA1215068BD000B8AEE5 /* FZActionManager.cpp in Sources */,
-				97C9BA1515068BD000B8AEE5 /* FZAnimationCache.cpp in Sources */,
-				97C9BA1B15068BD000B8AEE5 /* FZDeviceConfig.cpp in Sources */,
-				97C9BA1E15068BD000B8AEE5 /* FZDirector.cpp in Sources */,
-				97C9BA2115068BD000B8AEE5 /* FZEventManager.cpp in Sources */,
-				97C9BA2A15068BD000B8AEE5 /* FZScheduler.cpp in Sources */,
-				97C9BA2D15068BD000B8AEE5 /* FZShaderCache.cpp in Sources */,
-				97C9BA3015068BD000B8AEE5 /* FZSpriteFrameCache.cpp in Sources */,
-				97C9BA3315068BD000B8AEE5 /* FZTextureCache.cpp in Sources */,
-				97C9BA3915068BD000B8AEE5 /* FZLabel.cpp in Sources */,
-				97C9BA3F15068BD000B8AEE5 /* FZLayer.cpp in Sources */,
-				97C9BA4215068BD000B8AEE5 /* FZLightSystem.cpp in Sources */,
-				97C9BA4515068BD000B8AEE5 /* FZMenu.cpp in Sources */,
-				97C9BA4815068BD000B8AEE5 /* FZMenuItem.cpp in Sources */,
-				97C9BA4B15068BD000B8AEE5 /* FZNode.cpp in Sources */,
-				97C9BA4F15068BD000B8AEE5 /* FZParticleExamples.cpp in Sources */,
-				97C9BA5115068BD000B8AEE5 /* FZParticleSystem.cpp in Sources */,
-				97C9BA5415068BD000B8AEE5 /* FZParticleSystemQuad.cpp in Sources */,
-				97C9BA5715068BD000B8AEE5 /* FZRenderTexture.cpp in Sources */,
-				97C9BA5A15068BD000B8AEE5 /* FZScene.cpp in Sources */,
-				97C9BA5D15068BD000B8AEE5 /* FZSprite.cpp in Sources */,
-				97C9BA6015068BD000B8AEE5 /* FZSpriteBatch.cpp in Sources */,
-				97C9BA6315068BD000B8AEE5 /* FZTMXParser.cpp in Sources */,
-				97C9BA6615068BD000B8AEE5 /* FZHUD.cpp in Sources */,
-				97C9BA6915068BD000B8AEE5 /* FZGLConfig.cpp in Sources */,
-				97C9BA6C15068BD000B8AEE5 /* FZGLProgram.cpp in Sources */,
-				97C9BA6F15068BD000B8AEE5 /* FZGLState.cpp in Sources */,
-				97C9BA7515068BD000B8AEE5 /* iOS_support.mm in Sources */,
-				97C9BA7B15068BD000B8AEE5 /* iOSGL2_support.mm in Sources */,
-				97C9BA7E15068BD000B8AEE5 /* macosx_support.mm in Sources */,
-				97C9BA8B15068BD000B8AEE5 /* FZBitOrder.cpp in Sources */,
-				97C9BA8E15068BD000B8AEE5 /* FZAutoList.cpp in Sources */,
-				97C9BA9115068BD000B8AEE5 /* FZIO.cpp in Sources */,
-				97C9BA9415068BD000B8AEE5 /* FZMath.cpp in Sources */,
-				97C9BA9B15068BD000B8AEE5 /* FZMS.cpp in Sources */,
-				97C9BA9E15068BD000B8AEE5 /* FZData.cpp in Sources */,
-				979DF87A151F5EDE0096376C /* FZTMXLayer.cpp in Sources */,
-				979DF87E151F5EDE0096376C /* FZTMXTiledMap.cpp in Sources */,
-				978E2E491530893800443FDC /* FZDataStore.cpp in Sources */,
-				9767ABA3153B36BF001BCCDC /* FZResourcesManager.cpp in Sources */,
-				97801DB81549EA8F0019DB49 /* FZTransitions.cpp in Sources */,
-				971DFA041551774700BBE693 /* FZParallaxNode.cpp in Sources */,
 				9791DF9C155491A10080871B /* FZAllocator.cpp in Sources */,
-				9734523015592C36009EAC2A /* FZFontCache.cpp in Sources */,
 				9734523C155941BD009EAC2A /* FZFont.cpp in Sources */,
-				32553F9315E7DFBC0051629E /* FZPerformManager.cpp in Sources */,
 				A976115B1624B96C00A23623 /* base64.c in Sources */,
-				A992ECF1163D863E00CD0C33 /* FZPlatforms.cpp in Sources */,
 				A9BFDA71166A5EA1005E7DE2 /* FZHash.cpp in Sources */,
-				A94E634F166D42C600100D6E /* FZConsole.cpp in Sources */,
-				A94E6341166CD75F00100D6E /* model_support.cpp in Sources */,
 				A95B739116701A65001725FB /* tinythread.cpp in Sources */,
+				A99E9BA616922F1F00438E54 /* FZAction.cpp in Sources */,
+				A99E9BAA16922F1F00438E54 /* FZActionCamera.cpp in Sources */,
+				A99E9BAE16922F1F00438E54 /* FZActionEase.cpp in Sources */,
+				A99E9BB216922F1F00438E54 /* FZActionInstant.cpp in Sources */,
+				A99E9BB616922F1F00438E54 /* FZActionInterval.cpp in Sources */,
+				A99E9BBA16922F1F00438E54 /* FZActionManager.cpp in Sources */,
+				A99E9BBE16922F1F00438E54 /* FZAnimation.cpp in Sources */,
+				A99E9BC016922F1F00438E54 /* FZAnimationCache.cpp in Sources */,
+				A99E9BC416922F1F00438E54 /* FZAutoList.cpp in Sources */,
+				A99E9BCC16922F1F00438E54 /* FZBitOrder.cpp in Sources */,
+				A99E9BD016922F1F00438E54 /* FZConsole.cpp in Sources */,
+				A99E9BD416922F1F00438E54 /* FZData.cpp in Sources */,
+				A99E9BD816922F1F00438E54 /* FZDataStore.cpp in Sources */,
+				A99E9BDE16922F1F00438E54 /* FZDeviceConfig.cpp in Sources */,
+				A99E9BE216922F1F00438E54 /* FZDirector.cpp in Sources */,
+				A99E9BE616922F1F00438E54 /* FZEventManager.cpp in Sources */,
+				A99E9BEA16922F1F00438E54 /* FZFontCache.cpp in Sources */,
+				A99E9BEE16922F1F00438E54 /* FZGLConfig.cpp in Sources */,
+				A99E9BF216922F1F00438E54 /* FZGLProgram.cpp in Sources */,
+				A99E9BF616922F1F00438E54 /* FZGLState.cpp in Sources */,
+				A99E9BFA16922F1F00438E54 /* FZHUD.cpp in Sources */,
+				A99E9BFE16922F1F00438E54 /* FZIO.cpp in Sources */,
+				A99E9C0216922F1F00438E54 /* FZLabel.cpp in Sources */,
+				A99E9C0616922F1F00438E54 /* FZLayer.cpp in Sources */,
+				A99E9C0A16922F1F00438E54 /* FZLightSystem.cpp in Sources */,
+				A99E9C0E16922F1F00438E54 /* FZMath.cpp in Sources */,
+				A99E9C1216922F1F00438E54 /* FZMenu.cpp in Sources */,
+				A99E9C1616922F1F00438E54 /* FZMenuItem.cpp in Sources */,
+				A99E9C1A16922F1F00438E54 /* FZMS.cpp in Sources */,
+				A99E9C1E16922F1F00438E54 /* FZNode.cpp in Sources */,
+				A99E9C2216922F1F00438E54 /* FZParallaxNode.cpp in Sources */,
+				A99E9C2616922F1F00438E54 /* FZParticleExamples.cpp in Sources */,
+				A99E9C2A16922F1F00438E54 /* FZParticleSystem.cpp in Sources */,
+				A99E9C2E16922F1F00438E54 /* FZParticleSystemQuad.cpp in Sources */,
+				A99E9C3216922F1F00438E54 /* FZPerformManager.cpp in Sources */,
+				A99E9C3616922F1F00438E54 /* FZPlatforms.cpp in Sources */,
+				A99E9C3C16922F1F00438E54 /* FZRenderTexture.cpp in Sources */,
+				A99E9C4016922F1F00438E54 /* FZResourcesManager.cpp in Sources */,
+				A99E9C4416922F1F00438E54 /* FZScene.cpp in Sources */,
+				A99E9C4816922F1F00438E54 /* FZScheduler.cpp in Sources */,
+				A99E9C4E16922F1F00438E54 /* FZShaderCache.cpp in Sources */,
+				A99E9C5216922F1F00438E54 /* FZSprite.cpp in Sources */,
+				A99E9C5616922F1F00438E54 /* FZSpriteBatch.cpp in Sources */,
+				A99E9C5A16922F1F00438E54 /* FZSpriteFrameCache.cpp in Sources */,
+				A99E9C5E16922F1F00438E54 /* FZTextureCache.cpp in Sources */,
+				A99E9C6216922F1F00438E54 /* FZTMXLayer.cpp in Sources */,
+				A99E9C6616922F1F00438E54 /* FZTMXParser.cpp in Sources */,
+				A99E9C6A16922F1F00438E54 /* FZTMXTiledMap.cpp in Sources */,
+				A99E9C6E16922F1F00438E54 /* FZTransitions.cpp in Sources */,
+				A99E9C8416922F4A00438E54 /* iOS_support.mm in Sources */,
+				A99E9C8816922F4A00438E54 /* iOSGL2_support.mm in Sources */,
+				A99E9C8C16922F4A00438E54 /* macosx_support.mm in Sources */,
+				A99E9C8E16922F4A00438E54 /* model_support.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5161,12 +5145,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				97929761151B818D0088AF66 /* FZAction.cpp in Sources */,
-				97929762151B818D0088AF66 /* FZActionCamera.cpp in Sources */,
-				97929763151B818D0088AF66 /* FZActionEase.cpp in Sources */,
-				97929764151B818D0088AF66 /* FZActionInstant.cpp in Sources */,
-				97929765151B818D0088AF66 /* FZActionInterval.cpp in Sources */,
-				97929766151B818D0088AF66 /* FZAnimation.cpp in Sources */,
 				97929767151B818D0088AF66 /* png.c in Sources */,
 				97929768151B818D0088AF66 /* pngerror.c in Sources */,
 				97929769151B818D0088AF66 /* pngget.c in Sources */,
@@ -5193,58 +5171,64 @@
 				9792977E151B818D0088AF66 /* FZTexture2D.cpp in Sources */,
 				9792977F151B818D0088AF66 /* FZTextureAtlas.cpp in Sources */,
 				97929780151B818D0088AF66 /* FZTypes.cpp in Sources */,
-				97929781151B818D0088AF66 /* FZActionManager.cpp in Sources */,
-				97929782151B818D0088AF66 /* FZAnimationCache.cpp in Sources */,
-				97929784151B818D0088AF66 /* FZDeviceConfig.cpp in Sources */,
-				97929785151B818D0088AF66 /* FZDirector.cpp in Sources */,
-				97929786151B818D0088AF66 /* FZEventManager.cpp in Sources */,
-				97929788151B818D0088AF66 /* FZScheduler.cpp in Sources */,
-				97929789151B818D0088AF66 /* FZShaderCache.cpp in Sources */,
-				9792978A151B818D0088AF66 /* FZSpriteFrameCache.cpp in Sources */,
-				9792978B151B818D0088AF66 /* FZTextureCache.cpp in Sources */,
-				9792978C151B818D0088AF66 /* FZLabel.cpp in Sources */,
-				9792978D151B818D0088AF66 /* FZLayer.cpp in Sources */,
-				9792978E151B818D0088AF66 /* FZLightSystem.cpp in Sources */,
-				9792978F151B818D0088AF66 /* FZMenu.cpp in Sources */,
-				97929790151B818D0088AF66 /* FZMenuItem.cpp in Sources */,
-				97929791151B818D0088AF66 /* FZNode.cpp in Sources */,
-				97929792151B818D0088AF66 /* FZParticleExamples.cpp in Sources */,
-				97929793151B818D0088AF66 /* FZParticleSystem.cpp in Sources */,
-				97929794151B818D0088AF66 /* FZParticleSystemQuad.cpp in Sources */,
-				97929795151B818D0088AF66 /* FZRenderTexture.cpp in Sources */,
-				97929796151B818D0088AF66 /* FZScene.cpp in Sources */,
-				97929797151B818D0088AF66 /* FZSprite.cpp in Sources */,
-				97929798151B818D0088AF66 /* FZSpriteBatch.cpp in Sources */,
-				97929799151B818D0088AF66 /* FZTMXParser.cpp in Sources */,
-				9792979A151B818D0088AF66 /* FZHUD.cpp in Sources */,
-				9792979B151B818D0088AF66 /* FZGLConfig.cpp in Sources */,
-				9792979C151B818D0088AF66 /* FZGLProgram.cpp in Sources */,
-				9792979D151B818D0088AF66 /* FZGLState.cpp in Sources */,
-				9792979E151B818D0088AF66 /* iOS_support.mm in Sources */,
-				979297A0151B818D0088AF66 /* iOSGL2_support.mm in Sources */,
-				979297A1151B818D0088AF66 /* macosx_support.mm in Sources */,
-				979297A4151B818D0088AF66 /* FZBitOrder.cpp in Sources */,
-				979297A5151B818D0088AF66 /* FZAutoList.cpp in Sources */,
-				979297A6151B818D0088AF66 /* FZIO.cpp in Sources */,
-				979297A7151B818D0088AF66 /* FZMath.cpp in Sources */,
-				979297A9151B818D0088AF66 /* FZMS.cpp in Sources */,
-				979297AA151B818D0088AF66 /* FZData.cpp in Sources */,
-				979DF87B151F5EDE0096376C /* FZTMXLayer.cpp in Sources */,
-				979DF87F151F5EDE0096376C /* FZTMXTiledMap.cpp in Sources */,
-				978E2E4A1530893800443FDC /* FZDataStore.cpp in Sources */,
-				9767ABA4153B36BF001BCCDC /* FZResourcesManager.cpp in Sources */,
-				97801DB91549EA8F0019DB49 /* FZTransitions.cpp in Sources */,
-				971DFA051551774700BBE693 /* FZParallaxNode.cpp in Sources */,
 				9791DF9D155491A10080871B /* FZAllocator.cpp in Sources */,
-				9734523115592C36009EAC2A /* FZFontCache.cpp in Sources */,
 				9734523D155941BD009EAC2A /* FZFont.cpp in Sources */,
-				32553F9415E7DFBC0051629E /* FZPerformManager.cpp in Sources */,
 				A976115C1624B96C00A23623 /* base64.c in Sources */,
-				A992ECF2163D863E00CD0C33 /* FZPlatforms.cpp in Sources */,
 				A9BFDA72166A5EA1005E7DE2 /* FZHash.cpp in Sources */,
-				A94E6342166CD75F00100D6E /* model_support.cpp in Sources */,
-				A94E6350166D42C600100D6E /* FZConsole.cpp in Sources */,
 				A95B739216701A65001725FB /* tinythread.cpp in Sources */,
+				A99E9BA716922F1F00438E54 /* FZAction.cpp in Sources */,
+				A99E9BAB16922F1F00438E54 /* FZActionCamera.cpp in Sources */,
+				A99E9BAF16922F1F00438E54 /* FZActionEase.cpp in Sources */,
+				A99E9BB316922F1F00438E54 /* FZActionInstant.cpp in Sources */,
+				A99E9BB716922F1F00438E54 /* FZActionInterval.cpp in Sources */,
+				A99E9BBB16922F1F00438E54 /* FZActionManager.cpp in Sources */,
+				A99E9BBF16922F1F00438E54 /* FZAnimation.cpp in Sources */,
+				A99E9BC116922F1F00438E54 /* FZAnimationCache.cpp in Sources */,
+				A99E9BC516922F1F00438E54 /* FZAutoList.cpp in Sources */,
+				A99E9BCD16922F1F00438E54 /* FZBitOrder.cpp in Sources */,
+				A99E9BD116922F1F00438E54 /* FZConsole.cpp in Sources */,
+				A99E9BD516922F1F00438E54 /* FZData.cpp in Sources */,
+				A99E9BD916922F1F00438E54 /* FZDataStore.cpp in Sources */,
+				A99E9BDF16922F1F00438E54 /* FZDeviceConfig.cpp in Sources */,
+				A99E9BE316922F1F00438E54 /* FZDirector.cpp in Sources */,
+				A99E9BE716922F1F00438E54 /* FZEventManager.cpp in Sources */,
+				A99E9BEB16922F1F00438E54 /* FZFontCache.cpp in Sources */,
+				A99E9BEF16922F1F00438E54 /* FZGLConfig.cpp in Sources */,
+				A99E9BF316922F1F00438E54 /* FZGLProgram.cpp in Sources */,
+				A99E9BF716922F1F00438E54 /* FZGLState.cpp in Sources */,
+				A99E9BFB16922F1F00438E54 /* FZHUD.cpp in Sources */,
+				A99E9BFF16922F1F00438E54 /* FZIO.cpp in Sources */,
+				A99E9C0316922F1F00438E54 /* FZLabel.cpp in Sources */,
+				A99E9C0716922F1F00438E54 /* FZLayer.cpp in Sources */,
+				A99E9C0B16922F1F00438E54 /* FZLightSystem.cpp in Sources */,
+				A99E9C0F16922F1F00438E54 /* FZMath.cpp in Sources */,
+				A99E9C1316922F1F00438E54 /* FZMenu.cpp in Sources */,
+				A99E9C1716922F1F00438E54 /* FZMenuItem.cpp in Sources */,
+				A99E9C1B16922F1F00438E54 /* FZMS.cpp in Sources */,
+				A99E9C1F16922F1F00438E54 /* FZNode.cpp in Sources */,
+				A99E9C2316922F1F00438E54 /* FZParallaxNode.cpp in Sources */,
+				A99E9C2716922F1F00438E54 /* FZParticleExamples.cpp in Sources */,
+				A99E9C2B16922F1F00438E54 /* FZParticleSystem.cpp in Sources */,
+				A99E9C2F16922F1F00438E54 /* FZParticleSystemQuad.cpp in Sources */,
+				A99E9C3316922F1F00438E54 /* FZPerformManager.cpp in Sources */,
+				A99E9C3716922F1F00438E54 /* FZPlatforms.cpp in Sources */,
+				A99E9C3D16922F1F00438E54 /* FZRenderTexture.cpp in Sources */,
+				A99E9C4116922F1F00438E54 /* FZResourcesManager.cpp in Sources */,
+				A99E9C4516922F1F00438E54 /* FZScene.cpp in Sources */,
+				A99E9C4916922F1F00438E54 /* FZScheduler.cpp in Sources */,
+				A99E9C4F16922F1F00438E54 /* FZShaderCache.cpp in Sources */,
+				A99E9C5316922F1F00438E54 /* FZSprite.cpp in Sources */,
+				A99E9C5716922F1F00438E54 /* FZSpriteBatch.cpp in Sources */,
+				A99E9C5B16922F1F00438E54 /* FZSpriteFrameCache.cpp in Sources */,
+				A99E9C5F16922F1F00438E54 /* FZTextureCache.cpp in Sources */,
+				A99E9C6316922F1F00438E54 /* FZTMXLayer.cpp in Sources */,
+				A99E9C6716922F1F00438E54 /* FZTMXParser.cpp in Sources */,
+				A99E9C6B16922F1F00438E54 /* FZTMXTiledMap.cpp in Sources */,
+				A99E9C6F16922F1F00438E54 /* FZTransitions.cpp in Sources */,
+				A99E9C8516922F4A00438E54 /* iOS_support.mm in Sources */,
+				A99E9C8916922F4A00438E54 /* iOSGL2_support.mm in Sources */,
+				A99E9C8D16922F4A00438E54 /* macosx_support.mm in Sources */,
+				A99E9C8F16922F4A00438E54 /* model_support.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

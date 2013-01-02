@@ -31,14 +31,14 @@
 
 #if defined(FZ_OS) && (FZ_OS == kFZPLATFORM_MAC)
 
-#include "FZEventManager.h"
-#include "FZDeviceConfig.h"
-#include "FZDirector.h"
-#include "FZMacros.h"
 #include <sys/types.h>
 #include <sys/sysctl.h>
 #include <OpenGL/OpenGL.h>
 #include <CoreGraphics/CoreGraphics.h>
+#include "../FZEventManager.h"
+#include "../FZDeviceConfig.h"
+#include "../FZDirector.h"
+#include "../FZMacros.h"
 
 using namespace FORZE;
 

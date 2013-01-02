@@ -46,8 +46,8 @@
 #include "FZData.h"
 
 // libpng
-#include "png.h"
-#include "pnginfo.h"
+#include "external/libpng/png.h"
+#include "external/libpng/pnginfo.h"
 
 
 using namespace STD;

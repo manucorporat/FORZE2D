@@ -44,21 +44,21 @@
 
 #if (FZ_OS == kFZPLATFORM_IOS_GL_1)
 #define FZ_OS_MOBILE 1
-#include "iOSGL1_support.h"
+#include "Wrappers/iOSGL1_support.h"
 
 #elif (FZ_OS == kFZPLATFORM_IOS_GL_2)
 #define FZ_OS_MOBILE 1
-#include "iOSGL2_support.h"
+#include "Wrappers/iOSGL2_support.h"
 
 #elif (FZ_OS == kFZPLATFORM_MAC)
 #define FZ_OS_DESKTOP 1
-#include "macosx_support.h"
+#include "Wrappers/macosx_support.h"
 
 #elif (FZ_OS == kFZPLATFORM_PSVITA)
-#include "psvita_support.h"
+#include "Wrappers/psvita_support.h"
 
 #elif (FZ_OS == kFZPLATFORM_MODEL)
-#include "model_support.h"
+#include "Wrappers/model_support.h"
 
 #else
 

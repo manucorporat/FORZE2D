@@ -38,10 +38,10 @@
 #include "FZTexture2D.h"
 #include "FZFont.h"
 #include "FZScheduler.h"
-#include "tinythread.h"
 #include "FZNode.h"
 #include "FZResourcesManager.h"
 #include "FZPerformManager.h"
+#include "external/tinythread/tinythread.h"
 
 
 #define CAPACITY 10

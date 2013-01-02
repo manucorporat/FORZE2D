@@ -32,7 +32,7 @@
 #include "FZMacros.h"
 #include "FZResourcesManager.h"
 #include "FZData.h"
-#include "rapidxml.hpp"
+#include "external/rapidxml/rapidxml.hpp"
 
 
 using namespace rapidxml;

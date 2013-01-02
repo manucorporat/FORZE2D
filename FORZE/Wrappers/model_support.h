@@ -32,8 +32,8 @@
 
 #if !defined(FZ_OS) || (FZ_OS == kFZPLATFORM_MODEL)
 
-#include "gl.h"
-#include "glext.h"
+#include "GLAPI/gl.h"
+#include "GLAPI/glext.h"
 
 #define FZ_GL_SHADERS 1
 
