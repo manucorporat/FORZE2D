@@ -53,9 +53,10 @@ namespace FORZE {
         bool isRunning_;
         thread *thread_;
         float interval_;
-    private:
         
+    private:
         void startThreading();
+        
         
     public:
         _FZOSWRAPPER()
@@ -63,7 +64,6 @@ namespace FORZE {
         , isRunning_(false)
         , interval_(0)
         {
-            
             // STEP ZERO.
             
             // FIRST STEP. Notify Director::applicationLaunching()
@@ -219,7 +219,7 @@ namespace FORZE {
     
     bool fzDevice_getResourcesPath(char *path, fzUInt maxLength)
     {
-        path[0] = '/0';
+        getcwd(path, maxLength);
         return true;
     }
     
