@@ -76,8 +76,8 @@ namespace FORZE {
     {
     protected:
         FiniteTimeAction **p_actions;
-        fzUInt m_numActions;
         fzUInt m_currentAction;
+        fzUInt m_numActions;
         bool m_startedAction;
 
         Sequence();
@@ -160,8 +160,8 @@ namespace FORZE {
     class RotateBy : public ActionInterval
     {
     protected:
-        fzFloat m_startAngle;
         fzFloat m_delta;
+        fzFloat m_startAngle;
         
     public:
         //! Constructs a RotateBy action.
@@ -200,8 +200,8 @@ namespace FORZE {
     class MoveBy : public ActionInterval
     {
     protected:
-        fzPoint m_startPosition;
         fzPoint m_delta;
+        fzPoint m_startPosition;
         
     public:
         //! Constructs a MoveBy action.
@@ -236,10 +236,10 @@ namespace FORZE {
     class SkewBy : public ActionInterval
     {
     protected:
-        fzFloat m_startSkewX;
-        fzFloat m_startSkewY;
         fzFloat m_deltaX;
         fzFloat m_deltaY;
+        fzFloat m_startSkewX;
+        fzFloat m_startSkewY;
         
     public:
         //! Constructs a SkewBy action.
@@ -258,7 +258,8 @@ namespace FORZE {
     class SkewTo : public SkewBy
     {
     protected:
-        fzFloat m_originalX, m_originalY;
+        fzFloat m_originalX;
+        fzFloat m_originalY;
         
     public:
         //! Constructs a SkewTo action.
@@ -275,10 +276,10 @@ namespace FORZE {
     class JumpBy : public ActionInterval
     {
     protected:
-        fzPoint m_startPosition;
         fzPoint m_delta;
         fzFloat m_height;
         fzUInt  m_jumps;
+        fzPoint m_startPosition;
         
     public:
         //! Constructs a JumpBy action.
@@ -348,6 +349,7 @@ namespace FORZE {
     {
     protected:
         fzBezierConfig m_original;
+        
     public:
         //! Constructs a BezierTo action.
         BezierTo(fzFloat duration, const fzBezierConfig& config);
@@ -363,16 +365,18 @@ namespace FORZE {
     class ScaleBy : public ActionInterval
     {
     protected:
-        fzFloat m_originalX, m_originalY;
-        fzFloat m_startScaleX;
-        fzFloat m_startScaleY;
+        fzFloat m_originalX;
+        fzFloat m_originalY;
         fzFloat m_deltaX;
         fzFloat m_deltaY;
+        fzFloat m_startScaleX;
+        fzFloat m_startScaleY;
         
     public:
         //! Constructs a ScaleBy action.
         ScaleBy(fzFloat duration, fzFloat scale);
         ScaleBy(fzFloat duration, fzFloat scaleX, fzFloat scaleY);
+        
         
         // Redefined
         virtual void startWithTarget(void *t) override;
@@ -424,9 +428,9 @@ namespace FORZE {
     class FadeTo : public ActionInterval
     {
     protected:
+        fzFloat m_original;
         fzFloat m_startOpacity;
         fzFloat m_delta;
-        fzFloat m_original;
         
     public:
         //! Constructs a FadeTo action.
@@ -477,8 +481,10 @@ namespace FORZE {
     class TintBy : public ActionInterval
     {
     protected:
+        fzFloat m_deltaR;
+        fzFloat m_deltaG;
+        fzFloat m_deltaB;
         fzColor3B m_startColor;
-        fzFloat m_deltaR, m_deltaG, m_deltaB;
         
     public:
         //! Constructs a TintBy action.
@@ -496,7 +502,9 @@ namespace FORZE {
     class TintTo : public TintBy
     {
     protected:
-        fzFloat m_originalR, m_originalG, m_originalB;
+        fzFloat m_originalR;
+        fzFloat m_originalG;
+        fzFloat m_originalB;
 
         
     public:
@@ -530,12 +538,11 @@ namespace FORZE {
     class Animate : public ActionInterval
     {
     protected:
-        fzFloat         *p_splitTimes;
-        fzInt			m_nextFrame;
         Animation       *p_animation;
-        fzSpriteFrame	m_origFrame;
+        fzInt			m_nextFrame;
         fzUInt			m_executedLoops;
-
+        fzFloat         *p_splitTimes;
+        fzSpriteFrame	m_origFrame;
         
     public:
         //! Constructs a Animate action.

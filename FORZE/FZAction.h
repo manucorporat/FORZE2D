@@ -220,8 +220,8 @@ namespace FORZE {
     {
     protected:
         Action *p_innerAction;
-        fzFloat m_elapsed;
         fzFloat m_step;
+        fzFloat m_elapsed;
         
     public:
         //! Constructs a Step action from the specified inner action and step interval.
@@ -266,20 +266,20 @@ namespace FORZE {
         Node	*followedNode_;
         
         // fast access to the screen dimensions
-        fzPoint halfScreenSize_;
         fzPoint fullScreenSize_;
+        fzPoint halfScreenSize_;
         
         // whether camera should be limited to certain area
-        bool boundarySet_ : 1;
+        bool boundarySet_;
         
         // if screensize is bigger than the boundary - update not needed
-        bool boundaryFullyCovered_ : 1;
+        bool boundaryFullyCovered_;
         
         // world boundaries
-        bool leftBoundary_ : 1;
-        bool rightBoundary_ : 1;
-        bool topBoundary_ : 1;
-        bool bottomBoundary_ : 1;
+        bool leftBoundary_;
+        bool rightBoundary_;
+        bool topBoundary_;
+        bool bottomBoundary_;
         
     public:
         //! Constructs a Follow action.

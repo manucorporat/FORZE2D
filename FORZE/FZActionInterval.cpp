@@ -102,10 +102,10 @@ namespace FORZE {
     
     Sequence::Sequence()
     : ActionInterval(0)
-    , m_currentAction(0)
-    , m_startedAction(false)
-    , m_numActions(0)
     , p_actions(NULL)
+    , m_currentAction(0)
+    , m_numActions(0)
+    , m_startedAction(false)
     { }
     
     Sequence::Sequence(FiniteTimeAction *action1, ...)
@@ -242,8 +242,8 @@ namespace FORZE {
     
     Spawn::Spawn()
     : ActionInterval(0)
-    , m_numActions(0)
     , p_actions(NULL)
+    , m_numActions(0)
     { }
     
     
@@ -371,8 +371,8 @@ namespace FORZE {
     
     Repeat::Repeat(FiniteTimeAction *a, fzUInt t)
     : ActionInterval(0)
-    , m_times(t)
     , p_innerAction(a)
+    , m_times(t)
     , m_total(0)
     {
         FZ_ASSERT(p_innerAction != NULL, "Action cannot be NULL.");
@@ -465,8 +465,8 @@ namespace FORZE {
     
     RotateBy::RotateBy(fzFloat d, fzFloat a)
     : ActionInterval(d)
-    , m_startAngle(0)
     , m_delta(a)
+    , m_startAngle(0)
     { }
     
     
@@ -604,6 +604,8 @@ namespace FORZE {
     : ActionInterval(d)
     , m_deltaX(sX)
     , m_deltaY(sY)
+    , m_startSkewX(0)
+    , m_startSkewY(0)
     { }
     
     
@@ -854,10 +856,10 @@ namespace FORZE {
     
     ScaleBy::ScaleBy(fzFloat d, fzFloat sX, fzFloat sY)
     : ActionInterval(d)
-    , m_deltaX(sX)
-    , m_deltaY(sY)
     , m_originalX(sX)
     , m_originalY(sY)
+    , m_deltaX(sX)
+    , m_deltaY(sY)
     , m_startScaleX(0)
     , m_startScaleY(0)
     { }
@@ -936,6 +938,8 @@ namespace FORZE {
     FadeTo::FadeTo(fzFloat duration, fzFloat opacity)
     : ActionInterval(duration)
     , m_original(opacity)
+    , m_startOpacity(0)
+    , m_delta(0)
     { }
     
     
@@ -1024,6 +1028,7 @@ namespace FORZE {
     : ActionInterval(duration)
     , m_blinks(blinks)
     , m_percentVisible(percent)
+    , m_initialState(false)
     { }
     
     
@@ -1069,6 +1074,7 @@ namespace FORZE {
     , m_deltaR(red)
     , m_deltaG(green)
     , m_deltaB(blue)
+    , m_startColor(fzWHITE)
     { }
     
     
@@ -1174,6 +1180,7 @@ namespace FORZE {
     , p_animation(animation)
     , m_nextFrame(0)
     , m_executedLoops(0)
+    , p_splitTimes(NULL)
     {
         FZ_ASSERT(animation != NULL, "Argument Animation must be non-NULL.");
         animation->retain();
