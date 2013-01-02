@@ -116,8 +116,10 @@ namespace FORZE {
         glGetShaderiv(m_shader, GL_COMPILE_STATUS, &status);
         
         if(!status) {
-            FZLOGERROR("GLShader: Error compiling %s.",shaderTypeToText(m_shaderType));
-            FZLOGERROR("%s", getShaderLog().c_str());
+            FZLOGERROR("GLShader: Error compiling %s.", shaderTypeToText(m_shaderType));
+            string log = getShaderLog();
+            if(!log.empty())
+                FZLOGERROR("%s", log.c_str());
         }
         CHECK_GL_ERROR_DEBUG();
 
@@ -215,7 +217,9 @@ namespace FORZE {
 
         if (status == GL_FALSE) {
             FZLOGERROR("GLProgram: Error linking program: %i.", m_program);
-            FZLOGERROR("%s", getProgramLog().c_str());
+            string log = getProgramLog();
+            if(!log.empty())
+                FZLOGERROR("%s", log.c_str());
             
             fzGLDeleteProgram( m_program );
             m_program = 0;
