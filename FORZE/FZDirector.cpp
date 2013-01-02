@@ -982,7 +982,9 @@ namespace FORZE {
             // initialize singletons
             DataStore::Instance();
             ResourcesManager::Instance();
+#if FORZE_DEBUG == 2
             DeviceConfig::Instance().logDeviceInfo();
+#endif
             
             // set default GL values
             setDefaultGLValues();
