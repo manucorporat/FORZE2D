@@ -132,7 +132,7 @@ namespace FORZE {
     }
     
     
-    GLProgram* ShaderCache::getProgramForKey(fzUInt key) const
+    GLProgram* ShaderCache::getProgramByKey(fzUInt key) const
     {
         if(key >= NUM_SHADERS)
             return NULL;

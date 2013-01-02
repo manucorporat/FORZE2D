@@ -65,8 +65,7 @@ namespace FORZE {
         static TextureCache* p_instance;
         texturesMap m_textures;
         
-        Texture2D* getTextureForHash(int32_t hash) const;
-        Texture2D* getTextureForFilename(const char* key) const;
+        Texture2D* getTextureByHash(int32_t hash) const;
         
     protected:
         // Constructors
@@ -94,7 +93,10 @@ namespace FORZE {
         
         //! Deletes a Texture2D from the cache given a its key name.
         //! @param key is a NULL terminated char string.
-        void removeTextureForFilename(const char* key);
+        void removeTextureByName(const char* key);
+        
+        
+        Texture2D* getTextureByName(const char* key) const;
         
         
         //! Removes unused textures.

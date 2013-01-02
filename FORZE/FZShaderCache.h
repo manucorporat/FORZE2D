@@ -74,7 +74,7 @@ namespace FORZE {
         
         //! Returns the GLProgram associated with the key.
         //! @return NULL if key is invalid.
-        GLProgram* getProgramForKey(fzUInt key) const;
+        GLProgram* getProgramByKey(fzUInt key) const;
     };
 #endif
 }

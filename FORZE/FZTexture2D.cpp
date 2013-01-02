@@ -788,6 +788,7 @@ namespace FORZE {
               m_size.width, m_size.height, m_factor);
     }
     
+    
 #pragma mark - Static methods
     
     void Texture2D::setDefaultTextureFormat(fzTextureFormat format)

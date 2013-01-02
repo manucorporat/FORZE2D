@@ -105,7 +105,7 @@ namespace FORZE {
     }
     
     
-    Font* FontCache::getFontForFilename(const char* filename) const
+    Font* FontCache::getFontByName(const char* filename) const
     {
         FZ_ASSERT(filename, "Filename can not be NULL.");
         return getFontForHash(fzHash(filename));
@@ -127,7 +127,7 @@ namespace FORZE {
     }
     
     
-    void FontCache::removeFontForFilename(const char* filename)
+    void FontCache::removeFontByName(const char* filename)
     {
         FZ_ASSERT(filename, "Filename can not be NULL.");
 

@@ -204,7 +204,7 @@ namespace FORZE {
     void Node::setGLProgram(fzUInt programKey)
     {
 #if FZ_GL_SHADERS
-        setGLProgram(ShaderCache::Instance().getProgramForKey(programKey));
+        setGLProgram(ShaderCache::Instance().getProgramByKey(programKey));
 #else
         FZ_ASSERT(false, "Shaders are not supported.");
 #endif

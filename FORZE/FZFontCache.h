@@ -58,7 +58,6 @@ namespace FORZE {
         fontsMap m_fonts;
         
         Font* getFontForHash(int32_t hash) const;
-        Font* getFontForFilename(const char* filename) const;
         
         
     protected:
@@ -83,8 +82,10 @@ namespace FORZE {
         
         //! Removes a Font from the cache given a its key name.
         //! @param filename is a NULL terminated char string.
-        void removeFontForFilename(const char* filename);
+        void removeFontByName(const char* filename);
         
+        Font* getFontByName(const char* filename) const;
+
         
         //! Removes unused Fonts.
         //! This method will be called if the system througs a memory warning.
