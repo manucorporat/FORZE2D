@@ -175,11 +175,18 @@ namespace FORZE {
         return true;
     }
     
-    static bool __cmd_pframes(const char*,float* values, int nuValues) {
-        const map<int32_t, fzSpriteFrame>& fonts = SpriteFrameCache::Instance().getFrames();
-        map<int32_t, fzSpriteFrame>::const_iterator it(fonts.begin());
-        for(; it != fonts.end(); ++it)
-            it->second.log();
+    static bool __cmd_pframes(const char* text,float* values, int nuValues) {
+        
+        if(text == NULL) {
+            const map<int32_t, fzSpriteFrame>& fonts = SpriteFrameCache::Instance().getFrames();
+            map<int32_t, fzSpriteFrame>::const_iterator it(fonts.begin());
+            for(; it != fonts.end(); ++it)
+                it->second.log();
+        }else{
+            fzSpriteFrame f = SpriteFrameCache::Instance().getSpriteFrameByKey(text);
+            if(f.isValid())
+                f.log();
+        }
         
         return true;
     }
@@ -292,6 +299,8 @@ namespace FORZE {
         {fzHashConst("ptextures"), __cmd_ptextures, 0},
         {fzHashConst("pfonts"), __cmd_pfonts, 0},
         {fzHashConst("pnodes"), __cmd_pnodes, 0},
+        {fzHashConst("pframes"), __cmd_pframes, 0},
+
 
         // SET COMMANDS
         {fzHashConst("sfps"), __cmd_sfps, 1},
