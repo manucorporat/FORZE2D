@@ -42,25 +42,36 @@ namespace FORZE {
     static GLProgram* _fzShader = NULL;
     static fzColor4F _fzColor(fzWHITE);
     
-    static void lazyInitialize()
+    static inline void lazyInitialized()
     {
-        if( ! _fzShader ) {
+        if(!_fzShader ) {
             _fzShader = ShaderCache::Instance().getProgramByKey(kFZShader_mat_uC4);
+            _fzShader->retain();
             fzGLColor(fzWHITE);
             fzGLLineWidth(1);
         }
     }
+    
+    static inline void prepare()
+    {
+        lazyInitialized();
+        _fzShader->setUniform4x4f(kFZUniformMVMatrix_s, 1, GL_FALSE, MS::getMatrix());
+    }
+    
 #endif
     
     
     void fzGLColor(const fzColor4F& color)
     {
+        if(_fzColor != color) {
+            _fzColor = color;
 #if FZ_GL_SHADERS
-        lazyInitialize();
-        _fzShader->setUniform4f("u_color", color.r, color.g, color.b, color.a);
+            lazyInitialized();
+            _fzShader->setUniform4f(kFZUniformColor_s, color.r, color.g, color.b, color.a);
 #else
-        glColor4f(color.r, color.g, color.b, color.a);
+            glColor4f(color.r, color.g, color.b, color.a);
 #endif
+        }
     }
     
     
@@ -77,9 +88,7 @@ namespace FORZE {
         fzGLSetMode(kFZGLMode_Primitives);    
 
 #if FZ_GL_SHADERS
-        lazyInitialize();
-        _fzShader->use();
-        FZ_SAFE_APPLY_MATRIX(_fzShader);
+        prepare();
         glVertexAttribPointer(kFZAttribPosition, 2, GL_FLOAT, GL_FALSE, 0, &vertices);
 #else
         glVertexPointer(2, GL_FLOAT, 0, &vertices);
@@ -95,9 +104,7 @@ namespace FORZE {
         fzGLSetMode(kFZGLMode_Primitives);
         
 #if FZ_GL_SHADERS
-        lazyInitialize();
-        _fzShader->use();
-        FZ_SAFE_APPLY_MATRIX(_fzShader);
+        prepare();
         glVertexAttribPointer(kFZAttribPosition, 2, GL_FLOAT, GL_FALSE, 0, vertices);
 #else
         glVertexPointer(2, GL_FLOAT, 0, vertices);
@@ -112,9 +119,7 @@ namespace FORZE {
         fzVec2 vertices[2] = { origin, destination };
 
 #if FZ_GL_SHADERS
-        lazyInitialize();
-        fzGLUseProgram(_fzShader->getName());
-        FZ_SAFE_APPLY_MATRIX(_fzShader);
+        prepare();
         glVertexAttribPointer(kFZAttribPosition, 2, GL_FLOAT, GL_FALSE, 0, vertices);
 #else
         glVertexPointer(2, GL_FLOAT, 0, vertices);
@@ -129,9 +134,7 @@ namespace FORZE {
 
         fzGLSetMode(kFZGLMode_Primitives);            
 #if FZ_GL_SHADERS
-        lazyInitialize();
-        _fzShader->use();
-        FZ_SAFE_APPLY_MATRIX(_fzShader);
+        prepare();
         glVertexAttribPointer(kFZAttribPosition, 2, GL_FLOAT, GL_FALSE, 0, vertices);
 #else
         glVertexPointer(2, GL_FLOAT, 0, vertices);
@@ -147,9 +150,7 @@ namespace FORZE {
 
         fzGLSetMode(kFZGLMode_Primitives);            
 #if FZ_GL_SHADERS
-        lazyInitialize();
-        _fzShader->use();
-        FZ_SAFE_APPLY_MATRIX(_fzShader);
+        prepare();
         glVertexAttribPointer(kFZAttribPosition, 2, GL_FLOAT, GL_FALSE, 0, vertices);
 #else
         glVertexPointer(2, GL_FLOAT, 0, vertices);
@@ -179,9 +180,7 @@ namespace FORZE {
         
         fzGLSetMode(kFZGLMode_Primitives);            
 #if FZ_GL_SHADERS
-        lazyInitialize();
-        fzGLUseProgram(_fzShader->getName());
-        FZ_SAFE_APPLY_MATRIX(_fzShader);
+        prepare();
         glVertexAttribPointer(kFZAttribPosition, 2, GL_FLOAT, GL_FALSE, 0, vertices);
 #else
         glVertexPointer(2, GL_FLOAT, 0, vertices);
@@ -213,9 +212,7 @@ namespace FORZE {
         
         fzGLSetMode(kFZGLMode_Primitives);            
 #if FZ_GL_SHADERS
-        lazyInitialize();
-        _fzShader->use();
-        FZ_SAFE_APPLY_MATRIX(_fzShader);
+        prepare();
         glVertexAttribPointer(kFZAttribPosition, 2, GL_FLOAT, GL_FALSE, 0, vertices);
 #else
         glVertexPointer(2, GL_FLOAT, 0, vertices);
@@ -242,9 +239,7 @@ namespace FORZE {
         
         fzGLSetMode(kFZGLMode_Primitives);            
 #if FZ_GL_SHADERS
-        lazyInitialize();
-        _fzShader->use();
-        FZ_SAFE_APPLY_MATRIX(_fzShader);
+        prepare();
         glVertexAttribPointer(kFZAttribPosition, 2, GL_FLOAT, GL_FALSE, 0, vertices);
 #else
         glVertexPointer(2, GL_FLOAT, 0, vertices);
@@ -271,9 +266,7 @@ namespace FORZE {
         fzGLSetMode(kFZGLMode_Primitives);
         
 #if FZ_GL_SHADERS
-        lazyInitialize();
-        _fzShader->use();
-        FZ_SAFE_APPLY_MATRIX(_fzShader);
+        prepare();
         glVertexAttribPointer(kFZAttribPosition, 2, GL_FLOAT, GL_FALSE, 0, vertices);
 #else
         glVertexPointer(2, GL_FLOAT, 0, vertices);
