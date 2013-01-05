@@ -783,7 +783,7 @@ namespace FORZE {
               " - ID: %d\n"
               " - Width: %d\n"
               " - Height: %d\n"
-              " - ContentSize: {%f, %f}\n"
+              " - ContentSize: {%.2f, %.2f}\n"
               " - Factor: %f\n", this, m_textureID, m_width, m_height,
               m_size.width, m_size.height, m_factor);
     }

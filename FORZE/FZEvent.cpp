@@ -104,6 +104,6 @@ namespace FORZE {
         FZLog("Event( %d ):\n"
               " - Type: %s\n"
               " - State: %s\n"
-              " - Values: { %f, %f } * %f\n", m_identifier, t, s, m_x, m_y, m_z);
+              " - Values: { %f, %f, %f }\n", m_identifier, t, s, m_x, m_y, m_z);
     }
 }

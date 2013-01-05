@@ -259,7 +259,7 @@ namespace FORZE {
     {
         printf(FORZE_SIGN "Font ( %p ):\n"
               " - Texture: %p\n"
-              " - Line height: %f\n"
+              " - Line height: %.2f\n"
               " - Factor: %d\n"
               " - Chars:", this, p_texture, m_lineHeight, m_factor);
         
