@@ -38,9 +38,9 @@
 
 namespace FORZE {
 
+    static fzColor4F _fzColor(fzWHITE);
 #if FZ_GL_SHADERS
     static GLProgram* _fzShader = NULL;
-    static fzColor4F _fzColor(fzWHITE);
     
     static inline void lazyInitialized()
     {
