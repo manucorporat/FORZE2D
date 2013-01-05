@@ -381,8 +381,10 @@ namespace FORZE {
     {        
         FZ_ASSERT( m_mode == kFZSprite_BatchRendering, "Sprite mode is not kFZSprite_BatchRendering.");
         
-        if(!m_isVisible)
+        if(!m_isVisible) {
+            mode.B.p_currentQuad = NULL;
             return false;
+        }
         
         
         fzV4_T2_C4_Quad *quad = *quadp;
