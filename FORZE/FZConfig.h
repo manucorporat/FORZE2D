@@ -152,6 +152,7 @@
  */
 #define FZ_IO_SUBFIX_CHAR '@'
 
+#define FZ_SPRITE_DEBUG_DRAW 1
 
 
 #pragma mark -

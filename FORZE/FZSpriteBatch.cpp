@@ -134,17 +134,11 @@ namespace FORZE {
         if( m_textureAtlas.getCount() == 0 )
             return;
         
-#if 0
+#if FZ_SPRITE_DEBUG_DRAW
         Sprite *sprite;
         FZ_LIST_FOREACH(m_children, sprite) {
-            fzRect rect =  sprite->getBoundingBox();
-            fzVec2 vertices[4] = {
-                fzVec2(rect.origin),
-                fzVec2(rect.origin.x + rect.size.width, rect.origin.y),
-                fzVec2(rect.origin + rect.size),
-                fzVec2(rect.origin.x, rect.origin.y + rect.size.height)
-            };
-            fzDrawPoly(vertices, 4, true);
+            if(sprite->isVisible())
+            fzDrawRect( sprite->getLocalBoundingBox() );
         }
 #endif
         

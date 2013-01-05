@@ -164,6 +164,17 @@ namespace FORZE {
             glDrawArrays(GL_LINE_STRIP, 0, (GLsizei) numOfVertices);
     }
     
+    void fzDrawRect( const fzRect& rect )
+    {
+        fzVec2 vertices[4] = {
+            rect.origin,
+            fzVec2(rect.origin.x + rect.size.width, rect.origin.y),
+            fzVec2(rect.origin + rect.size),
+            fzVec2(rect.origin.x, rect.origin.y + rect.size.height)
+        };
+        fzDrawPoly(vertices, 4, true);
+    }
+    
     
     void fzDrawShape( const fzVec2 *vertices, fzUInt numOfVertices)
     {    
