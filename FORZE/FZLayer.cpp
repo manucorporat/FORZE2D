@@ -172,9 +172,7 @@ namespace FORZE {
             p_squareColors[0] = color4B;
             p_squareColors[1] = color4B;
             p_squareColors[2] = color4B;
-            p_squareColors[3] = color4B;
-            
-            m_dirtyFlags &= ~kFZDirty_color;
+            p_squareColors[3] = color4B;            
         }
     }
     
@@ -374,9 +372,7 @@ namespace FORZE {
             p_squareColors[3].r = static_cast<GLubyte>(E.r + S.r * ratio);
             p_squareColors[3].g = static_cast<GLubyte>(E.g + S.g * ratio);
             p_squareColors[3].b = static_cast<GLubyte>(E.b + S.b * ratio);
-            p_squareColors[3].a = static_cast<GLubyte>(E.a + S.a * ratio);
-            
-            m_dirtyFlags &= ~kFZDirty_color;
+            p_squareColors[3].a = static_cast<GLubyte>(E.a + S.a * ratio);            
         }
     }
 }
