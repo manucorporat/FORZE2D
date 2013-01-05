@@ -504,6 +504,26 @@ typedef long            GLsizeiptr;
  * GL core functions.
  *-----------------------------------------------------------------------*/
 
+GL_API void GL_APIENTRY glVertexPointer (GLint size, GLenum type, GLsizei stride, const GLvoid *pointer) {}
+GL_API void GL_APIENTRY glTexCoordPointer (GLint size, GLenum type, GLsizei stride, const GLvoid *pointer) {}
+GL_API void GL_APIENTRY glColor4f (GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha) {}
+GL_API void GL_APIENTRY glLoadIdentity (void) {}
+GL_API void GL_APIENTRY glLoadMatrixf (const GLfloat *m) {}
+GL_API void GL_APIENTRY glColorPointer (GLint size, GLenum type, GLsizei stride, const GLvoid *pointer) {}
+GL_API void GL_APIENTRY glEnableClientState (GLenum array) {}
+GL_API void GL_APIENTRY glDisableClientState (GLenum array) {}
+#define GL_PERSPECTIVE_CORRECTION_HINT    0x0C50
+#define GL_POINT_SMOOTH_HINT              0x0C51
+#define GL_LINE_SMOOTH_HINT               0x0C52
+#define GL_FOG_HINT                       0x0C54
+#define GL_GENERATE_MIPMAP_HINT           0x8192
+#define GL_VERTEX_ARRAY                   0x8074
+#define GL_COLOR_ARRAY                    0x8076
+#define GL_TEXTURE_COORD_ARRAY            0x8078
+
+
+
+
 GL_API void         GL_APIENTRY glActiveTexture (GLenum texture) {}
 GL_API void         GL_APIENTRY glAttachShader (GLuint program, GLuint shader) {}
 GL_API void         GL_APIENTRY glBindAttribLocation (GLuint program, GLuint index, const GLchar* name) {}

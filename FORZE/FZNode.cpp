@@ -67,13 +67,13 @@ namespace FORZE {
     , m_anchorPoint              (FZPointZero) // default value
     , m_contentSize              (FZSizeZero) // default value
     , m_tag                      (kFZNodeTagInvalid)
-    , p_glprogram                (NULL)
     , p_grid                     (NULL)
     , p_camera                   (NULL)
     , p_userData                 (NULL)
     , p_parent                   (NULL)
     , p_FBO                      (NULL)
 #if FZ_GL_SHADERS
+    , p_glprogram                (NULL)
     , p_filter                   (NULL)
 #endif
     { }
@@ -301,7 +301,11 @@ namespace FORZE {
     
     GLProgram* Node::getGLProgram() const
     {
+#if FZ_GL_SHADERS
         return p_glprogram;
+#else
+        return NULL;
+#endif
     }
 
     

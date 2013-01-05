@@ -35,7 +35,7 @@
 #include "GLAPI/gl.h"
 #include "GLAPI/glext.h"
 
-#define FZ_GL_SHADERS 1
+#define FZ_GL_SHADERS 0
 
 #endif
 
