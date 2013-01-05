@@ -72,7 +72,7 @@ namespace FORZE {
             m_elapsed += dt;
         
         dt = m_elapsed/m_duration;
-        update(fzMin(1.0f, dt));
+        update((dt > 1.0f) ? 1.0f : dt);
     }
     
     
@@ -438,7 +438,7 @@ namespace FORZE {
                 r = 1.0f;
                 m_total++; // this is the added line
             }
-            p_innerAction->update(fzMin(r, 1.0f));
+            p_innerAction->update((r > 1.0f) ? 1.0f : r);
         }
     }
     

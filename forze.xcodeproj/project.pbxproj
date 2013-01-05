@@ -2916,10 +2916,10 @@
 		97C9B8B615068BCF00B8AEE5 /* external */ = {
 			isa = PBXGroup;
 			children = (
-				A95B738E16701A65001725FB /* tinythread */,
 				A97611521624B96C00A23623 /* libb64 */,
 				97C9B8E115068BCF00B8AEE5 /* libpng */,
 				97C9B8FB15068BCF00B8AEE5 /* rapidXML */,
+				A95B738E16701A65001725FB /* tinythread */,
 			);
 			path = external;
 			sourceTree = "<group>";
@@ -3020,14 +3020,6 @@
 			children = (
 				A99E9B6A16922F1F00438E54 /* FZHUD.cpp */,
 				A99E9B6B16922F1F00438E54 /* FZHUD.h */,
-				A99E9B8F16922F1F00438E54 /* FZScene.cpp */,
-				A99E9B9016922F1F00438E54 /* FZScene.h */,
-				A99E9BA416922F1F00438E54 /* FZTransitions.cpp */,
-				A99E9BA516922F1F00438E54 /* FZTransitions.h */,
-				A99E9B8B16922F1F00438E54 /* FZRenderTexture.cpp */,
-				A99E9B8C16922F1F00438E54 /* FZRenderTexture.h */,
-				A99E9B8016922F1F00438E54 /* FZParticleExamples.cpp */,
-				A99E9B8116922F1F00438E54 /* FZParticleExamples.h */,
 				A99E9B6E16922F1F00438E54 /* FZLabel.cpp */,
 				A99E9B6F16922F1F00438E54 /* FZLabel.h */,
 				A99E9B7016922F1F00438E54 /* FZLayer.cpp */,
@@ -3042,10 +3034,16 @@
 				A99E9B7D16922F1F00438E54 /* FZNode.h */,
 				A99E9B7E16922F1F00438E54 /* FZParallaxNode.cpp */,
 				A99E9B7F16922F1F00438E54 /* FZParallaxNode.h */,
+				A99E9B8016922F1F00438E54 /* FZParticleExamples.cpp */,
+				A99E9B8116922F1F00438E54 /* FZParticleExamples.h */,
 				A99E9B8216922F1F00438E54 /* FZParticleSystem.cpp */,
 				A99E9B8316922F1F00438E54 /* FZParticleSystem.h */,
 				A99E9B8416922F1F00438E54 /* FZParticleSystemQuad.cpp */,
 				A99E9B8516922F1F00438E54 /* FZParticleSystemQuad.h */,
+				A99E9B8B16922F1F00438E54 /* FZRenderTexture.cpp */,
+				A99E9B8C16922F1F00438E54 /* FZRenderTexture.h */,
+				A99E9B8F16922F1F00438E54 /* FZScene.cpp */,
+				A99E9B9016922F1F00438E54 /* FZScene.h */,
 				A99E9B9616922F1F00438E54 /* FZSprite.cpp */,
 				A99E9B9716922F1F00438E54 /* FZSprite.h */,
 				A99E9B9816922F1F00438E54 /* FZSpriteBatch.cpp */,
@@ -3054,6 +3052,8 @@
 				A99E9B9F16922F1F00438E54 /* FZTMXLayer.h */,
 				A99E9BA216922F1F00438E54 /* FZTMXTiledMap.cpp */,
 				A99E9BA316922F1F00438E54 /* FZTMXTiledMap.h */,
+				A99E9BA416922F1F00438E54 /* FZTransitions.cpp */,
+				A99E9BA516922F1F00438E54 /* FZTransitions.h */,
 			);
 			name = Nodes;
 			sourceTree = "<group>";
@@ -3061,6 +3061,10 @@
 		A95CD76916932FAB006CF22C /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				A99E9B4A16922F1F00438E54 /* FZActionManager.cpp */,
+				A99E9B4B16922F1F00438E54 /* FZActionManager.h */,
+				A99E9B4D16922F1F00438E54 /* FZAnimationCache.cpp */,
+				A99E9B4E16922F1F00438E54 /* FZAnimationCache.h */,
 				A99E9B5916922F1F00438E54 /* FZDataStore.cpp */,
 				A99E9B5A16922F1F00438E54 /* FZDataStore.h */,
 				A99E9B5C16922F1F00438E54 /* FZDeviceConfig.cpp */,
@@ -3083,10 +3087,6 @@
 				A99E9B9B16922F1F00438E54 /* FZSpriteFrameCache.h */,
 				A99E9B9C16922F1F00438E54 /* FZTextureCache.cpp */,
 				A99E9B9D16922F1F00438E54 /* FZTextureCache.h */,
-				A99E9B4A16922F1F00438E54 /* FZActionManager.cpp */,
-				A99E9B4B16922F1F00438E54 /* FZActionManager.h */,
-				A99E9B4D16922F1F00438E54 /* FZAnimationCache.cpp */,
-				A99E9B4E16922F1F00438E54 /* FZAnimationCache.h */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -3094,8 +3094,6 @@
 		A95CD76B16932FBC006CF22C /* Support */ = {
 			isa = PBXGroup;
 			children = (
-				A99E9B9316922F1F00438E54 /* FZSelectors.h */,
-				97C9B91215068BCF00B8AEE5 /* FZProtocols.h */,
 				A99E9B4F16922F1F00438E54 /* FZAutoList.cpp */,
 				A99E9B5016922F1F00438E54 /* FZAutoList.h */,
 				A99E9B5316922F1F00438E54 /* FZBitOrder.cpp */,
@@ -3104,14 +3102,16 @@
 				A99E9B5616922F1F00438E54 /* FZConsole.h */,
 				A99E9B5716922F1F00438E54 /* FZData.cpp */,
 				A99E9B5816922F1F00438E54 /* FZData.h */,
+				A9BFDA6F166A5EA0005E7DE2 /* FZHash.cpp */,
+				A9BFDA70166A5EA1005E7DE2 /* FZHash.h */,
 				A99E9B6C16922F1F00438E54 /* FZIO.cpp */,
 				A99E9B6D16922F1F00438E54 /* FZIO.h */,
 				A99E9B7416922F1F00438E54 /* FZMath.cpp */,
 				A99E9B7516922F1F00438E54 /* FZMath.h */,
 				A99E9B7A16922F1F00438E54 /* FZMS.cpp */,
 				A99E9B7B16922F1F00438E54 /* FZMS.h */,
-				A9BFDA6F166A5EA0005E7DE2 /* FZHash.cpp */,
-				A9BFDA70166A5EA1005E7DE2 /* FZHash.h */,
+				97C9B91215068BCF00B8AEE5 /* FZProtocols.h */,
+				A99E9B9316922F1F00438E54 /* FZSelectors.h */,
 			);
 			name = Support;
 			sourceTree = "<group>";
@@ -3142,8 +3142,8 @@
 				A99E9B6716922F1F00438E54 /* FZGLProgram.h */,
 				A99E9B6816922F1F00438E54 /* FZGLState.cpp */,
 				A99E9B6916922F1F00438E54 /* FZGLState.h */,
-				97C9B91615068BCF00B8AEE5 /* FZTexture2D.h */,
 				97C9B91515068BCF00B8AEE5 /* FZTexture2D.cpp */,
+				97C9B91615068BCF00B8AEE5 /* FZTexture2D.h */,
 			);
 			name = OpenGL;
 			sourceTree = "<group>";

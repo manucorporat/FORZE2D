@@ -582,7 +582,7 @@ namespace FORZE {
         
         
         // COMPUTE FINAL FACTOR
-        fzFloat newFactor = roundf(fzMax(fzMax(factorX, factorY), 1.0f));
+        fzFloat newFactor = roundf(fzMax(fzMax(factorX, factorY), (fzFloat)1.0));
         if(newFactor > DeviceConfig::Instance().getMaxFactor())
             newFactor = DeviceConfig::Instance().getMaxFactor();
         
@@ -771,7 +771,7 @@ namespace FORZE {
             m_nextDeltaTimeZero = false;
         } else {
             fzFloat newDt = (now.tv_sec - m_lastUpdate.tv_sec) + (now.tv_usec - m_lastUpdate.tv_usec) / 1000000.0f;
-            newDt = fzMax(0.0f, newDt);
+            newDt = (newDt < 0) ? 0 : newDt;
 #if 0
             if(newDt > (getAnimationInteval()*3.0f))
                 newDt = getAnimationInteval();
