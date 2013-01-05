@@ -31,13 +31,12 @@
 
 #if !defined(FZ_OS) || (FZ_OS == kFZPLATFORM_MODEL)
 
-#include "../FZEventManager.h"
 #include "../FZDeviceConfig.h"
 #include "../FZDirector.h"
-#include "../FZMacros.h"
-#include "../FZGLState.h"
+#include "../FZEvent.h"
 #include "../FZConsole.h"
 #include "../external/tinythread/tinythread.h"
+
 
 using namespace FORZE;
 
@@ -53,11 +52,7 @@ namespace FORZE {
         bool isRunning_;
         thread *thread_;
         float interval_;
-        
-    private:
-        void startThreading();
-        
-        
+
     public:
         _FZOSWRAPPER()
         : thread_(NULL)
@@ -194,7 +189,6 @@ namespace FORZE {
     void fzDevice_getOSVersion(unsigned int *os)
     {
         (void)os;
-        FZLog("NOT IMPLEMENTED");
     }
     
     
