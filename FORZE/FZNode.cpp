@@ -165,7 +165,6 @@ namespace FORZE {
 //            FZ_ASSERT(s.height >= 0, "The content size can not be negative.");
 
             m_contentSize = s;
-            
             m_anchorPointInPoints.x = m_contentSize.width * m_anchorPoint.x;
             m_anchorPointInPoints.y = m_contentSize.height * m_anchorPoint.y;
             makeDirty(kFZDirty_transform);
@@ -422,7 +421,7 @@ namespace FORZE {
         FZ_ASSERT(child, "Child argument can not be NULL.");
         
         if(child->getParent() != this) {
-            FZ_ASSERT(false, "Trying to detach a nonattached node.");
+            FZ_ASSERT(false, "Trying to detach a non-attached node.");
             return false;
         }
         if (m_isRunning)
@@ -560,11 +559,7 @@ namespace FORZE {
         
         // UPDATE OPACITY
         if(m_dirtyFlags & kFZDirty_opacity) {
-            if(p_parent != NULL)
-                m_cachedOpacity = m_opacity * p_parent->getCachedOpacity();
-            else
-                m_cachedOpacity = m_opacity;
-            
+            m_cachedOpacity = m_opacity * p_parent->getCachedOpacity();
             m_dirtyFlags |= kFZDirty_color;
         }
     }
@@ -839,14 +834,15 @@ namespace FORZE {
         if ( m_dirtyFlags & kFZDirty_transform_relative ) {
             
             fzPoint translation(m_position);
-            if( m_isRelativeAnchorPoint == false )
+            if( !m_isRelativeAnchorPoint )
                 translation += m_anchorPointInPoints;
+            
             
             // optimized way to create a transform
             // [6] = {angle, scaleX, scaleY, positionX, positionY, positionZ}
             fzFloat data[6] = {-FZ_DEGREES_TO_RADIANS(m_rotation), m_scaleX, m_scaleY, translation.x, translation.y, m_vertexZ};
-            
             m_transform.assign(data);
+            
             
             // apply anchor point
             if( m_anchorPointInPoints != FZPointZero )
@@ -854,7 +850,6 @@ namespace FORZE {
             
             m_dirtyFlags &= ~kFZDirty_transform_relative;
         }
-        
         return m_transform;
     }
     

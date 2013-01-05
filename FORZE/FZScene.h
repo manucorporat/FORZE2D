@@ -52,6 +52,7 @@ namespace FORZE {
         //! Constructs an empty scene.
         explicit Scene();
         
+        virtual void updateStuff() override;
     };
 }
 

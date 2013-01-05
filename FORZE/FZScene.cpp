@@ -30,6 +30,7 @@
 
 #include "FZScene.h"
 #include "FZDirector.h"
+#include "FZMS.h"
 
 
 namespace FORZE {
@@ -41,4 +42,20 @@ namespace FORZE {
         setAnchorPoint(0.5f, 0.5f);
         setContentSize(Director::Instance().getCanvasSize());
     }
+    
+    void Scene::updateStuff()
+    {
+        // UPDATE TRANSFORM
+        if( m_dirtyFlags & kFZDirty_transform_absolute ) {
+            fzMath_mat4Multiply(MS::getMatrix(), getNodeToParentTransform(), m_transformMV);
+        }
+        
+        
+        // UPDATE OPACITY
+        if(m_dirtyFlags & kFZDirty_opacity) {
+            m_cachedOpacity = m_opacity;
+            m_dirtyFlags |= kFZDirty_color;
+        }
+    }
+
 }
