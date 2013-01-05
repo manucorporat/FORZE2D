@@ -46,9 +46,6 @@ namespace FORZE {
     {
         if( ! _fzShader ) {
             _fzShader = ShaderCache::Instance().getProgramByKey(kFZShader_mat_uC4);
-            _fzShader->addAttribute("a_position", kFZAttribPosition);
-            _fzShader->link();
-                        
             fzGLColor(fzWHITE);
             fzGLLineWidth(1);
         }

@@ -281,7 +281,7 @@ namespace FORZE {
         glVertexAttribPointer(kFZAttribColor, 4, GL_UNSIGNED_BYTE, GL_TRUE, sizeof(_fzC4_T2_V2), &p_quads->bl.color);
 #else
         
-        glLoadMatrixf(get);
+        //glLoadMatrixf(get);
 
         glVertexPointer(2, GL_FLOAT, sizeof(_fzC4_T2_V2), &p_quads->bl.vertex);
         glTexCoordPointer(2, GL_FLOAT, sizeof(_fzC4_T2_V2), &p_quads->bl.texCoord);

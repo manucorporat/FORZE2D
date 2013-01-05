@@ -444,20 +444,6 @@ namespace FORZE {
             quad->tl.color = color4;
             quad->tr.color = color4;            
         }
-        
-#if FZ_SPRITE_CHILDREN
-        Sprite *child = static_cast<Sprite*>(m_children.front());
-        if(child) {
-            unsigned char flags = m_dirtyFlags & kFZDirty_recursive;
-            
-            MS::pushMatrix(m_transformMV);
-            for(; child; child = static_cast<Sprite*>(child->next())) {
-                child->makeDirty(flags);
-                child->updateTransform(quadp);
-            }
-            MS::pop();
-        }
-#endif
         m_dirtyFlags = 0;
         
         return true;
