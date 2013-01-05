@@ -401,15 +401,20 @@ namespace FORZE {
         
         
         // UPDATING ABSOLUTE TRANSFORM
-        if( m_dirtyFlags & kFZDirty_transform_absolute )
-        {
+        if( m_dirtyFlags & kFZDirty_transform_absolute ) {
+            
             register fzVec4 output[4];
 
-#if FZ_SPRITE_CHILDREN || 1
+#if FZ_SPRITE_CHILDREN
             fzMath_mat4Multiply(MS::getMatrix(), getNodeToParentTransform(), m_transformMV);            
-            fzMath_mat4Vec4(m_transformMV, (float*)m_vertices, (float*)output);
+            fzMath_mat4Vec4(m_transformMV,
+                            reinterpret_cast<float*>(m_vertices),
+                            reinterpret_cast<float*>(output));
 #else
-            fzMath_mat4Vec4Affine(MS::getMatrix(), getNodeToParentTransform(), m_vertices, (float*)output);
+            fzMath_mat4Vec4Affine(MS::getMatrix(),
+                                  getNodeToParentTransform(),
+                                  reinterpret_cast<float*>(m_vertices),
+                                  reinterpret_cast<float*>(output));
 #endif
             quad->bl.vertex = output[0];
             quad->br.vertex = output[1];
@@ -444,6 +449,7 @@ namespace FORZE {
             quad->tl.color = color4;
             quad->tr.color = color4;            
         }
+
         m_dirtyFlags = 0;
         
         return true;
@@ -455,7 +461,9 @@ namespace FORZE {
         Node::updateStuff();
         
         if(m_dirtyFlags & kFZDirty_transform_absolute)
-            fzMath_mat4Vec4(m_transformMV, reinterpret_cast<const float*>(m_vertices), (float*)mode.A.m_finalVertices);
+            fzMath_mat4Vec4(m_transformMV,
+                            reinterpret_cast<float*>(m_vertices),
+                            reinterpret_cast<float*>(mode.A.m_finalVertices));
     }
     
     
@@ -478,7 +486,7 @@ namespace FORZE {
         p_glprogram->setUniform4f(kFZUniformColor_s, m_color.r/255.0f, m_color.g/255.0f, m_color.b/255.0f, (m_cachedOpacity * m_alpha)/255.0f);
         
         // atributes
-        glVertexAttribPointer(kFZAttribTexCoords, 2, GL_FLOAT, GL_FALSE, 0, m_texCoords);
+        glVertexAttribPointer(kFZAttribTexCoords, 2, GL_FLOAT, GL_FALSE, sizeof(fzVec2), m_texCoords);
         glVertexAttribPointer(kFZAttribPosition, 2, GL_FLOAT, GL_FALSE, sizeof(fzVec4), mode.A.m_finalVertices);
         
 #else
