@@ -167,12 +167,18 @@ namespace FORZE {
         
         // VERTEX SHADER
         fzBuffer source = ResourcesManager::Instance().loadResource(vShaderFile);
+        if(source.isEmpty())
+            FZ_RAISE("GLProgram: Imposible to load vertex shader.");
+        
         GLShader vertexShader(source.getPointer(), GL_VERTEX_SHADER);
         source.free();
         
         
         // FRAGMENT SHADER (we can reuse the fzBuffer object)
         source = ResourcesManager::Instance().loadResource(fShaderFile);
+        if(source.isEmpty())
+            FZ_RAISE("GLProgram: Imposible to load fragment shader.");
+        
         GLShader fragmentShader(source.getPointer(), GL_FRAGMENT_SHADER);
         source.free();
     
