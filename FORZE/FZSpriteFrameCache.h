@@ -50,12 +50,13 @@ namespace FORZE {
     {
     private:
         // Simplified types
-        typedef pair<int32_t, fzSpriteFrame> framesPair;
 #if FZ_STL_CPLUSPLUS11
         typedef unordered_map<int32_t, fzSpriteFrame> framesMap;
 #else
         typedef map<int32_t, fzSpriteFrame> framesMap;
 #endif
+        typedef pair<int32_t, fzSpriteFrame> framesPair;
+
 
         /* Cache's instance */
         static SpriteFrameCache* p_instance;
@@ -117,7 +118,7 @@ namespace FORZE {
         fzSpriteFrame getSpriteFrameByKey(const char* key) const;
         
         
-        const map<int32_t, fzSpriteFrame>& getFrames() const {
+        const framesMap& getFrames() const {
             return m_frames;
         }
     };

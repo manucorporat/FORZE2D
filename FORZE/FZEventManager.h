@@ -150,7 +150,7 @@ namespace FORZE {
         void catchEvent(const Event& newEvent);
         
         
-        const list<Event>& getEvent() const {
+        const eventList& getEvent() const {
             return m_events;
         }
         

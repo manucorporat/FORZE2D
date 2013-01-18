@@ -108,7 +108,7 @@ namespace FORZE {
         void removeAllTextures();
         
         
-        const map<int32_t, Texture2D*>& getTextures() const {
+        const texturesMap& getTextures() const {
             return m_textures;
         }
     };

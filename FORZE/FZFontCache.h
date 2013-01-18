@@ -34,7 +34,11 @@
 #include "FZTypes.h"
 #include "FZConfig.h"
 #include "FZSelectors.h"
+#if FZ_STL_CPLUSPLUS11
+#include STL_UNORDERED_MAP
+#else
 #include STL_MAP
+#endif
 
 using namespace STD;
 
@@ -50,8 +54,12 @@ namespace FORZE {
     {
     private:
         // Simplified typedefs
-        typedef pair<int32_t, Font*> fontsPair;
+#if FZ_STL_CPLUSPLUS11
+        typedef unordered_map<int32_t, Font*> fontsMap;
+#else
         typedef map<int32_t, Font*> fontsMap;
+#endif
+        typedef pair<int32_t, Font*> fontsPair;
         
         // Director's instance
         static FontCache* p_instance;
@@ -96,7 +104,7 @@ namespace FORZE {
         void removeAllFonts();
         
         
-        const map<int32_t, Font*>& getFonts() const {
+        const fontsMap& getFonts() const {
             return m_fonts;
         }
     };

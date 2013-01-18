@@ -111,8 +111,8 @@ namespace FORZE {
     }
     static bool __cmd_pevents(const char*,float*, int) {
         
-        const list<Event>& events = EventManager::Instance().getEvent();
-        list<Event>::const_iterator event(events.begin());
+        const auto events = EventManager::Instance().getEvent();
+        decltype(events)::const_iterator event(events.begin());
         for(; event != events.end(); ++event)
             event->log();
         
@@ -122,8 +122,8 @@ namespace FORZE {
     static bool __cmd_ptextures(const char* text,float* values, int nuValues) {
         
         if(text == NULL) {
-            const map<int32_t, Texture2D*>& textures = TextureCache::Instance().getTextures();
-            map<int32_t, Texture2D*>::const_iterator it(textures.begin());
+            const auto textures = TextureCache::Instance().getTextures();
+            decltype(textures)::const_iterator it(textures.begin());
             for(; it != textures.end(); ++it) {
                 if(nuValues == 0 || (nuValues > 0 && values[0] == it->second->getName()))
                     it->second->log();
@@ -140,8 +140,8 @@ namespace FORZE {
         
         if(text == NULL) {
             
-            const map<int32_t, Font*>& fonts = FontCache::Instance().getFonts();
-            map<int32_t, Font*>::const_iterator it(fonts.begin());
+            const auto fonts = FontCache::Instance().getFonts();
+            decltype(fonts)::const_iterator it(fonts.begin());
             for(; it != fonts.end(); ++it)
                 it->second->log();
         }else{
@@ -178,8 +178,8 @@ namespace FORZE {
     static bool __cmd_pframes(const char* text,float* values, int nuValues) {
         
         if(text == NULL) {
-            const map<int32_t, fzSpriteFrame>& fonts = SpriteFrameCache::Instance().getFrames();
-            map<int32_t, fzSpriteFrame>::const_iterator it(fonts.begin());
+            const auto fonts = SpriteFrameCache::Instance().getFrames();
+            decltype(fonts)::const_iterator it(fonts.begin());
             for(; it != fonts.end(); ++it)
                 it->second.log();
         }else{
