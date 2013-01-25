@@ -32,6 +32,7 @@
 #include "FZMacros.h"
 #include "FZNode.h"
 #include "FZMath.h"
+#include "FZCamera.h"
 
 
 namespace FORZE {
@@ -40,31 +41,45 @@ namespace FORZE {
     
     ActionCamera::ActionCamera(fzFloat d)
     : ActionInterval(d)
+    , m_centerOrig(FZPoint3Zero)
+    , m_eyeOrig(FZPoint3Zero)
+    , m_upOrig(FZPoint3Zero)
     { }
     
     void ActionCamera::startWithTarget(void *target)
     {
         ActionInterval::startWithTarget(target);
-        
-        //Camera *camera = ((Node*)target_)->getCamera();
-        //camera->getCenter(centerXOrig_, centerYOrig_, centerZOrig_);
-        //camera->getEye(eyeXOrig_, eyeYOrig_, eyeZOrig_);
-        //camera->getUp(upXOrig_, upYOrig_, upZOrig_);
+
+        Camera *camera = ((Node*)target)->getCamera();
+        m_centerOrig = camera->getCenter();
+        m_eyeOrig = camera->getEye();
+        m_upOrig = camera->getUp();
+    }
+    
+    ActionInterval* ActionCamera::reverse() const
+    {
+        return new ReverseTime(this->copy());
+    }
+    
+    ActionCamera* ActionCamera::copy() const
+    {
+        FZLOGERROR("NEEDs implementation.");
+        return NULL;
     }
     
     
 #pragma mark - OrbitCamera
     
-    OrbitCamera::OrbitCamera(fzFloat d, fzFloat r, fzFloat dr, fzFloat aZ, fzFloat daZ, fzFloat aX, fzFloat daX)
-    : ActionCamera(d)
-    , radius_(r)
-    , deltaRadius_(dr)
-    , angleZ_(aZ)
-    , deltaAngleZ_(daZ)
-    , angleX_(aX)
-    , deltaAngleX_(daX)
-    , radDeltaZ_(FZ_DEGREES_TO_RADIANS(daZ))
-    , radDeltaX_(FZ_DEGREES_TO_RADIANS(daX))
+    OrbitCamera::OrbitCamera(fzFloat duration, fzFloat radius, fzFloat deltaRadius, fzFloat angleZ, fzFloat deltaAngleZ, fzFloat angleX, fzFloat deltaAngleX)
+    : ActionCamera(duration)
+    , m_radius(radius)
+    , m_deltaRadius(deltaRadius)
+    , m_angleZ(angleZ)
+    , m_deltaAngleZ(deltaAngleZ)
+    , m_angleX(angleX)
+    , m_deltaAngleX(deltaAngleX)
+    , m_radDeltaZ(FZ_DEGREES_TO_RADIANS(deltaAngleZ))
+    , m_radDeltaX(FZ_DEGREES_TO_RADIANS(deltaAngleX))
     { }
     
     
@@ -73,30 +88,29 @@ namespace FORZE {
         ActionCamera::startWithTarget(target);
         
         // Get spherical radius
-        fzFloat r, zenith, azimuth;
-        sphericalRadius(r, zenith, azimuth);
+        //fzFloat r, zenith, azimuth;
+        //sphericalRadius(r, zenith, azimuth);
         
-        radZ_ = FZ_DEGREES_TO_RADIANS(angleZ_);
-        radX_ = FZ_DEGREES_TO_RADIANS(angleX_);
+        m_radZ = FZ_DEGREES_TO_RADIANS(m_angleZ);
+        m_radX = FZ_DEGREES_TO_RADIANS(m_angleX);
     }
     
     
     void OrbitCamera::update(fzFloat dt)
     {
-        fzFloat r = (radius_ + deltaRadius_ * dt) * Camera::defaultEyeZ;
-        fzFloat za = radZ_ + radDeltaZ_ * dt;
-        fzFloat xa = radX_ + radDeltaX_ * dt;
+        fzFloat r = (m_radius + m_deltaRadius * dt) * Camera::defaultEyeZ;
+        fzFloat za = m_radZ + m_radDeltaZ * dt;
+        fzFloat xa = m_radX + m_radDeltaX * dt;
         
-        fzFloat xaCos = fzMath_cos(xa);
         fzFloat zaSin = fzMath_sin(za);
-
-        fzPoint3 eye(zaSin * xaCos * r + centerXOrig_,
-                     zaSin * xaCos * r + centerYOrig_,
-                     fzMath_cos(za) * r + centerZOrig_);
+        fzPoint3 eye(zaSin * fzMath_cos(xa) * r + m_centerOrig.x,
+                     zaSin * fzMath_sin(xa) * r + m_centerOrig.y,
+                     fzMath_cos(za) * r + m_centerOrig.z);
 
         // Update camera values
         ((Node*)p_target)->getCamera()->setEye(eye);
     }
+    
     
     void OrbitCamera::sphericalRadius(fzFloat& newRadius, fzFloat& zenith, fzFloat& azimuth)
     {
@@ -125,4 +139,17 @@ namespace FORZE {
         azimuth = (x < 0) ? (float)M_PI - asinf(y/s) : asinf(y/s);
         newRadius = r / Camera::defaultEyeZ;
     }
+    
+    
+    OrbitCamera* OrbitCamera::copy() const
+    {
+        return new OrbitCamera(getDuration(),
+                               m_radius,
+                               m_deltaRadius,
+                               m_angleZ,
+                               m_deltaAngleZ,
+                               m_angleX,
+                               m_deltaAngleX);
+    }
+
 }

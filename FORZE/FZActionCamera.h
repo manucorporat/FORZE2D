@@ -40,23 +40,17 @@ namespace FORZE {
     class ActionCamera : public ActionInterval
     {
     protected:
-        fzFloat centerXOrig_;
-        fzFloat centerYOrig_;
-        fzFloat centerZOrig_;
-        
-        fzFloat eyeXOrig_;
-        fzFloat eyeYOrig_;
-        fzFloat eyeZOrig_;
-        
-        fzFloat upXOrig_;
-        fzFloat upYOrig_;
-        fzFloat upZOrig_;
-        
-    public:
+        fzPoint3 m_centerOrig;
+        fzPoint3 m_eyeOrig;
+        fzPoint3 m_upOrig;
+
         ActionCamera(fzFloat duration);
+    public:
         
         // Redefined
-        void startWithTarget(void *target);
+        virtual void startWithTarget(void *target) override;
+        virtual ActionInterval* reverse() const override;
+        virtual ActionCamera* copy() const override;
     };
     
     
@@ -66,17 +60,17 @@ namespace FORZE {
     class OrbitCamera : public ActionCamera
     {
     protected:
-        fzFloat radius_;
-        fzFloat deltaRadius_;
-        fzFloat angleZ_;
-        fzFloat deltaAngleZ_;
-        fzFloat angleX_;
-        fzFloat deltaAngleX_;
+        fzFloat m_radius;
+        fzFloat m_deltaRadius;
+        fzFloat m_angleZ;
+        fzFloat m_deltaAngleZ;
+        fzFloat m_angleX;
+        fzFloat m_deltaAngleX;
         
-        fzFloat radZ_;
-        fzFloat radDeltaZ_;
-        fzFloat radX_;
-        fzFloat radDeltaX_;
+        fzFloat m_radZ;
+        fzFloat m_radDeltaZ;
+        fzFloat m_radX;
+        fzFloat m_radDeltaX;
         
     public:
         /** creates a CCOrbitCamera action with radius, delta-radius,  z, deltaZ, x, deltaX */
@@ -87,9 +81,10 @@ namespace FORZE {
         
         
         // Redefined
-        void startWithTarget(void *target);
-        void update(fzFloat delta);
+        virtual void startWithTarget(void *target) override;
+        virtual void update(fzFloat delta) override;
         
+        virtual OrbitCamera* copy() const override;
     };
 }
 #endif

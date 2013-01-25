@@ -170,4 +170,11 @@ class ActionCallFuncND : public ActionBase
 public:
     ActionCallFuncND();
 };
+
+
+class ActionOrbit : public ActionBase
+{
+public:
+    ActionOrbit();
+};
 // */
