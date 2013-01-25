@@ -181,7 +181,7 @@ namespace FORZE {
             
             fzSize displaySize = Director::Instance().getRenderingRect().size;
             fzMath_mat4OrthoProjection(0, displaySize.width, 0, displaySize.height, -1024, 1024, projection);
-            fzMath_mat4Multiply(projection, getNodeToParentTransform(), m_transformMV);
+            fzMath_mat4Multiply(projection, getNodeToParentTransform().m, m_transformMV);
         }
 
     }

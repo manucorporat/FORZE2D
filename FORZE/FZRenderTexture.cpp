@@ -73,7 +73,7 @@ namespace FORZE {
     void RenderTexture::begin()
     {
         m_grabber.begin();
-        fzMath_mat4Multiply(MS::getMatrix(), getParentToNodeTransform(), m_renderTransform);
+        fzMath_mat4Multiply(MS::getMatrix(), getParentToNodeTransform().m, m_renderTransform);
         MS::pushMatrix(m_renderTransform);
     }
     
@@ -81,7 +81,7 @@ namespace FORZE {
     void RenderTexture::beginWithClear(const fzColor4F& c)
     {
         m_grabber.beginWithClear(c);
-        fzMath_mat4Multiply(MS::getMatrix(), getParentToNodeTransform(), m_renderTransform);
+        fzMath_mat4Multiply(MS::getMatrix(), getParentToNodeTransform().m, m_renderTransform);
         MS::pushMatrix(m_renderTransform);
     }
     

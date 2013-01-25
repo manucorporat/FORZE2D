@@ -32,8 +32,7 @@
 
 #include "FZMath.h"
 #include "FZMacros.h"
-#include "Optimized/neon_support.h"
-#include "Optimized/SSE_support.h"
+#include "Optimized/FZMathInline.h"
 
 
 namespace FORZE {
@@ -71,159 +70,152 @@ namespace FORZE {
     }
     
     
-    void fzMath_mat4Copy(const float* m1, float* mat)
-    {
-#if defined(__ARM_NEON__)
-        _NEON_mat4Copy(m1, mat);
-#else
-        memcpy(mat, m1, sizeof(fzMat4));
-#endif
-    }
-    
-    
-    void fzMath_mat4Multiply(const float* m1, const fzAffineTransform &affine, float* mat)
+    void fzMath_mat4Rotate(float* m1, float radians)
     {
         FZ_ASSERT(m1 != NULL, "Input matrix 1 cannot be NULL.");
-        FZ_ASSERT(mat != NULL, "Output pointer cannot be NULL.");
-        FZ_ASSERT(m1 != mat, "Input matrix and output matrix cannot be the same one.");
 
-        const float* m2 = affine.m;
-
-#if defined(__ARM_NEON__)
-        
-        _NEON_mat4Multiply(m1, m2, mat);
-        
-#else        
-        
-        // first column
-        mat[0] = m1[0] * m2[0] + m1[4] * m2[1];
-        mat[1] = m1[1] * m2[0] + m1[5] * m2[1];
-        mat[2] = m1[2] * m2[0] + m1[6] * m2[1];
-        mat[3] = 0;
-        
-        // second column
-        mat[4] = m1[0] * m2[2] + m1[4] * m2[3];
-        mat[5] = m1[1] * m2[2] + m1[5] * m2[3];
-        mat[6] = m1[2] * m2[2] + m1[6] * m2[3];
-        mat[7] = 0;
-        
-        // the third column does not change
-        memcpy(&mat[8], &m1[8], sizeof(float) * 4); // vmov in NEON
-        
-        // fourth column
-        mat[12] = m1[0] * m2[4] + m1[4] * m2[5] + m1[12];
-        mat[13] = m1[1] * m2[4] + m1[5] * m2[5] + m1[13];
-        mat[14] = m1[2] * m2[4] + m1[6] * m2[5] + m1[14] + m2[6];
-        mat[15] = 1;
-#endif
+        _inline_mat4Rotate(m1, radians);
     }
     
     
-    void fzMath_mat4Multiply(const float* m1, const float* m2, float* mat)
+    void fzMath_mat4Copy(const float* src, float* dst)
+    {
+        FZ_ASSERT(src != NULL, "Source matrix cannot be NULL.");
+        FZ_ASSERT(dst != NULL, "Destination matrix cannot be NULL.");
+
+        _inline_mat4Copy(src, dst);
+    }
+    
+    
+    void fzMath_mat4MultiplySafe(const float* m1, const float* m2, float* mOut)
     {
         FZ_ASSERT(m1 != NULL, "Input matrix 1 cannot be NULL.");
         FZ_ASSERT(m2 != NULL, "Input matrix 2 cannot be NULL.");
-        FZ_ASSERT(m1 != mat, "Input matrix and output matrix cannot be the same one.");
+        FZ_ASSERT(mOut != NULL, "Output matrix cannot be NULL.");
+        FZ_ASSERT(m1 != mOut, "Input and output can not have the same pointer.");
 
-        
-        mat[0] = m1[0] * m2[0] + m1[4] * m2[1] + m1[8] * m2[2] + m1[12] * m2[3];
-        mat[1] = m1[1] * m2[0] + m1[5] * m2[1] + m1[9] * m2[2] + m1[13] * m2[3];
-        mat[2] = m1[2] * m2[0] + m1[6] * m2[1] + m1[10] * m2[2] + m1[14] * m2[3];
-        mat[3] = m1[3] * m2[0] + m1[7] * m2[1] + m1[11] * m2[2] + m1[15] * m2[3];
-        
-        mat[4] = m1[0] * m2[4] + m1[4] * m2[5] + m1[8] * m2[6] + m1[12] * m2[7];
-        mat[5] = m1[1] * m2[4] + m1[5] * m2[5] + m1[9] * m2[6] + m1[13] * m2[7];
-        mat[6] = m1[2] * m2[4] + m1[6] * m2[5] + m1[10] * m2[6] + m1[14] * m2[7];
-        mat[7] = m1[3] * m2[4] + m1[7] * m2[5] + m1[11] * m2[6] + m1[15] * m2[7];
-        
-        mat[8] = m1[0] * m2[8] + m1[4] * m2[9] + m1[8] * m2[10] + m1[12] * m2[11];
-        mat[9] = m1[1] * m2[8] + m1[5] * m2[9] + m1[9] * m2[10] + m1[13] * m2[11];
-        mat[10] = m1[2] * m2[8] + m1[6] * m2[9] + m1[10] * m2[10] + m1[14] * m2[11];
-        mat[11] = m1[3] * m2[8] + m1[7] * m2[9] + m1[11] * m2[10] + m1[15] * m2[11];
-        
-        mat[12] = m1[0] * m2[12] + m1[4] * m2[13] + m1[8] * m2[14] + m1[12] * m2[15];
-        mat[13] = m1[1] * m2[12] + m1[5] * m2[13] + m1[9] * m2[14] + m1[13] * m2[15];
-        mat[14] = m1[2] * m2[12] + m1[6] * m2[13] + m1[10] * m2[14] + m1[14] * m2[15];
-        mat[15] = m1[3] * m2[12] + m1[7] * m2[13] + m1[11] * m2[14] + m1[15] * m2[15];
+        _inline_mat4MultiplySafe(m1, m2, mOut);
     }
     
     
-    void fzMath_mat4Vec2(const float* m1, const float* m2, float* mat)
+    void fzMath_mat4Multiply(const float* m1, const float* m2, float* mOut)
     {
         FZ_ASSERT(m1 != NULL, "Input matrix 1 cannot be NULL.");
         FZ_ASSERT(m2 != NULL, "Input matrix 2 cannot be NULL.");
-        FZ_ASSERT(mat != NULL, "Output pointer cannot be NULL.");
+        FZ_ASSERT(mOut != NULL, "Output matrix cannot be NULL.");
+        FZ_ASSERT(m1 != mOut && m2 != mOut, "Input and output can not have the same pointer.");
         
-#if defined(__ARM_NEON__) && 0
-        
-        _NEON_mat4Vec2(m1, m2, mat);
-        
-#else
-        
-        mat[0] = m1[0] * m2[0] + m1[4] * m2[1] + m1[12];
-        mat[1] = m1[1] * m2[0] + m1[5] * m2[1] + m1[13];
-        
-        mat[2] = m1[0] * m2[2] + m1[4] * m2[3] + m1[12];
-        mat[3] = m1[1] * m2[2] + m1[5] * m2[3] + m1[13];
-        
-        mat[4] = m1[0] * m2[6] + m1[4] * m2[7] + m1[12];
-        mat[5] = m1[1] * m2[6] + m1[5] * m2[7] + m1[13];
-        
-        mat[6] = m1[0] * m2[4] + m1[4] * m2[5] + m1[12];
-        mat[7] = m1[1] * m2[4] + m1[5] * m2[5] + m1[13];
-        
-#endif
+        _inline_mat4Multiply(m1, m2, mOut);
     }
     
     
-    void fzMath_mat4Vec4(const float* m1, const float* m2, float* mat)
+    void fzMath_mat4Vec2(const float* m1, const float* v1, float* vOut)
     {
         FZ_ASSERT(m1 != NULL, "Input matrix 1 cannot be NULL.");
-        FZ_ASSERT(m2 != NULL, "Input matrix 2 cannot be NULL.");
-        FZ_ASSERT(mat != NULL, "Output pointer cannot be NULL.");
+        FZ_ASSERT(v1 != NULL, "Input matrix 2 cannot be NULL.");
+        FZ_ASSERT(vOut != NULL, "Output vertices cannot be NULL.");
         
-#if defined(__ARM_NEON__)
-        
-        _NEON_mat4Vec4(m1, m2, mat);
-        
-#else
-        
-        mat[0] = m1[0] * m2[0] + m1[4] * m2[1] + m1[12];
-        mat[1] = m1[1] * m2[0] + m1[5] * m2[1] + m1[13];
-        mat[2] = m1[2] * m2[0] + m1[6] * m2[1] + m1[14];
-        
-        mat[4] = m1[0] * m2[2] + m1[4] * m2[3] + m1[12];
-        mat[5] = m1[1] * m2[2] + m1[5] * m2[3] + m1[13];
-        mat[6] = m1[2] * m2[2] + m1[6] * m2[3] + m1[14];
-        
-        mat[8] = m1[0] * m2[4] + m1[4] * m2[5] + m1[12];
-        mat[9] = m1[1] * m2[4] + m1[5] * m2[5] + m1[13];
-        mat[10] = m1[2] * m2[4] + m1[6] * m2[5] + m1[14];
-        
-        mat[12] = m1[0] * m2[6] + m1[4] * m2[7] + m1[12];
-        mat[13] = m1[1] * m2[6] + m1[5] * m2[7] + m1[13];
-        mat[14] = m1[2] * m2[6] + m1[6] * m2[7] + m1[14];
-        
-#endif
+        _inline_mat4Vec2(m1, v1, vOut);
     }
     
     
-    void fzMath_mat4Vec4Affine(const float* matrixInput, const fzAffineTransform& affine, const float* vertices2DInput, float* vertices4DOutput) {
-        FZ_ASSERT(matrixInput != NULL, "Input matrix 1 cannot be NULL.");
-        FZ_ASSERT(vertices2DInput != NULL, "Input matrix 2 cannot be NULL.");
-        FZ_ASSERT(vertices4DOutput != NULL, "Output pointer cannot be NULL.");
+    void fzMath_mat4Vec4(const float* m1, const float* v1, float* vOut)
+    {
+        FZ_ASSERT(m1 != NULL, "Input matrix 1 cannot be NULL.");
+        FZ_ASSERT(v1 != NULL, "Input matrix 2 cannot be NULL.");
+        FZ_ASSERT(vOut != NULL, "Output vertices cannot be NULL.");
         
-#if defined(__ARM_NEON__)
+        _inline_mat4Vec4(m1, v1, vOut);
+    }
+    
+    
+    bool fzMath_mat4Invert(const float *m, float *mOut)
+    {
+        double det;
+        int i;
         
-        _NEON_mat4Vec4Affine(matrixInput, affine.m, vertices2DInput, vertices4DOutput);
+        mOut[0] = m[5] * m[10] -
+        m[9]  * m[6];
         
-#else
-        register fzMat4 finalMatrix;
-        fzMath_mat4Multiply(matrixInput, affine, finalMatrix);
-        fzMath_mat4Vec4(finalMatrix, vertices2DInput, vertices4DOutput);
+        mOut[4] = -m[4] * m[10] +
+        m[8]  * m[6];
         
-#endif
+        mOut[8] = m[4] * m[9] -
+        m[8]  * m[5];
         
+        mOut[12] = -m[4] * m[9] * m[14] +
+        m[4]  * m[10] * m[13] +
+        m[8]  * m[5] * m[14] -
+        m[8]  * m[6] * m[13] -
+        m[12] * m[5] * m[10] +
+        m[12] * m[6] * m[9];
+        
+        mOut[1] = -m[1] * m[10] +
+        m[9]  * m[2];
+        
+        mOut[5] = m[0] * m[10] -
+        m[8]  * m[2];
+        
+        mOut[9] = -m[0] * m[9] +
+        m[8]  * m[1];
+        
+        mOut[13] = m[0] * m[9] * m[14] -
+        m[0]  * m[10] * m[13] -
+        m[8]  * m[1] * m[14] +
+        m[8]  * m[2] * m[13] +
+        m[12] * m[1] * m[10] -
+        m[12] * m[2] * m[9];
+        
+        mOut[2] = m[1]  * m[6] -
+        m[5]  * m[2];
+        
+        mOut[6] = -m[0]  * m[6] +
+        m[4]  * m[2];
+        
+        mOut[10] = m[0]  * m[5] -
+        m[4]  * m[1];
+        
+        mOut[14] = -m[0]  * m[5] * m[14] +
+        m[0]  * m[6] * m[13] +
+        m[4]  * m[1] * m[14] -
+        m[4]  * m[2] * m[13] -
+        m[12] * m[1] * m[6] +
+        m[12] * m[2] * m[5];
+        
+        mOut[3] = 0;
+        mOut[7] = 0;
+        mOut[11] = 0;
+        mOut[15] = 1;
+        
+        det = m[0] * mOut[0] + m[1] * mOut[4] + m[2] * mOut[8] + m[3] * mOut[12];
+        
+        if (det == 0) {
+            FZLOGERROR("fzAffineTransform: Imposible to get inverse.");
+            return false;
+        }
+        
+        det = 1.0 / det;
+        
+        for (i = 0; i < 15; i++)
+            mOut[i] *= det;
+        
+        return true;
+    }
+    
+    
+    void fzMath_mat4Print(const float* O)
+    {
+        FZ_ASSERT(O != NULL, "Input matrix cannot be NULL.");
+
+        FZLog("Matrix 4x4 %p {\n"
+              "\t{%f, %f, %f, %f}\n"
+              "\t{%f, %f, %f, %f}\n"
+              "\t{%f, %f, %f, %f}\n"
+              "\t{%f, %f, %f, %f}\n}", O,
+              O[0],O[4],O[8],O[12],
+              O[1],O[5],O[9],O[13],
+              O[2],O[6],O[10],O[14],
+              O[3],O[7],O[11],O[15]);
     }
     
     
@@ -231,7 +223,7 @@ namespace FORZE {
                                           fzFloat zNear, fzFloat zFar,
                                           float *output)
     {
-        FZ_ASSERT(output != NULL, "Output pointer cannot be NULL.");
+        FZ_ASSERT(output != NULL, "Output matrix cannot be NULL.");
 
         fzFloat r = FZ_DEGREES_TO_RADIANS(fovY / 2);
         fzFloat deltaZ = zFar - zNear;
@@ -271,65 +263,52 @@ namespace FORZE {
         output[14] = tz;        
     }
     
-    
-    void fzMath_mat4print(const float* O)
-    {
-        printf("Matrix 4x4 {\n  {%f, %f, %f, %f}\n  {%f, %f, %f, %f}\n  {%f, %f, %f, %f}\n  {%f, %f, %f, %f}}\n", 
-               O[0],O[4],O[8],O[12],O[1],O[5],O[9],O[13],O[2],O[6],O[10],O[14],O[3],O[7],O[11],O[15]);
-    }
-    
   
     void fzMath_mat4LookAt(const fzPoint3& eye, const fzPoint3& center, const fzPoint3& up, float *output)
     {     
         FZ_ASSERT(output != NULL, "Output pointer cannot be NULL.");
 
         fzPoint3 f(center);
-        f.x -= eye.x;
-        f.y -= eye.y;
-        f.z -= eye.z;
+        f -= eye;
         f.normalize();
 
         fzPoint3 up2(up);
         up2.normalize();
 
-        fzPoint3 s(f.getCrossed(up2));
+        fzPoint3 s = f.getCrossed(up2);
         s.normalize();
         
         fzPoint3 u(s.getCrossed(f));
+        // u.normalize();
         //s.normalize();
-        u.normalize();
         
         fzMath_mat4Identity(output);
         
-        
-        output[0] = s.x;
+        output[0] = s.x;  //1
         output[4] = s.y;
         output[8] = s.z;
         
         output[1] = u.x;
-        output[5] = u.y;
+        output[5] = u.y; // 1
         output[9] = u.z;
         
         output[2] = -f.x;
         output[6] = -f.y;
-        output[10] = -f.z;
-        
+        output[10] = -f.z; // 1
+    
 
+        float x = -eye.x; //mat[12]
+        float y = -eye.y; //mat[13]
+        float z = -eye.z; //mat[14]
+
+
+        float mat[4];
+        mat[0] = output[0] * x + output[4] * y + output[8] * z + output[12];
+        mat[1] = output[1] * x + output[5] * y + output[9] * z + output[13];
+        mat[2] = output[2] * x + output[6] * y + output[10] * z + output[14];
+        mat[3] = output[3] * x + output[7] * y + output[11] * z + output[15];
         
-        /*
-        fzMat4 translationMatrix;
-        fzAffineTransform translate(FZAffineTransformIdentity);
-        translate.translate(-eye.x, -eye.y);
-        translate.setZ(-eye.y);
-         */
         
-        /*
-        fzMath_mat4Multiply(<#const fzFloat *mIn1#>, <#const fzFloat *mIn2#>, <#fzFloat *mOut#>)
-        fzMath_mat4Multiply(output, translate, output);
-        */
-        
-        // kmMat4 translate;
-        // kmMat4Translation(&translate, -pEye->x, -pEye->y, -pEye->z);
-        // kmMat4Multiply(pOut, pOut, &translate);
+        memcpy(&output[12], mat, sizeof(float)*4);        
     }
 }

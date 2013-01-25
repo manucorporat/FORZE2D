@@ -240,7 +240,7 @@ namespace FORZE {
           
         
     public:
-        fzMat4 m_transformMV;
+        fzAffineTransform m_transform;
         
         int getAutorotation() const {
             return m_autoOrientation;

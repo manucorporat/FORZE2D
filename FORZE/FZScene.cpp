@@ -47,7 +47,7 @@ namespace FORZE {
     {
         // UPDATE TRANSFORM
         if( m_dirtyFlags & kFZDirty_transform_absolute ) {
-            fzMath_mat4Multiply(MS::getMatrix(), getNodeToParentTransform(), m_transformMV);
+            fzMath_mat4Multiply(MS::getMatrix(), getNodeToParentTransform().m, m_transformMV);
         }
         
         
