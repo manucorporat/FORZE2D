@@ -125,6 +125,7 @@ namespace FORZE {
             return p_texture != NULL;
         }
         
+        
         void log() const;
 
         

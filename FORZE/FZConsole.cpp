@@ -50,13 +50,12 @@
 #define MAXLENGTH 1024
 
 
-
 namespace FORZE {
         
 #pragma mark - FUNCTIONS
     
-    static bool __cmd_help(const char*,float*, int) {
-        
+    static bool __cmd_help(const char*,float*, int)
+    {
         FZLog("Console:\n"
               " - clear[]\n"
               " - exit[]: exits the console.\n\n"
@@ -89,38 +88,39 @@ namespace FORZE {
 
         return true;
     }
-    
-    static bool __cmd_clear(const char*,float*, int) {
+    static bool __cmd_clear(const char*,float*, int)
+    {
         for(int i = 0; i < 200; ++i)
             printf("\n");
         
         return true;
     }
-    static bool __cmd_exit(const char*,float*, int) {
+    static bool __cmd_exit(const char*,float*, int)
+    {
         return false;
     }
-    
-    static bool __cmd_pfps(const char*,float*, int) {
+    static bool __cmd_pfps(const char*,float*, int)
+    {
         FZLog("Console: %f\n", 1/Director::Instance().getDelta());
         return true;
     }
-    static bool __cmd_pinfo(const char*,float*, int) {
+    static bool __cmd_pinfo(const char*,float*, int)
+    {
         PerformManager::Instance().perform(&DeviceConfig::Instance(),
                                            SEL_VOID(DeviceConfig::logDeviceInfo), false);
         return true;
     }
-    static bool __cmd_pevents(const char*,float*, int) {
-        
-        const auto events = EventManager::Instance().getEvent();
-        decltype(events)::const_iterator event(events.begin());
+    static bool __cmd_pevents(const char*,float*, int)
+    {
+        const list<Event>& events = EventManager::Instance().getEvent();
+        list<Event>::const_iterator event(events.begin());
         for(; event != events.end(); ++event)
             event->log();
         
         return true;
     }
-    
-    static bool __cmd_ptextures(const char* text,float* values, int nuValues) {
-        
+    static bool __cmd_ptextures(const char* text,float* values, int nuValues)
+    {
         if(text == NULL) {
             const auto textures = TextureCache::Instance().getTextures();
             decltype(textures)::const_iterator it(textures.begin());
@@ -135,9 +135,8 @@ namespace FORZE {
         }
         return true;
     }
-    
-    static bool __cmd_pfonts(const char* text,float* values, int nuValues) {
-        
+    static bool __cmd_pfonts(const char* text,float* values, int nuValues)
+    {
         if(text == NULL) {
             
             const auto fonts = FontCache::Instance().getFonts();
@@ -152,9 +151,8 @@ namespace FORZE {
         
         return true;
     }
-    
-    static int __iterate(Node *node, int level) {
-        
+    static int __iterate(Node *node, int level)
+    {
         Node *n;
         int count = 1;
         for(int i = 0; i < level; ++i)
@@ -166,17 +164,16 @@ namespace FORZE {
         }
         return count;
     }
-    
-    static bool __cmd_pnodes(const char*,float* values, int nuValues) {
+    static bool __cmd_pnodes(const char*,float* values, int nuValues)
+    {
         FZLog("Nodes:");
         Node *node = (Node*)Director::Instance().getRunningScene();
         int count = __iterate(node, 0);
         printf("%d nodes in total.\n\n", count);
         return true;
     }
-    
-    static bool __cmd_pframes(const char* text,float* values, int nuValues) {
-        
+    static bool __cmd_pframes(const char* text,float* values, int nuValues)
+    {
         if(text == NULL) {
             const auto fonts = SpriteFrameCache::Instance().getFrames();
             decltype(fonts)::const_iterator it(fonts.begin());
@@ -190,33 +187,38 @@ namespace FORZE {
         
         return true;
     }
-
-    static bool __cmd_sfps(const char*,float* v, int) {
+    static bool __cmd_sfps(const char*,float* v, int)
+    {
         Director::Instance().setAnimationInterval(1.0f/v[0]);
         return true;
     }
-    static bool __cmd_shud(const char*,float* v, int) {
+    static bool __cmd_shud(const char*,float* v, int)
+    {
         Director::Instance().setDisplayFPS(v[0]!=0.0f);
         return true;
     }
-    static bool __cmd_stimescale(const char*,float* v, int) {
+    static bool __cmd_stimescale(const char*,float* v, int)
+    {
         Scheduler::Instance().setTimeScale(v[0]);
         return true;
     }
-    static bool __cmd_scanvassize(const char*,float* v, int) {
+    static bool __cmd_scanvassize(const char*,float* v, int)
+    {
         Director::Instance().setCanvasSize(fzSize(v[0], v[1]));
         return true;
     }
-    static bool __cmd_swindowsize(const char*,float* v, int) {
+    static bool __cmd_swindowsize(const char*,float* v, int)
+    {
         Director::Instance().setWindowSize(fzSize(v[0], v[1]));
         return true;
     }
-    static bool __cmd_sresizemode(const char*,float* v, int) {
+    static bool __cmd_sresizemode(const char*,float* v, int)
+    {
         Director::Instance().setResizeMode((fzResizeMode)v[0]);
         return true;
     }
-    static bool __cmd_event(const char*,float *values, int nuValues) {
-        
+    static bool __cmd_event(const char*,float *values, int nuValues)
+    {
         Event event(OSW::Instance(), (int)values[0],
                     (fzEventType)values[1],
                     (fzEventState)values[2],
@@ -225,65 +227,69 @@ namespace FORZE {
         EventManager::Instance().catchEvent(event);
         return true;
     }
-    static bool __cmd_resume(const char*,float*, int) {
+    static bool __cmd_resume(const char*,float*, int)
+    {
         Director::Instance().resume();
         return true;
     }
-    static bool __cmd_pause(const char*,float*, int) {
+    static bool __cmd_pause(const char*,float*, int)
+    {
         Director::Instance().pause();
         return true;
     }
-    static bool __cmd_startanimation(const char*,float*, int) {
+    static bool __cmd_startanimation(const char*,float*, int)
+    {
         Director::Instance().startAnimation();
         return true;
     }
-    static bool __cmd_stopanimation(const char*,float*, int) {
+    static bool __cmd_stopanimation(const char*,float*, int)
+    {
         Director::Instance().stopAnimation();
         return true;
     }
-    static bool __cmd_pop(const char*,float*, int) {
+    static bool __cmd_pop(const char*,float*, int)
+    {
         Director::Instance().popScene();
         return true;
     }
-    static bool __cmd_releasetextures(const char*,float*, int) {
+    static bool __cmd_releasetextures(const char*,float*, int)
+    {
         PerformManager::Instance().perform(&TextureCache::Instance(),
                                            SEL_VOID(TextureCache::removeAllTextures), false);
         return true;
     }
-    static bool __cmd_releasefonts(const char*,float*, int) {
+    static bool __cmd_releasefonts(const char*,float*, int)
+    {
         PerformManager::Instance().perform(&FontCache::Instance(),
                                            SEL_VOID(FontCache::removeAllFonts), false);
         return true;
     }
-    static bool __cmd_loadtexture(const char* text,float*, int) {
-        
+    static bool __cmd_loadtexture(const char* text,float*, int)
+    {
         PerformManager::Instance().perform(&TextureCache::Instance(),
                                            SEL_PTR(TextureCache::addImage),
                                            (void*)text, false);
-        
         return true;
     }
-    static bool __cmd_loadfont(const char* text,float*, int) {
-        
+    static bool __cmd_loadfont(const char* text,float*, int)
+    {
         PerformManager::Instance().perform(&FontCache::Instance(),
                                            SEL_PTR(FontCache::addFont),
                                            (void*)text, false);
-        
         return true;
     }
-    static bool __cmd_checkfile(const char* text, float*, int) {
-        
+    static bool __cmd_checkfile(const char* text, float*, int)
+    {
         ResourcesManager::Instance().checkFile(text);
         return true;
     }
-
 
     
 #pragma mark -
     
     const static struct {
         int32_t hash;
-        bool (*func)(const char*,float*,int);
+        bool (*func)(const char*, float*, int);
         int values;
     } funcList[] =
     {
@@ -340,35 +346,44 @@ namespace FORZE {
     : Console(stdin)
     { }
     
+    
     Console::Console(FILE *stream)
     {
         p_stream = stream;
         p_thread = new thread(consoleLoop, this);
     }
     
+    
     Console::~Console()
     {
         delete p_thread;
     }
+    
     
     void Console::sendMessage(const char *message)
     {
         fprintf(p_stream, "\n%s\n", message);
     }
     
+    
     void Console::join()
     {
         p_thread->join();
     }
     
+    
     bool Console::peekMessage(FILE *stream)
     {
         static char line[MAXLENGTH];
         static char command[MAXLENGTH];
-        char *arguments;
-        
-        int nuValues = 0;
         float values[CAPACITY];
+        char *arguments;
+        int nuValues = 0;
+        
+        
+        // CLEAN VALUES
+        memset(command, 0, MAXLENGTH);
+        //memset(values, 0, MAXLENGTH * sizeof(float));
         
         // GET LINE
         fgets(line, MAXLENGTH, stream);
@@ -379,8 +394,8 @@ namespace FORZE {
             *arguments = '\0';
             ++arguments;
             nuValues = sscanf(arguments, "%f , %f , %f , %f , %f , %f , %f , %f , %f , %f",
-                              &values[0],&values[1],&values[2],&values[3],&values[4],
-                              &values[5],&values[6],&values[7],&values[8],&values[9]);
+                              &values[0], &values[1], &values[2], &values[3], &values[4],
+                              &values[5], &values[6], &values[7], &values[8], &values[9]);
             
             char *end = strrchr(arguments, ']');
             if(end) *end = '\0';
@@ -390,9 +405,8 @@ namespace FORZE {
         }
         
         // NORMALIZE COMMAND's TEXT
-        memset(command, 0, MAXLENGTH);
         sscanf(line, "%[^ \n]s", command);
-        if(strlen(command) == 0)
+        if(command[0] == '\0')
             return true;
         
         // GET HASH

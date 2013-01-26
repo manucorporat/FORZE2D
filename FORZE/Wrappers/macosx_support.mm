@@ -348,8 +348,11 @@ static CVReturn drawScene(CVDisplayLinkRef dl, const CVTimeStamp* now, const CVT
     
     glEnable(GL_MULTISAMPLE);
     
+    CGLContextObj ctx = (CGLContextObj)[context_ CGLContextObj];
+    
+    //CGLEnable( ctx, kCGLCEMPEngine);
     if(glconfig.quality != 1) {
-        CGLEnable((CGLContextObj)[context_ CGLContextObj], kCGLCESurfaceBackingSize);
+        CGLEnable(ctx, kCGLCESurfaceBackingSize);
     }
 
     // Synchronize buffer swaps with vertical refresh rate
