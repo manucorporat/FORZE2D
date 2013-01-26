@@ -32,7 +32,6 @@
  */
 
 #include <assert.h>
-#include <stdexcept>
 
 #include "FZPlatforms.h"
 #include "FZConfig.h"
@@ -87,7 +86,7 @@ abort(); \
 
 
 #define FZ_RAISE(__MESSAGE__) { \
-    throw std::runtime_error(__MESSAGE__); \
+    throw FORZE::fzException(__MESSAGE__); \
 }
 
 #define FZ_RAISE_STOP(__MESSAGE__) {    \

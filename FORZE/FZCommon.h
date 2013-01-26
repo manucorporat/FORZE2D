@@ -31,10 +31,25 @@
  */
 
 #include <stdint.h>
+#include <stdexcept>
+#include "FZConfig.h"
 #include "FZHash.h"
+#include STL_STRING
+
+
+using namespace STD;
 
 namespace FORZE
 {
+    class fzException : public std::runtime_error
+    {
+    public:
+        fzException(std::string s)
+        : runtime_error(s)
+        { }
+    };
+    
+    
     //! Custom print function used by FORZE.
     void FZLog(const char *pszFormat, ...);
     
