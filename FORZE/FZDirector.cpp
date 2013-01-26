@@ -612,53 +612,57 @@ namespace FORZE {
         if(!(m_dirtyFlags & kFZDDirty_projection))
             return;
         
+        fzSize viewPort = getViewPort();
+        fzSize canvasSize = getCanvasSize();
+        fzOrientation orientation = getOrientation();
+        
+        
         // VIEW PORT
         // The view port must be the display size in pixels.
         // Display size is not equal to the screen size, an application could not use the whole screen.
-        fzSize viewPort = getViewPort();
         glViewport(0, 0, (GLsizei)viewPort.width, (GLsizei)viewPort.height);
+        
+        
+        // ORIENTATION TRANFORM
+        // The projection must be calculated using the canvas size. No pixels here.
+        m_orientationTransform = FZAffineTransformIdentity;
+        switch (orientation) {
+            case kFZOrientation_LandscapeLeft:
+                FZ_SWAP(canvasSize.width, canvasSize.height);
+                m_orientationTransform.translate(canvasSize.width, 0);
+                m_orientationTransform.rotate(FZ_DEGREES_TO_RADIANS(90));
+                break;
+                
+            case kFZOrientation_LandscapeRight:
+                FZ_SWAP(canvasSize.width, canvasSize.height);
+                m_orientationTransform.translate(0, canvasSize.height);
+                m_orientationTransform.rotate(FZ_DEGREES_TO_RADIANS(-90));
+                break;
+                
+            default: break;
+        }
         
         
         // PROJECTION
         // The projection must be calculated using the canvas size. No pixels here.
-        fzSize canvasSize = getCanvasSize();
-        fzOrientation orientation = getOrientation();
-        if(orientation == kFZOrientation_LandscapeLeft || orientation == kFZOrientation_LandscapeRight)
-            FZ_SWAP(canvasSize.width, canvasSize.height);
-        
-        
         switch (m_projection) {
             case kFZProjection2D:
-            {
-                fzMath_mat4OrthoProjection(0, canvasSize.width, 0, canvasSize.height, -1024, 1024, m_transformMV);
+                fzMath_mat4OrthoProjection(0, canvasSize.width,
+                                           0, canvasSize.height,
+                                           -1024, 1024, m_transform.m);
                 break;
-            }
+                
             default:
                 FZ_RAISE("Director: Unrecognized projection.");
         }
-        
-        m_orientationTransform = FZAffineTransformIdentity;
-        if(orientation == kFZOrientation_LandscapeLeft) {
 
-            m_orientationTransform.translate(canvasSize.width, 0);
-            m_orientationTransform.rotate(FZ_DEGREES_TO_RADIANS(90));
-            
-            fzMat4 mat;
-            fzMath_mat4Multiply(m_transformMV, m_orientationTransform, mat);
-            fzMath_mat4Copy(mat, m_transformMV);
-            
-        }else if(orientation == kFZOrientation_LandscapeRight) {
-            m_orientationTransform.translate(0, canvasSize.height);
-            m_orientationTransform.rotate(FZ_DEGREES_TO_RADIANS(-90));
-            
-            fzMat4 mat;
-            fzMath_mat4Multiply(m_transformMV, m_orientationTransform, mat);
-            fzMath_mat4Copy(mat, m_transformMV);
-        }
+        m_transform.concat(m_orientationTransform);
+
         m_orientationTransform = m_orientationTransform.getInverse();
-        
-        m_dirtyFlags &= ~kFZDDirty_projection;
 
+        m_dirtyFlags &= ~kFZDDirty_projection;
+        
+        
         if(p_runningScene) {
             p_runningScene->updateLayout();
             if(p_hud)
@@ -816,7 +820,7 @@ namespace FORZE {
 #if !FZ_GL_SHADERS
             glLoadIdentity();
 #endif
-            MS::loadBaseMatrix(m_transformMV);
+            MS::loadBaseMatrix(m_transform.m);
             
             // CLEAR OPENGL BUFFERS
             fzGLClearColor(m_clearColor);
@@ -933,19 +937,19 @@ namespace FORZE {
     
     fzPoint Director::normalizedCoord(fzPoint point) const
     {
-        return point.applyTransform(fzAffineTransform(m_transformMV));
+        return point.applyTransform(m_transform);
     }
     
     
     fzPoint Director::unnormalizedCoord(fzPoint point) const
     {
-        return point.applyTransform(fzAffineTransform(m_transformMV).getInverse());
+        return point.applyTransform(m_transform.getInverse());
     }
     
     
     fzRect Director::unnormalizedRect(fzRect rect) const
     {
-        return rect.applyTransform(fzAffineTransform(m_transformMV).getInverse());
+        return rect.applyTransform(m_transform.getInverse());
     }
     
     

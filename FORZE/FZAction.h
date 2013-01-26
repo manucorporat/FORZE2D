@@ -251,7 +251,6 @@ namespace FORZE {
         virtual bool isDone() const override;
         virtual Step* reverse() const override;
         virtual Step* copy() const override;
-        
     };
     
     

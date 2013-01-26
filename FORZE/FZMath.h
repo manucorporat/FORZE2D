@@ -67,6 +67,12 @@ namespace FORZE {
     
     //! Returns a new matrix after appling the affine transform to the given matrix.
     void fzMath_mat4Multiply(const float* matrixInput, const float* matrixInput2, float* matrixOutput);
+    
+    void fzMath_mat4Rotate(float* m, float angle);
+    
+    void fzMath_mat4MultiplySafe(const float* matrixInput, const float* matrixInput2, float* matrixOutput);
+
+    bool fzMath_mat4Invert(const float *m, float *mOut);
 
     
     //! Returns four vec2 (8 floats).
@@ -86,7 +92,7 @@ namespace FORZE {
     
     
     //! Prints a log in the console showing the 4x4 matrix.
-    void fzMath_mat4print(const float* matrix);
+    void fzMath_mat4Print(const float* matrix);
     
     
     //! Creates an perspective projection matrix.

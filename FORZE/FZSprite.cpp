@@ -404,18 +404,11 @@ namespace FORZE {
         if( m_dirtyFlags & kFZDirty_transform_absolute ) {
             
             register fzVec4 output[4];
-
-#if FZ_SPRITE_CHILDREN
-            fzMath_mat4Multiply(MS::getMatrix(), getNodeToParentTransform(), m_transformMV);            
+            fzMath_mat4Multiply(MS::getMatrix(), getNodeToParentTransform().m, m_transformMV);
             fzMath_mat4Vec4(m_transformMV,
                             reinterpret_cast<float*>(m_vertices),
                             reinterpret_cast<float*>(output));
-#else
-            fzMath_mat4Vec4Affine(MS::getMatrix(),
-                                  getNodeToParentTransform(),
-                                  reinterpret_cast<float*>(m_vertices),
-                                  reinterpret_cast<float*>(output));
-#endif
+
             quad->bl.vertex = output[0];
             quad->br.vertex = output[1];
             quad->tl.vertex = output[2];

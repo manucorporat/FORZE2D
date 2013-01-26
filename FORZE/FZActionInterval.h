@@ -156,6 +156,33 @@ namespace FORZE {
     };
     
     
+    class ReverseTime : public ActionInterval
+    {
+    protected:
+        FiniteTimeAction *p_innerAction;
+        
+    public:
+        //! Constructs a Repeat action.
+        ReverseTime(FiniteTimeAction *action);
+        ~ReverseTime();
+        
+        //! Sets the inner action.
+        void setInnerAction(FiniteTimeAction *action);
+        
+        
+        //! Returns the inner action.
+        FiniteTimeAction* getInnerAction() const;
+        
+        
+        // Redefined
+        virtual void startWithTarget(void *t) override;
+        virtual void update(fzFloat dt) override;
+        virtual void stop() override;
+        virtual ActionInterval* reverse() const override;
+        virtual ReverseTime* copy() const override;
+    };
+
+    
     //! Rotates a Node object clockwise a number of degrees by modiying it's rotation attribute.
     class RotateBy : public ActionInterval
     {

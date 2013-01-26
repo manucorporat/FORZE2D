@@ -85,6 +85,8 @@ namespace FORZE {
         setFilter(NULL);
         setGLProgram(nullptr);
 #endif
+        if(p_camera)
+            delete p_camera;
         
         Node *child;
         FZ_LIST_FOREACH_SAFE(m_children, child)
@@ -270,8 +272,8 @@ namespace FORZE {
     
     Camera* Node::getCamera()
     {
-        if( p_camera == NULL)
-            p_camera = new Camera();
+        if(!p_camera )
+            p_camera = new Camera(this);
         
         return p_camera;
     }
@@ -552,9 +554,8 @@ namespace FORZE {
     void Node::updateStuff()
     {
         // UPDATE TRANSFORM
-        if( m_dirtyFlags & kFZDirty_transform_absolute ) {
-            fzMath_mat4Multiply(MS::getMatrix(), getNodeToParentTransform(), m_transformMV);
-        }
+        if( m_dirtyFlags & kFZDirty_transform_absolute )
+            fzMath_mat4Multiply(MS::getMatrix(), getNodeToParentTransform().m, m_transformMV);
         
         
         // UPDATE OPACITY
@@ -833,20 +834,36 @@ namespace FORZE {
     {
         if ( m_dirtyFlags & kFZDirty_transform_relative ) {
             
+            // Relative position
             fzPoint translation(m_position);
             if( !m_isRelativeAnchorPoint )
                 translation += m_anchorPointInPoints;
             
+            // Rotation optimization
+            float c = 1, s = 0;
+            if( m_rotation ) {
+                float radians = -FZ_DEGREES_TO_RADIANS(m_rotation);
+                c = fzMath_cos(radians);
+                s = fzMath_sin(radians);
+            }
+
             
-            // optimized way to create a transform
-            // [6] = {angle, scaleX, scaleY, positionX, positionY, positionZ}
-            fzFloat data[6] = {-FZ_DEGREES_TO_RADIANS(m_rotation), m_scaleX, m_scaleY, translation.x, translation.y, m_vertexZ};
+            // Updating the transform
+            float data[] = {
+                c * m_scaleX,  s * m_scaleX,
+                -s * m_scaleY, c * m_scaleY,
+                translation.x, translation.y, m_vertexZ
+            };
             m_transform.assign(data);
             
+            // Apply camera transform
+            if(p_camera != NULL)
+                m_transform.concat(p_camera->getLookupMatrix());
+
             
-            // apply anchor point
+            // Apply anchor point
             if( m_anchorPointInPoints != FZPointZero )
-                m_transform.translate(-m_anchorPointInPoints.x, -m_anchorPointInPoints.y);
+                m_transform.translate(-m_anchorPointInPoints.x, -m_anchorPointInPoints.y, 0);
             
             m_dirtyFlags &= ~kFZDirty_transform_relative;
         }

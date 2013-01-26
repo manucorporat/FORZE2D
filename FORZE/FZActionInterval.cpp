@@ -461,6 +461,53 @@ namespace FORZE {
     }
     
     
+#pragma mark - ReverseTime
+    
+    ReverseTime::ReverseTime(FiniteTimeAction *action)
+    : ActionInterval(action->getDuration())
+    , p_innerAction(NULL)
+    {
+        FZRETAIN_TEMPLATE(action, p_innerAction);
+    }
+    
+    ReverseTime::~ReverseTime()
+    {
+        if(p_innerAction)
+            p_innerAction->release();
+    }
+    
+    void ReverseTime::startWithTarget(void *t)
+    {
+        ActionInterval::startWithTarget(t);
+        p_innerAction->startWithTarget(t);
+    }
+    
+    
+    void ReverseTime::stop()
+    {
+        p_innerAction->stop();
+        ActionInterval::stop();
+    }
+
+    
+    void ReverseTime::update(fzFloat t)
+    {
+        p_innerAction->update(1-t);
+    }
+    
+    
+    ActionInterval* ReverseTime::reverse() const
+    {
+        return (ActionInterval*)p_innerAction->copy();
+    }
+    
+    
+    ReverseTime* ReverseTime::copy() const
+    {
+        return new ReverseTime(p_innerAction->copy());
+    }
+    
+    
 #pragma mark - RotateBy
     
     RotateBy::RotateBy(fzFloat d, fzFloat a)

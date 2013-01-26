@@ -29,19 +29,19 @@
  */
 
 #include "FZCamera.h"
+#include "FZNode.h"
+#include "FZMacros.h"
 
 
 namespace FORZE {
     
     const fzFloat Camera::defaultEyeZ = FLT_EPSILON;
     
-    Camera::Camera()
-    : m_eye(0, 0, defaultEyeZ)
-    , m_center(FZPoint3Zero)
-    , m_up(FZPoint3Zero)
-    , m_isDirty(false)
+    Camera::Camera(Node *parent)
+    : p_parent(parent)
     {
-        fzMath_mat4Identity(m_lookupMatrix);
+        FZ_ASSERT(parent, "Parent can not be NULL.");
+        restore();
     }
     
     
@@ -63,20 +63,21 @@ namespace FORZE {
         m_eye.z = defaultEyeZ;
         
         m_center = FZPoint3Zero;
-        m_up = FZPoint3Zero;
+        m_up = fzPoint3(0, 1, 0);
         
-        fzMath_mat4Identity(m_lookupMatrix);
+        m_lookupTransform = FZAffineTransformIdentity;
         
         m_isDirty = false;
     }
     
     
-    void Camera::locate()
+    const fzAffineTransform& Camera::getLookupMatrix()
     {
         if( m_isDirty ) {
-            fzMath_mat4LookAt(m_eye, m_center, m_up, m_lookupMatrix);
+            fzMath_mat4LookAt(m_eye, m_center, m_up, m_lookupTransform.m);
             m_isDirty = false;
         }
+        return m_lookupTransform;
     }
     
     
@@ -84,6 +85,7 @@ namespace FORZE {
     {
         m_eye = eye;
         m_isDirty = true;
+        p_parent->makeDirty(kFZDirty_transform);
     }
     
     
@@ -91,6 +93,7 @@ namespace FORZE {
     {
         m_center = center;
         m_isDirty = true;
+        p_parent->makeDirty(kFZDirty_transform);
     }
     
     
@@ -98,6 +101,7 @@ namespace FORZE {
     {
         m_up = up;
         m_isDirty = true;
+        p_parent->makeDirty(kFZDirty_transform);
     }
     
     
