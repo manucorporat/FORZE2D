@@ -119,9 +119,9 @@ namespace FORZE {
     {
         char *start = strchr(filename, FZ_IO_SUBFIX_CHAR);
         if(start) {
-            const char *extension = IO::getExtension(start)-1;
+            const char *extension = IO::getExtension(start);
             if(extension)
-                memmove(start, extension, strlen(start)+1);
+                memmove(start, extension-1, strlen(extension)+2);
             else
                 *start = '\0';
         }
