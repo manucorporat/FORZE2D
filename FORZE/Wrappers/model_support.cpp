@@ -222,9 +222,7 @@ namespace FORZE {
     
     bool fzOSW_getPersistentPath(const char *filename, char *absolutePath, fzUInt maxLength)
     {
-        strncat(absolutePath, "/documents/", maxLength);
-        strncat(absolutePath, filename, maxLength);
-
+        strncpy(absolutePath, filename, maxLength);
         return true;
     }
     
@@ -238,7 +236,7 @@ namespace FORZE {
     
     bool fzOSW_createDirectory(const char *path, bool pathIsDirectory)
     {
-        return false;
+        return true;
     }
     
     

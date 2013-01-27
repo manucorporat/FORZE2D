@@ -36,6 +36,7 @@
 #include "GLAPI/glext.h"
 
 #define FZ_GL_SHADERS 0
+#define FZ_OS_DESKTOP 1
 
 #endif
 
