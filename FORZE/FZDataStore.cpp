@@ -39,7 +39,6 @@
 #include "external/rapidxml/rapidxml_print.hpp"
 
 
-#define XML_FILENAME "forze2d_datastore.xml"
 #define XML_SIZE_TAG "size"
 #define XML_ENTRY_TAG "e"
 #define XML_KEY_ATTRIBUTE "k"
@@ -69,7 +68,10 @@ namespace FORZE {
     {
         {
             char buffer[1024];
-            fzOSW_getPersistentPath(XML_FILENAME, buffer, 1024);
+            char product[1024];
+            fzOSW_getProductName(product, 512);
+            strcat(product, "_savings.xml");
+            fzOSW_getPersistentPath(product, buffer, 1024);
             p_path = fzStrcpy(buffer);
         }
         
@@ -78,6 +80,7 @@ namespace FORZE {
             readFromMemory();
 
         } catch (std::exception& error) {
+            FZLOGERROR(error.what());
             fzOSW_removePath(p_path);
         }
     }
@@ -180,7 +183,7 @@ namespace FORZE {
             
             xml_node<> *node = doc.first_node();
             if(strncmp(node->name(), XML_SIZE_TAG, node->name_size()) != 0)
-                FZ_RAISE("DataStore: XML is corrupted.");
+                FZ_RAISE("DataStore: XML is corrupted, missing 'size' tag.");
 
             
             // RESERVE CAPACITY
