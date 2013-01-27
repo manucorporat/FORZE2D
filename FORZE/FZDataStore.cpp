@@ -115,76 +115,53 @@ namespace FORZE {
         if(!m_dirty)
             return true;
         
-        xml_document<> doc;
-        xml_node<>* node;
-                
-        // XML DECLARATION
-        node = doc.allocate_node(node_declaration);
-        node->append_attribute(doc.allocate_attribute("version", "1.0"));
-        node->append_attribute(doc.allocate_attribute("encoding", "utf-8"));
-        doc.append_node(node);
-        
-        
-        // SIZE TAG
-        node = doc.allocate_node(node_element, XML_SIZE_TAG, doc.allocate_string(FZT("%d", m_num)));
-        doc.append_node(node);
-
-        fzUInt xmlSize = 60;
-
-        // ENTRIES
-        for(fzUInt i = 0; i < m_num; ++i) {
-          
-            char *content = NULL;
-            fzStoreEntry& e = p_store[i];
-                        
-            switch (e.type) {
-                case kFZData_string:
-                case kFZData_data:
-                {
-                    fzBuffer enconded = Data::B64Encode(e.data.getPointer(), e.data.getLength());
-                    content = doc.allocate_string(enconded.getPointer());
-                    enconded.free();
-                    break;
-                }
-                case kFZData_float:
-                    content = doc.allocate_string(FZT("%f", e.floatValue));
-                    break;
-                case kFZData_integer:
-                    content = doc.allocate_string(FZT("%d", e.integerValue));
-                    break;
-                default:
-                    FZLOGERROR("DataStore: Invalid data type.");
-                    continue;
-            }
-            
-            node = doc.allocate_node(node_element, XML_ENTRY_TAG, content);
-            node->append_attribute(doc.allocate_attribute(XML_KEY_ATTRIBUTE, e.key));
-            node->append_attribute(doc.allocate_attribute(XML_TYPE_ATTRIBUTE, doc.allocate_string(FZT("%d", e.type))));
-            doc.append_node(node);
-            
-            xmlSize += 25 + strlen(content) + strlen(e.key);
-        }
-        
-        
         // CREATE DIRECTORY (if needed)
         if(!fzOSW_createDirectory(p_path, false)) {
             FZLOGERROR("DataStore: Error creating directory.");
             return false;
         }
         
+        // OPEN FILE STREAM
+        FILE *f = fopen(p_path, "w");
+        if( f == NULL ) {
+            FZLOGERROR("DataStore: Error writing in %s.", p_path);
+            return false;
+        }
         
-        // PRINTING
-        char *buffer = new char[xmlSize];
-        char *end = rapidxml::print(buffer, doc, 0);
-        *end = '\0'; // NULL TERMINATION
         
-        FZ_ASSERT(end < (buffer + xmlSize), "Memory overflow.");
-        
-        bool success = IO::writeFile(buffer, p_path);
-        delete [] buffer;
-        
-        m_dirty = !success;
-        return success;
+        // WRITE XML
+        fprintf(f, "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n");
+        fprintf(f, "<"XML_SIZE_TAG">%d</"XML_SIZE_TAG">\n", m_num);
+
+        for(fzInt i = m_num-1; i >= 0; --i)
+        {
+            fzStoreEntry& e = p_store[i];
+
+            fprintf(f, "<"XML_ENTRY_TAG" "XML_KEY_ATTRIBUTE"=\"%s\" "XML_TYPE_ATTRIBUTE"=\"%d\">", e.key, e.type);
+            
+            switch (e.type) {
+                case kFZData_string:
+                case kFZData_data:
+                {
+                    fzBuffer enconded = Data::B64Encode(e.data.getPointer(), e.data.getLength());
+                    fputs(enconded.getPointer(), f);
+                    enconded.free();
+                    break;
+                }
+                case kFZData_float:
+                    fprintf(f, "%f", e.floatValue);
+                    break;
+                case kFZData_integer:
+                    fprintf(f, "%d", e.integerValue);
+                    break;
+                default:
+                    FZLOGERROR("DataStore: Invalid data type.");
+                    continue;
+            }
+            fputs("</"XML_ENTRY_TAG">\n", f);
+        }
+        fclose(f);
+        return true;
     }
     
     
