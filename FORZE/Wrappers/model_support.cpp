@@ -188,7 +188,8 @@ namespace FORZE {
     
     bool fzOSW_getOSVersion(char *v, fzUInt maxLength)
     {
-        (void)os;
+        strncpy(v, "1.0.0", maxLength);
+        return true;
     }
     
     

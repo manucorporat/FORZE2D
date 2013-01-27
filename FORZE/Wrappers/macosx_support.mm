@@ -131,7 +131,12 @@ namespace FORZE {
     
     bool fzOSW_getOSVersion(char *v, fzUInt maxLength)
     {
-        FZLog("NOT IMPLEMENTED YET");
+        SInt32 major, minor, bugFix;
+        Gestalt(gestaltSystemVersionMajor, &major);
+        Gestalt(gestaltSystemVersionMinor, &minor);
+        Gestalt(gestaltSystemVersionBugFix, &bugFix);
+        
+        return snprintf(v, maxLength, "%ld.%ld.%ld", major, minor, bugFix) > 0;
     }
     
     

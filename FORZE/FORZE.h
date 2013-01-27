@@ -105,6 +105,7 @@
 #pragma mark - HELPER MACROS
 
 // HELPER MACROS FOR DEVELOPERS
+#define FZ_NEEDS(__VERSION__) ( FORZE::DeviceConfig::Instance().getOSVersion() >= fzVersion(__VERSION__) )
 #define FZ_USER_INTERFACE_IDIOM() FORZE::DeviceConfig::Instance().getUserInterfaceIdiom()
 #define FZ_CANVAS_SIZE() FORZE::Director::Instance().getCanvasSize()
 #define FZ_VIEW_PORT() FORZE::Director::Instance().getViewPort()

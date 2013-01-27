@@ -119,8 +119,8 @@ namespace FORZE {
     
     bool fzOSW_getOSVersion(char *v, fzUInt maxLength)
     {
-        (void)os;
-        FZLog("NOT IMPLEMENTED");
+        NSString *version = [[UIDevice currentDevice] systemVersion];
+        return [version getCString:v maxLength:maxLength encoding:NSUTF8StringEncoding];
     }
     
     

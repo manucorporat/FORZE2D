@@ -94,7 +94,9 @@ namespace FORZE {
         p_deviceCode = fzStrcpy(tmp);
         
         // GET OS VERSION (not needed yet)
-        //fzDevice_getOSVersion(&m_OSVersion);
+        fzOSW_getOSVersion(tmp, 128);
+        m_OSVersion = fzVersion(tmp);
+        
         
         // GET OPENGL MAX TEXTURE SIZE
         glGetIntegerv(FZ_MAX_TEXTURE_SIZE, &m_maxTextureSize);
@@ -126,8 +128,11 @@ namespace FORZE {
     
     void DeviceConfig::logDeviceInfo() const
     {
+        char osversion[32];
+        fzOSW_getOSVersion(osversion, 32);
         FZLog("DeviceConfig: System Info:\n"
               " - DEVICE CODE:                     %s\n"
+              " - OS VERSION:                      %s\n"
               " - USER INTERFACE IDIOM:            %s\n"
               " - GL_VENDOR:                       %s\n"
               " - GL_RENDERER:                     %s\n"
@@ -140,6 +145,7 @@ namespace FORZE {
               " - GL supports discard_framebuffer: %s\n"
               " - VBO streaming in TextureAtlas:   %s\n",
               getDeviceCode(),
+              osversion,
               userInterfaceIdiomToText(getUserInterfaceIdiom()),
               glGetString (GL_VENDOR),
               glGetString (GL_RENDERER),
@@ -219,7 +225,7 @@ namespace FORZE {
     }
     
     
-    fzUInt DeviceConfig::getOSVersion() const
+    int32_t DeviceConfig::getOSVersion() const
     {
         return m_OSVersion;
     }

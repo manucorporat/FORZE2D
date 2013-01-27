@@ -28,6 +28,7 @@
  */
 
 #include <string.h>
+#include <stdlib.h>
 #include "FZHash.h"
 
 
@@ -41,6 +42,21 @@ namespace FORZE {
             ++str;
             --length;
         }
+        return hash;
+    }
+    
+    int32_t fzVersion(const char *str)
+    {
+        int32_t hash = 0;
+		int idx = 0x01000000;
+        char *end = NULL;
+        do {
+			int value = strtol(str, &end, 10);
+			hash += value * idx;
+			idx = idx >> 8;
+            str = end+1;
+		}while(*end != '\0');
+        
         return hash;
     }
     
