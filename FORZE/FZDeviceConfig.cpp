@@ -132,7 +132,7 @@ namespace FORZE {
         fzOSW_getSystemVersion(osversion, 32);
         FZLog("DeviceConfig: System Info:\n"
               " - DEVICE CODE:                     %s\n"
-              " - SYSTEM VERSION:                  %s\n"
+              " - SYSTEM VERSION:                  %s (%p)\n"
               " - USER INTERFACE IDIOM:            %s\n"
               " - GL_VENDOR:                       %s\n"
               " - GL_RENDERER:                     %s\n"
@@ -145,7 +145,7 @@ namespace FORZE {
               " - GL supports discard_framebuffer: %s\n"
               " - VBO streaming in TextureAtlas:   %s\n",
               getDeviceCode(),
-              osversion,
+              osversion, m_systemVersion,
               userInterfaceIdiomToText(getUserInterfaceIdiom()),
               glGetString (GL_VENDOR),
               glGetString (GL_RENDERER),
@@ -225,7 +225,7 @@ namespace FORZE {
     }
     
     
-    int32_t DeviceConfig::getSystemVersion() const
+    uint32_t DeviceConfig::getSystemVersion() const
     {
         return m_systemVersion;
     }

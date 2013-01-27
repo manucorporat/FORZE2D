@@ -62,7 +62,8 @@ namespace FORZE
     //! Returns an int32 hash value giving a string.
     int32_t fzHash(const char *str);
     
-    int32_t fzVersion(const char *str);
+    //! Parses a string describing a version "x.y.z" and converts it to an integer.
+    uint32_t fzVersion(const char *str);
 }
 
 #endif
