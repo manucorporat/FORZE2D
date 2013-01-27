@@ -55,7 +55,7 @@
 #pragma mark - OpenGL config
 
 #define FZ_GL_SHADERS 1
-
+#define FZ_OS_DESKTOP 1
 
 #pragma mark - OpenGL API
 
