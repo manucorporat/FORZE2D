@@ -37,6 +37,7 @@
 #include "FZSpriteFrameCache.h"
 #include "FZFontCache.h"
 #include "FZSpriteFrame.h"
+#include "FZDataStore.h"
 #include "FZTexture2D.h"
 #include "FZFont.h"
 #include "FZScheduler.h"
@@ -227,6 +228,11 @@ namespace FORZE {
         EventManager::Instance().catchEvent(event);
         return true;
     }
+    static bool __cmd_save(const char*,float *, int)
+    {
+        DataStore::Instance().save();
+        return true;
+    }
     static bool __cmd_resume(const char*,float*, int)
     {
         Director::Instance().resume();
@@ -318,6 +324,7 @@ namespace FORZE {
 
         // MISCELANEOUS
         {fzHashConst("event"), __cmd_event, 3},
+        {fzHashConst("save"), __cmd_save, 0},
         {fzHashConst("resume"), __cmd_resume, 0},
         {fzHashConst("pause"), __cmd_pause, 0},
         {fzHashConst("startanimation"), __cmd_startanimation, 0},
@@ -349,6 +356,8 @@ namespace FORZE {
     
     Console::Console(FILE *stream)
     {
+        FZLog("Console: warning: Remember to disable the console before distributing.");
+        
         p_stream = stream;
         p_thread = new thread(consoleLoop, this);
     }
