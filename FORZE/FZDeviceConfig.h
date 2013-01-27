@@ -67,12 +67,11 @@ namespace FORZE {
         
         GLint			m_maxTextureSize;
         GLint			m_maxSamplesAllowed;
-        int32_t         m_OSVersion;
+        int32_t         m_systemVersion;
         fzUserInterface m_userInterfaceIdiom;
         
         char            *p_glExtensions;
         char            *p_deviceCode;
-        char            *p_OSVersion;
         
     protected:
         // Constructors
@@ -133,7 +132,7 @@ namespace FORZE {
         
         
         //! Returns the OS version.
-        int32_t getOSVersion() const;
+        int32_t getSystemVersion() const;
         
         
         //! Prints a large log with the system info.

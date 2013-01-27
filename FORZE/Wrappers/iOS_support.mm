@@ -117,7 +117,7 @@ namespace FORZE {
     }
     
     
-    bool fzOSW_getOSVersion(char *v, fzUInt maxLength)
+    bool fzOSW_getSystemVersion(char *v, fzUInt maxLength)
     {
         NSString *version = [[UIDevice currentDevice] systemVersion];
         return [version getCString:v maxLength:maxLength encoding:NSUTF8StringEncoding];

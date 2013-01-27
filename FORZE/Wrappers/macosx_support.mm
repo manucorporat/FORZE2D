@@ -129,7 +129,7 @@ namespace FORZE {
     
 #pragma mark Device
     
-    bool fzOSW_getOSVersion(char *v, fzUInt maxLength)
+    bool fzOSW_getSystemVersion(char *v, fzUInt maxLength)
     {
         SInt32 major, minor, bugFix;
         Gestalt(gestaltSystemVersionMajor, &major);

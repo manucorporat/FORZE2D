@@ -114,7 +114,7 @@ namespace FORZE {
 
     // DEVICE
     //! Returns the OS version.
-    bool fzOSW_getOSVersion(char *v, fzUInt maxLength);
+    bool fzOSW_getSystemVersion(char *v, fzUInt maxLength);
   
     //! Returns the screen size in points and the factor scale.
     void fzOSW_getScreenSize(fzSize *size, fzFloat *factor);

@@ -76,7 +76,7 @@ namespace FORZE {
     DeviceConfig::DeviceConfig(int interface)
     : p_glExtensions(NULL)
     , p_deviceCode(NULL)
-    , m_OSVersion(0)
+    , m_systemVersion(0)
     , m_maxTextureSize(0)
     , m_maxSamplesAllowed(0)
     , m_supportsPVRTC(false)
@@ -93,9 +93,9 @@ namespace FORZE {
         fzOSW_getDeviceCode(tmp, 128);
         p_deviceCode = fzStrcpy(tmp);
         
-        // GET OS VERSION (not needed yet)
-        fzOSW_getOSVersion(tmp, 128);
-        m_OSVersion = fzVersion(tmp);
+        // GET SYSTEM VERSION (not needed yet)
+        fzOSW_getSystemVersion(tmp, 128);
+        m_systemVersion = fzVersion(tmp);
         
         
         // GET OPENGL MAX TEXTURE SIZE
@@ -129,10 +129,10 @@ namespace FORZE {
     void DeviceConfig::logDeviceInfo() const
     {
         char osversion[32];
-        fzOSW_getOSVersion(osversion, 32);
+        fzOSW_getSystemVersion(osversion, 32);
         FZLog("DeviceConfig: System Info:\n"
               " - DEVICE CODE:                     %s\n"
-              " - OS VERSION:                      %s\n"
+              " - SYSTEM VERSION:                  %s\n"
               " - USER INTERFACE IDIOM:            %s\n"
               " - GL_VENDOR:                       %s\n"
               " - GL_RENDERER:                     %s\n"
@@ -225,8 +225,8 @@ namespace FORZE {
     }
     
     
-    int32_t DeviceConfig::getOSVersion() const
+    int32_t DeviceConfig::getSystemVersion() const
     {
-        return m_OSVersion;
+        return m_systemVersion;
     }
 }

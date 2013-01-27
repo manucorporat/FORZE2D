@@ -186,7 +186,7 @@ namespace FORZE {
     }
     
     
-    bool fzOSW_getOSVersion(char *v, fzUInt maxLength)
+    bool fzOSW_getSystemVersion(char *v, fzUInt maxLength)
     {
         strncpy(v, "1.0.0", maxLength);
         return true;
