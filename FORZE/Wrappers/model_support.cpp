@@ -180,9 +180,10 @@ namespace FORZE {
     
 #pragma mark - Device info
     
-    void fzOSW_getDeviceCode(char *deviceCode, fzUInt maxLength)
+    bool fzOSW_getDeviceCode(char *deviceCode, fzUInt maxLength)
     {
         strncpy(deviceCode, "model", maxLength);
+        return true;
     }
     
     

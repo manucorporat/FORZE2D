@@ -45,7 +45,7 @@ namespace FORZE
     {
     public:
         fzException(std::string s)
-        : runtime_error(s)
+        : std::runtime_error(s)
         { }
     };
     

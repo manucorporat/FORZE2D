@@ -101,19 +101,23 @@ namespace FORZE {
     
 #pragma mark - Device info
     
-    void fzOSW_getDeviceCode(char *deviceCode, fzUInt maxLength)
+    bool fzOSW_getDeviceCode(char *deviceCode, fzUInt maxLength)
     {
 #if TARGET_IPHONE_SIMULATOR
         char text[] = "simulator";
         strncpy(deviceCode, text, maxLength);
 #else
         size_t size;
-        sysctlbyname("hw.machine", deviceCode, &size, NULL, 0);
+        if(sysctlbyname("hw.machine", deviceCode, &size, NULL, 0) == -1) {
+            FZLOGERROR("OS Wrapper: sysctlbyname() failed.");
+            return false;
+        }
         deviceCode[size] = '\0';
         
         if(size >= maxLength)
             FZ_RAISE_STOP("OS Wrapper: Memory overload.");
 #endif
+        return true;
     }
     
     

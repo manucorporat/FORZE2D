@@ -126,7 +126,7 @@ namespace FORZE {
     int fzOSW_getUserInterfaceIdiom();
   
     //! Returns the device identifier code.
-    void fzOSW_getDeviceCode(char *deviceCode, fzUInt maxLength);
+    bool fzOSW_getDeviceCode(char *deviceCode, fzUInt maxLength);
   
     //! Returns the product name.
     bool fzOSW_getProductName(char *path, fzUInt bufferLength);

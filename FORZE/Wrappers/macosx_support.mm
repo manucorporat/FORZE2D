@@ -161,16 +161,19 @@ namespace FORZE {
     }
     
     
-    void fzOSW_getDeviceCode(char *deviceCode, fzUInt maxLength)
+    bool fzOSW_getDeviceCode(char *deviceCode, fzUInt maxLength)
     {
         size_t size;
-        if(sysctlbyname("hw.model", deviceCode, &size, NULL, 0) == -1)
-            FZ_RAISE("OS Wrapper: sysctlbyname() failed.");
-        
+        if(sysctlbyname("hw.model", deviceCode, &size, NULL, 0)== -1) {
+            FZLOGERROR("OS Wrapper: sysctlbyname() failed.");
+            return false;
+        }        
         deviceCode[size] = '\0';
         
         if(size > maxLength)
             FZ_RAISE("OS Wrapper: Memory overload. You should allocate more memory.");
+        
+        return true;
     }
     
     
