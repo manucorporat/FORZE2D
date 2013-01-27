@@ -101,7 +101,7 @@ namespace FORZE {
     
 #pragma mark - Device info
     
-    void fzDevice_getDeviceCode(char *deviceCode, fzUInt maxLength)
+    void fzOSW_getDeviceCode(char *deviceCode, fzUInt maxLength)
     {
 #if TARGET_IPHONE_SIMULATOR
         char text[] = "simulator";
@@ -117,14 +117,14 @@ namespace FORZE {
     }
     
     
-    void fzDevice_getOSVersion(unsigned int *os)
+    bool fzOSW_getOSVersion(char *v, fzUInt maxLength)
     {
         (void)os;
         FZLog("NOT IMPLEMENTED");
     }
     
     
-    void fzDevice_getScreenSize(fzSize *size, fzFloat *factor)
+    void fzOSW_getScreenSize(fzSize *size, fzFloat *factor)
     {
         @autoreleasepool {
             CGFloat scale =  [[UIScreen mainScreen] scale];
@@ -136,7 +136,7 @@ namespace FORZE {
     }
     
     
-    uint16_t fzDevice_getCapacities()
+    uint16_t fzOSW_getCapacities()
     {
         uint16_t capacities = kFZEventType_Touch;
         
@@ -151,7 +151,7 @@ namespace FORZE {
     }
     
     
-    int fzDevice_getUserInterfaceIdiom()
+    int fzOSW_getUserInterfaceIdiom()
     {
         if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
             return kFZUserInterfaceIdiomPad;
@@ -160,14 +160,14 @@ namespace FORZE {
     }
     
     
-    bool fzDevice_getResourcesPath(char *path, fzUInt maxLength)
+    bool fzOSW_getResourcesPath(char *path, fzUInt maxLength)
     {
         NSString *resourcesPath = [[NSBundle mainBundle] resourcePath];
         return [resourcesPath getCString:path maxLength:maxLength encoding:NSUTF8StringEncoding];
     }
     
     
-    bool fzDevice_getPersistentPath(const char *filename, char *absolutePath, fzUInt maxLength)
+    bool fzOSW_getPersistentPath(const char *filename, char *absolutePath, fzUInt maxLength)
     {
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *nspath = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
@@ -176,7 +176,7 @@ namespace FORZE {
     }
     
     
-    bool fzDevice_getProductName(char *path, fzUInt maxLength)
+    bool fzOSW_getProductName(char *path, fzUInt maxLength)
     {
         NSDictionary* infoDictionary = [[NSBundle mainBundle] infoDictionary];
         NSString *productName = [infoDictionary objectForKey:@"CFBundleName"];
@@ -184,7 +184,7 @@ namespace FORZE {
     }
     
     
-    bool fzDevice_createDirectory(const char *path, bool pathIsDirectory)
+    bool fzOSW_createDirectory(const char *path, bool pathIsDirectory)
     {
         NSString *nspath = [NSString stringWithCString:path encoding:NSUTF8StringEncoding];
         BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:nspath isDirectory:NULL];
@@ -198,7 +198,7 @@ namespace FORZE {
     }
     
     
-    bool fzDevice_removePath(const char *path)
+    bool fzOSW_removePath(const char *path)
     {
         NSString *nspath = [NSString stringWithCString:path encoding:NSUTF8StringEncoding];
         return [[NSFileManager defaultManager] removeItemAtPath:nspath error:nil];

@@ -84,15 +84,14 @@ namespace FORZE {
     , m_supportsBGRA8888(false)
     , m_supportsDiscardFB(false)
     {
+        char tmp[128];
+
         // GET OPENGL EXTENSIONS
         p_glExtensions = fzStrcpy((char*)glGetString(GL_EXTENSIONS));
         
         // GET DEVICE CODE
-        {
-            char tmp[128];
-            fzDevice_getDeviceCode(tmp, 128);
-            p_deviceCode = fzStrcpy(tmp);
-        }
+        fzOSW_getDeviceCode(tmp, 128);
+        p_deviceCode = fzStrcpy(tmp);
         
         // GET OS VERSION (not needed yet)
         //fzDevice_getOSVersion(&m_OSVersion);
@@ -111,7 +110,7 @@ namespace FORZE {
 
         // USER INTERFACE IDIOM
         if(interface == -1)
-            m_userInterfaceIdiom = static_cast<fzUserInterface>(fzDevice_getUserInterfaceIdiom());
+            m_userInterfaceIdiom = static_cast<fzUserInterface>(fzOSW_getUserInterfaceIdiom());
         else
             m_userInterfaceIdiom = static_cast<fzUserInterface>(interface);
         

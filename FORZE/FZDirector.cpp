@@ -113,7 +113,7 @@ namespace FORZE {
         MS::initialize();
 		
         // GET SCREEN SIZE
-        fzDevice_getScreenSize(&m_screenSize, &m_screenFactor);
+        fzOSW_getScreenSize(&m_screenSize, &m_screenFactor);
         
 #ifndef FZ_OS_DESKTOP
         // if the OS is not a desktop OS, then the default window size

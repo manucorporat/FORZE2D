@@ -160,7 +160,7 @@ namespace FORZE {
     
     uint16_t EventManager::checkCompatibility(uint16_t flags) const
     {
-        uint16_t capacities = fzDevice_getCapacities();
+        uint16_t capacities = fzOSW_getCapacities();
         uint16_t compatibility = (flags & (~capacities)) & FZEVENT_INTERNAL_MASK;
         
         return compatibility;

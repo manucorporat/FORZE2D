@@ -129,13 +129,13 @@ namespace FORZE {
     
 #pragma mark Device
     
-    void fzDevice_getOSVersion(unsigned int *os)
+    bool fzOSW_getOSVersion(char *v, fzUInt maxLength)
     {
         FZLog("NOT IMPLEMENTED YET");
     }
     
     
-    void fzDevice_getScreenSize(fzSize *size, fzFloat *factor)
+    void fzOSW_getScreenSize(fzSize *size, fzFloat *factor)
     {
         *factor = [[NSScreen mainScreen] backingScaleFactor];
         NSRect rect = [[NSScreen mainScreen] frame];
@@ -144,19 +144,19 @@ namespace FORZE {
     }
     
     
-    uint16_t fzDevice_getCapacities()
+    uint16_t fzOSW_getCapacities()
     {
         return kFZEventType_Mouse | kFZEventType_MouseRight | kFZEventType_Keyboard | kFZEventType_Trackpad | kFZEventType_MouseMoved;
     }
     
     
-    int fzDevice_getUserInterfaceIdiom()
+    int fzOSW_getUserInterfaceIdiom()
     {
         return kFZUserInterfaceIdiomPC;
     }
     
     
-    void fzDevice_getDeviceCode(char *deviceCode, fzUInt maxLength)
+    void fzOSW_getDeviceCode(char *deviceCode, fzUInt maxLength)
     {
         size_t size;
         if(sysctlbyname("hw.model", deviceCode, &size, NULL, 0) == -1)
@@ -169,7 +169,7 @@ namespace FORZE {
     }
     
     
-    bool fzDevice_getProductName(char *path, fzUInt bufferLength)
+    bool fzOSW_getProductName(char *path, fzUInt bufferLength)
     {
         NSDictionary* infoDictionary = [[NSBundle mainBundle] infoDictionary];
         NSString *productName = [infoDictionary objectForKey:@"CFBundleName"];
@@ -177,14 +177,14 @@ namespace FORZE {
     }
     
     
-    bool fzDevice_getResourcesPath(char *path, fzUInt maxLength)
+    bool fzOSW_getResourcesPath(char *path, fzUInt maxLength)
     {
         NSString *resourcesPath = [[NSBundle mainBundle] resourcePath];
         return [resourcesPath getCString:path maxLength:maxLength encoding:NSUTF8StringEncoding];
     }
     
     
-    bool fzDevice_getPersistentPath(const char *filename, char *absolutePath, fzUInt bufferLength)
+    bool fzOSW_getPersistentPath(const char *filename, char *absolutePath, fzUInt bufferLength)
     {
         // GET APPLICATION SUPPORT DIRECTORY
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
@@ -192,7 +192,7 @@ namespace FORZE {
         
         // GET PRODUCT NAME
         char productName[512];
-        if(!fzDevice_getProductName(productName, 512))
+        if(!fzOSW_getProductName(productName, 512))
             FZ_RAISE("OS Wrapper: Imposible to get product name. No enough memory.");
         
         
@@ -204,7 +204,7 @@ namespace FORZE {
     }
     
     
-    bool fzDevice_createDirectory(const char *path, bool pathIsDirectory)
+    bool fzOSW_createDirectory(const char *path, bool pathIsDirectory)
     {
         NSString *nspath = [NSString stringWithCString:path encoding:NSUTF8StringEncoding];
         BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:nspath isDirectory:NULL];
@@ -218,7 +218,7 @@ namespace FORZE {
     }
     
     
-    bool fzDevice_removePath(const char *path)
+    bool fzOSW_removePath(const char *path)
     {
         NSString *nspath = [NSString stringWithCString:path encoding:NSUTF8StringEncoding];
         return [[NSFileManager defaultManager] removeItemAtPath:nspath error:nil];

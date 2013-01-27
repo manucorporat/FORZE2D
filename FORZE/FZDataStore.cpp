@@ -69,7 +69,7 @@ namespace FORZE {
     {
         {
             char buffer[1024];
-            fzDevice_getPersistentPath(XML_FILENAME, buffer, 1024);
+            fzOSW_getPersistentPath(XML_FILENAME, buffer, 1024);
             p_path = fzStrcpy(buffer);
         }
         
@@ -78,7 +78,7 @@ namespace FORZE {
             readFromMemory();
 
         } catch (std::exception& error) {
-            fzDevice_removePath(p_path);
+            fzOSW_removePath(p_path);
         }
     }
     
@@ -94,7 +94,7 @@ namespace FORZE {
         if(capacity <= m_capacity)
             return;
 
-      if(p_store == NULL) {
+        if(p_store == NULL) {
             capacity = (capacity < 10) ? 10 : capacity;
             p_store = static_cast<fzStoreEntry*>( malloc(capacity * sizeof(fzStoreEntry)) );
         }else{
@@ -167,7 +167,7 @@ namespace FORZE {
         
         
         // CREATE DIRECTORY (if needed)
-        if(!fzDevice_createDirectory(p_path, false)) {
+        if(!fzOSW_createDirectory(p_path, false)) {
             FZLOGERROR("DataStore: Error creating directory.");
             return false;
         }

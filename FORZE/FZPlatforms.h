@@ -113,33 +113,33 @@ namespace FORZE {
 
     // DEVICE
     //! Returns the OS version.
-    void fzDevice_getOSVersion(unsigned int *os);
+    bool fzOSW_getOSVersion(char *v, fzUInt maxLength);
   
     //! Returns the screen size in points and the factor scale.
-    void fzDevice_getScreenSize(fzSize *size, fzFloat *factor);
+    void fzOSW_getScreenSize(fzSize *size, fzFloat *factor);
     
     //! Returns system capacities (accelerometer...)
-    uint16_t fzDevice_getCapacities();
+    uint16_t fzOSW_getCapacities();
     
     //! Returns the device's user interface idiom.
-    int fzDevice_getUserInterfaceIdiom();
+    int fzOSW_getUserInterfaceIdiom();
   
     //! Returns the device identifier code.
-    void fzDevice_getDeviceCode(char *deviceCode, fzUInt maxLength);
+    void fzOSW_getDeviceCode(char *deviceCode, fzUInt maxLength);
   
     //! Returns the product name.
-    bool fzDevice_getProductName(char *path, fzUInt bufferLength);
+    bool fzOSW_getProductName(char *path, fzUInt bufferLength);
   
     //! Returns the application's absolute resources path.
-    bool fzDevice_getResourcesPath(char *path, fzUInt maxLength);
+    bool fzOSW_getResourcesPath(char *path, fzUInt maxLength);
   
     //! Returns the application persistent resources path.
-    bool fzDevice_getPersistentPath(const char *filename, char *absolutePath, fzUInt bufferLength);
+    bool fzOSW_getPersistentPath(const char *filename, char *absolutePath, fzUInt bufferLength);
     
     //! Returns the application persistent resources path.
-    bool fzDevice_createDirectory(const char *path, bool pathIsDirectory);
+    bool fzOSW_createDirectory(const char *path, bool pathIsDirectory);
     
     //! Removes the specified path.
-    bool fzDevice_removePath(const char *path);
+    bool fzOSW_removePath(const char *path);
 }
 #endif
