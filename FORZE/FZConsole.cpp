@@ -66,7 +66,10 @@ namespace FORZE {
               " - pevents[]: Prints the active events.\n"
               " - pnodes[]: Prints the rendering tree.\n"
               " - pfonts[]: Prints the cached fonts.\n"
-              " - ptextures[]: Prints the cached textures.\n\n"
+              " - ptextures[]: Prints the cached textures.\n"
+              " - pcanvassize[]: Prints the canvas' size.\n"
+              " - pwindowsize[]: Prints the window's size.\n"
+              " - pviewport[]: Prints the view port.\n\n"
               
               " - sfps[ framerate ]: Sets the framerate.\n"
               " - scanvassize[ width, height ]: Sets the canvas size.\n"
@@ -76,16 +79,17 @@ namespace FORZE {
               " - shud[ bool ]: Enables or disables the HUD.\n\n"
               
               " - event[identifier, type, state, x, y, z]: Creates a event.\n"
+              " - save[]: DataStore saves data in permanent memory.\n"
               " - resume[]: Resumes the director.\n"
               " - pause[]: Pauses the director.\n"
               " - startanimation[]: Starts the rendering thread.\n"
               " - stopanimation[]: Stops the rendering thread.\n"
-              " - releasetextures[]: Purges the cache.\n"
-              " - releasefonts[]: Purges the cache.\n"
-              " - loadtexture[ filename ]: Caches if posible the specified texture filename.\n"
-              " - loadfont[ filename ]: Caches if posible the specified font filename.\n"
+              " - releasetextures[]: Purges the texture cache.\n"
+              " - releasefonts[]: Purges the font cache.\n"
+              " - loadtexture[ filename ]: Caches if posible the specified texture.\n"
+              " - loadfont[ filename ]: Caches if posible the specified font.\n"
               " - checkfile[ filename ]: Performs a complete check of the file availability.\n"
-              " - pop[]: pops the current scene.\n");
+              " - pop[]: Pops the current scene.\n");
 
         return true;
     }
@@ -103,6 +107,24 @@ namespace FORZE {
     static bool __cmd_pfps(const char*,float*, int)
     {
         FZLog("Console: %f\n", 1/Director::Instance().getDelta());
+        return true;
+    }
+    static bool __cmd_pcanvassize(const char*,float*, int)
+    {
+        fzSize size = Director::Instance().getCanvasSize();
+        FZLog("Canvas size: {%f, %f}\n", size.width, size.height);
+        return true;
+    }
+    static bool __cmd_pwindowsize(const char*,float*, int)
+    {
+        fzSize size = Director::Instance().getWindowSize();
+        FZLog("Window size: {%f, %f}\n", size.width, size.height);
+        return true;
+    }
+    static bool __cmd_pviewport(const char*,float*, int)
+    {
+        fzSize size = Director::Instance().getViewPort();
+        FZLog("View port: {%f, %f}\n", size.width, size.height);
         return true;
     }
     static bool __cmd_pinfo(const char*,float*, int)
@@ -312,6 +334,9 @@ namespace FORZE {
         {fzHashConst("pfonts"), __cmd_pfonts, 0},
         {fzHashConst("pnodes"), __cmd_pnodes, 0},
         {fzHashConst("pframes"), __cmd_pframes, 0},
+        {fzHashConst("pcanvassize"), __cmd_pcanvassize, 0},
+        {fzHashConst("pwindowsize"), __cmd_pwindowsize, 0},
+        {fzHashConst("pviewport"), __cmd_pviewport, 0},
 
 
         // SET COMMANDS
