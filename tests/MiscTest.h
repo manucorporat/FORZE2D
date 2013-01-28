@@ -44,7 +44,7 @@ public:
     
     void savePosition() {
         
-        FZLog("Saving position");
+        //FZLog("Saving position");
         Node *sprite = getChildByName("grossini");
         DataStore::Instance().setFloat(sprite->getPosition().x, "positionX");
         DataStore::Instance().setFloat(sprite->getPosition().y, "positionY");

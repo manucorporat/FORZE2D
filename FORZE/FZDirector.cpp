@@ -436,29 +436,6 @@ namespace FORZE {
     
     Texture2D* Director::getScreenshot(int format)
     {
-#if 0
-        fzSize viewPort = getViewPort();
-        fzPixelInfo formatInfo = Texture2D::getPixelInfo((fzPixelFormat)format);
-        fzTextureInfo textureInfo = Texture2D::getTextureInfo(formatInfo.textureFormat);
-        
-        fzUInt bufferSize = (formatInfo.bbp * viewPort.width * viewPort.height)/8;
-        unsigned char *pixels = new unsigned char[bufferSize];
-        
-        glReadPixels(0, 0, viewPort.width, viewPort.height, textureInfo.openGLFormat, formatInfo.dataType, pixels);
-        
-        
-        Texture2D *texture;
-        try {
-            texture = new Texture2D(pixels, (fzTextureFormat)format,
-                                    fzMath_nextPOT(viewPort.width), fzMath_nextPOT(viewPort.height), viewPort);
-            
-        } catch (std::exception& error) {
-            FZLOGERROR("%s", error.what());
-            delete [] pixels;
-            return NULL;
-        }
-        return texture;
-#endif
         return NULL;
     }
     

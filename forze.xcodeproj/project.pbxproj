@@ -944,6 +944,8 @@
 		A95C198F16149BDA007D2287 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198E16149BDA007D2287 /* QuartzCore.framework */; };
 		A95C199016149BDE007D2287 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A97883EB160F80A900A93735 /* OpenGLES.framework */; };
 		A95C199216149BF3007D2287 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C199116149BF3007D2287 /* libz.dylib */; };
+		A95E134216B57C1400907DF5 /* helvetica@x2.fnt in Resources */ = {isa = PBXBuildFile; fileRef = A99804F0161F80B70037A7EB /* helvetica@x2.fnt */; };
+		A95E134316B57C1400907DF5 /* helvetica@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = A99804F1161F80B70037A7EB /* helvetica@x2.png */; };
 		A95E83A5163031CF00943C8F /* fire_rgba8888.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F54157D66DA001E055D /* fire_rgba8888.pvr */; };
 		A964A0AC161B3B960029311D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198E16149BDA007D2287 /* QuartzCore.framework */; };
 		A964A0AD161B3B960029311D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198C16149BD5007D2287 /* CoreGraphics.framework */; };
@@ -4773,6 +4775,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A95E134216B57C1400907DF5 /* helvetica@x2.fnt in Resources */,
+				A95E134316B57C1400907DF5 /* helvetica@x2.png in Resources */,
 				A94A9602162AEC660035F4B6 /* helvetica.fnt in Resources */,
 				A94A9603162AEC660035F4B6 /* helvetica.png in Resources */,
 				A94A95F9162AEC660035F4B6 /* menu_left.png in Resources */,
