@@ -46,8 +46,8 @@
 #include "FZData.h"
 
 // libpng
-#include "png.h"
-#include "pnginfo.h"
+#include "external/libpng/png.h"
+#include "external/libpng/pnginfo.h"
 
 
 using namespace STD;
@@ -783,10 +783,11 @@ namespace FORZE {
               " - ID: %d\n"
               " - Width: %d\n"
               " - Height: %d\n"
-              " - ContentSize: {%f, %f}\n"
+              " - ContentSize: {%.2f, %.2f}\n"
               " - Factor: %f\n", this, m_textureID, m_width, m_height,
               m_size.width, m_size.height, m_factor);
     }
+    
     
 #pragma mark - Static methods
     

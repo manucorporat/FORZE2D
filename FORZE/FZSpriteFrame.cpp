@@ -152,4 +152,21 @@ namespace FORZE {
     {
         return !(operator == (frame));
     }
+    
+    
+    void fzSpriteFrame::log() const
+    {
+        FZLog("fzSpriteFrame( %p ):\n"
+              " - Textute: %p\n"
+              " - Rect: { %0.2f, %0.2f, %0.2f, %0.2f }\n"
+              " - Offset: { %0.2f, %0.2f }\n"
+              " - Size: { %0.2f, %0.2f }\n"
+              " - Is rotated: %d\n",
+              this, p_texture,
+              m_rect.origin.x, m_rect.origin.y,
+              m_rect.size.width, m_rect.size.height,
+              m_offset.x, m_offset.y,
+              m_originalSize.width, m_originalSize.height,
+              m_isRotated);
+    }
 }

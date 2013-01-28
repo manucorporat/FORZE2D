@@ -79,6 +79,8 @@ namespace FORZE {
     void fzDrawPoly( const fzVec2 *vertices, fzUInt numOfVertices, bool closePolygon );
     
     
+    void fzDrawRect( const fzRect& rect );
+
     //! Draws an shape given a pointer to CGPoint coordiantes and the number of vertices.
     void fzDrawShape( const fzVec2 *vertices, fzUInt numOfVertices);
     

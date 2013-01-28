@@ -1,0 +1,273 @@
+/*
+ * FORZE ENGINE: http://forzefield.com
+ *
+ * Copyright (c) 2011-2012 FORZEFIELD Studios S.L.
+ * Copyright (c) 2012 Manuel Martínez-Almeida
+ * Copyright (c) 2008-2010 Ricardo Quesada
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+/**
+ @author Manuel Martínez-Almeida
+ */
+
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+#include "FZResourcesManager.h"
+#include "FZDeviceConfig.h"
+#include "FZDirector.h"
+#include "FZIO.h"
+#include "FZMacros.h"
+
+#define STRING_MAX_SIZE 512
+
+namespace FORZE {
+    
+    ResourcesManager* ResourcesManager::p_instance = NULL;
+    
+    ResourcesManager& ResourcesManager::Instance()
+    {
+        if (p_instance == NULL)
+            p_instance = new ResourcesManager();
+        
+        return *p_instance; 
+    }
+    
+    
+    ResourcesManager::ResourcesManager()
+    : m_nuRules(0)
+    {
+        // GET RESOURCES PATH
+        char tmp[STRING_MAX_SIZE];
+        if(!fzOSW_getResourcesPath(tmp, STRING_MAX_SIZE))
+            FZ_RAISE_STOP("ResourcesManager: Buffer too small, impossible to get the resources path.");
+        
+        p_resourcesPath = fzStrcpy(tmp);
+        
+        
+        setupDefaultRules();
+    }
+    
+    ResourcesManager::~ResourcesManager()
+    {
+        delete p_resourcesPath;
+    }
+
+    
+    void ResourcesManager::setupDefaultRules()
+    {
+        // mac OS X default rules
+        addRule("iMac*", "mac", 1); // mac
+        addRule("Mac*", "mac", 1); // mac
+
+        // iOS default rules
+        addRule("iPad1*", "ipad", 1); // iPad 1
+        addRule("iPad2*", "ipad", 1); // iPad 2 (Wi-Fi)
+        addRule("iPad3*", "ipadhd", 1); // iPad 3 (Wi-Fi)
+        addRule("iPad3*", "ipad", 2); // iPad 3 (Wi-Fi)
+    }
+    
+    
+    void ResourcesManager::addRule(const char *deviceCode, const char *flag, fzUInt factor)
+    {
+        FZ_ASSERT(deviceCode, "Device code can not be NULL.");
+        FZ_ASSERT(flag, "Flag can not be NULL.");
+        FZ_ASSERT(factor >= 1, "Factor can not be less than 1.");
+        
+        
+        const char *device = DeviceConfig::Instance().getDeviceCode();
+        fzUInt deviceCodeLength = strlen(deviceCode);
+        
+        int cmp = 1;
+        if(deviceCode[deviceCodeLength-1] == '*')
+            cmp = strncmp(deviceCode, device, deviceCodeLength-1);
+        else
+            cmp = strcmp(deviceCode, device);
+        
+        
+        if(cmp == 0) {
+            
+            if(m_nuRules >= FZRULE_NU) {
+                FZ_ASSERT(false, "No enough memory to store new rule.");
+                return;
+            }
+
+            fzUInt flagLength = strlen(flag);
+            if(flagLength > FZRULE_MAXSIZE-1) {
+                FZ_ASSERT(false, "Too long prefix. 7 characters.");
+                flagLength = FZRULE_MAXSIZE-1;
+            }
+            memcpy(m_rules[m_nuRules].flag, flag, flagLength+1);
+            m_rules[m_nuRules].factor = factor;
+            
+            FZLOGINFO("ResourcesManager: New rule:\"%c%s\" Factor:%d.", FZ_IO_SUBFIX_CHAR, m_rules[m_nuRules].flag, m_rules[m_nuRules].factor);
+            ++m_nuRules;
+        }
+    }
+    
+    
+    void ResourcesManager::_generateAbsolutePath(const char *filename, const char *suffix, char *absolutePath) const
+    {
+        FZ_ASSERT(filename != NULL, "Filename can not be NULL.");
+        FZ_ASSERT(absolutePath != NULL, "AbsolutePath must be a valid pointer.");
+
+        if(suffix == NULL) {
+            if(filename[0] == '/')
+                strcpy(absolutePath, filename);
+            else
+                IO::appendPaths(p_resourcesPath, filename, absolutePath);
+            
+        } else {
+            // GET EXTENSION
+            const char *extension = strchr(filename, '.');
+            if(extension == NULL)
+                extension = filename + strlen(filename);
+            
+            // GET NAME
+            size_t nameLength = extension - filename;
+            char *name = fzStrcpy(filename, nameLength);
+
+            // BUILD
+            if(filename[0] == '/')
+                sprintf(absolutePath, "%s%c%s%s", name, FZ_IO_SUBFIX_CHAR, suffix, extension);
+            else
+            {
+                char relativePath[STRING_MAX_SIZE];
+                sprintf(relativePath, "%s%c%s%s", name, FZ_IO_SUBFIX_CHAR, suffix, extension);
+                IO::appendPaths(p_resourcesPath, relativePath, absolutePath);
+            }
+
+            delete [] name;
+        }
+    }
+    
+    
+    void ResourcesManager::generateAbsolutePath(const char *filename, fzUInt factor, char *absolutePath) const
+    {
+        FZ_ASSERT(factor <= 99, "Factor is out of bounds [0, 99].");
+        
+        if(factor == 1 || factor == 0)
+            _generateAbsolutePath(filename, nullptr, absolutePath);
+        
+        else {
+            char suffix[4];
+            sprintf(suffix, "x%d", factor);
+            
+            _generateAbsolutePath(filename, suffix, absolutePath);
+        }
+    }
+
+    
+    bool ResourcesManager::getPath(const char *filename, fzUInt priority, char *absolutePath, fzUInt *factor) const
+    {
+        *factor = 0;
+        if(priority < m_nuRules) {
+            // RULES
+            _generateAbsolutePath(filename, m_rules[priority].flag, absolutePath);
+            *factor = m_rules[priority].factor;
+            
+        }else{
+            // FACTOR
+            fzUInt preferedFactor = Director::Instance().getResourcesFactor();
+            fzInt tmpFactor = m_nuRules-priority + preferedFactor;
+            if(tmpFactor > 0) {
+                generateAbsolutePath(filename, tmpFactor, absolutePath);
+                *factor = tmpFactor;
+            }
+        }
+        return (*factor > 0);
+    }
+    
+    
+    fzBuffer ResourcesManager::loadResource(const char *filename, fzUInt *outFactor) const
+    {
+        FZ_ASSERT(filename != NULL, "Filename can not be NULL.");
+        FZ_ASSERT(outFactor != NULL, "outFactor can not be NULL.");
+
+        // REMOVING FORCED FLAGS
+        char *filenameCpy = fzStrcpy(filename);
+        IO::removeFileSuffix(filenameCpy);
+        
+        // LOOK FOR TEXTURE
+        *outFactor = 0;
+        char absolutePath[STRING_MAX_SIZE];
+        fzUInt factor, priority = 0;
+        
+        while (getPath(filenameCpy, priority, absolutePath, &factor))
+        {
+            fzBuffer buffer = IO::loadFile(absolutePath);
+            if(!buffer.isEmpty()) {
+                *outFactor = factor;
+                delete filenameCpy;
+                return buffer;
+            }
+            ++priority;
+        }
+        
+        FZLOGERROR("IO: \"%s\" not found.", filename);
+        delete filenameCpy;
+        return fzBuffer::empty();
+    }
+    
+    
+    fzBuffer ResourcesManager::loadResource(const char *filename) const
+    {
+        FZ_ASSERT(filename != NULL, "Filename can not be NULL.");
+        char absolutePath[STRING_MAX_SIZE];
+        generateAbsolutePath(filename, 1, absolutePath);
+        
+        fzBuffer buffer = IO::loadFile(absolutePath);
+        if(buffer.isEmpty())
+            FZLOGERROR("IO: \"%s\" not found.", filename);
+        
+        return buffer;
+    }
+    
+    
+    void ResourcesManager::checkFile(const char* filename) const
+    {
+        if(filename == NULL)
+            return;
+        
+        // REMOVING FORCED FLAGS
+        char *filenameCpy = fzStrcpy(filename);
+        IO::removeFileSuffix(filenameCpy);
+        
+        // LOOK FOR TEXTURE
+        char absolutePath[STRING_MAX_SIZE];
+        fzUInt factor, priority = 0;
+        
+        FZLog("ResourcesManager:");
+        
+        while (getPath(filenameCpy, priority, absolutePath, &factor))
+        {
+            if(IO::checkFile(absolutePath))
+                printf(" - FOUND: %s\n", absolutePath);
+            else
+                printf(" - NOT FOUND: %s\n", absolutePath);
+
+            ++priority;
+        }
+        
+        delete filenameCpy;
+    }
+}

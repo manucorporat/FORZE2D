@@ -30,6 +30,7 @@
 #include "FZTypes.h"
 #include "FZMacros.h"
 #include "FZMath.h"
+#include "Optimized/FZMathInline.h"
 
 
 namespace FORZE {
@@ -72,10 +73,7 @@ namespace FORZE {
     
     fzRect& fzRect::applyTransform(const fzAffineTransform& t)
     {
-        register fzMat4 matrix;
-        t.generateGLMatrix(matrix);
-        
-        return applyTransform(matrix);
+        return applyTransform(t.m);
     }
     
     
@@ -91,61 +89,59 @@ namespace FORZE {
     
 #pragma mark - fzAffineTransform implementation
     
-    void fzAffineTransform::generateGLMatrix(float *O) const
+    fzAffineTransform::fzAffineTransform(const float *matrix)
     {
-        O[2] = O[3] = O[6] = O[7] = O[8] = O[9] = O[11] = 0.0f;
-        O[10] = O[15] = 1.0f;
-        O[0] = m[0];
-        O[1] = m[1];
-        O[4] = m[2];
-        O[5] = m[3];
-        O[12] = m[4];
-        O[13] = m[5];
-        O[14] = m[6];
+        _inline_mat4Copy(matrix, m);
     }
     
     
-    void fzAffineTransform::assign(fzFloat *data)
+    void fzAffineTransform::assign(fzFloat data[7])
     {
-        fzFloat sina = fzMath_sin(data[0]);
-        fzFloat cosa = fzMath_cos(data[0]);
-        
-        m[0] = cosa * data[1];
-        m[1] = sina * data[1];
-        m[2] = -sina * data[2];
-        m[3] = cosa * data[2];
-        m[4] = data[3];
-        m[5] = data[4];
-        m[6] = data[5]; 
+        m[0] = data[0];
+        m[1] = data[1];
+        m[2] = 0;
+        m[3] = 0;
+        m[4] = data[2];
+        m[5] = data[3];
+        m[6] = 0;
+        m[7] = 0;
+        m[8] = 0;
+        m[9] = 0;
+        m[10] = 0;
+        m[11] = 0;
+        m[12] = data[4];
+        m[13] = data[5];
+        m[14] = data[6];
     }
     
     
     fzAffineTransform fzAffineTransform::getInverse() const
+    {        
+        fzAffineTransform invert;
+        fzMath_mat4Invert(m, invert.m);
+        return invert;
+    }
+    
+    
+    void fzAffineTransform::log() const
     {
-        if(m[0]==0 || m[3]==0)
-            return *this;
+        fzMath_mat4Print(m);
+    }
+    
+    
+    fzAffineTransform& fzAffineTransform::translate(float x, float y, float z)
+    {
+        if(x != 0 || y != 0 || z != 0)
+            _inline_mat4Tranlate(m, x, y, z);
         
-        const fzFloat det = 1 / (m[0]*m[3] - m[1]*m[2]);
-        return fzAffineTransform(m[3] * det,
-                                 -m[1] * det,
-                                 -m[2] * det,
-                                 m[0] * det,
-                                 (m[5]*m[2]-m[4]*m[3]) * det,
-                                 (m[4]*m[1]-m[5]*m[0]) * det
-                                 );
+        return *this;
     }
     
     
     fzAffineTransform& fzAffineTransform::rotate(fzFloat radians)
     {
-        const fzFloat sina = fzMath_sin(radians);
-        const fzFloat cosa = fzMath_cos(radians);
-        
-        fzFloat aa = cosa * m[0]; aa += sina * m[2];
-        fzFloat bb = cosa * m[1]; bb += sina * m[3];
-        m[2] *= cosa; m[2] -= sina * m[0];
-        m[3] *= cosa; m[3] -= sina * m[1];
-        m[0] = aa; m[1] = bb;
+        if(radians != 0)
+            _inline_mat4Rotate(m, radians);
         
         return *this;
     }
@@ -153,15 +149,7 @@ namespace FORZE {
     
     fzAffineTransform& fzAffineTransform::concat(const fzAffineTransform& t)
     {
-        fzFloat aa = m[0] * t.m[0] + m[1] * t.m[2];
-        fzFloat bb = m[0] * t.m[1] + m[1] * t.m[3];
-        fzFloat cc = m[2] * t.m[0] + m[3] * t.m[2];
-        fzFloat dd = m[2] * t.m[1] + m[3] * t.m[3];
-        fzFloat txx = m[4] * t.m[0] + m[5] * t.m[2] + t.m[4];
-        fzFloat tyy = m[4] * t.m[1] + m[5] * t.m[3] + t.m[5];
-        m[0] = aa; m[1] = bb; m[2] = cc;
-        m[3] = dd; m[4] = txx; m[5] = tyy;
-        
+        _inline_mat4MultiplySafe(m, t.m, m);
         return *this;
     }
 

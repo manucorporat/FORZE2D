@@ -36,7 +36,8 @@
 
 namespace FORZE {
     
-    /** 
+    class Node;
+    /**
      A Camera is used in every Node.
      Useful to look at the object from different views.
      The OpenGL gluLookAt() function is used to locate the
@@ -65,15 +66,15 @@ namespace FORZE {
         fzPoint3 m_eye;
         fzPoint3 m_center;
         fzPoint3 m_up;
+        Node *p_parent;
+        fzAffineTransform m_lookupTransform;
         
-        fzMat4 m_lookupMatrix;
-        //float m_lookupMatrix[MATRIX_SIZE];
         
     public:
         static const fzFloat defaultEyeZ;
 
         //! Constructs a default ortho camera.
-        Camera();
+        Camera(Node *parent);
         
         
         //! Sets if the camera values are dirty.
@@ -91,7 +92,7 @@ namespace FORZE {
         
         
         //! Sets the camera using gluLookAt using its eye, center and up_vector.
-        void locate();
+        const fzAffineTransform& getLookupMatrix();
 
         
         //! Sets the eye values in points.

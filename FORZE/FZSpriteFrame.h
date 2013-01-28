@@ -126,6 +126,9 @@ namespace FORZE {
         }
         
         
+        void log() const;
+
+        
         // Operators
         bool operator == (const fzSpriteFrame&) const;
         bool operator != (const fzSpriteFrame&) const;

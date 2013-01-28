@@ -30,7 +30,7 @@
  @author Manuel Martínez-Almeida
  */
 
-#include "FZPlatforms.h"
+#include "../../FZPlatforms.h"
 
 #if FZ_GL_SHADERS
 

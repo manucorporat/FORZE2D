@@ -75,7 +75,7 @@ namespace FORZE {
         va_start(ap, pszFormat);
         memcpy(_szBuf[_currentPacket], FORZE_SIGN, FORZE_SIGN_LEN);
 #if FZ_STL_CPLUSPLUS11
-        vsnprintf(_szBuf[_currentPacket][FORZE_SIGN_LEN], FZLOG_SIZE-FORZE_SIGN_LEN, pszFormat, ap);
+        vsnprintf(&_szBuf[_currentPacket][FORZE_SIGN_LEN], FZLOG_SIZE-FORZE_SIGN_LEN, pszFormat, ap);
 #else
         vsprintf(&_szBuf[_currentPacket][FORZE_SIGN_LEN], pszFormat, ap);
 #endif

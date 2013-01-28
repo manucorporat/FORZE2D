@@ -5,7 +5,7 @@
 using namespace FORZE;
 
 
-#define NUMBER_OF_TESTS 21
+#define NUMBER_OF_TESTS 22
 
 TestLayer *allTest(fzUInt index)
 {
@@ -468,6 +468,34 @@ ActionCallFuncND::ActionCallFuncND()
     grossini->runAction(action);
 }
 
+
+ActionOrbit::ActionOrbit()
+: ActionBase("ActionOrbit", NULL)
+{
+    ActionInterval * orbit1 = new OrbitCamera(2, 1, 0, 0, 180, 0, 0);
+	ActionInterval * action1 = new Sequence(orbit1, orbit1->reverse(), NULL);
+    
+    ActionInterval * orbit2 = new OrbitCamera(2, 1, 0, 0, 180, -45, 0);
+	ActionInterval * action2 = new Sequence(orbit2, orbit2->reverse(), NULL);
+
+	ActionInterval * orbit3 = new OrbitCamera(2, 1, 0, 0, 180, 90, 0);
+	ActionInterval * action3 = new Sequence(orbit3, orbit3->reverse(), NULL);
+
+
+    kathia->runAction(new RepeatForever(action1));
+    tamara->runAction(new RepeatForever(action2));
+    grossini->runAction(new RepeatForever(action3));
+    
+    
+	ActionInterval * move = new MoveBy(3, fzPoint(100, -100));;
+	ActionInterval * move_back = move->reverse();
+	ActionInterval * seq = new Sequence(move, move_back, NULL);
+	Action * rfe = new RepeatForever(seq);
+    
+    kathia->runAction(rfe);
+    tamara->runAction(rfe->copy());
+    grossini->runAction(rfe->copy());
+}
 
 
 

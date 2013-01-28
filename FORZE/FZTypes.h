@@ -62,8 +62,11 @@ namespace FORZE {
     
 #endif
     
+    //! A 32 bits 4x4 matrix.
+    typedef float fzMat4[16];
+    
     // predefined class
-    template<typename T, int N> struct _fzColor4;
+    template<typename T, int N> class _fzColor4;
     template<typename T> class _fzVec2;
     
     
@@ -105,11 +108,11 @@ namespace FORZE {
             return fzColor3B(r*k, g*k, b*k);
         }
         
-        const bool operator == (const fzColor3B& c) const {
+        bool operator == (const fzColor3B& c) const {
             return (r == c.r && g == c.g && b == c.b);
         }
         
-        const bool operator != (const fzColor3B& c) const {
+        bool operator != (const fzColor3B& c) const {
             return !(operator == (c));
         }
     };
@@ -196,11 +199,11 @@ namespace FORZE {
         }
 
 
-        const bool operator == (const _fzColor4<T,N>& c) const {
+        bool operator == (const _fzColor4<T,N>& c) const {
             return (r == c.r && g == c.g && b == c.b && a == c.a);
         }
         
-        const bool operator != (const _fzColor4<T,N>& c) const {
+        bool operator != (const _fzColor4<T,N>& c) const {
             return !(operator == (c));
         }
     };
@@ -216,64 +219,81 @@ namespace FORZE {
     {
     public:
         //! matrix values
-        fzFloat m[7];
-        
+        float m[16];
 
         //! Default constructor
-        fzAffineTransform() : m{1, 0, 0, 1, 0, 0, 0} {}
+        fzAffineTransform()
+        : m{
+            1, 0, 0, 0,
+            0, 1, 0, 0,
+            0, 0, 1, 0,
+            0, 0, 0, 1
+        } {}
+        
+        //! 
+        fzAffineTransform(float a, float b, float c, float d, float x, float y, float z)
+        : m{
+            a, b, 0, 0,
+            c, d, 0, 0,
+            0, 0, 1, 0,
+            x, y, z, 1
+        } {}
         
         
-        fzAffineTransform(fzFloat aa, fzFloat bb, fzFloat cc, fzFloat dd, fzFloat txx, fzFloat tyy)
-        : m{aa, bb, cc, dd, txx, tyy, 0} {}
-        
-        
-        fzAffineTransform(const fzFloat *matrix)
-        : m{matrix[0], matrix[1], matrix[4], matrix[5], matrix[12], matrix[13], matrix[14]}
-        { }
-        
-        
-        //! Applies a translation.
-        fzAffineTransform& translate(fzFloat x, fzFloat y) {
-            m[4] += x * m[0]; m[4] += y * m[2];
-            m[5] += x * m[1]; m[5] += y * m[3];
-            return *this;
-        }
+        fzAffineTransform(const float *matrix);
         
         
         //! Applies a scale factor. X and Y axies.
-        fzAffineTransform& scale(fzFloat sx, fzFloat sy) {
+        fzAffineTransform& scale(float sx, float sy) {
             m[0] *= sx; m[1] *= sx;
-            m[2] *= sy; m[3] *= sy;
+            m[4] *= sy; m[5] *= sy;
+
             return *this;
         }
         
         
         //! Applies a scale factor.
-        fzAffineTransform& scale(fzFloat s) {
+        fzAffineTransform& scale(float s) {
             return scale(s, s);
         }
         
         
-        fzAffineTransform& setZ(fzFloat z) {
-            m[6] = z;
-            return *this;
-        }
+//        fzAffineTransform& setZ(float z) {
+//            m[14] = z;
+//            return *this;
+//        }
         
         // Assigns a new affine translation giving rotation/scale/translate.
-        void assign(fzFloat *data);
+        void assign(float *data);
         
+        void log() const;
+        
+        //! Applies a translation.
+        fzAffineTransform& translate(float x, float y, float z);
+        fzAffineTransform& translate(float x, float y) {
+            return translate(x, y, 0);
+        }
         
         //! Applies a rotation given an angle in radians.
-        fzAffineTransform& rotate(fzFloat radians);
+        fzAffineTransform& rotate(float radians);
         
-        
+        //! Applies an affine transform object.
         fzAffineTransform& concat(const fzAffineTransform&);
         
         //! Returns the inverse transform.
         fzAffineTransform getInverse() const;
         
-        //! Generates a valid Opengl matrix.
-        void generateGLMatrix(float *matrix) const;
+        
+        // Operators
+        fzAffineTransform operator * (const fzAffineTransform& t) const {
+            fzAffineTransform newT(m);
+            newT.concat(t);
+            return newT;
+        }
+        
+        fzAffineTransform& operator *= (const fzAffineTransform& t) {
+            return concat(t);
+        }
     };
     
     
@@ -333,11 +353,11 @@ namespace FORZE {
             return *this;
         }
         
-        const bool operator == (const fzSize& s) const {
+        bool operator == (const fzSize& s) const {
             return (width == s.width && height == s.height);
 
         }
-        const bool operator != (const fzSize& s) const {
+        bool operator != (const fzSize& s) const {
             return !(operator == (s));
         }
     };
@@ -435,8 +455,8 @@ namespace FORZE {
         //! Applies a fzAffineTransport to the vector.  
         _fzVec2<T>& applyTransform(const fzAffineTransform& t) {
             float x2 = x;
-            x *= t.m[0]; x += t.m[2]*y + t.m[4];
-            y *= t.m[3]; y += t.m[1]*x2 + t.m[5];
+            x *= t.m[0]; x += t.m[4]*y + t.m[12];
+            y *= t.m[5]; y += t.m[1]*x2 + t.m[13];
             return *this;
         }
         
@@ -478,11 +498,11 @@ namespace FORZE {
             return _fzVec2<T>(-x, -y);
         }
         
-        const bool operator == (const _fzVec2<T>& p) const {
+        bool operator == (const _fzVec2<T>& p) const {
             return (x == p.x && y == p.y);
         }
         
-        const bool operator != (const _fzVec2<T>& p) const {
+        bool operator != (const _fzVec2<T>& p) const {
             return !(operator == (p));
         }
     };
@@ -542,10 +562,12 @@ namespace FORZE {
         
         //! Normalizes the vector.
         _fzVec3<T>& normalize() {
-            const T invLength = length();
-            x /= invLength;
-            y /= invLength;
-            z /= invLength;
+            const T l = length();
+            if(l > 0) {
+                x /= l;
+                y /= l;
+                z /= l;
+            }
             return *this;
         }
         
@@ -556,6 +578,31 @@ namespace FORZE {
                               (z * p.x) - (x * p.z),
                               (x * p.y) - (y * p.x));
         }
+        
+        
+        //! overloaded += operator. vector + vector = vector
+        _fzVec3<T>& operator += (const _fzVec3<T>& p) {
+            x += p.x; y += p.y; z += p.z;
+            return *this;
+        }
+        
+        //! overloaded -= operator. vector - vector = vector
+        _fzVec3<T>& operator -= (const _fzVec3<T>& p) {
+            x -= p.x; y -= p.y; z -= p.z;
+            return *this;
+        }
+        
+        //! overloaded *= operator. vector * scalar = vector
+        _fzVec3<T>& operator *= (T k) {
+            x *= k; y *= k; z *= k;
+            return *this;
+        }
+        
+        //! overloaded /= operator. vector / scalar = vector
+        _fzVec3<T>& operator /= (T k) {
+            x /= k; y /= k; z /= k;
+        }
+
     };
     
     typedef _fzVec3<fzFloat> fzPoint3;
@@ -595,11 +642,11 @@ namespace FORZE {
         
         bool intersect(const fzRect& r) const;
         
-        const bool operator == (const fzRect& r) const {
+        bool operator == (const fzRect& r) const {
             return origin == r.origin && size == r.size;
         }
         
-        const bool operator != (const fzRect& r) const {
+        bool operator != (const fzRect& r) const {
             return !(operator == (r));
         }
         
@@ -644,7 +691,7 @@ namespace FORZE {
     
     
     //! fzAffineTransform Identity.
-    static const fzAffineTransform FZAffineTransformIdentity(1, 0, 0, 1, 0, 0);
+    static const fzAffineTransform FZAffineTransformIdentity(1, 0, 0, 1, 0, 0, 0);
 
 #pragma mark -    
 #pragma mark Opengl types
@@ -688,7 +735,6 @@ namespace FORZE {
         fzUInt origin;
         fzUInt size;
         
-        //fzBlendFunc() = default;
         fzRange() : origin(0), size(0) {}
         
         fzRange(fzUInt origins, fzUInt sizes)
@@ -698,10 +744,6 @@ namespace FORZE {
             return origin + size;
         }
     };
-    
-    
-    //! A 32 bits 4x4 matrix.
-    typedef float fzMat4[16];
 
     
     //! A 32bits 2D vector
