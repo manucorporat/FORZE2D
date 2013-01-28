@@ -400,7 +400,7 @@ namespace FORZE {
     
     bool Director::isFullscreen() const
     {
-        return (getWindowSize() * m_screenFactor == m_screenSize);
+        return ((getWindowSize() * m_screenFactor) == m_screenSize);
     }
     
     
@@ -472,6 +472,7 @@ namespace FORZE {
         
         if(m_windowSize == FZSizeZero && m_originalCanvasSize == FZSizeZero)
             setFullscreen();
+        
         else if(m_windowSize == FZSizeZero)
             setWindowSize(m_originalCanvasSize);
         
@@ -798,13 +799,14 @@ namespace FORZE {
         EventManager::Instance().dispatchEvents();
         
         // SCHEDULE
-        if(!m_isPaused) {
+        if(!m_isPaused)
             Scheduler::Instance().tick( m_dt );
-        }
         
+        // UPDATE PROJECTION
         if(m_dirtyFlags)
             updateProjection();
-
+        
+        // LOAD SCENE
         if(p_nextScene)
             setNextScene();
         
@@ -986,7 +988,7 @@ namespace FORZE {
 #if FORZE_DEBUG == 2
             DeviceConfig::Instance().logDeviceInfo();
 #endif
-            
+            updateViewRect();
             // set default GL values
             setDefaultGLValues();
             
