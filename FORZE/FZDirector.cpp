@@ -741,6 +741,7 @@ namespace FORZE {
             p_runningScene->release();
         }
         p_runningScene = p_nextScene;
+        p_runningScene->makeDirty(kFZDirty_all);
         p_nextScene = NULL;
 
         if(p_runningScene) {
@@ -752,9 +753,6 @@ namespace FORZE {
                 //p_runningScene->onEnterTransitionDidFinish();
             }
         }
-#if FZ_RENDER_ON_DEMAND
-        m_sceneIsDirty = true;
-#endif
     }
     
     
