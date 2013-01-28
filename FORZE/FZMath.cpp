@@ -190,7 +190,7 @@ namespace FORZE {
         det = m[0] * mOut[0] + m[1] * mOut[4] + m[2] * mOut[8] + m[3] * mOut[12];
         
         if (det == 0) {
-            FZLOGERROR("fzAffineTransform: Imposible to get inverse.");
+            FZLOGERROR("Math: Determinant is zero, imposible to inverse.");
             return false;
         }
         
