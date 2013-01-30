@@ -696,11 +696,11 @@ namespace FORZE {
         
         
         //! Converts a Point to node (local) space coordinates.
-        const fzPoint& convertToNodeSpace(fzPoint);
+        fzPoint convertToNodeSpace(fzPoint);
         
         
         //! Converts a Point to world space coordinates. The result is in Points.
-        const fzPoint& convertToWorldSpace(fzPoint);
+        fzPoint convertToWorldSpace(fzPoint);
         
         
         /** Converts a Point to node (local) space coordinates. The result is in Points.

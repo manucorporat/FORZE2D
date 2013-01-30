@@ -889,13 +889,13 @@ namespace FORZE {
     }
     
     
-    const fzPoint& Node::convertToNodeSpace(fzPoint worldPoint)
+    fzPoint Node::convertToNodeSpace(fzPoint worldPoint)
     {
         return worldPoint.applyTransform(getWorldToNodeTransform());
     }
     
     
-    const fzPoint& Node::convertToWorldSpace(fzPoint nodePoint)
+    fzPoint Node::convertToWorldSpace(fzPoint nodePoint)
     {
         return nodePoint.applyTransform(getNodeToWorldTransform());
     }

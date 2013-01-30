@@ -44,6 +44,7 @@ namespace FORZE {
         
     } _modelview_stack = {0, 0, NULL};    
     
+    
     void MS::initialize()
     {
         if (_modelview_stack.stack != NULL)
