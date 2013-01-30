@@ -8,7 +8,7 @@ using namespace FORZE;
 
 #define NUMBER_OF_TESTS 3
 
-TestLayer *allTest(fzUInt index)
+static TestLayer *allTest(fzUInt index)
 {
     switch (index) {
         case 0: return new LabelTest();
