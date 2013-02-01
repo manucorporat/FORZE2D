@@ -29,7 +29,7 @@
 
 #include "macosx_support.h"
 
-#if defined(FZ_OS) && (FZ_OS == kFZPLATFORM_MAC)
+#if defined(FZ_OS) && (FZ_OS == kFZ_OS_MAC)
 
 #include <sys/types.h>
 #include <sys/sysctl.h>
