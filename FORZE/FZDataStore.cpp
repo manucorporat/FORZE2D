@@ -79,7 +79,7 @@ namespace FORZE {
         try {
             readFromMemory();
 
-        } catch (std::exception& error) {
+        } catch(std::exception& error) {
             FZLOGERROR(error.what());
             fzOSW_removePath(p_path);
         }

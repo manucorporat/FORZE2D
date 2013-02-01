@@ -82,7 +82,7 @@ namespace FORZE {
                 font->retain();
                 m_fonts.insert(fontsPair(hash, font));
 
-            } catch(std::exception& error){
+            } catch(std::exception& error) {
                 delete filenameCpy;
 
                 FZLOGERROR("%s", error.what());

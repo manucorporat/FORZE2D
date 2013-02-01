@@ -63,7 +63,7 @@ namespace FORZE {
     }
     
     
-    inline void PerformManager::execute(const fzPerform& perform)
+    inline void PerformManager::execute(const fzPerform& perform) const
     {
         switch (perform.valueType) {
             case kJPData_void:
@@ -108,6 +108,7 @@ namespace FORZE {
         
         p_mutex->unlock();
     }
+    
     
     void PerformManager::perform(SELProtocol *target, SELECTOR_FLOAT selector, float withFloat, bool async)
     {

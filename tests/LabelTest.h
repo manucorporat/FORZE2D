@@ -11,8 +11,6 @@ public:
     LabelTest()
     : TestLayer("FNT font", NULL)
     {
-        Font *helvetica = FontCache::Instance().addFont("helvetica.fnt",0);
-
         // Direct way
         Label *label1 = new Label("Hello", "helvetica.fnt");
         addChild(label1);
@@ -24,6 +22,7 @@ public:
         addChild(label2);
 
         // Void label way
+        Font *helvetica = FontCache::Instance().addFont("helvetica.fnt");
         Label *label3 = new Label();
         label3->setFont(helvetica);
         label3->setString("Hola");
@@ -43,7 +42,7 @@ public:
     void changeFont(fzFloat)
     {
         Label *label4 = (Label*)getChildByName("label4");
-        Font *helvetica = FontCache::Instance().addFont("helvetica.fnt",0);
+        Font *helvetica = FontCache::Instance().addFont("helvetica.fnt");
         label4->setFont(helvetica);
         
         unscheduleCurrent();
