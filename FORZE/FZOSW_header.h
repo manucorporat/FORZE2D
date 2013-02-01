@@ -84,7 +84,7 @@
 
 // USAGE:
 // INCLUDE THIS CODE IN YOUR PREFIX HEADER.
-// #include "FZPlatformsHeader.h"
+// #include "FZOSW_header.h"
 // #define FZ_OS kFZ_OS_IOS_GL2
 // //#define FZ_OS kFZ_OS_MAC
 // ...

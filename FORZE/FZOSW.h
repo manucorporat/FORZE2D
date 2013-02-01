@@ -30,12 +30,12 @@
  @author Manuel Martínez-Almeida
  */
 
-#include "FZPlatformsHeader.h"
+#include "FZOSW_header.h"
 
 #ifndef FZ_OS
 
 //#warning FORZE: The operative system was not specified.
-//#warning You must define FZ_OS. See FZPlatformsHeader.h
+//#warning You must define FZ_OS. See FZOSW_header.h
 
 #define FZ_OS kFZ_OS_MODEL
 #endif

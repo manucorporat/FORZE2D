@@ -27,7 +27,7 @@
  @author Manuel Martínez-Almeida
  */
 
-#include "FZPlatforms.h"
+#include "FZOSW.h"
 #include "FZMacros.h"
 
 

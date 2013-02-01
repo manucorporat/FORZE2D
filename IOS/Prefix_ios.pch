@@ -1,5 +1,5 @@
 
-#import "FZPlatformsHeader.h"
+#import "FZOSW_header.h"
 
 #define FZ_OS kFZ_OS_IOS_GL2
 

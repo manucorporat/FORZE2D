@@ -36,7 +36,7 @@
  * FORZE (FZ) configuration file
  */
 
-#include "FZPlatformsHeader.h"
+#include "FZOSW_header.h"
 
 
 #define FORZE_VERSION "v0.1 beta2"
