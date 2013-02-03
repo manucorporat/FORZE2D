@@ -337,7 +337,7 @@ namespace FORZE {
         
         
         attribute = rootNode->first_attribute("y");
-        if(attribute == NULL)
+        if(attribute != NULL)
             info.m_offset.y = atoi(attribute->value());
         
         return true;

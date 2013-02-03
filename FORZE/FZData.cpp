@@ -142,7 +142,7 @@ namespace FORZE {
         *outLength = bufferSize - d_stream.avail_out;
         
         // RELEASE UNUSED BUFFER MEMORY
-        FZ_ASSERT(bufferSize >= *outLength, "Strange bug");
+        FZ_ASSERT(bufferSize >= *outLength, "Bad internal state.");
 //        if(bufferSize != *outLength)
 //            *output = (unsigned char*)realloc(*output, *outLength);
         
