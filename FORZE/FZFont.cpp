@@ -147,7 +147,7 @@ namespace FORZE {
         int nu_arg = sscanf(lines[1], "common lineHeight=%f base=%*d scaleW=%*d scaleH=%*d pages=%d", &m_lineHeight, &nuPages);
         
         if(nu_arg != 2)
-            FZ_RAISE_STOP("Font:FNT: Line 2. Error parsing FNT common data, syntax is not correct.");
+            FZ_RAISE_STOP("Font:FNT: Line 2. Sintax error. Error parsing FNT common data.");
 
         if(nuPages != 1)
             FZ_RAISE_STOP("Font:FNT: Line 2. Number of pages must be 1.");
@@ -163,13 +163,16 @@ namespace FORZE {
         nu_arg = sscanf(lines[2], "page id=%*d file=\"%s\"", filename);
         
         if(nu_arg != 1)
-            FZ_RAISE_STOP("Font:FNT: Line 3. Error parsing FNT page data, syntax is not correct.");
+            FZ_RAISE_STOP("Font:FNT: Line 3. Sintax erro. Error parsing FNT page data.");
         
         if(filename[0] == '\0')
-            FZ_RAISE_STOP("Font:FNT: Line 3. Atlas path parsing error.");
+            FZ_RAISE_STOP("Font:FNT: Line 3. texture's path is missing.");
         
         filename[strlen(filename)-1] = '\0'; // remove last "
         p_texture = TextureCache::Instance().addImage(filename);
+        if(p_texture == NULL)
+            FZ_RAISE("Font:FNT: Font's texture is missing.");
+            
         p_texture->retain();
         
         
