@@ -679,6 +679,7 @@
 		97F12B7F14A7F61100A2462C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 503092B210447296005F7AFC /* libz.dylib */; };
 		97FB2E6E1520B44F00D44E7C /* _fz_aC4_TEX.shader.h in Headers */ = {isa = PBXBuildFile; fileRef = 97FB2E6D1520B44F00D44E7C /* _fz_aC4_TEX.shader.h */; };
 		97FB2E6F1520B44F00D44E7C /* _fz_aC4_TEX.shader.h in Headers */ = {isa = PBXBuildFile; fileRef = 97FB2E6D1520B44F00D44E7C /* _fz_aC4_TEX.shader.h */; };
+		A902388C16B6CA9F00B8D319 /* blocks-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F48157D66DA001E055D /* blocks-hd.png */; };
 		A9048C381622D6550096B280 /* font_menu@x2.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 97ED8F9B157E21E3007C451A /* font_menu@x2.fnt */; };
 		A9048C391622D6550096B280 /* font_menu@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 97ED8F9C157E21E3007C451A /* font_menu@x2.png */; };
 		A9048C3A1622D6550096B280 /* font_menu.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F32157D66DA001E055D /* font_menu.fnt */; };
@@ -903,6 +904,12 @@
 		A927C7951634131A00B2AE52 /* HUD.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F3C157D66DA001E055D /* HUD.pvr */; };
 		A927C7971634131A00B2AE52 /* HUD@x2.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F3D157D66DA001E055D /* HUD@x2.pvr */; };
 		A927C7A21634133300B2AE52 /* SceneTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99AAE1F1629C2CE002D177D /* SceneTest.cpp */; };
+		A94028DE16BC58E800EEF519 /* FZOSW.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94028DC16BC58E800EEF519 /* FZOSW.cpp */; };
+		A94028DF16BC58E800EEF519 /* FZOSW.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A94028DC16BC58E800EEF519 /* FZOSW.cpp */; };
+		A94028E016BC58E800EEF519 /* FZOSW.h in Headers */ = {isa = PBXBuildFile; fileRef = A94028DD16BC58E800EEF519 /* FZOSW.h */; };
+		A94028E116BC58E800EEF519 /* FZOSW.h in Headers */ = {isa = PBXBuildFile; fileRef = A94028DD16BC58E800EEF519 /* FZOSW.h */; };
+		A94028E316BC594500EEF519 /* FZOSW_header.h in Headers */ = {isa = PBXBuildFile; fileRef = A94028E216BC594500EEF519 /* FZOSW_header.h */; };
+		A94028E416BC594500EEF519 /* FZOSW_header.h in Headers */ = {isa = PBXBuildFile; fileRef = A94028E216BC594500EEF519 /* FZOSW_header.h */; };
 		A94A95EC162AEC660035F4B6 /* libforze_mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5018F24D0DFDEAC400C013A5 /* libforze_mac.a */; };
 		A94A95ED162AEC660035F4B6 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 503092B210447296005F7AFC /* libz.dylib */; };
 		A94A95EE162AEC660035F4B6 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9791DFA31554AE2A0080871B /* AppKit.framework */; };
@@ -1111,9 +1118,7 @@
 		A998A073162C8E9100877502 /* menu_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F7C157D66DB001E055D /* menu_right.png */; };
 		A998A074162C8E9100877502 /* menu_right@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F7D157D66DB001E055D /* menu_right@x2.png */; };
 		A998A075162C8E9100877502 /* font_menu.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F32157D66DA001E055D /* font_menu.fnt */; };
-		A998A076162C8E9100877502 /* font_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F33157D66DA001E055D /* font_menu.png */; };
 		A998A077162C8E9100877502 /* font_menu@x2.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 97ED8F9B157E21E3007C451A /* font_menu@x2.fnt */; };
-		A998A078162C8E9100877502 /* font_menu@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 97ED8F9C157E21E3007C451A /* font_menu@x2.png */; };
 		A998A079162C8E9100877502 /* FPSFont.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F38157D66DA001E055D /* FPSFont.fnt */; };
 		A998A07A162C8E9100877502 /* FPSFont.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F39157D66DA001E055D /* FPSFont.pvr */; };
 		A998A07D162C8E9100877502 /* FPSFont@x2.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F3A157D66DA001E055D /* FPSFont@x2.fnt */; };
@@ -1263,12 +1268,6 @@
 		A99E9C3316922F1F00438E54 /* FZPerformManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B8616922F1F00438E54 /* FZPerformManager.cpp */; };
 		A99E9C3416922F1F00438E54 /* FZPerformManager.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B8716922F1F00438E54 /* FZPerformManager.h */; };
 		A99E9C3516922F1F00438E54 /* FZPerformManager.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B8716922F1F00438E54 /* FZPerformManager.h */; };
-		A99E9C3616922F1F00438E54 /* FZPlatforms.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B8816922F1F00438E54 /* FZPlatforms.cpp */; };
-		A99E9C3716922F1F00438E54 /* FZPlatforms.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B8816922F1F00438E54 /* FZPlatforms.cpp */; };
-		A99E9C3816922F1F00438E54 /* FZPlatforms.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B8916922F1F00438E54 /* FZPlatforms.h */; };
-		A99E9C3916922F1F00438E54 /* FZPlatforms.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B8916922F1F00438E54 /* FZPlatforms.h */; };
-		A99E9C3A16922F1F00438E54 /* FZPlatformsHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B8A16922F1F00438E54 /* FZPlatformsHeader.h */; };
-		A99E9C3B16922F1F00438E54 /* FZPlatformsHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B8A16922F1F00438E54 /* FZPlatformsHeader.h */; };
 		A99E9C3C16922F1F00438E54 /* FZRenderTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B8B16922F1F00438E54 /* FZRenderTexture.cpp */; };
 		A99E9C3D16922F1F00438E54 /* FZRenderTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B8B16922F1F00438E54 /* FZRenderTexture.cpp */; };
 		A99E9C3E16922F1F00438E54 /* FZRenderTexture.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B8C16922F1F00438E54 /* FZRenderTexture.h */; };
@@ -1888,6 +1887,9 @@
 		A91A6DE81642FE9B0025ADE5 /* ios-LabelTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-LabelTest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A91A6E3D1643296F0025ADE5 /* simulation.vert */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = simulation.vert; sourceTree = "<group>"; };
 		A927C79F1634131A00B2AE52 /* mac-SceneTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mac-SceneTest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A94028DC16BC58E800EEF519 /* FZOSW.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZOSW.cpp; sourceTree = "<group>"; };
+		A94028DD16BC58E800EEF519 /* FZOSW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZOSW.h; sourceTree = "<group>"; };
+		A94028E216BC594500EEF519 /* FZOSW_header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZOSW_header.h; sourceTree = "<group>"; };
 		A94A9614162AEC660035F4B6 /* mac-LabelTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mac-LabelTest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A95B738F16701A65001725FB /* tinythread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinythread.cpp; sourceTree = "<group>"; };
 		A95B739016701A65001725FB /* tinythread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinythread.h; sourceTree = "<group>"; };
@@ -1988,9 +1990,6 @@
 		A99E9B8516922F1F00438E54 /* FZParticleSystemQuad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZParticleSystemQuad.h; sourceTree = "<group>"; };
 		A99E9B8616922F1F00438E54 /* FZPerformManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZPerformManager.cpp; sourceTree = "<group>"; };
 		A99E9B8716922F1F00438E54 /* FZPerformManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZPerformManager.h; sourceTree = "<group>"; };
-		A99E9B8816922F1F00438E54 /* FZPlatforms.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZPlatforms.cpp; sourceTree = "<group>"; };
-		A99E9B8916922F1F00438E54 /* FZPlatforms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZPlatforms.h; sourceTree = "<group>"; };
-		A99E9B8A16922F1F00438E54 /* FZPlatformsHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZPlatformsHeader.h; sourceTree = "<group>"; };
 		A99E9B8B16922F1F00438E54 /* FZRenderTexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZRenderTexture.cpp; sourceTree = "<group>"; };
 		A99E9B8C16922F1F00438E54 /* FZRenderTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZRenderTexture.h; sourceTree = "<group>"; };
 		A99E9B8D16922F1F00438E54 /* FZResourcesManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZResourcesManager.cpp; sourceTree = "<group>"; };
@@ -2901,9 +2900,9 @@
 				97C9B90D15068BCF00B8AEE5 /* FZGrid.h */,
 				97C9B90E15068BCF00B8AEE5 /* FZLifeCycle.h */,
 				97C9B90F15068BCF00B8AEE5 /* FZMacros.h */,
-				A99E9B8816922F1F00438E54 /* FZPlatforms.cpp */,
-				A99E9B8916922F1F00438E54 /* FZPlatforms.h */,
-				A99E9B8A16922F1F00438E54 /* FZPlatformsHeader.h */,
+				A94028DC16BC58E800EEF519 /* FZOSW.cpp */,
+				A94028DD16BC58E800EEF519 /* FZOSW.h */,
+				A94028E216BC594500EEF519 /* FZOSW_header.h */,
 				97C9B91015068BCF00B8AEE5 /* FZPrimitives.cpp */,
 				97C9B91115068BCF00B8AEE5 /* FZPrimitives.h */,
 				97C9B91315068BCF00B8AEE5 /* FZSpriteFrame.cpp */,
@@ -3276,8 +3275,6 @@
 				A99E9C2C16922F1F00438E54 /* FZParticleSystem.h in Headers */,
 				A99E9C3016922F1F00438E54 /* FZParticleSystemQuad.h in Headers */,
 				A99E9C3416922F1F00438E54 /* FZPerformManager.h in Headers */,
-				A99E9C3816922F1F00438E54 /* FZPlatforms.h in Headers */,
-				A99E9C3A16922F1F00438E54 /* FZPlatformsHeader.h in Headers */,
 				A99E9C3E16922F1F00438E54 /* FZRenderTexture.h in Headers */,
 				A99E9C4216922F1F00438E54 /* FZResourcesManager.h in Headers */,
 				A99E9C4616922F1F00438E54 /* FZScene.h in Headers */,
@@ -3299,6 +3296,8 @@
 				A99E9C8A16922F4A00438E54 /* macosx_support.h in Headers */,
 				A99E9C9016922F4A00438E54 /* model_support.h in Headers */,
 				A90A07DE16AC1E6C00B61C56 /* FZMathInline.h in Headers */,
+				A94028E016BC58E800EEF519 /* FZOSW.h in Headers */,
+				A94028E316BC594500EEF519 /* FZOSW_header.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3385,8 +3384,6 @@
 				A99E9C2D16922F1F00438E54 /* FZParticleSystem.h in Headers */,
 				A99E9C3116922F1F00438E54 /* FZParticleSystemQuad.h in Headers */,
 				A99E9C3516922F1F00438E54 /* FZPerformManager.h in Headers */,
-				A99E9C3916922F1F00438E54 /* FZPlatforms.h in Headers */,
-				A99E9C3B16922F1F00438E54 /* FZPlatformsHeader.h in Headers */,
 				A99E9C3F16922F1F00438E54 /* FZRenderTexture.h in Headers */,
 				A99E9C4316922F1F00438E54 /* FZResourcesManager.h in Headers */,
 				A99E9C4716922F1F00438E54 /* FZScene.h in Headers */,
@@ -3408,6 +3405,8 @@
 				A99E9C8B16922F4A00438E54 /* macosx_support.h in Headers */,
 				A99E9C9116922F4A00438E54 /* model_support.h in Headers */,
 				A90A07DF16AC1E6C00B61C56 /* FZMathInline.h in Headers */,
+				A94028E116BC58E800EEF519 /* FZOSW.h in Headers */,
+				A94028E416BC594500EEF519 /* FZOSW_header.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4119,6 +4118,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A902388C16B6CA9F00B8D319 /* blocks-hd.png in Resources */,
 				970C3A62157E502A00F8E3FF /* grossini.png in Resources */,
 				970C3A63157E502A00F8E3FF /* grossini@x2.png in Resources */,
 				970C3A64157E502A00F8E3FF /* grossinis_sister1.png in Resources */,
@@ -4902,9 +4902,7 @@
 				A91A6E11164326BD0025ADE5 /* helvetica@x2.fnt in Resources */,
 				A91A6E12164326BD0025ADE5 /* helvetica@x2.png in Resources */,
 				A998A075162C8E9100877502 /* font_menu.fnt in Resources */,
-				A998A076162C8E9100877502 /* font_menu.png in Resources */,
 				A998A077162C8E9100877502 /* font_menu@x2.fnt in Resources */,
-				A998A078162C8E9100877502 /* font_menu@x2.png in Resources */,
 				A998A06F162C8E9100877502 /* menu_left.png in Resources */,
 				A998A070162C8E9100877502 /* menu_left@x2.png in Resources */,
 				A998A071162C8E9100877502 /* menu_reset.png in Resources */,
@@ -5026,7 +5024,6 @@
 				A99E9C2A16922F1F00438E54 /* FZParticleSystem.cpp in Sources */,
 				A99E9C2E16922F1F00438E54 /* FZParticleSystemQuad.cpp in Sources */,
 				A99E9C3216922F1F00438E54 /* FZPerformManager.cpp in Sources */,
-				A99E9C3616922F1F00438E54 /* FZPlatforms.cpp in Sources */,
 				A99E9C3C16922F1F00438E54 /* FZRenderTexture.cpp in Sources */,
 				A99E9C4016922F1F00438E54 /* FZResourcesManager.cpp in Sources */,
 				A99E9C4416922F1F00438E54 /* FZScene.cpp in Sources */,
@@ -5044,6 +5041,7 @@
 				A99E9C8816922F4A00438E54 /* iOSGL2_support.mm in Sources */,
 				A99E9C8C16922F4A00438E54 /* macosx_support.mm in Sources */,
 				A99E9C8E16922F4A00438E54 /* model_support.cpp in Sources */,
+				A94028DE16BC58E800EEF519 /* FZOSW.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5225,7 +5223,6 @@
 				A99E9C2B16922F1F00438E54 /* FZParticleSystem.cpp in Sources */,
 				A99E9C2F16922F1F00438E54 /* FZParticleSystemQuad.cpp in Sources */,
 				A99E9C3316922F1F00438E54 /* FZPerformManager.cpp in Sources */,
-				A99E9C3716922F1F00438E54 /* FZPlatforms.cpp in Sources */,
 				A99E9C3D16922F1F00438E54 /* FZRenderTexture.cpp in Sources */,
 				A99E9C4116922F1F00438E54 /* FZResourcesManager.cpp in Sources */,
 				A99E9C4516922F1F00438E54 /* FZScene.cpp in Sources */,
@@ -5243,6 +5240,7 @@
 				A99E9C8916922F4A00438E54 /* iOSGL2_support.mm in Sources */,
 				A99E9C8D16922F4A00438E54 /* macosx_support.mm in Sources */,
 				A99E9C8F16922F4A00438E54 /* model_support.cpp in Sources */,
+				A94028DF16BC58E800EEF519 /* FZOSW.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
