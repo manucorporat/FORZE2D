@@ -229,7 +229,7 @@ namespace FORZE {
      }
      */
     
-    ParticleSystem::ParticleSystem(fzUInt number, Texture2D *texture)
+    ParticleSystem::ParticleSystem(fzUInt number)
     : m_totalParticles(number)
     , m_particleCount(0)
     , m_particleIdx(0)
@@ -249,8 +249,6 @@ namespace FORZE {
     , m_lifeVar(0)
     , m_isActive(true)
     , m_autoRemoveOnFinish(false)
-    , m_blendFunc()
-    , p_texture(NULL)
     , p_particles(NULL)
     , m_startColor(fzWHITE)
     , m_startColorVar(fzBLACK)
@@ -261,9 +259,6 @@ namespace FORZE {
     {
         memset(&mode, 0, sizeof(mode));
         
-        //FZ_ASSERT(texture != NULL, "Texture cannot be NULL");
-        setTexture(texture);
-
         p_particles = new fzParticle[m_totalParticles];
         schedule();
     }
@@ -584,35 +579,12 @@ namespace FORZE {
         FZ_ASSERT( m_emitterMode == kFZParticleModeRadius, "Particle Mode should be Radius.");
         mode.B.rotatePerSecondVar = r;
     }
-       
-    
-    void ParticleSystem::setTexture(Texture2D *texture)
-    {
-        FZRETAIN_TEMPLATE(texture, p_texture);
-    }
-    
-    Texture2D* ParticleSystem::getTexture() const
-    {
-        return p_texture;
-    }
-    
-    
-    void ParticleSystem::setBlendFunc(const fzBlendFunc& b)
-    {
-        m_blendFunc = b;
-    }
-    
-    const fzBlendFunc& ParticleSystem::getBlendFunc() const
-    {
-        return m_blendFunc;
-    }
-    
+
     
     const fzPoint& ParticleSystem::getGravity() const
     {
         FZ_ASSERT( m_emitterMode == kFZParticleModeGravity, "Particle Mode should be Gravity.");
-        return FZPointZero;
-        //return mode.A.gravity;
+        return mode.A.gravity;
     }
     
     

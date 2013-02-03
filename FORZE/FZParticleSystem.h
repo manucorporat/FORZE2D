@@ -121,7 +121,7 @@ namespace FORZE {
      @endcode
      
      */
-    class ParticleSystem : public Node, public Protocol::Texture, public Protocol::Blending
+    class ParticleSystem : public Node
     {
     protected:
         
@@ -247,10 +247,6 @@ namespace FORZE {
         
         // Array of particles
         fzParticle *p_particles;
-        // Texture of the particles
-        Texture2D *p_texture;
-        // blend function
-        fzBlendFunc	m_blendFunc;
         
         // movment type: free or grouped
         tFZPositionType	m_positionType;
@@ -270,7 +266,7 @@ namespace FORZE {
         //ParticleSystem(const std::map& dictionary);
         
         //! Initializes a system with a fixed number of particles
-        ParticleSystem(fzUInt numberOfParticles, Texture2D *texture);
+        ParticleSystem(fzUInt numberOfParticles);
         
         // Destructor
         ~ParticleSystem();
@@ -578,17 +574,7 @@ namespace FORZE {
         fzUInt getTotalParticles() const {
             return m_totalParticles;
         }
-        
-        
-        //! conforms to CocosNodeTexture protocol
-        virtual void setTexture(Texture2D*) override;
-        virtual Texture2D* getTexture() const override;
-        
-        
-        //! conforms to CocosNodeTexture protocol
-        virtual void setBlendFunc(const fzBlendFunc& blend) override;
-        virtual const fzBlendFunc& getBlendFunc() const override;
-        
+
         //! particles movement type: Free or Grouped
         void setPositionType(tFZPositionType e) {
             m_positionType = e;

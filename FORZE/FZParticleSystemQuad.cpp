@@ -43,11 +43,15 @@
 namespace FORZE {
     
     ParticleSystemQuad::ParticleSystemQuad(fzUInt number, Texture2D *texture)
-    : ParticleSystem(number, texture)
+    : ParticleSystem(number)
+    , p_texture(NULL)
+    , p_quads(NULL)
+    , m_blendFunc()
     {
         // allo cating quads
         p_quads = new fzC4_T2_V2_Quad[getTotalParticles()];
         
+        setTexture(texture);
         // initialize only once the texCoords and the indices
         initTexCoordsWithRect(fzRect(FZPointZero, p_texture->getContentSize()));
         initIndices();
@@ -160,19 +164,40 @@ namespace FORZE {
     }
     
     
-    void ParticleSystemQuad::setTexture(Texture2D *t, const fzRect& rect)
+    void ParticleSystemQuad::setTexture(Texture2D *texture, const fzRect& rect)
     {
+        FZ_ASSERT(texture, "Texture can not be NULL.");
+        
         // Only update the texture if is different from the current one
-        if( t->getName() != p_texture->getName() ) {
-            ParticleSystem::setTexture(t);
+        if( texture != p_texture) {
+            FZRETAIN_TEMPLATE(texture, p_texture);
             initTexCoordsWithRect(rect);
         }
     }
     
     
-    void ParticleSystemQuad::setTexture(Texture2D *t)
+    void ParticleSystemQuad::setTexture(Texture2D *texture)
     {
-        setTexture(t, fzRect(FZPointZero, p_texture->getContentSize()));
+        FZ_ASSERT(texture, "Texture can not be NULL.");
+        setTexture(texture, fzRect(FZPointZero, texture->getContentSize()));
+    }
+    
+    
+    Texture2D* ParticleSystemQuad::getTexture() const
+    {
+        return p_texture;
+    }
+    
+    
+    void ParticleSystemQuad::setBlendFunc(const fzBlendFunc& b)
+    {
+        m_blendFunc = b;
+    }
+    
+    
+    const fzBlendFunc& ParticleSystemQuad::getBlendFunc() const
+    {
+        return m_blendFunc;
     }
     
     
