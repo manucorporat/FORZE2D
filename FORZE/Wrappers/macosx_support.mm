@@ -63,7 +63,7 @@ namespace FORZE {
             if(principalClass == nil || ![NSBundle loadNibNamed:principalClass owner:app])
             {
                 // we could not load the NIB
-                [app setDelegate:[[_FZOSWRAPPER alloc] init]];
+                [app setDelegate:[[[_FZOSWRAPPER alloc] init] autorelease]];
                 {
                     NSMenu *menubar = [[[NSMenu alloc] init] autorelease];
                     NSMenuItem *appMenuItem = [[NSMenuItem new] autorelease];
