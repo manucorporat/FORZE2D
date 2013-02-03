@@ -67,18 +67,12 @@ namespace FORZE {
     
     void MenuItem::useBatchMode()
     {
-        if(m_mode == kFZMenuItem_batchMode)
-            return;
-        
         m_mode = kFZMenuItem_batchMode;
     }
   
     
     void MenuItem::useSelfMode()
     {
-        if(m_mode == kFZMenuItem_selfMode)
-            return;
-        
         m_mode = kFZMenuItem_selfMode;
     }
     
@@ -103,35 +97,42 @@ namespace FORZE {
     
     void MenuItem::activate()
     {
-        if(m_isEnabled)
-            (p_targetCallback->*m_selector)(this);
+        FZ_ASSERT(m_isEnabled, "MenuItem should be enabled to call this method.")
+        (p_targetCallback->*m_selector)(this);
     }
     
     
     void MenuItem::selected()
     {
+        FZ_ASSERT(m_isEnabled, "MenuItem should be enabled to call this method.")
         m_isSelected = true;
     }
     
     
     void MenuItem::unselected()
     {
+        FZ_ASSERT(m_isEnabled, "MenuItem should be enabled to call this method.")
         m_isSelected = false;
     }
     
     
     bool MenuItem::event(Event& event)
     {
-        FZ_ASSERT(event.isType(kFZEventType_Tap), "Event is a touch event.");
+        if(!isEnabled())
+            return false;
         
         if(!isVisible())
+            return false;
+
+        // Check event type. It should be click or touch (tap).
+        if(!event.isType(kFZEventType_Tap))
             return false;
         
         switch (event.getState())
         {
             case kFZEventState_Began:
             {
-                if( !m_isWaiting || !isVisible() )
+                if(!m_isWaiting || !isVisible() )
                     return false;
                 
                 if(getBoundingBox().contains(event.getPoint())) {
@@ -143,7 +144,7 @@ namespace FORZE {
             }
             case kFZEventState_Updated:
             {
-                FZ_ASSERT(!m_isWaiting, "[Event updated] -- invalid state.");
+                FZ_ASSERT(!m_isWaiting, "Bad internal state.");
                 
                 bool isSelected = getBoundingBox().contains(event.getPoint());
                 if (isSelected != m_isSelected) {
@@ -204,7 +205,6 @@ namespace FORZE {
     , p_label(NULL)
     {
         setLabel(label);
-        setIsEnabled(true);
     }
     
     
@@ -224,13 +224,12 @@ namespace FORZE {
         if( label != p_label ) {
             
             if(p_label)
-                removeChild((Node*)p_label, true);
+                removeChild(p_label, true);
             
-            if(label) {
-                addChild(label);
-                
+            if(label) {                
                 label->setAnchorPoint(FZPointZero);
                 setContentSize(label->getContentSize());
+                addChild(label);
             }
             p_label = label;
         }    
@@ -239,8 +238,9 @@ namespace FORZE {
     
     void MenuItemLabel::setString(const char* str)
     {
+        FZ_ASSERT(p_label, "Label was not created.");
         p_label->setString(str);
-        setContentSize( ((Node*)p_label)->getContentSize() );
+        setContentSize(p_label->getContentSize() );
     }
     
     
@@ -258,7 +258,8 @@ namespace FORZE {
     
     void MenuItemLabel::setIsEnabled(bool e)
     {
-        if( m_isEnabled != e ) {
+        FZ_ASSERT(p_label, "Label was not created.");
+        if( m_isEnabled != e) {
             if(e == false) {
                 m_colorBackup = p_label->getColor();
                 p_label->setColor(m_disabledColor);
@@ -272,56 +273,49 @@ namespace FORZE {
     
     void MenuItemLabel::selected()
     {
-        // subclass to change the default action
-        if(m_isEnabled) {
-
-            MenuItem::selected();
-            
-            Action *action = getActionByTag(kZoomActionTag);
-            if( action )
-                stopAction(action);
-            else
-                m_originalScale = getScale();
-            
-            Action *zoomAction = new ScaleTo(0.1f, m_originalScale * 1.2f);
-            zoomAction->setTag(kZoomActionTag);
-            runAction(zoomAction);
-        }
+        MenuItem::selected();
+        
+        Action *action = getActionByTag(kZoomActionTag);
+        if( action )
+            stopAction(action);
+        else
+            m_originalScale = getScale();
+        
+        Action *zoomAction = new ScaleTo(0.1f, m_originalScale * 1.2f);
+        zoomAction->setTag(kZoomActionTag);
+        runAction(zoomAction);
     }
     
     
     void MenuItemLabel::unselected()
     {
-        // subclass to change the default action
-        if(m_isEnabled) {
-            MenuItem::unselected();
-            stopActionByTag(kZoomActionTag);
-            
-            Action *zoomAction = new ScaleTo(0.1f, m_originalScale);
-            zoomAction->setTag(kZoomActionTag);
-            runAction(zoomAction);
-        }
+        MenuItem::unselected();
+        
+        stopActionByTag(kZoomActionTag);
+        Action *zoomAction = new ScaleTo(0.1f, m_originalScale);
+        zoomAction->setTag(kZoomActionTag);
+        runAction(zoomAction);
     }
     
     
     void MenuItemLabel::activate()
     {
-        if(m_isEnabled) {
-            stopAllActions();
-            setScale(m_originalScale);
-            MenuItem::activate();
-        }
+        stopAllActions();
+        setScale(m_originalScale);
+        MenuItem::activate();
     }
     
     
     void MenuItemLabel::setColor(const fzColor3B& c)
     {
+        FZ_ASSERT(p_label, "Label can not be NULL.");
         p_label->setColor(c);
     }
     
     
     const fzColor3B& MenuItemLabel::getColor() const
     {
+        FZ_ASSERT(p_label, "Label was not created.");
         return p_label->getColor();
     }
     
@@ -333,14 +327,9 @@ namespace FORZE {
     , m_colorNormal(fzWHITE)
     , m_colorSelected(100, 220, 255)
     , m_colorDisabled(fzGRAY)
-    , p_sprite(sprite)
+    , p_sprite(NULL)
     {
-        FZ_ASSERT(sprite, "Sprite cannot be NULL.");
-        setColorNormal(sprite->getColor());
-        
-        p_sprite->setAnchorPoint(FZPointZero);
-        addChild(p_sprite);
-        setContentSize(p_sprite->getContentSize());
+        setSprite(sprite);
     }
     
 
@@ -349,27 +338,55 @@ namespace FORZE {
     { }
 
     
+    void MenuItemImage::setSprite(Sprite *sprite)
+    {
+        if( sprite != p_sprite ) {
+            
+            if(p_sprite)
+                removeChild(p_sprite, true);
+            
+            if(sprite) {                
+                sprite->setAnchorPoint(FZPointZero);
+                setColorNormal(sprite->getColor());
+                setContentSize(sprite->getContentSize());
+                addChild(sprite);
+            }
+            p_sprite = sprite;
+        }
+    }
+    
+    void MenuItemImage::updateColor()
+    {
+        FZ_ASSERT(p_sprite, "Sprite was not created.");
+
+        if(m_isEnabled) {
+            if(m_isSelected) p_sprite->setColor(m_colorSelected);
+            else p_sprite->setColor(m_colorNormal);
+        }else
+            p_sprite->setColor(m_colorDisabled);
+    }
+    
     void MenuItemImage::setColorNormal(const fzColor3B& color)
     {
         m_colorNormal = color;
-        if(!m_isSelected && m_isEnabled)
-            p_sprite->setColor(color);
+        if(p_sprite)
+            updateColor();
     }
     
     
     void MenuItemImage::setColorSelected(const fzColor3B& color)
     {
         m_colorSelected = color;
-        if(m_isSelected && m_isEnabled)
-            p_sprite->setColor(color);
+        if(p_sprite)
+            updateColor();
     }
     
     
     void MenuItemImage::setColorDisabled(const fzColor3B& color)
     {
         m_colorDisabled = color;
-        if(!m_isEnabled)
-            p_sprite->setColor(color);
+        if(p_sprite)
+            updateColor();
     }
     
     
@@ -449,6 +466,7 @@ namespace FORZE {
     , p_disabledSprite(NULL)
     {
         setNormalSprite(new Sprite(normalFilename));
+        
         if(!selectedFilename.empty())
             setSelectedSprite(new Sprite(selectedFilename));
         
