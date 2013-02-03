@@ -42,29 +42,37 @@
 
 namespace FORZE {
     
-    ParticleSystemQuad::ParticleSystemQuad(fzUInt number, Texture2D *texture)
+    ParticleSystemQuad::ParticleSystemQuad(fzUInt number)
     : ParticleSystem(number)
     , p_texture(NULL)
     , p_quads(NULL)
     , m_blendFunc()
     {
-        // allo cating quads
+        // allocating quads
         p_quads = new fzC4_T2_V2_Quad[getTotalParticles()];
         
-        setTexture(texture);
-        // initialize only once the texCoords and the indices
-        initTexCoordsWithRect(fzRect(FZPointZero, p_texture->getContentSize()));
+        // init indices
         initIndices();
         
 #if FZ_GL_SHADERS
         setGLProgram(kFZShader_mat_aC4_TEX);
-#endif  
+#endif
+    }
+    
+    
+    ParticleSystemQuad::ParticleSystemQuad(fzUInt number, Texture2D *texture)
+    : ParticleSystemQuad(number)
+    {
+        // set texture
+        setTexture(texture);
     }
     
     
     ParticleSystemQuad::~ParticleSystemQuad()
     {
         delete [] p_quads;
+        if(p_texture)
+            p_texture->release();
 
         glDeleteBuffers(1, &m_indicesVBO);
 #if FZ_VBO_STREAMING
@@ -78,7 +86,7 @@ namespace FORZE {
         FZ_ASSERT( s.getOffset() == FZPointZero, "QuadParticle only supports SpriteFrames with no offsets.");
         
         // update texture before updating texture rect
-        if ( s.getTexture()->getName() != p_texture->getName() )
+        if ( s.getTexture() != p_texture )
             setTexture(s.getTexture());
     }
     
@@ -166,7 +174,9 @@ namespace FORZE {
     
     void ParticleSystemQuad::initTexCoordsWithRect(fzRect rect)
     {
-        // convert to Tex coords        
+        FZ_ASSERT(p_texture, "Texture was not created.");
+
+        // convert to Tex coords
         fzUInt wide = p_texture->getPixelsWide();
         fzUInt high = p_texture->getPixelsHigh();
         
@@ -283,7 +293,9 @@ namespace FORZE {
     
     
     void ParticleSystemQuad::draw()
-    {	
+    {
+        FZ_ASSERT(p_texture, "Texture was not created.");
+
         if(m_particleIdx == 0)
             return;
         

@@ -60,6 +60,7 @@ namespace FORZE {
         
         
     public:
+        ParticleSystemQuad(fzUInt numberOfParticles);
         ParticleSystemQuad(fzUInt numberOfParticles, Texture2D *texture);
         
         ~ParticleSystemQuad();

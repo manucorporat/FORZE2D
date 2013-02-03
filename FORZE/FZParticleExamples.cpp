@@ -36,8 +36,12 @@
 namespace FORZE {
 
     ParticleFire::ParticleFire()
-    : ParticleSystemQuad(500, TextureCache::Instance().addImage("fire_rgba8888.pvr"))
+    : ParticleSystemQuad(500)
     {
+        // set texture
+        Texture2D *texture = TextureCache::Instance().addImage("fire_rgba8888.pvr");
+        setTexture(texture);
+        
         // duration
         setDuration(kFZParticleDurationInfinity);
         
