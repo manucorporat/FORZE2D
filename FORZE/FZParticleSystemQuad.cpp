@@ -73,6 +73,53 @@ namespace FORZE {
     }
     
     
+    void ParticleSystemQuad::setDisplayFrame(const fzSpriteFrame& s)
+    {
+        FZ_ASSERT( s.getOffset() == FZPointZero, "QuadParticle only supports SpriteFrames with no offsets.");
+        
+        // update texture before updating texture rect
+        if ( s.getTexture()->getName() != p_texture->getName() )
+            setTexture(s.getTexture());
+    }
+    
+    
+    void ParticleSystemQuad::setTexture(Texture2D *texture, const fzRect& rect)
+    {
+        FZ_ASSERT(texture, "Texture can not be NULL.");
+        
+        // Only update the texture if is different from the current one
+        if( texture != p_texture) {
+            FZRETAIN_TEMPLATE(texture, p_texture);
+            initTexCoordsWithRect(rect);
+        }
+    }
+    
+    
+    void ParticleSystemQuad::setTexture(Texture2D *texture)
+    {
+        FZ_ASSERT(texture, "Texture can not be NULL.");
+        setTexture(texture, fzRect(FZPointZero, texture->getContentSize()));
+    }
+    
+    
+    Texture2D* ParticleSystemQuad::getTexture() const
+    {
+        return p_texture;
+    }
+    
+    
+    void ParticleSystemQuad::setBlendFunc(const fzBlendFunc& b)
+    {
+        m_blendFunc = b;
+    }
+    
+    
+    const fzBlendFunc& ParticleSystemQuad::getBlendFunc() const
+    {
+        return m_blendFunc;
+    }
+    
+    
     void ParticleSystemQuad::initIndices()
     {        
         GLushort *indices = new GLushort[m_totalParticles * 6];
@@ -151,53 +198,6 @@ namespace FORZE {
             p_quads[i].tr.texCoord.x = right;
             p_quads[i].tr.texCoord.y = top;
         }
-    }
-    
-    
-    void ParticleSystemQuad::setDisplayFrame(const fzSpriteFrame& s)
-    {
-        FZ_ASSERT( s.getOffset() == FZPointZero, "QuadParticle only supports SpriteFrames with no offsets.");
-        
-        // update texture before updating texture rect
-        if ( s.getTexture()->getName() != p_texture->getName() )
-            setTexture(s.getTexture());
-    }
-    
-    
-    void ParticleSystemQuad::setTexture(Texture2D *texture, const fzRect& rect)
-    {
-        FZ_ASSERT(texture, "Texture can not be NULL.");
-        
-        // Only update the texture if is different from the current one
-        if( texture != p_texture) {
-            FZRETAIN_TEMPLATE(texture, p_texture);
-            initTexCoordsWithRect(rect);
-        }
-    }
-    
-    
-    void ParticleSystemQuad::setTexture(Texture2D *texture)
-    {
-        FZ_ASSERT(texture, "Texture can not be NULL.");
-        setTexture(texture, fzRect(FZPointZero, texture->getContentSize()));
-    }
-    
-    
-    Texture2D* ParticleSystemQuad::getTexture() const
-    {
-        return p_texture;
-    }
-    
-    
-    void ParticleSystemQuad::setBlendFunc(const fzBlendFunc& b)
-    {
-        m_blendFunc = b;
-    }
-    
-    
-    const fzBlendFunc& ParticleSystemQuad::getBlendFunc() const
-    {
-        return m_blendFunc;
     }
     
     
