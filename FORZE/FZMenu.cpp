@@ -73,6 +73,9 @@ namespace FORZE {
         }
         
         va_end(args);
+        
+        // align vertically by default.
+        alignChildrenVertically();
     }
     
     
