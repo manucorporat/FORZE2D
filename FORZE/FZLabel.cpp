@@ -40,48 +40,48 @@ using namespace STD;
 namespace FORZE {
     
     // Auxiliar function to print special charaters properly, suck as /n /t...
-    static void printChar(char *toPrint, char c)
+    static void printChar(char *array, char c)
     {
         switch(c)
         {
             case '\n':
-                toPrint[0] = '\\';
-                toPrint[1] = 'n';
-                toPrint[2] = '\0';
+                array[0] = '\\';
+                array[1] = 'n';
+                array[2] = '\0';
                 break;
             case '\t':
-                toPrint[0] = '\\';
-                toPrint[1] = 't';
-                toPrint[2] = '\0';
+                array[0] = '\\';
+                array[1] = 't';
+                array[2] = '\0';
                 break;
             case '\v':
-                toPrint[0] = '\\';
-                toPrint[1] = 'v';
-                toPrint[2] = '\0';
+                array[0] = '\\';
+                array[1] = 'v';
+                array[2] = '\0';
                 break;
             case '\b':
-                toPrint[0] = '\\';
-                toPrint[1] = 'b';
-                toPrint[2] = '\0';
+                array[0] = '\\';
+                array[1] = 'b';
+                array[2] = '\0';
                 break;
             case '\r':
-                toPrint[0] = '\\';
-                toPrint[1] = 'r';
-                toPrint[2] = '\0';
+                array[0] = '\\';
+                array[1] = 'r';
+                array[2] = '\0';
                 break;
             case '\f':
-                toPrint[0] = '\\';
-                toPrint[1] = 'f';
-                toPrint[2] = '\0';
+                array[0] = '\\';
+                array[1] = 'f';
+                array[2] = '\0';
                 break;
             case '\a':
-                toPrint[0] = '\\';
-                toPrint[1] = 'f';
-                toPrint[2] = '\0';
+                array[0] = '\\';
+                array[1] = 'f';
+                array[2] = '\0';
                 break;
             default:
-                toPrint[0] = c;
-                toPrint[1] = '\0';
+                array[0] = c;
+                array[1] = '\0';
                 break;
         }
     }
@@ -91,8 +91,8 @@ namespace FORZE {
     , m_string()
     , m_color(fzWHITE)
     , m_alignment(kFZLabelAlignment_left)
-    , m_verticalPadding(0)
-    , m_horizontalPadding(0)
+    , m_verticalPadding(2)
+    , m_letterSpacing(0)
     , p_font(NULL)
     {
         setIsRelativeAnchorPoint(true);
@@ -152,10 +152,10 @@ namespace FORZE {
     }
     
     
-    void Label::setHorizontalPadding(fzFloat horizontal)
+    void Label::setLetterSpacing(fzFloat horizontal)
     {
-        if(horizontal != m_horizontalPadding) {
-            m_horizontalPadding = horizontal;
+        if(horizontal != m_letterSpacing) {
+            m_letterSpacing = horizontal;
             createFontChars();
         }
     }
@@ -192,47 +192,52 @@ namespace FORZE {
         fzUInt m_stringLen = m_string.size();
     
         Sprite *fontChar = static_cast<Sprite*>(m_children.front());
-        if(m_stringLen > 0)
+        
+        if(m_stringLen == 0) {
+            setContentSize(FZSizeZero);
+            goto clean;
+        
+        }else
         {
-            // Is font available?
             if(p_font == NULL) {
                 FZLOGERROR("Label: Impossible to generate label, font config is missing.");
                 return;
             }
             
             // Precalculate label size
-            fzFloat longestLine = 0;
-            fzUInt currentLine = 0;
+            const char *string = m_string.c_str();
             char charId = 0, prevId = 0;
+            fzUInt i;
+            fzUInt currentLine = 0;
+            fzFloat longestLine = 0;
             fzFloat lineWidth[100];
-            memset(lineWidth, 0, sizeof(fzFloat) * 100);
+            lineWidth[0] = 0;
             
-            for(fzUInt i = 0; i < m_stringLen; ++i) {
-                charId = m_string.at(i);
+            for(i = 0; i <= m_stringLen; ++i) {
+                charId = string[i];
                 if(charId < 0)
                     FZ_RAISE("Label: CHAR[] doesn't exist. It's negative.");
                 
-                if( charId == '\n') {
+                if(charId == '\n' || charId == '\0') {
                     longestLine = fzMax(longestLine, lineWidth[currentLine]);
-                    ++currentLine;
-                }else {
-                    lineWidth[currentLine] += p_font->getCharInfo(charId).xAdvance + m_horizontalPadding + p_font->getKerning(prevId, charId);
+                    lineWidth[++currentLine] = 0;
+                }else{
+                    lineWidth[currentLine] += p_font->getCharInfo(charId).xAdvance + m_letterSpacing + p_font->getKerning(prevId, charId);
                     prevId = charId;
                 }
             }
-            longestLine = fzMax(longestLine, lineWidth[currentLine]);
             
             
             fzFloat lineHeight = p_font->getLineHeight() + m_verticalPadding;
-            fzFloat totalHeight = lineHeight * (currentLine+1);
+            fzFloat totalHeight = lineHeight * currentLine;
             
             fzFloat nextFontPositionY = totalHeight - lineHeight;
             fzFloat nextFontPositionX = -1;
             
             prevId = 0; currentLine = 0;
-            for(fzUInt i = 0; i < m_stringLen; ++i)
+            for(i = 0; i < m_stringLen; ++i)
             {
-                charId = m_string.at(i);
+                charId = string[i];
 
                 // line jump
                 if (charId == '\n') {
@@ -246,9 +251,6 @@ namespace FORZE {
                 if (nextFontPositionX == -1)
                 {
                     switch (m_alignment) {
-                        case kFZLabelAlignment_left:
-                            nextFontPositionX = 0;
-                            break;
                         case kFZLabelAlignment_right:
                             nextFontPositionX = longestLine - lineWidth[currentLine];
                             break;
@@ -256,12 +258,15 @@ namespace FORZE {
                             nextFontPositionX = (longestLine - lineWidth[currentLine])/2.0f;
                             break;
                         default:
+                            FZLOGERROR("Label: %d is not a valid aligment.", m_alignment);
+                        case kFZLabelAlignment_left:
+                            nextFontPositionX = 0;
                             break;
                     }
                 }
                 
                 // get font def
-                const fzCharDef& fontDef = p_font->getCharInfo(static_cast<unsigned char>(charId));
+                const fzCharDef& fontDef = p_font->getCharInfo(charId);
                 if(fontDef.xAdvance == 0) {
                     char toPrint[3];
                     printChar(toPrint, charId);
@@ -292,18 +297,16 @@ namespace FORZE {
                 
                 
                 // next sprite
-                nextFontPositionX += fontDef.xAdvance + m_horizontalPadding;
+                nextFontPositionX += fontDef.xAdvance + m_letterSpacing;
                 prevId = charId;
                 fontChar = static_cast<Sprite*>(fontChar->next());
             }
             
             // new content size
             setContentSize(fzSize(longestLine, totalHeight));
-            
-        }else{
-            
-            setContentSize(FZSizeZero);
         }
+        
+    clean:
         
         // make sprites not longer used hidden.
         for(; fontChar; fontChar = static_cast<Sprite*>(fontChar->next()))

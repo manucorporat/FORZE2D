@@ -52,7 +52,7 @@ namespace FORZE {
         string m_string;
         fzColor3B m_color;
         fzFloat m_verticalPadding;
-        fzFloat m_horizontalPadding;
+        fzFloat m_letterSpacing;
         fzLabelAlignment m_alignment;
 
         Font *p_font;
@@ -97,7 +97,7 @@ namespace FORZE {
         
         //! Sets the horizontal padding between characters.
         //! This value is 0 by default.
-        void setHorizontalPadding(fzFloat vertical);
+        void setLetterSpacing(fzFloat spacing);
 
         
         //! Sets the text alignment for multiline labels.
@@ -118,8 +118,8 @@ namespace FORZE {
         
         
         //! Returns the horizontal padding between characters.
-        fzFloat getHorizontalPadding() const {
-            return m_horizontalPadding;
+        fzFloat getLetterSpacing() const {
+            return m_letterSpacing;
         }
 
         
