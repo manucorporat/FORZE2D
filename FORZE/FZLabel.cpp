@@ -226,8 +226,8 @@ namespace FORZE {
             fzFloat lineHeight = p_font->getLineHeight() + m_verticalPadding;
             fzFloat totalHeight = lineHeight * (currentLine+1);
             
-            fzInt nextFontPositionY = totalHeight - lineHeight;
-            fzInt nextFontPositionX = 0;
+            fzFloat nextFontPositionY = totalHeight - lineHeight;
+            fzFloat nextFontPositionX = -1;
             
             prevId = 0; currentLine = 0;
             for(fzUInt i = 0; i < m_stringLen; ++i)
@@ -237,13 +237,13 @@ namespace FORZE {
                 // line jump
                 if (charId == '\n') {
                     nextFontPositionY -= lineHeight;
-                    nextFontPositionX = 0;
+                    nextFontPositionX = -1;
                     ++currentLine;
                     continue;
                 }
                 
                 // config line start point
-                if (nextFontPositionX == 0)
+                if (nextFontPositionX == -1)
                 {
                     switch (m_alignment) {
                         case kFZLabelAlignment_left:
@@ -251,7 +251,6 @@ namespace FORZE {
                             break;
                         case kFZLabelAlignment_right:
                             nextFontPositionX = longestLine - lineWidth[currentLine];
-                            //nextFontPositionX = (longestLine - lineWidth[currentLine])/2.0f;
                             break;
                         case kFZLabelAlignment_center:
                             nextFontPositionX = (longestLine - lineWidth[currentLine])/2.0f;
