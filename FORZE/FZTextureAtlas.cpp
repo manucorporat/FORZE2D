@@ -184,18 +184,19 @@ namespace FORZE {
 #pragma mark TextureAtlas - Drawing
     
     void TextureAtlas::drawQuads()
-    {       
+    {
+        FZ_ASSERT(p_texture, "Texture was not created.");
+        
         // Opengl config
         fzGLSetMode(kFZGLMode_Texture);
         p_texture->bind();
-
-        intptr_t offset = 0;
+        
         
         // atributes
 #if FZ_GL_SHADERS        
-        glVertexAttribPointer(kFZAttribPosition, 3, GL_FLOAT, GL_FALSE, sizeof(_fzV4_T2_C4), &p_quads->bl.vertex - offset);
-        glVertexAttribPointer(kFZAttribTexCoords, 2, GL_FLOAT, GL_FALSE, sizeof(_fzV4_T2_C4), &p_quads->bl.texCoord - offset);
-        glVertexAttribPointer(kFZAttribColor, 4, GL_UNSIGNED_BYTE, GL_TRUE, sizeof(_fzV4_T2_C4), &p_quads->bl.color - offset);
+        glVertexAttribPointer(kFZAttribPosition, 3, GL_FLOAT, GL_FALSE, sizeof(_fzV4_T2_C4), &p_quads->bl.vertex);
+        glVertexAttribPointer(kFZAttribTexCoords, 2, GL_FLOAT, GL_FALSE, sizeof(_fzV4_T2_C4), &p_quads->bl.texCoord);
+        glVertexAttribPointer(kFZAttribColor, 4, GL_UNSIGNED_BYTE, GL_TRUE, sizeof(_fzV4_T2_C4), &p_quads->bl.color);
         
 #else
         glLoadIdentity();

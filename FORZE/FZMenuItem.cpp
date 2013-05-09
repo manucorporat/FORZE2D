@@ -575,7 +575,4 @@ namespace FORZE {
             }
         }
     }
-    
-#pragma mark - MenuItemImage
-
 }

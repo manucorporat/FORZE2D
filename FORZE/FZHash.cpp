@@ -49,14 +49,14 @@ namespace FORZE {
     uint32_t fzVersion(const char *str)
     {
         uint32_t hash = 0;
-		uint32_t idx = 0x01000000;
+        uint32_t idx = 0x01000000;
         char *end = NULL;
         do {
-			int value = strtol(str, &end, 10);
-			hash += value * idx;
-			idx = idx >> 8;
+            int value = strtol(str, &end, 10);
+            hash += value * idx;
+            idx = idx >> 8;
             str = end+1;
-		}while(*end != '\0');
+        }while(*end != '\0');
         
         return hash;
     }

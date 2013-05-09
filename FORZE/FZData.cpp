@@ -77,9 +77,11 @@ namespace FORZE {
     
     
     
-    int inflateMemoryWithHint(unsigned char *input, unsigned int inLength, unsigned char **output, unsigned int *outLength, unsigned int outLenghtHint );
-    
-    int inflateMemoryWithHint(unsigned char *input, unsigned int inLength, unsigned char **output, unsigned int *outLength, unsigned int outLenghtHint )
+    static int inflateMemoryWithHint(unsigned char *input,
+                                     unsigned int inLength,
+                                     unsigned char **output,
+                                     unsigned int *outLength,
+                                     unsigned int outLenghtHint )
     {        
         unsigned int bufferSize = outLenghtHint;
         
@@ -158,17 +160,20 @@ namespace FORZE {
         int err = inflateMemoryWithHint(input, inLength, &output, &outLength, outLengthHint );
         
         if (err != Z_OK || output == NULL) {
-            if (err == Z_MEM_ERROR)
-                FZLOGERROR("ZIP: Out of memory while decompressing map data.");
-            
-            else if (err == Z_VERSION_ERROR)
-                FZLOGERROR("ZIP: Incompatible zlib version.");
-            
-            else if (err == Z_DATA_ERROR)
-                FZLOGERROR("ZIP: Incorrect zlib compressed data.");
-            
-            else
-                FZLOGERROR("ZIP: Unknown error while decompressing map data.");
+            switch (err) {
+                case Z_MEM_ERROR:
+                    FZLOGERROR("ZIP: Out of memory while decompressing map data.");
+                    break;
+                case Z_VERSION_ERROR:
+                    FZLOGERROR("ZIP: Incompatible zlib version.");
+                    break;
+                case Z_DATA_ERROR:
+                    FZLOGERROR("ZIP: Incorrect zlib compressed data.");
+                    break;
+                default:
+                    FZLOGERROR("ZIP: Unknown error while decompressing map data.");
+                    break;
+            }
             
             delete [] output;
             output = NULL;
