@@ -34,6 +34,7 @@
 #include "FZParticleSystem.h"
 #include "FZConfig.h"
 #include "FZSpriteFrame.h"
+#include "FZTextureAtlas.h"
 
 
 namespace FORZE {
@@ -41,30 +42,27 @@ namespace FORZE {
     /** ParticleSystemQuad is a subclass of CCParticleSystem
      It includes all the features of ParticleSystem.
      */
-    class ParticleSystemQuad : public ParticleSystem, public Protocol::Texture, public Protocol::Blending
+    class ParticleSystemQuad : public Node, public Protocol::Texture, public Protocol::Blending
     {
     protected:
-        Texture2D *p_texture;
+        TextureAtlas m_textureAtlas;
+        ParticleSystemLogic *p_logic;
         fzBlendFunc m_blendFunc;
-        fzC4_T2_V2_Quad     *p_quads;
         
-        GLuint              m_indicesVBO;
-#if FZ_VBO_STREAMING
-        GLuint				m_quadsVBO;
-#endif
-        
-        virtual void updateQuadWithParticle(const fzParticle& particle) override;
-        void initIndices();
+
         void initTexCoordsWithRect(fzRect rect);
-        void postStep();
-        
+        void update(fzFloat);
         
     public:
-        ParticleSystemQuad(fzUInt numberOfParticles);
-        ParticleSystemQuad(fzUInt numberOfParticles, Texture2D *texture);
+        ParticleSystemQuad(ParticleSystemLogic *logic);
+        ParticleSystemQuad(ParticleSystemLogic *logic, Texture2D *texture);
         
         ~ParticleSystemQuad();
         
+        ParticleSystemLogic *getLogic() const
+        {
+            return p_logic;
+        }
         
         //! Sets a new fzSpriteFrame as particle.
         //! @warning this method is experimental. Use setTexture:withRect instead.

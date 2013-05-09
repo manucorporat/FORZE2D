@@ -58,181 +58,9 @@
 
 namespace FORZE {
     
-    /*
-     ParticleSystem::ParticleSystem(const string& plistFile)
-     {
-     NSString *path = [CCFileUtils fullPathFromRelativePath:plistFile];
-     NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:path];
-     
-     FZ_ASSERT( dict != nil, @"Particles: file not found");
-     return [self initWithDictionary:dict];
-     }
-     
-     ParticleSystem::ParticleSystem(const map& dictionary)
-     {
-     NSUInteger maxParticles = [[dictionary valueForKey:@"maxParticles"] intValue];
-     // self, not super
-     
-     // angle
-     angle = [[dictionary valueForKey:@"angle"] floatValue];
-     angleVar = [[dictionary valueForKey:@"angleVariance"] floatValue];
-     
-     // duration
-     duration = [[dictionary valueForKey:@"duration"] floatValue];
-     
-     // blend function 
-     blendFunc_.src = [[dictionary valueForKey:@"blendFuncSource"] intValue];
-     blendFunc_.dst = [[dictionary valueForKey:@"blendFuncDestination"] intValue];
-     
-     // color
-     float r,g,b,a;
-     
-     r = [[dictionary valueForKey:@"startColorRed"] floatValue];
-     g = [[dictionary valueForKey:@"startColorGreen"] floatValue];
-     b = [[dictionary valueForKey:@"startColorBlue"] floatValue];
-     a = [[dictionary valueForKey:@"startColorAlpha"] floatValue];
-     startColor = (ccColor4F) {r,g,b,a};
-     
-     r = [[dictionary valueForKey:@"startColorVarianceRed"] floatValue];
-     g = [[dictionary valueForKey:@"startColorVarianceGreen"] floatValue];
-     b = [[dictionary valueForKey:@"startColorVarianceBlue"] floatValue];
-     a = [[dictionary valueForKey:@"startColorVarianceAlpha"] floatValue];
-     startColorVar = (ccColor4F) {r,g,b,a};
-     
-     r = [[dictionary valueForKey:@"finishColorRed"] floatValue];
-     g = [[dictionary valueForKey:@"finishColorGreen"] floatValue];
-     b = [[dictionary valueForKey:@"finishColorBlue"] floatValue];
-     a = [[dictionary valueForKey:@"finishColorAlpha"] floatValue];
-     endColor = (ccColor4F) {r,g,b,a};
-     
-     r = [[dictionary valueForKey:@"finishColorVarianceRed"] floatValue];
-     g = [[dictionary valueForKey:@"finishColorVarianceGreen"] floatValue];
-     b = [[dictionary valueForKey:@"finishColorVarianceBlue"] floatValue];
-     a = [[dictionary valueForKey:@"finishColorVarianceAlpha"] floatValue];
-     endColorVar = (ccColor4F) {r,g,b,a};
-     
-     // particle size
-     startSize = [[dictionary valueForKey:@"startParticleSize"] floatValue];
-     startSizeVar = [[dictionary valueForKey:@"startParticleSizeVariance"] floatValue];
-     endSize = [[dictionary valueForKey:@"finishParticleSize"] floatValue];
-     endSizeVar = [[dictionary valueForKey:@"finishParticleSizeVariance"] floatValue];
-     
-     
-     // position
-     float x = [[dictionary valueForKey:@"sourcePositionx"] floatValue];
-     float y = [[dictionary valueForKey:@"sourcePositiony"] floatValue];
-     self.position = ccp(x,y);
-     posVar.x = [[dictionary valueForKey:@"sourcePositionVariancex"] floatValue];
-     posVar.y = [[dictionary valueForKey:@"sourcePositionVariancey"] floatValue];
-     
-     
-     // Spinning
-     startSpin = [[dictionary valueForKey:@"rotationStart"] floatValue];
-     startSpinVar = [[dictionary valueForKey:@"rotationStartVariance"] floatValue];
-     endSpin = [[dictionary valueForKey:@"rotationEnd"] floatValue];
-     endSpinVar = [[dictionary valueForKey:@"rotationEndVariance"] floatValue];
-     
-     emitterMode_ = [[dictionary valueForKey:@"emitterType"] intValue];
-     
-     // Mode A: Gravity + tangential accel + radial accel
-     if( emitterMode_ == kCCParticleModeGravity ) {
-     // gravity
-     mode.A.gravity.x = [[dictionary valueForKey:@"gravityx"] floatValue];
-     mode.A.gravity.y = [[dictionary valueForKey:@"gravityy"] floatValue];
-     
-     //
-     // speed
-     mode.A.speed = [[dictionary valueForKey:@"speed"] floatValue];
-     mode.A.speedVar = [[dictionary valueForKey:@"speedVariance"] floatValue];
-     
-     // radial acceleration			
-     NSString *tmp = [dictionary valueForKey:@"radialAcceleration"];
-     mode.A.radialAccel = tmp ? [tmp floatValue] : 0;
-     
-     tmp = [dictionary valueForKey:@"radialAccelVariance"];
-     mode.A.radialAccelVar = tmp ? [tmp floatValue] : 0;
-     
-     // tangential acceleration
-     tmp = [dictionary valueForKey:@"tangentialAcceleration"];
-     mode.A.tangentialAccel = tmp ? [tmp floatValue] : 0;
-     
-     tmp = [dictionary valueForKey:@"tangentialAccelVariance"];
-     mode.A.tangentialAccelVar = tmp ? [tmp floatValue] : 0;
-     }
-     
-     
-     // or Mode B: radius movement
-     else if( emitterMode_ == kCCParticleModeRadius ) {
-     float maxRadius = [[dictionary valueForKey:@"maxRadius"] floatValue];
-     float maxRadiusVar = [[dictionary valueForKey:@"maxRadiusVariance"] floatValue];
-     float minRadius = [[dictionary valueForKey:@"minRadius"] floatValue];
-     
-     mode.B.startRadius = maxRadius;
-     mode.B.startRadiusVar = maxRadiusVar;
-     mode.B.endRadius = minRadius;
-     mode.B.endRadiusVar = 0;
-     mode.B.rotatePerSecond = [[dictionary valueForKey:@"rotatePerSecond"] floatValue];
-     mode.B.rotatePerSecondVar = [[dictionary valueForKey:@"rotatePerSecondVariance"] floatValue];
-     
-     } else {
-     FZ_ASSERT( NO, @"Invalid emitterType in config file");
-     }
-     
-     // life span
-     life = [[dictionary valueForKey:@"particleLifespan"] floatValue];
-     lifeVar = [[dictionary valueForKey:@"particleLifespanVariance"] floatValue];				
-     
-     // emission Rate
-     emissionRate = totalParticles/life;
-     
-     // texture		
-     // Try to get the texture from the cache
-     NSString *textureName = [dictionary valueForKey:@"textureFileName"];
-     
-     CCTexture2D *tex = [[CCTextureCache sharedTextureCache] addImage:textureName];
-     
-     if( tex )
-     self.texture = tex;
-     
-     else {
-     
-     NSString *textureData = [dictionary valueForKey:@"textureImageData"];
-     FZ_ASSERT( textureData, @"CCParticleSystem: Couldn't load texture");
-     
-     // if it fails, try to get it from the base64-gzipped data			
-     unsigned char *buffer = NULL;
-     int len = base64Decode((unsigned char*)[textureData UTF8String], (unsigned int)[textureData length], &buffer);
-     FZ_ASSERT( buffer != NULL, @"CCParticleSystem: error decoding textureImageData");
-     
-     unsigned char *deflated = NULL;
-     NSUInteger deflatedLen = ccInflateMemory(buffer, len, &deflated);
-     free( buffer );
-     
-     FZ_ASSERT( deflated != NULL, @"CCParticleSystem: error ungzipping textureImageData");
-     NSData *data = [[NSData alloc] initWithBytes:deflated length:deflatedLen];
-     
-     #ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
-     UIImage *image = [[UIImage alloc] initWithData:data];
-     #elif defined(__MAC_OS_X_VERSION_MAX_ALLOWED)
-     NSBitmapImageRep *image = [[NSBitmapImageRep alloc] initWithData:data];
-     #endif
-     
-     free(deflated); deflated = NULL;
-     
-     self.texture = [[CCTextureCache sharedTextureCache] addCGImage:[image CGImage] forKey:textureName];
-     [data release];
-     [image release];
-     }
-     
-     FZ_ASSERT( [self texture] != NULL, @"CCParticleSystem: error loading the texture");
-     
-     }
-     */
-    
     ParticleSystem::ParticleSystem(fzUInt number)
     : m_totalParticles(number)
     , m_particleCount(0)
-    , m_particleIdx(0)
     , m_duration(0)
     , m_elapsed(0)
     , m_angle(0)
@@ -259,8 +87,7 @@ namespace FORZE {
     {
         memset(&mode, 0, sizeof(mode));
         
-        p_particles = new fzParticle[m_totalParticles];
-        schedule();
+        p_particles = new fztParticle[m_totalParticles];
     }
     
     
@@ -281,8 +108,17 @@ namespace FORZE {
         return true;
     }
     
+    fzUInt ParticleSystem::getParticleCount() const {
+        return m_particleCount;
+    }
     
-    void ParticleSystem::initParticle(fzParticle& particle)
+    
+    fzUInt ParticleSystem::getTotalParticles() const {
+        return m_totalParticles;
+    }
+    
+    
+    void ParticleSystem::initParticle(fztParticle& particle)
     {
         // time to live
         particle.timeToLive = m_life + m_lifeVar * FZ_RANDOM_MINUS1_1();
@@ -376,8 +212,9 @@ namespace FORZE {
     {
         m_isActive = true;
         m_elapsed = 0;
-        for(m_particleIdx = 0; m_particleIdx < m_particleCount; ++m_particleIdx)
-            p_particles[m_particleIdx].timeToLive = 0;
+        fzUInt i = 0;
+        for(; i < m_particleCount; ++i)
+            p_particles[i].timeToLive = 0;
     }
     
     
@@ -386,8 +223,8 @@ namespace FORZE {
         return (m_particleCount == m_totalParticles);
     }
     
-
-    void ParticleSystem::update(fzFloat dt)
+    
+    void ParticleSystem::preUpdate(fzFloat dt)
     {
         if( m_isActive && m_emissionRate ) {
             fzFloat rate = 1.0f / m_emissionRate;
@@ -401,92 +238,80 @@ namespace FORZE {
             if(m_duration != -1 && m_duration < m_elapsed)
                 stopSystem();
         }
+    }
+    
+    
+    void ParticleSystem::updateParticle(fzUInt index, fzFloat dt, fzParticle *particle)
+    {
+        fztParticle& p = p_particles[index];
         
+        // life
+        p.timeToLive -= dt;
         
-        m_particleIdx = 0;
-        
-        while( m_particleIdx < m_particleCount )
-        {
-            fzParticle& p = p_particles[m_particleIdx];
+        if( p.timeToLive > 0 ) {
             
-            // life
-            p.timeToLive -= dt;
+            // Mode A
+            if( m_emitterMode == kFZParticleModeGravity ) {
+                
+                fzPoint tmp(p.pos);
+                if(tmp != FZPointZero)
+                {
+                    // calculate tangential
+                    fzPoint tangential(tmp.getPerp());
+                    tangential.normalize();
+                    tangential *= p.mode.A.tangentialAccel;
+                    
+                    // radial acceleration
+                    tmp *= p.mode.A.radialAccel;
+                    
+                    // radial + tangential
+                    tmp += tangential;
+                }
+                
+                // (gravity + dir + radial + tangential) * dt
+                tmp += mode.A.gravity;
+                tmp += p.mode.A.dir;
+                
+                p.pos += tmp * dt;
+            }
             
-            if( p.timeToLive > 0 ) {
+            // Mode B
+            else {
+                // Update the angle and radius of the particle.
+                p.mode.B.angle += p.mode.B.degreesPerSecond * dt;
+                p.mode.B.radius += p.mode.B.deltaRadius * dt;
                 
-                // Mode A
-                if( m_emitterMode == kFZParticleModeGravity ) {
-                    
-                    fzPoint tmp(p.pos);
-                    if(tmp != FZPointZero)
-                    {
-                        // calculate tangential
-                        fzPoint tangential(tmp.getPerp());
-                        tangential.normalize();
-                        tangential *= p.mode.A.tangentialAccel;
-                        
-                        // radial acceleration
-                        tmp *= p.mode.A.radialAccel;
+                p.pos.x = -fzMath_cos(p.mode.B.angle) * p.mode.B.radius;
+                p.pos.y = -fzMath_sin(p.mode.B.angle) * p.mode.B.radius;
+            }
+            
+            // color
+            p.color += p.deltaColor * dt;
+            
+            // size
+            p.size += p.deltaSize * dt;
+            p.size = p.size < 0 ? 0 : p.size;
+            
+            // angle
+            p.rotation += p.deltaRotation * dt;
+            
+        } else {
+            // life < 0
+            --m_particleCount;
+            
+            if( index != m_particleCount )
+                memmove(&p_particles[index], &p_particles[m_particleCount], sizeof(fztParticle));
 
-                        // radial + tangential
-                        tmp += tangential;
-                    }
-                    
-                    // (gravity + dir + radial + tangential) * dt
-                    tmp += mode.A.gravity;
-                    tmp += p.mode.A.dir;
-
-                    p.pos += tmp * dt;
-                }
-                
-                // Mode B
-                else {				
-                    // Update the angle and radius of the particle.
-                    p.mode.B.angle += p.mode.B.degreesPerSecond * dt;
-                    p.mode.B.radius += p.mode.B.deltaRadius * dt;
-                    
-                    p.pos.x = -fzMath_cos(p.mode.B.angle) * p.mode.B.radius;
-                    p.pos.y = -fzMath_sin(p.mode.B.angle) * p.mode.B.radius;
-                }
-                
-                // color
-                p.color += p.deltaColor * dt;
-                
-                // size
-                p.size += p.deltaSize * dt;
-                p.size = p.size < 0 ? 0 : p.size;
-                
-                // angle
-                p.rotation += p.deltaRotation * dt;
-                
-                
-                // update values in quad
-                updateQuadWithParticle(p);
-                
-                // update particle counter
-                ++m_particleIdx;
-                
-            } else {
-                // life < 0
-                --m_particleCount;
-
-                if( m_particleIdx != m_particleCount )
-                    memmove(&p_particles[m_particleIdx], &p_particles[m_particleCount], sizeof(fzParticle));
-                
-                if( m_particleCount == 0 && m_autoRemoveOnFinish ) {
-                    unschedule();
-                    removeFromParent(true);
-                    return;
-                }
+            if( m_particleCount == 0 && m_autoRemoveOnFinish ) {
+                //unschedule();
+                //removeFromParent(true);
+                return;
             }
         }
-        
-        if(m_particleCount)
-        makeDirty(0);
-        
-#if FZ_VBO_STREAMING
-        postStep();
-#endif
+        particle->pos = p.pos;
+        particle->color = p.color;
+        particle->size = fzSize(p.size, p.size);
+        particle->rotation = p.rotation;
     }
     
     

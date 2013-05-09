@@ -13,14 +13,17 @@ public:
     {
         setTrackedEvents(kFZEventType_Tap);
         
-        ParticleFire *fire = new ParticleFire();
+        ParticleFireQuad *fire = new ParticleFireQuad();
+        //fire->setScale(0.1f);
+
         fire->setName("fire");
         addChild(fire);
     }
     
     bool event(Event &event)
     {
-        ((ParticleSystem*)getChildByName("fire"))->setSourcePosition(event.getPoint());
+        ParticleSystemQuad *system = (ParticleSystemQuad*)getChildByName("fire");
+        ((ParticleSystem*)system->getLogic())->setSourcePosition(event.getPoint());
         return true;
     }
 };

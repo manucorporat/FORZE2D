@@ -36,6 +36,8 @@ public:
         
         // RUN SCENE
         Director::Instance().runWithScene(scene);
+        
+        new Console();
     }
     
     GLConfig fzGLConfig()
