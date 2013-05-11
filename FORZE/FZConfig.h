@@ -39,7 +39,7 @@
 #include "FZOSW_header.h"
 
 
-#define FORZE_VERSION "v0.1 beta2"
+#define FORZE_VERSION "v0.1rc2"
 #define FORZE_SIGN "FORZE2D: "
 #define FORZE_SIGN_LEN 9
 

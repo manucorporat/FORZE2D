@@ -11,13 +11,7 @@
 		9704DD7E152F5C30007FA760 /* TestBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9704DD7C152F5C30007FA760 /* TestBase.cpp */; };
 		9705E37A157BC42E009A21AF /* ActionTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9788D54F1417C3DB00DCC802 /* ActionTest.cpp */; };
 		9705E37B157BC42E009A21AF /* TestBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9704DD7C152F5C30007FA760 /* TestBase.cpp */; };
-		9705E37F157BC42E009A21AF /* libforze_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 979297B5151B818D0088AF66 /* libforze_ios.a */; };
 		970C39FC157E500F00F8E3FF /* libforze_mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5018F24D0DFDEAC400C013A5 /* libforze_mac.a */; };
-		970C39FD157E500F00F8E3FF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 503092B210447296005F7AFC /* libz.dylib */; };
-		970C39FE157E500F00F8E3FF /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9791DFA31554AE2A0080871B /* AppKit.framework */; };
-		970C39FF157E500F00F8E3FF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 970C6E391403EAEE00E4CC0D /* Foundation.framework */; };
-		970C3A00157E500F00F8E3FF /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97A2487214A62DA500AB2023 /* OpenGL.framework */; };
-		970C3A01157E500F00F8E3FF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97EEB21014046DCB0073CC55 /* QuartzCore.framework */; };
 		970C3A04157E500F00F8E3FF /* grossini.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F65157D66DA001E055D /* grossini.png */; };
 		970C3A05157E500F00F8E3FF /* grossini@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F66157D66DA001E055D /* grossini@x2.png */; };
 		970C3A06157E500F00F8E3FF /* grossinis_sister1.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F6D157D66DA001E055D /* grossinis_sister1.png */; };
@@ -71,11 +65,6 @@
 		970C3A4D157E501400F8E3FF /* font_menu@x2.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 97ED8F9B157E21E3007C451A /* font_menu@x2.fnt */; };
 		970C3A4E157E501400F8E3FF /* font_menu@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 97ED8F9C157E21E3007C451A /* font_menu@x2.png */; };
 		970C3A5A157E502A00F8E3FF /* libforze_mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5018F24D0DFDEAC400C013A5 /* libforze_mac.a */; };
-		970C3A5B157E502A00F8E3FF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 503092B210447296005F7AFC /* libz.dylib */; };
-		970C3A5C157E502A00F8E3FF /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9791DFA31554AE2A0080871B /* AppKit.framework */; };
-		970C3A5D157E502A00F8E3FF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 970C6E391403EAEE00E4CC0D /* Foundation.framework */; };
-		970C3A5E157E502A00F8E3FF /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97A2487214A62DA500AB2023 /* OpenGL.framework */; };
-		970C3A5F157E502A00F8E3FF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97EEB21014046DCB0073CC55 /* QuartzCore.framework */; };
 		970C3A62157E502A00F8E3FF /* grossini.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F65157D66DA001E055D /* grossini.png */; };
 		970C3A63157E502A00F8E3FF /* grossini@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F66157D66DA001E055D /* grossini@x2.png */; };
 		970C3A64157E502A00F8E3FF /* grossinis_sister1.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F6D157D66DA001E055D /* grossinis_sister1.png */; };
@@ -128,11 +117,6 @@
 		970C3AAA157E502E00F8E3FF /* font_menu@x2.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 97ED8F9B157E21E3007C451A /* font_menu@x2.fnt */; };
 		970C3AAB157E502E00F8E3FF /* font_menu@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 97ED8F9C157E21E3007C451A /* font_menu@x2.png */; };
 		970C3AB7157E504300F8E3FF /* libforze_mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5018F24D0DFDEAC400C013A5 /* libforze_mac.a */; };
-		970C3AB8157E504300F8E3FF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 503092B210447296005F7AFC /* libz.dylib */; };
-		970C3AB9157E504300F8E3FF /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9791DFA31554AE2A0080871B /* AppKit.framework */; };
-		970C3ABA157E504300F8E3FF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 970C6E391403EAEE00E4CC0D /* Foundation.framework */; };
-		970C3ABB157E504300F8E3FF /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97A2487214A62DA500AB2023 /* OpenGL.framework */; };
-		970C3ABC157E504300F8E3FF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97EEB21014046DCB0073CC55 /* QuartzCore.framework */; };
 		970C3ABF157E504300F8E3FF /* grossini.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F65157D66DA001E055D /* grossini.png */; };
 		970C3AC0157E504300F8E3FF /* grossini@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F66157D66DA001E055D /* grossini@x2.png */; };
 		970C3AC1157E504300F8E3FF /* grossinis_sister1.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F6D157D66DA001E055D /* grossinis_sister1.png */; };
@@ -185,11 +169,6 @@
 		970C3B07157E504700F8E3FF /* font_menu@x2.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 97ED8F9B157E21E3007C451A /* font_menu@x2.fnt */; };
 		970C3B08157E504700F8E3FF /* font_menu@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 97ED8F9C157E21E3007C451A /* font_menu@x2.png */; };
 		970C3B14157E505900F8E3FF /* libforze_mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5018F24D0DFDEAC400C013A5 /* libforze_mac.a */; };
-		970C3B15157E505900F8E3FF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 503092B210447296005F7AFC /* libz.dylib */; };
-		970C3B16157E505900F8E3FF /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9791DFA31554AE2A0080871B /* AppKit.framework */; };
-		970C3B17157E505900F8E3FF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 970C6E391403EAEE00E4CC0D /* Foundation.framework */; };
-		970C3B18157E505900F8E3FF /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97A2487214A62DA500AB2023 /* OpenGL.framework */; };
-		970C3B19157E505900F8E3FF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97EEB21014046DCB0073CC55 /* QuartzCore.framework */; };
 		970C3B1C157E505900F8E3FF /* grossini.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F65157D66DA001E055D /* grossini.png */; };
 		970C3B1D157E505900F8E3FF /* grossini@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F66157D66DA001E055D /* grossini@x2.png */; };
 		970C3B1E157E505900F8E3FF /* grossinis_sister1.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F6D157D66DA001E055D /* grossinis_sister1.png */; };
@@ -243,11 +222,6 @@
 		970C3B64157E505D00F8E3FF /* font_menu@x2.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 97ED8F9B157E21E3007C451A /* font_menu@x2.fnt */; };
 		970C3B65157E505D00F8E3FF /* font_menu@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 97ED8F9C157E21E3007C451A /* font_menu@x2.png */; };
 		970C3B71157E507100F8E3FF /* libforze_mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5018F24D0DFDEAC400C013A5 /* libforze_mac.a */; };
-		970C3B72157E507100F8E3FF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 503092B210447296005F7AFC /* libz.dylib */; };
-		970C3B73157E507100F8E3FF /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9791DFA31554AE2A0080871B /* AppKit.framework */; };
-		970C3B74157E507100F8E3FF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 970C6E391403EAEE00E4CC0D /* Foundation.framework */; };
-		970C3B75157E507100F8E3FF /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97A2487214A62DA500AB2023 /* OpenGL.framework */; };
-		970C3B76157E507100F8E3FF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97EEB21014046DCB0073CC55 /* QuartzCore.framework */; };
 		970C3B79157E507100F8E3FF /* grossini.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F65157D66DA001E055D /* grossini.png */; };
 		970C3B7A157E507100F8E3FF /* grossini@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F66157D66DA001E055D /* grossini@x2.png */; };
 		970C3B7B157E507100F8E3FF /* grossinis_sister1.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F6D157D66DA001E055D /* grossinis_sister1.png */; };
@@ -324,7 +298,6 @@
 		970C3BED157E594400F8E3FF /* picture.png in Resources */ = {isa = PBXBuildFile; fileRef = 970C3BEA157E593800F8E3FF /* picture.png */; };
 		970C3BEE157E594400F8E3FF /* picture@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 970C3BEB157E593D00F8E3FF /* picture@x2.png */; };
 		970C3BEF157E594400F8E3FF /* picture@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 970C3BEB157E593D00F8E3FF /* picture@x2.png */; };
-		970C6E3A1403EAEF00E4CC0D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 970C6E391403EAEE00E4CC0D /* Foundation.framework */; };
 		970D3FBF15249D96001FFC26 /* neon_support.h in Headers */ = {isa = PBXBuildFile; fileRef = 970D3FBD15249D96001FFC26 /* neon_support.h */; };
 		970D3FC015249D96001FFC26 /* neon_support.h in Headers */ = {isa = PBXBuildFile; fileRef = 970D3FBD15249D96001FFC26 /* neon_support.h */; };
 		970D3FC115249D96001FFC26 /* SSE_support.h in Headers */ = {isa = PBXBuildFile; fileRef = 970D3FBE15249D96001FFC26 /* SSE_support.h */; };
@@ -345,8 +318,6 @@
 		9734F2D0157F626700C0055A /* tmw_desert_spacing.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C35023157D66DB001E055D /* tmw_desert_spacing.png */; };
 		97361B8D155BD5B8002E65ED /* effect_xray.shader.h in Headers */ = {isa = PBXBuildFile; fileRef = 97361B8C155BD5B8002E65ED /* effect_xray.shader.h */; };
 		97361B8E155BD5B8002E65ED /* effect_xray.shader.h in Headers */ = {isa = PBXBuildFile; fileRef = 97361B8C155BD5B8002E65ED /* effect_xray.shader.h */; };
-		975DD30C14A7884300D55DE6 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97A2487214A62DA500AB2023 /* OpenGL.framework */; };
-		9788D5221417B80100DCC802 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 970C6E391403EAEE00E4CC0D /* Foundation.framework */; };
 		9788D5511417C3DB00DCC802 /* ActionTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9788D54F1417C3DB00DCC802 /* ActionTest.cpp */; };
 		978B23CB151C0AE100ED9528 /* effect_toon.shader.h in Headers */ = {isa = PBXBuildFile; fileRef = 978B23CA151C0AE100ED9528 /* effect_toon.shader.h */; };
 		978B23CC151C0AE100ED9528 /* effect_toon.shader.h in Headers */ = {isa = PBXBuildFile; fileRef = 978B23CA151C0AE100ED9528 /* effect_toon.shader.h */; };
@@ -358,7 +329,6 @@
 		9791DF9D155491A10080871B /* FZAllocator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9791DF9A155491A10080871B /* FZAllocator.cpp */; };
 		9791DF9E155491A10080871B /* FZAllocator.h in Headers */ = {isa = PBXBuildFile; fileRef = 9791DF9B155491A10080871B /* FZAllocator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9791DF9F155491A10080871B /* FZAllocator.h in Headers */ = {isa = PBXBuildFile; fileRef = 9791DF9B155491A10080871B /* FZAllocator.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9791DFA41554AE2A0080871B /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9791DFA31554AE2A0080871B /* AppKit.framework */; };
 		97929710151B818D0088AF66 /* FORZE.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B8FF15068BCF00B8AEE5 /* FORZE.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		97929711151B818D0088AF66 /* FZAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B90015068BCF00B8AEE5 /* FZAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		97929712151B818D0088AF66 /* FZCamera.h in Headers */ = {isa = PBXBuildFile; fileRef = 97C9B90215068BCF00B8AEE5 /* FZCamera.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -418,9 +388,6 @@
 		9792977E151B818D0088AF66 /* FZTexture2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B91515068BCF00B8AEE5 /* FZTexture2D.cpp */; };
 		9792977F151B818D0088AF66 /* FZTextureAtlas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B91715068BCF00B8AEE5 /* FZTextureAtlas.cpp */; };
 		97929780151B818D0088AF66 /* FZTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97C9B91915068BCF00B8AEE5 /* FZTypes.cpp */; };
-		979C21801492D5A7004A3060 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97EEB21014046DCB0073CC55 /* QuartzCore.framework */; };
-		97A1FDEF149D32730075C229 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 503092B210447296005F7AFC /* libz.dylib */; };
-		97A2487314A62DA500AB2023 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97A2487214A62DA500AB2023 /* OpenGL.framework */; };
 		97C35048157D66DB001E055D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F30157D66DA001E055D /* Default.png */; };
 		97C3504A157D66DB001E055D /* font_menu.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F32157D66DA001E055D /* font_menu.fnt */; };
 		97C3504C157D66DB001E055D /* font_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F33157D66DA001E055D /* font_menu.png */; };
@@ -529,11 +496,6 @@
 		97ED8EA5157E1289007C451A /* kerning_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 97ED8EA2157E1289007C451A /* kerning_test.png */; };
 		97ED8EA6157E1289007C451A /* kerning_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 97ED8EA2157E1289007C451A /* kerning_test.png */; };
 		97ED8EAC157E1D2E007C451A /* libforze_mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5018F24D0DFDEAC400C013A5 /* libforze_mac.a */; };
-		97ED8EAD157E1D2E007C451A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 503092B210447296005F7AFC /* libz.dylib */; };
-		97ED8EAE157E1D2E007C451A /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9791DFA31554AE2A0080871B /* AppKit.framework */; };
-		97ED8EAF157E1D2E007C451A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 970C6E391403EAEE00E4CC0D /* Foundation.framework */; };
-		97ED8EB0157E1D2E007C451A /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97A2487214A62DA500AB2023 /* OpenGL.framework */; };
-		97ED8EB1157E1D2E007C451A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97EEB21014046DCB0073CC55 /* QuartzCore.framework */; };
 		97ED8EBA157E1D2E007C451A /* menu_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F78157D66DB001E055D /* menu_left.png */; };
 		97ED8EBB157E1D2E007C451A /* menu_left@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F79157D66DB001E055D /* menu_left@x2.png */; };
 		97ED8EBC157E1D2E007C451A /* menu_reset.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F7A157D66DB001E055D /* menu_reset.png */; };
@@ -624,11 +586,6 @@
 		97ED8F38157E1DEE007C451A /* test_image_rgba8888.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 97C34FEC157D66DB001E055D /* test_image_rgba8888.pvr */; };
 		97ED8F39157E1DEE007C451A /* texture1024x1024_rgba4444.pvr.gz in Resources */ = {isa = PBXBuildFile; fileRef = 97C34FED157D66DB001E055D /* texture1024x1024_rgba4444.pvr.gz */; };
 		97ED8F3E157E1E08007C451A /* libforze_mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5018F24D0DFDEAC400C013A5 /* libforze_mac.a */; };
-		97ED8F3F157E1E08007C451A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 503092B210447296005F7AFC /* libz.dylib */; };
-		97ED8F40157E1E08007C451A /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9791DFA31554AE2A0080871B /* AppKit.framework */; };
-		97ED8F41157E1E08007C451A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 970C6E391403EAEE00E4CC0D /* Foundation.framework */; };
-		97ED8F42157E1E08007C451A /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97A2487214A62DA500AB2023 /* OpenGL.framework */; };
-		97ED8F43157E1E08007C451A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97EEB21014046DCB0073CC55 /* QuartzCore.framework */; };
 		97ED8F55157E1E08007C451A /* helvetica.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F34157D66DA001E055D /* helvetica.fnt */; };
 		97ED8F56157E1E08007C451A /* helvetica.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F35157D66DA001E055D /* helvetica.png */; };
 		97ED8F58157E1E08007C451A /* FPSFont.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F38157D66DA001E055D /* FPSFont.fnt */; };
@@ -675,8 +632,6 @@
 		97ED8FE7157E29FB007C451A /* grossini_dance_atlas.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F6A157D66DA001E055D /* grossini_dance_atlas.png */; };
 		97ED8FE8157E29FB007C451A /* grossini_dance_atlas.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F6B157D66DA001E055D /* grossini_dance_atlas.pvr */; };
 		97ED8FE9157E29FB007C451A /* grossini_dance_atlas_nomipmap.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F6C157D66DA001E055D /* grossini_dance_atlas_nomipmap.png */; };
-		97EEB21314046DCB0073CC55 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97EEB21014046DCB0073CC55 /* QuartzCore.framework */; };
-		97F12B7F14A7F61100A2462C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 503092B210447296005F7AFC /* libz.dylib */; };
 		97FB2E6E1520B44F00D44E7C /* _fz_aC4_TEX.shader.h in Headers */ = {isa = PBXBuildFile; fileRef = 97FB2E6D1520B44F00D44E7C /* _fz_aC4_TEX.shader.h */; };
 		97FB2E6F1520B44F00D44E7C /* _fz_aC4_TEX.shader.h in Headers */ = {isa = PBXBuildFile; fileRef = 97FB2E6D1520B44F00D44E7C /* _fz_aC4_TEX.shader.h */; };
 		A902388C16B6CA9F00B8D319 /* blocks-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F48157D66DA001E055D /* blocks-hd.png */; };
@@ -688,7 +643,6 @@
 		A908C28C162EC4ED006F2930 /* libforze_mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5018F24D0DFDEAC400C013A5 /* libforze_mac.a */; };
 		A908C28D162EC4ED006F2930 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 503092B210447296005F7AFC /* libz.dylib */; };
 		A908C28E162EC4ED006F2930 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9791DFA31554AE2A0080871B /* AppKit.framework */; };
-		A908C28F162EC4ED006F2930 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 970C6E391403EAEE00E4CC0D /* Foundation.framework */; };
 		A908C290162EC4ED006F2930 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97A2487214A62DA500AB2023 /* OpenGL.framework */; };
 		A908C291162EC4ED006F2930 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97EEB21014046DCB0073CC55 /* QuartzCore.framework */; };
 		A908C293162EC4ED006F2930 /* helvetica.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F34157D66DA001E055D /* helvetica.fnt */; };
@@ -723,16 +677,8 @@
 		A90B05A71633198300371F8B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A90B059F1633198300371F8B /* Default-568h@2x.png */; };
 		A90B05A81633198300371F8B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A90B059F1633198300371F8B /* Default-568h@2x.png */; };
 		A90B05A91633198300371F8B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A90B059F1633198300371F8B /* Default-568h@2x.png */; };
-		A90C7B09167414B600CB83DF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A90C7B08167414B600CB83DF /* Cocoa.framework */; };
 		A90FDD531644259B008A3E21 /* HelloWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9DEA934161BACBE00A45D46 /* HelloWorld.cpp */; };
 		A91A6D6E1642FE5C0025ADE5 /* libforze_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 979297B5151B818D0088AF66 /* libforze_ios.a */; };
-		A91A6D6F1642FE5C0025ADE5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198E16149BDA007D2287 /* QuartzCore.framework */; };
-		A91A6D701642FE5C0025ADE5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198C16149BD5007D2287 /* CoreGraphics.framework */; };
-		A91A6D711642FE5C0025ADE5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198A16149BCF007D2287 /* Foundation.framework */; };
-		A91A6D721642FE5C0025ADE5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198816149BC9007D2287 /* UIKit.framework */; };
-		A91A6D731642FE5C0025ADE5 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198616149BC5007D2287 /* CoreMotion.framework */; };
-		A91A6D741642FE5C0025ADE5 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A97883EB160F80A900A93735 /* OpenGLES.framework */; };
-		A91A6D751642FE5C0025ADE5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C199116149BF3007D2287 /* libz.dylib */; };
 		A91A6D781642FE5C0025ADE5 /* menu_left@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F79157D66DB001E055D /* menu_left@x2.png */; };
 		A91A6D791642FE5C0025ADE5 /* menu_reset@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F7B157D66DB001E055D /* menu_reset@x2.png */; };
 		A91A6D7A1642FE5C0025ADE5 /* menu_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F7C157D66DB001E055D /* menu_right.png */; };
@@ -742,13 +688,6 @@
 		A91A6D7F1642FE5C0025ADE5 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A90B059F1633198300371F8B /* Default-568h@2x.png */; };
 		A91A6D811642FE5C0025ADE5 /* TestBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9704DD7C152F5C30007FA760 /* TestBase.cpp */; };
 		A91A6D8F1642FE610025ADE5 /* libforze_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 979297B5151B818D0088AF66 /* libforze_ios.a */; };
-		A91A6D901642FE610025ADE5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198E16149BDA007D2287 /* QuartzCore.framework */; };
-		A91A6D911642FE610025ADE5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198C16149BD5007D2287 /* CoreGraphics.framework */; };
-		A91A6D921642FE610025ADE5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198A16149BCF007D2287 /* Foundation.framework */; };
-		A91A6D931642FE610025ADE5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198816149BC9007D2287 /* UIKit.framework */; };
-		A91A6D941642FE610025ADE5 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198616149BC5007D2287 /* CoreMotion.framework */; };
-		A91A6D951642FE610025ADE5 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A97883EB160F80A900A93735 /* OpenGLES.framework */; };
-		A91A6D961642FE610025ADE5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C199116149BF3007D2287 /* libz.dylib */; };
 		A91A6D991642FE610025ADE5 /* menu_left@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F79157D66DB001E055D /* menu_left@x2.png */; };
 		A91A6D9A1642FE610025ADE5 /* menu_reset@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F7B157D66DB001E055D /* menu_reset@x2.png */; };
 		A91A6D9B1642FE610025ADE5 /* menu_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F7C157D66DB001E055D /* menu_right.png */; };
@@ -758,22 +697,8 @@
 		A91A6DA01642FE610025ADE5 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A90B059F1633198300371F8B /* Default-568h@2x.png */; };
 		A91A6DA21642FE610025ADE5 /* TestBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9704DD7C152F5C30007FA760 /* TestBase.cpp */; };
 		A91A6DAF1642FE660025ADE5 /* libforze_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 979297B5151B818D0088AF66 /* libforze_ios.a */; };
-		A91A6DB01642FE660025ADE5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198E16149BDA007D2287 /* QuartzCore.framework */; };
-		A91A6DB11642FE660025ADE5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198C16149BD5007D2287 /* CoreGraphics.framework */; };
-		A91A6DB21642FE660025ADE5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198A16149BCF007D2287 /* Foundation.framework */; };
-		A91A6DB31642FE660025ADE5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198816149BC9007D2287 /* UIKit.framework */; };
-		A91A6DB41642FE660025ADE5 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198616149BC5007D2287 /* CoreMotion.framework */; };
-		A91A6DB51642FE660025ADE5 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A97883EB160F80A900A93735 /* OpenGLES.framework */; };
-		A91A6DB61642FE660025ADE5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C199116149BF3007D2287 /* libz.dylib */; };
 		A91A6DC21642FE660025ADE5 /* TestBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9704DD7C152F5C30007FA760 /* TestBase.cpp */; };
 		A91A6DCF1642FE9B0025ADE5 /* libforze_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 979297B5151B818D0088AF66 /* libforze_ios.a */; };
-		A91A6DD01642FE9B0025ADE5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198E16149BDA007D2287 /* QuartzCore.framework */; };
-		A91A6DD11642FE9B0025ADE5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198C16149BD5007D2287 /* CoreGraphics.framework */; };
-		A91A6DD21642FE9B0025ADE5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198A16149BCF007D2287 /* Foundation.framework */; };
-		A91A6DD31642FE9B0025ADE5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198816149BC9007D2287 /* UIKit.framework */; };
-		A91A6DD41642FE9B0025ADE5 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198616149BC5007D2287 /* CoreMotion.framework */; };
-		A91A6DD51642FE9B0025ADE5 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A97883EB160F80A900A93735 /* OpenGLES.framework */; };
-		A91A6DD61642FE9B0025ADE5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C199116149BF3007D2287 /* libz.dylib */; };
 		A91A6DE01642FE9B0025ADE5 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A90B059F1633198300371F8B /* Default-568h@2x.png */; };
 		A91A6DE21642FE9B0025ADE5 /* TestBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9704DD7C152F5C30007FA760 /* TestBase.cpp */; };
 		A91A6DEB164318FE0025ADE5 /* LabelTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99AAE191629C2CE002D177D /* LabelTest.cpp */; };
@@ -882,7 +807,6 @@
 		A927C77C1634131A00B2AE52 /* libforze_mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5018F24D0DFDEAC400C013A5 /* libforze_mac.a */; };
 		A927C77D1634131A00B2AE52 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 503092B210447296005F7AFC /* libz.dylib */; };
 		A927C77E1634131A00B2AE52 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9791DFA31554AE2A0080871B /* AppKit.framework */; };
-		A927C77F1634131A00B2AE52 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 970C6E391403EAEE00E4CC0D /* Foundation.framework */; };
 		A927C7801634131A00B2AE52 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97A2487214A62DA500AB2023 /* OpenGL.framework */; };
 		A927C7811634131A00B2AE52 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97EEB21014046DCB0073CC55 /* QuartzCore.framework */; };
 		A927C7831634131A00B2AE52 /* helvetica.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F34157D66DA001E055D /* helvetica.fnt */; };
@@ -913,7 +837,6 @@
 		A94A95EC162AEC660035F4B6 /* libforze_mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5018F24D0DFDEAC400C013A5 /* libforze_mac.a */; };
 		A94A95ED162AEC660035F4B6 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 503092B210447296005F7AFC /* libz.dylib */; };
 		A94A95EE162AEC660035F4B6 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9791DFA31554AE2A0080871B /* AppKit.framework */; };
-		A94A95EF162AEC660035F4B6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 970C6E391403EAEE00E4CC0D /* Foundation.framework */; };
 		A94A95F0162AEC660035F4B6 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97A2487214A62DA500AB2023 /* OpenGL.framework */; };
 		A94A95F1162AEC660035F4B6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97EEB21014046DCB0073CC55 /* QuartzCore.framework */; };
 		A94A95F9162AEC660035F4B6 /* menu_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F78157D66DB001E055D /* menu_left.png */; };
@@ -939,85 +862,22 @@
 		A94A961B162B41E50035F4B6 /* kerning_test.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 97ED8EA1157E1289007C451A /* kerning_test.fnt */; };
 		A94A961C162B41E50035F4B6 /* kerning_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 97ED8EA2157E1289007C451A /* kerning_test.png */; };
 		A94C609516A437D800C68062 /* fire_rgba8888.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F54157D66DA001E055D /* fire_rgba8888.pvr */; };
+		A9540C91173E895E0023A776 /* FZParticleExamples.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9540C8B173E895E0023A776 /* FZParticleExamples.cpp */; };
+		A9540C92173E895E0023A776 /* FZParticleExamples.h in Headers */ = {isa = PBXBuildFile; fileRef = A9540C8C173E895E0023A776 /* FZParticleExamples.h */; };
+		A9540C93173E895E0023A776 /* FZParticleSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9540C8D173E895E0023A776 /* FZParticleSystem.cpp */; };
+		A9540C94173E895E0023A776 /* FZParticleSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = A9540C8E173E895E0023A776 /* FZParticleSystem.h */; };
+		A9540C95173E895E0023A776 /* FZParticleSystemQuad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9540C8F173E895E0023A776 /* FZParticleSystemQuad.cpp */; };
+		A9540C96173E895E0023A776 /* FZParticleSystemQuad.h in Headers */ = {isa = PBXBuildFile; fileRef = A9540C90173E895E0023A776 /* FZParticleSystemQuad.h */; };
 		A95B739116701A65001725FB /* tinythread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A95B738F16701A65001725FB /* tinythread.cpp */; };
 		A95B739216701A65001725FB /* tinythread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A95B738F16701A65001725FB /* tinythread.cpp */; };
 		A95B739316701A65001725FB /* tinythread.h in Headers */ = {isa = PBXBuildFile; fileRef = A95B739016701A65001725FB /* tinythread.h */; };
 		A95B739416701A65001725FB /* tinythread.h in Headers */ = {isa = PBXBuildFile; fileRef = A95B739016701A65001725FB /* tinythread.h */; };
 		A95C198516149BBA007D2287 /* libforze_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 979297B5151B818D0088AF66 /* libforze_ios.a */; };
-		A95C198716149BC5007D2287 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198616149BC5007D2287 /* CoreMotion.framework */; };
-		A95C198916149BC9007D2287 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198816149BC9007D2287 /* UIKit.framework */; };
-		A95C198B16149BCF007D2287 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198A16149BCF007D2287 /* Foundation.framework */; };
-		A95C198D16149BD6007D2287 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198C16149BD5007D2287 /* CoreGraphics.framework */; };
-		A95C198F16149BDA007D2287 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198E16149BDA007D2287 /* QuartzCore.framework */; };
-		A95C199016149BDE007D2287 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A97883EB160F80A900A93735 /* OpenGLES.framework */; };
-		A95C199216149BF3007D2287 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C199116149BF3007D2287 /* libz.dylib */; };
 		A95E134216B57C1400907DF5 /* helvetica@x2.fnt in Resources */ = {isa = PBXBuildFile; fileRef = A99804F0161F80B70037A7EB /* helvetica@x2.fnt */; };
 		A95E134316B57C1400907DF5 /* helvetica@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = A99804F1161F80B70037A7EB /* helvetica@x2.png */; };
 		A95E83A5163031CF00943C8F /* fire_rgba8888.pvr in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F54157D66DA001E055D /* fire_rgba8888.pvr */; };
-		A964A0AC161B3B960029311D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198E16149BDA007D2287 /* QuartzCore.framework */; };
-		A964A0AD161B3B960029311D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198C16149BD5007D2287 /* CoreGraphics.framework */; };
-		A964A0AE161B3B960029311D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198A16149BCF007D2287 /* Foundation.framework */; };
-		A964A0AF161B3B960029311D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198816149BC9007D2287 /* UIKit.framework */; };
-		A964A0B0161B3B960029311D /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198616149BC5007D2287 /* CoreMotion.framework */; };
-		A964A0B2161B3B990029311D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198E16149BDA007D2287 /* QuartzCore.framework */; };
-		A964A0B3161B3B990029311D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198C16149BD5007D2287 /* CoreGraphics.framework */; };
-		A964A0B4161B3B990029311D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198A16149BCF007D2287 /* Foundation.framework */; };
-		A964A0B5161B3B990029311D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198816149BC9007D2287 /* UIKit.framework */; };
-		A964A0B6161B3B990029311D /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198616149BC5007D2287 /* CoreMotion.framework */; };
-		A964A0B7161B3B990029311D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A97883EB160F80A900A93735 /* OpenGLES.framework */; };
-		A964A0B8161B3B9A0029311D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198E16149BDA007D2287 /* QuartzCore.framework */; };
-		A964A0B9161B3B9A0029311D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198C16149BD5007D2287 /* CoreGraphics.framework */; };
-		A964A0BA161B3B9A0029311D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198A16149BCF007D2287 /* Foundation.framework */; };
-		A964A0BB161B3B9A0029311D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198816149BC9007D2287 /* UIKit.framework */; };
-		A964A0BC161B3B9A0029311D /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198616149BC5007D2287 /* CoreMotion.framework */; };
-		A964A0BD161B3B9A0029311D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A97883EB160F80A900A93735 /* OpenGLES.framework */; };
-		A964A0BE161B3B9B0029311D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198E16149BDA007D2287 /* QuartzCore.framework */; };
-		A964A0BF161B3B9B0029311D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198C16149BD5007D2287 /* CoreGraphics.framework */; };
-		A964A0C0161B3B9B0029311D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198A16149BCF007D2287 /* Foundation.framework */; };
-		A964A0C1161B3B9B0029311D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198816149BC9007D2287 /* UIKit.framework */; };
-		A964A0C2161B3B9B0029311D /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198616149BC5007D2287 /* CoreMotion.framework */; };
-		A964A0C3161B3B9B0029311D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A97883EB160F80A900A93735 /* OpenGLES.framework */; };
-		A964A0C4161B3B9D0029311D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198E16149BDA007D2287 /* QuartzCore.framework */; };
-		A964A0C5161B3B9D0029311D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198C16149BD5007D2287 /* CoreGraphics.framework */; };
-		A964A0C6161B3B9D0029311D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198A16149BCF007D2287 /* Foundation.framework */; };
-		A964A0C7161B3B9D0029311D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198816149BC9007D2287 /* UIKit.framework */; };
-		A964A0C8161B3B9D0029311D /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198616149BC5007D2287 /* CoreMotion.framework */; };
-		A964A0C9161B3B9D0029311D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A97883EB160F80A900A93735 /* OpenGLES.framework */; };
-		A964A0CA161B3B9E0029311D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198E16149BDA007D2287 /* QuartzCore.framework */; };
-		A964A0CB161B3B9E0029311D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198C16149BD5007D2287 /* CoreGraphics.framework */; };
-		A964A0CC161B3B9E0029311D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198A16149BCF007D2287 /* Foundation.framework */; };
-		A964A0CD161B3B9E0029311D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198816149BC9007D2287 /* UIKit.framework */; };
-		A964A0CE161B3B9E0029311D /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198616149BC5007D2287 /* CoreMotion.framework */; };
-		A964A0CF161B3B9E0029311D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A97883EB160F80A900A93735 /* OpenGLES.framework */; };
-		A964A0D0161B3B9F0029311D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198E16149BDA007D2287 /* QuartzCore.framework */; };
-		A964A0D1161B3B9F0029311D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198C16149BD5007D2287 /* CoreGraphics.framework */; };
-		A964A0D2161B3B9F0029311D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198A16149BCF007D2287 /* Foundation.framework */; };
-		A964A0D3161B3B9F0029311D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198816149BC9007D2287 /* UIKit.framework */; };
-		A964A0D4161B3B9F0029311D /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198616149BC5007D2287 /* CoreMotion.framework */; };
-		A964A0D5161B3B9F0029311D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A97883EB160F80A900A93735 /* OpenGLES.framework */; };
-		A964A0D6161B3BA00029311D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198E16149BDA007D2287 /* QuartzCore.framework */; };
-		A964A0D7161B3BA00029311D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198C16149BD5007D2287 /* CoreGraphics.framework */; };
-		A964A0D8161B3BA00029311D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198A16149BCF007D2287 /* Foundation.framework */; };
-		A964A0D9161B3BA00029311D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198816149BC9007D2287 /* UIKit.framework */; };
-		A964A0DA161B3BA00029311D /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198616149BC5007D2287 /* CoreMotion.framework */; };
-		A964A0DB161B3BA00029311D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A97883EB160F80A900A93735 /* OpenGLES.framework */; };
-		A964A0DC161B3BA50029311D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C199116149BF3007D2287 /* libz.dylib */; };
-		A964A0DD161B3BA60029311D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C199116149BF3007D2287 /* libz.dylib */; };
-		A964A0DE161B3BA70029311D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C199116149BF3007D2287 /* libz.dylib */; };
-		A964A0E0161B3BA80029311D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C199116149BF3007D2287 /* libz.dylib */; };
-		A964A0E1161B3BA90029311D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C199116149BF3007D2287 /* libz.dylib */; };
-		A964A0E2161B3BAA0029311D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C199116149BF3007D2287 /* libz.dylib */; };
-		A964A0E3161B3BAB0029311D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C199116149BF3007D2287 /* libz.dylib */; };
-		A964A0E4161B3BAB0029311D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C199116149BF3007D2287 /* libz.dylib */; };
 		A96D7CC116285EA000B25A60 /* TestBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9704DD7C152F5C30007FA760 /* TestBase.cpp */; };
 		A96D7CC416285EA000B25A60 /* libforze_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 979297B5151B818D0088AF66 /* libforze_ios.a */; };
-		A96D7CC516285EA000B25A60 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198E16149BDA007D2287 /* QuartzCore.framework */; };
-		A96D7CC616285EA000B25A60 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198C16149BD5007D2287 /* CoreGraphics.framework */; };
-		A96D7CC716285EA000B25A60 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198A16149BCF007D2287 /* Foundation.framework */; };
-		A96D7CC816285EA000B25A60 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198816149BC9007D2287 /* UIKit.framework */; };
-		A96D7CC916285EA000B25A60 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198616149BC5007D2287 /* CoreMotion.framework */; };
-		A96D7CCA16285EA000B25A60 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A97883EB160F80A900A93735 /* OpenGLES.framework */; };
-		A96D7CCB16285EA000B25A60 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C199116149BF3007D2287 /* libz.dylib */; };
 		A96D7CCD16285EA000B25A60 /* font_menu.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F32157D66DA001E055D /* font_menu.fnt */; };
 		A96D7CCE16285EA000B25A60 /* font_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F33157D66DA001E055D /* font_menu.png */; };
 		A96D7CCF16285EA000B25A60 /* helvetica.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F34157D66DA001E055D /* helvetica.fnt */; };
@@ -1047,21 +907,9 @@
 		A96D7CE716285EA000B25A60 /* enemiesSheet.xml in Resources */ = {isa = PBXBuildFile; fileRef = A9B8753B16222CEE0007D6CC /* enemiesSheet.xml */; };
 		A96D7CE816285EA000B25A60 /* enemiesSheet@x2.pvr in Resources */ = {isa = PBXBuildFile; fileRef = A9B8753C16222CF00007D6CC /* enemiesSheet@x2.pvr */; };
 		A96D7CF416285EAF00B25A60 /* libforze_mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5018F24D0DFDEAC400C013A5 /* libforze_mac.a */; };
-		A96D7CF516285EAF00B25A60 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 503092B210447296005F7AFC /* libz.dylib */; };
-		A96D7CF616285EAF00B25A60 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9791DFA31554AE2A0080871B /* AppKit.framework */; };
-		A96D7CF716285EAF00B25A60 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 970C6E391403EAEE00E4CC0D /* Foundation.framework */; };
-		A96D7CF816285EAF00B25A60 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97A2487214A62DA500AB2023 /* OpenGL.framework */; };
-		A96D7CF916285EAF00B25A60 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97EEB21014046DCB0073CC55 /* QuartzCore.framework */; };
 		A96D7D1616285EAF00B25A60 /* TestBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9704DD7C152F5C30007FA760 /* TestBase.cpp */; };
 		A96D7D2316285EC100B25A60 /* TestBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9704DD7C152F5C30007FA760 /* TestBase.cpp */; };
 		A96D7D2616285EC100B25A60 /* libforze_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 979297B5151B818D0088AF66 /* libforze_ios.a */; };
-		A96D7D2716285EC100B25A60 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198E16149BDA007D2287 /* QuartzCore.framework */; };
-		A96D7D2816285EC100B25A60 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198C16149BD5007D2287 /* CoreGraphics.framework */; };
-		A96D7D2916285EC100B25A60 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198A16149BCF007D2287 /* Foundation.framework */; };
-		A96D7D2A16285EC100B25A60 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198816149BC9007D2287 /* UIKit.framework */; };
-		A96D7D2B16285EC100B25A60 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C198616149BC5007D2287 /* CoreMotion.framework */; };
-		A96D7D2C16285EC100B25A60 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A97883EB160F80A900A93735 /* OpenGLES.framework */; };
-		A96D7D2D16285EC100B25A60 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A95C199116149BF3007D2287 /* libz.dylib */; };
 		A96D7D5216285FB100B25A60 /* MiscTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CA16DF2215F3CC7700E025BF /* MiscTest.cpp */; };
 		A96D7D531628609C00B25A60 /* ShaderTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A918A053161E09AF004725E5 /* ShaderTest.cpp */; };
 		A96D7D56162860AE00B25A60 /* ShaderTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A918A053161E09AF004725E5 /* ShaderTest.cpp */; };
@@ -1095,7 +943,6 @@
 		A976115C1624B96C00A23623 /* base64.c in Sources */ = {isa = PBXBuildFile; fileRef = A97611551624B96C00A23623 /* base64.c */; };
 		A976115D1624B96C00A23623 /* base64.h in Headers */ = {isa = PBXBuildFile; fileRef = A97611561624B96C00A23623 /* base64.h */; };
 		A976115E1624B96C00A23623 /* base64.h in Headers */ = {isa = PBXBuildFile; fileRef = A97611561624B96C00A23623 /* base64.h */; };
-		A97883EC160F80A900A93735 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A97883EB160F80A900A93735 /* OpenGLES.framework */; };
 		A99804F2161F80B70037A7EB /* helvetica@x2.fnt in Resources */ = {isa = PBXBuildFile; fileRef = A99804F0161F80B70037A7EB /* helvetica@x2.fnt */; };
 		A99804F3161F80B70037A7EB /* helvetica@x2.fnt in Resources */ = {isa = PBXBuildFile; fileRef = A99804F0161F80B70037A7EB /* helvetica@x2.fnt */; };
 		A99804F4161F80B70037A7EB /* helvetica@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = A99804F1161F80B70037A7EB /* helvetica@x2.png */; };
@@ -1106,7 +953,6 @@
 		A998A066162C8E9100877502 /* libforze_mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5018F24D0DFDEAC400C013A5 /* libforze_mac.a */; };
 		A998A067162C8E9100877502 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 503092B210447296005F7AFC /* libz.dylib */; };
 		A998A068162C8E9100877502 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9791DFA31554AE2A0080871B /* AppKit.framework */; };
-		A998A069162C8E9100877502 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 970C6E391403EAEE00E4CC0D /* Foundation.framework */; };
 		A998A06A162C8E9100877502 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97A2487214A62DA500AB2023 /* OpenGL.framework */; };
 		A998A06B162C8E9100877502 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97EEB21014046DCB0073CC55 /* QuartzCore.framework */; };
 		A998A06D162C8E9100877502 /* helvetica.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F34157D66DA001E055D /* helvetica.fnt */; };
@@ -1252,18 +1098,6 @@
 		A99E9C2316922F1F00438E54 /* FZParallaxNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B7E16922F1F00438E54 /* FZParallaxNode.cpp */; };
 		A99E9C2416922F1F00438E54 /* FZParallaxNode.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B7F16922F1F00438E54 /* FZParallaxNode.h */; };
 		A99E9C2516922F1F00438E54 /* FZParallaxNode.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B7F16922F1F00438E54 /* FZParallaxNode.h */; };
-		A99E9C2616922F1F00438E54 /* FZParticleExamples.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B8016922F1F00438E54 /* FZParticleExamples.cpp */; };
-		A99E9C2716922F1F00438E54 /* FZParticleExamples.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B8016922F1F00438E54 /* FZParticleExamples.cpp */; };
-		A99E9C2816922F1F00438E54 /* FZParticleExamples.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B8116922F1F00438E54 /* FZParticleExamples.h */; };
-		A99E9C2916922F1F00438E54 /* FZParticleExamples.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B8116922F1F00438E54 /* FZParticleExamples.h */; };
-		A99E9C2A16922F1F00438E54 /* FZParticleSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B8216922F1F00438E54 /* FZParticleSystem.cpp */; };
-		A99E9C2B16922F1F00438E54 /* FZParticleSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B8216922F1F00438E54 /* FZParticleSystem.cpp */; };
-		A99E9C2C16922F1F00438E54 /* FZParticleSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B8316922F1F00438E54 /* FZParticleSystem.h */; };
-		A99E9C2D16922F1F00438E54 /* FZParticleSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B8316922F1F00438E54 /* FZParticleSystem.h */; };
-		A99E9C2E16922F1F00438E54 /* FZParticleSystemQuad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B8416922F1F00438E54 /* FZParticleSystemQuad.cpp */; };
-		A99E9C2F16922F1F00438E54 /* FZParticleSystemQuad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B8416922F1F00438E54 /* FZParticleSystemQuad.cpp */; };
-		A99E9C3016922F1F00438E54 /* FZParticleSystemQuad.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B8516922F1F00438E54 /* FZParticleSystemQuad.h */; };
-		A99E9C3116922F1F00438E54 /* FZParticleSystemQuad.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B8516922F1F00438E54 /* FZParticleSystemQuad.h */; };
 		A99E9C3216922F1F00438E54 /* FZPerformManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B8616922F1F00438E54 /* FZPerformManager.cpp */; };
 		A99E9C3316922F1F00438E54 /* FZPerformManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9B8616922F1F00438E54 /* FZPerformManager.cpp */; };
 		A99E9C3416922F1F00438E54 /* FZPerformManager.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9B8716922F1F00438E54 /* FZPerformManager.h */; };
@@ -1342,6 +1176,141 @@
 		A99E9C8F16922F4A00438E54 /* model_support.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A99E9C7C16922F4A00438E54 /* model_support.cpp */; };
 		A99E9C9016922F4A00438E54 /* model_support.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9C7D16922F4A00438E54 /* model_support.h */; };
 		A99E9C9116922F4A00438E54 /* model_support.h in Headers */ = {isa = PBXBuildFile; fileRef = A99E9C7D16922F4A00438E54 /* model_support.h */; };
+		A9AE062E16BE00CD00439C74 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 503092B210447296005F7AFC /* libz.dylib */; };
+		A9AE062F16BE00CD00439C74 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9791DFA31554AE2A0080871B /* AppKit.framework */; };
+		A9AE063016BE00CD00439C74 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97A2487214A62DA500AB2023 /* OpenGL.framework */; };
+		A9AE063116BE00CD00439C74 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97EEB21014046DCB0073CC55 /* QuartzCore.framework */; };
+		A9AE063216BE00D000439C74 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 503092B210447296005F7AFC /* libz.dylib */; };
+		A9AE063316BE00D000439C74 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9791DFA31554AE2A0080871B /* AppKit.framework */; };
+		A9AE063416BE00D000439C74 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97A2487214A62DA500AB2023 /* OpenGL.framework */; };
+		A9AE063516BE00D000439C74 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97EEB21014046DCB0073CC55 /* QuartzCore.framework */; };
+		A9AE063616BE00D200439C74 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 503092B210447296005F7AFC /* libz.dylib */; };
+		A9AE063716BE00D200439C74 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9791DFA31554AE2A0080871B /* AppKit.framework */; };
+		A9AE063816BE00D200439C74 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97A2487214A62DA500AB2023 /* OpenGL.framework */; };
+		A9AE063916BE00D200439C74 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97EEB21014046DCB0073CC55 /* QuartzCore.framework */; };
+		A9AE063A16BE00D500439C74 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 503092B210447296005F7AFC /* libz.dylib */; };
+		A9AE063B16BE00D500439C74 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9791DFA31554AE2A0080871B /* AppKit.framework */; };
+		A9AE063C16BE00D500439C74 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97A2487214A62DA500AB2023 /* OpenGL.framework */; };
+		A9AE063D16BE00D500439C74 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97EEB21014046DCB0073CC55 /* QuartzCore.framework */; };
+		A9AE063E16BE00D700439C74 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 503092B210447296005F7AFC /* libz.dylib */; };
+		A9AE063F16BE00D700439C74 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9791DFA31554AE2A0080871B /* AppKit.framework */; };
+		A9AE064016BE00D700439C74 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97A2487214A62DA500AB2023 /* OpenGL.framework */; };
+		A9AE064116BE00D700439C74 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97EEB21014046DCB0073CC55 /* QuartzCore.framework */; };
+		A9AE064216BE00D900439C74 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 503092B210447296005F7AFC /* libz.dylib */; };
+		A9AE064316BE00D900439C74 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9791DFA31554AE2A0080871B /* AppKit.framework */; };
+		A9AE064416BE00D900439C74 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97A2487214A62DA500AB2023 /* OpenGL.framework */; };
+		A9AE064516BE00D900439C74 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97EEB21014046DCB0073CC55 /* QuartzCore.framework */; };
+		A9AE064616BE00DC00439C74 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 503092B210447296005F7AFC /* libz.dylib */; };
+		A9AE064716BE00DC00439C74 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9791DFA31554AE2A0080871B /* AppKit.framework */; };
+		A9AE064816BE00DC00439C74 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97A2487214A62DA500AB2023 /* OpenGL.framework */; };
+		A9AE064916BE00DC00439C74 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97EEB21014046DCB0073CC55 /* QuartzCore.framework */; };
+		A9AE064A16BE00DE00439C74 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 503092B210447296005F7AFC /* libz.dylib */; };
+		A9AE064B16BE00DE00439C74 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9791DFA31554AE2A0080871B /* AppKit.framework */; };
+		A9AE064C16BE00DE00439C74 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97A2487214A62DA500AB2023 /* OpenGL.framework */; };
+		A9AE064D16BE00DE00439C74 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97EEB21014046DCB0073CC55 /* QuartzCore.framework */; };
+		A9AE064E16BE00E200439C74 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 503092B210447296005F7AFC /* libz.dylib */; };
+		A9AE064F16BE00E200439C74 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9791DFA31554AE2A0080871B /* AppKit.framework */; };
+		A9AE065016BE00E200439C74 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97A2487214A62DA500AB2023 /* OpenGL.framework */; };
+		A9AE065116BE00E200439C74 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97EEB21014046DCB0073CC55 /* QuartzCore.framework */; };
+		A9AE065216BE00E600439C74 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 503092B210447296005F7AFC /* libz.dylib */; };
+		A9AE065316BE00E600439C74 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9791DFA31554AE2A0080871B /* AppKit.framework */; };
+		A9AE065416BE00E600439C74 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97A2487214A62DA500AB2023 /* OpenGL.framework */; };
+		A9AE065516BE00E600439C74 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97EEB21014046DCB0073CC55 /* QuartzCore.framework */; };
+		A9AE065616BE00EB00439C74 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 503092B210447296005F7AFC /* libz.dylib */; };
+		A9AE065716BE00EB00439C74 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9791DFA31554AE2A0080871B /* AppKit.framework */; };
+		A9AE065816BE00EB00439C74 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97A2487214A62DA500AB2023 /* OpenGL.framework */; };
+		A9AE065916BE00EB00439C74 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97EEB21014046DCB0073CC55 /* QuartzCore.framework */; };
+		A9AE065B16BE014D00439C74 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065A16BE014D00439C74 /* libz.dylib */; };
+		A9AE065D16BE015100439C74 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065C16BE015100439C74 /* OpenGLES.framework */; };
+		A9AE065F16BE015600439C74 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065E16BE015600439C74 /* Foundation.framework */; };
+		A9AE066116BE015B00439C74 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066016BE015B00439C74 /* QuartzCore.framework */; };
+		A9AE066216BE016F00439C74 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066016BE015B00439C74 /* QuartzCore.framework */; };
+		A9AE066316BE016F00439C74 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065E16BE015600439C74 /* Foundation.framework */; };
+		A9AE066416BE016F00439C74 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065C16BE015100439C74 /* OpenGLES.framework */; };
+		A9AE066616BE018300439C74 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066516BE018300439C74 /* CoreMotion.framework */; };
+		A9AE066716BE018A00439C74 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066516BE018300439C74 /* CoreMotion.framework */; };
+		A9AE066816BE019B00439C74 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065A16BE014D00439C74 /* libz.dylib */; };
+		A9AE066A16BE01AA00439C74 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066916BE01AA00439C74 /* UIKit.framework */; };
+		A9AE066B16BE01B800439C74 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066916BE01AA00439C74 /* UIKit.framework */; };
+		A9AE066C16BE01E800439C74 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066916BE01AA00439C74 /* UIKit.framework */; };
+		A9AE066D16BE01E800439C74 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066516BE018300439C74 /* CoreMotion.framework */; };
+		A9AE066E16BE01E800439C74 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066016BE015B00439C74 /* QuartzCore.framework */; };
+		A9AE066F16BE01E800439C74 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065E16BE015600439C74 /* Foundation.framework */; };
+		A9AE067016BE01E800439C74 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065C16BE015100439C74 /* OpenGLES.framework */; };
+		A9AE067116BE01E800439C74 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065A16BE014D00439C74 /* libz.dylib */; };
+		A9AE067216BE01FF00439C74 /* libforze_ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 979297B5151B818D0088AF66 /* libforze_ios.a */; };
+		A9AE067316BE025200439C74 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066916BE01AA00439C74 /* UIKit.framework */; };
+		A9AE067416BE025200439C74 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066516BE018300439C74 /* CoreMotion.framework */; };
+		A9AE067516BE025200439C74 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066016BE015B00439C74 /* QuartzCore.framework */; };
+		A9AE067616BE025200439C74 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065E16BE015600439C74 /* Foundation.framework */; };
+		A9AE067716BE025200439C74 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065C16BE015100439C74 /* OpenGLES.framework */; };
+		A9AE067816BE025200439C74 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065A16BE014D00439C74 /* libz.dylib */; };
+		A9AE067916BE025A00439C74 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066916BE01AA00439C74 /* UIKit.framework */; };
+		A9AE067A16BE025A00439C74 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066516BE018300439C74 /* CoreMotion.framework */; };
+		A9AE067B16BE025A00439C74 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066016BE015B00439C74 /* QuartzCore.framework */; };
+		A9AE067C16BE025A00439C74 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065E16BE015600439C74 /* Foundation.framework */; };
+		A9AE067D16BE025A00439C74 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065C16BE015100439C74 /* OpenGLES.framework */; };
+		A9AE067E16BE025A00439C74 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065A16BE014D00439C74 /* libz.dylib */; };
+		A9AE067F16BE025C00439C74 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066916BE01AA00439C74 /* UIKit.framework */; };
+		A9AE068016BE025C00439C74 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066516BE018300439C74 /* CoreMotion.framework */; };
+		A9AE068116BE025C00439C74 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066016BE015B00439C74 /* QuartzCore.framework */; };
+		A9AE068216BE025C00439C74 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065E16BE015600439C74 /* Foundation.framework */; };
+		A9AE068316BE025C00439C74 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065C16BE015100439C74 /* OpenGLES.framework */; };
+		A9AE068416BE025C00439C74 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065A16BE014D00439C74 /* libz.dylib */; };
+		A9AE068516BE025F00439C74 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066916BE01AA00439C74 /* UIKit.framework */; };
+		A9AE068616BE025F00439C74 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066516BE018300439C74 /* CoreMotion.framework */; };
+		A9AE068716BE025F00439C74 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066016BE015B00439C74 /* QuartzCore.framework */; };
+		A9AE068816BE025F00439C74 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065E16BE015600439C74 /* Foundation.framework */; };
+		A9AE068916BE025F00439C74 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065C16BE015100439C74 /* OpenGLES.framework */; };
+		A9AE068A16BE025F00439C74 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065A16BE014D00439C74 /* libz.dylib */; };
+		A9AE068B16BE026100439C74 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066916BE01AA00439C74 /* UIKit.framework */; };
+		A9AE068C16BE026100439C74 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066516BE018300439C74 /* CoreMotion.framework */; };
+		A9AE068D16BE026100439C74 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066016BE015B00439C74 /* QuartzCore.framework */; };
+		A9AE068E16BE026100439C74 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065E16BE015600439C74 /* Foundation.framework */; };
+		A9AE068F16BE026100439C74 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065C16BE015100439C74 /* OpenGLES.framework */; };
+		A9AE069016BE026100439C74 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065A16BE014D00439C74 /* libz.dylib */; };
+		A9AE069116BE026400439C74 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066916BE01AA00439C74 /* UIKit.framework */; };
+		A9AE069216BE026400439C74 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066516BE018300439C74 /* CoreMotion.framework */; };
+		A9AE069316BE026400439C74 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066016BE015B00439C74 /* QuartzCore.framework */; };
+		A9AE069416BE026400439C74 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065E16BE015600439C74 /* Foundation.framework */; };
+		A9AE069516BE026400439C74 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065C16BE015100439C74 /* OpenGLES.framework */; };
+		A9AE069616BE026400439C74 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065A16BE014D00439C74 /* libz.dylib */; };
+		A9AE069716BE026700439C74 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066916BE01AA00439C74 /* UIKit.framework */; };
+		A9AE069816BE026700439C74 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066516BE018300439C74 /* CoreMotion.framework */; };
+		A9AE069916BE026700439C74 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066016BE015B00439C74 /* QuartzCore.framework */; };
+		A9AE069A16BE026700439C74 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065E16BE015600439C74 /* Foundation.framework */; };
+		A9AE069B16BE026700439C74 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065C16BE015100439C74 /* OpenGLES.framework */; };
+		A9AE069C16BE026700439C74 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065A16BE014D00439C74 /* libz.dylib */; };
+		A9AE069D16BE026900439C74 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066916BE01AA00439C74 /* UIKit.framework */; };
+		A9AE069E16BE026900439C74 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066516BE018300439C74 /* CoreMotion.framework */; };
+		A9AE069F16BE026900439C74 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066016BE015B00439C74 /* QuartzCore.framework */; };
+		A9AE06A016BE026900439C74 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065E16BE015600439C74 /* Foundation.framework */; };
+		A9AE06A116BE026900439C74 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065C16BE015100439C74 /* OpenGLES.framework */; };
+		A9AE06A216BE026900439C74 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065A16BE014D00439C74 /* libz.dylib */; };
+		A9AE06A316BE026D00439C74 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066916BE01AA00439C74 /* UIKit.framework */; };
+		A9AE06A416BE026D00439C74 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066516BE018300439C74 /* CoreMotion.framework */; };
+		A9AE06A516BE026D00439C74 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066016BE015B00439C74 /* QuartzCore.framework */; };
+		A9AE06A616BE026D00439C74 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065E16BE015600439C74 /* Foundation.framework */; };
+		A9AE06A716BE026D00439C74 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065C16BE015100439C74 /* OpenGLES.framework */; };
+		A9AE06A816BE026D00439C74 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065A16BE014D00439C74 /* libz.dylib */; };
+		A9AE06A916BE027000439C74 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066916BE01AA00439C74 /* UIKit.framework */; };
+		A9AE06AA16BE027000439C74 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066516BE018300439C74 /* CoreMotion.framework */; };
+		A9AE06AB16BE027000439C74 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066016BE015B00439C74 /* QuartzCore.framework */; };
+		A9AE06AC16BE027000439C74 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065E16BE015600439C74 /* Foundation.framework */; };
+		A9AE06AD16BE027000439C74 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065C16BE015100439C74 /* OpenGLES.framework */; };
+		A9AE06AE16BE027000439C74 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065A16BE014D00439C74 /* libz.dylib */; };
+		A9AE06AF16BE027300439C74 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066916BE01AA00439C74 /* UIKit.framework */; };
+		A9AE06B016BE027300439C74 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066516BE018300439C74 /* CoreMotion.framework */; };
+		A9AE06B116BE027300439C74 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066016BE015B00439C74 /* QuartzCore.framework */; };
+		A9AE06B216BE027300439C74 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065E16BE015600439C74 /* Foundation.framework */; };
+		A9AE06B316BE027300439C74 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065C16BE015100439C74 /* OpenGLES.framework */; };
+		A9AE06B416BE027300439C74 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065A16BE014D00439C74 /* libz.dylib */; };
+		A9AE06B516BE027500439C74 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066916BE01AA00439C74 /* UIKit.framework */; };
+		A9AE06B616BE027500439C74 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066516BE018300439C74 /* CoreMotion.framework */; };
+		A9AE06B716BE027500439C74 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE066016BE015B00439C74 /* QuartzCore.framework */; };
+		A9AE06B816BE027500439C74 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065E16BE015600439C74 /* Foundation.framework */; };
+		A9AE06B916BE027500439C74 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065C16BE015100439C74 /* OpenGLES.framework */; };
+		A9AE06BA16BE027500439C74 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A9AE065A16BE014D00439C74 /* libz.dylib */; };
 		A9B8753D16222CF30007D6CC /* enemiesSheet.pvr in Resources */ = {isa = PBXBuildFile; fileRef = A9B8753A16222CEC0007D6CC /* enemiesSheet.pvr */; };
 		A9B8753E16222CF30007D6CC /* enemiesSheet.pvr in Resources */ = {isa = PBXBuildFile; fileRef = A9B8753A16222CEC0007D6CC /* enemiesSheet.pvr */; };
 		A9B8753F16222CF30007D6CC /* enemiesSheet.xml in Resources */ = {isa = PBXBuildFile; fileRef = A9B8753B16222CEE0007D6CC /* enemiesSheet.xml */; };
@@ -1353,11 +1322,6 @@
 		A9BFDA73166A5EA1005E7DE2 /* FZHash.h in Headers */ = {isa = PBXBuildFile; fileRef = A9BFDA70166A5EA1005E7DE2 /* FZHash.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A9BFDA74166A5EA1005E7DE2 /* FZHash.h in Headers */ = {isa = PBXBuildFile; fileRef = A9BFDA70166A5EA1005E7DE2 /* FZHash.h */; };
 		CA16DF2815F3CD0000E025BF /* libforze_mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5018F24D0DFDEAC400C013A5 /* libforze_mac.a */; };
-		CA16DF2915F3CD0000E025BF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 503092B210447296005F7AFC /* libz.dylib */; };
-		CA16DF2A15F3CD0000E025BF /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9791DFA31554AE2A0080871B /* AppKit.framework */; };
-		CA16DF2B15F3CD0000E025BF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 970C6E391403EAEE00E4CC0D /* Foundation.framework */; };
-		CA16DF2C15F3CD0000E025BF /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97A2487214A62DA500AB2023 /* OpenGL.framework */; };
-		CA16DF2D15F3CD0000E025BF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97EEB21014046DCB0073CC55 /* QuartzCore.framework */; };
 		CA16DF3015F3CD0000E025BF /* grossini.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F65157D66DA001E055D /* grossini.png */; };
 		CA16DF3115F3CD0000E025BF /* grossini@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F66157D66DA001E055D /* grossini@x2.png */; };
 		CA16DF3215F3CD0000E025BF /* grossinis_sister1.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F6D157D66DA001E055D /* grossinis_sister1.png */; };
@@ -1619,7 +1583,6 @@
 		970C3BE5157E525400F8E3FF /* SpriteTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteTest.h; sourceTree = "<group>"; };
 		970C3BEA157E593800F8E3FF /* picture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = picture.png; sourceTree = "<group>"; };
 		970C3BEB157E593D00F8E3FF /* picture@x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picture@x2.png"; sourceTree = "<group>"; };
-		970C6E391403EAEE00E4CC0D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		970D3FBD15249D96001FFC26 /* neon_support.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = neon_support.h; sourceTree = "<group>"; };
 		970D3FBE15249D96001FFC26 /* SSE_support.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSE_support.h; sourceTree = "<group>"; };
 		972535A21531169A00FC3CBF /* rapidxml_print.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml_print.hpp; sourceTree = "<group>"; };
@@ -1879,7 +1842,6 @@
 		A908C2AE162EC4ED006F2930 /* mac-ParticlesTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mac-ParticlesTest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A90A07DD16AC1E6C00B61C56 /* FZMathInline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZMathInline.h; sourceTree = "<group>"; };
 		A90B059F1633198300371F8B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "IOS/Default-568h@2x.png"; sourceTree = "<group>"; };
-		A90C7B08167414B600CB83DF /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		A918A053161E09AF004725E5 /* ShaderTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShaderTest.cpp; sourceTree = "<group>"; };
 		A91A6D871642FE5C0025ADE5 /* ios-ParticleTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-ParticleTest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A91A6DA81642FE610025ADE5 /* ios-SceneTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-SceneTest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1891,14 +1853,14 @@
 		A94028DD16BC58E800EEF519 /* FZOSW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZOSW.h; sourceTree = "<group>"; };
 		A94028E216BC594500EEF519 /* FZOSW_header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZOSW_header.h; sourceTree = "<group>"; };
 		A94A9614162AEC660035F4B6 /* mac-LabelTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mac-LabelTest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9540C8B173E895E0023A776 /* FZParticleExamples.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZParticleExamples.cpp; sourceTree = "<group>"; };
+		A9540C8C173E895E0023A776 /* FZParticleExamples.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZParticleExamples.h; sourceTree = "<group>"; };
+		A9540C8D173E895E0023A776 /* FZParticleSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZParticleSystem.cpp; sourceTree = "<group>"; };
+		A9540C8E173E895E0023A776 /* FZParticleSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZParticleSystem.h; sourceTree = "<group>"; };
+		A9540C8F173E895E0023A776 /* FZParticleSystemQuad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZParticleSystemQuad.cpp; sourceTree = "<group>"; };
+		A9540C90173E895E0023A776 /* FZParticleSystemQuad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZParticleSystemQuad.h; sourceTree = "<group>"; };
 		A95B738F16701A65001725FB /* tinythread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinythread.cpp; sourceTree = "<group>"; };
 		A95B739016701A65001725FB /* tinythread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinythread.h; sourceTree = "<group>"; };
-		A95C198616149BC5007D2287 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
-		A95C198816149BC9007D2287 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		A95C198A16149BCF007D2287 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		A95C198C16149BD5007D2287 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
-		A95C198E16149BDA007D2287 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
-		A95C199116149BF3007D2287 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
 		A96D7CBB16285B6400B25A60 /* LICENSE_artwork.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE_artwork.txt; sourceTree = "<group>"; };
 		A96D7CBC16285B6400B25A60 /* LICENSE_libb64.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE_libb64.txt; sourceTree = "<group>"; };
 		A96D7CED16285EA000B25A60 /* ios-MiscTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-MiscTest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1907,7 +1869,6 @@
 		A96D7D591628610400B25A60 /* ShaderTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderTest.h; sourceTree = "<group>"; };
 		A97611551624B96C00A23623 /* base64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = base64.c; sourceTree = "<group>"; };
 		A97611561624B96C00A23623 /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
-		A97883EB160F80A900A93735 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.0.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
 		A99804F0161F80B70037A7EB /* helvetica@x2.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "helvetica@x2.fnt"; sourceTree = "<group>"; };
 		A99804F1161F80B70037A7EB /* helvetica@x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "helvetica@x2.png"; sourceTree = "<group>"; };
 		A99804F8161FA7500037A7EB /* simulation.frag */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = simulation.frag; sourceTree = "<group>"; };
@@ -1982,12 +1943,6 @@
 		A99E9B7D16922F1F00438E54 /* FZNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZNode.h; sourceTree = "<group>"; };
 		A99E9B7E16922F1F00438E54 /* FZParallaxNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZParallaxNode.cpp; sourceTree = "<group>"; };
 		A99E9B7F16922F1F00438E54 /* FZParallaxNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZParallaxNode.h; sourceTree = "<group>"; };
-		A99E9B8016922F1F00438E54 /* FZParticleExamples.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZParticleExamples.cpp; sourceTree = "<group>"; };
-		A99E9B8116922F1F00438E54 /* FZParticleExamples.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZParticleExamples.h; sourceTree = "<group>"; };
-		A99E9B8216922F1F00438E54 /* FZParticleSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZParticleSystem.cpp; sourceTree = "<group>"; };
-		A99E9B8316922F1F00438E54 /* FZParticleSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZParticleSystem.h; sourceTree = "<group>"; };
-		A99E9B8416922F1F00438E54 /* FZParticleSystemQuad.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZParticleSystemQuad.cpp; sourceTree = "<group>"; };
-		A99E9B8516922F1F00438E54 /* FZParticleSystemQuad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZParticleSystemQuad.h; sourceTree = "<group>"; };
 		A99E9B8616922F1F00438E54 /* FZPerformManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZPerformManager.cpp; sourceTree = "<group>"; };
 		A99E9B8716922F1F00438E54 /* FZPerformManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FZPerformManager.h; sourceTree = "<group>"; };
 		A99E9B8B16922F1F00438E54 /* FZRenderTexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FZRenderTexture.cpp; sourceTree = "<group>"; };
@@ -2027,6 +1982,12 @@
 		A99E9C7B16922F4A00438E54 /* macosx_support.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = macosx_support.mm; sourceTree = "<group>"; };
 		A99E9C7C16922F4A00438E54 /* model_support.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = model_support.cpp; sourceTree = "<group>"; };
 		A99E9C7D16922F4A00438E54 /* model_support.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = model_support.h; sourceTree = "<group>"; };
+		A9AE065A16BE014D00439C74 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/usr/lib/libz.dylib; sourceTree = DEVELOPER_DIR; };
+		A9AE065C16BE015100439C74 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
+		A9AE065E16BE015600439C74 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		A9AE066016BE015B00439C74 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		A9AE066516BE018300439C74 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
+		A9AE066916BE01AA00439C74 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		A9B8753A16222CEC0007D6CC /* enemiesSheet.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; path = enemiesSheet.pvr; sourceTree = "<group>"; };
 		A9B8753B16222CEE0007D6CC /* enemiesSheet.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = enemiesSheet.xml; sourceTree = "<group>"; };
 		A9B8753C16222CF00007D6CC /* enemiesSheet@x2.pvr */ = {isa = PBXFileReference; lastKnownFileType = file; path = "enemiesSheet@x2.pvr"; sourceTree = "<group>"; };
@@ -2045,10 +2006,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				97F12B7F14A7F61100A2462C /* libz.dylib in Frameworks */,
-				97A2487314A62DA500AB2023 /* OpenGL.framework in Frameworks */,
-				97EEB21314046DCB0073CC55 /* QuartzCore.framework in Frameworks */,
-				970C6E3A1403EAEF00E4CC0D /* Foundation.framework in Frameworks */,
+				A9AE065616BE00EB00439C74 /* libz.dylib in Frameworks */,
+				A9AE065716BE00EB00439C74 /* AppKit.framework in Frameworks */,
+				A9AE065816BE00EB00439C74 /* OpenGL.framework in Frameworks */,
+				A9AE065916BE00EB00439C74 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2056,14 +2017,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9705E37F157BC42E009A21AF /* libforze_ios.a in Frameworks */,
-				A964A0B2161B3B990029311D /* QuartzCore.framework in Frameworks */,
-				A964A0B3161B3B990029311D /* CoreGraphics.framework in Frameworks */,
-				A964A0B4161B3B990029311D /* Foundation.framework in Frameworks */,
-				A964A0B5161B3B990029311D /* UIKit.framework in Frameworks */,
-				A964A0B6161B3B990029311D /* CoreMotion.framework in Frameworks */,
-				A964A0B7161B3B990029311D /* OpenGLES.framework in Frameworks */,
-				A964A0DD161B3BA60029311D /* libz.dylib in Frameworks */,
+				A9AE067216BE01FF00439C74 /* libforze_ios.a in Frameworks */,
+				A9AE066C16BE01E800439C74 /* UIKit.framework in Frameworks */,
+				A9AE066D16BE01E800439C74 /* CoreMotion.framework in Frameworks */,
+				A9AE066E16BE01E800439C74 /* QuartzCore.framework in Frameworks */,
+				A9AE066F16BE01E800439C74 /* Foundation.framework in Frameworks */,
+				A9AE067016BE01E800439C74 /* OpenGLES.framework in Frameworks */,
+				A9AE067116BE01E800439C74 /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2072,11 +2032,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				970C39FC157E500F00F8E3FF /* libforze_mac.a in Frameworks */,
-				970C39FD157E500F00F8E3FF /* libz.dylib in Frameworks */,
-				970C39FE157E500F00F8E3FF /* AppKit.framework in Frameworks */,
-				970C39FF157E500F00F8E3FF /* Foundation.framework in Frameworks */,
-				970C3A00157E500F00F8E3FF /* OpenGL.framework in Frameworks */,
-				970C3A01157E500F00F8E3FF /* QuartzCore.framework in Frameworks */,
+				A9AE064616BE00DC00439C74 /* libz.dylib in Frameworks */,
+				A9AE064716BE00DC00439C74 /* AppKit.framework in Frameworks */,
+				A9AE064816BE00DC00439C74 /* OpenGL.framework in Frameworks */,
+				A9AE064916BE00DC00439C74 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2085,13 +2044,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				970C3A2E157E501400F8E3FF /* libforze_ios.a in Frameworks */,
-				A964A0C4161B3B9D0029311D /* QuartzCore.framework in Frameworks */,
-				A964A0C5161B3B9D0029311D /* CoreGraphics.framework in Frameworks */,
-				A964A0C6161B3B9D0029311D /* Foundation.framework in Frameworks */,
-				A964A0C7161B3B9D0029311D /* UIKit.framework in Frameworks */,
-				A964A0C8161B3B9D0029311D /* CoreMotion.framework in Frameworks */,
-				A964A0C9161B3B9D0029311D /* OpenGLES.framework in Frameworks */,
-				A964A0E1161B3BA90029311D /* libz.dylib in Frameworks */,
+				A9AE067916BE025A00439C74 /* UIKit.framework in Frameworks */,
+				A9AE067A16BE025A00439C74 /* CoreMotion.framework in Frameworks */,
+				A9AE067B16BE025A00439C74 /* QuartzCore.framework in Frameworks */,
+				A9AE067C16BE025A00439C74 /* Foundation.framework in Frameworks */,
+				A9AE067D16BE025A00439C74 /* OpenGLES.framework in Frameworks */,
+				A9AE067E16BE025A00439C74 /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2100,11 +2058,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				970C3A5A157E502A00F8E3FF /* libforze_mac.a in Frameworks */,
-				970C3A5B157E502A00F8E3FF /* libz.dylib in Frameworks */,
-				970C3A5C157E502A00F8E3FF /* AppKit.framework in Frameworks */,
-				970C3A5D157E502A00F8E3FF /* Foundation.framework in Frameworks */,
-				970C3A5E157E502A00F8E3FF /* OpenGL.framework in Frameworks */,
-				970C3A5F157E502A00F8E3FF /* QuartzCore.framework in Frameworks */,
+				A9AE064216BE00D900439C74 /* libz.dylib in Frameworks */,
+				A9AE064316BE00D900439C74 /* AppKit.framework in Frameworks */,
+				A9AE064416BE00D900439C74 /* OpenGL.framework in Frameworks */,
+				A9AE064516BE00D900439C74 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2112,14 +2069,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A95C199216149BF3007D2287 /* libz.dylib in Frameworks */,
-				A95C198F16149BDA007D2287 /* QuartzCore.framework in Frameworks */,
-				A95C198D16149BD6007D2287 /* CoreGraphics.framework in Frameworks */,
-				A95C198B16149BCF007D2287 /* Foundation.framework in Frameworks */,
-				A95C199016149BDE007D2287 /* OpenGLES.framework in Frameworks */,
-				A95C198916149BC9007D2287 /* UIKit.framework in Frameworks */,
-				A95C198716149BC5007D2287 /* CoreMotion.framework in Frameworks */,
 				A95C198516149BBA007D2287 /* libforze_ios.a in Frameworks */,
+				A9AE067F16BE025C00439C74 /* UIKit.framework in Frameworks */,
+				A9AE068016BE025C00439C74 /* CoreMotion.framework in Frameworks */,
+				A9AE068116BE025C00439C74 /* QuartzCore.framework in Frameworks */,
+				A9AE068216BE025C00439C74 /* Foundation.framework in Frameworks */,
+				A9AE068316BE025C00439C74 /* OpenGLES.framework in Frameworks */,
+				A9AE068416BE025C00439C74 /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2128,11 +2084,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				970C3AB7157E504300F8E3FF /* libforze_mac.a in Frameworks */,
-				970C3AB8157E504300F8E3FF /* libz.dylib in Frameworks */,
-				970C3AB9157E504300F8E3FF /* AppKit.framework in Frameworks */,
-				970C3ABA157E504300F8E3FF /* Foundation.framework in Frameworks */,
-				970C3ABB157E504300F8E3FF /* OpenGL.framework in Frameworks */,
-				970C3ABC157E504300F8E3FF /* QuartzCore.framework in Frameworks */,
+				A9AE063E16BE00D700439C74 /* libz.dylib in Frameworks */,
+				A9AE063F16BE00D700439C74 /* AppKit.framework in Frameworks */,
+				A9AE064016BE00D700439C74 /* OpenGL.framework in Frameworks */,
+				A9AE064116BE00D700439C74 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2141,13 +2096,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				32DE9A7515C1B95300671FDF /* libforze_ios.a in Frameworks */,
-				A964A0CA161B3B9E0029311D /* QuartzCore.framework in Frameworks */,
-				A964A0CB161B3B9E0029311D /* CoreGraphics.framework in Frameworks */,
-				A964A0CC161B3B9E0029311D /* Foundation.framework in Frameworks */,
-				A964A0CD161B3B9E0029311D /* UIKit.framework in Frameworks */,
-				A964A0CE161B3B9E0029311D /* CoreMotion.framework in Frameworks */,
-				A964A0CF161B3B9E0029311D /* OpenGLES.framework in Frameworks */,
-				A964A0E2161B3BAA0029311D /* libz.dylib in Frameworks */,
+				A9AE068516BE025F00439C74 /* UIKit.framework in Frameworks */,
+				A9AE068616BE025F00439C74 /* CoreMotion.framework in Frameworks */,
+				A9AE068716BE025F00439C74 /* QuartzCore.framework in Frameworks */,
+				A9AE068816BE025F00439C74 /* Foundation.framework in Frameworks */,
+				A9AE068916BE025F00439C74 /* OpenGLES.framework in Frameworks */,
+				A9AE068A16BE025F00439C74 /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2156,11 +2110,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				970C3B14157E505900F8E3FF /* libforze_mac.a in Frameworks */,
-				970C3B15157E505900F8E3FF /* libz.dylib in Frameworks */,
-				970C3B16157E505900F8E3FF /* AppKit.framework in Frameworks */,
-				970C3B17157E505900F8E3FF /* Foundation.framework in Frameworks */,
-				970C3B18157E505900F8E3FF /* OpenGL.framework in Frameworks */,
-				970C3B19157E505900F8E3FF /* QuartzCore.framework in Frameworks */,
+				A9AE063A16BE00D500439C74 /* libz.dylib in Frameworks */,
+				A9AE063B16BE00D500439C74 /* AppKit.framework in Frameworks */,
+				A9AE063C16BE00D500439C74 /* OpenGL.framework in Frameworks */,
+				A9AE063D16BE00D500439C74 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2169,13 +2122,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				970C3B45157E505D00F8E3FF /* libforze_ios.a in Frameworks */,
-				A964A0D0161B3B9F0029311D /* QuartzCore.framework in Frameworks */,
-				A964A0D1161B3B9F0029311D /* CoreGraphics.framework in Frameworks */,
-				A964A0D2161B3B9F0029311D /* Foundation.framework in Frameworks */,
-				A964A0D3161B3B9F0029311D /* UIKit.framework in Frameworks */,
-				A964A0D4161B3B9F0029311D /* CoreMotion.framework in Frameworks */,
-				A964A0D5161B3B9F0029311D /* OpenGLES.framework in Frameworks */,
-				A964A0E3161B3BAB0029311D /* libz.dylib in Frameworks */,
+				A9AE068B16BE026100439C74 /* UIKit.framework in Frameworks */,
+				A9AE068C16BE026100439C74 /* CoreMotion.framework in Frameworks */,
+				A9AE068D16BE026100439C74 /* QuartzCore.framework in Frameworks */,
+				A9AE068E16BE026100439C74 /* Foundation.framework in Frameworks */,
+				A9AE068F16BE026100439C74 /* OpenGLES.framework in Frameworks */,
+				A9AE069016BE026100439C74 /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2184,11 +2136,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				970C3B71157E507100F8E3FF /* libforze_mac.a in Frameworks */,
-				970C3B72157E507100F8E3FF /* libz.dylib in Frameworks */,
-				970C3B73157E507100F8E3FF /* AppKit.framework in Frameworks */,
-				970C3B74157E507100F8E3FF /* Foundation.framework in Frameworks */,
-				970C3B75157E507100F8E3FF /* OpenGL.framework in Frameworks */,
-				970C3B76157E507100F8E3FF /* QuartzCore.framework in Frameworks */,
+				A9AE063616BE00D200439C74 /* libz.dylib in Frameworks */,
+				A9AE063716BE00D200439C74 /* AppKit.framework in Frameworks */,
+				A9AE063816BE00D200439C74 /* OpenGL.framework in Frameworks */,
+				A9AE063916BE00D200439C74 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2197,13 +2148,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				970C3BA2157E507500F8E3FF /* libforze_ios.a in Frameworks */,
-				A964A0D6161B3BA00029311D /* QuartzCore.framework in Frameworks */,
-				A964A0D7161B3BA00029311D /* CoreGraphics.framework in Frameworks */,
-				A964A0D8161B3BA00029311D /* Foundation.framework in Frameworks */,
-				A964A0D9161B3BA00029311D /* UIKit.framework in Frameworks */,
-				A964A0DA161B3BA00029311D /* CoreMotion.framework in Frameworks */,
-				A964A0DB161B3BA00029311D /* OpenGLES.framework in Frameworks */,
-				A964A0E4161B3BAB0029311D /* libz.dylib in Frameworks */,
+				A9AE069116BE026400439C74 /* UIKit.framework in Frameworks */,
+				A9AE069216BE026400439C74 /* CoreMotion.framework in Frameworks */,
+				A9AE069316BE026400439C74 /* QuartzCore.framework in Frameworks */,
+				A9AE069416BE026400439C74 /* Foundation.framework in Frameworks */,
+				A9AE069516BE026400439C74 /* OpenGLES.framework in Frameworks */,
+				A9AE069616BE026400439C74 /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2211,13 +2161,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A90C7B09167414B600CB83DF /* Cocoa.framework in Frameworks */,
 				978EDF41151800EC00D70CAB /* libforze_mac.a in Frameworks */,
-				97A1FDEF149D32730075C229 /* libz.dylib in Frameworks */,
-				9791DFA41554AE2A0080871B /* AppKit.framework in Frameworks */,
-				9788D5221417B80100DCC802 /* Foundation.framework in Frameworks */,
-				975DD30C14A7884300D55DE6 /* OpenGL.framework in Frameworks */,
-				979C21801492D5A7004A3060 /* QuartzCore.framework in Frameworks */,
+				A9AE065216BE00E600439C74 /* libz.dylib in Frameworks */,
+				A9AE065316BE00E600439C74 /* AppKit.framework in Frameworks */,
+				A9AE065416BE00E600439C74 /* OpenGL.framework in Frameworks */,
+				A9AE065516BE00E600439C74 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2225,13 +2173,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A97883EC160F80A900A93735 /* OpenGLES.framework in Frameworks */,
-				A964A0AC161B3B960029311D /* QuartzCore.framework in Frameworks */,
-				A964A0AD161B3B960029311D /* CoreGraphics.framework in Frameworks */,
-				A964A0AE161B3B960029311D /* Foundation.framework in Frameworks */,
-				A964A0AF161B3B960029311D /* UIKit.framework in Frameworks */,
-				A964A0B0161B3B960029311D /* CoreMotion.framework in Frameworks */,
-				A964A0DC161B3BA50029311D /* libz.dylib in Frameworks */,
+				A9AE066B16BE01B800439C74 /* UIKit.framework in Frameworks */,
+				A9AE066616BE018300439C74 /* CoreMotion.framework in Frameworks */,
+				A9AE066116BE015B00439C74 /* QuartzCore.framework in Frameworks */,
+				A9AE065F16BE015600439C74 /* Foundation.framework in Frameworks */,
+				A9AE065D16BE015100439C74 /* OpenGLES.framework in Frameworks */,
+				A9AE065B16BE014D00439C74 /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2240,11 +2187,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				97ED8EAC157E1D2E007C451A /* libforze_mac.a in Frameworks */,
-				97ED8EAD157E1D2E007C451A /* libz.dylib in Frameworks */,
-				97ED8EAE157E1D2E007C451A /* AppKit.framework in Frameworks */,
-				97ED8EAF157E1D2E007C451A /* Foundation.framework in Frameworks */,
-				97ED8EB0157E1D2E007C451A /* OpenGL.framework in Frameworks */,
-				97ED8EB1157E1D2E007C451A /* QuartzCore.framework in Frameworks */,
+				A9AE064E16BE00E200439C74 /* libz.dylib in Frameworks */,
+				A9AE064F16BE00E200439C74 /* AppKit.framework in Frameworks */,
+				A9AE065016BE00E200439C74 /* OpenGL.framework in Frameworks */,
+				A9AE065116BE00E200439C74 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2253,13 +2199,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				97ED8EDF157E1D31007C451A /* libforze_ios.a in Frameworks */,
-				A964A0B8161B3B9A0029311D /* QuartzCore.framework in Frameworks */,
-				A964A0B9161B3B9A0029311D /* CoreGraphics.framework in Frameworks */,
-				A964A0BA161B3B9A0029311D /* Foundation.framework in Frameworks */,
-				A964A0BB161B3B9A0029311D /* UIKit.framework in Frameworks */,
-				A964A0BC161B3B9A0029311D /* CoreMotion.framework in Frameworks */,
-				A964A0BD161B3B9A0029311D /* OpenGLES.framework in Frameworks */,
-				A964A0DE161B3BA70029311D /* libz.dylib in Frameworks */,
+				A9AE067316BE025200439C74 /* UIKit.framework in Frameworks */,
+				A9AE067416BE025200439C74 /* CoreMotion.framework in Frameworks */,
+				A9AE067516BE025200439C74 /* QuartzCore.framework in Frameworks */,
+				A9AE067616BE025200439C74 /* Foundation.framework in Frameworks */,
+				A9AE067716BE025200439C74 /* OpenGLES.framework in Frameworks */,
+				A9AE067816BE025200439C74 /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2268,11 +2213,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				97ED8F3E157E1E08007C451A /* libforze_mac.a in Frameworks */,
-				97ED8F3F157E1E08007C451A /* libz.dylib in Frameworks */,
-				97ED8F40157E1E08007C451A /* AppKit.framework in Frameworks */,
-				97ED8F41157E1E08007C451A /* Foundation.framework in Frameworks */,
-				97ED8F42157E1E08007C451A /* OpenGL.framework in Frameworks */,
-				97ED8F43157E1E08007C451A /* QuartzCore.framework in Frameworks */,
+				A9AE064A16BE00DE00439C74 /* libz.dylib in Frameworks */,
+				A9AE064B16BE00DE00439C74 /* AppKit.framework in Frameworks */,
+				A9AE064C16BE00DE00439C74 /* OpenGL.framework in Frameworks */,
+				A9AE064D16BE00DE00439C74 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2281,13 +2225,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				97ED8F71157E1E0B007C451A /* libforze_ios.a in Frameworks */,
-				A964A0BE161B3B9B0029311D /* QuartzCore.framework in Frameworks */,
-				A964A0BF161B3B9B0029311D /* CoreGraphics.framework in Frameworks */,
-				A964A0C0161B3B9B0029311D /* Foundation.framework in Frameworks */,
-				A964A0C1161B3B9B0029311D /* UIKit.framework in Frameworks */,
-				A964A0C2161B3B9B0029311D /* CoreMotion.framework in Frameworks */,
-				A964A0C3161B3B9B0029311D /* OpenGLES.framework in Frameworks */,
-				A964A0E0161B3BA80029311D /* libz.dylib in Frameworks */,
+				A9AE066816BE019B00439C74 /* libz.dylib in Frameworks */,
+				A9AE066A16BE01AA00439C74 /* UIKit.framework in Frameworks */,
+				A9AE066716BE018A00439C74 /* CoreMotion.framework in Frameworks */,
+				A9AE066216BE016F00439C74 /* QuartzCore.framework in Frameworks */,
+				A9AE066316BE016F00439C74 /* Foundation.framework in Frameworks */,
+				A9AE066416BE016F00439C74 /* OpenGLES.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2298,7 +2241,6 @@
 				A908C28C162EC4ED006F2930 /* libforze_mac.a in Frameworks */,
 				A908C28D162EC4ED006F2930 /* libz.dylib in Frameworks */,
 				A908C28E162EC4ED006F2930 /* AppKit.framework in Frameworks */,
-				A908C28F162EC4ED006F2930 /* Foundation.framework in Frameworks */,
 				A908C290162EC4ED006F2930 /* OpenGL.framework in Frameworks */,
 				A908C291162EC4ED006F2930 /* QuartzCore.framework in Frameworks */,
 			);
@@ -2309,13 +2251,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A91A6D6E1642FE5C0025ADE5 /* libforze_ios.a in Frameworks */,
-				A91A6D6F1642FE5C0025ADE5 /* QuartzCore.framework in Frameworks */,
-				A91A6D701642FE5C0025ADE5 /* CoreGraphics.framework in Frameworks */,
-				A91A6D711642FE5C0025ADE5 /* Foundation.framework in Frameworks */,
-				A91A6D721642FE5C0025ADE5 /* UIKit.framework in Frameworks */,
-				A91A6D731642FE5C0025ADE5 /* CoreMotion.framework in Frameworks */,
-				A91A6D741642FE5C0025ADE5 /* OpenGLES.framework in Frameworks */,
-				A91A6D751642FE5C0025ADE5 /* libz.dylib in Frameworks */,
+				A9AE06AF16BE027300439C74 /* UIKit.framework in Frameworks */,
+				A9AE06B016BE027300439C74 /* CoreMotion.framework in Frameworks */,
+				A9AE06B116BE027300439C74 /* QuartzCore.framework in Frameworks */,
+				A9AE06B216BE027300439C74 /* Foundation.framework in Frameworks */,
+				A9AE06B316BE027300439C74 /* OpenGLES.framework in Frameworks */,
+				A9AE06B416BE027300439C74 /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2324,13 +2265,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A91A6D8F1642FE610025ADE5 /* libforze_ios.a in Frameworks */,
-				A91A6D901642FE610025ADE5 /* QuartzCore.framework in Frameworks */,
-				A91A6D911642FE610025ADE5 /* CoreGraphics.framework in Frameworks */,
-				A91A6D921642FE610025ADE5 /* Foundation.framework in Frameworks */,
-				A91A6D931642FE610025ADE5 /* UIKit.framework in Frameworks */,
-				A91A6D941642FE610025ADE5 /* CoreMotion.framework in Frameworks */,
-				A91A6D951642FE610025ADE5 /* OpenGLES.framework in Frameworks */,
-				A91A6D961642FE610025ADE5 /* libz.dylib in Frameworks */,
+				A9AE06B516BE027500439C74 /* UIKit.framework in Frameworks */,
+				A9AE06B616BE027500439C74 /* CoreMotion.framework in Frameworks */,
+				A9AE06B716BE027500439C74 /* QuartzCore.framework in Frameworks */,
+				A9AE06B816BE027500439C74 /* Foundation.framework in Frameworks */,
+				A9AE06B916BE027500439C74 /* OpenGLES.framework in Frameworks */,
+				A9AE06BA16BE027500439C74 /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2339,13 +2279,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A91A6DAF1642FE660025ADE5 /* libforze_ios.a in Frameworks */,
-				A91A6DB01642FE660025ADE5 /* QuartzCore.framework in Frameworks */,
-				A91A6DB11642FE660025ADE5 /* CoreGraphics.framework in Frameworks */,
-				A91A6DB21642FE660025ADE5 /* Foundation.framework in Frameworks */,
-				A91A6DB31642FE660025ADE5 /* UIKit.framework in Frameworks */,
-				A91A6DB41642FE660025ADE5 /* CoreMotion.framework in Frameworks */,
-				A91A6DB51642FE660025ADE5 /* OpenGLES.framework in Frameworks */,
-				A91A6DB61642FE660025ADE5 /* libz.dylib in Frameworks */,
+				A9AE06A916BE027000439C74 /* UIKit.framework in Frameworks */,
+				A9AE06AA16BE027000439C74 /* CoreMotion.framework in Frameworks */,
+				A9AE06AB16BE027000439C74 /* QuartzCore.framework in Frameworks */,
+				A9AE06AC16BE027000439C74 /* Foundation.framework in Frameworks */,
+				A9AE06AD16BE027000439C74 /* OpenGLES.framework in Frameworks */,
+				A9AE06AE16BE027000439C74 /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2354,13 +2293,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A91A6DCF1642FE9B0025ADE5 /* libforze_ios.a in Frameworks */,
-				A91A6DD01642FE9B0025ADE5 /* QuartzCore.framework in Frameworks */,
-				A91A6DD11642FE9B0025ADE5 /* CoreGraphics.framework in Frameworks */,
-				A91A6DD21642FE9B0025ADE5 /* Foundation.framework in Frameworks */,
-				A91A6DD31642FE9B0025ADE5 /* UIKit.framework in Frameworks */,
-				A91A6DD41642FE9B0025ADE5 /* CoreMotion.framework in Frameworks */,
-				A91A6DD51642FE9B0025ADE5 /* OpenGLES.framework in Frameworks */,
-				A91A6DD61642FE9B0025ADE5 /* libz.dylib in Frameworks */,
+				A9AE06A316BE026D00439C74 /* UIKit.framework in Frameworks */,
+				A9AE06A416BE026D00439C74 /* CoreMotion.framework in Frameworks */,
+				A9AE06A516BE026D00439C74 /* QuartzCore.framework in Frameworks */,
+				A9AE06A616BE026D00439C74 /* Foundation.framework in Frameworks */,
+				A9AE06A716BE026D00439C74 /* OpenGLES.framework in Frameworks */,
+				A9AE06A816BE026D00439C74 /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2371,7 +2309,6 @@
 				A927C77C1634131A00B2AE52 /* libforze_mac.a in Frameworks */,
 				A927C77D1634131A00B2AE52 /* libz.dylib in Frameworks */,
 				A927C77E1634131A00B2AE52 /* AppKit.framework in Frameworks */,
-				A927C77F1634131A00B2AE52 /* Foundation.framework in Frameworks */,
 				A927C7801634131A00B2AE52 /* OpenGL.framework in Frameworks */,
 				A927C7811634131A00B2AE52 /* QuartzCore.framework in Frameworks */,
 			);
@@ -2384,7 +2321,6 @@
 				A94A95EC162AEC660035F4B6 /* libforze_mac.a in Frameworks */,
 				A94A95ED162AEC660035F4B6 /* libz.dylib in Frameworks */,
 				A94A95EE162AEC660035F4B6 /* AppKit.framework in Frameworks */,
-				A94A95EF162AEC660035F4B6 /* Foundation.framework in Frameworks */,
 				A94A95F0162AEC660035F4B6 /* OpenGL.framework in Frameworks */,
 				A94A95F1162AEC660035F4B6 /* QuartzCore.framework in Frameworks */,
 			);
@@ -2395,13 +2331,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A96D7CC416285EA000B25A60 /* libforze_ios.a in Frameworks */,
-				A96D7CC516285EA000B25A60 /* QuartzCore.framework in Frameworks */,
-				A96D7CC616285EA000B25A60 /* CoreGraphics.framework in Frameworks */,
-				A96D7CC716285EA000B25A60 /* Foundation.framework in Frameworks */,
-				A96D7CC816285EA000B25A60 /* UIKit.framework in Frameworks */,
-				A96D7CC916285EA000B25A60 /* CoreMotion.framework in Frameworks */,
-				A96D7CCA16285EA000B25A60 /* OpenGLES.framework in Frameworks */,
-				A96D7CCB16285EA000B25A60 /* libz.dylib in Frameworks */,
+				A9AE069716BE026700439C74 /* UIKit.framework in Frameworks */,
+				A9AE069816BE026700439C74 /* CoreMotion.framework in Frameworks */,
+				A9AE069916BE026700439C74 /* QuartzCore.framework in Frameworks */,
+				A9AE069A16BE026700439C74 /* Foundation.framework in Frameworks */,
+				A9AE069B16BE026700439C74 /* OpenGLES.framework in Frameworks */,
+				A9AE069C16BE026700439C74 /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2410,11 +2345,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A96D7CF416285EAF00B25A60 /* libforze_mac.a in Frameworks */,
-				A96D7CF516285EAF00B25A60 /* libz.dylib in Frameworks */,
-				A96D7CF616285EAF00B25A60 /* AppKit.framework in Frameworks */,
-				A96D7CF716285EAF00B25A60 /* Foundation.framework in Frameworks */,
-				A96D7CF816285EAF00B25A60 /* OpenGL.framework in Frameworks */,
-				A96D7CF916285EAF00B25A60 /* QuartzCore.framework in Frameworks */,
+				A9AE062E16BE00CD00439C74 /* libz.dylib in Frameworks */,
+				A9AE062F16BE00CD00439C74 /* AppKit.framework in Frameworks */,
+				A9AE063016BE00CD00439C74 /* OpenGL.framework in Frameworks */,
+				A9AE063116BE00CD00439C74 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2423,13 +2357,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A96D7D2616285EC100B25A60 /* libforze_ios.a in Frameworks */,
-				A96D7D2716285EC100B25A60 /* QuartzCore.framework in Frameworks */,
-				A96D7D2816285EC100B25A60 /* CoreGraphics.framework in Frameworks */,
-				A96D7D2916285EC100B25A60 /* Foundation.framework in Frameworks */,
-				A96D7D2A16285EC100B25A60 /* UIKit.framework in Frameworks */,
-				A96D7D2B16285EC100B25A60 /* CoreMotion.framework in Frameworks */,
-				A96D7D2C16285EC100B25A60 /* OpenGLES.framework in Frameworks */,
-				A96D7D2D16285EC100B25A60 /* libz.dylib in Frameworks */,
+				A9AE069D16BE026900439C74 /* UIKit.framework in Frameworks */,
+				A9AE069E16BE026900439C74 /* CoreMotion.framework in Frameworks */,
+				A9AE069F16BE026900439C74 /* QuartzCore.framework in Frameworks */,
+				A9AE06A016BE026900439C74 /* Foundation.framework in Frameworks */,
+				A9AE06A116BE026900439C74 /* OpenGLES.framework in Frameworks */,
+				A9AE06A216BE026900439C74 /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2440,7 +2373,6 @@
 				A998A066162C8E9100877502 /* libforze_mac.a in Frameworks */,
 				A998A067162C8E9100877502 /* libz.dylib in Frameworks */,
 				A998A068162C8E9100877502 /* AppKit.framework in Frameworks */,
-				A998A069162C8E9100877502 /* Foundation.framework in Frameworks */,
 				A998A06A162C8E9100877502 /* OpenGL.framework in Frameworks */,
 				A998A06B162C8E9100877502 /* QuartzCore.framework in Frameworks */,
 			);
@@ -2451,11 +2383,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA16DF2815F3CD0000E025BF /* libforze_mac.a in Frameworks */,
-				CA16DF2915F3CD0000E025BF /* libz.dylib in Frameworks */,
-				CA16DF2A15F3CD0000E025BF /* AppKit.framework in Frameworks */,
-				CA16DF2B15F3CD0000E025BF /* Foundation.framework in Frameworks */,
-				CA16DF2C15F3CD0000E025BF /* OpenGL.framework in Frameworks */,
-				CA16DF2D15F3CD0000E025BF /* QuartzCore.framework in Frameworks */,
+				A9AE063216BE00D000439C74 /* libz.dylib in Frameworks */,
+				A9AE063316BE00D000439C74 /* AppKit.framework in Frameworks */,
+				A9AE063416BE00D000439C74 /* OpenGL.framework in Frameworks */,
+				A9AE063516BE00D000439C74 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2502,7 +2433,6 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				A90C7B08167414B600CB83DF /* Cocoa.framework */,
 				A96D7CBB16285B6400B25A60 /* LICENSE_artwork.txt */,
 				A96D7CBC16285B6400B25A60 /* LICENSE_libb64.txt */,
 				E0BC7D711342CC58001B4DCC /* LICENSE_FORZE.txt */,
@@ -2524,7 +2454,6 @@
 				9791DFA31554AE2A0080871B /* AppKit.framework */,
 				97A2487214A62DA500AB2023 /* OpenGL.framework */,
 				97EEB21014046DCB0073CC55 /* QuartzCore.framework */,
-				970C6E391403EAEE00E4CC0D /* Foundation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -3002,13 +2931,12 @@
 		A91C2559161DD5B4004E5496 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A95C199116149BF3007D2287 /* libz.dylib */,
-				A97883EB160F80A900A93735 /* OpenGLES.framework */,
-				A95C198E16149BDA007D2287 /* QuartzCore.framework */,
-				A95C198C16149BD5007D2287 /* CoreGraphics.framework */,
-				A95C198616149BC5007D2287 /* CoreMotion.framework */,
-				A95C198A16149BCF007D2287 /* Foundation.framework */,
-				A95C198816149BC9007D2287 /* UIKit.framework */,
+				A9AE066916BE01AA00439C74 /* UIKit.framework */,
+				A9AE066516BE018300439C74 /* CoreMotion.framework */,
+				A9AE066016BE015B00439C74 /* QuartzCore.framework */,
+				A9AE065E16BE015600439C74 /* Foundation.framework */,
+				A9AE065C16BE015100439C74 /* OpenGLES.framework */,
+				A9AE065A16BE014D00439C74 /* libz.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -3041,12 +2969,12 @@
 				A99E9B7D16922F1F00438E54 /* FZNode.h */,
 				A99E9B7E16922F1F00438E54 /* FZParallaxNode.cpp */,
 				A99E9B7F16922F1F00438E54 /* FZParallaxNode.h */,
-				A99E9B8016922F1F00438E54 /* FZParticleExamples.cpp */,
-				A99E9B8116922F1F00438E54 /* FZParticleExamples.h */,
-				A99E9B8216922F1F00438E54 /* FZParticleSystem.cpp */,
-				A99E9B8316922F1F00438E54 /* FZParticleSystem.h */,
-				A99E9B8416922F1F00438E54 /* FZParticleSystemQuad.cpp */,
-				A99E9B8516922F1F00438E54 /* FZParticleSystemQuad.h */,
+				A9540C8B173E895E0023A776 /* FZParticleExamples.cpp */,
+				A9540C8C173E895E0023A776 /* FZParticleExamples.h */,
+				A9540C8D173E895E0023A776 /* FZParticleSystem.cpp */,
+				A9540C8E173E895E0023A776 /* FZParticleSystem.h */,
+				A9540C8F173E895E0023A776 /* FZParticleSystemQuad.cpp */,
+				A9540C90173E895E0023A776 /* FZParticleSystemQuad.h */,
 				A99E9B8B16922F1F00438E54 /* FZRenderTexture.cpp */,
 				A99E9B8C16922F1F00438E54 /* FZRenderTexture.h */,
 				A99E9B8F16922F1F00438E54 /* FZScene.cpp */,
@@ -3271,9 +3199,6 @@
 				A99E9C1C16922F1F00438E54 /* FZMS.h in Headers */,
 				A99E9C2016922F1F00438E54 /* FZNode.h in Headers */,
 				A99E9C2416922F1F00438E54 /* FZParallaxNode.h in Headers */,
-				A99E9C2816922F1F00438E54 /* FZParticleExamples.h in Headers */,
-				A99E9C2C16922F1F00438E54 /* FZParticleSystem.h in Headers */,
-				A99E9C3016922F1F00438E54 /* FZParticleSystemQuad.h in Headers */,
 				A99E9C3416922F1F00438E54 /* FZPerformManager.h in Headers */,
 				A99E9C3E16922F1F00438E54 /* FZRenderTexture.h in Headers */,
 				A99E9C4216922F1F00438E54 /* FZResourcesManager.h in Headers */,
@@ -3298,6 +3223,9 @@
 				A90A07DE16AC1E6C00B61C56 /* FZMathInline.h in Headers */,
 				A94028E016BC58E800EEF519 /* FZOSW.h in Headers */,
 				A94028E316BC594500EEF519 /* FZOSW_header.h in Headers */,
+				A9540C92173E895E0023A776 /* FZParticleExamples.h in Headers */,
+				A9540C94173E895E0023A776 /* FZParticleSystem.h in Headers */,
+				A9540C96173E895E0023A776 /* FZParticleSystemQuad.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3380,9 +3308,6 @@
 				A99E9C1D16922F1F00438E54 /* FZMS.h in Headers */,
 				A99E9C2116922F1F00438E54 /* FZNode.h in Headers */,
 				A99E9C2516922F1F00438E54 /* FZParallaxNode.h in Headers */,
-				A99E9C2916922F1F00438E54 /* FZParticleExamples.h in Headers */,
-				A99E9C2D16922F1F00438E54 /* FZParticleSystem.h in Headers */,
-				A99E9C3116922F1F00438E54 /* FZParticleSystemQuad.h in Headers */,
 				A99E9C3516922F1F00438E54 /* FZPerformManager.h in Headers */,
 				A99E9C3F16922F1F00438E54 /* FZRenderTexture.h in Headers */,
 				A99E9C4316922F1F00438E54 /* FZResourcesManager.h in Headers */,
@@ -5020,9 +4945,6 @@
 				A99E9C1A16922F1F00438E54 /* FZMS.cpp in Sources */,
 				A99E9C1E16922F1F00438E54 /* FZNode.cpp in Sources */,
 				A99E9C2216922F1F00438E54 /* FZParallaxNode.cpp in Sources */,
-				A99E9C2616922F1F00438E54 /* FZParticleExamples.cpp in Sources */,
-				A99E9C2A16922F1F00438E54 /* FZParticleSystem.cpp in Sources */,
-				A99E9C2E16922F1F00438E54 /* FZParticleSystemQuad.cpp in Sources */,
 				A99E9C3216922F1F00438E54 /* FZPerformManager.cpp in Sources */,
 				A99E9C3C16922F1F00438E54 /* FZRenderTexture.cpp in Sources */,
 				A99E9C4016922F1F00438E54 /* FZResourcesManager.cpp in Sources */,
@@ -5042,6 +4964,9 @@
 				A99E9C8C16922F4A00438E54 /* macosx_support.mm in Sources */,
 				A99E9C8E16922F4A00438E54 /* model_support.cpp in Sources */,
 				A94028DE16BC58E800EEF519 /* FZOSW.cpp in Sources */,
+				A9540C91173E895E0023A776 /* FZParticleExamples.cpp in Sources */,
+				A9540C93173E895E0023A776 /* FZParticleSystem.cpp in Sources */,
+				A9540C95173E895E0023A776 /* FZParticleSystemQuad.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5219,9 +5144,6 @@
 				A99E9C1B16922F1F00438E54 /* FZMS.cpp in Sources */,
 				A99E9C1F16922F1F00438E54 /* FZNode.cpp in Sources */,
 				A99E9C2316922F1F00438E54 /* FZParallaxNode.cpp in Sources */,
-				A99E9C2716922F1F00438E54 /* FZParticleExamples.cpp in Sources */,
-				A99E9C2B16922F1F00438E54 /* FZParticleSystem.cpp in Sources */,
-				A99E9C2F16922F1F00438E54 /* FZParticleSystemQuad.cpp in Sources */,
 				A99E9C3316922F1F00438E54 /* FZPerformManager.cpp in Sources */,
 				A99E9C3D16922F1F00438E54 /* FZRenderTexture.cpp in Sources */,
 				A99E9C4116922F1F00438E54 /* FZResourcesManager.cpp in Sources */,
