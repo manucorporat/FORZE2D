@@ -69,6 +69,7 @@
 #define FZ_T_A8           GL_ALPHA8
 #define FZ_T_L8           GL_LUMINANCE8
 
+
 #pragma mark - OS WRAPPER
 
 namespace FORZE {

@@ -39,8 +39,6 @@
 
 using namespace STD;
 
-#pragma mark Sprite
-
 namespace FORZE {
     
     enum {

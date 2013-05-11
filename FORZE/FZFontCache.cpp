@@ -35,8 +35,8 @@
 #include "FZMacros.h"
 #include "FZIO.h"
 
-using namespace STD;
 
+using namespace STD;
 
 namespace FORZE {
     

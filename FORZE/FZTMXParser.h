@@ -37,14 +37,13 @@
 #include STL_MAP
 #include STL_VECTOR
 
-using namespace STD;
-
 // Bits on the far end of the 32-bit global tile ID (GID's) are used for tile flags
 #define kFlippedHorizontallyFlag	0x80000000
 #define kFlippedVerticallyFlag		0x40000000
 #define kFlippedMask				~(kFlippedHorizontallyFlag|kFlippedVerticallyFlag)
 
 
+using namespace STD;
 
 namespace FORZE {
     

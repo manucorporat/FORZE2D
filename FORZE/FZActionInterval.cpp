@@ -36,8 +36,8 @@
 #include "FZSprite.h"
 #include "FZLayer.h"
 
-
 #define FZMAX_ACTION_BATCH 32
+
 
 namespace FORZE {
     

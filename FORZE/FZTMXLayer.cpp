@@ -38,7 +38,6 @@
 
 using namespace STD;
 
-using namespace FORZE;
 namespace FORZE {
     
     TMXLayer::TMXLayer(TMXTiledMap *tiledMap, TMXLayerInfo *layerInfo)

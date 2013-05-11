@@ -46,7 +46,6 @@
 #include "FZPerformManager.h"
 #include "external/tinythread/tinythread.h"
 
-
 #define CAPACITY 10
 #define MAXLENGTH 1024
 

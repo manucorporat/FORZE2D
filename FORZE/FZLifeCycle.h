@@ -35,6 +35,7 @@
 #include "FZPerformManager.h"
 #endif
 
+
 namespace FORZE {
     
     /** LifeCycle is a base class used to control the objects' life cicle.

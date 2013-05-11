@@ -54,8 +54,8 @@ extern "C" {
 #include "external/libb64/base64.h"
 }
 
-
 #define BUFFER_INC_FACTOR (2)
+
 
 namespace FORZE {
     

@@ -39,8 +39,8 @@
 
 using namespace STD;
 
-namespace FORZE
-{
+namespace FORZE {
+    
     class fzException : public std::runtime_error
     {
     public:

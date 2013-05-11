@@ -40,6 +40,7 @@
 
 #define STRING_MAX_SIZE 512
 
+
 namespace FORZE {
     
     ResourcesManager* ResourcesManager::p_instance = NULL;

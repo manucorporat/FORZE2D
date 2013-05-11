@@ -32,6 +32,7 @@
 
 #include <stdint.h>
 
+
 namespace FORZE
 {
 #pragma mark - HASH ITERATION FUNCTION

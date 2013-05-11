@@ -46,7 +46,6 @@ namespace FORZE {
     
 #pragma mark - Helper lighting methods
     
-    
     inline fzPoint convertPoint(const fzPoint& current, const fzPoint& referencePoint)
     {
         fzPoint newPoint = Director::Instance().unnormalizedCoord(current);

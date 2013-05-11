@@ -33,8 +33,8 @@
 #include "FZTypes.h"
 
 
-namespace FORZE
-{   
+namespace FORZE {
+    
     class fzBuffer
     {
     private:

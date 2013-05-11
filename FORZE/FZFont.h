@@ -34,9 +34,8 @@
 #include "FZTypes.h"
 #include "FZConfig.h"
 #include "FZLifeCycle.h"
-
-
 #include STL_MAP
+
 
 using namespace STD;
 

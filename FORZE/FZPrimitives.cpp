@@ -36,6 +36,7 @@
 #include "FZMath.h"
 #include "FZMS.h"
 
+
 namespace FORZE {
 
     static fzColor4F _fzColor(fzWHITE);

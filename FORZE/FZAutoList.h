@@ -35,7 +35,6 @@
 
 namespace FORZE {
     
-    
     /** @def FZ_LIST_FOREACH(LIST, NODE)
      * Iterates a AutoList giving to the "NODE" parameter each object pointer
      @param LIST AutoList to be iterated object-per-object.
