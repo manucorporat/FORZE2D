@@ -226,9 +226,9 @@ namespace FORZE {
         
 #if FZ_GL_SHADERS
         p_glprogram->use();
+        FZ_PROGRAM_APPLY_TRANSFORM(p_glprogram);
 #endif
         fzGLBlendFunc( m_blendFunc );
-        FZ_SAFE_APPLY_MATRIX(p_glprogram);
         m_textureAtlas.drawQuads();
     }
 }
