@@ -55,7 +55,7 @@ namespace FORZE {
     static inline void prepare()
     {
         lazyInitialized();
-        _fzShader->setUniform4x4f(kFZUniformMVMatrix_s, 1, GL_FALSE, MS::getMatrix());
+        _fzShader->setUniform4x4f(kFZUniformMVMatrix, 1, GL_FALSE, MS::getMatrix());
     }
     
 #endif
@@ -67,7 +67,7 @@ namespace FORZE {
             _fzColor = color;
 #if FZ_GL_SHADERS
             lazyInitialized();
-            _fzShader->setUniform4f(kFZUniformColor_s, color.r, color.g, color.b, color.a);
+            _fzShader->setUniform4f(kFZUniformColor, color.r, color.g, color.b, color.a);
 #else
             glColor4f(color.r, color.g, color.b, color.a);
 #endif

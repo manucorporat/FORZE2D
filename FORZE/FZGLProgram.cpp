@@ -243,7 +243,7 @@ namespace FORZE {
         }
         CHECK_GL_ERROR_DEBUG();
         
-        setUniform1i("u_texture", 0);
+        setUniform1i("u_texture"_hash, 0);
 
         return true;
     }
@@ -255,15 +255,15 @@ namespace FORZE {
     }
     
     
-    GLint GLProgram::getUniform(const char* uniform) const
+    GLint GLProgram::getUniform(uint32_t hash) const
     {
-        uniformsMap::const_iterator it(m_uniforms.find(fzHash(uniform)));
+        uniformsMap::const_iterator it(m_uniforms.find(hash));
         if(it == m_uniforms.end())
             return -1;
         
         return it->second;
     }
-    
+
     
     string GLProgram::getProgramLog()
     {
@@ -276,124 +276,176 @@ namespace FORZE {
     
 #pragma mark - Uniforms wrapper
     
-    void GLProgram::setUniform1i(const char* uniform, int v1) const
+    void GLProgram::setUniform1i(uint32_t hash, int v1) const
     {
-        use();
-        GLint location = getUniform(uniform);
+        GLint location = getUniform(hash);
         if(location != -1) {
+            use();
             glUniform1i(location, v1);
             CHECK_GL_ERROR_DEBUG();
-        }        
+        }
     }
     
-    void GLProgram::setUniform1f(const char* uniform, float v1) const
+    void GLProgram::setUniform1f(uint32_t hash, float v1) const
     {
-        use();
-        GLint location = getUniform(uniform);
+        GLint location = getUniform(hash);
         if(location != -1) {
+            use();
             glUniform1f(location, v1);
             CHECK_GL_ERROR_DEBUG();
-        }        
+        }
     }
     
-    void GLProgram::setUniform2f(const char* uniform, float v1, float v2) const
+    void GLProgram::setUniform2f(uint32_t hash, float v1, float v2) const
     {
-        use();
-        GLint location = getUniform(uniform);
+        GLint location = getUniform(hash);
         if(location != -1) {
+            use();
             glUniform2f(location, v1, v2);
             CHECK_GL_ERROR_DEBUG();
         }
     }
     
-    void GLProgram::setUniform3f(const char* uniform, float v1, float v2, float v3) const
+    void GLProgram::setUniform3f(uint32_t hash, float v1, float v2, float v3) const
     {
-        use();
-        GLint location = getUniform(uniform);
+        GLint location = getUniform(hash);
         if(location != -1) {
+            use();
             glUniform3f(location, v1, v2, v3);
             CHECK_GL_ERROR_DEBUG();
         }
     }
     
-    void GLProgram::setUniform4f(const char* uniform, float v1, float v2, float v3, float v4) const
+    void GLProgram::setUniform4f(uint32_t hash, float v1, float v2, float v3, float v4) const
     {
-        use();
-        GLint location = getUniform(uniform);
+        GLint location = getUniform(hash);
         if(location != -1) {
+            use();
             glUniform4f(location, v1, v2, v3, v4);
             CHECK_GL_ERROR_DEBUG();
-        }        
+        }
     }
     
-    void GLProgram::setUniform4x4f(const char* uniform, GLsizei count, bool transpose, float *matrix) const
+    void GLProgram::setUniform4x4f(uint32_t hash, GLsizei count, bool transpose, float *matrix) const
     {
-        use();
-        GLint location = getUniform(uniform);
+        GLint location = getUniform(hash);
         if(location != -1) {
+            use();
             glUniformMatrix4fv(location, count, transpose, matrix);
             CHECK_GL_ERROR_DEBUG();
         }
     }
     
-    void GLProgram::setUniform1iv(const char* uniform, GLsizei count, int* values) const
+    
+    void GLProgram::setUniform1iv(uint32_t hash, GLsizei count, int* values) const
     {
         if(count == 0)
             return;
-        use();
-        GLint location = getUniform(uniform);
+
+        GLint location = getUniform(hash);
         if(location != -1) {
+            use();
             glUniform1iv(location, count, values);
             CHECK_GL_ERROR_DEBUG();
-        }        
+        }
     }
     
-    void GLProgram::setUniform1fv(const char* uniform, GLsizei count, float* values) const
+    void GLProgram::setUniform1fv(uint32_t hash, GLsizei count, float* values) const
     {
         if(count == 0)
             return;
-        use();
-        GLint location = getUniform(uniform);
+
+        GLint location = getUniform(hash);
         if(location != -1) {
+            use();
             glUniform1fv(location, count, values);
             CHECK_GL_ERROR_DEBUG();
         }
     }
     
-    void GLProgram::setUniform2fv(const char* uniform, GLsizei count, float* values) const
+    void GLProgram::setUniform2fv(uint32_t hash, GLsizei count, float* values) const
     {
         if(count == 0)
             return;
-        use();
-        GLint location = getUniform(uniform);
+
+        GLint location = getUniform(hash);
         if(location != -1) {
+            use();
             glUniform2fv(location, count, values);
             CHECK_GL_ERROR_DEBUG();
         }
     }
     
-    void GLProgram::setUniform3fv(const char* uniform, GLsizei count, float* values) const
+    void GLProgram::setUniform3fv(uint32_t hash, GLsizei count, float* values) const
     {
         if(count == 0)
             return;
-        use();
-        GLint location = getUniform(uniform);
+
+        GLint location = getUniform(hash);
         if(location != -1) {
+            use();
             glUniform3fv(location, count, values);
             CHECK_GL_ERROR_DEBUG();
         }
     }
     
-    void GLProgram::setUniform4fv(const char* uniform, GLsizei count, float* values) const
+    void GLProgram::setUniform4fv(uint32_t hash, GLsizei count, float* values) const
     {
         if(count == 0)
             return;
-        use();
-        GLint location = getUniform(uniform);
+
+        GLint location = getUniform(hash);
         if(location != -1) {
+            use();
             glUniform4fv(location, count, values);
             CHECK_GL_ERROR_DEBUG();
         }
+    }
+    
+    
+    void GLProgram::setUniform1i(const char* uniform, int v1) const
+    {
+        return setUniform1i(fzHash(uniform), v1);
+    }
+    void GLProgram::setUniform1f(const char* uniform, float v1) const
+    {
+        return setUniform1f(fzHash(uniform), v1);
+    }
+    void GLProgram::setUniform2f(const char* uniform, float v1, float v2) const
+    {
+        return setUniform2f(fzHash(uniform), v1, v2);
+    }
+    void GLProgram::setUniform3f(const char* uniform, float v1, float v2, float v3) const
+    {
+        return setUniform3f(fzHash(uniform), v1, v2, v3);
+    }
+    void GLProgram::setUniform4f(const char* uniform, float v1, float v2, float v3, float v4) const
+    {
+        return setUniform4f(fzHash(uniform), v1, v2, v3, v4);
+    }
+    void GLProgram::setUniform4x4f(const char* uniform, GLsizei count, bool transpose, float *matrix) const
+    {
+        return setUniform4x4f(fzHash(uniform), count, transpose, matrix);
+    }
+    void GLProgram::setUniform1iv(const char* uniform, GLsizei count, int* values) const
+    {
+        return setUniform1iv(fzHash(uniform), count, values);
+    }
+    void GLProgram::setUniform1fv(const char* uniform, GLsizei count, float* values) const
+    {
+        return setUniform1fv(fzHash(uniform), count, values);
+    }
+    void GLProgram::setUniform2fv(const char* uniform, GLsizei count, float* values) const
+    {
+        return setUniform2fv(fzHash(uniform), count, values);
+    }
+    void GLProgram::setUniform3fv(const char* uniform, GLsizei count, float* values) const
+    {
+        return setUniform3fv(fzHash(uniform), count, values);
+    }
+    void GLProgram::setUniform4fv(const char* uniform, GLsizei count, float* values) const
+    {
+        return setUniform4fv(fzHash(uniform), count, values);
     }
 }
 #endif

@@ -476,7 +476,7 @@ namespace FORZE {
 #if FZ_GL_SHADERS
         
         p_glprogram->use();
-        p_glprogram->setUniform4f(kFZUniformColor_s, m_color.r/255.0f, m_color.g/255.0f, m_color.b/255.0f, (m_cachedOpacity * m_alpha)/255.0f);
+        p_glprogram->setUniform4f(kFZUniformColor, m_color.r/255.0f, m_color.g/255.0f, m_color.b/255.0f, (m_cachedOpacity * m_alpha)/255.0f);
         
         // atributes
         glVertexAttribPointer(kFZAttribTexCoords, 2, GL_FLOAT, GL_FALSE, sizeof(fzVec2), m_texCoords);

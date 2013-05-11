@@ -175,7 +175,7 @@ namespace FORZE {
     {
         FZ_ASSERT(brightness >= -1.0f && brightness <= 1.0f, "Brightness is out of bounds [-1, 1].");
         if(m_brightness != brightness) {
-            p_glprogram->setUniform1f("u_brightness", brightness + 0.5f);
+            p_glprogram->setUniform1f("u_brightness"_hash, brightness + 0.5f);
             m_brightness = brightness;
         }
     }
@@ -186,7 +186,7 @@ namespace FORZE {
         FZ_ASSERT(contrast >= 0 && contrast <= 5.0f, "Brightness is out of bounds [0, 5].");
 
         if(m_contrast != contrast) {
-            p_glprogram->setUniform1f("u_contrast", contrast);
+            p_glprogram->setUniform1f("u_contrast"_hash, contrast);
             m_contrast = contrast;
         }
     }
@@ -223,7 +223,7 @@ namespace FORZE {
         
         //if(m_intensity != intensity)
         {
-            p_glprogram->setUniform3f("u_intensity", intensity.x, intensity.y, intensity.z);
+            p_glprogram->setUniform3f("u_intensity"_hash, intensity.x, intensity.y, intensity.z);
             m_intensity = intensity;
         }
     }
@@ -254,7 +254,7 @@ namespace FORZE {
         
         //if(m_intensity != intensity)
         {
-            p_glprogram->setUniform3f("u_intensity", intensity.x, intensity.y, intensity.z);
+            p_glprogram->setUniform3f("u_intensity"_hash, intensity.x, intensity.y, intensity.z);
             m_intensity = intensity;
         }
     }
@@ -282,7 +282,7 @@ namespace FORZE {
         FZ_ASSERT(factor >= 0 && factor <= 255, "Factor is out of bounds [0, 255].");
         if(m_factor != factor) {
             
-            p_glprogram->setUniform1f("u_factor", factor);
+            p_glprogram->setUniform1f("u_factor"_hash, factor);
             m_factor = factor;
         }
     }
