@@ -46,6 +46,12 @@ namespace FORZE {
     }
     
     
+    uint32_t fzHash(const char *str)
+    {
+        return fzHash(str, strlen(str));
+    }
+    
+    
     uint32_t fzVersion(const char *str)
     {
         uint32_t hash = 0;
@@ -59,11 +65,5 @@ namespace FORZE {
         }while(*end != '\0');
         
         return hash;
-    }
-    
-    
-    uint32_t fzHash(const char *str)
-    {
-        return fzHash(str, strlen(str));
     }
 }

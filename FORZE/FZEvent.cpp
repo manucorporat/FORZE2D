@@ -70,16 +70,16 @@ namespace FORZE {
     {
         struct timeval now;
         gettimeofday(&now, NULL);
-
-        fzFloat t = (now.tv_sec - m_creation.tv_sec) + (now.tv_usec - m_creation.tv_usec) / 1000000.0f;
         
-        return t;
+        return (now.tv_sec - m_creation.tv_sec) + (now.tv_usec - m_creation.tv_usec) / 1000000.0f;
     }
     
     
     void Event::log() const
     {
         const char *t;
+        const char *s;
+
         switch (m_type) {
             case kFZEventType_Touch:        t = "Touch"; break;
             case kFZEventType_Mouse:        t = "Mouse"; break;
@@ -89,17 +89,16 @@ namespace FORZE {
             case kFZEventType_Keyboard:     t = "Key"; break;
             case kFZEventType_Stick:        t = "Stick"; break;
             case kFZEventType_Accelerometer:t = "Accelerometer"; break;
-            default: t = "Unknow"; break;
+            default: t = "Unknown"; break;
         }
         
-        const char *s;
         switch (m_state) {
             case kFZEventState_Began:        s = "Began"; break;
             case kFZEventState_Updated:      s = "Updated"; break;
             case kFZEventState_Ended:        s = "Ended"; break;
             case kFZEventState_Cancelled:    s = "Cancelled"; break;
             case kFZEventState_Indifferent:  s = "Indifferent"; break;
-            default: s = "Unknow"; break;
+            default: s = "Unknown"; break;
         }
         FZLog("Event( %d ):\n"
               " - Type: %s\n"

@@ -55,7 +55,6 @@ namespace FORZE {
         kFZEventState_Indifferent
     };
     
-    
     enum fzEventType
     {
         kFZEventType_None           = 0,
@@ -73,13 +72,13 @@ namespace FORZE {
         
         //! Mouse left events
         //! This kind of events returns an position in the canvas
-        kFZEventType_Mouse           = 1 << 2,
+        kFZEventType_Mouse          = 1 << 2,
         
         //! Mouse right events
         //! This kind of events returns an position in the canvas
-        kFZEventType_MouseRight      = 1 << 3,
+        kFZEventType_MouseRight     = 1 << 3,
         
-        kFZEventType_MouseMoved      = 1 << 4,
+        kFZEventType_MouseMoved     = 1 << 4,
         
         //! Keyboard events
         //! This kind of events returns the key pressed
@@ -119,6 +118,9 @@ namespace FORZE {
         friend class EventManager;
         
     private:
+        // values
+        double m_x, m_y, m_z;
+        
         // type of event
         fzEventType m_type;
         
@@ -131,9 +133,6 @@ namespace FORZE {
         // unique identifier
         intptr_t m_identifier;
         
-        // values
-        double m_x, m_y, m_z;
-        
         // delegate
         EventDelegate *p_delegate;
       
@@ -143,8 +142,9 @@ namespace FORZE {
         // user data
         void *p_userData;
         
-        void update(const Event& event);
         
+        //! Method used internally to update the event.
+        void update(const Event& event);
         
         //! Method used internally to change the event's delegate
         void setDelegate(EventDelegate* d);
@@ -153,6 +153,7 @@ namespace FORZE {
         fzEventType getType() const {
             return m_type;
         }
+        
         
     public:
         //! Constructs a new events to be managed by the EventManager.

@@ -216,16 +216,19 @@ namespace FORZE {
             p_parent = p;
         }
         
+        
         //! Opacity protocol.
         fzFloat getCachedOpacity() const {
             return m_cachedOpacity;
         }
         
+        virtual void updateLayout();
         void allocFBO();
 
         
         void internalVisit();
-        void internalRender();        
+        void internalRender(); 
+        
         
         //! Override this method to draw your own node.
         //! If you enable any other GL state, you should disable it after drawing your node
@@ -241,9 +244,6 @@ namespace FORZE {
         //! If you enable any other GL state, you should disable it after drawing your node.
         virtual void draw();
         
-        
-        virtual void updateLayout();
-        
     
     public:
         //! Constructs a blank node.
@@ -252,13 +252,6 @@ namespace FORZE {
         
 
 #pragma mark - Setters
-        
-        void makeDirty(unsigned char flags) {
-            m_dirtyFlags |= flags;
-#if FZ_RENDER_ON_DEMAND
-            Director::Instance().m_sceneIsDirty = true;
-#endif
-        }
         
         //! Tells this object whether to be visible or not.
         void setIsVisible(bool v) {
@@ -382,6 +375,14 @@ namespace FORZE {
         }
         
         
+        //! Returns if the node is running.
+        //! @see onEnter()
+        //! @see onExit()
+        bool isRunning() const {
+            return m_isRunning;
+        }
+        
+        
         //! Returns the scale factor if both factors (x, y) are the same.
         fzFloat getScale() const;
         
@@ -473,14 +474,6 @@ namespace FORZE {
         //! @see setUserData()
         void* getUserData() const {
             return p_userData;
-        }
-        
-        
-        //! Returns if the node is running.
-        //! @see onEnter()
-        //! @see onExit()
-        bool isRunning() const {
-            return m_isRunning;
         }
         
         
@@ -643,18 +636,15 @@ namespace FORZE {
         
 #pragma mark - Rendering
         
+        void makeDirty(unsigned char flags) {
+            m_dirtyFlags |= flags;
+#if FZ_RENDER_ON_DEMAND
+            Director::Instance().m_sceneIsDirty = true;
+#endif
+        }
+        
         //! Recursive method that visit its children and draw them.
         void visit();
-        
-        
-        //! Returns a "global" axis aligned bounding box of the node in points.
-        //! The returned box is in absolute position.
-        fzRect getBoundingBox();
-        
-        
-        //! Returns a "global" axis aligned bounding box of the node in points.
-        //! The returned box is relative only to its parent.
-        fzRect getLocalBoundingBox();
 
 
 #pragma mark - Miscelaneous
@@ -677,7 +667,17 @@ namespace FORZE {
         void alignChildrenHorizontally(fzFloat padding = kFZNodeDefaultPadding);
       
         
-#pragma mark Transforms
+#pragma mark Transforms        
+        
+        //! Returns a "global" axis aligned bounding box of the node in points.
+        //! The returned box is in absolute position.
+        fzRect getBoundingBox();
+        
+        
+        //! Returns a "global" axis aligned bounding box of the node in points.
+        //! The returned box is relative only to its parent.
+        fzRect getLocalBoundingBox();
+        
         
         //! Returns the matrix that transform the node's (local) space coordinates into the parent's space coordinates.
         const fzAffineTransform& getNodeToParentTransform();

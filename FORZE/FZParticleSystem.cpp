@@ -85,8 +85,10 @@ namespace FORZE {
     , m_positionType(kFZPositionTypeFree)
     , m_emitterMode(kFZParticleModeGravity)
     {
+        // reset union
         memset(&mode, 0, sizeof(mode));
         
+        // allocate particles
         p_particles = new fztParticle[m_totalParticles];
     }
     
@@ -122,7 +124,8 @@ namespace FORZE {
     {
         // time to live
         particle.timeToLive = m_life + m_lifeVar * FZ_RANDOM_MINUS1_1();
-        if(particle.timeToLive < 0) particle.timeToLive = 0;
+        if(particle.timeToLive < 0)
+            particle.timeToLive = 0;
         
         // position
         particle.pos = m_sourcePosition + m_posVar * FZ_RANDOM_MINUS1_1();
@@ -143,7 +146,8 @@ namespace FORZE {
         
         // size
         fzFloat startS = m_startSize + m_startSizeVar * FZ_RANDOM_MINUS1_1();
-        if(startS < 0) startS = 0;
+        if(startS < 0)
+            startS = 0;
         particle.size = startS;
         
         if( m_endSize == kFZParticleStartSizeEqualToEndSize )
@@ -190,9 +194,10 @@ namespace FORZE {
             
             particle.mode.B.radius = startRadius;
             
-            particle.mode.B.deltaRadius = (mode.B.endRadius == kFZParticleStartRadiusEqualToEndRadius) ?
-            0 : ((endRadius- startRadius) / particle.timeToLive);
-            
+            if(mode.B.endRadius == kFZParticleStartRadiusEqualToEndRadius)
+                particle.mode.B.deltaRadius = 0;
+            else
+                particle.mode.B.deltaRadius = (endRadius-startRadius) / particle.timeToLive;
             
             particle.mode.B.angle = a;
             particle.mode.B.degreesPerSecond = FZ_DEGREES_TO_RADIANS(mode.B.rotatePerSecond + mode.B.rotatePerSecondVar * FZ_RANDOM_MINUS1_1());

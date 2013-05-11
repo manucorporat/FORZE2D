@@ -34,8 +34,8 @@
 
 #ifndef FZ_OS
 
-//#warning FORZE: The operative system was not specified.
-//#warning You must define FZ_OS. See FZOSW_header.h
+#warning FORZE: The operative system was not specified. \n\
+Compiling for kFZ_OS_MODEL
 
 #define FZ_OS kFZ_OS_MODEL
 #endif
@@ -78,8 +78,8 @@ namespace FORZE {
         
     // OS WRAPPER
     // FORZE allocates an private class (Objective-C or C++ class) that connects the OS API with FORZE.
-    // All this methods are low level, and they have a different implementation for each platform.
-    // The common use never should have to use this methods.
+    // All these methods are low level, and they have a different implementation for each platform.
+    // The common user/developer never should have to call these methods directly.
     class OSW
     {        
     public:
@@ -119,7 +119,7 @@ namespace FORZE {
     //! Returns the screen size in points and the factor scale.
     void fzOSW_getScreenSize(fzSize *size, fzFloat *factor);
     
-    //! Returns system capacities (accelerometer...)
+    //! Returns the system capacities (accelerometer...)
     uint16_t fzOSW_getCapacities();
     
     //! Returns the device's user interface idiom.
@@ -129,15 +129,15 @@ namespace FORZE {
     bool fzOSW_getDeviceCode(char *deviceCode, fzUInt maxLength);
   
     //! Returns the product name.
-    bool fzOSW_getProductName(char *path, fzUInt bufferLength);
+    bool fzOSW_getProductName(char *path, fzUInt maxLength);
   
     //! Returns the application's absolute resources path.
     bool fzOSW_getResourcesPath(char *path, fzUInt maxLength);
   
     //! Returns the application persistent resources path.
-    bool fzOSW_getPersistentPath(const char *filename, char *absolutePath, fzUInt bufferLength);
+    bool fzOSW_getPersistentPath(const char *filename, char *absolutePath, fzUInt maxLength);
     
-    //! Returns the application persistent resources path.
+    //! Creates a folder in the specified path.
     bool fzOSW_createDirectory(const char *path, bool pathIsDirectory);
     
     //! Removes the specified path.

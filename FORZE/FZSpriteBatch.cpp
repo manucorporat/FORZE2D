@@ -146,7 +146,7 @@ namespace FORZE {
         p_glprogram->use();
 #endif
 
-        fzGLBlendFunc( m_blendFunc );        
+        fzGLBlendFunc(m_blendFunc);        
         m_textureAtlas.drawQuads();
     }
 }
