@@ -34,9 +34,9 @@
 
 namespace FORZE {
     
-    int32_t fzHash(const char *str, size_t length)
+    uint32_t fzHash(const char *str, size_t length)
     {
-        int32_t hash = 5381;
+        uint32_t hash = 5381;
         while (length > 0) {
             hash = __HASH_FUNCTION(hash, *str);
             ++str;
@@ -62,7 +62,7 @@ namespace FORZE {
     }
     
     
-    int32_t fzHash(const char *str)
+    uint32_t fzHash(const char *str)
     {
         return fzHash(str, strlen(str));
     }

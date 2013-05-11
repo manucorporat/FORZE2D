@@ -316,7 +316,7 @@ namespace FORZE {
 #pragma mark -
     
     const static struct {
-        int32_t hash;
+        uint32_t hash;
         bool (*func)(const char*, float*, int);
         int values;
     } funcList[] =
@@ -444,7 +444,7 @@ namespace FORZE {
             return true;
         
         // GET HASH
-        int32_t hash = fzHashConst(command);
+        uint32_t hash = fzHash(command);
         
         // FIND COMMAND
         for(unsigned int i = 0; i < (sizeof(funcList)/sizeof(funcList[0])); ++i){

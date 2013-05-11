@@ -255,7 +255,7 @@ namespace FORZE {
     
 #pragma mark - Low level
     
-    DataStore::fzStoreEntry* DataStore::entryForHash(int32_t keyhash) const
+    DataStore::fzStoreEntry* DataStore::entryForHash(uint32_t keyhash) const
     {
         if(m_num == 0)
             return NULL;

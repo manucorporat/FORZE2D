@@ -42,14 +42,14 @@ namespace FORZE
 
 #pragma mark - Compiler time recursive implementation
     
-    constexpr int32_t __fzHashRecursive(int32_t hash, const char* str)
+    constexpr uint32_t __fzHashRecursive(uint32_t hash, char const* str)
     {
         return (!*str ? hash
                 : __fzHashRecursive(__HASH_FUNCTION(hash, *str), str+1));
     }
     
     
-    constexpr int32_t fzHashConst(const char* str)
+    constexpr uint32_t fzHashConst(char const* str)
     {
         return (!str ? 0 : __fzHashRecursive(5381, str));
     }
@@ -57,10 +57,10 @@ namespace FORZE
     
 #pragma mark - Runtime implementation
     
-    int32_t fzHash(const char *str, size_t length);
+    uint32_t fzHash(const char *str, size_t length);
     
     //! Returns an int32 hash value giving a string.
-    int32_t fzHash(const char *str);
+    uint32_t fzHash(const char *str);
     
     //! Parses a string describing a version "x.y.z" and converts it to an integer.
     uint32_t fzVersion(const char *str);

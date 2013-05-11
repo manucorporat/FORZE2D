@@ -79,7 +79,7 @@ namespace FORZE {
     protected:
         bool        m_visible;
         fzFloat     m_opacity;
-        int32_t     m_nameHash;
+        uint32_t     m_nameHash;
         uint32_t    *p_tiles;
         fzPoint     m_offset;
         fzSize      m_size;        
@@ -104,7 +104,7 @@ namespace FORZE {
             return m_opacity;
         }
         
-        int32_t getHashName() const {
+        uint32_t getHashName() const {
             return m_nameHash;
         }
         

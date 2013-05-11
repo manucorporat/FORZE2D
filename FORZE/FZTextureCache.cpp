@@ -64,7 +64,7 @@ namespace FORZE {
         IO::removeFileSuffix(filenameCpy);
         
         
-        int32_t hash = fzHash(filenameCpy);
+        uint32_t hash = fzHash(filenameCpy);
         Texture2D *tex = getTextureByHash(hash);
         
         if( ! tex ) {
@@ -86,7 +86,7 @@ namespace FORZE {
     }
     
     
-    Texture2D* TextureCache::getTextureByHash(int32_t hash) const
+    Texture2D* TextureCache::getTextureByHash(uint32_t hash) const
     {
         texturesMap::const_iterator it(m_textures.find(hash));
         if(it == m_textures.end())
@@ -120,7 +120,7 @@ namespace FORZE {
     {
         FZ_ASSERT(filename, "Filename can not be NULL.");
 
-        int32_t hash = fzHash(filename);
+        uint32_t hash = fzHash(filename);
         Texture2D *tex = getTextureByHash(hash);
         if(tex) {
             m_textures.erase(hash);

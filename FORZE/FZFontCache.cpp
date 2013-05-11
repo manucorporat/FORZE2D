@@ -66,7 +66,7 @@ namespace FORZE {
         // Remove "-x" suffix
         IO::removeFileSuffix(filenameCpy);
         
-        int32_t hash = fzHash(filenameCpy);
+        uint32_t hash = fzHash(filenameCpy);
         Font *font = getFontForHash(hash);
         
         if(font != NULL && strcmp(IO::getExtension(filenameCpy), "ttf") == 0) {
@@ -95,7 +95,7 @@ namespace FORZE {
     }
     
     
-    Font* FontCache::getFontForHash(int32_t hash) const
+    Font* FontCache::getFontForHash(uint32_t hash) const
     {
         fontsMap::const_iterator it(m_fonts.find(hash));
         if(it == m_fonts.end())
@@ -131,7 +131,7 @@ namespace FORZE {
     {
         FZ_ASSERT(filename, "Filename can not be NULL.");
 
-        int32_t hash = fzHash(filename);
+        uint32_t hash = fzHash(filename);
         Font *font = getFontForHash(hash);
         if(font) {
             m_fonts.erase(hash);

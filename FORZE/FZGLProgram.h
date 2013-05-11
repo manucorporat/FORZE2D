@@ -112,11 +112,11 @@ namespace FORZE {
         GLuint  m_program;
         
 #if FZ_STL_CPLUSPLUS11
-        typedef unordered_map<int32_t, GLint> uniformsMap;
+        typedef unordered_map<uint32_t, GLint> uniformsMap;
 #else
-        typedef map<int32_t, GLint> uniformsMap;
+        typedef map<uint32_t, GLint> uniformsMap;
 #endif
-        typedef pair<int32_t, GLint> uniformsPair;
+        typedef pair<uint32_t, GLint> uniformsPair;
 
         
         uniformsMap m_uniforms;
