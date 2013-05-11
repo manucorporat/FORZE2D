@@ -87,12 +87,12 @@ __NODE__ = static_cast<__typeof__(__NODE__)>((__NODE__)->prev()))
         fzListItem() : p_prev(NULL), p_next(NULL) {}
         
         //! Returns the previous object.
-        fzListItem* prev() {
+        fzListItem* prev() const {
             return p_prev;
         }
         
         //! Returns the next object.
-        fzListItem* next() {
+        fzListItem* next() const {
             return p_next;
         }
     };
@@ -162,7 +162,7 @@ __NODE__ = static_cast<__typeof__(__NODE__)>((__NODE__)->prev()))
         //! Returns the first object (index 0).
         //! @return NULL if the list is empty.
         //! @see back()
-        fzListItem *front() {
+        fzListItem *front() const {
             return p_front;
         }
         
@@ -170,7 +170,7 @@ __NODE__ = static_cast<__typeof__(__NODE__)>((__NODE__)->prev()))
         //! Returns the last object (last index).
         //! @return NULL if the list is empty.
         //! @see front()
-        fzListItem *back() {
+        fzListItem *back() const {
             return p_back;
         }
         
