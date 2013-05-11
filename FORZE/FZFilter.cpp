@@ -55,16 +55,14 @@ namespace FORZE {
     
 #pragma mark - Base filter
     
-    Filter::Filter(fzFloat quality)
+    Filter::Filter()
     : p_texture(NULL)
     , p_glprogram(NULL)
-    {   
-        FZ_ASSERT(quality > 0 && quality <= 1, "Quality is out of bounds (0, 1].");
-    }
+    { }
     
     
-    Filter::Filter(const GLShader& fragmentShader, fzFloat quality)
-    : Filter(quality)
+    Filter::Filter(const GLShader& fragmentShader)
+    : Filter()
     {
         // EXECUTABLE PROGRAM
         GLProgram *newprogram = new GLProgram(GLShader(__fz_vert_mat_TEX, GL_VERTEX_SHADER), fragmentShader);
@@ -75,8 +73,8 @@ namespace FORZE {
     }
     
     
-    Filter::Filter(const string& sFragmentFile, fzFloat quality)
-    : Filter(quality)
+    Filter::Filter(const string& sFragmentFile)
+    : Filter()
     {
         // FRAGMENT SHADER
         fzBuffer source = ResourcesManager::Instance().loadResource(sFragmentFile.c_str());
@@ -161,8 +159,8 @@ namespace FORZE {
     
 #pragma mark - Filter Color ( brightness/contrast )
     
-    FilterColor::FilterColor(fzFloat quality)
-    : Filter(GLShader(effect_color_frag, GL_FRAGMENT_SHADER), quality)
+    FilterColor::FilterColor()
+    : Filter(GLShader(effect_color_frag, GL_FRAGMENT_SHADER))
     , m_brightness(-1)
     , m_contrast(-1)
     {
@@ -206,8 +204,8 @@ namespace FORZE {
     
 #pragma mark - Filter Grayscale
     
-    FilterGrayscale::FilterGrayscale(fzFloat quality)
-    : Filter(GLShader(effect_grayscale_frag, GL_FRAGMENT_SHADER), quality)
+    FilterGrayscale::FilterGrayscale()
+    : Filter(GLShader(effect_grayscale_frag, GL_FRAGMENT_SHADER))
     , m_intensity()
     {
         setIntensity(fzPoint3(0.33f, 0.33f, 0.33f));
@@ -237,8 +235,8 @@ namespace FORZE {
     
 #pragma mark - Filter XRAy ( brightness/contrast )
     
-    FilterXRay::FilterXRay(fzFloat quality)
-    : Filter(GLShader(effect_xray_frag, GL_FRAGMENT_SHADER), quality)
+    FilterXRay::FilterXRay()
+    : Filter(GLShader(effect_xray_frag, GL_FRAGMENT_SHADER))
     , m_intensity()
     {        
         setIntensity(fzPoint3(0.30f, 0.59f, 0.11f));
@@ -269,8 +267,8 @@ namespace FORZE {
     
 #pragma mark - Filter Color ( brightness/contrast )
     
-    FilterToon::FilterToon(fzFloat quality)
-    : Filter(GLShader(effect_toon_frag, GL_FRAGMENT_SHADER), quality)
+    FilterToon::FilterToon()
+    : Filter(GLShader(effect_toon_frag, GL_FRAGMENT_SHADER))
     , m_factor(-1)
     {        
         setFactor(4);
@@ -297,8 +295,8 @@ namespace FORZE {
     
 #pragma mark - Filter Invert color
 
-    FilterInvert::FilterInvert(fzFloat quality)
-    : Filter(GLShader(effect_invert_frag, GL_FRAGMENT_SHADER), quality)
+    FilterInvert::FilterInvert()
+    : Filter(GLShader(effect_invert_frag, GL_FRAGMENT_SHADER))
     { }
 }
 #endif

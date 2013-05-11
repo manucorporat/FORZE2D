@@ -63,15 +63,15 @@ namespace FORZE {
         
     private:
         //! Used internally to initialize the filter
-        Filter(fzFloat quality);
+        explicit Filter();
         
         
     public:
         //! Constructs an user defined filter specifing the fragmentshader filename
-        Filter(const string& fragmentFilename, fzFloat quality);
+        explicit Filter(const string& fragmentFilename);
         
         //! Constructs an user defined filter with a fragment shader
-        Filter(const GLShader& fragmentShader, fzFloat quality);
+        explicit Filter(const GLShader& fragmentShader);
 
         void draw();
     };
@@ -85,7 +85,8 @@ namespace FORZE {
 
     public:
         //! Constructs a FilterColor, default quality is 1
-        FilterColor(fzFloat quality = 1.0f);
+        explicit FilterColor();
+        
         
         void setBrightness(fzFloat brightness);
         void setContrast(fzFloat contrast);
@@ -102,7 +103,7 @@ namespace FORZE {
         
     public:
         //! Constructs a FilterGrayscale, default quality is 1
-        FilterGrayscale(fzFloat quality = 1.0f);
+        explicit FilterGrayscale();
         
         
         void setIntensity(const fzPoint3& intensity);        
@@ -117,7 +118,7 @@ namespace FORZE {
         
     public:
         //! Constructs a FilterGrayscale, default quality is 1
-        FilterXRay(fzFloat quality = 1.0f);
+        explicit FilterXRay();
         
         
         void setIntensity(const fzPoint3& intensity);        
@@ -129,7 +130,7 @@ namespace FORZE {
     {
     public:
         //! Constructs a FilterInvert, default quality is 1
-        FilterInvert(fzFloat quality = 1.0f);        
+        explicit FilterInvert();        
     };
     
     
@@ -140,10 +141,9 @@ namespace FORZE {
         
     public:
         //! Constructs a FilterToon, default quality is 1
-        FilterToon(fzFloat quality = 1.0f);
+        explicit FilterToon();
         
         void setFactor(fzFloat factor);
-        
         fzFloat getFactor() const;
     };
 }
