@@ -89,7 +89,7 @@ namespace FORZE {
             delete p_camera;
         
         Node *child;
-        FZ_LIST_FOREACH_SAFE(m_children, child)
+        FZ_LIST_FOREACH_MUTABLE(m_children, child)
         {
             child->setParent(NULL);
             child->release();
@@ -385,7 +385,7 @@ namespace FORZE {
     void Node::removeAllChildren(bool clean)
     {
         Node *child;
-        FZ_LIST_FOREACH_SAFE(m_children, child) {
+        FZ_LIST_FOREACH_MUTABLE(m_children, child) {
             detachChild(child, clean);
         }
       

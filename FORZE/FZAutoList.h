@@ -47,12 +47,12 @@ __NODE__ = static_cast<__typeof__(__NODE__)>((__NODE__)->next()))
     
     
     
-    /** @def FZ_LIST_FOREACH_SAFE(LIST, NODE)
+    /** @def FZ_LIST_FOREACH_MUTABLE(LIST, NODE)
      * Iterates a AutoList giving to the "NODE" parameter each object pointer
      @param LIST AutoList to be iterated object-per-object.
      @param NODE pointer used to get each list's object
      */
-#define FZ_LIST_FOREACH_SAFE(__LIST__, __NODE__)                        \
+#define FZ_LIST_FOREACH_MUTABLE(__LIST__, __NODE__)                        \
 if((__NODE__ = static_cast<__typeof__(__NODE__)>((__LIST__).front())))  \
 for(fzListItem *__AUX__;                                     \
 (__NODE__ && ((__AUX__ = (__NODE__)->next()) || 1));                       \
