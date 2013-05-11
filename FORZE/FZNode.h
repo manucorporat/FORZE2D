@@ -552,6 +552,9 @@ namespace FORZE {
         Node* getChildByName(const char* name);
         
         
+        fzUInt countAllChildren() const;
+        
+        
         //! Stops all running actions and schedulers.
         virtual void cleanup();
         

@@ -308,6 +308,17 @@ namespace FORZE {
     
 #pragma mark - Children management
     
+    fzUInt Node::countAllChildren() const
+    {
+        fzUInt count = m_children.size();
+        Node *child;
+        FZ_LIST_FOREACH(m_children, child) {
+            count += child->countAllChildren();
+        }
+        return count;
+    }
+    
+    
     Node* Node::getChildByTag(fzInt tag)
     {
         FZ_ASSERT(tag != kFZNodeTagInvalid, "Invalid tag.");
