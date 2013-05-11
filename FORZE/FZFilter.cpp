@@ -55,16 +55,14 @@ namespace FORZE {
     
 #pragma mark - Base filter
     
-    Filter::Filter(fzFloat quality)
+    Filter::Filter()
     : p_texture(NULL)
     , p_glprogram(NULL)
-    {   
-        FZ_ASSERT(quality > 0 && quality <= 1, "Quality is out of bounds (0, 1].");
-    }
+    { }
     
     
-    Filter::Filter(const GLShader& fragmentShader, fzFloat quality)
-    : Filter(quality)
+    Filter::Filter(const GLShader& fragmentShader)
+    : Filter()
     {
         // EXECUTABLE PROGRAM
         GLProgram *newprogram = new GLProgram(GLShader(__fz_vert_mat_TEX, GL_VERTEX_SHADER), fragmentShader);
@@ -75,8 +73,8 @@ namespace FORZE {
     }
     
     
-    Filter::Filter(const string& sFragmentFile, fzFloat quality)
-    : Filter(quality)
+    Filter::Filter(const string& sFragmentFile)
+    : Filter()
     {
         // FRAGMENT SHADER
         fzBuffer source = ResourcesManager::Instance().loadResource(sFragmentFile.c_str());
@@ -147,7 +145,7 @@ namespace FORZE {
         glDisable(GL_BLEND);
         
         p_glprogram->use();
-        FZ_SAFE_APPLY_MATRIX(p_glprogram);
+        FZ_PROGRAM_APPLY_TRANSFORM(p_glprogram);
         
         glVertexAttribPointer(kFZAttribPosition, 3, GL_FLOAT, GL_FALSE, sizeof(_fzT2_V2), &m_quad.bl.vertex);
         glVertexAttribPointer(kFZAttribTexCoords, 2, GL_FLOAT, GL_FALSE, sizeof(_fzT2_V2), &m_quad.bl.texCoord);
@@ -161,8 +159,8 @@ namespace FORZE {
     
 #pragma mark - Filter Color ( brightness/contrast )
     
-    FilterColor::FilterColor(fzFloat quality)
-    : Filter(GLShader(effect_color_frag, GL_FRAGMENT_SHADER), quality)
+    FilterColor::FilterColor()
+    : Filter(GLShader(effect_color_frag, GL_FRAGMENT_SHADER))
     , m_brightness(-1)
     , m_contrast(-1)
     {
@@ -175,7 +173,7 @@ namespace FORZE {
     {
         FZ_ASSERT(brightness >= -1.0f && brightness <= 1.0f, "Brightness is out of bounds [-1, 1].");
         if(m_brightness != brightness) {
-            p_glprogram->setUniform1f("u_brightness", brightness + 0.5f);
+            p_glprogram->setUniform1f("u_brightness"_hash, brightness + 0.5f);
             m_brightness = brightness;
         }
     }
@@ -186,7 +184,7 @@ namespace FORZE {
         FZ_ASSERT(contrast >= 0 && contrast <= 5.0f, "Brightness is out of bounds [0, 5].");
 
         if(m_contrast != contrast) {
-            p_glprogram->setUniform1f("u_contrast", contrast);
+            p_glprogram->setUniform1f("u_contrast"_hash, contrast);
             m_contrast = contrast;
         }
     }
@@ -206,8 +204,8 @@ namespace FORZE {
     
 #pragma mark - Filter Grayscale
     
-    FilterGrayscale::FilterGrayscale(fzFloat quality)
-    : Filter(GLShader(effect_grayscale_frag, GL_FRAGMENT_SHADER), quality)
+    FilterGrayscale::FilterGrayscale()
+    : Filter(GLShader(effect_grayscale_frag, GL_FRAGMENT_SHADER))
     , m_intensity()
     {
         setIntensity(fzPoint3(0.33f, 0.33f, 0.33f));
@@ -223,7 +221,7 @@ namespace FORZE {
         
         //if(m_intensity != intensity)
         {
-            p_glprogram->setUniform3f("u_intensity", intensity.x, intensity.y, intensity.z);
+            p_glprogram->setUniform3f("u_intensity"_hash, intensity.x, intensity.y, intensity.z);
             m_intensity = intensity;
         }
     }
@@ -237,8 +235,8 @@ namespace FORZE {
     
 #pragma mark - Filter XRAy ( brightness/contrast )
     
-    FilterXRay::FilterXRay(fzFloat quality)
-    : Filter(GLShader(effect_xray_frag, GL_FRAGMENT_SHADER), quality)
+    FilterXRay::FilterXRay()
+    : Filter(GLShader(effect_xray_frag, GL_FRAGMENT_SHADER))
     , m_intensity()
     {        
         setIntensity(fzPoint3(0.30f, 0.59f, 0.11f));
@@ -254,7 +252,7 @@ namespace FORZE {
         
         //if(m_intensity != intensity)
         {
-            p_glprogram->setUniform3f("u_intensity", intensity.x, intensity.y, intensity.z);
+            p_glprogram->setUniform3f("u_intensity"_hash, intensity.x, intensity.y, intensity.z);
             m_intensity = intensity;
         }
     }
@@ -269,8 +267,8 @@ namespace FORZE {
     
 #pragma mark - Filter Color ( brightness/contrast )
     
-    FilterToon::FilterToon(fzFloat quality)
-    : Filter(GLShader(effect_toon_frag, GL_FRAGMENT_SHADER), quality)
+    FilterToon::FilterToon()
+    : Filter(GLShader(effect_toon_frag, GL_FRAGMENT_SHADER))
     , m_factor(-1)
     {        
         setFactor(4);
@@ -282,7 +280,7 @@ namespace FORZE {
         FZ_ASSERT(factor >= 0 && factor <= 255, "Factor is out of bounds [0, 255].");
         if(m_factor != factor) {
             
-            p_glprogram->setUniform1f("u_factor", factor);
+            p_glprogram->setUniform1f("u_factor"_hash, factor);
             m_factor = factor;
         }
     }
@@ -297,8 +295,8 @@ namespace FORZE {
     
 #pragma mark - Filter Invert color
 
-    FilterInvert::FilterInvert(fzFloat quality)
-    : Filter(GLShader(effect_invert_frag, GL_FRAGMENT_SHADER), quality)
+    FilterInvert::FilterInvert()
+    : Filter(GLShader(effect_invert_frag, GL_FRAGMENT_SHADER))
     { }
 }
 #endif

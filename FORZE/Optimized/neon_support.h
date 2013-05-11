@@ -191,8 +191,8 @@ extern "C" {
     {
         __asm__ volatile
         (
-         "vldmia %0, { q6-q9 }	\n\t"	// q6-q9 = matrix
-         "vldmia %1, { q0-q1 }	\n\t"	// q0-q1  = vertices
+         "vldmia %0, { q6-q9 }	\n\t"	// q6-q9 = matrix (16floats -> 4x4 matrix)
+         "vldmia %1, { q0-q1 }	\n\t"	// q0-q1 = vertices (8float -> 4vertices)
          
          // result = first column of A x V.x
          "vmov.f32 q2, q9\n\t"
@@ -221,7 +221,7 @@ extern "C" {
     }
 
 #ifdef __cplusplus
-    extern "C" {
+}
 #endif
 
 #endif

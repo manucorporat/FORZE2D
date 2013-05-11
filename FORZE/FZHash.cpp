@@ -34,9 +34,9 @@
 
 namespace FORZE {
     
-    int32_t fzHash(const char *str, size_t length)
+    uint32_t fzHash(const char *str, size_t length)
     {
-        int32_t hash = 5381;
+        uint32_t hash = 5381;
         while (length > 0) {
             hash = __HASH_FUNCTION(hash, *str);
             ++str;
@@ -46,24 +46,24 @@ namespace FORZE {
     }
     
     
-    uint32_t fzVersion(const char *str)
+    uint32_t fzHash(const char *str)
     {
-        uint32_t hash = 0;
-		uint32_t idx = 0x01000000;
-        char *end = NULL;
-        do {
-			int value = strtol(str, &end, 10);
-			hash += value * idx;
-			idx = idx >> 8;
-            str = end+1;
-		}while(*end != '\0');
-        
-        return hash;
+        return fzHash(str, strlen(str));
     }
     
     
-    int32_t fzHash(const char *str)
+    uint32_t fzVersion(const char *str)
     {
-        return fzHash(str, strlen(str));
+        uint32_t hash = 0;
+        uint32_t idx = 0x01000000;
+        char *end = NULL;
+        do {
+            int value = strtol(str, &end, 10);
+            hash += value * idx;
+            idx = idx >> 8;
+            str = end+1;
+        }while(*end != '\0');
+        
+        return hash;
     }
 }

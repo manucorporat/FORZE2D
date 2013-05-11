@@ -222,17 +222,20 @@ namespace FORZE {
     void fzMath_mat4PerspectiveProjection(fzFloat fovY, fzFloat aspect,
                                           fzFloat zNear, fzFloat zFar,
                                           float *output)
-    {
+    {        
         FZ_ASSERT(output != NULL, "Output matrix cannot be NULL.");
 
         fzFloat r = FZ_DEGREES_TO_RADIANS(fovY / 2);
         fzFloat deltaZ = zFar - zNear;
-        fzFloat cotangent = 1/tanf(r);
+        fzFloat s = fzMath_sin(r);
+        fzFloat cotangent = 0;
         
-        if (deltaZ == 0 || cotangent == 0 || aspect == 0) {
+        if (deltaZ == 0 || s == 0 || aspect == 0) {
             FZLOGERROR("Perpertive impossible.");
             return;
         }
+        
+        cotangent = fzMath_cos(r) / s;
         
         fzMath_mat4Identity(output);
         output[0] = cotangent / aspect;
@@ -240,6 +243,7 @@ namespace FORZE {
         output[10] = -(zFar + zNear) / deltaZ;
         output[11] = -1;
         output[14] = -2 * zNear * zFar / deltaZ;
+        output[15] = 0;
     }
     
 

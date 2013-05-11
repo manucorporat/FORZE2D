@@ -58,8 +58,7 @@ namespace FORZE {
         setContentSize(fzSize(m_layerSize.width * m_mapTileSize.width, m_layerSize.height * m_mapTileSize.height));
         
         setOpacity(layerInfo->getOpacity());
-        if(layerInfo->getOpacity() == 0)
-        {
+        if(layerInfo->getOpacity() == 0) {
             setIsVisible(false);
         }
         

@@ -46,7 +46,6 @@ namespace FORZE {
     : m_textureAtlas(texture, capacity)
     , m_blendFunc()
     {
-        setContentSize(Director::Instance().getCanvasSize());
 #if FZ_GL_SHADERS
         setGLProgram(kFZShader_nomat_aC4_TEX);
 #endif
@@ -146,7 +145,7 @@ namespace FORZE {
         p_glprogram->use();
 #endif
 
-        fzGLBlendFunc( m_blendFunc );        
+        fzGLBlendFunc(m_blendFunc);        
         m_textureAtlas.drawQuads();
     }
 }

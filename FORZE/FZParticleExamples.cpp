@@ -35,57 +35,65 @@
 
 namespace FORZE {
 
-    ParticleFire::ParticleFire()
-    : ParticleSystemQuad(500, TextureCache::Instance().addImage("fire_rgba8888.pvr"))
+    class ParticleFire : public ParticleSystem
     {
-        // duration
-        setDuration(kFZParticleDurationInfinity);
-        
-        // Gravity Mode
-        setEmitterMode(kFZParticleModeGravity);
-        
-        // Gravity Mode: gravity
-        setGravity(fzPoint(0, 0)); // fzPoint(0, 0) = FZPointZero
-		
-        // Gravity Mode: radial acceleration
-        setRadialAccel(0);
-        setRadialAccelVar(0);
-		
-        // Gravity Mode: speed of particles
-        setSpeed(410);
-        setSpeedVar(26);	
-		
-        // starting angle
-        setAngle(90);
-        setAngleVar(12);
-		
-        // emitter position
-        fzSize winSize = Director::Instance().getCanvasSize();
-        setSourcePosition(winSize/2);
-        setPosition(FZPointZero);
-        
-        setPosVar(fzPoint(22, 0));
-		
-        // life of particles
-        setLife(1);
-        setLifeVar(0.25f);
-        
-        // size, in pixels
-        setStartSize(65);
-        setStartSizeVar(16);
-        setEndSize(kFZParticleStartSizeEqualToEndSize);
-                
-        // emits per frame
-        setEmissionRate(getTotalParticles() / getLife());
-		
-        // color of particles
-        setStartColor(fzColor4F(0.76f, 0.25f, 0.12f, 1));
-        setStartColorVar(fzColor4F(0, 0, 0, 0));
-        
-        setEndColor(fzColor4F(0.76f, 0.25f, 0.12f, 0));
-        setEndColorVar(fzColor4F(0, 0, 0, 0));
-        
-        // texture
+    public:
+        ParticleFire()
+        : ParticleSystem(1000)
+        {
+            // duration
+            setDuration(kFZParticleDurationInfinity);
+            
+            // Gravity Mode
+            setEmitterMode(kFZParticleModeGravity);
+            
+            // Gravity Mode: gravity
+            setGravity(fzPoint(0, 0)); // fzPoint(0, 0) = FZPointZero
+            
+            // Gravity Mode: radial acceleration
+            setRadialAccel(0);
+            setRadialAccelVar(0);
+            
+            // Gravity Mode: speed of particles
+            setSpeed(410);
+            setSpeedVar(26);
+            
+            // starting angle
+            setAngle(90);
+            setAngleVar(12);
+            
+            // emitter position
+            fzSize winSize = Director::Instance().getCanvasSize();
+            setSourcePosition(winSize/2);
+            setPosVar(fzPoint(22, 0));
+            
+            // life of particles
+            setLife(1);
+            setLifeVar(0.25f);
+            
+            // size, in pixels
+            setStartSize(65);
+            setStartSizeVar(16);
+            setEndSize(kFZParticleStartSizeEqualToEndSize);
+            
+            // emits per frame
+            setEmissionRate(getTotalParticles() / getLife());
+            
+            // color of particles
+            setStartColor(fzColor4F(0.76f, 0.25f, 0.12f, 1));
+            setStartColorVar(fzColor4F(0, 0, 0, 0));
+            
+            setEndColor(fzColor4F(0.76f, 0.25f, 0.12f, 0));
+            setEndColorVar(fzColor4F(0, 0, 0, 0));
+        }
+    };
+    
+    
+    ParticleFireQuad::ParticleFireQuad()
+    : ParticleSystemQuad(new ParticleFire())
+    {
+        Texture2D *texture = TextureCache::Instance().addImage("fire_rgba8888.pvr");
+        setTexture(texture);
         setBlendFunc(fzBlendFunc(GL_SRC_ALPHA, GL_ONE ));
-    }
+    };
 }

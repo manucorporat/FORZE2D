@@ -6,14 +6,15 @@
 using namespace FORZE;
 
 
-#define NUMBER_OF_TESTS 3
+#define NUMBER_OF_TESTS 4
 
-TestLayer *allTest(fzUInt index)
+static TestLayer *allTest(fzUInt index)
 {
     switch (index) {
         case 0: return new LabelTest();
         case 1: return new LabelTest2();
         case 2: return new LabelTest3();
+        case 3: return new LabelTest4();
         default:
             return NULL;
     }

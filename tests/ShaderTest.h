@@ -72,8 +72,8 @@ public:
             ++i;
         }
         
-        layerColor_->getGLProgram()->setUniform1i("u_number", i);
-        layerColor_->getGLProgram()->setUniform3fv("u_data[0]", i, values);
+        layerColor_->getGLProgram()->setUniform1i("u_number"_hash, i);
+        layerColor_->getGLProgram()->setUniform3fv("u_data[0]"_hash, i, values);
     }
     
     

@@ -47,12 +47,12 @@ __NODE__ = static_cast<__typeof__(__NODE__)>((__NODE__)->next()))
     
     
     
-    /** @def FZ_LIST_FOREACH_SAFE(LIST, NODE)
+    /** @def FZ_LIST_FOREACH_MUTABLE(LIST, NODE)
      * Iterates a AutoList giving to the "NODE" parameter each object pointer
      @param LIST AutoList to be iterated object-per-object.
      @param NODE pointer used to get each list's object
      */
-#define FZ_LIST_FOREACH_SAFE(__LIST__, __NODE__)                        \
+#define FZ_LIST_FOREACH_MUTABLE(__LIST__, __NODE__)                        \
 if((__NODE__ = static_cast<__typeof__(__NODE__)>((__LIST__).front())))  \
 for(fzListItem *__AUX__;                                     \
 (__NODE__ && ((__AUX__ = (__NODE__)->next()) || 1));                       \
@@ -87,12 +87,12 @@ __NODE__ = static_cast<__typeof__(__NODE__)>((__NODE__)->prev()))
         fzListItem() : p_prev(NULL), p_next(NULL) {}
         
         //! Returns the previous object.
-        fzListItem* prev() {
+        fzListItem* prev() const {
             return p_prev;
         }
         
         //! Returns the next object.
-        fzListItem* next() {
+        fzListItem* next() const {
             return p_next;
         }
     };
@@ -162,7 +162,7 @@ __NODE__ = static_cast<__typeof__(__NODE__)>((__NODE__)->prev()))
         //! Returns the first object (index 0).
         //! @return NULL if the list is empty.
         //! @see back()
-        fzListItem *front() {
+        fzListItem *front() const {
             return p_front;
         }
         
@@ -170,7 +170,7 @@ __NODE__ = static_cast<__typeof__(__NODE__)>((__NODE__)->prev()))
         //! Returns the last object (last index).
         //! @return NULL if the list is empty.
         //! @see front()
-        fzListItem *back() {
+        fzListItem *back() const {
             return p_back;
         }
         

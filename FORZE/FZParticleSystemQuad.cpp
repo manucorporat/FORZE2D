@@ -42,84 +42,86 @@
 
 namespace FORZE {
     
-    ParticleSystemQuad::ParticleSystemQuad(fzUInt number, Texture2D *texture)
-    : ParticleSystem(number, texture)
-    {
-        // allo cating quads
-        p_quads = new fzC4_T2_V2_Quad[getTotalParticles()];
-        
-        // initialize only once the texCoords and the indices
-        initTexCoordsWithRect(fzRect(FZPointZero, p_texture->getContentSize()));
-        initIndices();
-        
+    ParticleSystemQuad::ParticleSystemQuad(ParticleSystemLogic *logic)
+    : m_textureAtlas(NULL)
+    , p_logic(logic)
+    , m_blendFunc()
+    {        
 #if FZ_GL_SHADERS
         setGLProgram(kFZShader_mat_aC4_TEX);
-#endif  
+#endif
+        m_textureAtlas.reserveCapacity(logic->getTotalParticles());
+        schedule();
+    }
+    
+    
+    ParticleSystemQuad::ParticleSystemQuad(ParticleSystemLogic *logic, Texture2D *texture)
+    : ParticleSystemQuad(logic)
+    {
+        // set texture
+        setTexture(texture);
     }
     
     
     ParticleSystemQuad::~ParticleSystemQuad()
+    { }
+    
+    
+    void ParticleSystemQuad::setDisplayFrame(const fzSpriteFrame& s)
     {
-        delete [] p_quads;
-
-        glDeleteBuffers(1, &m_indicesVBO);
-#if FZ_VBO_STREAMING
-        glDeleteBuffers(1, &m_quadsVBO);
-#endif 
+        FZ_ASSERT( s.getOffset() == FZPointZero, "QuadParticle only supports SpriteFrames with no offsets.");
+        
+        // update texture before updating texture rect
+        setTexture(s.getTexture());
     }
     
     
-    void ParticleSystemQuad::initIndices()
-    {        
-        GLushort *indices = new GLushort[m_totalParticles * 6];
+    void ParticleSystemQuad::setTexture(Texture2D *texture, const fzRect& rect)
+    {
+        FZ_ASSERT(texture, "Texture can not be NULL.");
         
-        fzUInt i = 0;
-        for(; i < m_totalParticles; ++i)
-        {
-            const fzUInt i6 = i*6;
-            const GLushort i4 = i*4;
-            
-            indices[i6] = i4;
-            indices[i6+1] = i4+1;
-            indices[i6+2] = i4+2;
-            
-            indices[i6+5] = i4+1;
-            indices[i6+4] = i4+2;
-            indices[i6+3] = i4+3;
+        // Only update the texture if is different from the current one
+        if( texture != getTexture()) {
+            m_textureAtlas.setTexture(texture);
+            initTexCoordsWithRect(rect);
         }
-        // generate vertex buffer object
-        glGenBuffers(1, &m_indicesVBO);
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_indicesVBO);
-        
-        // copy indices to vram
-        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(GLushort) * m_totalParticles * 6, indices, GL_STATIC_DRAW);
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-        
-        CHECK_GL_ERROR_DEBUG();
-        
-        // dealloc indices
-        delete [] indices;
-        
-        
-#if FZ_VBO_STREAMING
-        // create the VBO buffer
-        glGenBuffers(1, &m_quadsVBO);
-        
-        // initial binding
-        glBindBuffer(GL_ARRAY_BUFFER, m_quadsVBO);
-        glBufferData(GL_ARRAY_BUFFER, sizeof(fzC4_T2_V2_Quad) * totalParticles_, p_quads, GL_DYNAMIC_DRAW);	
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
-#endif // FZ_USES_VBO
+    }
+    
+    
+    void ParticleSystemQuad::setTexture(Texture2D *texture)
+    {
+        FZ_ASSERT(texture, "Texture can not be NULL.");
+        setTexture(texture, fzRect(FZPointZero, texture->getContentSize()));
+    }
+    
+    
+    Texture2D* ParticleSystemQuad::getTexture() const
+    {
+        return m_textureAtlas.getTexture();
+    }
+    
+    
+    void ParticleSystemQuad::setBlendFunc(const fzBlendFunc& b)
+    {
+        m_blendFunc = b;
+    }
+    
+    
+    const fzBlendFunc& ParticleSystemQuad::getBlendFunc() const
+    {
+        return m_blendFunc;
     }
     
     
     void ParticleSystemQuad::initTexCoordsWithRect(fzRect rect)
     {
-        // convert to Tex coords        
-        fzUInt wide = p_texture->getPixelsWide();
-        fzUInt high = p_texture->getPixelsHigh();
+        Texture2D *texture = getTexture();
+        FZ_ASSERT(texture, "Texture was not created.");
         
-        rect *= p_texture->getFactor();
+        // convert to Tex coords
+        fzUInt wide = texture->getPixelsWide();
+        fzUInt high = texture->getPixelsHigh();
+        rect *= texture->getFactor();
         
 #if FZ_FIX_ARTIFACTS_BY_STRECHING_TEXEL
         wide *= 2;
@@ -135,163 +137,98 @@ namespace FORZE {
         GLfloat top     = rect.origin.y / high;
         GLfloat bottom  = top + rect.size.height / high;
         
+        fzV4_T2_C4_Quad quad;
+        quad.bl.texCoord.x = left;
+        quad.bl.texCoord.y = bottom;
+        quad.br.texCoord.x = right;
+        quad.br.texCoord.y = bottom;
+        quad.tl.texCoord.x = left;
+        quad.tl.texCoord.y = top;
+        quad.tr.texCoord.x = right;
+        quad.tr.texCoord.y = top;
+        
         fzUInt i = 0;
-        for(; i < m_totalParticles; ++i)
-        {
-            p_quads[i].bl.texCoord.x = left;
-            p_quads[i].bl.texCoord.y = bottom;
-            p_quads[i].br.texCoord.x = right;
-            p_quads[i].br.texCoord.y = bottom;
-            p_quads[i].tl.texCoord.x = left;
-            p_quads[i].tl.texCoord.y = top;
-            p_quads[i].tr.texCoord.x = right;
-            p_quads[i].tr.texCoord.y = top;
+        fzV4_T2_C4_Quad *q = m_textureAtlas.getQuads();
+        for(; i < m_textureAtlas.getCapacity(); ++i) {
+            q[i] = quad;
         }
     }
     
     
-    void ParticleSystemQuad::setDisplayFrame(const fzSpriteFrame& s)
+    void ParticleSystemQuad::update(fzFloat dt)
     {
-        FZ_ASSERT( s.getOffset() == FZPointZero, "QuadParticle only supports SpriteFrames with no offsets.");
+        p_logic->preUpdate(dt);
+        fzV4_T2_C4_Quad *quad = m_textureAtlas.getQuads();
         
-        // update texture before updating texture rect
-        if ( s.getTexture()->getName() != p_texture->getName() )
-            setTexture(s.getTexture());
-    }
-    
-    
-    void ParticleSystemQuad::setTexture(Texture2D *t, const fzRect& rect)
-    {
-        // Only update the texture if is different from the current one
-        if( t->getName() != p_texture->getName() ) {
-            ParticleSystem::setTexture(t);
-            initTexCoordsWithRect(rect);
+        if(p_logic->getParticleCount() > 0) {
+            fzParticle p;
+            for(fzUInt index = 0; index < p_logic->getParticleCount(); ++index)
+            {
+                p_logic->updateParticle(index, dt, &p);
+                
+                // Rotation optimization
+                float c = 1, s = 0;
+                if( p.rotation ) {
+                    float radians = -FZ_DEGREES_TO_RADIANS(m_rotation);
+                    c = fzMath_cos(radians);
+                    s = fzMath_sin(radians);
+                }
+                
+                // Updating the transform
+                float data[] = {
+                    c,  s,
+                    -s, c,
+                    p.pos.x-p.size.width/2, p.pos.y-p.size.height/2, 0
+                };
+                
+                fzAffineTransform transform;
+                transform.assign(data);
+                
+                
+                fzRect rect = fzRect(FZPointZero, p.size);
+                rect.applyTransform(transform);
+                
+                quad->bl.vertex.x = rect.origin.x;
+                quad->bl.vertex.y = rect.origin.y;
+                
+                // bottom-right vertex:
+                quad->br.vertex.x = rect.origin.x + rect.size.width;
+                quad->br.vertex.y = rect.origin.y;
+                
+                // top-left vertex:
+                quad->tl.vertex.x = rect.origin.x;
+                quad->tl.vertex.y = rect.origin.y + rect.size.height;
+                
+                // top-right vertex:
+                quad->tr.vertex.x = rect.origin.x + rect.size.width;
+                quad->tr.vertex.y = rect.origin.y + rect.size.height;
+                
+                
+                quad->bl.color = p.color;
+                quad->br.color = p.color;
+                quad->tl.color = p.color;
+                quad->tr.color = p.color;
+                
+                ++quad;
+            }
+            makeDirty(0);
         }
-    }
-    
-    
-    void ParticleSystemQuad::setTexture(Texture2D *t)
-    {
-        setTexture(t, fzRect(FZPointZero, p_texture->getContentSize()));
-    }
-    
-    
-    void ParticleSystemQuad::updateQuadWithParticle(const fzParticle& p)
-    {
-        // colors
-        fzC4_T2_V2_Quad& quad = p_quads[m_particleIdx];
         
-        fzColor4B color4B(p.color);
-        quad.bl.color = color4B;
-        quad.br.color = color4B;
-        quad.tl.color = color4B;
-        quad.tr.color = color4B;
-        
-        // vertices
-        fzFloat size_2 = p.size/2;
-        
-        if( p.rotation ) {
-            fzFloat x1 = -size_2;
-            fzFloat y1 = -size_2;
-            
-            fzFloat& x2 = size_2;
-            fzFloat& y2 = size_2;
-            const fzFloat& x = p.pos.x;
-            const fzFloat& y = p.pos.y;
-            
-            fzFloat r = -FZ_DEGREES_TO_RADIANS(p.rotation);
-            fzFloat sr = fzMath_sin(r);
-            fzFloat cr = fzMath_cos(r);
-            
-            fzFloat ax = x1 * cr - y1 * sr + x;
-            fzFloat ay = x1 * sr + y1 * cr + y;
-            fzFloat bx = x2 * cr - y1 * sr + x;
-            fzFloat by = x2 * sr + y1 * cr + y;
-            fzFloat cx = x2 * cr - y2 * sr + x;
-            fzFloat cy = x2 * sr + y2 * cr + y;
-            fzFloat dx = x1 * cr - y2 * sr + x;
-            fzFloat dy = x1 * sr + y2 * cr + y;
-            
-            // bottom-left
-            quad.bl.vertex.x = ax;
-            quad.bl.vertex.y = ay;
-            
-            // bottom-right vertex:
-            quad.br.vertex.x = bx;
-            quad.br.vertex.y = by;
-            
-            // top-left vertex:
-            quad.tl.vertex.x = dx;
-            quad.tl.vertex.y = dy;
-            
-            // top-right vertex:
-            quad.tr.vertex.x = cx;
-            quad.tr.vertex.y = cy;
-        } else {
-            // bottom-left vertex:
-            quad.bl.vertex.x = p.pos.x - size_2;
-            quad.bl.vertex.y = p.pos.y - size_2;
-            
-            // bottom-right vertex:
-            quad.br.vertex.x = p.pos.x + size_2;
-            quad.br.vertex.y = p.pos.y - size_2;
-            
-            // top-left vertex:
-            quad.tl.vertex.x = p.pos.x - size_2;
-            quad.tl.vertex.y = p.pos.y + size_2;
-            
-            // top-right vertex:
-            quad.tr.vertex.x = p.pos.x + size_2;
-            quad.tr.vertex.y = p.pos.y + size_2;				
-        }
-    }
-    
-    
-    void ParticleSystemQuad::postStep()
-    {
-#if FZ_VBO_STREAMING
-        glBindBuffer(GL_ARRAY_BUFFER, m_quadsVBO);
-        glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(fzC4_T2_V2_Quad) * particleCount_, p_quads);
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
-#endif
+        // SETS THE LAST QUAD USED
+        m_textureAtlas.setLastQuad(quad);
     }
     
     
     void ParticleSystemQuad::draw()
-    {	
-        if(m_particleIdx == 0)
+    {
+        if( m_textureAtlas.getCount() == 0 )
             return;
         
-        // Default Attribs & States: GL_TEXTURE0, k,CCAttribVertex, kCCAttribColor, kCCAttribTexCoords
-        // Needed states: GL_TEXTURE0, k,CCAttribVertex, kCCAttribColor, kCCAttribTexCoords
-        // Unneeded states: -
-        
-        fzGLSetMode(kFZGLMode_Texture);
-        fzGLBlendFunc( m_blendFunc.src, m_blendFunc.dst );
-        p_texture->bind();
-        
 #if FZ_GL_SHADERS
-        
         p_glprogram->use();
-        FZ_SAFE_APPLY_MATRIX(p_glprogram);
-        
-        // atributes
-        glVertexAttribPointer(kFZAttribPosition, 2, GL_FLOAT, GL_FALSE, sizeof(_fzC4_T2_V2), &p_quads->bl.vertex);
-        glVertexAttribPointer(kFZAttribTexCoords, 2, GL_FLOAT, GL_FALSE, sizeof(_fzC4_T2_V2), &p_quads->bl.texCoord);
-        glVertexAttribPointer(kFZAttribColor, 4, GL_UNSIGNED_BYTE, GL_TRUE, sizeof(_fzC4_T2_V2), &p_quads->bl.color);
-#else
-        
-        //glLoadMatrixf(get);
-
-        glVertexPointer(2, GL_FLOAT, sizeof(_fzC4_T2_V2), &p_quads->bl.vertex);
-        glTexCoordPointer(2, GL_FLOAT, sizeof(_fzC4_T2_V2), &p_quads->bl.texCoord);
-        glColorPointer(4, GL_UNSIGNED_BYTE, sizeof(_fzC4_T2_V2), &p_quads->bl.color);
+        FZ_PROGRAM_APPLY_TRANSFORM(p_glprogram);
 #endif
-                
-        FZ_ASSERT( m_particleIdx == m_particleCount, "Abnormal error in particle quad.");
-    
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_indicesVBO);
-        glDrawElements(GL_TRIANGLES, m_particleIdx * 6, GL_UNSIGNED_SHORT, 0);
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+        fzGLBlendFunc( m_blendFunc );
+        m_textureAtlas.drawQuads();
     }
 }

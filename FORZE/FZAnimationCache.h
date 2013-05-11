@@ -47,8 +47,8 @@ namespace FORZE {
     {
     private:
         // Simplified types
-        typedef pair<int32_t, Animation*> animationPair;
-        typedef map<int32_t, Animation*> animationMap;
+        typedef pair<uint32_t, Animation*> animationPair;
+        typedef map<uint32_t, Animation*> animationMap;
         
         // Director's instance
         static AnimationCache* p_instance;

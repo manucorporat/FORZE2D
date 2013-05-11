@@ -29,7 +29,7 @@
 
 #include "macosx_support.h"
 
-#if defined(FZ_OS) && (FZ_OS == kFZPLATFORM_MAC)
+#if defined(FZ_OS) && (FZ_OS == kFZ_OS_MAC)
 
 #include <sys/types.h>
 #include <sys/sysctl.h>
@@ -63,7 +63,7 @@ namespace FORZE {
             if(principalClass == nil || ![NSBundle loadNibNamed:principalClass owner:app])
             {
                 // we could not load the NIB
-                [app setDelegate:[[_FZOSWRAPPER alloc] init]];
+                [app setDelegate:[[[_FZOSWRAPPER alloc] init] autorelease]];
                 {
                     NSMenu *menubar = [[[NSMenu alloc] init] autorelease];
                     NSMenuItem *appMenuItem = [[NSMenuItem new] autorelease];

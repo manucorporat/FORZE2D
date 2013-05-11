@@ -66,7 +66,10 @@ namespace FORZE {
               " - pevents[]: Prints the active events.\n"
               " - pnodes[]: Prints the rendering tree.\n"
               " - pfonts[]: Prints the cached fonts.\n"
-              " - ptextures[]: Prints the cached textures.\n\n"
+              " - ptextures[]: Prints the cached textures.\n"
+              " - pcanvassize[]: Prints the canvas' size.\n"
+              " - pwindowsize[]: Prints the window's size.\n"
+              " - pviewport[]: Prints the view port.\n\n"
               
               " - sfps[ framerate ]: Sets the framerate.\n"
               " - scanvassize[ width, height ]: Sets the canvas size.\n"
@@ -76,16 +79,17 @@ namespace FORZE {
               " - shud[ bool ]: Enables or disables the HUD.\n\n"
               
               " - event[identifier, type, state, x, y, z]: Creates a event.\n"
+              " - save[]: DataStore saves data in permanent memory.\n"
               " - resume[]: Resumes the director.\n"
               " - pause[]: Pauses the director.\n"
               " - startanimation[]: Starts the rendering thread.\n"
               " - stopanimation[]: Stops the rendering thread.\n"
-              " - releasetextures[]: Purges the cache.\n"
-              " - releasefonts[]: Purges the cache.\n"
-              " - loadtexture[ filename ]: Caches if posible the specified texture filename.\n"
-              " - loadfont[ filename ]: Caches if posible the specified font filename.\n"
+              " - releasetextures[]: Purges the texture cache.\n"
+              " - releasefonts[]: Purges the font cache.\n"
+              " - loadtexture[ filename ]: Caches if posible the specified texture.\n"
+              " - loadfont[ filename ]: Caches if posible the specified font.\n"
               " - checkfile[ filename ]: Performs a complete check of the file availability.\n"
-              " - pop[]: pops the current scene.\n");
+              " - pop[]: Pops the current scene.\n");
 
         return true;
     }
@@ -103,6 +107,24 @@ namespace FORZE {
     static bool __cmd_pfps(const char*,float*, int)
     {
         FZLog("Console: %f\n", 1/Director::Instance().getDelta());
+        return true;
+    }
+    static bool __cmd_pcanvassize(const char*,float*, int)
+    {
+        fzSize size = Director::Instance().getCanvasSize();
+        FZLog("Canvas size: {%f, %f}\n", size.width, size.height);
+        return true;
+    }
+    static bool __cmd_pwindowsize(const char*,float*, int)
+    {
+        fzSize size = Director::Instance().getWindowSize();
+        FZLog("Window size: {%f, %f}\n", size.width, size.height);
+        return true;
+    }
+    static bool __cmd_pviewport(const char*,float*, int)
+    {
+        fzSize size = Director::Instance().getViewPort();
+        FZLog("View port: {%f, %f}\n", size.width, size.height);
         return true;
     }
     static bool __cmd_pinfo(const char*,float*, int)
@@ -294,47 +316,50 @@ namespace FORZE {
 #pragma mark -
     
     const static struct {
-        int32_t hash;
+        uint32_t hash;
         bool (*func)(const char*, float*, int);
         int values;
     } funcList[] =
     {
         // GENERAL COMMANDS
-        {fzHashConst("help"), __cmd_help, 0},
-        {fzHashConst("exit"), __cmd_exit, 0},
-        {fzHashConst("clear"), __cmd_clear, 0},
+        {"help"_hash, __cmd_help, 0},
+        {"exit"_hash, __cmd_exit, 0},
+        {"clear"_hash, __cmd_clear, 0},
         
         // PRINT COMMANDS
-        {fzHashConst("pfps"), __cmd_pfps, 0},
-        {fzHashConst("pinfo"), __cmd_pinfo, 0},
-        {fzHashConst("pevents"), __cmd_pevents, 0},
-        {fzHashConst("ptextures"), __cmd_ptextures, 0},
-        {fzHashConst("pfonts"), __cmd_pfonts, 0},
-        {fzHashConst("pnodes"), __cmd_pnodes, 0},
-        {fzHashConst("pframes"), __cmd_pframes, 0},
+        {"pfps"_hash, __cmd_pfps, 0},
+        {"pinfo"_hash, __cmd_pinfo, 0},
+        {"pevents"_hash, __cmd_pevents, 0},
+        {"ptextures"_hash, __cmd_ptextures, 0},
+        {"pfonts"_hash, __cmd_pfonts, 0},
+        {"pnodes"_hash, __cmd_pnodes, 0},
+        {"pframes"_hash, __cmd_pframes, 0},
+        {"pcanvassize"_hash, __cmd_pcanvassize, 0},
+        {"pwindowsize"_hash, __cmd_pwindowsize, 0},
+        {"pviewport"_hash, __cmd_pviewport, 0},
 
 
         // SET COMMANDS
-        {fzHashConst("sfps"), __cmd_sfps, 1},
-        {fzHashConst("scanvassize"), __cmd_scanvassize, 2},
-        {fzHashConst("swindowsize"), __cmd_swindowsize, 2},
-        {fzHashConst("sresizemode"), __cmd_sresizemode, 1},
-        {fzHashConst("stimescale"), __cmd_stimescale, 1},
-        {fzHashConst("shud"), __cmd_shud, 1},
+        {"sfps"_hash, __cmd_sfps, 1},
+        {"scanvassize"_hash, __cmd_scanvassize, 2},
+        {"swindowsize"_hash, __cmd_swindowsize, 2},
+        {"sresizemode"_hash, __cmd_sresizemode, 1},
+        {"stimescale"_hash, __cmd_stimescale, 1},
+        {"shud"_hash, __cmd_shud, 1},
 
         // MISCELANEOUS
-        {fzHashConst("event"), __cmd_event, 3},
-        {fzHashConst("save"), __cmd_save, 0},
-        {fzHashConst("resume"), __cmd_resume, 0},
-        {fzHashConst("pause"), __cmd_pause, 0},
-        {fzHashConst("startanimation"), __cmd_startanimation, 0},
-        {fzHashConst("stopanimation"), __cmd_stopanimation, 0},
-        {fzHashConst("pop"), __cmd_pop, 0},
-        {fzHashConst("releasetextures"), __cmd_releasetextures, 0},
-        {fzHashConst("releasefonts"), __cmd_releasefonts, 0},
-        {fzHashConst("loadtexture"), __cmd_loadtexture, 0},
-        {fzHashConst("loadfont"), __cmd_loadfont, 0},
-        {fzHashConst("checkfile"), __cmd_checkfile, 0},
+        {"event"_hash, __cmd_event, 3},
+        {"save"_hash, __cmd_save, 0},
+        {"resume"_hash, __cmd_resume, 0},
+        {"pause"_hash, __cmd_pause, 0},
+        {"startanimation"_hash, __cmd_startanimation, 0},
+        {"stopanimation"_hash, __cmd_stopanimation, 0},
+        {"pop"_hash, __cmd_pop, 0},
+        {"releasetextures"_hash, __cmd_releasetextures, 0},
+        {"releasefonts"_hash, __cmd_releasefonts, 0},
+        {"loadtexture"_hash, __cmd_loadtexture, 0},
+        {"loadfont"_hash, __cmd_loadfont, 0},
+        {"checkfile"_hash, __cmd_checkfile, 0},
     };
     
     
@@ -419,7 +444,7 @@ namespace FORZE {
             return true;
         
         // GET HASH
-        int32_t hash = fzHashConst(command);
+        uint32_t hash = fzHash(command);
         
         // FIND COMMAND
         for(unsigned int i = 0; i < (sizeof(funcList)/sizeof(funcList[0])); ++i){

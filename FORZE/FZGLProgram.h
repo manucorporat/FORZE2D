@@ -31,7 +31,7 @@
  @author Manuel Martínez-Almeida
  */
 
-#include "FZPlatforms.h"
+#include "FZOSW.h"
 
 #if FZ_GL_SHADERS
 
@@ -49,9 +49,9 @@ using namespace STD;
 namespace FORZE {
         
     // uniform names
-#define kFZUniformMVMatrix_s                "u_MVMatrix"
-#define kFZUniformSampler_s                 "u_texture"
-#define kFZUniformColor_s                   "u_color"
+#define kFZUniformMVMatrix                "u_MVMatrix"_hash
+#define kFZUniformSampler                 "u_texture"_hash
+#define kFZUniformColor                   "u_color"_hash
 
     // Attribute names
 #define	kFZAttributeNameColor               "a_color"
@@ -112,11 +112,11 @@ namespace FORZE {
         GLuint  m_program;
         
 #if FZ_STL_CPLUSPLUS11
-        typedef unordered_map<int32_t, GLint> uniformsMap;
+        typedef unordered_map<uint32_t, GLint> uniformsMap;
 #else
-        typedef map<int32_t, GLint> uniformsMap;
+        typedef map<uint32_t, GLint> uniformsMap;
 #endif
-        typedef pair<int32_t, GLint> uniformsPair;
+        typedef pair<uint32_t, GLint> uniformsPair;
 
         
         uniformsMap m_uniforms;
@@ -175,7 +175,26 @@ namespace FORZE {
         
         //! Returns the uniform locations given the key value.
         //! @warning this method should be called before link the program.
-        GLint getUniform(const char* uniform) const;
+        GLint getUniform(uint32_t hash) const;
+        
+        
+
+        
+        void setUniform1i(uint32_t hash, int v1) const;
+        void setUniform1f(uint32_t hash, float v1) const;
+        void setUniform2f(uint32_t hash, float v1, float v2) const;
+        void setUniform3f(uint32_t hash, float v1, float v2, float v3) const;
+        void setUniform4f(uint32_t hash, float v1, float v2, float v3, float v4) const;
+        
+        void setUniform1iv(uint32_t hash, GLsizei count, int* values) const;
+        void setUniform1fv(uint32_t hash, GLsizei count, float* values) const;
+        void setUniform2fv(uint32_t hash, GLsizei count, float* values) const;
+        void setUniform3fv(uint32_t hash, GLsizei count, float* values) const;
+        void setUniform4fv(uint32_t hash, GLsizei count, float* values) const;
+        
+        void setUniform4x4f(uint32_t hash, GLsizei count, bool transpose, float *matrix) const;
+        
+        
         
         void setUniform1i(const char* uniform, int v1) const;
         void setUniform1f(const char* uniform, float v1) const;

@@ -123,7 +123,7 @@ namespace FORZE {
                 FZLOGERROR("SpriteFrameCache: Error parsing \"%s\". <node name> attribute wasn't found.", coordsFilename);
                 continue;
             }
-            int32_t hash = fzHash(attribute->value(), attribute->value_size());
+            uint32_t hash = fzHash(attribute->value(), attribute->value_size());
             
             if(getSpriteFrameByHash(hash).isValid())
                 continue;
@@ -292,7 +292,7 @@ namespace FORZE {
     }
     
     
-    fzSpriteFrame SpriteFrameCache::getSpriteFrameByHash(int32_t hash) const
+    fzSpriteFrame SpriteFrameCache::getSpriteFrameByHash(uint32_t hash) const
     {
         framesMap::const_iterator it(m_frames.find(hash));
         if(it == m_frames.end())

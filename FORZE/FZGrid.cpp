@@ -52,8 +52,10 @@ namespace FORZE {
         setTexture(texture);
         setGridSize(size);
         
-        const fzSize& texSize = texture->getContentSize();
-        m_step = fzPoint(texSize.width/m_gridSize.x, texSize.height/m_gridSize.y);
+        if(texture != NULL) {
+            const fzSize& texSize = texture->getContentSize();
+            m_step = fzPoint(texSize.width/m_gridSize.x, texSize.height/m_gridSize.y);
+        }
     }
 
     
@@ -265,21 +267,21 @@ namespace FORZE {
     }
     
     
-    const fzQuad3& GridTiled3D::getTile(const fzGridSize& pos) const
+    const fzQuad3F& GridTiled3D::getTile(const fzGridSize& pos) const
     {
         fzUInt index = m_gridSize.y * pos.x + pos.y;
         return p_vertices[index];
     }
     
     
-    const fzQuad3& GridTiled3D::getOriginalTile(const fzGridSize& pos) const
+    const fzQuad3F& GridTiled3D::getOriginalTile(const fzGridSize& pos) const
     {
         fzUInt index = m_gridSize.y * pos.x + pos.y;
         return p_originalVertices[index];
     }
     
     
-    void GridTiled3D::setTile(const fzGridSize& pos, const fzQuad3& newQuad)
+    void GridTiled3D::setTile(const fzGridSize& pos, const fzQuad3F& newQuad)
     {
         fzUInt index = m_gridSize.y * pos.x + pos.y;
         p_vertices[index] = newQuad;
@@ -293,9 +295,9 @@ namespace FORZE {
         
         fzUInt numQuads = m_gridSize.x * m_gridSize.y;
         
-        p_vertices          = new fzQuad3[numQuads];
-        p_originalVertices  = new fzQuad3[numQuads];
-        p_texCoords         = new fzQuad2[numQuads];
+        p_vertices          = new fzQuad3F[numQuads];
+        p_originalVertices  = new fzQuad3F[numQuads];
+        p_texCoords         = new fzQuad2F[numQuads];
         GLushort *indices   = new GLushort[numQuads * 6];
         
         float *vertArray = (float*)p_vertices;
@@ -351,7 +353,7 @@ namespace FORZE {
             idxArray[x6+5] = x4+3;
         }
         
-        memcpy(p_originalVertices, p_vertices, numQuads * sizeof(fzQuad3));
+        memcpy(p_originalVertices, p_vertices, numQuads * sizeof(fzQuad3F));
         
         
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_indicesVBO);
@@ -384,7 +386,7 @@ namespace FORZE {
     void GridTiled3D::reuse()
     {
         if ( m_reuseGrid > 0 ) {
-            memcpy(p_originalVertices, p_vertices, m_gridSize.x * m_gridSize.y * sizeof(fzQuad3));
+            memcpy(p_originalVertices, p_vertices, m_gridSize.x * m_gridSize.y * sizeof(fzQuad3F));
             m_reuseGrid--;
         }
     }

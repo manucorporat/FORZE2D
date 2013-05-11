@@ -55,17 +55,17 @@ namespace FORZE {
     private:
         // Simplified typedefs
 #if FZ_STL_CPLUSPLUS11
-        typedef unordered_map<int32_t, Font*> fontsMap;
+        typedef unordered_map<uint32_t, Font*> fontsMap;
 #else
-        typedef map<int32_t, Font*> fontsMap;
+        typedef map<uint32_t, Font*> fontsMap;
 #endif
-        typedef pair<int32_t, Font*> fontsPair;
+        typedef pair<uint32_t, Font*> fontsPair;
         
         // Director's instance
         static FontCache* p_instance;
         fontsMap m_fonts;
         
-        Font* getFontForHash(int32_t hash) const;
+        Font* getFontForHash(uint32_t hash) const;
         
         
     protected:
@@ -81,7 +81,7 @@ namespace FORZE {
         
         
         //! Returns and loads if needed a Font instance giving the filename.
-        Font* addFont(const char* filename, fzFloat lineHeight);
+        Font* addFont(const char* filename, fzFloat lineHeight = 0);
         
         
         //! Removes a Font from the cache given the font instance.

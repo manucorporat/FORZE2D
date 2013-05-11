@@ -79,7 +79,7 @@ namespace FORZE {
         try {
             readFromMemory();
 
-        } catch (std::exception& error) {
+        } catch(std::exception& error) {
             FZLOGERROR(error.what());
             fzOSW_removePath(p_path);
         }
@@ -134,13 +134,13 @@ namespace FORZE {
         
         // WRITE XML
         fprintf(f, "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n");
-        fprintf(f, "<"XML_SIZE_TAG">%d</"XML_SIZE_TAG">\n", m_num);
+        fprintf(f, "<" XML_SIZE_TAG">%d</" XML_SIZE_TAG">\n", m_num);
 
         for(fzInt i = m_num-1; i >= 0; --i)
         {
             fzStoreEntry& e = p_store[i];
 
-            fprintf(f, "<"XML_ENTRY_TAG" "XML_KEY_ATTRIBUTE"=\"%s\" "XML_TYPE_ATTRIBUTE"=\"%d\">", e.key, e.type);
+            fprintf(f, "<" XML_ENTRY_TAG" " XML_KEY_ATTRIBUTE"=\"%s\" " XML_TYPE_ATTRIBUTE"=\"%d\">", e.key, e.type);
             
             switch (e.type) {
                 case kFZData_string:
@@ -161,7 +161,7 @@ namespace FORZE {
                     FZLOGERROR("DataStore: Invalid data type.");
                     continue;
             }
-            fputs("</"XML_ENTRY_TAG">\n", f);
+            fputs("</" XML_ENTRY_TAG">\n", f);
         }
         fclose(f);
         return true;
@@ -255,7 +255,7 @@ namespace FORZE {
     
 #pragma mark - Low level
     
-    DataStore::fzStoreEntry* DataStore::entryForHash(int32_t keyhash) const
+    DataStore::fzStoreEntry* DataStore::entryForHash(uint32_t keyhash) const
     {
         if(m_num == 0)
             return NULL;

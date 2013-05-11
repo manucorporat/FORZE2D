@@ -54,18 +54,18 @@ namespace FORZE {
     private:
         // Simplified typedefs
 #if FZ_STL_CPLUSPLUS11
-        typedef unordered_map<int32_t, Texture2D*> texturesMap;
+        typedef unordered_map<uint32_t, Texture2D*> texturesMap;
 #else
-        typedef map<int32_t, Texture2D*> texturesMap;
+        typedef map<uint32_t, Texture2D*> texturesMap;
 #endif
-        typedef pair<int32_t, Texture2D*> texturesPair;
+        typedef pair<uint32_t, Texture2D*> texturesPair;
         
         
         // singleton instance
         static TextureCache* p_instance;
         texturesMap m_textures;
         
-        Texture2D* getTextureByHash(int32_t hash) const;
+        Texture2D* getTextureByHash(uint32_t hash) const;
         
     protected:
         // Constructors

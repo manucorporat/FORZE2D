@@ -29,7 +29,7 @@
 
 #include "model_support.h"
 
-#if !defined(FZ_OS) || (FZ_OS == kFZPLATFORM_MODEL)
+#if !defined(FZ_OS) || (FZ_OS == kFZ_OS_MODEL)
 
 #include "../FZDeviceConfig.h"
 #include "../FZDirector.h"

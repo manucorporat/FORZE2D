@@ -205,12 +205,12 @@ namespace FORZE {
         
         
         // Generate untransformed vertices
-        fzPoint xy2 = m_offset + m_textureRect.size;        
+        fzPoint tl = m_offset + m_textureRect.size;
 
         m_vertices[0] = m_offset;
-        m_vertices[1] = fzVec2(xy2.x, m_offset.y);
-        m_vertices[2] = fzVec2(m_offset.x, xy2.y);
-        m_vertices[3] = xy2;
+        m_vertices[1] = fzVec2(tl.x, m_offset.y);
+        m_vertices[2] = fzVec2(m_offset.x, tl.y);
+        m_vertices[3] = tl;
 
         makeDirty(kFZDirty_transform_absolute);
     }
@@ -476,7 +476,7 @@ namespace FORZE {
 #if FZ_GL_SHADERS
         
         p_glprogram->use();
-        p_glprogram->setUniform4f(kFZUniformColor_s, m_color.r/255.0f, m_color.g/255.0f, m_color.b/255.0f, (m_cachedOpacity * m_alpha)/255.0f);
+        p_glprogram->setUniform4f(kFZUniformColor, m_color.r/255.0f, m_color.g/255.0f, m_color.b/255.0f, (m_cachedOpacity * m_alpha)/255.0f);
         
         // atributes
         glVertexAttribPointer(kFZAttribTexCoords, 2, GL_FLOAT, GL_FALSE, sizeof(fzVec2), m_texCoords);

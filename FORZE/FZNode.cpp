@@ -89,7 +89,7 @@ namespace FORZE {
             delete p_camera;
         
         Node *child;
-        FZ_LIST_FOREACH_SAFE(m_children, child)
+        FZ_LIST_FOREACH_MUTABLE(m_children, child)
         {
             child->setParent(NULL);
             child->release();
@@ -103,8 +103,7 @@ namespace FORZE {
         unscheduleAllSelectors();
 
         Node *child;
-        FZ_LIST_FOREACH(m_children, child)
-        {
+        FZ_LIST_FOREACH(m_children, child) {
             child->cleanup();
         }
     }
@@ -163,9 +162,6 @@ namespace FORZE {
     void Node::setContentSize(const fzSize& s)
     {
         if( m_contentSize != s ) {
-//            FZ_ASSERT(s.width >= 0, "The content size can not be negative.");
-//            FZ_ASSERT(s.height >= 0, "The content size can not be negative.");
-
             m_contentSize = s;
             m_anchorPointInPoints.x = m_contentSize.width * m_anchorPoint.x;
             m_anchorPointInPoints.y = m_contentSize.height * m_anchorPoint.y;
@@ -176,7 +172,7 @@ namespace FORZE {
     
     void Node::setOpacity(fzFloat o)
     {
-        FZ_ASSERT( o >= 0.0f && o <= 1.0f, "Opacity must be between [0, 1].");
+        FZ_ASSERT( o >= 0.0f && o <= 1.0f, "Opacity must be in [0, 1].");
         
         if(m_opacity != o) {
             m_opacity = o;
@@ -310,15 +306,25 @@ namespace FORZE {
     }
 
     
-#pragma mark - Composition
+#pragma mark - Children management
+    
+    fzUInt Node::countAllChildren() const
+    {
+        fzUInt count = m_children.size();
+        Node *child;
+        FZ_LIST_FOREACH(m_children, child) {
+            count += child->countAllChildren();
+        }
+        return count;
+    }
+    
     
     Node* Node::getChildByTag(fzInt tag)
     {
-        FZ_ASSERT( tag != kFZNodeTagInvalid, "Invalid tag.");
+        FZ_ASSERT(tag != kFZNodeTagInvalid, "Invalid tag.");
         
-        Node *child = NULL;
-        FZ_LIST_FOREACH(m_children, child)
-        {
+        Node *child;
+        FZ_LIST_FOREACH(m_children, child) {
             if( child->getTag() == tag )
                 return child;
         }
@@ -353,7 +359,7 @@ namespace FORZE {
     void Node::removeFromParent(bool clean)
     {
         if(p_parent)
-          p_parent->removeChild(this, clean);
+            p_parent->removeChild(this, clean);
     }
     
     
@@ -385,18 +391,14 @@ namespace FORZE {
     void Node::removeAllChildren(bool clean)
     {
         Node *child;
-        FZ_LIST_FOREACH_SAFE(m_children, child) {
+        FZ_LIST_FOREACH_MUTABLE(m_children, child) {
             detachChild(child, clean);
         }
       
         m_children.clear();
     }
-
     
-    /* "add" logic MUST only be on this method
-     * If a class want's to extend the 'addChild' behaviour it only needs
-     * to override this method
-     */
+    
     void Node::insertChild(Node* child)
     {
         // insert node at position giving a zOrder
@@ -839,6 +841,7 @@ namespace FORZE {
             if( !m_isRelativeAnchorPoint )
                 translation += m_anchorPointInPoints;
             
+            
             // Rotation optimization
             float c = 1, s = 0;
             if( m_rotation ) {
@@ -889,13 +892,13 @@ namespace FORZE {
     }
     
     
-    const fzPoint& Node::convertToNodeSpace(fzPoint worldPoint)
+    fzPoint Node::convertToNodeSpace(fzPoint worldPoint)
     {
         return worldPoint.applyTransform(getWorldToNodeTransform());
     }
     
     
-    const fzPoint& Node::convertToWorldSpace(fzPoint nodePoint)
+    fzPoint Node::convertToWorldSpace(fzPoint nodePoint)
     {
         return nodePoint.applyTransform(getNodeToWorldTransform());
     }

@@ -235,16 +235,16 @@ namespace FORZE {
     }
     
     
-    void LayerGradient::setStartAlpha(GLubyte a)
+    void LayerGradient::setStartAlpha(GLubyte alpha)
     {
-        m_startAlpha = a;
+        m_startAlpha = alpha;
         makeDirty(kFZDirty_color);
     }
     
     
-    void LayerGradient::setEndAlpha(GLubyte a)
+    void LayerGradient::setEndAlpha(GLubyte alpha)
     {
-        m_endAlpha =  a;
+        m_endAlpha = alpha;
         makeDirty(kFZDirty_color);
     }
     

@@ -46,47 +46,47 @@
 #endif
 
 
-#define kFZPLATFORM_MODEL 0
+#define kFZ_OS_MODEL 0
 
-/** @def kFZPLATFORM_IOS_GL_1
+/** @def kFZ_OS_IOS_GL1
  * iOS. Opengl ES 1.0 rendering. ARMv6 and ARMv7. All iDevices.
  */
-#define kFZPLATFORM_IOS_GL_1 1
+#define kFZ_OS_IOS_GL1 1
 
 
-/** @def kFZPLATFORM_IOS_GL_2
+/** @def kFZ_OS_IOS_GL2
  * iOS. Opengl ES 2.0 rendering. Shader. Only available for ARMv7 iDevices.
  */
-#define kFZPLATFORM_IOS_GL_2 2
+#define kFZ_OS_IOS_GL2 2
 
 
-/** @def kFZPLATFORM_IOS_GL_2
+/** @def kFZ_OS_IOS_GL2
  * Mac OS X. Opengl 1.1 rendering. Shaders.
  */
-#define kFZPLATFORM_MAC 3
+#define kFZ_OS_MAC 3
 
 
-/** @def kFZPLATFORM_PSVITA
+/** @def kFZ_OS_PSVITA
  * Playstation VITA. Shaders.
  */
-#define kFZPLATFORM_PSVITA 4
+#define kFZ_OS_PSVITA 4
 
 
-/** @def kFZPLATFORM_WINDOWS
+/** @def kFZ_OS_WINDOWS
  * Windows. OpenGL. Shaders.
  */
-#define kFZPLATFORM_WINDOWS 5
+#define kFZ_OS_WINDOWS 5
 
 
-#define kFZPLATFORM_ANDROID 6
+#define kFZ_OS_ANDROID 6
 
 
 
 // USAGE:
 // INCLUDE THIS CODE IN YOUR PREFIX HEADER.
-// #include "FZPlatformsHeader.h"
-// #define FZ_OS kFZPLATFORM_IOS_GL_2
-// //#define FZ_OS kFZPLATFORM_MAC
+// #include "FZOSW_header.h"
+// #define FZ_OS kFZ_OS_IOS_GL2
+// //#define FZ_OS kFZ_OS_MAC
 // ...
 
 #endif

@@ -50,7 +50,7 @@ namespace FORZE {
         struct fzStoreEntry
         {
             unsigned char type;
-            int32_t hash;
+            uint32_t hash;
             char *key;
             
             union {
@@ -88,7 +88,7 @@ namespace FORZE {
         void setEntry(const fzStoreEntry& entry);
         
         //! Used internally to get a entry given the hash value
-        fzStoreEntry *entryForHash(int32_t hash) const;
+        fzStoreEntry *entryForHash(uint32_t hash) const;
         
         //! Used internally to get a entry given the key
         fzStoreEntry *entryForKey(const char *key) const;

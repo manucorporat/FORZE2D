@@ -45,7 +45,7 @@ namespace FORZE {
 
         if(position != NULL)
         {
-            FZ_ASSERT(m_count > 0, "Strange bug: List is empty.");
+            FZ_ASSERT(m_count > 0, "Bad internal state.");
             
             // POSITION != NULL -> INSERT AT POSITION
             newItem->p_next = position;
