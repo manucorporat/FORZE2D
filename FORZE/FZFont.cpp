@@ -46,28 +46,14 @@ namespace FORZE {
         return key;
     }
     
-    static fzUInt getSubtrings(char *str, char** lines, fzUInt max)
+    static void firstWord(const char *str, char *output)
     {
-        fzUInt line = 0;
-        bool next = true;
-        
-        while(*str != '\0') {
-            if(next) {
-                if(line >= max)
-                    FZ_RAISE("Font:FNT: Too many lines.");
-                
-                lines[line] = str;
-                ++line;
-                next = false;
-            }
-            
-            if( *str == '\n') {
-                *str = '\0';
-                next = true;
-            }
+        while(*str != ' ') {
+            *output = *str;
+            ++output;
             ++str;
         }
-        return line;
+        *output = '\0';
     }
     
     
@@ -80,10 +66,11 @@ namespace FORZE {
         if(extension == NULL)
             FZ_RAISE_STOP("Font: Extension is missing.");
         
-        if(strcasecmp( extension, "fnt") == 0 )
+        
+        if(strcasecmp(extension, "fnt") == 0 )
             loadFNTFile(filename);
         
-        else if(strcasecmp( extension, "ttf") == 0 )
+        else if(strcasecmp(extension, "ttf") == 0 )
             loadTTFFile(filename, fontHeight);
         
         else
@@ -135,110 +122,131 @@ namespace FORZE {
         if(data == NULL)
             FZ_RAISE("Font:FNT: Imposible to load FNT data. Pointer is NULL.");
         
-        char *lines[512];
-        fzUInt nuLines = getSubtrings(data, lines, 512);
+        int line = 1;
+        char word[30];
+        bool parsedCommon = false;
+        bool parsedPage = false;
         
-        if(nuLines <= 4)
-            FZ_RAISE_STOP("Font: Invalid FNT. Missing general info.");
-
+        while(*data != '\0') {
         
-        // COMMON DATA PARSING
-        int nuPages = 0;
-        int nu_arg = sscanf(lines[1], "common lineHeight=%f base=%*d scaleW=%*d scaleH=%*d pages=%d", &m_lineHeight, &nuPages);
-        
-        if(nu_arg != 2)
-            FZ_RAISE_STOP("Font:FNT: Line 2. Sintax error. Error parsing FNT common data.");
-
-        if(nuPages != 1)
-            FZ_RAISE_STOP("Font:FNT: Line 2. Number of pages must be 1.");
-
-        if(m_lineHeight == 0)
-            FZ_RAISE_STOP("Font:FNT: Line 2. Line height parsing error.");
-
-        m_lineHeight /= m_factor;
-        
-        
-        // PAGE + TEXTURE DATA PARSING
-        char filename[256];
-        nu_arg = sscanf(lines[2], "page id=%*d file=\"%s\"", filename);
-        
-        if(nu_arg != 1)
-            FZ_RAISE_STOP("Font:FNT: Line 3. Sintax erro. Error parsing FNT page data.");
-        
-        if(filename[0] == '\0')
-            FZ_RAISE_STOP("Font:FNT: Line 3. texture's path is missing.");
-        
-        filename[strlen(filename)-1] = '\0'; // remove last "
-        p_texture = TextureCache::Instance().addImage(filename);
-        if(p_texture == NULL)
-            FZ_RAISE("Font:FNT: Font's texture is missing.");
+            firstWord(data, word);
             
-        p_texture->retain();
-        
-        
-        // CHARACTERS DATA PARSING
-        for(fzUInt i = 4; i < nuLines; ++i)
-        {
-            char *l = lines[i];
+            switch(fzHash(word)) {
+                case "common"_hash:
+                {
+                    int nuPages = 0;
+                    int nu_arg = sscanf(data, "common lineHeight=%f base=%*d scaleW=%*d scaleH=%*d pages=%d", &m_lineHeight, &nuPages);
+                    
+                    if(nu_arg != 2)
+                        FZ_RAISE_STOP("Font:FNT: Line 2. Sintax error. Error parsing FNT common data.");
+                    
+                    if(nuPages != 1)
+                        FZ_RAISE_STOP("Font:FNT: Line 2. Number of pages must be 1.");
+                    
+                    if(m_lineHeight == 0)
+                        FZ_RAISE_STOP("Font:FNT: Line 2. Line height parsing error.");
+                    
+                    m_lineHeight /= m_factor;
+                    parsedCommon = true;
+                    
+                    break;
+                }
+                case "page"_hash:
+                {
+                    char filename[256];
+                    int nu_arg = sscanf(data, "page id=%*d file=\"%s\"", filename);
+                    
+                    if(nu_arg != 1)
+                        FZ_RAISE_STOP("Font:FNT: Line 3. Sintax erro. Error parsing FNT page data.");
+                    
+                    if(filename[0] == '\0')
+                        FZ_RAISE_STOP("Font:FNT: Line 3. texture's path is missing.");
+                    
+                    filename[strlen(filename)-1] = '\0'; // remove last "
+                    p_texture = TextureCache::Instance().addImage(filename);
+                    if(p_texture == NULL)
+                        FZ_RAISE("Font:FNT: Font's texture is missing.");
+                    
+                    p_texture->retain();
+                    parsedPage = true;
+                    
+                    break;
+                }
+                case "char"_hash:
+                {
+                    // CHAR DATA PARSING
+                    int charID = 0;
+                    fzCharDef temp_char;
+                    
+                    int nu_arg = sscanf(data, "char id=%d x=%f y=%f width=%f height=%f xoffset=%f yoffset=%f xadvance=%f",
+                                    &charID,
+                                    &temp_char.x, &temp_char.y,
+                                    &temp_char.width, &temp_char.height,
+                                    &temp_char.xOffset, &temp_char.yOffset,
+                                    &temp_char.xAdvance);
+                    
+                    temp_char.x         /= m_factor;
+                    temp_char.y         /= m_factor;
+                    temp_char.width     /= m_factor;
+                    temp_char.height    /= m_factor;
+                    temp_char.xOffset   /= m_factor;
+                    temp_char.yOffset   /= m_factor;
+                    temp_char.xAdvance  /= m_factor;
+                    
+                    if(nu_arg != 8) {
+                        FZLOGERROR("Font:FNT: Line %d. Error parsing FNT char data, syntax is not correct.", line);
+                        break;
+                    }
+                    
+                    if(charID >= 256) {
+                        FZLOGERROR("Font:FNT: Line %d. CharID is out of bounds [0, 255].", line);
+                        break;
+                    }
+                    
+                    m_chars[charID] = temp_char;
+                    break;
+                }
+                case "kerning"_hash:
+                {
+                    // KERNING DATA PARSING
+                    int first = 0;
+                    int second = 0;
+                    fzFloat amount = 0;
+                    
+                    int nu_arg = sscanf(data, "kerning first=%d second=%d amount=%f",
+                                    &first, &second, &amount);
+                    
+                    if(first < 0 || second < 0 || first > 255 || second > 255) {
+                        FZLOGERROR("Font:FNT: Line %d. Invalid indexes.", line);
+                        break;
+                    }
+                    if(nu_arg != 3) {
+                        FZLOGERROR("Font:FNT: Line %d. Error parsing FNT kerning data.", line);
+                        break;
+                    }
+                    
+                    uint16_t key = generateKey((uint8_t)first, (uint8_t)second);
+                    m_kerning.insert(pair<uint16_t, fzFloat>(key, amount));
+                    
+                    break;
+                }
+            }
             
-            if(l[0]=='c' && l[1]=='h' && l[2]=='a' &&
-               l[3]=='r' && l[4]==' ') {
-                
-                // CHAR DATA PARSING
-                int charID = 0;
-                fzCharDef temp_char;
-                
-                nu_arg = sscanf(l, "char id=%d x=%f y=%f width=%f height=%f xoffset=%f yoffset=%f xadvance=%f",
-                                &charID,
-                                &temp_char.x, &temp_char.y,
-                                &temp_char.width, &temp_char.height,
-                                &temp_char.xOffset, &temp_char.yOffset,
-                                &temp_char.xAdvance);
-                
-                temp_char.x         /= m_factor;
-                temp_char.y         /= m_factor;
-                temp_char.width     /= m_factor;
-                temp_char.height    /= m_factor;
-                temp_char.xOffset   /= m_factor;
-                temp_char.yOffset   /= m_factor;
-                temp_char.xAdvance  /= m_factor;
-                
-                if(nu_arg != 8) {
-                    FZLOGERROR("Font:FNT: Line %d. Error parsing FNT char data, syntax is not correct.", i+1);
-                    continue;
+            
+            while(true) {
+                if(*data != '\0') {
+                    if(*(data++) == '\n'){
+                        ++line;
+                        break;
+                    }
                 }
-                
-                if(charID >= 256) {
-                    FZLOGERROR("Font:FNT: Line %d. CharID is out of bounds [0, 255].", i+1);
-                    continue;
-                }
-                
-                m_chars[charID] = temp_char;
-                
-            }else if(l[0]=='k' && l[1]=='e' && l[2]=='r' && l[3]=='n' &&
-                     l[4]=='i' && l[5]=='n' && l[6]=='g' && l[7]==' ') {
-                
-                // KERNING DATA PARSING
-                int first = 0;
-                int second = 0;
-                fzFloat amount = 0;
-                
-                nu_arg = sscanf(l, "kerning first=%d second=%d amount=%f",
-                                &first, &second, &amount);
-                
-                if(first < 0 || second < 0 || first > 255 || second > 255) {
-                    FZLOGERROR("Font:FNT: Line %d. Invalid indexes.", i+1);
-                    continue;
-                }
-                if(nu_arg != 3) {
-                    FZLOGERROR("Font:FNT: Line %d. Error parsing FNT kerning data.", i+1);
-                    continue;
-                }
-                
-                uint16_t key = generateKey((uint8_t)first, (uint8_t)second);
-                m_kerning.insert(pair<uint16_t, fzFloat>(key, amount));
             }
         }
+        if(!parsedCommon)
+            FZ_RAISE_STOP("Font:FNT: FNT common data not found.");
+        
+        if(!parsedPage)
+            FZ_RAISE_STOP("Font:FNT: FNT page data not found.");
     }
     
     
@@ -257,6 +265,7 @@ namespace FORZE {
         map<uint16_t, fzFloat>::const_iterator it(m_kerning.find(key));
         return (it == m_kerning.end()) ? 0.0f : it->second;
     }
+    
     
     void Font::log() const
     {
