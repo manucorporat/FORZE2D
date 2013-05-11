@@ -97,7 +97,6 @@ namespace FORZE {
     {
         setIsRelativeAnchorPoint(true);
         setAnchorPoint(0.5f, 0.5f);
-        setContentSize(FZSizeZero);
     }
     
     

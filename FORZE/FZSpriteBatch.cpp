@@ -46,7 +46,6 @@ namespace FORZE {
     : m_textureAtlas(texture, capacity)
     , m_blendFunc()
     {
-        setContentSize(Director::Instance().getCanvasSize());
 #if FZ_GL_SHADERS
         setGLProgram(kFZShader_nomat_aC4_TEX);
 #endif
