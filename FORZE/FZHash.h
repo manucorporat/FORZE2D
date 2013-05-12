@@ -38,24 +38,25 @@ namespace FORZE
 #pragma mark - HASH ITERATION FUNCTION
 
 #define __HASH_FUNCTION(__HASH__, __VALUE__) \
-((__HASH__)*32 + (__HASH__) + (__VALUE__))
+((__HASH__)*33 + (__VALUE__))
     
+#define switch_t(__TEXT__) switch(fzHash(__TEXT__))
 
-#pragma mark - Compiler time recursive implementation
+#pragma mark - Compile-time recursive implementation
     
-    constexpr uint32_t __fzHashRecursive(uint32_t hash, char const* str)
+    constexpr uint32_t __fzHashRecursive(uint32_t hash, const char* str)
     {
         return (*str=='\0') ? hash : __fzHashRecursive(__HASH_FUNCTION(hash, *str), str+1);
     }
     
     
-    constexpr uint32_t fzHashConst(char const* str)
+    constexpr uint32_t fzHashConst(const char* str)
     {
         return (*str=='\0') ? 0 : __fzHashRecursive(5381, str);
     }
     
     
-    constexpr uint32_t operator "" _hash(char const* str, size_t)
+    constexpr uint32_t operator "" _hash(const char* str, size_t)
     {
         return fzHashConst(str);
     }
