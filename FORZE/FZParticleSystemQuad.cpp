@@ -162,6 +162,8 @@ namespace FORZE {
         
         if(p_logic->getParticleCount() > 0) {
             fzParticle p;
+            register float output[8];
+
             for(fzUInt index = 0; index < p_logic->getParticleCount(); ++index)
             {
                 p_logic->updateParticle(index, dt, &p);
@@ -185,23 +187,28 @@ namespace FORZE {
                 transform.assign(data);
                 
                 
-                fzRect rect = fzRect(FZPointZero, p.size);
-                rect.applyTransform(transform);
-                
-                quad->bl.vertex.x = rect.origin.x;
-                quad->bl.vertex.y = rect.origin.y;
+                const float vertices[8] = {
+                    0, 0,
+                    p.size.width, 0,
+                    p.size.width, p.size.height,
+                    0, p.size.height
+                };
+                fzMath_mat4Vec2(transform.m, vertices, output);
+
+                quad->bl.vertex.x = output[0];
+                quad->bl.vertex.y = output[1];
                 
                 // bottom-right vertex:
-                quad->br.vertex.x = rect.origin.x + rect.size.width;
-                quad->br.vertex.y = rect.origin.y;
+                quad->br.vertex.x = output[2];
+                quad->br.vertex.y = output[3];
                 
                 // top-left vertex:
-                quad->tl.vertex.x = rect.origin.x;
-                quad->tl.vertex.y = rect.origin.y + rect.size.height;
+                quad->tl.vertex.x = output[4];
+                quad->tl.vertex.y = output[5];
                 
                 // top-right vertex:
-                quad->tr.vertex.x = rect.origin.x + rect.size.width;
-                quad->tr.vertex.y = rect.origin.y + rect.size.height;
+                quad->tr.vertex.x = output[6];
+                quad->tr.vertex.y = output[7];
                 
                 
                 quad->bl.color = p.color;
