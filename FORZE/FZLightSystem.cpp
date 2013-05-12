@@ -151,7 +151,7 @@ namespace FORZE {
         if(texture)
             texture->setAliasTexParameters();
 
-        makeDirty(kFZDirty_opengl);
+        makeDirty(kFZDirty_other);
     }
     
     
@@ -172,7 +172,7 @@ namespace FORZE {
         Node::updateStuff();
         
         // UPDATE OPENGL STUFF
-        if(m_dirtyFlags & kFZDirty_opengl) {
+        if(m_dirtyFlags & kFZDirty_other) {
             
             const fzSize& size = p_texture->getContentSize();
             const fzSize& pixels = p_texture->getContentSizeInPixels();

@@ -126,6 +126,7 @@ namespace FORZE {
         // Redefined
         virtual void setColor(const fzColor3B& color) override;
         virtual const fzColor3B& getColor() const override;
+        virtual void updateStuff() override;
     };
 }
 #endif

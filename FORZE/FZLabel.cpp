@@ -126,7 +126,7 @@ namespace FORZE {
 
         if(font) {
             setTexture(font->getTexture());
-            createFontChars();
+            makeDirty(kFZDirty_other);
         }
     }
     
@@ -138,7 +138,7 @@ namespace FORZE {
         else
             m_string.assign(str);
         
-        createFontChars();
+        makeDirty(kFZDirty_other);
     }
     
     
@@ -146,7 +146,7 @@ namespace FORZE {
     {
         if(vertical != m_verticalPadding) {
             m_verticalPadding = vertical;
-            createFontChars();
+            makeDirty(kFZDirty_other);
         }
     }
     
@@ -155,7 +155,7 @@ namespace FORZE {
     {
         if(horizontal != m_letterSpacing) {
             m_letterSpacing = horizontal;
-            createFontChars();
+            makeDirty(kFZDirty_other);
         }
     }
     
@@ -164,7 +164,7 @@ namespace FORZE {
     {
         if(alignment != m_alignment) {
             m_alignment = alignment;
-            createFontChars();
+            makeDirty(kFZDirty_other);
         }
     }
     
@@ -310,5 +310,14 @@ namespace FORZE {
         // make sprites not longer used hidden.
         for(; fontChar; fontChar = static_cast<Sprite*>(fontChar->next()))
             fontChar->setIsVisible(false);
+    }
+    
+    
+    void Label::updateStuff()
+    {
+        if(m_dirtyFlags & kFZDirty_other)
+            createFontChars();
+        
+        Node::updateStuff();
     }
 }

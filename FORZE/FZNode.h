@@ -53,7 +53,7 @@ namespace FORZE {
         kFZDirty_opacity            = 1 << 3,
         kFZDirty_color              = 1 << 4,
         kFZDirty_texcoords          = 1 << 5,
-        kFZDirty_opengl             = 1 << 6,
+        kFZDirty_other              = 1 << 6,
         
         kFZDirty_transform          = kFZDirty_transform_absolute | kFZDirty_transform_relative | kFZDirty_transform_inverse,
         kFZDirty_recursive          = kFZDirty_transform_absolute | kFZDirty_opacity,
