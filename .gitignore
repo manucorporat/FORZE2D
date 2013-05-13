@@ -43,3 +43,8 @@ Backup[ ]of[ ]*.pages/
 Backup[ ]of[ ]*.key/
 Backup[ ]of[ ]*.numbers/
 
+CMakeFiles
+CMakeCache.txt
+Makefile
+cmake_install.cmake
+bin

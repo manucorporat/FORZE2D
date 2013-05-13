@@ -201,9 +201,9 @@ namespace FORZE {
 #else
         glLoadIdentity();
         
-        glVertexPointer(3, GL_FLOAT, sizeof(_fzV4_T2_C4), &p_quads->bl.vertex - offset);
-        glTexCoordPointer(2, GL_FLOAT, sizeof(_fzV4_T2_C4), &p_quads->bl.texCoord - offset);
-        glColorPointer(4, GL_UNSIGNED_BYTE, sizeof(_fzV4_T2_C4), &p_quads->bl.color - offset);
+        glVertexPointer(3, GL_FLOAT, sizeof(_fzV4_T2_C4), &p_quads->bl.vertex);
+        glTexCoordPointer(2, GL_FLOAT, sizeof(_fzV4_T2_C4), &p_quads->bl.texCoord);
+        glColorPointer(4, GL_UNSIGNED_BYTE, sizeof(_fzV4_T2_C4), &p_quads->bl.color);
         
 #endif      
 
