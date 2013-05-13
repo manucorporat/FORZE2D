@@ -37,7 +37,7 @@ using namespace STD;
 namespace FORZE {
     
     //! Used intenally to compare pointers to functions.
-    template <typename T> bool compareSEL(const T sel1, const T sel2)
+    template <typename T> static bool compareSEL(const T sel1, const T sel2)
     {
         union {
             T sel;
