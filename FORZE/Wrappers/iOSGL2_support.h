@@ -30,11 +30,10 @@
  @author Manuel Martínez-Almeida
  */
 
-
-#if defined(FZ_OS) && (FZ_OS == kFZ_OS_IOS_GL2)
-
 // Import iOS stuff
 #include "iOS_support.h"
+
+#if defined(FZ_OS) && (FZ_OS == kFZ_OS_IOS_GL2)
 
 // Import OpenGL ES 1.0 headers
 #import <OpenGLES/EAGL.h>

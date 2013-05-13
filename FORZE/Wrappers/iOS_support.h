@@ -30,7 +30,7 @@
  @author Manuel Martínez-Almeida
  */
 
-
+#include "../FZOSW_header.h"
 #if defined(FZ_OS) && (FZ_OS == kFZ_OS_IOS_GL1 || FZ_OS == kFZ_OS_IOS_GL2)
 
 // Import basic iOS headers

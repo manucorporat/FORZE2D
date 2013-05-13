@@ -30,6 +30,7 @@
  @author Manuel Martínez-Almeida
  */
 
+#include "../FZOSW_header.h"
 #if !defined(FZ_OS) || (FZ_OS == kFZ_OS_MODEL)
 
 #include "GLAPI/gl.h"
