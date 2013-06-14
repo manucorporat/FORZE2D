@@ -367,12 +367,15 @@ namespace FORZE {
     {
         if(child == NULL)
             return;
+		
+		if(child->getParent() != this) {
+            FZ_ASSERT(false, "Trying to detach a non-attached node.");
+            return;
+        }
         
-        child->retain();
-        if(detachChild(child, clean))
-            m_children.remove(child);
-        
-        child->release();
+		m_children.remove(child);
+		detachChild(child, clean);
+		makeDirty(0);
     }
     
     
@@ -396,6 +399,7 @@ namespace FORZE {
         }
       
         m_children.clear();
+		makeDirty(0);
     }
     
     
@@ -424,10 +428,6 @@ namespace FORZE {
     {
         FZ_ASSERT(child, "Child argument can not be NULL.");
         
-        if(child->getParent() != this) {
-            FZ_ASSERT(false, "Trying to detach a non-attached node.");
-            return false;
-        }
         if (m_isRunning)
             child->onExit();
         
@@ -435,9 +435,7 @@ namespace FORZE {
             child->cleanup();
         
         child->setParent(NULL);
-        child->release();
-        makeDirty(0);
-      
+		child->release();
         return true;
     }
     
