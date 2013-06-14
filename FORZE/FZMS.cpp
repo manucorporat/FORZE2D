@@ -81,7 +81,7 @@ namespace FORZE {
         
         if(_modelview_stack.num >= _modelview_stack.capacity) {
             _modelview_stack.capacity += STACK_INCREMENT;
-            realloc(_modelview_stack.stack, _modelview_stack.capacity * sizeof(float*));
+            _modelview_stack.stack = (float**)realloc(_modelview_stack.stack, _modelview_stack.capacity * sizeof(float*));
         }
     }
     
