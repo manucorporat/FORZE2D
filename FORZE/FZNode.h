@@ -405,7 +405,7 @@ namespace FORZE {
         }
         
         //! Returns the list of children contained in a FORZE::Autolist.
-        AutoList& getChildren() {
+        const AutoList& getChildren() {
             return m_children;
         }
         
