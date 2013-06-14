@@ -48,18 +48,16 @@ namespace FORZE {
     
     fzRect& fzRect::applyTransform(const float *matrix)
     {
-        register float output[8];
-        {
-            const float vertices[8] = {
-                origin.x, origin.y,
-                origin.x + size.width, origin.y,
-                origin.x + size.width, origin.y + size.height,
-                origin.x, origin.y + size.height
-            };
-            
-            // Hardware accelerated vertices calculation
-            fzMath_mat4Vec2(matrix, vertices, output);
-        }
+		float output[8];
+        const float vertices[8] = {
+            origin.x, origin.y,
+            origin.x + size.width, origin.y,
+            origin.x + size.width, origin.y + size.height,
+            origin.x, origin.y + size.height
+        };
+        
+        // Hardware accelerated vertices calculation
+        fzMath_mat4Vec2(matrix, vertices, output);
         
         origin.x = fzMin(fzMin(fzMin(output[0], output[2]), output[4]), output[6]);
         origin.y = fzMin(fzMin(fzMin(output[1], output[3]), output[5]), output[7]);
