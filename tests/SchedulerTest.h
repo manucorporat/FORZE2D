@@ -128,18 +128,45 @@ public:
     ActionLoop1()
     : TestLayer("Action Loop 2", NULL)
     {
+        Label *label = new Label("", "helvetica.fnt");
+        label->setTag(0);
+        addChild(label);
+        
+        Label *label2 = new Label("", "helvetica.fnt");
+        label2->setTag(1);
+        addChild(label2);
+        
+        alignChildrenVertically();
+        
         // Loop implemented using actions:
         // RepeatForever + CallFunc
         // This method is just for testing
         // It is not a good practice
-        runAction(new RepeatForever(new CallFunc(this, SEL_VOID(ActionLoop1::loop))));
+        runAction(new RepeatForever(new Sequence(new CallFunc(this, SEL_VOID(ActionLoop1::loop)),
+                                                 new DelayTime(1), nil)));
+        
+        runAction(new RepeatForever(new CallFunc(this, SEL_VOID(ActionLoop1::loopSecond))));
+
+
     }
     
     void loop()
     {
+        //FZLog("Calling 1");
         static int number = 0;
-        FZLog("Loop %d", number);
+        Label *label = (Label*) getChildByTag(0);
+        label->setString(FZT("%d", number));
+
         ++number;
+    }
+    
+    void loopSecond()
+    {
+        static int number2 = 0;
+        Label *label = (Label*) getChildByTag(1);
+        label->setString(FZT("%d", number2));
+        
+        ++number2;
     }
 };
 

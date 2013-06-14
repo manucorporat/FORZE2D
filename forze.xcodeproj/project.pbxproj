@@ -1321,6 +1321,8 @@
 		A9BFDA72166A5EA1005E7DE2 /* FZHash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A9BFDA6F166A5EA0005E7DE2 /* FZHash.cpp */; };
 		A9BFDA73166A5EA1005E7DE2 /* FZHash.h in Headers */ = {isa = PBXBuildFile; fileRef = A9BFDA70166A5EA1005E7DE2 /* FZHash.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A9BFDA74166A5EA1005E7DE2 /* FZHash.h in Headers */ = {isa = PBXBuildFile; fileRef = A9BFDA70166A5EA1005E7DE2 /* FZHash.h */; };
+		A9FC379E173F12B30015E617 /* helvetica@x2.fnt in Resources */ = {isa = PBXBuildFile; fileRef = A99804F0161F80B70037A7EB /* helvetica@x2.fnt */; };
+		A9FC379F173F12B30015E617 /* helvetica@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = A99804F1161F80B70037A7EB /* helvetica@x2.png */; };
 		CA16DF2815F3CD0000E025BF /* libforze_mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5018F24D0DFDEAC400C013A5 /* libforze_mac.a */; };
 		CA16DF3015F3CD0000E025BF /* grossini.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F65157D66DA001E055D /* grossini.png */; };
 		CA16DF3115F3CD0000E025BF /* grossini@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 97C34F66157D66DA001E055D /* grossini@x2.png */; };
@@ -4184,6 +4186,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9FC379E173F12B30015E617 /* helvetica@x2.fnt in Resources */,
+				A9FC379F173F12B30015E617 /* helvetica@x2.png in Resources */,
 				970C3B1C157E505900F8E3FF /* grossini.png in Resources */,
 				970C3B1D157E505900F8E3FF /* grossini@x2.png in Resources */,
 				970C3B1E157E505900F8E3FF /* grossinis_sister1.png in Resources */,
