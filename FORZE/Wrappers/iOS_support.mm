@@ -203,39 +203,41 @@ namespace FORZE {
 
 @implementation _FZUIViewController
 
-- (BOOL)shouldAutorotate
+- (NSUInteger)supportedInterfaceOrientations
 {
-    return [self shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)[[UIDevice currentDevice] orientation]];
-}
-            
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    int autorotation = Director::Instance().getAutorotation();
-    if(interfaceOrientation == UIInterfaceOrientationLandscapeLeft)
-        return !!(autorotation & kFZOrientation_LandscapeRight);
-    if(interfaceOrientation == UIInterfaceOrientationLandscapeRight)
-        return !!(autorotation & kFZOrientation_LandscapeLeft);
-    if(interfaceOrientation == UIInterfaceOrientationPortrait)
-        return !!(autorotation & kFZOrientation_Portrait);
-    if(interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown)
-        return !!(autorotation & kFZOrientation_PortraitUpsideDown);
-    
-    return false;
+	int orientation = Director::Instance().getOrientation();
+	int ret = 0;
+	if(orientation & kFZOrientation_LandscapeLeft)
+		ret |= UIInterfaceOrientationMaskLandscapeLeft;
+	
+	if(orientation & kFZOrientation_LandscapeRight)
+		ret |= UIInterfaceOrientationMaskLandscapeRight;
+	
+	if(orientation & kFZOrientation_Portrait)
+		ret |= UIInterfaceOrientationMaskPortrait;
+	
+	if(orientation & kFZOrientation_PortraitUpsideDown)
+		ret |= UIInterfaceOrientationMaskPortraitUpsideDown;
+	
+	return ret;
 }
 
 
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
 {
-    Director &director = Director::Instance();
-    if(toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft) {
-        director.setOrientation(kFZOrientation_LandscapeLeft); }
-    if(toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) {
-        director.setOrientation(kFZOrientation_LandscapeRight); }
-    if(toInterfaceOrientation == UIInterfaceOrientationPortrait) {
-        director.setOrientation(kFZOrientation_Portrait); }
-    if(toInterfaceOrientation == UIInterfaceOrientationPortraitUpsideDown) {
-        director.setOrientation(kFZOrientation_PortraitUpsideDown); }
+	if(Director::Instance().getOrientation() & kFZOrientation_Portrait)
+		return UIInterfaceOrientationPortrait;
+	else
+		return UIInterfaceOrientationLandscapeLeft;
 }
+
+
+- (void)viewWillLayoutSubviews
+{
+	CGSize size = [[self view] bounds].size;
+	Director::Instance().setWindowSize(fzSize(size.width, size.height));
+}
+
 
 @end
 
@@ -344,7 +346,7 @@ namespace FORZE {
     if(displayLink_ == nil) {
         displayLink_ = [[UIScreen mainScreen] displayLinkWithTarget:self selector:@selector(drawScene:)];
         
-        int frameInterval = (int) floor(interval * 60.0f);
+        int frameInterval = (int)floor(interval * 60.0f);
         [displayLink_ setFrameInterval:frameInterval];
         [displayLink_ addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];        
     }
@@ -406,15 +408,6 @@ namespace FORZE {
     
     // setup default framebuffers
     [self setupFramebuffer];
-    
-    
-    // set default window size
-    CGRect windowRect = [window_ frame];
-    mgrDirector_->setWindowSize(fzSize(windowRect.size.width, windowRect.size.height));
-    mgrDirector_->updateViewRect();
-    
-    // set frambuffer for screen rendering
-    [context_ renderbufferStorage:FZ_RENDERBUFFER fromDrawable:surface];
 }
 
 
@@ -458,34 +451,39 @@ namespace FORZE {
     // Config view
     [self setMultipleTouchEnabled:YES];
     [self setAutoresizesSubviews:NO];
+	[self setAutoresizingMask:0];
     [self setOpaque:YES];
         
     // Config window
     if(window_ == nil)
     {
-        window_ = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+		viewController_ = [[_FZUIViewController alloc] init];
+		[viewController_ setWantsFullScreenLayout:YES];
+		[[viewController_ view] setAutoresizesSubviews:NO];
+		[[viewController_ view] addSubview:self];
+		
+		// create window
+		window_ = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
         [window_ setMultipleTouchEnabled:YES];
         [window_ setOpaque:YES];
-        [window_ addSubview:self];
+		[window_ setRootViewController:viewController_];
     }
-    
-//    // Create auxiliar viewController
-//    if(viewController_ == nil) {
-//        viewController_ = [[_FZUIViewController alloc] initWithNibName:nil bundle:nil];
-//        [window_ setRootViewController:viewController_];
-//        [window_ addSubview:viewController_.view];
-//    }
 }
 
 
 - (void) updateWindow
 {
     fzRect renderingRect = mgrDirector_->getRenderingRect();
-    
-    // window size is ignored
-    [super setFrame:CGRectMake(renderingRect.origin.x, renderingRect.origin.y, renderingRect.size.width, renderingRect.size.height)];
 
-    //fzGLBindFramebuffer(defaultFramebuffer_);
+    // window size is ignored
+    [super setFrame:CGRectMake(renderingRect.origin.x,
+							   renderingRect.origin.y,
+							   renderingRect.size.width,
+							   renderingRect.size.height)];
+	
+	// update opengl surface
+	CAEAGLLayer *surface = (CAEAGLLayer *)[self layer];
+	[context_ renderbufferStorage:FZ_RENDERBUFFER fromDrawable:surface];
 }
 
 
@@ -587,49 +585,42 @@ namespace FORZE {
 
 - (void) applicationWillResignActive:(id)a
 {
-    FZ_ASSERT(mgrDirector_, "mgrDirector_ can not be NULL.");
     mgrDirector_->applicationPaused();
 }
 
 
 - (void) applicationDidBecomeActive:(id)a
 {
-    FZ_ASSERT(mgrDirector_, "mgrDirector_ can not be NULL.");
     mgrDirector_->applicationResumed();
 }
 
 
 - (void) applicationWillTerminate:(id)a
 {
-    FZ_ASSERT(mgrDirector_, "mgrDirector_ can not be NULL.");
     mgrDirector_->applicationTerminate();
 }
 
 
 - (void) applicationSignificantTimeChange:(id)a
 {
-    FZ_ASSERT(mgrDirector_, "mgrDirector_ can not be NULL.");
     mgrDirector_->applicationSignificantTimeChange();
 }
 
 
 - (void) applicationDidReceiveMemoryWarning:(id)a
 {
-    FZ_ASSERT(mgrDirector_, "mgrDirector_ can not be NULL.");
     mgrDirector_->applicationDidReceiveMemoryWarning();
 }
 
 
 - (void) applicationDidEnterBackground:(id)a
 {
-    FZ_ASSERT(mgrDirector_, "mgrDirector_ can not be NULL.");
     mgrDirector_->stopAnimation();
 }
 
 
 - (void) applicationWillEnterForeground:(id)a
 {
-    FZ_ASSERT(mgrDirector_, "mgrDirector_ can not be NULL.");
     mgrDirector_->startAnimation();
 }
 

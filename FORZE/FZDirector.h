@@ -78,9 +78,9 @@ namespace FORZE {
         //! Device oriented horizontally, home button on the left
         kFZOrientation_LandscapeRight       = 1<<3,
         
-        
+		kFZOrientation_PortraitAll          = kFZOrientation_Portrait | kFZOrientation_PortraitUpsideDown,
         kFZOrientation_Landscape            = kFZOrientation_LandscapeLeft | kFZOrientation_LandscapeRight,
-        kFZOrientation_All                  = kFZOrientation_Landscape | kFZOrientation_Portrait,
+        kFZOrientation_All                  = kFZOrientation_PortraitAll | kFZOrientation_Landscape,
     };
     
     
