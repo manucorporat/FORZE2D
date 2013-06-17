@@ -119,9 +119,7 @@ namespace FORZE {
         // if the OS is not a desktop OS, then the default window size
         // is equal to the screen size. -> we call setFullscreen()
         setFullscreen();
-#else
-        setOrientation(kFZOrientation_Portrait);
-#endif        
+#endif
     }
     
     
