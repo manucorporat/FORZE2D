@@ -239,7 +239,32 @@ namespace FORZE {
 
 @end
 
-@interface _FZOSWRAPPER_BASE ( Private )
+@interface _FZOSWRAPPER_BASE ()
+{
+@private
+	// weak pointers
+	FORZE::Director		*mgrDirector_;
+	FORZE::EventManager	*mgrEvents_;
+	
+	// UI
+	UIWindow *window_;
+	
+	// Threading
+	CADisplayLink *displayLink_;
+	
+	// Motion events
+	CMMotionManager *motionManager_;
+	UIViewController *viewController_;
+	
+	// OpenGl
+	EAGLContext	*context_;
+	
+	GLuint defaultFramebuffer_;
+	GLuint colorRenderbuffer_;
+	GLuint depthBuffer_;
+	GLuint msaaFramebuffer_;
+	GLuint msaaColorbuffer_;
+}
 
 -(void) setupOpenGL;
 -(void) setupFramebuffer;

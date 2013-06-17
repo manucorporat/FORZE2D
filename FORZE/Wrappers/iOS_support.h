@@ -58,29 +58,7 @@ namespace FORZE {
 
 
 @interface _FZOSWRAPPER_BASE : UIView <UIApplicationDelegate, UIAccelerometerDelegate> {
-@private    
-    // weak pointers
-    FORZE::Director *mgrDirector_;
-    FORZE::EventManager *mgrEvents_;
-    
-    // UI
-    UIWindow *window_;
-    
-    // Threading
-    CADisplayLink *displayLink_;
-    
-    // Motion events
-    CMMotionManager *motionManager_;
-    //UIViewController *viewController_;
-    
-    // OpenGl
-    EAGLContext	*context_;
-    
-    GLuint defaultFramebuffer_;
-	GLuint colorRenderbuffer_;
-	GLuint depthBuffer_;
-    GLuint msaaFramebuffer_;
-	GLuint msaaColorbuffer_;
+
 }
 - (EAGLRenderingAPI) openGLAPI;
 
