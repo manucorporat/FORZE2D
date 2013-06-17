@@ -121,13 +121,6 @@ namespace FORZE {
     }
     
     
-    void OSW::setOrientation(int orientation)
-    {
-        // ORIENTATION DOESN'T MAKE SENSE IN OSX
-        // Nothing to do here :)
-    }
-    
-    
 #pragma mark Device
     
     bool fzOSW_getSystemVersion(char *v, fzUInt maxLength)

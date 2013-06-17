@@ -105,9 +105,6 @@ namespace FORZE {
         
         //! Sets event internval
         static void setEventsInterval(fzFloat interval);
-        
-        //! Sets orientation
-        static void setOrientation(int orientation);
     };
     
     

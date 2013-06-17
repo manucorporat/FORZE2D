@@ -119,9 +119,7 @@ namespace FORZE {
         // if the OS is not a desktop OS, then the default window size
         // is equal to the screen size. -> we call setFullscreen()
         setFullscreen();
-#else
-        setOrientation(kFZOrientation_Portrait);
-#endif        
+#endif
     }
     
     
@@ -326,21 +324,20 @@ namespace FORZE {
     {
         if(m_orientation == kFZOrientation_Auto) {
             
-            const fzSize &windowSize = getWindowSize();
-            fzSize canvasSize = (m_originalCanvasSize == kFZSize_Auto) ? windowSize : m_originalCanvasSize;
-            
-            fzFloat windowRate = windowSize.width/windowSize.height;
-            fzFloat canvasRate = canvasSize.width/canvasSize.height;
-            
-            if(canvasRate == 1.0f || windowRate == 1.0f)
-                return kFZOrientation_Portrait;
-            
-            if((canvasRate < 1.0f) != (windowRate < 1.0f))
-                return kFZOrientation_LandscapeLeft;
-            else
-                return kFZOrientation_Portrait;
-        }
-        return m_orientation;
+			if(m_originalCanvasSize == kFZSize_Auto) {
+				return kFZOrientation_All;
+				
+			}else{
+				
+				fzFloat canvasRate = m_originalCanvasSize.width/m_originalCanvasSize.height;
+				
+				if(canvasRate > 1.0f)
+					return kFZOrientation_Landscape;
+				else
+					return kFZOrientation_PortraitAll;
+			}
+		}
+		return m_orientation;
     }
     
     
@@ -455,14 +452,7 @@ namespace FORZE {
         
         fzSize windowSize = getWindowSize();
         fzSize canvasSize = (m_originalCanvasSize == FZSizeZero) ? windowSize : m_originalCanvasSize;
-        fzOrientation orientation = getOrientation();
-        
-        if(orientation == kFZOrientation_LandscapeLeft ||
-           orientation == kFZOrientation_LandscapeRight)
-        {
-            FZ_SWAP(canvasSize.width, canvasSize.height);
-        }
-                
+		
         fzFloat windowRate = windowSize.width/windowSize.height;
         fzFloat canvasRate = canvasSize.width/canvasSize.height;
         fzSize newCanvasSize = canvasSize; // could be the same
@@ -546,12 +536,6 @@ namespace FORZE {
             }
         }
         m_canvasSize = newCanvasSize;
-
-        if(orientation == kFZOrientation_LandscapeLeft ||
-           orientation == kFZOrientation_LandscapeRight)
-        {
-            FZ_SWAP(m_canvasSize.width, m_canvasSize.height);
-        }
         
         // FACTORS
         fzSize viewPort = getViewPort();
@@ -576,7 +560,6 @@ namespace FORZE {
         
         
         // Notify changes to the OS Wrapper
-        OSW::setOrientation(orientation);
         OSW::updateWindow();
     }
     
@@ -592,33 +575,11 @@ namespace FORZE {
         
         fzSize viewPort = getViewPort();
         fzSize canvasSize = getCanvasSize();
-        fzOrientation orientation = getOrientation();
-        
         
         // VIEW PORT
         // The view port must be the display size in pixels.
         // Display size is not equal to the screen size, an application could not use the whole screen.
         glViewport(0, 0, (GLsizei)viewPort.width, (GLsizei)viewPort.height);
-        
-        
-        // ORIENTATION TRANFORM
-        // The projection must be calculated using the canvas size. No pixels here.
-        m_orientationTransform = FZAffineTransformIdentity;
-        switch (orientation) {
-            case kFZOrientation_LandscapeLeft:
-                FZ_SWAP(canvasSize.width, canvasSize.height);
-                m_orientationTransform.translate(canvasSize.width, 0);
-                m_orientationTransform.rotate(FZ_DEGREES_TO_RADIANS(90));
-                break;
-                
-            case kFZOrientation_LandscapeRight:
-                FZ_SWAP(canvasSize.width, canvasSize.height);
-                m_orientationTransform.translate(0, canvasSize.height);
-                m_orientationTransform.rotate(FZ_DEGREES_TO_RADIANS(-90));
-                break;
-                
-            default: break;
-        }
         
         
         // PROJECTION
@@ -633,11 +594,6 @@ namespace FORZE {
             default:
                 FZ_RAISE("Director: Unrecognized projection.");
         }
-
-        m_transform.concat(m_orientationTransform);
-
-        m_orientationTransform = m_orientationTransform.getInverse();
-
         m_dirtyFlags &= ~kFZDDirty_projection;
         
         
@@ -896,9 +852,7 @@ namespace FORZE {
     fzPoint Director::convertToGL(fzPoint point, bool isFlippedY) const
     {
         fzSize canvasSize = getCanvasSize();
-        if(getOrientation() == kFZOrientation_LandscapeLeft)
-            FZ_SWAP(canvasSize.width, canvasSize.height);
-        
+
         fzAffineTransform transform;
 
         if(isFlippedY) {
@@ -906,7 +860,7 @@ namespace FORZE {
             transform.translate(0, -canvasSize.height);
         }
         transform.scale(canvasSize.width / m_renderingRect.size.width, canvasSize.height / m_renderingRect.size.height);
-        transform.concat(m_orientationTransform);
+        //transform.concat(m_orientationTransform);
         
         return point.applyTransform(transform);
     }
@@ -980,24 +934,8 @@ namespace FORZE {
             startAnimation();
         }
     }
-    
-//    
-//    bool Director::applicationShouldRotate(fzOrientation toOrientation)
-//    {
-//        fzOrientation orientation = getOrientation();
-//        if(orientation & kFZOrientation_Landscape && toOrientation & kFZOrientation_Landscape)
-//            return true;
-//        
-//        if(orientation & kFZOrientation_Portrait && toOrientation & kFZOrientation_Portrait)
-//            return true;
-//    }
-//    
-//    
-//    void Director::applicationRotated(fzOrientation toOrientation)
-//    {
-//        setOrientation(toOrientation);
-//    }
-//    
+	
+	
     void Director::applicationPaused()
     {
         FZ_ASSERT(p_appdelegate, "FORZE was not initialized properly. App delegate is missing.");
