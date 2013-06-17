@@ -107,8 +107,6 @@ namespace FORZE {
     static const fzSize kFZSize_iPhone5(320, 568);
     static const fzSize kFZSize_iPhone5Landscape(568, 320);
 
-
-
     static const fzSize kFZSize_720p(1280, 720);
     static const fzSize kFZSize_1080p(1920, 1080);
     
@@ -171,10 +169,7 @@ namespace FORZE {
         
         // resources factor
         fzUInt m_resourcesFactor;
-        
-        
-        fzAffineTransform m_orientationTransform;
-        
+		
         // current animation interval
         fzFloat m_animationInterval;
         

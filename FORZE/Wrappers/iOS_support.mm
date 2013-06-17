@@ -84,21 +84,6 @@ namespace FORZE {
     }
     
     
-    void OSW::setOrientation(int orientation)
-    {
-        UIInterfaceOrientation uiorientation;
-        switch (orientation) {
-            case kFZOrientation_LandscapeLeft: uiorientation = UIInterfaceOrientationLandscapeLeft; break;
-            case kFZOrientation_LandscapeRight: uiorientation = UIInterfaceOrientationLandscapeRight; break;
-            case kFZOrientation_Portrait: uiorientation = UIInterfaceOrientationPortrait; break;
-            case kFZOrientation_PortraitUpsideDown: uiorientation = UIInterfaceOrientationPortraitUpsideDown; break;
-            default: return;
-        }
-        [[UIApplication sharedApplication] setStatusBarOrientation:uiorientation animated:NO];
-    }
-    
-    
-    
 #pragma mark - Device info
     
     bool fzOSW_getDeviceCode(char *deviceCode, fzUInt maxLength)

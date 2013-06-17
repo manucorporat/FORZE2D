@@ -172,12 +172,6 @@ namespace FORZE {
     }
     
     
-    void OSW::setOrientation(int orientation)
-    {
-        // Nothing to do here :)
-    }
-    
-    
 #pragma mark - Device info
     
     bool fzOSW_getDeviceCode(char *deviceCode, fzUInt maxLength)
